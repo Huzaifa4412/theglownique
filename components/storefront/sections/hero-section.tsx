@@ -210,32 +210,32 @@ export function HeroSection() {
             Explore the glow
           </a>
         </div>
-        <div className="trust-row" aria-label="Store guarantees">
-          <div>
-            <IconBox icon={Truck} />
-            <span>
-              <strong>Free shipping</strong>Orders $99+
-            </span>
-          </div>
-          <div>
-            <IconBox icon={ShieldCheck} />
-            <span>
-              <strong>24-month</strong>Warranty
-            </span>
-          </div>
-          <div>
-            <IconBox icon={SealCheck} />
-            <span>
-              <strong>5,000+</strong>Happy customers
-            </span>
-          </div>
-          <div>
-            <IconBox icon={ImageSquare} />
-            <span>
-              <strong>Free</strong>Design preview
-            </span>
-          </div>
-        </div>
+          {/* <div className="trust-row" aria-label="Store guarantees">
+            <div>
+              <IconBox icon={Truck} />
+              <span>
+                <strong>Free shipping</strong>Orders $99+
+              </span>
+            </div>
+            <div>
+              <IconBox icon={ShieldCheck} />
+              <span>
+                <strong>24-month</strong>Warranty
+              </span>
+            </div>
+            <div>
+              <IconBox icon={SealCheck} />
+              <span>
+                <strong>5,000+</strong>Happy customers
+              </span>
+            </div>
+            <div>
+              <IconBox icon={ImageSquare} />
+              <span>
+                <strong>Free</strong>Design preview
+              </span>
+            </div>
+          </div> */}
       </div>
 
       <div

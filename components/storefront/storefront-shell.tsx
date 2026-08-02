@@ -116,6 +116,9 @@ export function StorefrontShell({ children }: { children: ReactNode }) {
   return (
     <StorefrontContext.Provider value={contextValue}>
       <div ref={rootRef}>
+        <div className="scroll-progress" aria-hidden="true">
+          <span className="scroll-progress__bar" />
+        </div>
         {children}
         <ProductDialog
           product={selectedProduct}

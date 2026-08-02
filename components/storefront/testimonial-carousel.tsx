@@ -1,10 +1,17 @@
 "use client";
 
 import { useRef } from "react";
-import { A11y, Autoplay, Navigation, Pagination } from "swiper/modules";
+import {
+  A11y,
+  Autoplay,
+  EffectCoverflow,
+  Navigation,
+  Pagination,
+} from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import type { Swiper as SwiperInstance } from "swiper";
 import "swiper/css";
+import "swiper/css/effect-coverflow";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { StoreIcon } from "@/components/storefront/store-icon";
@@ -20,13 +27,25 @@ export function TestimonialCarousel() {
       <div className="testimonial-carousel__spark testimonial-carousel__spark--one" aria-hidden="true">✦</div>
       <div className="testimonial-carousel__spark testimonial-carousel__spark--two" aria-hidden="true">✦</div>
       <Swiper
-        modules={[A11y, Autoplay, Navigation, Pagination]}
+        modules={[A11y, Autoplay, EffectCoverflow, Navigation, Pagination]}
         onSwiper={(swiper) => { swiperRef.current = swiper; }}
         className="testimonial-swiper"
-        slidesPerView={1}
-        spaceBetween={18}
+        effect={reducedMotion ? "slide" : "coverflow"}
+        speed={reducedMotion ? 0 : 650}
+        slidesPerView={1.06}
+        spaceBetween={12}
+        centeredSlides
+        coverflowEffect={{
+          rotate: 2,
+          stretch: "4%",
+          depth: 90,
+          scale: 0.92,
+          modifier: 1.25,
+          slideShadows: false,
+        }}
         loop
         grabCursor
+        slideToClickedSlide
         autoplay={reducedMotion ? false : { delay: 4600, disableOnInteraction: false, pauseOnMouseEnter: true }}
         pagination={{ clickable: true, el: ".testimonial-carousel__pagination" }}
         navigation={false}
@@ -36,8 +55,8 @@ export function TestimonialCarousel() {
           slideLabelMessage: "Testimonial {{index}} of {{slidesLength}}",
         }}
         breakpoints={{
-          680: { slidesPerView: 2, spaceBetween: 18 },
-          1040: { slidesPerView: 3, spaceBetween: 20 },
+          680: { slidesPerView: 1.45, spaceBetween: 18 },
+          1040: { slidesPerView: 2.15, spaceBetween: 22 },
         }}
       >
         {testimonials.map((item) => (

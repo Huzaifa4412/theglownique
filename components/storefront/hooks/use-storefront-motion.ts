@@ -133,8 +133,80 @@ export function useStorefrontMotion(
             });
           });
 
+          const scrollProgress = one<HTMLElement>(
+            ".scroll-progress__bar",
+          );
+          if (scrollProgress) {
+            gsap.fromTo(
+              scrollProgress,
+              { scaleX: 0 },
+              {
+                scaleX: 1,
+                ease: "none",
+                scrollTrigger: {
+                  start: 0,
+                  end: "max",
+                  scrub: 0.15,
+                },
+              },
+            );
+          }
+
+          const hero = one<HTMLElement>(".hero");
+          const heroCopy = hero
+            ? one<HTMLElement>(".hero__copy", hero)
+            : null;
+          const heroShowcase = hero
+            ? one<HTMLElement>(".hero-showcase", hero)
+            : null;
+          const heroMeta = hero
+            ? one<HTMLElement>(".slide-meta", hero)
+            : null;
+
+          if (hero && heroCopy && heroShowcase) {
+            const heroScroll = gsap.timeline({
+              scrollTrigger: {
+                trigger: hero,
+                start: "top top",
+                end: "bottom top",
+                scrub: 0.75,
+              },
+            });
+
+            heroScroll
+              .to(
+                heroCopy,
+                {
+                  y: context.conditions?.desktop ? -54 : -22,
+                  autoAlpha: context.conditions?.desktop ? 0.48 : 0.72,
+                  ease: "none",
+                },
+                0,
+              )
+              .to(
+                heroShowcase,
+                {
+                  y: context.conditions?.desktop ? 48 : 22,
+                  scale: context.conditions?.desktop ? 1.035 : 1.015,
+                  ease: "none",
+                },
+                0,
+              );
+
+            if (heroMeta) {
+              heroScroll.to(
+                heroMeta,
+                {
+                  y: context.conditions?.desktop ? -24 : -12,
+                  ease: "none",
+                },
+                0,
+              );
+            }
+          }
+
           all<HTMLElement>(
-            "[data-reveal], .shop-section, .inspiration, .reviews, .newsletter",
+            "[data-reveal], .shop-section, .reviews, .newsletter",
           ).forEach((section) => {
             ScrollTrigger.create({
               trigger: section,
@@ -313,6 +385,45 @@ export function useStorefrontMotion(
                 }
               },
             });
+
+            const conceptParallaxStage = one<HTMLElement>(
+              ".concept-to-glow__stage",
+              conceptSection,
+            );
+            const conceptCopyPanel = one<HTMLElement>(
+              ".concept-to-glow__copy",
+              conceptSection,
+            );
+
+            if (conceptParallaxStage && conceptCopyPanel) {
+              gsap
+                .timeline({
+                  scrollTrigger: {
+                    trigger: conceptSection,
+                    start: "top bottom",
+                    end: "bottom top",
+                    scrub: 1,
+                  },
+                })
+                .fromTo(
+                  conceptParallaxStage,
+                  { y: context.conditions?.desktop ? 42 : 20 },
+                  {
+                    y: context.conditions?.desktop ? -42 : -20,
+                    ease: "none",
+                  },
+                  0,
+                )
+                .fromTo(
+                  conceptCopyPanel,
+                  { y: context.conditions?.desktop ? -18 : -8 },
+                  {
+                    y: context.conditions?.desktop ? 18 : 8,
+                    ease: "none",
+                  },
+                  0,
+                );
+            }
           }
 
           if (comparisonSection) {
@@ -377,6 +488,108 @@ export function useStorefrontMotion(
                 }
               },
             });
+          }
+
+          const inspirationSection = one<HTMLElement>(".inspiration");
+          if (inspirationSection) {
+            const inspirationPin = one<HTMLElement>(
+              "[data-inspiration-pin]",
+              inspirationSection,
+            );
+            const inspirationVisual = one<HTMLElement>(
+              "[data-inspiration-visual]",
+              inspirationSection,
+            );
+            const inspirationCopy = all<HTMLElement>(
+              "[data-inspiration-copy] > *",
+              inspirationSection,
+            );
+            const inspirationSteps = all<HTMLElement>(
+              "[data-inspiration-step]",
+              inspirationSection,
+            );
+            const inspirationAction = one<HTMLElement>(
+              "[data-inspiration-action]",
+              inspirationSection,
+            );
+            const inspirationWordmark = one<HTMLElement>(
+              ".inspiration__wordmark",
+              inspirationSection,
+            );
+
+            if (
+              inspirationPin &&
+              inspirationVisual &&
+              context.conditions?.timelineDesktop
+            ) {
+              const inspirationTimeline = gsap.timeline({
+                defaults: { ease: "none" },
+                scrollTrigger: {
+                  trigger: inspirationSection,
+                  start: "top top",
+                  end: "+=110%",
+                  pin: inspirationPin,
+                  scrub: 0.8,
+                  anticipatePin: 1,
+                },
+              });
+
+              if (inspirationWordmark) {
+                inspirationTimeline.fromTo(
+                  inspirationWordmark,
+                  { xPercent: -7, autoAlpha: 0.08 },
+                  { xPercent: 8, autoAlpha: 0.16, duration: 2.2 },
+                  0,
+                );
+              }
+
+              inspirationTimeline
+                .from(
+                  inspirationVisual,
+                  {
+                    autoAlpha: 0,
+                    x: -70,
+                    rotation: -5,
+                    scale: 0.9,
+                    duration: 0.8,
+                  },
+                  0,
+                )
+                .from(
+                  inspirationCopy,
+                  {
+                    autoAlpha: 0,
+                    y: 46,
+                    stagger: 0.12,
+                    duration: 0.72,
+                  },
+                  0.12,
+                )
+                .from(
+                  inspirationSteps,
+                  {
+                    autoAlpha: 0,
+                    x: 46,
+                    stagger: 0.14,
+                    duration: 0.72,
+                  },
+                  0.48,
+                );
+
+              if (inspirationAction) {
+                inspirationTimeline.from(
+                  inspirationAction,
+                  { autoAlpha: 0, y: 26, duration: 0.5 },
+                  0.98,
+                );
+              }
+
+              inspirationTimeline.to(
+                inspirationVisual,
+                { y: -26, rotation: 1.5, scale: 1.018, duration: 0.72 },
+                1.38,
+              );
+            }
           }
         },
       );
