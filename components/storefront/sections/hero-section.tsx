@@ -365,6 +365,16 @@ export function HeroSection() {
                   playsInline
                   className="w-full h-full object-cover rounded-none"
                 />
+              ) : index === 2 ? (
+                <video
+                  src="/3d-arcylic/videos/25763cbb2ca6866a574a4dde5853343c.mp4"
+                  poster="/3d-arcylic/3235dc09-6dac-4056-88b6-55fc26e28571.png"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="w-full h-full object-cover rounded-none"
+                />
               ) : (
                 <Image
                   src={index === 0 ? "/hero/neon-sign-hero.png" : slide.image}
