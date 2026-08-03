@@ -6,6 +6,7 @@ import { GlowDirectionsSection } from "@/components/storefront/sections/glow-dir
 import { HeroSection } from "@/components/storefront/sections/hero-section";
 import { InspirationSection } from "@/components/storefront/sections/inspiration-section";
 import { NeonColorChangerSection } from "@/components/storefront/sections/neon-color-changer-section";
+import { SignTypesVideoSection } from "@/components/storefront/sections/sign-types-video-section";
 import { NewsletterSection } from "@/components/storefront/sections/newsletter-section";
 import { OrderTimeline } from "@/components/storefront/sections/order-timeline";
 import { ReviewsSection } from "@/components/storefront/sections/reviews-section";
@@ -26,6 +27,7 @@ export default function Home() {
         <OrderTimeline />
         <ConceptToGlowSection />
         <NeonColorChangerSection />
+        <SignTypesVideoSection />
         <ScrollStackingCardsSection />
         <ComparisonSection />
         <ShopSection />

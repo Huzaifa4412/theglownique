@@ -367,9 +367,9 @@ export function HeroSection() {
           ))}
           <div className="hero-scrim" aria-hidden="true" />
           <div className="slide-meta" aria-live="polite">
-            <p className="slide-meta__eyebrow">{activeHero.eyebrow}</p>
-            <h2>{activeHero.title}</h2>
-            <p className="slide-meta__copy">{activeHero.copy}</p>
+            {/* <p className="slide-meta__eyebrow">{activeHero.eyebrow}</p>  */}
+            {/* <h2>{activeHero.title}</h2>  */}
+            {/* <p className="slide-meta__copy">{activeHero.copy}</p> */}
             <button
               className="slide-meta__link"
               type="button"

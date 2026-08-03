@@ -51,12 +51,14 @@ export function ProductDialog({
 
     const form = new FormData(event.currentTarget);
     const size = String(form.get("size"));
+    const signType = String(form.get("signType") || "Neon Sign");
     const color = String(form.get("color"));
     const customText = String(form.get("customText") || "").trim();
     const message = [
       "Hello The Glownique! I would like a custom quote:",
       "",
       `Design: ${product.name}`,
+      `Sign Type: ${signType}`,
       `Preferred size: ${size}`,
       `Neon colour: ${color}`,
       customText
@@ -105,6 +107,15 @@ export function ProductDialog({
         <p className="dialog-product-note">
           Every sign is quoted individually after we review your design choices.
         </p>
+        <label>
+          Sign Type
+          <select name="signType" defaultValue={dialogProduct.signType || "Neon Sign"}>
+            <option value="Neon Sign">1. Neon Sign (LED Flexible Silicone)</option>
+            <option value="3D Metal Neon Sign">2. 3D Metal Neon Sign (Frontlit / Backlit / Dual-Lit)</option>
+            <option value="Ultra Thin Lightbox">3. Ultra Thin Lightbox Signs</option>
+            <option value="Acrylic UV Print Neon Sign">4. Acrylic UV Print Neon Sign</option>
+          </select>
+        </label>
         <label>
           Size
           <select name="size" defaultValue="Medium · up to 32 in">

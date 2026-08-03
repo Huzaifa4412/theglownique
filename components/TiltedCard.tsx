@@ -13,7 +13,7 @@ import {
 import "./TiltedCard.css";
 
 type TiltedCardProps = {
-  imageSrc: StaticImageData;
+  imageSrc: StaticImageData | string;
   altText: string;
   sizes: string;
   overlayContent?: ReactNode;
@@ -64,6 +64,8 @@ export default function TiltedCard({
     rotateY.set(0);
   }
 
+  const isStatic = typeof imageSrc !== "string";
+
   return (
     <figure
       ref={ref}
@@ -82,7 +84,8 @@ export default function TiltedCard({
           className="tilted-card-img"
           fill
           sizes={sizes}
-          placeholder="blur"
+          placeholder={isStatic ? "blur" : undefined}
+          unoptimized={!isStatic}
         />
         {overlayContent ? (
           <div className="tilted-card-overlay">{overlayContent}</div>

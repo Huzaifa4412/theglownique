@@ -7,13 +7,13 @@ import { useStorefront } from "@/components/storefront/storefront-context";
 import { products } from "@/lib/store-data";
 
 type CustomQuoteButtonProps = {
-  className: string;
-  label: string;
+  className?: string;
+  label?: string;
 };
 
 export function CustomQuoteButton({
-  className,
-  label,
+  className = "button button--primary",
+  label = "Request a custom quote",
 }: CustomQuoteButtonProps) {
   const { openProduct } = useStorefront();
 
