@@ -1,8 +1,64 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "motion/react";
+import { CaretLeft, CaretRight, Pause, Play } from "@phosphor-icons/react";
 import TiltedCard from "@/components/TiltedCard";
 import { CustomQuoteButton } from "@/components/storefront/custom-quote-button";
 import { StoreIcon } from "@/components/storefront/store-icon";
 import { PremiumAccentText } from "@/components/ui/premium-accent-text";
 import { heroSlides } from "@/lib/store-data";
+
+const inspirationSlides = [
+  {
+    image: heroSlides[5].image,
+    alt: "Creative studio with a Your Idea neon sign",
+    label: "Custom Studio",
+    tag: "Preview 01",
+    subtitle: "Made for your wall, room and story",
+    badge: "LED neon",
+  },
+  {
+    image: heroSlides[0].image,
+    alt: "Blush living room with a pink Good Vibes neon sign",
+    label: "Living Space",
+    tag: "Preview 02",
+    subtitle: "Good vibes, made visible in light",
+    badge: "Home Accent",
+  },
+  {
+    image: heroSlides[1].image,
+    alt: "Wedding floral arch with a warm white Better Together neon sign",
+    label: "Wedding Moment",
+    tag: "Preview 03",
+    subtitle: "A keepsake for your big day",
+    badge: "Wedding Keep",
+  },
+  {
+    image: heroSlides[2].image,
+    alt: "Boutique café with a coral Coffee First neon sign",
+    label: "Brand & Studio",
+    tag: "Preview 04",
+    subtitle: "Put your name in lights",
+    badge: "Business Sign",
+  },
+  {
+    image: heroSlides[3].image,
+    alt: "Pink party lounge with a magenta Let’s Party neon sign",
+    label: "Event & Party",
+    tag: "Preview 05",
+    subtitle: "Scene-stealing signs for celebrations",
+    badge: "Event Glow",
+  },
+  {
+    image: heroSlides[4].image,
+    alt: "Dark gaming room with an electric blue neon controller",
+    label: "Gaming Station",
+    tag: "Preview 06",
+    subtitle: "Electric icons for late-night play",
+    badge: "Gaming Setup",
+  },
+];
 
 const designSteps = [
   {
@@ -26,6 +82,30 @@ const designSteps = [
 ];
 
 export function InspirationSection() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(true);
+
+  useEffect(() => {
+    if (!isPlaying) return;
+    const timer = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % inspirationSlides.length);
+    }, 3800);
+
+    return () => clearInterval(timer);
+  }, [isPlaying]);
+
+  const handleNext = () => {
+    setCurrentIndex((prev) => (prev + 1) % inspirationSlides.length);
+  };
+
+  const handlePrev = () => {
+    setCurrentIndex(
+      (prev) => (prev - 1 + inspirationSlides.length) % inspirationSlides.length
+    );
+  };
+
+  const activeSlide = inspirationSlides[currentIndex];
+
   return (
     <section className="inspiration" id="inspiration">
       <div className="inspiration__wordmark" aria-hidden="true">
@@ -34,30 +114,101 @@ export function InspirationSection() {
 
       <div className="inspiration__pin" data-inspiration-pin>
         <div className="shell inspiration__grid">
+          {/* Left Column: Continuous Animated Image Visual */}
           <div
-            className="inspiration__visual inspiration__visual--tilted"
+            className="inspiration__visual inspiration__visual--tilted relative group"
             data-inspiration-visual
+            onMouseEnter={() => setIsPlaying(false)}
+            onMouseLeave={() => setIsPlaying(true)}
           >
-            <div className="inspiration__studio-label" aria-hidden="true">
-              <span>Custom studio</span>
-              <span>Preview 01</span>
+            {/* Top Studio Label */}
+            <div className="inspiration__studio-label z-20">
+              <span className="font-medium">{activeSlide.label}</span>
+              <span className="font-mono text-pink-400">{activeSlide.tag}</span>
             </div>
 
-            <TiltedCard
-              imageSrc={heroSlides[5].image}
-              altText="Creative studio with a Your Idea neon sign"
-              sizes="(max-width: 899px) 100vw, 50vw"
-              rotateAmplitude={5}
-              scaleOnHover={1.018}
-            />
+            {/* Continuous Animated Card Transition Container */}
+            <div className="relative w-full overflow-hidden rounded-2xl">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentIndex}
+                  initial={{ opacity: 0, scale: 0.95, filter: "blur(6px)" }}
+                  animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+                  exit={{ opacity: 0, scale: 1.05, filter: "blur(6px)" }}
+                  transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                  className="w-full h-full"
+                >
+                  <TiltedCard
+                    imageSrc={activeSlide.image}
+                    altText={activeSlide.alt}
+                    sizes="(max-width: 899px) 100vw, 50vw"
+                    rotateAmplitude={5}
+                    scaleOnHover={1.018}
+                  />
+                </motion.div>
+              </AnimatePresence>
+            </div>
 
-            <div className="inspiration__visual-note">
+            {/* Bottom Visual Note Badge */}
+            <div className="inspiration__visual-note z-20 transition-all duration-300">
               <span className="inspiration__live-mark" aria-hidden="true" />
-              <span>Made for your wall, room and story</span>
-              <strong>LED neon</strong>
+              <span>{activeSlide.subtitle}</span>
+              <strong className="text-pink-400">{activeSlide.badge}</strong>
+            </div>
+
+            {/* Interactive Carousel Overlay Controls */}
+            <div className="absolute bottom-4 right-4 z-30 flex items-center gap-1.5 p-1.5 rounded-full bg-black/60 backdrop-blur-md border border-white/10 opacity-90 group-hover:opacity-100 transition-opacity duration-300">
+              <button
+                type="button"
+                onClick={handlePrev}
+                className="p-1.5 rounded-full hover:bg-white/20 text-white transition-colors"
+                aria-label="Previous slide"
+              >
+                <CaretLeft size={16} weight="bold" />
+              </button>
+
+              <button
+                type="button"
+                onClick={() => setIsPlaying(!isPlaying)}
+                className="p-1.5 rounded-full hover:bg-white/20 text-white transition-colors"
+                aria-label={isPlaying ? "Pause auto-play" : "Play auto-play"}
+              >
+                {isPlaying ? (
+                  <Pause size={14} weight="fill" className="text-pink-400" />
+                ) : (
+                  <Play size={14} weight="fill" className="text-emerald-400" />
+                )}
+              </button>
+
+              <button
+                type="button"
+                onClick={handleNext}
+                className="p-1.5 rounded-full hover:bg-white/20 text-white transition-colors"
+                aria-label="Next slide"
+              >
+                <CaretRight size={16} weight="bold" />
+              </button>
+            </div>
+
+            {/* Pagination Dots */}
+            <div className="flex items-center justify-center gap-1.5 mt-3">
+              {inspirationSlides.map((_, idx) => (
+                <button
+                  key={idx}
+                  type="button"
+                  onClick={() => setCurrentIndex(idx)}
+                  aria-label={`Go to slide ${idx + 1}`}
+                  className={`h-1.5 rounded-full transition-all duration-300 ${
+                    idx === currentIndex
+                      ? "w-6 bg-pink-500 shadow-[0_0_8px_rgba(244,11,104,0.6)]"
+                      : "w-1.5 bg-white/20 hover:bg-white/40"
+                  }`}
+                />
+              ))}
             </div>
           </div>
 
+          {/* Right Column: Copy & Design Process */}
           <div className="inspiration__copy">
             <div className="inspiration__intro" data-inspiration-copy>
               <p className="eyebrow">Make it personal</p>

@@ -4,10 +4,6 @@ import {
   ArrowLeft,
   ArrowRight,
   ArrowUpRight,
-  ImageSquare,
-  SealCheck,
-  ShieldCheck,
-  Truck,
 } from "@phosphor-icons/react";
 import Image from "next/image";
 import {

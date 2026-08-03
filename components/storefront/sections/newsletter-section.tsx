@@ -58,6 +58,12 @@ export function NewsletterSection() {
             onSubmit={handleEmailSubmit}
           />
 
+          {message && (
+            <p className="mt-4 text-xs font-semibold text-[#f40b68] animate-fade-in">
+              {message}
+            </p>
+          )}
+
           {/* Trust Guarantee Row */}
           <div className="mt-10 pt-8 border-t border-[#eadfe4]/60 flex flex-wrap items-center justify-center gap-6 text-xs text-[#5e5862] font-semibold">
             <div className="flex items-center gap-2">

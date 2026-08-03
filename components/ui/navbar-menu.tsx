@@ -1,4 +1,4 @@
-"use client";
+import Image from "next/image";
 import React from "react";
 import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
@@ -117,12 +117,13 @@ export const ProductItem = ({
       href={href}
       className="flex space-x-3 p-2 rounded-xl hover:bg-[#fff0f5] transition-colors group border border-transparent hover:border-[#fde2ec]"
     >
-      <img
+      <Image
         src={src}
         width={110}
         height={65}
         alt={title}
         className="shrink-0 rounded-lg object-cover shadow-sm group-hover:scale-105 transition-transform"
+        unoptimized
       />
       <div>
         <h4 className="text-xs font-extrabold text-[#1e1a22] group-hover:text-[#f40b68] transition-colors mb-0.5">
@@ -136,7 +137,11 @@ export const ProductItem = ({
   );
 };
 
-export const HoveredLink = ({ children, className, ...rest }: any) => {
+export const HoveredLink = ({
+  children,
+  className,
+  ...rest
+}: React.AnchorHTMLAttributes<HTMLAnchorElement>) => {
   return (
     <a
       {...rest}

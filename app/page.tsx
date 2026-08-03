@@ -5,6 +5,7 @@ import { ConceptToGlowSection } from "@/components/storefront/sections/concept-t
 import { GlowDirectionsSection } from "@/components/storefront/sections/glow-directions-section";
 import { HeroSection } from "@/components/storefront/sections/hero-section";
 import { InspirationSection } from "@/components/storefront/sections/inspiration-section";
+import { NeonColorChangerSection } from "@/components/storefront/sections/neon-color-changer-section";
 import { NewsletterSection } from "@/components/storefront/sections/newsletter-section";
 import { OrderTimeline } from "@/components/storefront/sections/order-timeline";
 import { ReviewsSection } from "@/components/storefront/sections/reviews-section";
@@ -24,6 +25,7 @@ export default function Home() {
         <CategoryRail />
         <OrderTimeline />
         <ConceptToGlowSection />
+        <NeonColorChangerSection />
         <ScrollStackingCardsSection />
         <ComparisonSection />
         <ShopSection />

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import { motion, useSpring, useTransform } from "motion/react";
 import { ArrowRight, CheckCircle2, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";

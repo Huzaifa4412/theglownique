@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useRef } from "react";
-import { useScroll } from "motion/react";
 import { Layers, Zap, Cpu, Sliders } from "lucide-react";
 import { CustomQuoteButton } from "@/components/storefront/custom-quote-button";
 import { PremiumAccentText } from "@/components/ui/premium-accent-text";
@@ -91,10 +90,6 @@ const STACK_CARDS: StackCardItem[] = [
 
 export function ScrollStackingCardsSection() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"],
-  });
 
   return (
     <section
