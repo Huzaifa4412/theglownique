@@ -195,7 +195,14 @@ export function NeonColorChangerSection() {
   const [isPartyMode, setIsPartyMode] = useState<boolean>(false);
   const [copiedHex, setCopiedHex] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [zoomLevel, setZoomLevel] = useState<number>(1.25);
+  const [zoomLevel, setZoomLevel] = useState<number>(1.1);
+
+  // Set responsive initial zoom level
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setZoomLevel(window.innerWidth < 640 ? 1.0 : 1.25);
+    }
+  }, []);
 
   const mainCanvasRef = useRef<HTMLCanvasElement | null>(null);
   const overCanvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -459,7 +466,7 @@ export function NeonColorChangerSection() {
             <div className="lg:col-span-7 flex flex-col items-center">
               <div className="w-full relative bg-black/95 rounded-2xl border border-white/10 overflow-hidden shadow-2xl p-2 md:p-4 group">
                 {/* Stage Header Badge & Controls */}
-                <div className="flex items-center justify-between px-3 py-2 mb-2 border-b border-white/10 text-xs text-gray-400">
+                <div className="flex flex-wrap items-center justify-between gap-2 px-3 py-2 mb-2 border-b border-white/10 text-xs text-gray-400">
                   <div className="flex items-center gap-2">
                     <span className="relative flex h-2.5 w-2.5">
                       <span
@@ -493,7 +500,7 @@ export function NeonColorChangerSection() {
                     <button
                       type="button"
                       onClick={zoomOut}
-                      className="p-1 hover:bg-white/10 rounded text-gray-300 hover:text-white transition-colors"
+                      className="p-1.5 hover:bg-white/10 rounded text-gray-300 hover:text-white transition-colors min-h-[32px] min-w-[32px] flex items-center justify-center"
                       title="Zoom Out"
                     >
                       <ZoomOut className="w-3.5 h-3.5" />
@@ -504,7 +511,7 @@ export function NeonColorChangerSection() {
                     <button
                       type="button"
                       onClick={zoomIn}
-                      className="p-1 hover:bg-white/10 rounded text-gray-300 hover:text-white transition-colors"
+                      className="p-1.5 hover:bg-white/10 rounded text-gray-300 hover:text-white transition-colors min-h-[32px] min-w-[32px] flex items-center justify-center"
                       title="Zoom In"
                     >
                       <ZoomIn className="w-3.5 h-3.5" />
@@ -512,7 +519,7 @@ export function NeonColorChangerSection() {
                     <button
                       type="button"
                       onClick={resetZoom}
-                      className="p-1 hover:bg-white/10 rounded text-gray-300 hover:text-white transition-colors border-l border-white/10 ml-0.5"
+                      className="p-1.5 hover:bg-white/10 rounded text-gray-300 hover:text-white transition-colors border-l border-white/10 ml-0.5 min-h-[32px] min-w-[32px] flex items-center justify-center"
                       title="Reset Zoom"
                     >
                       <RotateCcw className="w-3 h-3" />
@@ -521,7 +528,7 @@ export function NeonColorChangerSection() {
                 </div>
 
                 {/* Canvas Render Container with Zoom & Crop */}
-                <div className="relative w-full rounded-xl overflow-hidden bg-black flex items-center justify-center min-h-[300px] md:min-h-[380px]">
+                <div className="relative w-full rounded-xl overflow-hidden bg-black flex items-center justify-center min-h-[220px] sm:min-h-[300px] md:min-h-[380px]">
                   {isLoading && (
                     <div className="absolute inset-0 flex flex-col items-center justify-center bg-zinc-950 text-gray-400 gap-3 z-20">
                       <div className="w-8 h-8 border-2 border-pink-500 border-t-transparent rounded-full animate-spin" />
@@ -547,10 +554,10 @@ export function NeonColorChangerSection() {
                 </div>
 
                 {/* Canvas Footer Bar */}
-                <div className="mt-3 px-2 flex items-center justify-between text-xs text-gray-400">
+                <div className="mt-3 px-2 flex flex-wrap items-center justify-between gap-2 text-xs text-gray-400">
                   <div className="flex items-center gap-1.5">
                     <Eye className="w-3.5 h-3.5 text-pink-400" />
-                    <span>
+                    <span className="text-[11px] sm:text-xs">
                       {activeColor.id === "rgba-cycle"
                         ? "Frequently Changing RGBA Hues"
                         : "Real-time RGBA Shading"}
@@ -560,7 +567,7 @@ export function NeonColorChangerSection() {
                   <button
                     type="button"
                     onClick={() => setIsPartyMode(!isPartyMode)}
-                    className={`flex items-center gap-1.5 px-2.5 py-0.5 rounded-full border text-[11px] font-medium transition-all duration-300 ${
+                    className={`flex items-center gap-1.5 px-3 py-1 rounded-full border text-[11px] font-medium transition-all duration-300 min-h-[32px] ${
                       isPartyMode || activeColor.id === "rgba-cycle"
                         ? "bg-pink-500/20 border-pink-500 text-pink-300 shadow-[0_0_12px_rgba(244,11,104,0.4)]"
                         : "bg-white/5 border-white/10 text-gray-300 hover:bg-white/10"
@@ -603,7 +610,7 @@ export function NeonColorChangerSection() {
                 </div>
 
                 {/* Swatches Grid */}
-                <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-4 gap-3 p-3.5 bg-black/40 border border-white/10 rounded-2xl max-h-[340px] overflow-y-auto custom-scrollbar">
+                <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-3 xl:grid-cols-4 gap-2.5 sm:gap-3 p-2.5 sm:p-3.5 bg-black/40 border border-white/10 rounded-2xl max-h-[340px] overflow-y-auto custom-scrollbar">
                   {NEON_COLORS.map((color) => {
                     const isActive = activeColor.id === color.id;
                     const isRgba = color.id === "rgba-cycle";
