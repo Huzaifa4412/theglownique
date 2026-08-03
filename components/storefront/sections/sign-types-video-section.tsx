@@ -1,9 +1,40 @@
 "use client";
 
 import { useState, useRef } from "react";
-import { Sparkles, Play, Pause, Volume2, VolumeX, ShieldCheck, Zap, Layers, Image as ImageIcon } from "lucide-react";
+import { Sparkles, Play, Pause, Volume2, VolumeX, Zap, Film } from "lucide-react";
 import { CustomQuoteButton } from "@/components/storefront/custom-quote-button";
 import { PremiumAccentText } from "@/components/ui/premium-accent-text";
+
+export const METALLIC_3D_VIDEOS = [
+  {
+    id: "3d-vid-1",
+    title: "Frontlit & Backlit 3D Channel",
+    video: "/3d-metallic-neon-sign/videos/2.mp4",
+    poster: "/3d-metallic-neon-sign/corporte/056b3189-6a8c-482a-8334-53ded7aff3e1.png",
+    tag: "3D Dual-Lit",
+  },
+  {
+    id: "3d-vid-2",
+    title: "Halo Backlit Architectural Glow",
+    video: "/3d-metallic-neon-sign/videos/3.mp4",
+    poster: "/3d-metallic-neon-sign/Salon/generated/235762e8-14ec-4167-b534-2dad36c826ba.png",
+    tag: "Halo Glow",
+  },
+  {
+    id: "3d-vid-3",
+    title: "Precision Metal Fabrication",
+    video: "/3d-metallic-neon-sign/videos/4.mp4",
+    poster: "/3d-metallic-neon-sign/corporte/14d4b621-c697-428a-b727-1c91b78e9e08.png",
+    tag: "Stainless Steel",
+  },
+  {
+    id: "3d-vid-4",
+    title: "Storefront Dual-Tone Showcase",
+    video: "/3d-metallic-neon-sign/videos/5.mp4",
+    poster: "/3d-metallic-neon-sign/Resturants/generated/026ad950-fafb-4407-8420-c83be7f49365.png",
+    tag: "Commercial Grade",
+  },
+];
 
 export const SIGN_TYPES_DATA = [
   {
@@ -27,7 +58,7 @@ export const SIGN_TYPES_DATA = [
       "Fabricated 3D stainless steel channel letters engineered with internal LED neon illumination. Available in Frontlit, Halo Backlit, or Dual-Lit configurations.",
     features: ["Frontlit / Backlit / Both", "Architectural Grade Stainless Steel", "Weatherproof Outdoor IP67"],
     badge: "Architectural Grade",
-    video: "/neon-sign/Videos/en-US_553243fdfe23dbc33ddd9f44e60696dc.mp4",
+    video: "/3d-metallic-neon-sign/videos/2.mp4",
     poster: "/3d-metallic-neon-sign/corporte/056b3189-6a8c-482a-8334-53ded7aff3e1.png",
   },
   {
@@ -58,11 +89,21 @@ export const SIGN_TYPES_DATA = [
 
 export function SignTypesVideoSection() {
   const [activeTab, setActiveTab] = useState(0);
+  const [active3dVideoIndex, setActive3dVideoIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
   const [isMuted, setIsMuted] = useState(true);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   const currentType = SIGN_TYPES_DATA[activeTab];
+  const is3dMetalTab = currentType.id === "3d-metal";
+
+  const currentVideoSrc = is3dMetalTab
+    ? METALLIC_3D_VIDEOS[active3dVideoIndex].video
+    : currentType.video;
+
+  const currentPosterSrc = is3dMetalTab
+    ? METALLIC_3D_VIDEOS[active3dVideoIndex].poster
+    : currentType.poster;
 
   const togglePlay = () => {
     if (videoRef.current) {
@@ -84,6 +125,11 @@ export function SignTypesVideoSection() {
 
   const handleTabChange = (index: number) => {
     setActiveTab(index);
+    setIsPlaying(true);
+  };
+
+  const handleSelect3dVideo = (index: number) => {
+    setActive3dVideoIndex(index);
     setIsPlaying(true);
   };
 
@@ -152,10 +198,10 @@ export function SignTypesVideoSection() {
           <div className="lg:col-span-7 relative group">
             <div className="relative w-full aspect-video rounded-2xl overflow-hidden bg-black border border-white/10 shadow-2xl">
               <video
-                key={currentType.video}
+                key={currentVideoSrc}
                 ref={videoRef}
-                src={currentType.video}
-                poster={currentType.poster}
+                src={currentVideoSrc}
+                poster={currentPosterSrc}
                 autoPlay
                 loop
                 muted={isMuted}
@@ -169,7 +215,11 @@ export function SignTypesVideoSection() {
               {/* Top Badge */}
               <div className="absolute top-4 left-4 z-20 flex items-center gap-2 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/15 text-xs text-white font-medium">
                 <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                <span>Live Craftsmanship Reel</span>
+                <span>
+                  {is3dMetalTab
+                    ? METALLIC_3D_VIDEOS[active3dVideoIndex].title
+                    : "Live Craftsmanship Reel"}
+                </span>
               </div>
 
               {/* Media Controls Bar */}
@@ -177,7 +227,7 @@ export function SignTypesVideoSection() {
                 <button
                   type="button"
                   onClick={togglePlay}
-                  className="p-2.5 rounded-full bg-black/60 hover:bg-black/80 text-white backdrop-blur-md border border-white/20 transition-transform active:scale-95"
+                  className="p-2.5 rounded-full bg-black/60 hover:bg-black/80 text-white backdrop-blur-md border border-white/20 transition-transform active:scale-95 min-h-[40px] min-w-[40px] flex items-center justify-center"
                   title={isPlaying ? "Pause Video" : "Play Video"}
                 >
                   {isPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4 ml-0.5" />}
@@ -185,13 +235,43 @@ export function SignTypesVideoSection() {
                 <button
                   type="button"
                   onClick={toggleMute}
-                  className="p-2.5 rounded-full bg-black/60 hover:bg-black/80 text-white backdrop-blur-md border border-white/20 transition-transform active:scale-95"
+                  className="p-2.5 rounded-full bg-black/60 hover:bg-black/80 text-white backdrop-blur-md border border-white/20 transition-transform active:scale-95 min-h-[40px] min-w-[40px] flex items-center justify-center"
                   title={isMuted ? "Unmute Sound" : "Mute Sound"}
                 >
                   {isMuted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
                 </button>
               </div>
             </div>
+
+            {/* 3D Metallic Video Selector Sub-Bar (When 3D Metal Tab Active) */}
+            {is3dMetalTab && (
+              <div className="mt-4 p-3 bg-black/60 border border-white/10 rounded-2xl">
+                <div className="flex items-center gap-2 mb-2 px-1 text-xs text-gray-400 font-mono uppercase tracking-wider">
+                  <Film className="w-3.5 h-3.5 text-pink-400" />
+                  <span>Select 3D Metallic Video Reel ({METALLIC_3D_VIDEOS.length})</span>
+                </div>
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                  {METALLIC_3D_VIDEOS.map((v, i) => {
+                    const isSelected = active3dVideoIndex === i;
+                    return (
+                      <button
+                        key={v.id}
+                        type="button"
+                        onClick={() => handleSelect3dVideo(i)}
+                        className={`px-2.5 py-1.5 rounded-xl border text-left text-xs transition-all duration-300 min-h-[40px] flex flex-col justify-center ${
+                          isSelected
+                            ? "bg-pink-500/20 border-pink-500 text-white shadow-[0_0_12px_rgba(244,11,104,0.4)]"
+                            : "bg-white/5 border-white/10 text-gray-300 hover:bg-white/10"
+                        }`}
+                      >
+                        <span className="font-bold truncate text-[11px]">{v.title}</span>
+                        <span className="text-[10px] text-pink-400 font-mono">{v.tag}</span>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
           </div>
 
           {/* Right Column: Sign Type Specifications */}
