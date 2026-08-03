@@ -115,10 +115,10 @@ export const heroSlides: HeroSlide[] = [
   {
     id: 'weddings',
     eyebrow: '4. Ultra Thin Slim Lightbox',
-    title: 'Sleek Anodized Edge-Lit Lightbox.',
-    copy: 'Ultra-thin aluminum matrix display delivering 100% uniform, shadow-free illumination.',
+    title: 'Client Concept to Glowing Lightbox.',
+    copy: 'See how we transform client sketches into precision 100% uniform edge-lit ultra thin lightboxes.',
     image: weddingImage,
-    alt: 'Ultra Thin Slim Lightbox Signage',
+    alt: 'Client Concept vs TheGlownique Ultra Thin Slim Lightbox',
     accent: '#00dc5a',
   },
 ]

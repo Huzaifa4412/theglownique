@@ -1,5 +1,6 @@
 "use client";
 
+import { Sparkles, Zap } from "lucide-react";
 import {
   ArrowLeft,
   ArrowRight,
@@ -381,14 +382,14 @@ export function HeroSection() {
                     index === 0
                       ? "/hero/neon-sign-hero.png"
                       : index === 3
-                      ? "/ultra-thin-slim-lightbox/IMG-20260803-WA0004.jpg"
+                      ? "/ultra-thin-slim-lightbox/main-hero.png"
                       : slide.image
                   }
                   alt={
                     index === 0
                       ? "Pink neon sign glowing in a dark room"
                       : index === 3
-                      ? "Ultra Thin Slim Lightbox Signage"
+                      ? "Client Concept vs TheGlownique Ultra Thin Slim Lightbox Transformation"
                       : slide.alt
                   }
                   fill
@@ -397,6 +398,24 @@ export function HeroSection() {
                   unoptimized={index === 3}
                   placeholder={index === 0 || index === 3 ? undefined : "blur"}
                 />
+              )}
+              {index === 3 && (
+                <div className="absolute inset-0 pointer-events-none z-20 flex flex-col justify-between p-4 sm:p-6">
+                  <div className="flex items-center justify-between gap-2">
+                    <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/80 border border-white/20 text-amber-300 text-[11px] sm:text-xs font-black backdrop-blur-md shadow-xl">
+                      <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
+                      <span>CLIENT DESIGN IDEA</span>
+                    </div>
+                    <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-gradient-to-r from-pink-600 to-purple-600 border border-pink-400/50 text-white text-[11px] sm:text-xs font-black backdrop-blur-md shadow-[0_0_20px_rgba(244,11,104,0.6)]">
+                      <Sparkles className="w-3.5 h-3.5 text-pink-200" />
+                      <span>THEGLOWNIQUE REAL LIGHTBOX</span>
+                    </div>
+                  </div>
+                  <div className="self-center mb-2 px-4 py-2 rounded-2xl bg-black/85 border border-white/20 text-white text-xs sm:text-sm font-bold backdrop-blur-xl shadow-2xl flex items-center gap-2">
+                    <Zap className="w-4 h-4 text-pink-400 shrink-0" />
+                    <span>Transformation: Client Sketch → Ultra Thin Slim Lightbox</span>
+                  </div>
+                </div>
               )}
             </article>
           ))}
