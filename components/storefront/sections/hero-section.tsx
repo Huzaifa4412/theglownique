@@ -355,14 +355,26 @@ export function HeroSection() {
               className={`hero-slide${index === activeSlide ? " is-active" : ""}${index === 0 ? " hero-slide--neon" : ""}`}
               aria-hidden={index !== activeSlide}
             >
-              <Image
-                src={index === 0 ? "/hero/neon-sign-hero.png" : slide.image}
-                alt={index === 0 ? "Pink neon sign glowing in a dark room" : slide.alt}
-                fill
-                sizes="(max-width: 800px) 100vw, 58vw"
-                fetchPriority={index === 0 ? "high" : "auto"}
-                placeholder={index === 0 ? undefined : "blur"}
-              />
+              {index === 1 ? (
+                <video
+                  src="/3d-metallic-neon-sign/videos/2.mp4"
+                  poster="/3d-metallic-neon-sign/corporte/056b3189-6a8c-482a-8334-53ded7aff3e1.png"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="w-full h-full object-cover rounded-none"
+                />
+              ) : (
+                <Image
+                  src={index === 0 ? "/hero/neon-sign-hero.png" : slide.image}
+                  alt={index === 0 ? "Pink neon sign glowing in a dark room" : slide.alt}
+                  fill
+                  sizes="(max-width: 800px) 100vw, 58vw"
+                  fetchPriority={index === 0 ? "high" : "auto"}
+                  placeholder={index === 0 ? undefined : "blur"}
+                />
+              )}
             </article>
           ))}
           <div className="hero-scrim" aria-hidden="true" />
