@@ -35,8 +35,8 @@ const inspirationSlides = [
     badge: "1. Neon Sign",
   },
   {
-    image: "/neon-sign/shop/iap_600x600.8012839564_cc7lygzj.webp",
-    alt: "Ultra Thin Lightbox Sign with Edge-lit LED",
+    image: "/ultra-thin-slim-lightbox/IMG-20260803-WA0004.jpg",
+    alt: "Ultra Thin Slim Lightbox Sign with Edge-lit LED",
     label: "Ultra Thin Lightbox",
     tag: "Preview 04",
     subtitle: "Uniform illumination for modern storefronts",

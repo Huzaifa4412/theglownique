@@ -88,7 +88,7 @@ export const SIGN_TYPES_DATA = [
     features: ["Ultra-Slim Profile", "Uniform Edge-Lit Dispersion", "Toolless Graphic Swap"],
     badge: "Retail & Commercial",
     video: "/neon-sign/Videos/en-GB_7bc644f6ffb88b4179c83b88c76e5ed9.mp4",
-    poster: "/neon-sign/shop/iap_600x600.8012839564_cc7lygzj.webp",
+    poster: "/ultra-thin-slim-lightbox/IMG-20260803-WA0004.jpg",
   },
   {
     id: "acrylic-uv",

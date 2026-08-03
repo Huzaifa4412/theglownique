@@ -14,7 +14,7 @@ const directionIds: CategoryId[] = [
   "home",
   "weddings",
   "business",
-  "gaming",
+  "custom",
 ];
 
 const directionCopy: Record<CategoryId, string> = {

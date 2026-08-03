@@ -377,12 +377,25 @@ export function HeroSection() {
                 />
               ) : (
                 <Image
-                  src={index === 0 ? "/hero/neon-sign-hero.png" : slide.image}
-                  alt={index === 0 ? "Pink neon sign glowing in a dark room" : slide.alt}
+                  src={
+                    index === 0
+                      ? "/hero/neon-sign-hero.png"
+                      : index === 3
+                      ? "/ultra-thin-slim-lightbox/IMG-20260803-WA0004.jpg"
+                      : slide.image
+                  }
+                  alt={
+                    index === 0
+                      ? "Pink neon sign glowing in a dark room"
+                      : index === 3
+                      ? "Ultra Thin Slim Lightbox Signage"
+                      : slide.alt
+                  }
                   fill
                   sizes="(max-width: 800px) 100vw, 58vw"
                   fetchPriority={index === 0 ? "high" : "auto"}
-                  placeholder={index === 0 ? undefined : "blur"}
+                  unoptimized={index === 3}
+                  placeholder={index === 0 || index === 3 ? undefined : "blur"}
                 />
               )}
             </article>
