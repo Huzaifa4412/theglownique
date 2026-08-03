@@ -28,7 +28,7 @@ export const SIGN_TYPES_DATA = [
     features: ["Frontlit / Backlit / Both", "Architectural Grade Stainless Steel", "Weatherproof Outdoor IP67"],
     badge: "Architectural Grade",
     video: "/neon-sign/Videos/en-US_553243fdfe23dbc33ddd9f44e60696dc.mp4",
-    poster: "/neon-sign/shop/iap_600x600.7162676105_56q8x34m.webp",
+    poster: "/3d-metallic-neon-sign/corporte/056b3189-6a8c-482a-8334-53ded7aff3e1.png",
   },
   {
     id: "lightbox",

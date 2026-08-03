@@ -19,8 +19,8 @@ const inspirationSlides = [
     badge: "1. Neon Sign",
   },
   {
-    image: "/neon-sign/shop/iap_600x600.7162676105_56q8x34m.webp",
-    alt: "Storefront Coffee & Studio 3D Metal Backlit Sign",
+    image: "/3d-metallic-neon-sign/corporte/056b3189-6a8c-482a-8334-53ded7aff3e1.png",
+    alt: "Corporate HQ 3D Metallic Channel Lettering Sign",
     label: "3D Metal Signage",
     tag: "Preview 02",
     subtitle: "Frontlit, Backlit & Dual-Lit channel lettering",
