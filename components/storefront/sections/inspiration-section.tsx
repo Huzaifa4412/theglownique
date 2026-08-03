@@ -43,9 +43,9 @@ const inspirationSlides = [
     badge: "3. Lightbox Sign",
   },
   {
-    image: "/neon-sign/Game Room/iap_600x600.7098204330_6g78a964.webp",
-    alt: "Acrylic UV Print Neon Arcade Controller",
-    label: "Acrylic UV Print Neon",
+    image: "/3d-arcylic/3235dc09-6dac-4056-88b6-55fc26e28571.png",
+    alt: "3D Acrylic UV Print Neon Sign with glowing contour",
+    label: "3D Acrylic UV Print",
     tag: "Preview 05",
     subtitle: "High-definition UV graphics + contour neon",
     badge: "4. Acrylic UV Print",

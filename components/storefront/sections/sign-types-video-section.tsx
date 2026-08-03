@@ -36,6 +36,23 @@ export const METALLIC_3D_VIDEOS = [
   },
 ];
 
+export const ACRYLIC_UV_VIDEOS = [
+  {
+    id: "acrylic-vid-1",
+    title: "3D Acrylic UV Contour Glow",
+    video: "/3d-arcylic/videos/25763cbb2ca6866a574a4dde5853343c.mp4",
+    poster: "/3d-arcylic/3235dc09-6dac-4056-88b6-55fc26e28571.png",
+    tag: "UV Contour Neon",
+  },
+  {
+    id: "acrylic-vid-2",
+    title: "Layered 3D Acrylic Studio Showcase",
+    video: "/3d-arcylic/videos/a2011a7af86d39e5177de4f68400b705.mp4",
+    poster: "/3d-arcylic/fff64032-bdaa-459c-8caf-a4ac67b89f19.png",
+    tag: "Photographic Depth",
+  },
+];
+
 export const SIGN_TYPES_DATA = [
   {
     id: "neon-sign",
@@ -76,34 +93,39 @@ export const SIGN_TYPES_DATA = [
   {
     id: "acrylic-uv",
     number: "04",
-    title: "Acrylic UV Print Neon",
+    title: "3D Acrylic UV Print Neon",
     tagline: "High-Def UV Artwork + Contour Neon",
     description:
       "Combines photographic UV direct printing onto premium acrylic with glowing LED neon contours. Provides rich artwork detail with stunning illuminated contrast.",
     features: ["High-Def Full-Color UV Print", "Neon Contour Accents", "3D Layered Depth"],
     badge: "Art & Branding",
-    video: "/neon-sign/Videos/en-US_b030e6674c95ff46fa25a87b2b6d60d9.mp4",
-    poster: "/neon-sign/Game Room/iap_600x600.7098204330_6g78a964.webp",
+    video: "/3d-arcylic/videos/25763cbb2ca6866a574a4dde5853343c.mp4",
+    poster: "/3d-arcylic/3235dc09-6dac-4056-88b6-55fc26e28571.png",
   },
 ];
 
 export function SignTypesVideoSection() {
   const [activeTab, setActiveTab] = useState(0);
   const [active3dVideoIndex, setActive3dVideoIndex] = useState(0);
+  const [activeAcrylicVideoIndex, setActiveAcrylicVideoIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
   const [isMuted, setIsMuted] = useState(true);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   const currentType = SIGN_TYPES_DATA[activeTab];
   const is3dMetalTab = currentType.id === "3d-metal";
+  const isAcrylicUvTab = currentType.id === "acrylic-uv";
 
-  const currentVideoSrc = is3dMetalTab
-    ? METALLIC_3D_VIDEOS[active3dVideoIndex].video
-    : currentType.video;
+  let currentVideoSrc = currentType.video;
+  let currentPosterSrc = currentType.poster;
 
-  const currentPosterSrc = is3dMetalTab
-    ? METALLIC_3D_VIDEOS[active3dVideoIndex].poster
-    : currentType.poster;
+  if (is3dMetalTab) {
+    currentVideoSrc = METALLIC_3D_VIDEOS[active3dVideoIndex].video;
+    currentPosterSrc = METALLIC_3D_VIDEOS[active3dVideoIndex].poster;
+  } else if (isAcrylicUvTab) {
+    currentVideoSrc = ACRYLIC_UV_VIDEOS[activeAcrylicVideoIndex].video;
+    currentPosterSrc = ACRYLIC_UV_VIDEOS[activeAcrylicVideoIndex].poster;
+  }
 
   const togglePlay = () => {
     if (videoRef.current) {
@@ -125,11 +147,6 @@ export function SignTypesVideoSection() {
 
   const handleTabChange = (index: number) => {
     setActiveTab(index);
-    setIsPlaying(true);
-  };
-
-  const handleSelect3dVideo = (index: number) => {
-    setActive3dVideoIndex(index);
     setIsPlaying(true);
   };
 
@@ -166,7 +183,7 @@ export function SignTypesVideoSection() {
           </h2>
 
           <p className="text-gray-300 text-base sm:text-lg leading-relaxed">
-            From flexible silicone LED neon signs to architectural 3D metal channel lettering and ultra-thin lightboxes, we build signs for every aesthetic and environment.
+            From flexible silicone LED neon signs to architectural 3D metal channel lettering, 3D acrylic UV print signs and ultra-thin lightboxes.
           </p>
         </div>
 
@@ -218,6 +235,8 @@ export function SignTypesVideoSection() {
                 <span>
                   {is3dMetalTab
                     ? METALLIC_3D_VIDEOS[active3dVideoIndex].title
+                    : isAcrylicUvTab
+                    ? ACRYLIC_UV_VIDEOS[activeAcrylicVideoIndex].title
                     : "Live Craftsmanship Reel"}
                 </span>
               </div>
@@ -257,7 +276,43 @@ export function SignTypesVideoSection() {
                       <button
                         key={v.id}
                         type="button"
-                        onClick={() => handleSelect3dVideo(i)}
+                        onClick={() => {
+                          setActive3dVideoIndex(i);
+                          setIsPlaying(true);
+                        }}
+                        className={`px-2.5 py-1.5 rounded-xl border text-left text-xs transition-all duration-300 min-h-[40px] flex flex-col justify-center ${
+                          isSelected
+                            ? "bg-pink-500/20 border-pink-500 text-white shadow-[0_0_12px_rgba(244,11,104,0.4)]"
+                            : "bg-white/5 border-white/10 text-gray-300 hover:bg-white/10"
+                        }`}
+                      >
+                        <span className="font-bold truncate text-[11px]">{v.title}</span>
+                        <span className="text-[10px] text-pink-400 font-mono">{v.tag}</span>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+
+            {/* 3D Acrylic UV Print Video Selector Sub-Bar (When Acrylic UV Tab Active) */}
+            {isAcrylicUvTab && (
+              <div className="mt-4 p-3 bg-black/60 border border-white/10 rounded-2xl">
+                <div className="flex items-center gap-2 mb-2 px-1 text-xs text-gray-400 font-mono uppercase tracking-wider">
+                  <Film className="w-3.5 h-3.5 text-pink-400" />
+                  <span>Select 3D Acrylic Video Reel ({ACRYLIC_UV_VIDEOS.length})</span>
+                </div>
+                <div className="grid grid-cols-2 gap-2">
+                  {ACRYLIC_UV_VIDEOS.map((v, i) => {
+                    const isSelected = activeAcrylicVideoIndex === i;
+                    return (
+                      <button
+                        key={v.id}
+                        type="button"
+                        onClick={() => {
+                          setActiveAcrylicVideoIndex(i);
+                          setIsPlaying(true);
+                        }}
                         className={`px-2.5 py-1.5 rounded-xl border text-left text-xs transition-all duration-300 min-h-[40px] flex flex-col justify-center ${
                           isSelected
                             ? "bg-pink-500/20 border-pink-500 text-white shadow-[0_0_12px_rgba(244,11,104,0.4)]"
