@@ -155,7 +155,7 @@ export function HeroSection() {
     >
       <div className="hero__copy shell-edge">
         <p className="eyebrow hero__eyebrow">
-          <span aria-hidden="true" /> Custom-made LED neon
+          <span aria-hidden="true" /> Custom LED neon signs
         </p>
         <h1 id="hero-heading" className="hero-title">
           <span className="sr-only">Light up what feels like you.</span>
@@ -196,8 +196,8 @@ export function HeroSection() {
           </span>
         </h1>
         <p className="hero__intro">
-          Turn your favourite words, logo or moment into handcrafted LED neon —
-          previewed free, made to order, and ready to glow.
+          Turn your favourite words, logo or moment into a handcrafted custom
+          neon sign — previewed free, made to order, and ready to glow.
         </p>
         <div className="hero__actions">
           <a className="button button--primary" href="#custom">
@@ -211,13 +211,13 @@ export function HeroSection() {
             <div>
               <IconBox icon={Truck} />
               <span>
-                <strong>Free shipping</strong>Orders $99+
+                <strong>Free delivery</strong>On every order
               </span>
             </div>
             <div>
               <IconBox icon={ShieldCheck} />
               <span>
-                <strong>24-month</strong>Warranty
+                <strong>5-year</strong>Warranty
               </span>
             </div>
             <div>
@@ -387,9 +387,9 @@ export function HeroSection() {
                   }
                   alt={
                     index === 0
-                      ? "Pink neon sign glowing in a dark room"
+                      ? "Pink custom LED neon sign glowing on a dark bedroom wall"
                       : index === 3
-                      ? "Client Concept vs TheGlownique Ultra Thin Slim Lightbox Transformation"
+                      ? "Client concept sketch beside a finished ultra-thin slim LED lightbox by The Glownique"
                       : slide.alt
                   }
                   fill

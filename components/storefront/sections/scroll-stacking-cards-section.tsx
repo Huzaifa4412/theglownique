@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useRef } from "react";
-import { Layers, Zap, Cpu, Sliders } from "lucide-react";
+import { Upload, Palette, FileText, ShieldCheck, Wrench, Truck } from "lucide-react";
 import { CustomQuoteButton } from "@/components/storefront/custom-quote-button";
 import { PremiumAccentText } from "@/components/ui/premium-accent-text";
 
@@ -23,68 +23,100 @@ type StackCardItem = {
 
 const STACK_CARDS: StackCardItem[] = [
   {
-    id: "card-1",
+    id: "step-1",
     number: "01",
-    badge: "8mm Cast Acrylic",
-    title: "Optical Grade Cast Base",
-    subtitle: "Precision Flame-Polished Edges",
+    badge: "You send it",
+    title: "Share Your Idea",
+    subtitle: "Words, Logo or Rough Sketch",
     description:
-      "Ultra-clear 8mm cast acrylic backboard, laser-cut to exact design dimensions with 45° flame-polished outer edges for maximum light reflection and structural stability.",
-    icon: Layers,
+      "Tell us what you'd like your sign to say and send your text, logo, brand colours or even a rough sketch. Whatever you have is enough for us to get started.",
+    icon: Upload,
     accentHex: "#f40b68",
     glowShadow: "rgba(244, 11, 104, 0.16)",
     accentBg: "rgba(244, 11, 104, 0.08)",
     badgeBg: "#fff0f5",
-    stats: "99.2% Optical Clarity",
-    previewText: "Optical Precision",
+    stats: "Any file works — logo, photo or sketch",
+    previewText: "Your Idea",
   },
   {
-    id: "card-2",
+    id: "step-2",
     number: "02",
-    badge: "IP67 Phosphorus Silicon",
-    title: "High-Density Silicon LED",
-    subtitle: "100,000+ Hours Lifespan",
+    badge: "We design it",
+    title: "Free Design Mockup",
+    subtitle: "See It Before You Buy",
     description:
-      "Flexible phosphorus-silicon LED tubes running at cool-touch 12V low voltage. Shatterproof, zero heat output, and 80% more energy efficient than traditional glass neon.",
-    icon: Zap,
+      "Our designers turn your idea into a realistic digital mockup — showing the size, colours and glow — completely free, so you can picture it on your wall before you commit.",
+    icon: Palette,
     accentHex: "#6d26ff",
     glowShadow: "rgba(109, 38, 255, 0.16)",
     accentBg: "rgba(109, 38, 255, 0.08)",
     badgeBg: "#f3eefd",
-    stats: "12V Cool-Touch Operation",
-    previewText: "100k+ Hours Glow",
+    stats: "Free, no-obligation preview",
+    previewText: "Free Mockup",
   },
   {
-    id: "card-3",
+    id: "step-3",
     number: "03",
-    badge: "Stealth Micro Wiring",
-    title: "Concealed Circuitry",
-    subtitle: "Zero Visible Power Joints",
+    badge: "You approve",
+    title: "Approve & Get Your Quote",
+    subtitle: "Two Flexible Payment Options",
     description:
-      "Silver-alloy micro circuitry embedded invisibly within structural rear channels. Eliminates wire clutter for a pure, floating neon aesthetic against any wall.",
-    icon: Cpu,
+      "Happy with the mockup? We send a clear, all-in quote — sign, custom options and free worldwide delivery included. Choose the plan that suits you: pay in full, or split it 50/50, with half to begin production and the balance once your sign is ready.",
+    icon: FileText,
     accentHex: "#0284c7",
     glowShadow: "rgba(2, 132, 199, 0.16)",
     accentBg: "rgba(2, 132, 199, 0.08)",
     badgeBg: "#f0f9ff",
-    stats: "Invisible Power Channels",
-    previewText: "Pure Stealth",
+    stats: "Pay in full, or 50% now & 50% when ready",
+    previewText: "Your Quote",
   },
   {
-    id: "card-4",
+    id: "step-4",
     number: "04",
-    badge: "Wireless RF Control",
-    title: "Smart Dimmer System",
-    subtitle: "Multi-Mode Ambient Pulse",
+    badge: "You pay, safely",
+    title: "Secure Payment via Etsy",
+    subtitle: "Buyer-Protected Checkout",
     description:
-      "Full 1-100% smooth brightness control, dynamic breathing pulse modes, and smart timer automation using the included compact wireless RF remote controller.",
-    icon: Sliders,
+      "You pay through our verified Etsy shop, so every transaction runs on Etsy's encrypted checkout with Purchase Protection. Your details and money stay safe — and we only begin production once your payment is confirmed.",
+    icon: ShieldCheck,
+    accentHex: "#0d9488",
+    glowShadow: "rgba(13, 148, 136, 0.16)",
+    accentBg: "rgba(13, 148, 136, 0.08)",
+    badgeBg: "#f0fdfa",
+    stats: "Etsy Purchase Protection · encrypted checkout",
+    previewText: "100% Secure",
+  },
+  {
+    id: "step-5",
+    number: "05",
+    badge: "We craft it",
+    title: "Handcrafted in Production",
+    subtitle: "Made & Quality-Checked",
+    description:
+      "With your payment secured, skilled makers handcraft your sign by hand, then light-test and quality-check every inch of glow before packing it safely for its journey.",
+    icon: Wrench,
     accentHex: "#d97706",
     glowShadow: "rgba(217, 119, 6, 0.16)",
     accentBg: "rgba(217, 119, 6, 0.08)",
     badgeBg: "#fffbeb",
-    stats: "Multi-Mode Wireless RF",
-    previewText: "Smart Ambiance",
+    stats: "Handmade & quality-checked in ~10–15 days",
+    previewText: "In Production",
+  },
+  {
+    id: "step-6",
+    number: "06",
+    badge: "We deliver it",
+    title: "Free Worldwide Delivery",
+    subtitle: "Tracked Right to Your Door",
+    description:
+      "Once your sign is ready and the balance is settled, it ships with free worldwide delivery, fully tracked to your door — arriving ready to hang and glow, wherever in the world you are.",
+    icon: Truck,
+    accentHex: "#0e9f6e",
+    glowShadow: "rgba(14, 159, 110, 0.16)",
+    accentBg: "rgba(14, 159, 110, 0.08)",
+    badgeBg: "#ecfdf5",
+    stats: "Free delivery worldwide, fully tracked",
+    previewText: "Free Delivery",
   },
 ];
 
@@ -103,7 +135,7 @@ export function ScrollStackingCardsSection() {
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
           <p className="eyebrow flex items-center justify-center gap-2">
             <span className="w-6 h-[2px] rounded-full bg-gradient-to-r from-[#f40b68] to-[#6d26ff]" />
-            <span>Architectural Engineering</span>
+            <span>How to order</span>
             <span className="w-6 h-[2px] rounded-full bg-gradient-to-r from-[#6d26ff] to-[#f40b68]" />
           </p>
 
@@ -111,11 +143,11 @@ export function ScrollStackingCardsSection() {
             id="stacking-craft-heading"
             className="text-3xl sm:text-5xl font-extrabold tracking-tight text-[#1e1a22] leading-tight"
           >
-            Crafted for <PremiumAccentText>Pure Brilliance.</PremiumAccentText>
+            From idea to your wall in <PremiumAccentText>six simple steps.</PremiumAccentText>
           </h2>
 
           <p className="text-sm sm:text-base text-[#5e5862] leading-relaxed max-w-2xl mx-auto font-normal">
-            Scroll down to explore the 4 precision pillars behind every handcrafted Glownique neon sign.
+            Scroll to see how your custom sign goes from first idea to free worldwide delivery — no guesswork, no risk.
           </p>
         </div>
 
@@ -227,13 +259,13 @@ export function ScrollStackingCardsSection() {
                           {card.previewText}
                         </span>
                         <span className="text-[10px] text-[#fde2ec] font-extrabold uppercase tracking-widest block">
-                          The Glownique Standard
+                          The Glownique Way
                         </span>
                       </div>
 
                       <CustomQuoteButton
                         className="button button--primary text-xs px-5 py-2.5 rounded-xl font-bold w-full shadow-md"
-                        label="Get Custom Quote"
+                        label="Start your order"
                       />
                     </div>
                   </div>

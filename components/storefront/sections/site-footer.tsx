@@ -2,29 +2,29 @@ import { StoreIcon } from "@/components/storefront/store-icon";
 
 const footerColumns = [
   {
-    title: "Shop",
+    title: "Sign types",
     links: [
-      ["All signs", "#shop"],
-      ["Best sellers", "#shop"],
-      ["New arrivals", "#shop"],
-      ["Gift cards", "#custom"],
+      ["Custom neon signs", "/products/custom-neon-signs"],
+      ["3D metal signs", "/products/3d-metal-neon-signs"],
+      ["Ultra thin lightbox", "/products/ultra-thin-lightbox"],
+      ["UV-print acrylic", "/products/uv-print-acrylic-signs"],
     ],
   },
   {
     title: "Custom",
     links: [
-      ["Create your own", "#custom"],
-      ["How it works", "#custom"],
-      ["Design ideas", "#categories"],
-      ["FAQ", "#inspiration"],
+      ["Create your own", "/#custom"],
+      ["How it works", "/#custom"],
+      ["Design ideas", "/#categories"],
+      ["FAQ", "/#faq"],
     ],
   },
   {
     title: "Company",
     links: [
-      ["About us", "#about"],
-      ["Our process", "#about"],
-      ["Case studies", "#inspiration"],
+      ["About us", "/#about"],
+      ["Our process", "/#about"],
+      ["Case studies", "/#inspiration"],
       ["Contact", "#"],
     ],
   },
@@ -47,16 +47,16 @@ export function SiteFooter() {
           <p className="eyebrow">Your wall is waiting</p>
           <h2>Make something <span>impossible to ignore.</span></h2>
         </div>
-        <a className="button button--primary footer__cta" href="#custom">
+        <a className="button button--primary footer__cta" href="/#custom">
           Start your design <span aria-hidden="true">↗</span>
         </a>
       </div>
       <div className="shell footer__grid">
         <div className="footer-brand">
-          <a className="brand" href="#">
+          <a className="brand" href="/">
             THE GLOWNIQUE
           </a>
-          <p>Custom neon signs that turn your ideas into something unforgettable.</p>
+          <p>Custom LED neon signs, 3D metal channel letters, ultra-thin lightboxes and UV-print acrylic signs — handcrafted to turn your ideas into something unforgettable.</p>
           <span className="footer-brand__note">Designed with feeling. Built to glow.</span>
           <div className="socials">
             <a href="#" aria-label="Instagram">
@@ -84,13 +84,13 @@ export function SiteFooter() {
           <p>
             <StoreIcon name="Truck" />
             <span>
-              <strong>Free shipping</strong>On orders $99+
+              <strong>Free worldwide delivery</strong>On every order, no minimum
             </span>
           </p>
           <p>
             <StoreIcon name="ShieldCheck" />
             <span>
-              <strong>24-month warranty</strong>Quality you can trust
+              <strong>5-year warranty</strong>Quality you can trust
             </span>
           </p>
           <p>

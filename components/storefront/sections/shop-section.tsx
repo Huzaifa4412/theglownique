@@ -53,7 +53,7 @@ export function ShopSection() {
         <div>
           <p className="eyebrow">The signs everyone loves</p>
           <h2>
-            Best <PremiumAccentText>sellers</PremiumAccentText>
+            Best-selling <PremiumAccentText>neon signs</PremiumAccentText>
           </h2>
         </div>
         <label className="catalog-search">

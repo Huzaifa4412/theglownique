@@ -23,22 +23,22 @@ export const SIGN_TYPES: { id: SignType; label: string; description: string }[] 
   {
     id: 'Neon Sign',
     label: 'Neon Sign',
-    description: 'Vivid LED flexible silicone neon tubing with acrylic backing',
+    description: 'Flexible LED silicone neon tubing on clear, laser-cut acrylic',
   },
   {
     id: '3D Metal Neon Sign',
     label: '3D Metal Neon Sign',
-    description: '3D fabricated metal channel lettering (Frontlit, Backlit, or Dual-Lit)',
+    description: 'Stainless-steel channel letters — frontlit, halo backlit or dual-lit',
   },
   {
     id: 'Ultra Thin Lightbox',
     label: 'Ultra Thin Lightbox',
-    description: 'Sleek aluminum frame with uniform edge-lit LED face',
+    description: 'Slim edge-lit aluminium lightbox with even, shadow-free light',
   },
   {
     id: 'Acrylic UV Print Neon Sign',
     label: 'Acrylic UV Print Neon Sign',
-    description: 'Precision UV printed artwork combined with glowing neon contours',
+    description: 'Full-colour UV-printed acrylic traced with glowing LED neon contours',
   },
 ]
 
@@ -89,36 +89,36 @@ export const heroSlides: HeroSlide[] = [
     id: 'home',
     eyebrow: '1. LED Neon Sign',
     title: 'Good vibes, made visible in light.',
-    copy: 'Flexible silicone LED neon tubing with crystal-clear acrylic backing.',
+    copy: 'Handcrafted flexible silicone LED neon on crystal-clear acrylic — safe, and made to your words.',
     image: homeImage,
-    alt: 'Pink neon sign glowing in a dark room',
+    alt: 'Pink custom LED neon sign glowing on a dark bedroom wall',
     accent: '#ff2f83',
   },
   {
     id: 'business',
     eyebrow: '2. 3D Metal Neon Sign',
-    title: 'Architectural 3D Channel Lettering.',
-    copy: 'Fabricated stainless steel letters with Frontlit, Backlit, and Dual-Lit LED illumination.',
+    title: 'Architectural 3D channel lettering.',
+    copy: 'Fabricated stainless-steel channel letters with frontlit, halo backlit and dual-lit LED.',
     image: businessImage,
-    alt: 'Corporate 3D Metallic Channel Lettering Sign',
+    alt: 'Corporate 3D metal channel-letter sign with illuminated lettering',
     accent: '#ffaa33',
   },
   {
-    id: 'custom',
+    id: 'events',
     eyebrow: '3. Acrylic UV Print Neon',
-    title: 'High-Definition UV Artwork + Neon.',
-    copy: 'Photographic UV printing onto premium acrylic with glowing LED neon contours.',
-    image: customImage,
-    alt: '3D Acrylic UV Print Neon Sign with contour glow',
+    title: 'Custom art & branding in glow.',
+    copy: 'Full-colour UV printing on premium acrylic, traced with glowing LED neon contours.',
+    image: weddingImage,
+    alt: '3D acrylic UV-print neon sign with a glowing contour outline',
     accent: '#6d26ff',
   },
   {
-    id: 'weddings',
+    id: 'custom',
     eyebrow: '4. Ultra Thin Slim Lightbox',
-    title: 'Client Concept to Glowing Lightbox.',
-    copy: 'See how we transform client sketches into precision 100% uniform edge-lit ultra thin lightboxes.',
-    image: weddingImage,
-    alt: 'Client Concept vs TheGlownique Ultra Thin Slim Lightbox',
+    title: 'Client concept to glowing lightbox.',
+    copy: 'See how we turn client sketches into precision edge-lit, ultra-thin lightboxes with 100% even light.',
+    image: customImage,
+    alt: 'Client concept sketch beside a finished ultra-thin slim LED lightbox',
     accent: '#00dc5a',
   },
 ]
@@ -338,21 +338,21 @@ export const products: Product[] = [
 export const testimonials: Testimonial[] = [
   {
     quote:
-      'The glow is rich, the finish is immaculate, and it changed the whole room in seconds.',
+      'The free preview matched the finished neon exactly. It was the centrepiece of our wedding and we still light it every anniversary.',
+    name: 'Daniel K.',
+    role: 'Wedding customer',
+    initials: 'DK',
+  },
+  {
+    quote:
+      'Our halo-lit metal letters look premium day and night — customers now find the shop just from the glow on the street.',
     name: 'Jessica M.',
     role: 'Boutique owner',
     initials: 'JM',
   },
   {
     quote:
-      'The preview made ordering so easy. It arrived safely and became the centre of our wedding.',
-    name: 'Daniel K.',
-    role: 'Verified buyer',
-    initials: 'DK',
-  },
-  {
-    quote:
-      'Exactly what I pictured, only brighter. The colour is beautiful even when the sign is off.',
+      'Rich colour, an immaculate finish, and it barely sips power. The sign changed the whole feel of the room in seconds.',
     name: 'Sarah T.',
     role: 'Interior stylist',
     initials: 'ST',

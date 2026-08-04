@@ -2,6 +2,8 @@ import { AnnouncementBar } from "@/components/storefront/sections/announcement-b
 import { CategoryRail } from "@/components/storefront/sections/category-rail";
 import { ComparisonSection } from "@/components/storefront/sections/comparison-section";
 import { ConceptToGlowSection } from "@/components/storefront/sections/concept-to-glow-section";
+import { FaqSection } from "@/components/storefront/sections/faq-section";
+import { FreeDeliverySection } from "@/components/storefront/sections/free-delivery-section";
 import { GlowDirectionsSection } from "@/components/storefront/sections/glow-directions-section";
 import { HeroSection } from "@/components/storefront/sections/hero-section";
 import { InspirationSection } from "@/components/storefront/sections/inspiration-section";
@@ -24,6 +26,7 @@ export default function Home() {
       <main id="main-content">
         <HeroSection />
         <CategoryRail />
+        <FreeDeliverySection />
         <OrderTimeline />
         <ConceptToGlowSection />
         <NeonColorChangerSection />
@@ -34,6 +37,7 @@ export default function Home() {
         <GlowDirectionsSection />
         <InspirationSection />
         <ReviewsSection />
+        <FaqSection />
         <NewsletterSection />
       </main>
       <SiteFooter />

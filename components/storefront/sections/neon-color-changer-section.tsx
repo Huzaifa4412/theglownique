@@ -449,13 +449,13 @@ export function NeonColorChangerSection() {
           </div>
 
           <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight mb-4 leading-tight">
-            See Your Neon in <PremiumAccentText>Every Shade</PremiumAccentText>
+            See Your Neon Sign in <PremiumAccentText>Every Shade</PremiumAccentText>
           </h2>
 
           <p className="text-gray-300 text-base md:text-lg">
-            Experience our handcrafted LED neon colors. Click any swatch or select{" "}
-            <strong className="text-pink-400">RGBA Party</strong> to see the sign
-            frequently morph colors in real-time.
+            Preview our handcrafted LED neon colours on a real custom sign. Click any swatch — or hit{" "}
+            <strong className="text-pink-400">RGBA Party</strong> to watch it
+            morph through every shade in real time.
           </p>
         </div>
 

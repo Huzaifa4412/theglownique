@@ -10,9 +10,9 @@ export function AnnouncementBar() {
         <div className="announcement__viewport">
           <div className="announcement__track">
             <div className="announcement__group">
-              <span><StoreIcon name="Sparkle" /> Free international shipping over $99</span>
+              <span><StoreIcon name="Sparkle" /> Free worldwide delivery on all orders</span>
               <span aria-hidden="true">|</span>
-              <span>24-month warranty</span>
+              <span>5-year warranty</span>
               <span aria-hidden="true">|</span>
               <span>100% glow guarantee</span>
               <span aria-hidden="true">|</span>
@@ -29,9 +29,9 @@ export function AnnouncementBar() {
               <span>Design support included</span>
             </div>
             <div className="announcement__group" aria-hidden="true">
-              <span><StoreIcon name="Sparkle" /> Free international shipping over $99</span>
+              <span><StoreIcon name="Sparkle" /> Free worldwide delivery on all orders</span>
               <span aria-hidden="true">|</span>
-              <span>24-month warranty</span>
+              <span>5-year warranty</span>
               <span aria-hidden="true">|</span>
               <span>100% glow guarantee</span>
               <span aria-hidden="true">|</span>

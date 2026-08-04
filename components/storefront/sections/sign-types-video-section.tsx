@@ -2,6 +2,7 @@
 
 import { useState, useRef } from "react";
 import { Sparkles, Play, Pause, Volume2, VolumeX, Zap, Film } from "lucide-react";
+import Link from "next/link";
 import { CustomQuoteButton } from "@/components/storefront/custom-quote-button";
 import { PremiumAccentText } from "@/components/ui/premium-accent-text";
 
@@ -56,48 +57,52 @@ export const ACRYLIC_UV_VIDEOS = [
 export const SIGN_TYPES_DATA = [
   {
     id: "neon-sign",
+    slug: "custom-neon-signs",
     number: "01",
     title: "LED Neon Sign",
-    tagline: "Vivid Flexible Silicone Neon",
+    tagline: "Flexible Silicone LED Neon",
     description:
-      "Handcrafted using ultra-bright, energy-efficient LED silicone tubing mounted on crystal-clear acrylic backings. Perfect for homes, weddings, and commercial spaces.",
-    features: ["100,000+ Glow Hours", "Shatterproof LED Silicone", "Low 12V Safe Voltage"],
+      "Our custom LED neon signs are handcrafted from flexible, shatterproof silicone tubing on laser-cut clear acrylic — the safe, modern alternative to fragile glass neon. They run cool on low 12V power, so they're at home in bedrooms, weddings, cafés and storefronts alike.",
+    features: ["Up to 100,000 hours of glow", "Shatterproof silicone — no glass", "Safe 12V, cool to the touch"],
     badge: "Most Popular",
     video: "/neon-sign/Videos/en-GB_1fa05acfc3a2cdf80c7787c5f585c30a.mp4",
     poster: "/neon-sign/girls room/iap_600x600.5331151538_61m43otq.webp",
   },
   {
     id: "3d-metal",
+    slug: "3d-metal-neon-signs",
     number: "02",
     title: "3D Metal Neon Sign",
-    tagline: "Frontlit, Backlit & Dual-Lit Metal Channel",
+    tagline: "Frontlit, Halo Backlit & Dual-Lit Channel Letters",
     description:
-      "Fabricated 3D stainless steel channel letters engineered with internal LED neon illumination. Available in Frontlit, Halo Backlit, or Dual-Lit configurations.",
-    features: ["Frontlit / Backlit / Both", "Architectural Grade Stainless Steel", "Weatherproof Outdoor IP67"],
+      "Precision-fabricated stainless-steel channel letters lit from within by energy-efficient LED. Choose bold frontlit faces, a soft halo backlit glow, or dual-lit for both — built to make storefronts, lobbies and façades unmistakable day and night.",
+    features: ["Frontlit, halo backlit or dual-lit", "Brushed, mirrored & metallic finishes", "IP67 weatherproof for outdoors"],
     badge: "Architectural Grade",
     video: "/3d-metallic-neon-sign/videos/2.mp4",
     poster: "/3d-metallic-neon-sign/corporte/056b3189-6a8c-482a-8334-53ded7aff3e1.png",
   },
   {
     id: "lightbox",
+    slug: "ultra-thin-lightbox",
     number: "03",
     title: "Ultra Thin Lightbox",
-    tagline: "Sleek Edge-Lit LED Display",
+    tagline: "Edge-Lit Slim Aluminium Display",
     description:
-      "Ultra-slim anodized aluminum framed lightboxes with edge-guided matrix LED backlighting. Delivers 100% uniform, shadow-free illumination across the entire face.",
-    features: ["Ultra-Slim Profile", "Uniform Edge-Lit Dispersion", "Toolless Graphic Swap"],
+      "An ultra-slim anodized-aluminium frame under an inch deep, edge-lit by matrix LEDs for 100% even, shadow-free illumination across the whole face. Graphics slide out and swap in seconds — ideal for retail displays, menu boards and modern storefronts.",
+    features: ["Under 1-inch slim profile", "Even, shadow-free edge lighting", "Tool-free snap-frame graphic swap"],
     badge: "Retail & Commercial",
     video: "/neon-sign/Videos/en-GB_7bc644f6ffb88b4179c83b88c76e5ed9.mp4",
     poster: "/ultra-thin-slim-lightbox/IMG-20260803-WA0004.jpg",
   },
   {
     id: "acrylic-uv",
+    slug: "uv-print-acrylic-signs",
     number: "04",
     title: "3D Acrylic UV Print Neon",
-    tagline: "High-Def UV Artwork + Contour Neon",
+    tagline: "Full-Colour UV Artwork + Contour Neon",
     description:
-      "Combines photographic UV direct printing onto premium acrylic with glowing LED neon contours. Provides rich artwork detail with stunning illuminated contrast.",
-    features: ["High-Def Full-Color UV Print", "Neon Contour Accents", "3D Layered Depth"],
+      "High-definition UV printing lays sharp, full-colour artwork, gradients and brand fonts straight onto premium acrylic, then we trace it with glowing LED neon contours. Colour-matched to any Pantone, HEX or CMYK code for logos, brand walls and photo-ready displays.",
+    features: ["High-def full-colour UV print", "Glowing LED neon contours", "Matched to any Pantone / HEX / CMYK"],
     badge: "Art & Branding",
     video: "/3d-arcylic/videos/25763cbb2ca6866a574a4dde5853343c.mp4",
     poster: "/3d-arcylic/3235dc09-6dac-4056-88b6-55fc26e28571.png",
@@ -171,19 +176,19 @@ export function SignTypesVideoSection() {
         <div className="text-center max-w-3xl mx-auto mb-14">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-pink-400 text-xs font-semibold uppercase tracking-widest mb-4 backdrop-blur-md">
             <Sparkles className="w-3.5 h-3.5" />
-            <span>Master Sign Craftsmanship</span>
+            <span>Handcrafted &amp; Made to Order</span>
           </div>
 
           <h2
             id="sign-types-heading"
             className="text-3xl sm:text-5xl font-extrabold tracking-tight mb-4 leading-tight"
           >
-            Four Premium Sign Types. <br className="hidden sm:inline" />
+            Four Custom Sign Types. <br className="hidden sm:inline" />
             <PremiumAccentText>Engineered to Glow.</PremiumAccentText>
           </h2>
 
           <p className="text-gray-300 text-base sm:text-lg leading-relaxed">
-            From flexible silicone LED neon signs to architectural 3D metal channel lettering, 3D acrylic UV print signs and ultra-thin lightboxes.
+            From flexible silicone LED neon and architectural 3D metal channel letters to full-colour UV-print acrylic and ultra-thin edge-lit lightboxes — every sign is custom-built and made to order.
           </p>
         </div>
 
@@ -362,8 +367,15 @@ export function SignTypesVideoSection() {
             </div>
 
             {/* Custom Quote CTA */}
-            <div className="pt-4 border-t border-white/10 flex items-center justify-between gap-4">
+            <div className="pt-4 border-t border-white/10 space-y-3">
               <CustomQuoteButton className="w-full justify-center text-sm py-3 font-bold" />
+              <Link
+                href={`/products/${currentType.slug}`}
+                className="flex items-center justify-center gap-1.5 text-sm font-bold text-pink-400 transition-colors hover:text-pink-300"
+              >
+                Explore {currentType.title} in detail
+                <span aria-hidden="true">→</span>
+              </Link>
             </div>
           </div>
         </div>
