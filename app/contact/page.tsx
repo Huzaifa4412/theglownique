@@ -3,7 +3,7 @@ import Link from "next/link";
 
 import { LegalPage } from "@/components/legal/legal-page";
 import { HAS_ADDRESS, HAS_EMAIL, HAS_PHONE, LEGAL } from "@/lib/legal";
-import { HAS_WHATSAPP, whatsappQuoteUrl } from "@/lib/site";
+import { ETSY_SHOP_URL, HAS_WHATSAPP, whatsappQuoteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Contact Us",
@@ -45,6 +45,14 @@ export default function ContactPage() {
         tracking number are in your Etsy account and confirmation emails. For anything Etsy
         can&apos;t answer, message us directly and we&apos;ll check.
       </p>
+      {ETSY_SHOP_URL && (
+        <p>
+          <a href={ETSY_SHOP_URL} rel="noopener" target="_blank">
+            Visit The Glownique on Etsy
+          </a>{" "}
+          — reviews, order history and tracking all live there.
+        </p>
+      )}
 
       <h2>Warranty claims</h2>
       <p>

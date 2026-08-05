@@ -26,7 +26,10 @@ export const HAS_WHATSAPP = WHATSAPP_NUMBER.length > 0;
  * cheapest external authority available. Set it and the footer/contact page
  * pick it up. "" hides the link rather than shipping a dead one.
  */
-export const ETSY_SHOP_URL = "";
+// Canonical shop URL — the tracking params from a copied browser URL
+// (?ref=shop_profile&listing_id=…) are deliberately stripped so the link and
+// the Organization.sameAs entry stay stable and canonical.
+export const ETSY_SHOP_URL = "https://www.etsy.com/shop/TheGlownique";
 
 /**
  * Public social profiles. ONLY add profiles that actually exist — each entry
@@ -40,16 +43,25 @@ export const ETSY_SHOP_URL = "";
 export const SOCIAL_LINKS: ReadonlyArray<{
   label: string;
   url: string;
-  icon: "InstagramLogo" | "TiktokLogo" | "PinterestLogo";
+  icon: "InstagramLogo" | "TiktokLogo" | "PinterestLogo" | "FacebookLogo" | "Storefront";
 }> = [
-  // { label: "Instagram", url: "https://www.instagram.com/…", icon: "InstagramLogo" },
-  // { label: "TikTok",    url: "https://www.tiktok.com/@…",   icon: "TiktokLogo" },
-  // { label: "Pinterest", url: "https://www.pinterest.com/…", icon: "PinterestLogo" },
+  { label: "Instagram", url: "https://www.instagram.com/theglownique/", icon: "InstagramLogo" },
+  {
+    label: "Facebook",
+    url: "https://www.facebook.com/people/TheGlownique/61578567176081/",
+    icon: "FacebookLogo",
+  },
+  { label: "Etsy shop", url: ETSY_SHOP_URL, icon: "Storefront" },
+  // TikTok and Pinterest omitted — no profiles exist yet. Add them here when
+  // they do; Pinterest is worth prioritising for neon/decor search intent.
 ];
 
-/** Every off-site profile we own, for Organization.sameAs. */
+/**
+ * Every off-site profile we own, for Organization.sameAs. Deduplicated, since
+ * the Etsy shop appears both as its own constant and as a SOCIAL_LINKS entry.
+ */
 export function sameAsUrls(): string[] {
-  return [...SOCIAL_LINKS.map((s) => s.url), ETSY_SHOP_URL].filter(Boolean);
+  return [...new Set([...SOCIAL_LINKS.map((s) => s.url), ETSY_SHOP_URL])].filter(Boolean);
 }
 
 /** Build a WhatsApp quote link with a product-specific prefilled message. */
