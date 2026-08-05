@@ -111,7 +111,9 @@ These render publicly as `★★★★★ 4.9 (1,250)`. The site has **zero inde
 **Why this is a blocker, not a nitpick:**
 - It violates Google's [spam policies on misrepresentation](https://developers.google.com/search/docs/essentials/spam-policies) and is a manual-action risk.
 - In the US it's an FTC violation (16 CFR Part 465, in force since Oct 2024 — fake reviews and testimonials carry civil penalties per violation). Comparable rules apply under UK DMCCA and EU UCPD.
-- E-E-A-T is *the* ranking lever in this niche. Getting caught faking the exact signal you most need to build is the worst possible trade.
+- Buyers of a £300+ made-to-order item check trust signals hard. Invented ones are worse than none, because they're checkable.
+
+> **Correction (2026-08-05):** an earlier version of this line called E-E-A-T "*the* ranking lever in this niche." That was wrong. Google's SEO Starter Guide explicitly lists *"Thinking E-E-A-T is a ranking factor: No, it's not"* under things not to focus on. E-E-A-T is a framework human quality raters use to assess whether ranking systems are working — not a direct signal you can optimise. The **actions** in this plan (real contact/about pages, no fabricated reviews, accurate content) are still right, because Google's helpful-content systems do reward those things and the legal exposure is real. The **justification** was overstated.
 
 **One genuinely good decision already in the code:** `app/layout.tsx:109` deliberately omits `AggregateRating` from your JSON-LD with the comment *"Product ratings are intentionally omitted (no verified aggregate rating)."* I verified zero `AggregateRating` in the live HTML. That instinct was correct — apply the same standard to the visible UI.
 

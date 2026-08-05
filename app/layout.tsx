@@ -5,6 +5,7 @@ import {
   Manrope, Geist } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
+import { sameAsUrls } from "@/lib/site";
 
 const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
@@ -120,7 +121,13 @@ const structuredData = {
       "@type": "Organization",
       "@id": `${siteUrl}/#organization`,
       name: "The Glownique",
+      // Pairs the brand with its category. "Glownique" alone currently resolves
+      // to an unrelated tanning salon in Google's entity graph.
+      alternateName: "The Glownique Custom Neon Signs",
       url: siteUrl,
+      // Profiles we own. Strongest available signal for entity disambiguation —
+      // populate SOCIAL_LINKS and ETSY_SHOP_URL in lib/site.ts to fill this.
+      ...(sameAsUrls().length > 0 ? { sameAs: sameAsUrls() } : {}),
       image: `${siteUrl}/hero/neon-sign-hero.png`,
       description:
         "The Glownique handcrafts custom LED neon signs, 3D metal channel-letter signs, ultra-thin edge-lit lightboxes and UV-print acrylic signs, made to order with a free design preview.",

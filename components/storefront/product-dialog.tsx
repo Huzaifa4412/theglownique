@@ -562,7 +562,11 @@ export function ProductDialog({
           />
           <span>
             I agree that these details can be used to prepare and follow up on
-            my quote request.
+            my quote request. See our{" "}
+            <a href="/privacy" target="_blank" rel="noopener">
+              privacy policy
+            </a>
+            .
           </span>
         </label>
 

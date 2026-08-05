@@ -32,7 +32,7 @@ export function SiteHeader() {
           <IconBox icon={menuOpen ? X : List} />
         </button>
 
-        <a className="brand" href="#" aria-label="The Glownique home">
+        <a className="brand" href="/" aria-label="The Glownique home">
           <span className="brand__mark" aria-hidden="true" />
           THE GLOWNIQUE
         </a>

@@ -1,4 +1,5 @@
 import { StoreIcon } from "@/components/storefront/store-icon";
+import { SOCIAL_LINKS } from "@/lib/site";
 
 const footerColumns = [
   {
@@ -23,18 +24,23 @@ const footerColumns = [
     title: "Company",
     links: [
       ["About us", "/#about"],
-      ["Our process", "/#about"],
+      // "Our process" removed: it pointed at /#about too, so two labels
+      // resolved to one destination. "How it works" (above) covers the process.
       ["Case studies", "/#inspiration"],
-      ["Contact", "#"],
+      ["Contact", "/contact"],
     ],
   },
   {
     title: "Support",
     links: [
-      ["Help centre", "#"],
-      ["Shipping info", "#"],
-      ["Returns", "#"],
-      ["Track your order", "#"],
+      // "Help centre" removed — it duplicated the FAQ link above.
+      // "Track your order" removed — tracking is handled by Etsy, and we have
+      // no Etsy shop URL configured yet. Re-add it pointing at the Etsy shop
+      // once ETSY_SHOP_URL is set rather than shipping a dead link.
+      ["Shipping & delivery", "/shipping"],
+      ["Returns & warranty", "/returns"],
+      ["Accessibility", "/accessibility"],
+      ["Privacy", "/privacy"],
     ],
   },
 ] as const;
@@ -58,17 +64,27 @@ export function SiteFooter() {
           </a>
           <p>Custom LED neon signs, 3D metal channel letters, ultra-thin lightboxes and UV-print acrylic signs — handcrafted to turn your ideas into something unforgettable.</p>
           <span className="footer-brand__note">Designed with feeling. Built to glow.</span>
-          <div className="socials">
-            <a href="#" aria-label="Instagram">
-              <StoreIcon name="InstagramLogo" />
-            </a>
-            <a href="#" aria-label="TikTok">
-              <StoreIcon name="TiktokLogo" />
-            </a>
-            <a href="#" aria-label="Pinterest">
-              <StoreIcon name="PinterestLogo" />
-            </a>
-          </div>
+          {/* Social icons render only for profiles that actually exist. Fill in
+              SOCIAL_LINKS in lib/site.ts and they reappear automatically —
+              previously these were three dead href="#" links. Adding the real
+              URLs also feeds Organization.sameAs, which is the strongest signal
+              for separating this brand from the unrelated "Glownique" tanning
+              salon that currently owns the name in Google's entity graph. */}
+          {SOCIAL_LINKS.length > 0 && (
+            <div className="socials">
+              {SOCIAL_LINKS.map((social) => (
+                <a
+                  key={social.label}
+                  href={social.url}
+                  aria-label={social.label}
+                  rel="noopener"
+                  target="_blank"
+                >
+                  <StoreIcon name={social.icon} />
+                </a>
+              ))}
+            </div>
+          )}
         </div>
         {footerColumns.map((column) => (
           <div key={column.title}>
@@ -104,9 +120,9 @@ export function SiteFooter() {
       <div className="shell footer-bottom">
         <span>© {new Date().getFullYear()} The Glownique</span>
         <div>
-          <a href="#">Privacy</a>
-          <a href="#">Terms</a>
-          <a href="#">Accessibility</a>
+          <a href="/privacy">Privacy</a>
+          <a href="/terms">Terms</a>
+          <a href="/accessibility">Accessibility</a>
         </div>
       </div>
     </footer>

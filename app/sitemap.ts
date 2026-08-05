@@ -27,5 +27,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly" as const,
       priority: 0.8,
     })),
+    // Policy and information pages. Low priority for ranking, but they are
+    // canonical, indexable, and the trust signals a buyer checks before
+    // committing to a made-to-order purchase.
+    ...["contact", "shipping", "returns", "terms", "privacy", "accessibility"].map((slug) => ({
+      url: `${SITE_URL}/${slug}`,
+      lastModified,
+      changeFrequency: "yearly" as const,
+      priority: 0.3,
+    })),
   ];
 }

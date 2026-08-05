@@ -20,6 +20,38 @@ export const HAS_VERIFIED_REVIEWS = false;
 /** True when a usable WhatsApp number is configured. */
 export const HAS_WHATSAPP = WHATSAPP_NUMBER.length > 0;
 
+/**
+ * Etsy shop URL. Every payment already runs through Etsy and it holds the only
+ * real reviews this brand has, so linking it is both a trust signal and the
+ * cheapest external authority available. Set it and the footer/contact page
+ * pick it up. "" hides the link rather than shipping a dead one.
+ */
+export const ETSY_SHOP_URL = "";
+
+/**
+ * Public social profiles. ONLY add profiles that actually exist — each entry
+ * renders a real link in the footer and should also be mirrored into
+ * Organization.sameAs (see app/layout.tsx), which is the strongest available
+ * signal for disambiguating this brand from the unrelated "Glownique" tanning
+ * salon that currently dominates the name in Google's entity graph.
+ *
+ * `icon` must match a key in components/storefront/store-icon.tsx.
+ */
+export const SOCIAL_LINKS: ReadonlyArray<{
+  label: string;
+  url: string;
+  icon: "InstagramLogo" | "TiktokLogo" | "PinterestLogo";
+}> = [
+  // { label: "Instagram", url: "https://www.instagram.com/…", icon: "InstagramLogo" },
+  // { label: "TikTok",    url: "https://www.tiktok.com/@…",   icon: "TiktokLogo" },
+  // { label: "Pinterest", url: "https://www.pinterest.com/…", icon: "PinterestLogo" },
+];
+
+/** Every off-site profile we own, for Organization.sameAs. */
+export function sameAsUrls(): string[] {
+  return [...SOCIAL_LINKS.map((s) => s.url), ETSY_SHOP_URL].filter(Boolean);
+}
+
 /** Build a WhatsApp quote link with a product-specific prefilled message. */
 export function whatsappQuoteUrl(productName: string): string {
   const message = `Hi The Glownique! I'd like a free quote and mockup for a ${productName}. Here's my idea: `;
