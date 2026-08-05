@@ -110,7 +110,9 @@ export function ShopSection() {
               <button
                 className="quick-add"
                 type="button"
-                aria-label={`Choose options for ${product.name}`}
+                // The accessible name must contain the visible label ("Customize"),
+                // otherwise voice-control users can't activate what they can read.
+                aria-label={`Customize ${product.name}`}
                 onClick={() => openProduct(product)}
               >
                 <IconBox icon={SlidersHorizontal} /> Customize
@@ -123,12 +125,13 @@ export function ShopSection() {
               </div>
               <span>Custom quote</span>
             </div>
-            <div
-              className="product-rating"
-              aria-label={`${product.rating} out of 5 stars`}
-            >
-              <span>★★★★★</span> {product.rating}{" "}
-              <small>({product.reviews.toLocaleString()})</small>
+            {/* Claims we can actually stand behind. Star ratings and review
+                counts belong here only once they come from verified reviews —
+                inventing them breaches Google's spam policies and the FTC's
+                fake-review rule (16 CFR Part 465). */}
+            <div className="product-assurance">
+              <span>5-year warranty</span>
+              <span>Free design preview</span>
             </div>
           </article>
         ))}

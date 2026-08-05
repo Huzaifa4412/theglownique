@@ -394,8 +394,13 @@ export function HeroSection() {
                   }
                   fill
                   sizes="(max-width: 800px) 100vw, 58vw"
-                  fetchPriority={index === 0 ? "high" : "auto"}
-                  unoptimized={index === 3}
+                  // Slide 1 is the LCP element, so it must load eagerly and be
+                  // preloaded. fetchPriority alone left it loading="lazy",
+                  // which delayed LCP discovery by ~900ms. `priority` sets
+                  // eager loading + fetchpriority=high + the preload link.
+                  // Every other slide stays lazy — preloading off-screen
+                  // images is what put 3.44MB of PNG on the critical path.
+                  priority={index === 0}
                   placeholder={index === 0 || index === 3 ? undefined : "blur"}
                 />
               )}

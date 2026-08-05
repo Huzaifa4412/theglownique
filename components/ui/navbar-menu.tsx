@@ -32,14 +32,14 @@ export const MenuItem = ({
         transition={{ duration: 0.2 }}
         className={cn(
           "text-xs sm:text-sm font-extrabold tracking-tight transition-colors flex items-center gap-1.5",
-          active === item ? "text-[#f40b68]" : "text-[#1e1a22] hover:text-[#f40b68]"
+          active === item ? "text-[#ce0754]" : "text-[#1e1a22] hover:text-[#ce0754]"
         )}
       >
         <span>{item}</span>
         <span
           className={cn(
             "text-[9px] transition-transform duration-300 inline-block opacity-60",
-            active === item ? "rotate-180 text-[#f40b68]" : "group-hover:translate-y-0.5"
+            active === item ? "rotate-180 text-[#ce0754]" : "group-hover:translate-y-0.5"
           )}
         >
           ▼
@@ -126,7 +126,7 @@ export const ProductItem = ({
         unoptimized
       />
       <div>
-        <h4 className="text-xs font-extrabold text-[#1e1a22] group-hover:text-[#f40b68] transition-colors mb-0.5">
+        <h4 className="text-xs font-extrabold text-[#1e1a22] group-hover:text-[#ce0754] transition-colors mb-0.5">
           {title}
         </h4>
         <p className="text-[#5e5862] text-[11px] leading-tight max-w-[11rem]">
@@ -146,7 +146,7 @@ export const HoveredLink = ({
     <a
       {...rest}
       className={cn(
-        "text-[#1e1a22] hover:text-[#f40b68] text-xs font-bold transition-colors",
+        "text-[#1e1a22] hover:text-[#ce0754] text-xs font-bold transition-colors",
         className
       )}
     >

@@ -199,19 +199,27 @@ export function InspirationSection() {
             </div>
 
             {/* Pagination Dots */}
-            <div className="flex items-center justify-center gap-1.5 mt-3">
+            <div className="flex items-center justify-center mt-3">
               {inspirationSlides.map((_, idx) => (
                 <button
                   key={idx}
                   type="button"
                   onClick={() => setCurrentIndex(idx)}
                   aria-label={`Go to slide ${idx + 1}`}
-                  className={`h-1.5 rounded-full transition-all duration-300 ${
-                    idx === currentIndex
-                      ? "w-6 bg-pink-500 shadow-[0_0_8px_rgba(244,11,104,0.6)]"
-                      : "w-1.5 bg-white/20 hover:bg-white/40"
-                  }`}
-                />
+                  aria-current={idx === currentIndex ? "true" : undefined}
+                  // The button is the 24x24 tap target; the inner span is the
+                  // 6px visual pill. Previously the button itself was 6px,
+                  // which fails the 24x24 minimum.
+                  className="grid h-7 w-7 place-items-center bg-transparent p-0"
+                >
+                  <span
+                    className={`block h-1.5 rounded-full transition-all duration-300 ${
+                      idx === currentIndex
+                        ? "w-4 bg-pink-500 shadow-[0_0_8px_rgba(244,11,104,0.6)]"
+                        : "w-1.5 bg-white/20 hover:bg-white/40"
+                    }`}
+                  />
+                </button>
               ))}
             </div>
           </div>

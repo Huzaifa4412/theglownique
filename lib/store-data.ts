@@ -58,8 +58,6 @@ export type Product = {
   category: CategoryId
   signType?: SignType
   size: string
-  rating: number
-  reviews: number
   color: string
   background: string
   badge?: string
@@ -72,6 +70,10 @@ export type Testimonial = {
   name: string
   role: string
   initials: string
+  /** 1–5, only from a real review. Omit if unknown — never default it. */
+  stars?: number
+  /** True only for reviews traceable to a real order (e.g. an Etsy purchase). */
+  verified?: boolean
 }
 
 export const categoryLabels: Record<CategoryId, string> = {
@@ -130,8 +132,6 @@ export const products: Product[] = [
     category: 'home',
     signType: 'Neon Sign',
     size: '24 × 12 in',
-    rating: 4.9,
-    reviews: 1250,
     color: '#ff4a9a',
     background: 'linear-gradient(145deg, #4a1632, #d23372)',
     badge: 'Bestseller',
@@ -143,8 +143,6 @@ export const products: Product[] = [
     category: 'business',
     signType: '3D Metal Neon Sign',
     size: '48 × 24 in',
-    rating: 5.0,
-    reviews: 940,
     color: '#e6c875',
     background: 'linear-gradient(145deg, #2b2512, #6b5722)',
     badge: '3D Metal Frontlit',
@@ -156,8 +154,6 @@ export const products: Product[] = [
     category: 'business',
     signType: 'Ultra Thin Lightbox',
     size: '36 × 24 in',
-    rating: 5.0,
-    reviews: 820,
     color: '#00dc5a',
     background: 'linear-gradient(145deg, #103b22, #298a52)',
     badge: 'Ultra Thin Lightbox',
@@ -169,8 +165,6 @@ export const products: Product[] = [
     category: 'business',
     signType: 'Acrylic UV Print Neon Sign',
     size: '32 × 18 in',
-    rating: 4.9,
-    reviews: 670,
     color: '#00e5ff',
     background: 'linear-gradient(145deg, #09333d, #14738a)',
     badge: 'UV Print + Neon',
@@ -182,8 +176,6 @@ export const products: Product[] = [
     category: 'weddings',
     signType: 'Neon Sign',
     size: '34 × 14 in',
-    rating: 4.9,
-    reviews: 842,
     color: '#ffd7c5',
     background: 'linear-gradient(145deg, #8b4a43, #e6a086)',
     badge: 'Most loved',
@@ -195,8 +187,6 @@ export const products: Product[] = [
     category: 'business',
     signType: 'Ultra Thin Lightbox',
     size: '40 × 20 in',
-    rating: 4.9,
-    reviews: 580,
     color: '#ffc83b',
     background: 'linear-gradient(145deg, #3d300d, #856a1b)',
     badge: 'Edge-Lit LED',
@@ -208,8 +198,6 @@ export const products: Product[] = [
     category: 'business',
     signType: '3D Metal Neon Sign',
     size: '36 × 18 in',
-    rating: 4.9,
-    reviews: 715,
     color: '#ff79c6',
     background: 'linear-gradient(145deg, #421633, #8c326c)',
     badge: '3D Halo Backlit',
@@ -221,8 +209,6 @@ export const products: Product[] = [
     category: 'business',
     signType: 'Acrylic UV Print Neon Sign',
     size: '30 × 20 in',
-    rating: 5.0,
-    reviews: 510,
     color: '#ff3b9a',
     background: 'linear-gradient(145deg, #42102b, #8a235c)',
     badge: '3D Acrylic Art',
@@ -234,8 +220,6 @@ export const products: Product[] = [
     category: 'business',
     signType: 'Ultra Thin Lightbox',
     size: '32 × 16 in',
-    rating: 4.8,
-    reviews: 490,
     color: '#62daff',
     background: 'linear-gradient(145deg, #0f3747, #247d9e)',
     badge: 'Slim Lightbox',
@@ -247,8 +231,6 @@ export const products: Product[] = [
     category: 'weddings',
     signType: 'Acrylic UV Print Neon Sign',
     size: '36 × 18 in',
-    rating: 5.0,
-    reviews: 412,
     color: '#fff0f5',
     background: 'linear-gradient(145deg, #5c2c43, #b8628b)',
     badge: 'Wedding favorite',
@@ -260,8 +242,6 @@ export const products: Product[] = [
     category: 'business',
     signType: '3D Metal Neon Sign',
     size: '40 × 20 in',
-    rating: 4.9,
-    reviews: 630,
     color: '#ffaa33',
     background: 'linear-gradient(145deg, #3d2507, #855315)',
     badge: '3D Dual-Lit',
@@ -273,8 +253,6 @@ export const products: Product[] = [
     category: 'events',
     signType: 'Neon Sign',
     size: '26 × 13 in',
-    rating: 4.9,
-    reviews: 1103,
     color: '#ff4bd3',
     background: 'linear-gradient(145deg, #5d153c, #c41a77)',
     badge: 'Party pick',
@@ -286,8 +264,6 @@ export const products: Product[] = [
     category: 'gaming',
     signType: 'Neon Sign',
     size: '30 × 15 in',
-    rating: 4.8,
-    reviews: 721,
     color: '#4c8dff',
     background: 'linear-gradient(145deg, #071831, #193f84)',
     badge: 'Gaming',
@@ -299,8 +275,6 @@ export const products: Product[] = [
     category: 'business',
     signType: 'Ultra Thin Lightbox',
     size: '48 × 24 in',
-    rating: 5.0,
-    reviews: 620,
     color: '#ff3d8d',
     background: 'linear-gradient(145deg, #4d0a25, #9c1b50)',
     badge: 'Storefront Lightbox',
@@ -312,8 +286,6 @@ export const products: Product[] = [
     category: 'business',
     signType: '3D Metal Neon Sign',
     size: '36 × 14 in',
-    rating: 4.9,
-    reviews: 890,
     color: '#ff2020',
     background: 'linear-gradient(145deg, #421010, #962525)',
     badge: 'Frontlit Metal',
@@ -325,8 +297,6 @@ export const products: Product[] = [
     category: 'custom',
     signType: 'Neon Sign',
     size: 'Custom sizing',
-    rating: 5.0,
-    reviews: 914,
     color: '#ff4a9a',
     background: 'linear-gradient(145deg, #283322, #376a44)',
     badge: 'Custom',

@@ -62,10 +62,25 @@ export function TestimonialCarousel() {
         {testimonials.map((item) => (
           <SwiperSlide key={item.name}>
             <article className="review-card">
-              <div className="review-card__topline">
-                <div className="review-stars" aria-label="Five stars">★★★★★</div>
-                <span className="review-card__verified"><StoreIcon name="SealCheck" /> Verified</span>
-              </div>
+              {/* Stars and the "Verified" badge render only when the review
+                  data actually carries them — never as a hardcoded default. */}
+              {(item.stars || item.verified) && (
+                <div className="review-card__topline">
+                  {item.stars ? (
+                    <div
+                      className="review-stars"
+                      aria-label={`${item.stars} out of 5 stars`}
+                    >
+                      {"★".repeat(Math.round(item.stars))}
+                    </div>
+                  ) : null}
+                  {item.verified ? (
+                    <span className="review-card__verified">
+                      <StoreIcon name="SealCheck" /> Verified
+                    </span>
+                  ) : null}
+                </div>
+              )}
               <span className="review-card__quote-mark" aria-hidden="true">“</span>
               <blockquote>{item.quote}</blockquote>
               <footer>

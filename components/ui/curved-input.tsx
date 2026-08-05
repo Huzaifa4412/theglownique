@@ -44,6 +44,14 @@ export function CurvedInput({
     if (onSubmit) onSubmit(email);
   };
 
+  // The SVG below uses a 0–100 viewBox, so these are viewBox units, not
+  // percentages — an SVG `d` attribute rejects `%` and throws
+  // "Expected number", which is what the console error was.
+  const curvePath = useTransform(
+    [mouseX, curveY],
+    ([x, y]) => `M 24 100 Q ${Number(x) * 100} ${100 + Number(y)} 76 100`,
+  );
+
   return (
     <div
       className={cn("relative w-full max-w-xl mx-auto group", className)}
@@ -63,6 +71,8 @@ export function CurvedInput({
           <svg
             className="absolute inset-0 w-full h-full pointer-events-none rounded-full overflow-visible"
             xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 100 100"
+            preserveAspectRatio="none"
             aria-hidden="true"
           >
             <defs>
@@ -75,15 +85,14 @@ export function CurvedInput({
 
             {/* Bottom Elastic Curve Path */}
             <motion.path
-              d={useTransform(
-                [mouseX, curveY],
-                ([x, y]) =>
-                  `M 24 100 Q ${Number(x) * 100}% ${100 + Number(y)} ${100 - 24}% 100`
-              )}
+              d={curvePath}
               fill="none"
               stroke="url(#curved-line-grad)"
               strokeWidth={isFocused ? "3" : "1.5"}
               strokeLinecap="round"
+              // preserveAspectRatio="none" stretches the coordinate space
+              // non-uniformly; this keeps the stroke an even width anyway.
+              vectorEffect="non-scaling-stroke"
               className="transition-all duration-300"
             />
           </svg>
@@ -110,7 +119,7 @@ export function CurvedInput({
               "button button--primary shrink-0 min-h-[48px] px-6 sm:px-8 rounded-full font-extrabold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 flex items-center gap-2 shadow-lg",
               isSubmitted
                 ? "bg-emerald-600 hover:bg-emerald-600 text-white"
-                : "bg-[#f40b68] hover:bg-[#ce0754] text-white hover:scale-105 active:scale-95"
+                : "bg-[#ce0754] hover:bg-[#a30542] text-white hover:scale-105 active:scale-95"
             )}
           >
             {isSubmitted ? (
@@ -133,7 +142,7 @@ export function CurvedInput({
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="mt-4 p-4 rounded-2xl bg-[#fff0f5] border border-[#fde2ec] text-center text-xs sm:text-sm text-[#f40b68] font-bold flex items-center justify-center gap-2"
+          className="mt-4 p-4 rounded-2xl bg-[#fff0f5] border border-[#fde2ec] text-center text-xs sm:text-sm text-[#ce0754] font-bold flex items-center justify-center gap-2"
         >
           <Sparkles className="w-4 h-4 text-[#f40b68]" />
           <span>Success! Your 10% discount code is on its way to {email}.</span>

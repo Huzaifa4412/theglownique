@@ -33,7 +33,7 @@ export function NewsletterSection() {
           />
 
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#fff0f5] border border-[#fde2ec] text-[#f40b68] text-xs font-extrabold uppercase tracking-widest mb-6 shadow-sm">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#fff0f5] border border-[#fde2ec] text-[#ce0754] text-xs font-extrabold uppercase tracking-widest mb-6 shadow-sm">
             <Tag className="w-3.5 h-3.5" />
             <span>Exclusive VIP Welcome Offer</span>
           </div>
@@ -59,7 +59,7 @@ export function NewsletterSection() {
           />
 
           {message && (
-            <p className="mt-4 text-xs font-semibold text-[#f40b68] animate-fade-in">
+            <p className="mt-4 text-xs font-semibold text-[#ce0754] animate-fade-in">
               {message}
             </p>
           )}

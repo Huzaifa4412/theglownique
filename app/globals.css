@@ -13,11 +13,20 @@
   background: #fff;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
+  /* --pink is the decorative brand tone: glows, gradients, borders, shadows —
+     places where WCAG contrast doesn't apply. It is only 4.1:1 on white, so
+     TEXT and solid button fills use --pink-dark (5.5:1) or --pink-darker
+     (7.9:1) instead. */
   --pink: #f40b68;
   --pink-dark: #ce0754;
+  --pink-darker: #a30542;
   --blush: #fff0f5;
   --blush-2: #fde2ec;
   --ink: #1e1a22;
+  /* Muted body text. Kept separate from shadcn's --muted, which is a
+     near-white BACKGROUND token — using that for text rendered #f5f5f5 on
+     white (1.09:1, effectively invisible). 5.6:1 on white. */
+  --text-muted: #6b6570;
   --muted: oklch(0.97 0 0);
   --line: #eadfe4;
   --surface: #ffffff;
@@ -276,7 +285,7 @@ h2 {
   display: inline-flex;
   align-items: center;
   gap: 9px;
-  color: var(--pink);
+  color: var(--pink-dark);
   font-size: clamp(1.05rem, 1.5vw, 1.42rem);
   font-weight: 800;
   letter-spacing: -0.045em;
@@ -325,7 +334,7 @@ h2 {
   padding-inline: 14px;
   border: 1px solid var(--line);
   border-radius: 11px;
-  color: var(--muted);
+  color: var(--text-muted);
   transition: border-color 180ms ease, box-shadow 180ms ease;
 }
 
@@ -404,7 +413,7 @@ h2 {
 
 .eyebrow {
   margin-bottom: 12px;
-  color: var(--pink);
+  color: var(--pink-dark);
   font-size: 0.75rem;
   font-weight: 800;
   letter-spacing: 0.105em;
@@ -558,20 +567,21 @@ button:active {
 }
 
 .button--primary {
-  background: var(--pink);
+  background: var(--pink-dark);
   color: #fff;
   box-shadow: 0 11px 25px rgba(244, 11, 104, 0.2);
 }
 
 .button--primary:hover {
-  background: var(--pink-dark);
+  background: var(--pink-darker);
   box-shadow: 0 14px 30px rgba(244, 11, 104, 0.3);
 }
 
 .button--secondary {
+  /* Border keeps the bright brand pink; the label needs the darker tone. */
   border-color: var(--pink);
   background: #fff;
-  color: var(--pink);
+  color: var(--pink-dark);
 }
 
 .button--secondary:hover {
@@ -591,7 +601,7 @@ button:active {
   display: flex;
   align-items: center;
   gap: 9px;
-  color: var(--muted);
+  color: var(--text-muted);
   font-size: 0.71rem;
 }
 
@@ -782,11 +792,13 @@ button:active {
 .carousel-dots {
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 8px;
 }
 
 .carousel-dot {
-  width: 22px;
+  /* 26px wide so the tap target clears the 24x24 minimum; the visible bar
+     stays 22px via ::before. */
+  width: 26px;
   height: 44px;
   display: grid;
   place-items: center;
@@ -798,7 +810,7 @@ button:active {
 
 .carousel-dot::before {
   content: '';
-  width: 100%;
+  width: 22px;
   height: 3px;
   border-radius: 99px;
   background: rgba(255, 255, 255, 0.45);
@@ -879,7 +891,7 @@ button:active {
 
 .category-card small {
   margin: 3px 0 11px;
-  color: var(--pink);
+  color: var(--pink-dark);
   font-size: 0.7rem;
   font-weight: 700;
 }
@@ -923,7 +935,7 @@ button:active {
 .timeline-step__copy strong,
 .timeline-mobile__step strong {
   display: block;
-  color: var(--pink);
+  color: var(--pink-dark);
   font-family: var(--font-display);
   font-size: clamp(0.9rem, 1.15vw, 1.08rem);
   font-weight: 800;
@@ -1194,7 +1206,7 @@ button:active {
 
 .timeline-mobile__step p {
   margin: 0;
-  color: var(--muted);
+  color: var(--text-muted);
   font-size: 0.78rem;
   line-height: 1.5;
 }
@@ -1741,7 +1753,7 @@ button:active {
 
 .catalog-status {
   margin: 17px 0 18px;
-  color: var(--muted);
+  color: var(--text-muted);
   font-size: 0.78rem;
 }
 
@@ -1833,7 +1845,7 @@ button:active {
   left: 10px;
   padding: 6px 9px;
   border-radius: 999px;
-  background: var(--pink);
+  background: var(--pink-dark);
   color: #fff;
   font-size: 0.66rem;
   font-weight: 800;
@@ -1874,32 +1886,40 @@ button:active {
 
 .product-card__info p {
   margin-bottom: 0;
-  color: var(--muted);
+  color: var(--text-muted);
   font-size: 0.73rem;
 }
 
 .product-card__info > span {
-  color: var(--pink);
+  color: var(--pink-dark);
   font-size: 0.74rem;
   font-weight: 800;
   white-space: nowrap;
 }
 
-.product-rating {
+.product-assurance {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 10px;
   margin-top: 8px;
-  color: var(--muted);
+  color: var(--text-muted);
   font-size: 0.7rem;
 }
 
-.product-rating span,
+.product-assurance span {
+  position: relative;
+}
+
+.product-assurance span + span::before {
+  content: "·";
+  margin-right: 10px;
+  color: #c7bec2;
+}
+
 .review-stars,
 .rating-summary span {
   color: #f5a000;
   letter-spacing: 0.06em;
-}
-
-.product-rating small {
-  color: #948d96;
 }
 
 .empty-products {
@@ -1918,7 +1938,7 @@ button:active {
 }
 
 .empty-products p {
-  color: var(--muted);
+  color: var(--text-muted);
 }
 
 .glow-directions {
@@ -2607,7 +2627,7 @@ button:active {
 
 .review-card footer small {
   margin-top: 2px;
-  color: var(--muted);
+  color: var(--text-muted);
   font-size: 0.7rem;
 }
 
@@ -2646,7 +2666,7 @@ button:active {
 
 .newsletter p {
   margin: 5px 0 0;
-  color: var(--muted);
+  color: var(--text-muted);
   font-size: 0.75rem;
 }
 
@@ -3184,7 +3204,7 @@ button:active {
 .file-upload-btn {
   font-size: 0.75rem;
   font-weight: 700;
-  color: var(--pink);
+  color: var(--pink-dark);
   padding: 5px 10px;
   border-radius: 6px;
   background: rgba(244, 11, 104, 0.08);
@@ -3897,6 +3917,9 @@ button:active {
 }
 
 .dark {
+  /* Not currently applied to <html>, but kept in sync so enabling dark mode
+     doesn't reintroduce unreadable muted text. */
+  --text-muted: #b3adb8;
   --background: oklch(0.145 0 0);
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.205 0 0);

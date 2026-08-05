@@ -42,8 +42,10 @@ export function ConceptToGlowSection() {
           <div className="concept-to-glow__compare">
             <Compare
               className="concept-to-glow__compare-surface"
-                firstImage="/before-after/before.png"
-                secondImage="/before-after/after.png"
+              firstImage="/before-after/before.png"
+              secondImage="/before-after/after.png"
+              firstImageAlt="Digital design preview of a custom neon sign before production"
+              secondImageAlt="The same custom neon sign finished and glowing on a wall"
               firstImageClassName="concept-to-glow__before"
               secondImageClassname="concept-to-glow__after"
               initialSliderPercentage={38}

@@ -22,7 +22,7 @@ import {
 import { IconBox } from "@/components/icon-box";
 import { ProductVisual } from "@/components/storefront/product-visual";
 import { products, type Product } from "@/lib/store-data";
-import { WHATSAPP_NUMBER } from "@/lib/site";
+import { HAS_WHATSAPP, WHATSAPP_NUMBER } from "@/lib/site";
 
 type ProductDialogProps = {
   product: Product | null;
@@ -146,6 +146,12 @@ export function ProductDialog({
     ]
       .filter((line) => line !== "")
       .join("\n");
+
+    if (!HAS_WHATSAPP) {
+      // Fail loudly rather than opening a dead wa.me link.
+      showToast("Quote requests are unavailable right now — please try again later");
+      return;
+    }
 
     closeDialog();
     window.open(

@@ -16,14 +16,14 @@ export function ProductTopBar({ productName }: { productName: string }) {
           className="hidden items-center gap-5 text-xs font-bold uppercase tracking-wide text-[#5e5862] lg:flex"
           aria-label="Product pages"
         >
-          <Link href="/" className="transition-colors hover:text-[#f40b68]">
+          <Link href="/" className="transition-colors hover:text-[#ce0754]">
             Home
           </Link>
           {PRODUCT_PAGES.map((p) => (
             <Link
               key={p.slug}
               href={`/products/${p.slug}`}
-              className="transition-colors hover:text-[#f40b68]"
+              className="transition-colors hover:text-[#ce0754]"
             >
               {p.category}
             </Link>

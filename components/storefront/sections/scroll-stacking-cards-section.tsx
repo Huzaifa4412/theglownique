@@ -14,6 +14,9 @@ type StackCardItem = {
   description: string;
   icon: React.ElementType;
   accentHex: string;
+  /** Darkened accent for TEXT on the pale badge/tint backgrounds.
+   *  accentHex itself is a mid-tone that only reaches ~3.1-3.8:1 there. */
+  accentText: string;
   glowShadow: string;
   accentBg: string;
   badgeBg: string;
@@ -32,6 +35,7 @@ const STACK_CARDS: StackCardItem[] = [
       "Tell us what you'd like your sign to say and send your text, logo, brand colours or even a rough sketch. Whatever you have is enough for us to get started.",
     icon: Upload,
     accentHex: "#f40b68",
+    accentText: "#ce0754",
     glowShadow: "rgba(244, 11, 104, 0.16)",
     accentBg: "rgba(244, 11, 104, 0.08)",
     badgeBg: "#fff0f5",
@@ -48,6 +52,7 @@ const STACK_CARDS: StackCardItem[] = [
       "Our designers turn your idea into a realistic digital mockup — showing the size, colours and glow — completely free, so you can picture it on your wall before you commit.",
     icon: Palette,
     accentHex: "#6d26ff",
+    accentText: "#5b16d6",
     glowShadow: "rgba(109, 38, 255, 0.16)",
     accentBg: "rgba(109, 38, 255, 0.08)",
     badgeBg: "#f3eefd",
@@ -64,6 +69,7 @@ const STACK_CARDS: StackCardItem[] = [
       "Happy with the mockup? We send a clear, all-in quote — sign, custom options and free worldwide delivery included. Choose the plan that suits you: pay in full, or split it 50/50, with half to begin production and the balance once your sign is ready.",
     icon: FileText,
     accentHex: "#0284c7",
+    accentText: "#075985",
     glowShadow: "rgba(2, 132, 199, 0.16)",
     accentBg: "rgba(2, 132, 199, 0.08)",
     badgeBg: "#f0f9ff",
@@ -80,6 +86,7 @@ const STACK_CARDS: StackCardItem[] = [
       "You pay through our verified Etsy shop, so every transaction runs on Etsy's encrypted checkout with Purchase Protection. Your details and money stay safe — and we only begin production once your payment is confirmed.",
     icon: ShieldCheck,
     accentHex: "#0d9488",
+    accentText: "#0f766e",
     glowShadow: "rgba(13, 148, 136, 0.16)",
     accentBg: "rgba(13, 148, 136, 0.08)",
     badgeBg: "#f0fdfa",
@@ -96,6 +103,7 @@ const STACK_CARDS: StackCardItem[] = [
       "With your payment secured, skilled makers handcraft your sign by hand, then light-test and quality-check every inch of glow before packing it safely for its journey.",
     icon: Wrench,
     accentHex: "#d97706",
+    accentText: "#92400e",
     glowShadow: "rgba(217, 119, 6, 0.16)",
     accentBg: "rgba(217, 119, 6, 0.08)",
     badgeBg: "#fffbeb",
@@ -112,6 +120,7 @@ const STACK_CARDS: StackCardItem[] = [
       "Once your sign is ready and the balance is settled, it ships with free worldwide delivery, fully tracked to your door — arriving ready to hang and glow, wherever in the world you are.",
     icon: Truck,
     accentHex: "#0e9f6e",
+    accentText: "#047857",
     glowShadow: "rgba(14, 159, 110, 0.16)",
     accentBg: "rgba(14, 159, 110, 0.08)",
     badgeBg: "#ecfdf5",
@@ -186,7 +195,7 @@ export function ScrollStackingCardsSection() {
                       <div className="flex items-center gap-3">
                         <span
                           className="font-mono font-extrabold text-3xl sm:text-4xl tracking-tight"
-                          style={{ color: card.accentHex }}
+                          style={{ color: card.accentText }}
                         >
                           {card.number}
                         </span>
@@ -194,7 +203,7 @@ export function ScrollStackingCardsSection() {
                           className="px-3 py-1 text-xs font-bold rounded-full border border-[#eadfe4]"
                           style={{
                             backgroundColor: card.badgeBg,
-                            color: card.accentHex,
+                            color: card.accentText,
                           }}
                         >
                           {card.badge}
@@ -207,7 +216,7 @@ export function ScrollStackingCardsSection() {
                         </h3>
                         <p
                           className="text-xs sm:text-sm font-bold uppercase tracking-wider"
-                          style={{ color: card.accentHex }}
+                          style={{ color: card.accentText }}
                         >
                           {card.subtitle}
                         </p>
@@ -242,7 +251,7 @@ export function ScrollStackingCardsSection() {
                         style={{
                           backgroundColor: card.accentBg,
                           borderColor: `${card.accentHex}50`,
-                          color: card.accentHex,
+                          color: card.accentText,
                         }}
                       >
                         <IconComponent className="w-6 h-6" />

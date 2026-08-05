@@ -40,7 +40,11 @@ export const Card = React.memo(
         onFocus={() => setHovered(index)}
         onBlur={() => setHovered(null)}
         onClick={() => onSelect?.(card)}
-        aria-label={`${card.actionText} ${card.title} signs`}
+        // No aria-label: the accessible name is computed from the visible
+        // content below (tag + title + action). An aria-label here overrode
+        // that and omitted the tag, so the accessible name no longer contained
+        // the visible text — which fails label-content-name-mismatch and
+        // breaks voice control ("click Neon Sign" wouldn't match).
         className={cn(
           "focus-card",
           hovered !== null && hovered !== index && "is-muted",
@@ -53,7 +57,8 @@ export const Card = React.memo(
           className="focus-card__image"
           fill
           sizes="(max-width: 800px) 100vw, 50vw"
-          unoptimized={isStringImage}
+          // String paths to /public are optimizable — only the blur
+          // placeholder needs a static import to generate its own blurDataURL.
           placeholder={isStringImage ? undefined : "blur"}
         />
         <span className="focus-card__scrim" aria-hidden="true" />

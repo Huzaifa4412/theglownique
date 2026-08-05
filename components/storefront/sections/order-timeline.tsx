@@ -53,7 +53,7 @@ export function OrderTimeline() {
 
       <div className="shell relative z-10">
         <header className="timeline-heading mx-auto max-w-3xl text-center">
-          <p className="mb-2 text-[0.68rem] font-extrabold uppercase tracking-[0.17em] text-[#f40b68]">
+          <p className="mb-2 text-[0.68rem] font-extrabold uppercase tracking-[0.17em] text-[#ce0754]">
             Clear from the start
           </p>
           <h2

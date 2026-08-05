@@ -1,12 +1,16 @@
 "use client";
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import { AnimatePresence, motion } from "motion/react";
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { IconDotsVertical } from "@tabler/icons-react";
 
 interface CompareProps {
   firstImage?: string;
   secondImage?: string;
+  /** Describe the image — generic alt text is useless to screen readers and search. */
+  firstImageAlt?: string;
+  secondImageAlt?: string;
   className?: string;
   firstImageClassName?: string;
   secondImageClassname?: string;
@@ -16,10 +20,14 @@ interface CompareProps {
   autoplay?: boolean;
   autoplayDuration?: number;
   ariaLabel?: string;
+  /** Widths the surface occupies, for responsive image generation. */
+  imageSizes?: string;
 }
 export const Compare = ({
   firstImage = "",
   secondImage = "",
+  firstImageAlt = "Before",
+  secondImageAlt = "After",
   className,
   firstImageClassName,
   secondImageClassname,
@@ -29,6 +37,7 @@ export const Compare = ({
   autoplay = false,
   autoplayDuration = 5000,
   ariaLabel = "Compare the two images",
+  imageSizes = "(max-width: 900px) 100vw, 50vw",
 }: CompareProps) => {
   const [sliderXPercent, setSliderXPercent] = useState(initialSliderPercentage);
   const [isDragging, setIsDragging] = useState(false);
@@ -225,12 +234,19 @@ export const Compare = ({
               }}
               transition={{ duration: 0 }}
             >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                alt="first image"
+              {/* next/image (not a raw <img>) on purpose: React 19 hoists a
+                  <link rel="preload" as="image"> for every raw <img> rendered
+                  during SSR, which put both full-size source files on the
+                  critical path. Lazy-loaded next/image avoids that and serves
+                  AVIF/WebP at the right size. */}
+              <Image
+                alt={firstImageAlt}
                 src={firstImage}
+                fill
+                sizes={imageSizes}
+                loading="lazy"
                 className={cn(
-                  "absolute inset-0  z-20 rounded-2xl shrink-0 w-full h-full select-none",
+                  "absolute inset-0 z-20 rounded-2xl select-none",
                   firstImageClassName
                 )}
                 draggable={false}
@@ -242,15 +258,20 @@ export const Compare = ({
 
       <AnimatePresence initial={false}>
         {secondImage ? (
-          <motion.img
-            className={cn(
-              "absolute top-0 left-0 z-[19]  rounded-2xl w-full h-full select-none",
-              secondImageClassname
-            )}
-            alt="second image"
-            src={secondImage}
-            draggable={false}
-          />
+          <motion.div className="absolute top-0 left-0 z-[19] w-full h-full rounded-2xl overflow-hidden">
+            <Image
+              className={cn(
+                "absolute inset-0 rounded-2xl select-none",
+                secondImageClassname
+              )}
+              alt={secondImageAlt}
+              src={secondImage}
+              fill
+              sizes={imageSizes}
+              loading="lazy"
+              draggable={false}
+            />
+          </motion.div>
         ) : null}
       </AnimatePresence>
     </div>

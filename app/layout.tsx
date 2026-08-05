@@ -103,6 +103,12 @@ export const metadata: Metadata = {
       "max-video-preview": -1,
     },
   },
+  // Google Search Console ownership proof. Renders as
+  // <meta name="google-site-verification" content="..." />.
+  // Keep this in place permanently — removing it un-verifies the property.
+  verification: {
+    google: "agcFNbBfl911-m91cjKDSMzPxdSbezd8SXKJ7naZZMA",
+  },
 };
 
 // Honest, layout-invisible structured data for richer search results.
