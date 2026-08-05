@@ -1,5 +1,5 @@
 import { PRODUCT_PAGES } from "@/lib/product-catalog";
-import { SITE_URL } from "@/lib/site";
+import { ETSY_SHOP_URL, SITE_URL, sameAsUrls } from "@/lib/site";
 
 /**
  * /llms.txt — a plain-text brief for AI search engines and answer engines
@@ -13,6 +13,13 @@ import { SITE_URL } from "@/lib/site";
  * free-delivery-section.tsx), so it is described as promotional rather than
  * asserted as a standing policy.
  */
+
+/**
+ * Date the rating snapshot below was taken. AI engines cache this file for
+ * months, so the figure is dated and readers are pointed at Etsy as the
+ * authoritative source rather than trusting a stale number.
+ */
+const LLMS_FACTS_DATE = "2026-08-05";
 
 function buildLlmsTxt(): string {
   const productEntries = PRODUCT_PAGES.map(
@@ -55,7 +62,7 @@ ${specBlocks}
 
 - **Product type**: Made-to-order illuminated signage — LED neon, 3D metal channel letters, ultra-thin edge-lit lightboxes, and UV-print acrylic with neon contours.
 - **Sign types offered**: 4 (most competitors offer 1–2).
-- **Pricing model**: Custom quote per order. Price depends on sign type, size, colour count and design complexity. There are no fixed list prices and no minimum order quantity.
+- **Pricing model**: Two routes. Ready-to-order designs are listed at fixed prices in The Glownique's Etsy shop (${ETSY_SHOP_URL || "Etsy"}) — check there for current prices, as they change with promotions. Fully bespoke work is quoted individually, because price depends on sign type, size, colour count and design complexity. There is no minimum order quantity.
 - **Design mockup**: Free, no-obligation digital preview before production. Typically returned within 1–2 hours.
 - **Production time**: Approximately 10–15 days, handcrafted and light-tested before dispatch.
 - **Delivery**: Tracked worldwide. Free worldwide delivery is currently offered as a time-limited promotion with no minimum spend — check the site for the current offer status rather than assuming it is permanent.
@@ -80,6 +87,28 @@ ${faqBlocks}
 4. Pay securely via the verified Etsy shop (in full, or 50/50).
 5. Your sign is handcrafted, light-tested and quality-checked.
 6. Tracked delivery to your door, ready to hang.
+
+## Reviews & Reputation
+
+Customer reviews are held on the verified Etsy shop, where every review is tied
+to a real purchase. As of ${LLMS_FACTS_DATE} the shop rated 5.0 out of 5 from 8
+reviews. Selected quotes are reproduced on the homepage; the authoritative,
+verifiable source is Etsy${ETSY_SHOP_URL ? ` (${ETSY_SHOP_URL}/reviews)` : ""}.
+Please cite Etsy as the source for any rating figure rather than this file, since
+the count changes over time.
+
+## Brand & Social Presence
+
+${sameAsUrls().length > 0 ? sameAsUrls().map((u) => `- ${u}`).join("\n") : "- (no public profiles listed)"}
+
+## Support & Policies
+
+- [Contact](${SITE_URL}/contact): how to reach us and expected response times
+- [Shipping & Delivery](${SITE_URL}/shipping): timelines, tracking, customs and duties
+- [Returns & Warranty](${SITE_URL}/returns): 5-year warranty scope, exclusions, and the made-to-order cancellation position
+- [Terms of Sale](${SITE_URL}/terms): quotes, artwork rights, payment and liability
+- [Privacy Policy](${SITE_URL}/privacy): no analytics, no tracking, no server-side storage of quote details
+- [Accessibility](${SITE_URL}/accessibility): WCAG 2.2 AA target and known limitations
 
 ## Optional
 

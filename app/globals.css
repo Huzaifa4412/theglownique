@@ -4133,3 +4133,22 @@ button:active {
   background: var(--blush);
   font-size: 0.9rem;
 }
+
+.reviews__source {
+  max-width: 46ch;
+  margin-top: 10px;
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  line-height: 1.6;
+}
+
+.reviews__source a {
+  color: var(--pink-dark);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.reviews__source a:hover {
+  color: var(--pink-darker);
+}

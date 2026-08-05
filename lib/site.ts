@@ -9,13 +9,14 @@ export const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "";
 export const SITE_URL = "https://www.theglownique.com";
 
 /**
- * Flip to true only when `testimonials` in lib/store-data.ts holds real,
- * attributable reviews (e.g. exported from the Etsy shop). Publishing invented
- * testimonials, star ratings or review counts breaches Google's spam policies
- * and the FTC's fake-review rule (16 CFR Part 465), and E-E-A-T is the exact
- * signal this niche is ranked on — it isn't worth faking.
+ * True as of 2026-08-05: `testimonials` in lib/store-data.ts now holds real
+ * reviews transcribed verbatim from the public Etsy shop.
+ *
+ * Only keep this true while every entry is a genuine, attributable review.
+ * Publishing invented testimonials or review counts breaches Google's spam
+ * policies and the FTC's fake-review rule (16 CFR Part 465).
  */
-export const HAS_VERIFIED_REVIEWS = false;
+export const HAS_VERIFIED_REVIEWS = true;
 
 /** True when a usable WhatsApp number is configured. */
 export const HAS_WHATSAPP = WHATSAPP_NUMBER.length > 0;

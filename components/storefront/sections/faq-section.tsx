@@ -36,7 +36,7 @@ const faqs = [
   },
   {
     q: "How much does a custom neon sign cost?",
-    a: "Every sign is individually quoted, because the price depends on the sign type, size, colours and complexity of your design. Share your idea and we'll send a no-obligation custom quote.",
+    a: "There are two routes. Ready-to-order designs are listed at fixed prices in our Etsy shop, so you can see exactly what they cost before you commit. Fully bespoke work is quoted individually, because the price depends on the sign type, size, colours and complexity of your design — share your idea and we'll send a no-obligation quote.",
   },
   {
     q: "Is my sign covered by a warranty?",

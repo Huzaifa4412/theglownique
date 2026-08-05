@@ -305,26 +305,69 @@ export const products: Product[] = [
   },
 ]
 
+/**
+ * REAL reviews, transcribed verbatim from the public Etsy shop
+ * (https://www.etsy.com/shop/TheGlownique/reviews) on 2026-08-05, where the
+ * shop stood at 5.0 from 8 reviews. Names are the reviewers' own Etsy display
+ * names, already public on that page.
+ *
+ * ⚠️  These are displayed as visible social proof ONLY — deliberately NOT
+ * marked up with Review/AggregateRating structured data. Google's review
+ * snippet guidelines prohibit both relevant cases:
+ *   1. "If the entity that's being reviewed controls the reviews about itself,
+ *      their pages that use LocalBusiness or any other type of Organization
+ *      structured data are ineligible for star review feature."
+ *   2. "Don't aggregate reviews or ratings from other websites."
+ * Adding AggregateRating here would breach both and risks a structured-data
+ * manual action. Showing the quotes and linking to Etsy to verify them is
+ * compliant, and more persuasive anyway.
+ *
+ * Only edit this list by copying real review text. Never invent an entry.
+ */
 export const testimonials: Testimonial[] = [
   {
     quote:
-      'The free preview matched the finished neon exactly. It was the centrepiece of our wedding and we still light it every anniversary.',
-    name: 'Daniel K.',
-    role: 'Wedding customer',
-    initials: 'DK',
+      'Ordered a custom LED sign for my teenage son for Christmas. Item arrived very well packaged and very quickly and was exactly what my son was looking for. He loves it.',
+    name: 'Lindsay',
+    role: 'Verified Etsy buyer · Dec 2025',
+    initials: 'L',
+    stars: 5,
+    verified: true,
   },
   {
     quote:
-      'Our halo-lit metal letters look premium day and night — customers now find the shop just from the glow on the street.',
-    name: 'Jessica M.',
-    role: 'Boutique owner',
-    initials: 'JM',
+      "I'm honestly so impressed with this sign! The quality is way better than I expected — it's bright, sturdy, and looks amazing in my space. The seller was super helpful and quick to answer my questions, and the mockup they sent made it easy to picture before ordering. Everyone who comes over keeps complimenting it.",
+    name: 'saad',
+    role: 'Verified Etsy buyer · Oct 2025',
+    initials: 'S',
+    stars: 5,
+    verified: true,
   },
   {
     quote:
-      'Rich colour, an immaculate finish, and it barely sips power. The sign changed the whole feel of the room in seconds.',
-    name: 'Sarah T.',
-    role: 'Interior stylist',
-    initials: 'ST',
+      "I'm so happy with my custom neon sign! The quality is amazing, colors are bright, and it looks even better in person. Shipping was fast and the packaging kept it safe. Seller was super helpful with mockups and quick replies. It adds such a cozy vibe to my room—highly recommend!",
+    name: 'mughal',
+    role: 'Verified Etsy buyer · Sep 2025',
+    initials: 'M',
+    stars: 5,
+    verified: true,
+  },
+  {
+    quote:
+      'Super fast shipping and amazing support—my sign turned out perfect!',
+    name: 'Khizar',
+    role: 'Verified Etsy buyer · Sep 2025',
+    initials: 'K',
+    stars: 5,
+    verified: true,
+  },
+  {
+    quote:
+      'The sign looks even better in person, super vibrant and well-made. What really surprised me was the delivery — it came way faster than I expected! Great quality, perfect gift, and excellent service. Highly recommend.',
+    name: 'Khalid',
+    role: 'Verified Etsy buyer · Jul 2025',
+    initials: 'K',
+    stars: 5,
+    verified: true,
   },
 ]
