@@ -1,6 +1,6 @@
 import Image from "next/image";
 import type { CSSProperties } from "react";
-import { Sparkle, Star } from "@phosphor-icons/react";
+import { Star } from "@phosphor-icons/react";
 import type { Product } from "@/lib/store-data";
 
 export function ProductVisual({ product }: { product: Product }) {

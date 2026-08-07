@@ -19,28 +19,55 @@ export type SignType =
   | 'Ultra Thin Lightbox'
   | 'Acrylic UV Print Neon Sign'
 
-export const SIGN_TYPES: { id: SignType; label: string; description: string }[] = [
+export type SignTypeDetail = {
+  id: SignType
+  label: string
+  description: string
+  /**
+   * The one standard reference photo for this sign type. The quote dialog swaps
+   * to it when the visitor changes the Sign Type select, so the preview always
+   * matches the type being quoted rather than the product they clicked in from.
+   * These are the same hero photos the /products/[slug] pages use.
+   */
+  image: string
+  imageAlt: string
+}
+
+export const SIGN_TYPES: SignTypeDetail[] = [
   {
     id: 'Neon Sign',
     label: 'Neon Sign',
     description: 'Flexible LED silicone neon tubing on clear, laser-cut acrylic',
+    image: '/hero/neon-sign-hero.png',
+    imageAlt: 'Custom LED neon sign in flexible silicone tubing, glowing on a dark wall',
   },
   {
     id: '3D Metal Neon Sign',
     label: '3D Metal Neon Sign',
     description: 'Stainless-steel channel letters — frontlit, halo backlit or dual-lit',
+    image: '/3d-metallic-neon-sign/corporte/056b3189-6a8c-482a-8334-53ded7aff3e1.png',
+    imageAlt: 'Illuminated 3D metal channel-letter sign mounted on a corporate wall',
   },
   {
     id: 'Ultra Thin Lightbox',
     label: 'Ultra Thin Lightbox',
     description: 'Slim edge-lit aluminium lightbox with even, shadow-free light',
+    image: '/ultra-thin-slim-lightbox/main-hero.png',
+    imageAlt: 'Ultra-thin edge-lit LED lightbox sign with even, shadow-free light',
   },
   {
     id: 'Acrylic UV Print Neon Sign',
     label: 'Acrylic UV Print Neon Sign',
     description: 'Full-colour UV-printed acrylic traced with glowing LED neon contours',
+    image: '/3d-arcylic/3235dc09-6dac-4056-88b6-55fc26e28571.png',
+    imageAlt: 'Full-colour UV-printed acrylic sign traced with glowing LED neon contours',
   },
 ]
+
+/** Falls back to the LED neon standard, which is the dialog's default type. */
+export function getSignTypeDetail(id: SignType | undefined): SignTypeDetail {
+  return SIGN_TYPES.find((type) => type.id === id) ?? SIGN_TYPES[0]
+}
 
 export type HeroSlide = {
   id: CategoryId

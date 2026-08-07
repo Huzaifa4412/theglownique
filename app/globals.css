@@ -22,6 +22,14 @@
   --pink-darker: #a30542;
   --blush: #fff0f5;
   --blush-2: #fde2ec;
+  /* Etsy's brand orange, used only by the Etsy button so the link is instantly
+     recognisable. --etsy-orange is Etsy's exact swatch and stays on the logo
+     mark and the glow, where contrast rules don't bite. White text on it is
+     only 3.2:1, so the solid FILL uses --etsy-fill, one notch deeper at 4.7:1
+     — same hue, still unmistakably the Etsy button, but legible. */
+  --etsy-orange: #f1641e;
+  --etsy-fill: #c44f0e;
+  --etsy-fill-hover: #a94209;
   --ink: #1e1a22;
   /* Muted body text. Kept separate from shadcn's --muted, which is a
      near-white BACKGROUND token — using that for text rendered #f5f5f5 on
@@ -228,7 +236,9 @@ h2 {
 .announcement__track {
   display: flex;
   width: max-content;
-  animation: announcement-marquee 16s linear infinite;
+  /* Slow enough to finish reading a line before it leaves — 16s scrolled past
+     faster than the copy could be taken in. Hovering still pauses it. */
+  animation: announcement-marquee 28s linear infinite;
   will-change: transform;
 }
 
@@ -325,32 +335,21 @@ h2 {
   gap: 8px;
 }
 
-.header-search {
-  width: clamp(210px, 18vw, 290px);
-  height: 42px;
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  padding-inline: 14px;
-  border: 1px solid var(--line);
-  border-radius: 11px;
-  color: var(--text-muted);
-  transition: border-color 180ms ease, box-shadow 180ms ease;
+/* The quote CTA is marked `hidden sm:inline-flex`, but that never took effect:
+   Tailwind utilities live in @layer utilities and .button is unlayered, so
+   .button's display:inline-flex outranks .hidden at every width. The CTA has
+   therefore always been in the mobile header, wrapping to two lines and
+   breaking out of the shell gutter. Do it in plain CSS so it actually applies —
+   below Tailwind's sm the mobile menu carries "Start Your Custom Design". */
+@media (max-width: 639.98px) {
+  .header-actions .button--primary {
+    display: none;
+  }
 }
 
-.header-search:focus-within {
-  border-color: var(--pink);
-  box-shadow: 0 0 0 3px rgba(244, 11, 104, 0.1);
-}
-
-.header-search input {
-  width: 100%;
-  border: 0;
-  outline: 0;
-  background: transparent;
-  color: var(--ink);
-  font-size: 0.82rem;
-}
+/* .header-search and .account-button rules deleted along with the controls
+   themselves. Product search now lives only in .catalog-search in the shop
+   section, which is where people actually browse. */
 
 .icon-button {
   position: relative;
@@ -586,6 +585,51 @@ button:active {
 
 .button--secondary:hover {
   background: var(--blush);
+}
+
+/* Etsy button — deliberately outside the pink palette, because the value of the
+   link is that people recognise Etsy's orange and know it takes them somewhere
+   they can actually buy. A COLOUR-ONLY modifier: every box property comes from
+   .button above, so this stays exactly the same shape and height as the primary
+   CTA it sits beside. Adding geometry here is what breaks that pairing. */
+.button--etsy {
+  background: var(--etsy-fill);
+  color: #fff;
+  white-space: nowrap;
+  box-shadow: 0 11px 25px rgba(196, 79, 14, 0.22);
+}
+
+.button--etsy:hover {
+  background: var(--etsy-fill-hover);
+  box-shadow: 0 14px 30px rgba(196, 79, 14, 0.32);
+}
+
+/* Etsy's app-icon mark: a rounded square of true Etsy orange with a serif E.
+   White on the exact swatch is a logotype, so the 3.2:1 there is fine — the
+   glyph is decorative and the link's accessible name comes from aria-label. */
+.etsy-mark {
+  flex: 0 0 auto;
+  width: 22px;
+  height: 22px;
+  display: grid;
+  place-items: center;
+  border-radius: 6px;
+  background: var(--etsy-orange);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.38);
+  color: #fff;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 0.96rem;
+  font-weight: 700;
+  line-height: 1;
+  /* Optical centring — the serif E sits high in its em box. */
+  padding-top: 1px;
+}
+
+.etsy-wordmark {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.06rem;
+  font-weight: 700;
+  letter-spacing: -0.012em;
 }
 
 .trust-row {
@@ -856,6 +900,9 @@ button:active {
 
 .category-card {
   min-width: 0;
+  /* An <a>, not a <button>, since these now navigate to a product page —
+     without this it lays out inline and the card collapses. */
+  display: block;
   padding: 0;
   overflow: hidden;
   border: 1px solid var(--line);
@@ -876,14 +923,26 @@ button:active {
   transform: scale(1.045);
 }
 
-.category-card span,
+.category-card__audience,
+.category-card__type,
 .category-card small {
   display: block;
   padding-inline: 12px;
 }
 
-.category-card span {
+/* Who it's for — the quiet line. The sign type below it is the headline now,
+   because that's what the card actually links to. */
+.category-card__audience {
   margin-top: 10px;
+  color: var(--text-muted);
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.085em;
+  text-transform: uppercase;
+}
+
+.category-card__type {
+  margin-top: 2px;
   font-family: var(--font-display);
   font-size: 0.82rem;
   font-weight: 800;
@@ -2899,31 +2958,74 @@ button:active {
 
 .dialog-product-visual {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   width: 100%;
   height: 100%;
   min-height: 100%;
+  padding: 26px 20px;
   overflow: hidden;
-  background: radial-gradient(circle at 50% 50%, rgba(244, 11, 104, 0.2) 0%, transparent 70%), #120d18;
+  background: radial-gradient(circle at 50% 34%, rgba(244, 11, 104, 0.22) 0%, transparent 64%), #120d18;
   border-radius: var(--radius-lg) 0 0 var(--radius-lg);
 }
 
-.dialog-product-visual .product-visual {
-  height: 100%;
+.sign-type-preview {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
   width: 100%;
-  min-height: 100%;
-  aspect-ratio: auto;
-  border-radius: var(--radius-lg) 0 0 var(--radius-lg);
-  background: transparent;
 }
 
-.dialog-product-visual img {
-  object-fit: cover !important;
-  width: 100% !important;
-  height: 100% !important;
-  padding: 0 !important;
-  object-position: center !important;
-  transform: none !important;
-  transition: none !important;
+/* The four standard sign photos are 4:3, 3:2 and 1:1. A fixed 4:3 frame with
+   the photo contained inside it keeps every one of them at its true
+   proportions — the tall dialog column would otherwise cover-crop the
+   landscape ones down to a narrow, unreadable vertical slice. */
+.sign-type-preview__frame {
+  position: relative;
+  flex: none;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  background: rgba(0, 0, 0, 0.42);
+  box-shadow: 0 20px 44px rgba(0, 0, 0, 0.38);
+}
+
+.dialog-product-visual .sign-type-preview__image {
+  object-fit: contain;
+  object-position: center;
+}
+
+.sign-type-preview__copy {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.sign-type-preview__eyebrow {
+  margin: 0;
+  color: rgba(255, 168, 203, 0.92);
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.sign-type-preview__name {
+  margin: 0;
+  color: #fff;
+  font-size: 1.05rem;
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+.sign-type-preview__desc {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 0.78rem;
+  line-height: 1.55;
 }
 
 .product-form {
@@ -3506,11 +3608,6 @@ button:active {
     height: 20px;
   }
 
-  .header-search,
-  .account-button {
-    display: none;
-  }
-
   .mobile-nav {
     display: grid;
     max-height: 0;
@@ -3521,11 +3618,15 @@ button:active {
   }
 
   .mobile-nav.is-open {
-    max-height: 400px;
+    /* Headroom for both stacked CTAs (custom quote + Etsy) under the links. */
+    max-height: 460px;
     padding-block: 10px 24px;
   }
 
-  .mobile-nav a {
+  /* :not(.button) so this only dresses the nav LINKS. The Etsy CTA below them
+     is an <a> too, and this rule outranks .button — without the guard it got a
+     divider line drawn under it and the wrong padding. */
+  .mobile-nav a:not(.button) {
     padding: 13px 4px;
     border-bottom: 1px solid var(--line);
     font-weight: 700;
@@ -3691,20 +3792,25 @@ button:active {
   }
 
   .dialog-product-visual {
-    height: 210px;
+    height: auto;
     min-height: 0;
-  }
-
-  .dialog-product-visual .product-visual {
-    height: 210px;
-    min-height: 0;
-    aspect-ratio: auto;
+    padding: 16px 16px 18px;
     border-radius: 18px 18px 0 0;
   }
 
-  .dialog-product-visual img {
-    object-fit: cover !important;
-    padding: 0 !important;
+  .sign-type-preview {
+    gap: 12px;
+  }
+
+  /* Wider frame once the dialog stacks, so the preview stays a compact band
+     above the form instead of pushing it off screen. */
+  .sign-type-preview__frame {
+    aspect-ratio: 16 / 10;
+    border-radius: 12px;
+  }
+
+  .sign-type-preview__desc {
+    display: none;
   }
 
   .product-form {
@@ -3761,6 +3867,17 @@ button:active {
 }
 
 @media (max-width: 520px) {
+  /* Header is down to hamburger + brand + this button, so drop "Order on" and
+     let the mark plus wordmark carry it. Scoped to the header — the copy in the
+     mobile menu has room for the full label. */
+  .header-actions .button--etsy {
+    padding: 0 13px;
+  }
+
+  .header-actions .etsy-lead {
+    display: none;
+  }
+
   .hero__actions {
     display: grid;
   }
@@ -3791,7 +3908,8 @@ button:active {
     padding: 7px;
   }
 
-  .category-card span,
+  .category-card__audience,
+  .category-card__type,
   .category-card small {
     padding-inline: 9px;
   }
@@ -4041,6 +4159,23 @@ button:active {
   .focus-card:hover .focus-card__image,
   .focus-card:focus-visible .focus-card__image {
     transform: none;
+  }
+}
+
+/* Last squeeze before the 320px floor set by body{min-width}. The brand
+   wordmark can't wrap, so at this width the Etsy button is what runs into the
+   shell gutter — shave it rather than let it touch the edge. Must stay after
+   the 520px rules above, which set the same properties at equal specificity. */
+@media (max-width: 380px) {
+  .header-actions .button--etsy {
+    padding: 0 10px;
+    gap: 7px;
+  }
+
+  .header-actions .etsy-mark {
+    width: 20px;
+    height: 20px;
+    font-size: 0.88rem;
   }
 }
 

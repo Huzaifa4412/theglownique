@@ -2,10 +2,10 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { List, MagnifyingGlass, User, X } from "@phosphor-icons/react";
+import { List, X } from "@phosphor-icons/react";
 import { IconBox } from "@/components/icon-box";
-import { useStorefront } from "@/components/storefront/storefront-context";
 import { CustomQuoteButton } from "@/components/storefront/custom-quote-button";
+import { EtsyButton } from "@/components/storefront/etsy-button";
 
 const navigationLinks = [
   ["Shop", "#shop"],
@@ -17,7 +17,6 @@ const navigationLinks = [
 
 export function SiteHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const { search, changeSearch, showToast } = useStorefront();
 
   return (
     <header className="site-header" id="site-header">
@@ -32,10 +31,10 @@ export function SiteHeader() {
           <IconBox icon={menuOpen ? X : List} />
         </button>
 
-        <a className="brand" href="/" aria-label="The Glownique home">
+        <Link className="brand" href="/" aria-label="The Glownique home">
           <span className="brand__mark" aria-hidden="true" />
           THE GLOWNIQUE
-        </a>
+        </Link>
 
         <nav className="desktop-nav" aria-label="Primary navigation">
           {navigationLinks.map(([label, href]) =>
@@ -51,38 +50,20 @@ export function SiteHeader() {
           )}
         </nav>
 
+        {/* Header search and the account icon were removed: the shop section
+            has its own search field, and the account button only ever fired a
+            "coming soon" toast — a control that does nothing costs more trust
+            than it buys. */}
         <div className="header-actions">
-          <label className="header-search">
-            <span className="sr-only">Search neon signs</span>
-            <input
-              type="search"
-              value={search}
-              placeholder="Search neon signs..."
-              autoComplete="off"
-              onChange={(event) =>
-                changeSearch(event.currentTarget.value, true)
-              }
-            />
-            <IconBox icon={MagnifyingGlass} />
-          </label>
+          {/* Sits left of the pink CTA: buying an existing design on Etsy is
+              the secondary path, a custom quote is still the primary one.
+              Same utility classes as the CTA so the pair matches exactly. */}
+          <EtsyButton className="text-xs px-4 py-2 rounded-full" />
 
           <CustomQuoteButton
             className="button button--primary text-xs px-4 py-2 rounded-full hidden sm:inline-flex"
             label="Design Your Sign"
           />
-
-          <button
-            className="icon-button account-button"
-            type="button"
-            aria-label="Account"
-            onClick={() =>
-              showToast(
-                "Account sign-in will be available with the full store backend."
-              )
-            }
-          >
-            <IconBox icon={User} />
-          </button>
         </div>
       </div>
 
@@ -109,6 +90,7 @@ export function SiteHeader() {
           className="button button--primary text-xs w-full py-3 rounded-full text-center"
           label="Start Your Custom Design"
         />
+        <EtsyButton className="text-xs w-full py-3 rounded-full text-center mt-2.5" />
       </nav>
     </header>
   );

@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import { StoreIcon } from "@/components/storefront/store-icon";
 import { SOCIAL_LINKS } from "@/lib/site";
 
@@ -53,15 +55,15 @@ export function SiteFooter() {
           <p className="eyebrow">Your wall is waiting</p>
           <h2>Make something <span>impossible to ignore.</span></h2>
         </div>
-        <a className="button button--primary footer__cta" href="/#custom">
+        <Link className="button button--primary footer__cta" href="/#custom">
           Start your design <span aria-hidden="true">↗</span>
-        </a>
+        </Link>
       </div>
       <div className="shell footer__grid">
         <div className="footer-brand">
-          <a className="brand" href="/">
+          <Link className="brand" href="/">
             THE GLOWNIQUE
-          </a>
+          </Link>
           <p>Custom LED neon signs, 3D metal channel letters, ultra-thin lightboxes and UV-print acrylic signs — handcrafted to turn your ideas into something unforgettable.</p>
           <span className="footer-brand__note">Designed with feeling. Built to glow.</span>
           {/* Social icons render only for profiles that actually exist. Fill in
@@ -90,9 +92,9 @@ export function SiteFooter() {
           <div key={column.title}>
             <h3>{column.title}</h3>
             {column.links.map(([label, href]) => (
-              <a href={href} key={label}>
+              <Link href={href} key={label}>
                 {label}
-              </a>
+              </Link>
             ))}
           </div>
         ))}
@@ -120,9 +122,9 @@ export function SiteFooter() {
       <div className="shell footer-bottom">
         <span>© {new Date().getFullYear()} The Glownique</span>
         <div>
-          <a href="/privacy">Privacy</a>
-          <a href="/terms">Terms</a>
-          <a href="/accessibility">Accessibility</a>
+          <Link href="/privacy">Privacy</Link>
+          <Link href="/terms">Terms</Link>
+          <Link href="/accessibility">Accessibility</Link>
         </div>
       </div>
     </footer>

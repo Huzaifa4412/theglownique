@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
 import { Truck, Zap, Check } from "lucide-react";
 import { motion } from "motion/react";
 
@@ -14,24 +14,27 @@ import { PremiumAccentText } from "@/components/ui/premium-accent-text";
 // ─────────────────────────────────────────────────────────────
 const OFFER_END = new Date("2026-08-11T23:59:59");
 
-type TimeLeft = {
-  days: number;
-  hours: number;
-  minutes: number;
-  seconds: number;
-  expired: boolean;
-};
+// The countdown reads the wall clock, which is an external system, so it is
+// subscribed to with useSyncExternalStore instead of being mirrored into state
+// from an effect — the latter re-renders twice per tick and is flagged by
+// react-hooks/set-state-in-effect.
+function subscribeToClock(onTick: () => void) {
+  const id = window.setInterval(onTick, 1000);
+  return () => window.clearInterval(id);
+}
 
-function getTimeLeft(): TimeLeft {
-  const diff = OFFER_END.getTime() - Date.now();
-  const clamped = Math.max(diff, 0);
-  return {
-    days: Math.floor(clamped / 86_400_000),
-    hours: Math.floor((clamped / 3_600_000) % 24),
-    minutes: Math.floor((clamped / 60_000) % 60),
-    seconds: Math.floor((clamped / 1_000) % 60),
-    expired: diff <= 0,
-  };
+// The snapshot has to be a value that is stable between ticks, otherwise React
+// sees a new value on every render and loops. Whole seconds remaining is stable
+// and every unit below is derived from it. Rounded up so the display only hits
+// zero at the moment the offer actually ends.
+function getSecondsLeft(): number | null {
+  return Math.max(0, Math.ceil((OFFER_END.getTime() - Date.now()) / 1000));
+}
+
+// `null` on the server and during hydration, so the first client render matches
+// the server HTML and the "--" placeholder shows until the clock is read.
+function getServerSecondsLeft(): number | null {
+  return null;
 }
 
 const trustPoints = [
@@ -41,31 +44,24 @@ const trustPoints = [
 ];
 
 export function FreeDeliverySection() {
-  const [mounted, setMounted] = useState(false);
-  const [timeLeft, setTimeLeft] = useState<TimeLeft>({
-    days: 0,
-    hours: 0,
-    minutes: 0,
-    seconds: 0,
-    expired: false,
-  });
+  const secondsLeft = useSyncExternalStore(
+    subscribeToClock,
+    getSecondsLeft,
+    getServerSecondsLeft,
+  );
 
-  // Compute on the client only, so server and first client render match.
-  useEffect(() => {
-    setMounted(true);
-    setTimeLeft(getTimeLeft());
-    const id = window.setInterval(() => setTimeLeft(getTimeLeft()), 1000);
-    return () => window.clearInterval(id);
-  }, []);
+  const mounted = secondsLeft !== null;
+  const remaining = secondsLeft ?? 0;
+  const expired = mounted && remaining === 0;
 
   const units = [
-    { label: "Days", value: timeLeft.days },
-    { label: "Hours", value: timeLeft.hours },
-    { label: "Mins", value: timeLeft.minutes },
-    { label: "Secs", value: timeLeft.seconds },
+    { label: "Days", value: Math.floor(remaining / 86_400) },
+    { label: "Hours", value: Math.floor(remaining / 3_600) % 24 },
+    { label: "Mins", value: Math.floor(remaining / 60) % 60 },
+    { label: "Secs", value: remaining % 60 },
   ];
 
-  const isLive = !mounted || !timeLeft.expired;
+  const isLive = !expired;
 
   return (
     <section
@@ -159,7 +155,7 @@ export function FreeDeliverySection() {
           ))}
         </div>
 
-        {mounted && timeLeft.expired && (
+        {expired && (
           <p className="mt-5 text-xs font-semibold text-pink-300">
             Our free-delivery promotion has ended for now — ask us about current
             offers when you request a quote.

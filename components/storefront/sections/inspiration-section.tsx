@@ -7,7 +7,6 @@ import TiltedCard from "@/components/TiltedCard";
 import { CustomQuoteButton } from "@/components/storefront/custom-quote-button";
 import { StoreIcon } from "@/components/storefront/store-icon";
 import { PremiumAccentText } from "@/components/ui/premium-accent-text";
-import { heroSlides } from "@/lib/store-data";
 
 const inspirationSlides = [
   {

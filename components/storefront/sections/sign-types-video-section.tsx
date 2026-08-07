@@ -2,6 +2,7 @@
 
 import { useState, useRef } from "react";
 import { Sparkles, Play, Pause, Volume2, VolumeX, Zap, Film } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { CustomQuoteButton } from "@/components/storefront/custom-quote-button";
 import { PremiumAccentText } from "@/components/ui/premium-accent-text";
@@ -54,6 +55,19 @@ export const ACRYLIC_UV_VIDEOS = [
   },
 ];
 
+/**
+ * The lightbox tab's stage still.
+ *
+ * We have no footage of an ultra-thin lightbox, and the clip that used to sit
+ * on this tab was a flexible-neon reel — the wrong product entirely. Until a
+ * real lightbox video exists the stage shows this photo instead of a <video>.
+ */
+export const LIGHTBOX_STILL = {
+  image: "/ultra-thin-slim-lightbox/main-hero.png",
+  alt: "Custom shop sign shown as flat artwork beside the finished, illuminated lightbox mounted on a wall",
+  label: "Artwork to Finished Sign",
+};
+
 export const SIGN_TYPES_DATA = [
   {
     id: "neon-sign",
@@ -91,8 +105,9 @@ export const SIGN_TYPES_DATA = [
       "An ultra-slim anodized-aluminium frame under an inch deep, edge-lit by matrix LEDs for 100% even, shadow-free illumination across the whole face. Graphics slide out and swap in seconds — ideal for retail displays, menu boards and modern storefronts.",
     features: ["Under 1-inch slim profile", "Even, shadow-free edge lighting", "Tool-free snap-frame graphic swap"],
     badge: "Retail & Commercial",
-    video: "/neon-sign/Videos/en-GB_7bc644f6ffb88b4179c83b88c76e5ed9.mp4",
-    poster: "/ultra-thin-slim-lightbox/IMG-20260803-WA0004.jpg",
+    // Null on purpose — see LIGHTBOX_STILL. This is the one type with no video.
+    video: null,
+    poster: null,
   },
   {
     id: "acrylic-uv",
@@ -121,15 +136,19 @@ export function SignTypesVideoSection() {
   const is3dMetalTab = currentType.id === "3d-metal";
   const isAcrylicUvTab = currentType.id === "acrylic-uv";
 
+  // Null src means this type has no footage, so the stage renders a still.
   let currentVideoSrc = currentType.video;
   let currentPosterSrc = currentType.poster;
+  let stageLabel = currentVideoSrc ? "Live Craftsmanship Reel" : LIGHTBOX_STILL.label;
 
   if (is3dMetalTab) {
     currentVideoSrc = METALLIC_3D_VIDEOS[active3dVideoIndex].video;
     currentPosterSrc = METALLIC_3D_VIDEOS[active3dVideoIndex].poster;
+    stageLabel = METALLIC_3D_VIDEOS[active3dVideoIndex].title;
   } else if (isAcrylicUvTab) {
     currentVideoSrc = ACRYLIC_UV_VIDEOS[activeAcrylicVideoIndex].video;
     currentPosterSrc = ACRYLIC_UV_VIDEOS[activeAcrylicVideoIndex].poster;
+    stageLabel = ACRYLIC_UV_VIDEOS[activeAcrylicVideoIndex].title;
   }
 
   const togglePlay = () => {
@@ -219,52 +238,63 @@ export function SignTypesVideoSection() {
           {/* Left Column: Interactive Video Player */}
           <div className="lg:col-span-7 relative group">
             <div className="relative w-full aspect-video rounded-2xl overflow-hidden bg-black border border-white/10 shadow-2xl">
-              <video
-                key={currentVideoSrc}
-                ref={videoRef}
-                src={currentVideoSrc}
-                poster={currentPosterSrc}
-                autoPlay
-                loop
-                muted={isMuted}
-                playsInline
-                className="w-full h-full object-cover"
-              />
+              {currentVideoSrc ? (
+                <video
+                  key={currentVideoSrc}
+                  ref={videoRef}
+                  src={currentVideoSrc}
+                  poster={currentPosterSrc ?? undefined}
+                  autoPlay
+                  loop
+                  muted={isMuted}
+                  playsInline
+                  className="w-full h-full object-cover"
+                />
+              ) : (
+                <Image
+                  src={LIGHTBOX_STILL.image}
+                  alt={LIGHTBOX_STILL.alt}
+                  fill
+                  // Left column is 7/12 of the 1280px shell minus the card's
+                  // padding — roughly 700px — and full width below lg.
+                  sizes="(max-width: 1023px) calc(100vw - 3rem), 700px"
+                  className="object-cover"
+                />
+              )}
 
               {/* Video Overlay Gradient */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20 pointer-events-none" />
 
               {/* Top Badge */}
               <div className="absolute top-4 left-4 z-20 flex items-center gap-2 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/15 text-xs text-white font-medium">
-                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                <span>
-                  {is3dMetalTab
-                    ? METALLIC_3D_VIDEOS[active3dVideoIndex].title
-                    : isAcrylicUvTab
-                    ? ACRYLIC_UV_VIDEOS[activeAcrylicVideoIndex].title
-                    : "Live Craftsmanship Reel"}
-                </span>
+                {/* The dot only pulses while something is actually moving. */}
+                <span
+                  className={`w-2 h-2 rounded-full bg-emerald-400 ${currentVideoSrc ? "animate-pulse" : ""}`}
+                />
+                <span>{stageLabel}</span>
               </div>
 
-              {/* Media Controls Bar */}
-              <div className="absolute bottom-4 right-4 z-20 flex items-center gap-2">
-                <button
-                  type="button"
-                  onClick={togglePlay}
-                  className="p-2.5 rounded-full bg-black/60 hover:bg-black/80 text-white backdrop-blur-md border border-white/20 transition-transform active:scale-95 min-h-[40px] min-w-[40px] flex items-center justify-center"
-                  title={isPlaying ? "Pause Video" : "Play Video"}
-                >
-                  {isPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4 ml-0.5" />}
-                </button>
-                <button
-                  type="button"
-                  onClick={toggleMute}
-                  className="p-2.5 rounded-full bg-black/60 hover:bg-black/80 text-white backdrop-blur-md border border-white/20 transition-transform active:scale-95 min-h-[40px] min-w-[40px] flex items-center justify-center"
-                  title={isMuted ? "Unmute Sound" : "Mute Sound"}
-                >
-                  {isMuted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
-                </button>
-              </div>
+              {/* Media Controls Bar — omitted on stills, where both are no-ops */}
+              {currentVideoSrc && (
+                <div className="absolute bottom-4 right-4 z-20 flex items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={togglePlay}
+                    className="p-2.5 rounded-full bg-black/60 hover:bg-black/80 text-white backdrop-blur-md border border-white/20 transition-transform active:scale-95 min-h-[40px] min-w-[40px] flex items-center justify-center"
+                    title={isPlaying ? "Pause Video" : "Play Video"}
+                  >
+                    {isPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4 ml-0.5" />}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={toggleMute}
+                    className="p-2.5 rounded-full bg-black/60 hover:bg-black/80 text-white backdrop-blur-md border border-white/20 transition-transform active:scale-95 min-h-[40px] min-w-[40px] flex items-center justify-center"
+                    title={isMuted ? "Unmute Sound" : "Mute Sound"}
+                  >
+                    {isMuted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
+                  </button>
+                </div>
+              )}
             </div>
 
             {/* 3D Metallic Video Selector Sub-Bar (When 3D Metal Tab Active) */}

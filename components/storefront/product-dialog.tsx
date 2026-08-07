@@ -20,8 +20,8 @@ import {
 } from "react";
 
 import { IconBox } from "@/components/icon-box";
-import { ProductVisual } from "@/components/storefront/product-visual";
-import { products, type Product } from "@/lib/store-data";
+import { SignTypePreview } from "@/components/storefront/sign-type-preview";
+import { products, type Product, type SignType } from "@/lib/store-data";
 import { HAS_WHATSAPP, WHATSAPP_NUMBER } from "@/lib/site";
 
 type ProductDialogProps = {
@@ -48,6 +48,19 @@ export function ProductDialog({
     "Indoor",
   );
   const [agreeTerms, setAgreeTerms] = useState<boolean>(false);
+
+  // Storing which product the choice was made for lets the preview fall back to
+  // the newly opened product's own sign type when the dialog is reused, without
+  // an effect that resets state.
+  const [signTypeChoice, setSignTypeChoice] = useState<{
+    productId: number;
+    signType: SignType;
+  } | null>(null);
+
+  const activeSignType: SignType =
+    signTypeChoice?.productId === dialogProduct.id
+      ? signTypeChoice.signType
+      : (dialogProduct.signType ?? "Neon Sign");
 
   const closeDialog = useCallback(() => {
     dialogRef.current?.close();
@@ -91,7 +104,6 @@ export function ProductDialog({
 
     const form = new FormData(event.currentTarget);
     const signText = String(form.get("signText") || "").trim();
-    const signType = String(form.get("signType") || "Neon Sign");
     const color = String(form.get("color") || "Hot pink");
 
     const calculatedSize =
@@ -118,7 +130,7 @@ export function ProductDialog({
       "Hello The Glownique! I would like a custom quote:",
       "",
       `📋 Design Reference: ${product.name}`,
-      `✨ Sign Type: ${signType}`,
+      `✨ Sign Type: ${activeSignType}`,
       `🎨 Neon Colour: ${color}`,
       `💡 Sign Text / Idea: ${signText || "Same as displayed"}`,
       file
@@ -181,7 +193,7 @@ export function ProductDialog({
       </button>
 
       <div className="dialog-product-visual">
-        <ProductVisual product={dialogProduct} />
+        <SignTypePreview signType={activeSignType} />
       </div>
 
       <form
@@ -204,7 +216,13 @@ export function ProductDialog({
             Sign Type
             <select
               name="signType"
-              defaultValue={dialogProduct.signType || "Neon Sign"}
+              value={activeSignType}
+              onChange={(event) =>
+                setSignTypeChoice({
+                  productId: dialogProduct.id,
+                  signType: event.target.value as SignType,
+                })
+              }
             >
               <option value="Neon Sign">
                 1. Neon Sign (LED Flexible Silicone)
