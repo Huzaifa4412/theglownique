@@ -35,6 +35,36 @@ export type ProductFaq = {
   a: string;
 };
 
+/**
+ * Acrylic backboard cut options. Only the LED neon page carries these today —
+ * the other three sign types are built differently and have no backboard
+ * choice — so `backings` is optional and the section simply doesn't render.
+ */
+export type ProductBacking = {
+  name: string;
+  summary: string;
+  text: string;
+  bestFor: string;
+};
+
+/**
+ * Which way the light leaves a fabricated channel letter. Only the 3D metal
+ * page carries these — every other sign type is lit one way only — so
+ * `lighting` is optional and the section drops out for them.
+ *
+ * Unlike `backings`, which compares its options in a single wide photo, each
+ * style here has its own shot: the difference is the glow, and that doesn't
+ * survive being shrunk into one strip.
+ */
+export type ProductLighting = {
+  name: string;
+  summary: string;
+  text: string;
+  bestFor: string;
+  image: string;
+  imageAlt: string;
+};
+
 export type ProductPage = {
   slug: string;
   name: string;
@@ -59,6 +89,26 @@ export type ProductPage = {
     body: string;
     items: string[];
   };
+  backings?: {
+    heading: string;
+    body: string;
+    /** Wide comparison shot. `items` MUST stay in its left-to-right order. */
+    image: string;
+    imageAlt: string;
+    items: ProductBacking[];
+  };
+  lighting?: {
+    heading: string;
+    body: string;
+    items: ProductLighting[];
+  };
+  /**
+   * Opts the page into the interactive colour studio (the same one on the
+   * homepage). Only meaningful where the visitor actually picks a tube
+   * colour, so today that's the LED neon page alone — the studio previews
+   * silicone neon, not printed or metal faces.
+   */
+  colorStudio?: boolean;
   useCases: ProductUseCase[];
   gallery: ProductGalleryItem[];
   faqs: ProductFaq[];
@@ -70,14 +120,14 @@ export const PRODUCT_PAGES: ProductPage[] = [
   {
     slug: "custom-neon-signs",
     name: "Custom LED Neon Signs",
-    category: "LED Neon",
+    category: "Neon Sign",
     tagline: "Flexible silicone LED neon, handcrafted to your words",
     accent: "#f40b68",
     heroImage: "/hero/neon-sign-hero.png",
     heroVideo: "/neon-sign/Videos/en-GB_1fa05acfc3a2cdf80c7787c5f585c30a.mp4",
     intro:
       "Turn a phrase, a name or a logo into a glowing centrepiece. Our custom LED neon signs are handcrafted from flexible, shatterproof silicone tubing mounted on clear, laser-cut acrylic — the safe, modern successor to fragile glass neon. Running cool on low 12V power, they're made for bedrooms, weddings, cafés, studios and storefronts alike.",
-    chips: ["Up to 100,000 hrs", "Safe 12V", "18+ colours", "Indoor & IP67 outdoor"],
+    chips: ["Up to 100,000 hrs", "Safe 12V", "13 colours + RGB", "Indoor & IP67 outdoor"],
     features: [
       {
         icon: Zap,
@@ -92,7 +142,7 @@ export const PRODUCT_PAGES: ProductPage[] = [
       {
         icon: Palette,
         title: "Any colour, any font",
-        text: "Choose from 18+ neon colours, or RGB colour-change, in any font, script or hand-drawn shape you like.",
+        text: "Choose from 13 neon colours, or RGB colour-change, in any font, script or hand-drawn shape you like.",
       },
       {
         icon: Sparkles,
@@ -114,29 +164,74 @@ export const PRODUCT_PAGES: ProductPage[] = [
     },
     specs: [
       { label: "Light source", value: "Flexible LED silicone neon tubing" },
-      { label: "Backboard", value: "Clear, frosted or coloured cast acrylic (laser-cut)" },
+      {
+        label: "Backboard",
+        value:
+          "Clear, frosted or coloured cast acrylic — laser-cut to letter, to shape or to a square",
+      },
       { label: "Power", value: "12V low-voltage plug-and-play adaptor" },
       { label: "Lifespan", value: "Up to 100,000 hours of glow" },
-      { label: "Colours", value: "18+ solid colours, plus RGB colour-changing" },
+      { label: "Colours", value: "13 solid colours, plus RGB colour-changing" },
       { label: "Dimming", value: "Optional wireless RF remote (1–100%)" },
       { label: "Mounting", value: "Wall standoffs or hanging kit — ready to hang" },
       { label: "Use", value: "Indoor; IP67 waterproof option for outdoors" },
       { label: "Sizes", value: "Fully custom, from ~30 cm to several metres" },
     ],
     options: {
-      heading: "18+ neon colours, plus RGB",
-      body: "From warm white and hot pink to ice blue, green and mystic purple — pick a single signature colour, or add an RGB controller to switch shades, dim, pulse or flash at the touch of a button.",
+      heading: "13 neon colours, plus RGB",
+      body: "From warm and cold white through the yellows, pinks and reds to ice blue, teal and purple — pick a single signature colour, or add an RGB controller to switch shades, dim, pulse or flash at the touch of a button.",
+      // The real, complete range. Mirrors NEON_COLORS in
+      // components/storefront/sections/neon-color-changer-section.tsx, which
+      // drives the homepage swatch picker — keep the two in step, and don't
+      // pad the list: this page previously claimed "18+" colours that the
+      // workshop can't actually supply.
       items: [
         "Warm White",
-        "Hot Pink",
+        "Cold White",
+        "Light Yellow",
+        "Yellow",
+        "Orange",
+        "Dark Blue",
         "Ice Blue",
         "Green",
-        "Purple",
+        "Light Pink",
+        "Hot Pink",
         "Red",
-        "Orange",
+        "Purple",
+        "Teal",
         "RGB colour-change",
       ],
     },
+    backings: {
+      heading: "Cut to square, cut to shape or cut to letter",
+      body: "Every sign sits on a laser-cut acrylic backboard, and how we cut it changes the whole character of the piece — from a clean panel that frames the glow to letters that look painted straight onto the wall. Not sure which suits your design? Send it over and we'll show you all three in your free mockup.",
+      image: "/neon-sign/allshape.png",
+      imageAlt:
+        "The same script neon word shown three ways: on a rectangular acrylic panel (cut to square), on one panel following the word's outline (cut to shape), and with the acrylic cut around each letter (cut to letter).",
+      // Order matches the comparison photo left-to-right, and reads as a
+      // progression from most practical to most premium. Keep them in step.
+      items: [
+        {
+          name: "Cut to square",
+          summary: "The workhorse",
+          text: "A clean rectangular panel behind the whole sign. It's the strongest build and the kindest on price, and in clear acrylic it reads as a faint edge once the neon is lit — pick frosted or a colour and it becomes part of the design.",
+          bestFor: "Block fonts, big installs and tighter budgets",
+        },
+        {
+          name: "Cut to shape",
+          summary: "The best of both",
+          text: "One continuous piece of acrylic follows the outline of the whole design. You keep most of the floating look, but the sign stays a single sturdy panel — easier to hang straight and far happier travelling to you in one piece.",
+          bestFor: "Phrases, multi-word signs and larger pieces",
+        },
+        {
+          name: "Cut to letter",
+          summary: "The invisible one",
+          text: "We cut the acrylic around every individual letter, leaving only a few millimetres of border. Step back and the backboard all but disappears — the words read as pure light on the wall. It's the most intricate cut and the most striking finish.",
+          bestFor: "Script, signatures and logos",
+        },
+      ],
+    },
+    colorStudio: true,
     useCases: [
       {
         title: "Home & bedroom",
@@ -193,12 +288,12 @@ export const PRODUCT_PAGES: ProductPage[] = [
     ],
     metaTitle: "Custom LED Neon Signs — Made to Order",
     metaDescription:
-      "Design custom LED neon signs handcrafted from flexible silicone on acrylic. 18+ colours, up to 100,000-hour glow, free mockup, 5-year warranty and free worldwide delivery.",
+      "Design custom LED neon signs handcrafted from flexible silicone on acrylic. 13 colours plus RGB, up to 100,000-hour glow, free mockup, 5-year warranty and free worldwide delivery.",
   },
   {
     slug: "3d-metal-neon-signs",
     name: "3D Metal Neon Signs",
-    category: "Channel Letters",
+    category: "3D Metal Neon Sign",
     tagline: "Fabricated stainless-steel channel letters — frontlit, halo backlit or dual-lit",
     accent: "#e0a23c",
     heroImage: "/3d-metallic-neon-sign/corporte/056b3189-6a8c-482a-8334-53ded7aff3e1.png",
@@ -229,16 +324,16 @@ export const PRODUCT_PAGES: ProductPage[] = [
       },
     ],
     craft: {
-      heading: "Frontlit, halo backlit or dual-lit",
-      body: "We fabricate each letter or logo element as a metal channel, fit it with high-density LED, and finish it to your brand. Frontlit pushes light through the face for bold clarity; halo backlit throws a soft glow onto the wall behind for a premium, floating look; dual-lit does both. A baffle system can even run different colours front and back.",
+      heading: "How your metal letters are made",
+      body: "Every letter or logo element starts as sheet stainless steel, cut to your artwork and formed into a channel. We fit high-density LED inside, seal the housing to IP67, and finish the metal to your brand — brushed, mirrored or matte, anywhere from 0.8\" deep to 3.5\" and beyond. Each piece is then wired, bench-tested and prepared for the mount your wall needs.",
       points: [
-        "Frontlit — illuminated faces for maximum readability",
-        "Halo backlit — soft glow behind for a high-end look",
-        "Dual-lit — front and halo combined for full impact",
-        "Baffle system for separate front/back LED colours",
+        "Sheet stainless steel, cut and formed into channels",
+        "High-density LED sealed inside to IP67",
+        "Brushed, mirrored or matte metal finishing",
+        "Flush, standoff, raceway or backing-panel mounts",
       ],
-      image: "/3d-metallic-neon-sign/Salon/generated/235762e8-14ec-4167-b534-2dad36c826ba.png",
-      imageAlt: "Halo backlit 3D metal channel-letter salon sign",
+      image: "/3d-metallic-neon-sign/frontlit/2.png",
+      imageAlt: "Fabricated stainless-steel channel letter R with a glowing white face and brushed metal returns",
     },
     specs: [
       { label: "Construction", value: "Fabricated stainless-steel channel letters" },
@@ -263,6 +358,41 @@ export const PRODUCT_PAGES: ProductPage[] = [
         "Matte finish",
         "Gold / Rose gold / Brass",
         "Silver / Black",
+      ],
+    },
+    lighting: {
+      heading: "Frontlit, halo backlit or dual-lit",
+      body: "The same fabricated letters give you three completely different moods, and it all comes down to which way the light leaves the channel. Frontlit reads loudest, halo reads most expensive, dual-lit does both at once. Not sure which suits your logo? Send it over and we'll mock it up in whichever you're leaning towards — free, before you commit.",
+      // Ordered loudest → softest → both, so the third card reads as the
+      // combination of the two above it.
+      items: [
+        {
+          name: "Frontlit",
+          summary: "The loudest",
+          text: "The face of every letter is a lit panel, so the wordmark itself glows. It's the most readable option from across a street or in daylight, and the face carries your brand colour rather than the wall — tint or print it any shade you like.",
+          bestFor: "Storefronts, roadside frontage and busy streets",
+          image: "/3d-metallic-neon-sign/frontlit/image.png",
+          imageAlt:
+            "Frontlit 3D metal channel letters spelling Food Opera, the script faces glowing bright orange against a plain wall",
+        },
+        {
+          name: "Halo backlit",
+          summary: "The premium one",
+          text: "The face stays solid metal and the LED throws backwards instead, ringing each letter in a soft halo on the wall. You read the shape rather than the glow, which is exactly why it's the default for reception walls — it reads expensive rather than loud.",
+          bestFor: "Lobbies, receptions and interior feature walls",
+          image: "/3d-metallic-neon-sign/Salon/generated/235762e8-14ec-4167-b534-2dad36c826ba.png",
+          imageAlt:
+            "Halo backlit 3D metal salon logo in brushed gold, glowing softly onto the reception wall behind it",
+        },
+        {
+          name: "Dual-lit",
+          summary: "The full effect",
+          text: "Both at once — a lit face for readability, a halo behind it for depth. Add a baffle inside the channel and the two can run separate colours, so a crisp white face can sit over a coloured glow.",
+          bestFor: "Flagship signage and anywhere impact matters most",
+          image: "/3d-metallic-neon-sign/duallit/2.png",
+          imageAlt:
+            "Dual-lit 3D metal letters spelling AMERICA, with glowing white faces and a halo of light spilling onto the floor behind",
+        },
       ],
     },
     useCases: [
@@ -326,7 +456,7 @@ export const PRODUCT_PAGES: ProductPage[] = [
   {
     slug: "ultra-thin-lightbox",
     name: "Ultra Thin Slim Lightboxes",
-    category: "Edge-Lit Lightbox",
+    category: "Ultra Thin Lightbox",
     tagline: "Slim aluminium lightbox with 100% even, edge-lit LED glow",
     accent: "#0e9f6e",
     heroImage: "/ultra-thin-slim-lightbox/main-hero.png",
@@ -451,14 +581,14 @@ export const PRODUCT_PAGES: ProductPage[] = [
   {
     slug: "uv-print-acrylic-signs",
     name: "3D Acrylic UV-Print Neon Signs",
-    category: "UV Print + Neon",
+    category: "3D Acrylic Neon Sign",
     tagline: "Full-colour UV artwork on acrylic, traced with glowing LED neon",
     accent: "#7c3aed",
     heroImage: "/3d-arcylic/3235dc09-6dac-4056-88b6-55fc26e28571.png",
     heroVideo: "/3d-arcylic/videos/25763cbb2ca6866a574a4dde5853343c.mp4",
     intro:
-      "When a logo needs more than one colour, this is the sign. High-definition UV printing lays sharp, full-colour artwork, gradients and brand fonts directly onto premium acrylic, and we trace it with glowing LED neon contours. The result is rich, photo-quality detail combined with the glow of neon — colour-matched to your exact brand.",
-    chips: ["Full-colour UV print", "Neon contours", "Pantone / HEX / CMYK", "Logos & brand art"],
+      "When a logo needs more than one colour, this is the sign. High-definition UV printing lays sharp, full-colour artwork, gradients and brand fonts directly onto premium acrylic, and we trace it with glowing LED neon contours. The result is rich, photo-quality detail combined with the glow of neon — colour-matched to your exact brand. It's also the most cost-effective way to light up a detailed design: the print handles the intricate work that would otherwise take metres of hand-bent tubing, so more of your budget goes into the artwork and less into labour.",
+    chips: ["Cost-effective", "Full-colour UV print", "Neon contours", "Pantone / HEX / CMYK", "Logos & brand art"],
     features: [
       {
         icon: Palette,
@@ -483,12 +613,13 @@ export const PRODUCT_PAGES: ProductPage[] = [
     ],
     craft: {
       heading: "UV print meets LED neon",
-      body: "We print your artwork in full colour straight onto clear, white or mirrored acrylic using a UV flatbed, so the detail is sharp and durable. Then we hand-trace the design with flexible LED neon to light the contours and key elements. Together they turn a flat logo into a glowing, gallery-quality piece.",
+      body: "We print your artwork in full colour straight onto clear, white or mirrored acrylic using a UV flatbed, so the detail is sharp and durable. Then we hand-trace the design with flexible LED neon to light the contours and key elements. Together they turn a flat logo into a glowing, gallery-quality piece — and because the print carries the fine detail, we only bend neon where the glow actually counts. That's what keeps a busy, multi-colour design cost-effective instead of quoting metre after metre of tubing.",
       points: [
         "High-definition UV direct-to-acrylic printing",
         "Flexible LED neon contour accents",
         "Clear, white, mirrored or coloured acrylic base",
         "Optional multi-layer 3D build for depth",
+        "Less hand-bent tubing per design — a lower build cost",
       ],
       image: "/3d-arcylic/fff64032-bdaa-459c-8caf-a4ac67b89f19.png",
       imageAlt: "Layered 3D acrylic UV-print neon studio sign",
@@ -500,13 +631,18 @@ export const PRODUCT_PAGES: ProductPage[] = [
       { label: "Colour match", value: "Any Pantone / HEX / CMYK, unlimited colours" },
       { label: "Detail", value: "Gradients, photos and fine text supported" },
       { label: "Depth", value: "Single-layer or multi-layer 3D build" },
+      {
+        label: "Value",
+        value:
+          "Cost-effective for detail-heavy and multi-colour work — print carries the detail, neon carries the glow",
+      },
       { label: "Power", value: "12V low-voltage plug-and-play" },
       { label: "Mounting", value: "Standoffs or hanging kit — ready to hang" },
       { label: "Use", value: "Indoor; IP67 waterproof option available" },
     ],
     options: {
       heading: "Print + neon combinations",
-      body: "Combine UV print and neon however your design needs — a fully printed backboard with neon outline, printed brand fonts with a neon icon, or layered acrylic for a 3D logo wall.",
+      body: "Combine UV print and neon however your design needs — a fully printed backboard with neon outline, printed brand fonts with a neon icon, or layered acrylic for a 3D logo wall. Leaning on the print for the busy parts is the cost-effective route, so tell us your budget and we'll show you the mix that gets the most sign for it.",
       items: [
         "Printed backboard + neon outline",
         "Printed fonts + neon icon",
@@ -560,6 +696,10 @@ export const PRODUCT_PAGES: ProductPage[] = [
         a: "UV print captures detail, small text and multi-colour artwork that neon tubing can't, and it's often more economical for detail-heavy designs — while the neon adds the glow.",
       },
       {
+        q: "Is a 3D acrylic sign cost-effective?",
+        a: "For a detailed or multi-colour design, it's usually the best value of anything we make. Rendering a busy logo in neon alone means metres of hand-bent tubing and a join at every colour change, and that hand labour is what drives the price up. Here the UV print does all the intricate work in a single pass and we bend neon only for the contours that need to glow — so the whole design gets lit for less. Send us your artwork and we'll quote it both ways, free, so you can compare before you commit.",
+      },
+      {
         q: "Can it have real 3D depth?",
         a: "Yes. We can build multi-layer acrylic for a genuine three-dimensional, tactile logo, then accent it with neon.",
       },
@@ -570,7 +710,7 @@ export const PRODUCT_PAGES: ProductPage[] = [
     ],
     metaTitle: "3D Acrylic UV-Print Neon Signs — Logos & Brand Art",
     metaDescription:
-      "Custom 3D acrylic signs pairing high-definition full-colour UV print with glowing LED neon contours. Pantone-matched logos and brand art, free mockup, 5-year warranty, free worldwide delivery.",
+      "Cost-effective 3D acrylic signs pairing full-colour UV print with glowing LED neon contours — the affordable way to light a detailed, multi-colour logo. Free mockup, 5-year warranty, free worldwide delivery.",
   },
 ];
 

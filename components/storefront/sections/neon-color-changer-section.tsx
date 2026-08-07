@@ -1,7 +1,14 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
 import {
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+  useSyncExternalStore,
+} from "react";
+import {
+  ArrowRight,
   Play,
   Pause,
   Sparkles,
@@ -190,19 +197,61 @@ export const NEON_COLORS: NeonColor[] = [
 const THRESHOLD = 60;
 const TRANSIT_MS = 400;
 
-export function NeonColorChangerSection() {
+// Phones start at a smaller zoom so the whole sign fits. The viewport is an
+// external system, so it is read with useSyncExternalStore rather than copied
+// into state from an effect (which cascades renders and trips
+// react-hooks/set-state-in-effect).
+const MOBILE_QUERY = "(max-width: 639px)";
+
+function subscribeToViewport(onChange: () => void) {
+  const query = window.matchMedia(MOBILE_QUERY);
+  query.addEventListener("change", onChange);
+  return () => query.removeEventListener("change", onChange);
+}
+
+function getIsMobile(): boolean {
+  return window.matchMedia(MOBILE_QUERY).matches;
+}
+
+// The server has no viewport; assuming desktop keeps the first client render
+// identical to the server HTML, then it corrects itself on mobile.
+function getIsMobileOnServer(): boolean {
+  return false;
+}
+
+const CTA_CLASS =
+  "button button--primary w-full justify-center py-3.5 text-sm font-semibold rounded-xl shadow-lg transition-transform hover:scale-[1.02] active:scale-[0.98]";
+
+export type NeonColorChangerSectionProps = {
+  /**
+   * Where the "Order Sign in <colour>" button should go.
+   *
+   * Omit it on the homepage: the CTA then opens the storefront's product
+   * dialog through StorefrontShell's context. Pass it on the product detail
+   * routes so the WhatsApp message names the sign the visitor is actually
+   * looking at — CustomQuoteButton's own no-shell fallback can only reach for
+   * a fixed entry in `products`, which is not this page's product.
+   */
+  quoteHref?: string;
+};
+
+export function NeonColorChangerSection({
+  quoteHref,
+}: NeonColorChangerSectionProps = {}) {
   const [activeColor, setActiveColor] = useState<NeonColor>(NEON_COLORS[0]);
   const [isPartyMode, setIsPartyMode] = useState<boolean>(false);
   const [copiedHex, setCopiedHex] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [zoomLevel, setZoomLevel] = useState<number>(1.1);
 
-  // Set responsive initial zoom level
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      setZoomLevel(window.innerWidth < 640 ? 1.0 : 1.25);
-    }
-  }, []);
+  const isMobile = useSyncExternalStore(
+    subscribeToViewport,
+    getIsMobile,
+    getIsMobileOnServer,
+  );
+  // Stays null until the visitor zooms manually, at which point their choice
+  // wins over the responsive default.
+  const [zoomOverride, setZoomOverride] = useState<number | null>(null);
+  const zoomLevel = zoomOverride ?? (isMobile ? 1.0 : 1.25);
 
   const mainCanvasRef = useRef<HTMLCanvasElement | null>(null);
   const overCanvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -419,9 +468,15 @@ export function NeonColorChangerSection() {
     setTimeout(() => setCopiedHex(false), 2000);
   };
 
-  const zoomIn = () => setZoomLevel((prev) => Math.min(prev + 0.15, 1.8));
-  const zoomOut = () => setZoomLevel((prev) => Math.max(prev - 0.15, 0.9));
-  const resetZoom = () => setZoomLevel(1.25);
+  const zoomIn = () => setZoomOverride(Math.min(zoomLevel + 0.15, 1.8));
+  const zoomOut = () => setZoomOverride(Math.max(zoomLevel - 0.15, 0.9));
+  // Back to the responsive default for the current viewport.
+  const resetZoom = () => setZoomOverride(null);
+
+  const ctaLabel =
+    activeColor.id === "rgba-cycle"
+      ? "Order Custom Multi-Color Sign"
+      : `Order Sign in ${activeColor.name}`;
 
   return (
     <section
@@ -710,14 +765,19 @@ export function NeonColorChangerSection() {
 
               {/* Action Call-to-action */}
               <div className="pt-2">
-                <CustomQuoteButton
-                  className="button button--primary w-full justify-center py-3.5 text-sm font-semibold rounded-xl shadow-lg transition-transform hover:scale-[1.02] active:scale-[0.98]"
-                  label={
-                    activeColor.id === "rgba-cycle"
-                      ? "Order Custom Multi-Color Sign"
-                      : `Order Sign in ${activeColor.name}`
-                  }
-                />
+                {quoteHref ? (
+                  <a
+                    href={quoteHref}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={CTA_CLASS}
+                  >
+                    {ctaLabel}{" "}
+                    <ArrowRight className="w-4 h-4" aria-hidden="true" />
+                  </a>
+                ) : (
+                  <CustomQuoteButton className={CTA_CLASS} label={ctaLabel} />
+                )}
                 <p className="text-center text-xs text-gray-400 mt-2 flex items-center justify-center gap-1">
                   <Info className="w-3.5 h-3.5 text-pink-400" /> Free mockup &amp;
                   color proofing included with every custom quote.

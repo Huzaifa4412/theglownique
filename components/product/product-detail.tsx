@@ -1,5 +1,6 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import Image from "next/image";
 import Link from "next/link";
 import { useState, type CSSProperties, type ReactNode } from "react";
@@ -8,6 +9,15 @@ import { ArrowRight, Check, ChevronDown } from "lucide-react";
 
 import { getProductPage, getRelatedProducts } from "@/lib/product-catalog";
 import { whatsappQuoteUrl } from "@/lib/site";
+
+// Canvas-based and only rendered on the LED neon page, so it's split into its
+// own chunk rather than shipped with all four product routes. No `ssr: false`
+// — the headings and colour names still need to server-render for crawlers.
+const NeonColorChangerSection = dynamic(() =>
+  import("@/components/storefront/sections/neon-color-changer-section").then(
+    (m) => m.NeonColorChangerSection,
+  ),
+);
 
 function Reveal({
   children,
@@ -267,6 +277,124 @@ export function ProductDetail({ slug }: { slug: string }) {
         </div>
       </section>
 
+      {/* ───────────────── BACKBOARD CUTS ─────────────────
+          Only the LED neon page defines `backings`; the other sign types have
+          no backboard choice, so this drops out entirely for them. */}
+      {product.backings && (
+        <section className="border-t border-[#eadfe4] bg-[#fdf7f9] py-16 sm:py-20">
+          <div className="mx-auto max-w-[1320px] px-4 sm:px-6">
+            <Reveal className="mx-auto mb-12 max-w-2xl text-center">
+              <p className="text-xs font-extrabold uppercase tracking-widest" style={{ color: accent }}>
+                Choose your backboard
+              </p>
+              <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-[#1e1a22] sm:text-4xl">
+                {product.backings.heading}
+              </h2>
+              <p className="mt-4 text-base leading-relaxed text-[#5e5862]">
+                {product.backings.body}
+              </p>
+            </Reveal>
+
+            {/* One wide comparison shot with the three cuts labelled in-image.
+                Below ~640px it would shrink past legibility, so it stays at a
+                readable width there and the strip pans instead. */}
+            <Reveal className="mb-8">
+              <div className="overflow-x-auto rounded-3xl border border-[#eadfe4] bg-[#0b0910] shadow-xl">
+                <Image
+                  src={product.backings.image}
+                  alt={product.backings.imageAlt}
+                  width={1921}
+                  height={819}
+                  sizes="(max-width: 640px) 640px, (max-width: 1360px) 100vw, 1320px"
+                  className="h-auto w-full min-w-[640px]"
+                />
+              </div>
+            </Reveal>
+
+            {/* Same left-to-right order as the photo above, so a reader can map
+                each card onto the sign it describes. */}
+            <div className="grid gap-5 md:grid-cols-3">
+              {product.backings.items.map((backing, i) => (
+                <Reveal key={backing.name} delay={i * 0.08}>
+                  <div className="flex h-full flex-col rounded-2xl border border-[#eadfe4] bg-white p-6 shadow-[0_10px_30px_rgba(107,38,67,0.06)] transition-transform duration-300 hover:-translate-y-1">
+                    <p
+                      className="text-xs font-extrabold uppercase tracking-widest"
+                      style={{ color: accent }}
+                    >
+                      {backing.summary}
+                    </p>
+                    <h3 className="mt-1.5 text-lg font-bold text-[#1e1a22]">{backing.name}</h3>
+                    <p className="mt-2 flex-1 text-sm leading-6 text-[#5e5862]">{backing.text}</p>
+                    <p className="mt-4 border-t border-[#eadfe4] pt-3 text-xs font-semibold text-[#1e1a22]">
+                      Best for:{" "}
+                      <span className="font-medium text-[#5e5862]">{backing.bestFor}</span>
+                    </p>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ───────────────── LIGHTING DIRECTION ─────────────────
+          Only the 3D metal page defines `lighting`; every other sign type is
+          lit one way only, so this drops out entirely for them. It shares the
+          backboard section's slot — neither product defines both. */}
+      {product.lighting && (
+        <section className="border-t border-[#eadfe4] bg-[#fdf7f9] py-16 sm:py-20">
+          <div className="mx-auto max-w-[1320px] px-4 sm:px-6">
+            <Reveal className="mx-auto mb-12 max-w-2xl text-center">
+              <p className="text-xs font-extrabold uppercase tracking-widest" style={{ color: accent }}>
+                Choose your glow
+              </p>
+              <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-[#1e1a22] sm:text-4xl">
+                {product.lighting.heading}
+              </h2>
+              <p className="mt-4 text-base leading-relaxed text-[#5e5862]">
+                {product.lighting.body}
+              </p>
+            </Reveal>
+
+            {/* A photo per card rather than one comparison strip: the whole
+                difference here is the glow, which needs the full frame. Dark
+                plate behind each shot so the lit faces read at full contrast. */}
+            <div className="grid gap-5 md:grid-cols-3">
+              {product.lighting.items.map((style, i) => (
+                <Reveal key={style.name} delay={i * 0.08}>
+                  <div className="group flex h-full flex-col overflow-hidden rounded-2xl border border-[#eadfe4] bg-white shadow-[0_10px_30px_rgba(107,38,67,0.06)] transition-transform duration-300 hover:-translate-y-1">
+                    <div className="relative aspect-square w-full overflow-hidden bg-[#0b0910]">
+                      <Image
+                        src={style.image}
+                        alt={style.imageAlt}
+                        fill
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                        unoptimized
+                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                    </div>
+                    <div className="flex flex-1 flex-col p-6">
+                      <p
+                        className="text-xs font-extrabold uppercase tracking-widest"
+                        style={{ color: accent }}
+                      >
+                        {style.summary}
+                      </p>
+                      <h3 className="mt-1.5 text-lg font-bold text-[#1e1a22]">{style.name}</h3>
+                      <p className="mt-2 flex-1 text-sm leading-6 text-[#5e5862]">{style.text}</p>
+                      <p className="mt-4 border-t border-[#eadfe4] pt-3 text-xs font-semibold text-[#1e1a22]">
+                        Best for:{" "}
+                        <span className="font-medium text-[#5e5862]">{style.bestFor}</span>
+                      </p>
+                    </div>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* ─────────────────────── OPTIONS ─────────────────────── */}
       <section className="border-t border-[#eadfe4] bg-[#0b0910] py-16 text-white sm:py-20">
         <div className="relative mx-auto max-w-3xl px-4 text-center sm:px-6">
@@ -298,6 +426,12 @@ export function ProductDetail({ slug }: { slug: string }) {
           </Reveal>
         </div>
       </section>
+
+      {/* ───────────────── COLOUR STUDIO ─────────────────
+          Sits directly under OPTIONS so the colour list above it becomes
+          something you can actually try. Brings its own <section> and dark
+          background, which carries on from the OPTIONS band above. */}
+      {product.colorStudio && <NeonColorChangerSection quoteHref={quoteUrl} />}
 
       {/* ─────────────────────── USE CASES ─────────────────────── */}
       <section className="bg-white py-16 sm:py-20">
