@@ -1,8 +1,6 @@
 "use client";
 
-import { ArrowRight } from "@phosphor-icons/react";
-
-import { IconBox } from "@/components/icon-box";
+import { WhatsappIcon } from "@/components/ui/whatsapp-icon";
 import { useOptionalStorefront } from "@/components/storefront/storefront-context";
 import { whatsappQuoteUrl } from "@/lib/site";
 import { products } from "@/lib/store-data";
@@ -13,7 +11,7 @@ type CustomQuoteButtonProps = {
 };
 
 export function CustomQuoteButton({
-  className = "button button--primary",
+  className = "button button--whatsapp text-sm py-3 px-5 font-bold",
   label = "Request a custom quote",
 }: CustomQuoteButtonProps) {
   // Optional, because the colour studio embeds this button and now renders on
@@ -32,7 +30,8 @@ export function CustomQuoteButton({
         target="_blank"
         rel="noopener noreferrer"
       >
-        {label} <IconBox icon={ArrowRight} />
+        <span>{label}</span>
+        <WhatsappIcon className="w-5 h-5 shrink-0" />
       </a>
     );
   }
@@ -43,7 +42,8 @@ export function CustomQuoteButton({
       type="button"
       onClick={() => storefront.openProduct(product)}
     >
-      {label} <IconBox icon={ArrowRight} />
+      <span>{label}</span>
+      <WhatsappIcon className="w-5 h-5 shrink-0" />
     </button>
   );
 }

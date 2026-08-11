@@ -165,7 +165,7 @@ export function FreeDeliverySection() {
         {/* CTA */}
         <div className="mt-9">
           <CustomQuoteButton
-            className="button button--primary"
+            className="button button--whatsapp"
             label={isLive ? "Claim free delivery" : "Design your sign"}
           />
         </div>

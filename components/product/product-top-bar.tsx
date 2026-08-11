@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { WhatsappIcon } from "@/components/ui/whatsapp-icon";
 
 import { PRODUCT_PAGES } from "@/lib/product-catalog";
 import { whatsappQuoteUrl } from "@/lib/site";
@@ -34,9 +37,10 @@ export function ProductTopBar({ productName }: { productName: string }) {
           href={whatsappQuoteUrl(productName)}
           target="_blank"
           rel="noopener noreferrer"
-          className="button button--primary rounded-full px-4 py-2 text-xs"
+          className="button button--whatsapp rounded-full px-4 py-2.5 text-sm font-bold flex items-center gap-2"
         >
-          Get a free quote
+          <span>Get a free quote</span>
+          <WhatsappIcon className="h-4.5 w-4.5 shrink-0" />
         </a>
       </div>
     </header>

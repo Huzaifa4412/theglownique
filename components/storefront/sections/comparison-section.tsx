@@ -39,7 +39,7 @@ export function ComparisonSection() {
             around your brand — that&apos;s the difference.
           </p>
           <CustomQuoteButton
-            className="comparison-cta mt-7 inline-flex items-center gap-3 rounded-full bg-white px-6 py-3.5 text-xs font-extrabold uppercase tracking-[0.13em] text-[#2510b4]"
+            className="comparison-cta button button--whatsapp mt-7 inline-flex items-center gap-3 rounded-full px-6 py-3.5 text-xs font-extrabold uppercase tracking-[0.13em]"
             label="Get a custom quote"
           />
           <p className="mt-4 flex items-center gap-2 text-xs font-bold text-white/80">

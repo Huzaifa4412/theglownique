@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { LegalPage } from "@/components/legal/legal-page";
+import { StoreIcon } from "@/components/storefront/store-icon";
 import { HAS_ADDRESS, HAS_EMAIL, HAS_PHONE, LEGAL } from "@/lib/legal";
 import { ETSY_SHOP_URL, HAS_WHATSAPP, whatsappQuoteUrl } from "@/lib/site";
 
@@ -26,8 +27,14 @@ export default function ContactPage() {
         we&apos;ll come back with a free mockup and a quote. Whatever you have is enough to start.
       </p>
       {HAS_WHATSAPP ? (
-        <p>
-          <a href={whatsappQuoteUrl("custom sign")} rel="noopener" target="_blank">
+        <p className="mt-4">
+          <a
+            href={whatsappQuoteUrl("custom sign")}
+            rel="noopener noreferrer"
+            target="_blank"
+            className="button button--whatsapp inline-flex items-center gap-2.5 px-6 py-3 rounded-lg text-base font-bold"
+          >
+            <StoreIcon name="WhatsappLogo" />
             Message us on WhatsApp
           </a>
         </p>

@@ -17,6 +17,7 @@ import {
   Truck,
   X,
 } from "@phosphor-icons/react";
+import { WhatsappIcon } from "@/components/ui/whatsapp-icon";
 
 const icons = {
   Check,
@@ -33,6 +34,7 @@ const icons = {
   Sparkle,
   TiktokLogo,
   Truck,
+  WhatsappLogo: WhatsappIcon,
   X,
 } as const;
 

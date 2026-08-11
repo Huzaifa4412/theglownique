@@ -1,3 +1,5 @@
+"use client";
+
 import type { Icon as PhosphorIcon } from "@phosphor-icons/react";
 
 type IconBoxProps = {

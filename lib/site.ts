@@ -30,7 +30,7 @@ export const HAS_WHATSAPP = WHATSAPP_NUMBER.length > 0;
 // Canonical shop URL — the tracking params from a copied browser URL
 // (?ref=shop_profile&listing_id=…) are deliberately stripped so the link and
 // the Organization.sameAs entry stay stable and canonical.
-export const ETSY_SHOP_URL = "https://www.etsy.com/shop/TheGlownique";
+export const ETSY_SHOP_URL = "https://www.etsy.com/listing/1878290703/custom-neon-sign-led-light-for-wedding";
 
 /**
  * Public social profiles. ONLY add profiles that actually exist — each entry
@@ -69,4 +69,13 @@ export function sameAsUrls(): string[] {
 export function whatsappQuoteUrl(productName: string): string {
   const message = `Hi The Glownique! I'd like a free quote and mockup for a ${productName}. Here's my idea: `;
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+}
+
+/** Format raw international number string into a clean display phone number. */
+export function formatWhatsappDisplayNumber(num: string = WHATSAPP_NUMBER): string {
+  if (!num) return "";
+  if (num.length === 11 && num.startsWith("1")) {
+    return `+1 (${num.slice(1, 4)}) ${num.slice(4, 7)}-${num.slice(7, 11)}`;
+  }
+  return `+${num}`;
 }

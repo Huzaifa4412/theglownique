@@ -23,6 +23,7 @@ import { IconBox } from "@/components/icon-box";
 import { SignTypePreview } from "@/components/storefront/sign-type-preview";
 import { products, type Product, type SignType } from "@/lib/store-data";
 import { HAS_WHATSAPP, WHATSAPP_NUMBER } from "@/lib/site";
+import { WhatsappIcon } from "@/components/ui/whatsapp-icon";
 
 type ProductDialogProps = {
   product: Product | null;
@@ -589,11 +590,12 @@ export function ProductDialog({
         </label>
 
         <button
-          className="button button--primary submit-quote-btn"
+          className="button button--whatsapp submit-quote-btn text-base font-bold py-3.5 flex items-center justify-center gap-2"
           type="submit"
           disabled={!agreeTerms}
         >
-          Request a custom quote <IconBox icon={WhatsappLogo} />
+          <span>Request a custom quote</span>
+          <WhatsappIcon className="w-5 h-5 shrink-0" />
         </button>
       </form>
     </dialog>

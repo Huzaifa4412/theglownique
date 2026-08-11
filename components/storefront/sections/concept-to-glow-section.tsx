@@ -29,7 +29,7 @@ export function ConceptToGlowSection() {
             <span>Ready to hang</span>
           </div>
           <CustomQuoteButton
-            className="button button--primary concept-to-glow__cta"
+            className="button button--whatsapp concept-to-glow__cta"
             label="Start your design"
           />
         </div>

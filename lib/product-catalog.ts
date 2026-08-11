@@ -524,33 +524,34 @@ export const PRODUCT_PAGES: ProductPage[] = [
       {
         title: "Retail displays",
         text: "Showcase promotions and product launches with bright, space-saving signage.",
-        image: "/ultra-thin-slim-lightbox/IMG-20260803-WA0004.jpg",
+        image: "/ultra-thin-slim-lightbox/Retail displays.jpg",
         alt: "Retail ultra-thin slim LED lightbox display",
       },
       {
         title: "Menu boards",
         text: "Crisp, easy-to-read menus you can update in seconds as your offer changes.",
-        image: "/ultra-thin-slim-lightbox/IMG-20260803-WA0006.jpg",
+        image: "/ultra-thin-slim-lightbox/Menu boards.jpg",
         alt: "Illuminated slim lightbox menu board",
       },
       {
         title: "Lobbies & branding",
         text: "A modern, professional way to display branding and wayfinding indoors.",
-        image: "/ultra-thin-slim-lightbox/IMG-20260803-WA0008.jpg",
+        image: "/ultra-thin-slim-lightbox/Lobbies & branding.jpg",
         alt: "Corporate lobby slim lightbox branding sign",
       },
       {
         title: "Storefront windows",
         text: "High-contrast, eye-catching displays that draw foot traffic day and night.",
-        image: "/ultra-thin-slim-lightbox/IMG-20260803-WA0010.jpg",
+        image: "/ultra-thin-slim-lightbox/Storefront windows.jpg",
         alt: "Storefront window ultra-thin lightbox display",
       },
     ],
     gallery: [
       { src: "/ultra-thin-slim-lightbox/main-hero.png", alt: "Ultra-thin slim LED lightbox transformation" },
-      { src: "/ultra-thin-slim-lightbox/IMG-20260803-WA0004.jpg", alt: "Edge-lit slim lightbox display" },
-      { src: "/ultra-thin-slim-lightbox/IMG-20260803-WA0008.jpg", alt: "Slim lightbox branding sign" },
-      { src: "/ultra-thin-slim-lightbox/IMG-20260803-WA0010.jpg", alt: "Storefront slim lightbox display" },
+      { src: "/ultra-thin-slim-lightbox/Retail displays.jpg", alt: "Retail ultra-thin slim LED lightbox display" },
+      { src: "/ultra-thin-slim-lightbox/Menu boards.jpg", alt: "Illuminated slim lightbox menu board" },
+      { src: "/ultra-thin-slim-lightbox/Lobbies & branding.jpg", alt: "Corporate lobby slim lightbox branding sign" },
+      { src: "/ultra-thin-slim-lightbox/Storefront windows.jpg", alt: "Storefront window ultra-thin lightbox display" },
     ],
     faqs: [
       {
@@ -580,7 +581,7 @@ export const PRODUCT_PAGES: ProductPage[] = [
   },
   {
     slug: "uv-print-acrylic-signs",
-    name: "3D Acrylic UV-Print Neon Signs",
+    name: "3D Acrylic Illuminated Neon Signs",
     category: "3D Acrylic Neon Sign",
     tagline: "Full-colour UV artwork on acrylic, traced with glowing LED neon",
     accent: "#7c3aed",
@@ -708,7 +709,7 @@ export const PRODUCT_PAGES: ProductPage[] = [
         a: "Choose our IP67 waterproof option and your UV-print neon sign is ready for covered outdoor and event use.",
       },
     ],
-    metaTitle: "3D Acrylic UV-Print Neon Signs — Logos & Brand Art",
+    metaTitle: "3D Acrylic Illuminated Neon Signs — Logos & Brand Art",
     metaDescription:
       "Cost-effective 3D acrylic signs pairing full-colour UV print with glowing LED neon contours — the affordable way to light a detailed, multi-colour logo. Free mockup, 5-year warranty, free worldwide delivery.",
   },

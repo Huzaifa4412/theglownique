@@ -1,7 +1,14 @@
 import Link from "next/link";
 
 import { StoreIcon } from "@/components/storefront/store-icon";
-import { SOCIAL_LINKS } from "@/lib/site";
+import { CustomQuoteButton } from "@/components/storefront/custom-quote-button";
+import { WhatsappIcon } from "@/components/ui/whatsapp-icon";
+import {
+  HAS_WHATSAPP,
+  SOCIAL_LINKS,
+  formatWhatsappDisplayNumber,
+  whatsappQuoteUrl,
+} from "@/lib/site";
 
 const footerColumns = [
   {
@@ -55,9 +62,10 @@ export function SiteFooter() {
           <p className="eyebrow">Your wall is waiting</p>
           <h2>Make something <span>impossible to ignore.</span></h2>
         </div>
-        <Link className="button button--primary footer__cta" href="/#custom">
-          Start your design <span aria-hidden="true">↗</span>
-        </Link>
+        <CustomQuoteButton
+          className="button button--whatsapp footer__cta text-base py-3.5 px-6 font-bold"
+          label="Start your design"
+        />
       </div>
       <div className="shell footer__grid">
         <div className="footer-brand">
@@ -66,14 +74,21 @@ export function SiteFooter() {
           </Link>
           <p>Custom LED neon signs, 3D metal channel letters, ultra-thin lightboxes and UV-print acrylic signs — handcrafted to turn your ideas into something unforgettable.</p>
           <span className="footer-brand__note">Designed with feeling. Built to glow.</span>
-          {/* Social icons render only for profiles that actually exist. Fill in
-              SOCIAL_LINKS in lib/site.ts and they reappear automatically —
-              previously these were three dead href="#" links. Adding the real
-              URLs also feeds Organization.sameAs, which is the strongest signal
-              for separating this brand from the unrelated "Glownique" tanning
-              salon that currently owns the name in Google's entity graph. */}
+          {HAS_WHATSAPP && (
+            <div className="mt-4 pt-1">
+              <a
+                href={whatsappQuoteUrl("custom sign")}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2.5 rounded-full bg-[#25D366] px-4 py-2.5 text-xs font-extrabold text-white shadow-md transition-all hover:bg-[#20bd5a] hover:scale-[1.03] active:scale-95"
+              >
+                <WhatsappIcon className="h-4.5 w-4.5 text-white shrink-0" />
+                <span>WhatsApp: {formatWhatsappDisplayNumber()}</span>
+              </a>
+            </div>
+          )}
           {SOCIAL_LINKS.length > 0 && (
-            <div className="socials">
+            <div className="socials mt-3">
               {SOCIAL_LINKS.map((social) => (
                 <a
                   key={social.label}

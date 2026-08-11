@@ -9,6 +9,7 @@ import { ArrowRight, Check, ChevronDown } from "lucide-react";
 
 import { getProductPage, getRelatedProducts } from "@/lib/product-catalog";
 import { whatsappQuoteUrl } from "@/lib/site";
+import { WhatsappIcon } from "@/components/ui/whatsapp-icon";
 
 // Canvas-based and only rendered on the LED neon page, so it's split into its
 // own chunk rather than shipped with all four product routes. No `ssr: false`
@@ -115,9 +116,10 @@ export function ProductDetail({ slug }: { slug: string }) {
                 href={quoteUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="button button--primary"
+                className="button button--whatsapp text-base py-3.5 px-6 font-bold flex items-center gap-2.5"
               >
-                Get a free quote &amp; mockup <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                <span>Get a free quote &amp; mockup</span>
+                <WhatsappIcon className="h-6 w-6 shrink-0" />
               </a>
               <Link
                 href="/#stacking-craft"
@@ -571,8 +573,14 @@ export function ProductDetail({ slug }: { slug: string }) {
             warranty and secure Etsy payment on every order.
           </p>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
-            <a href={quoteUrl} target="_blank" rel="noopener noreferrer" className="button button--primary">
-              Get a free quote &amp; mockup <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            <a
+              href={quoteUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="button button--whatsapp text-base py-3.5 px-6 font-bold flex items-center gap-2.5"
+            >
+              <span>Get a free quote &amp; mockup</span>
+              <WhatsappIcon className="h-6 w-6 shrink-0" />
             </a>
             <Link
               href="/#shop"

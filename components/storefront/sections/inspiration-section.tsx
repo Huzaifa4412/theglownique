@@ -251,7 +251,7 @@ export function InspirationSection() {
 
             <div className="inspiration__action" data-inspiration-action>
               <CustomQuoteButton
-                className="button button--primary custom-cta"
+                className="button button--whatsapp custom-cta"
                 label="Start your design"
               />
               <p>

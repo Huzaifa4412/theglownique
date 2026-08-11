@@ -23,6 +23,7 @@ import {
 } from "lucide-react";
 import { CustomQuoteButton } from "@/components/storefront/custom-quote-button";
 import { PremiumAccentText } from "@/components/ui/premium-accent-text";
+import { WhatsappLogo } from "@phosphor-icons/react";
 
 export interface NeonColor {
   id: string;
@@ -220,7 +221,7 @@ function getIsMobileOnServer(): boolean {
 }
 
 const CTA_CLASS =
-  "button button--primary w-full justify-center py-3.5 text-sm font-semibold rounded-xl shadow-lg transition-transform hover:scale-[1.02] active:scale-[0.98]";
+  "button button--whatsapp w-full justify-center py-3.5 text-sm font-semibold rounded-xl shadow-lg transition-transform hover:scale-[1.02] active:scale-[0.98]";
 
 export type NeonColorChangerSectionProps = {
   /**
@@ -773,7 +774,7 @@ export function NeonColorChangerSection({
                     className={CTA_CLASS}
                   >
                     {ctaLabel}{" "}
-                    <ArrowRight className="w-4 h-4" aria-hidden="true" />
+                    <WhatsappLogo className="w-5 h-5" aria-hidden="true" />
                   </a>
                 ) : (
                   <CustomQuoteButton className={CTA_CLASS} label={ctaLabel} />

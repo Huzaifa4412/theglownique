@@ -120,7 +120,7 @@ export function FaqSection() {
             Still have a question about your sign?
           </p>
           <CustomQuoteButton
-            className="button button--primary"
+            className="button button--whatsapp"
             label="Ask us for a custom quote"
           />
         </div>

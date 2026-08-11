@@ -30,6 +30,12 @@
   --etsy-orange: #f1641e;
   --etsy-fill: #c44f0e;
   --etsy-fill-hover: #a94209;
+  /* WhatsApp brand colors for action buttons and chat links */
+  --whatsapp-green: #25d366;
+  --whatsapp-fill: #25d366;
+  --whatsapp-fill-hover: #20bd5a;
+  --whatsapp-dark: #128c7e;
+  --whatsapp-shadow: rgba(37, 211, 102, 0.35);
   --ink: #1e1a22;
   /* Muted body text. Kept separate from shadcn's --muted, which is a
      near-white BACKGROUND token — using that for text rendered #f5f5f5 on
@@ -342,7 +348,8 @@ h2 {
    breaking out of the shell gutter. Do it in plain CSS so it actually applies —
    below Tailwind's sm the mobile menu carries "Start Your Custom Design". */
 @media (max-width: 639.98px) {
-  .header-actions .button--primary {
+  .header-actions .button--primary,
+  .header-actions .button--whatsapp {
     display: none;
   }
 }
@@ -602,6 +609,26 @@ button:active {
 .button--etsy:hover {
   background: var(--etsy-fill-hover);
   box-shadow: 0 14px 30px rgba(196, 79, 14, 0.32);
+}
+
+/* WhatsApp button — iconic green brand color, active click feedback, and green glow shadow */
+.button--whatsapp {
+  background: var(--whatsapp-fill);
+  color: #ffffff !important;
+  white-space: nowrap;
+  box-shadow: 0 11px 25px var(--whatsapp-shadow);
+  transition: background 180ms ease, color 180ms ease, border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+}
+
+.button--whatsapp:hover {
+  background: var(--whatsapp-fill-hover);
+  color: #ffffff !important;
+  box-shadow: 0 14px 30px rgba(37, 211, 102, 0.45);
+}
+
+.button--whatsapp:active {
+  background: var(--whatsapp-dark);
+  transform: scale(0.975);
 }
 
 /* Etsy's app-icon mark: a rounded square of true Etsy orange with a serif E.

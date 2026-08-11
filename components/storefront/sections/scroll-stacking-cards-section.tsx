@@ -273,7 +273,7 @@ export function ScrollStackingCardsSection() {
                       </div>
 
                       <CustomQuoteButton
-                        className="button button--primary text-xs px-5 py-2.5 rounded-xl font-bold w-full shadow-md"
+                        className="button button--whatsapp text-xs px-5 py-2.5 rounded-xl font-bold w-full shadow-md"
                         label="Start your order"
                       />
                     </div>

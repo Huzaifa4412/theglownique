@@ -11,7 +11,7 @@ const navigationLinks = [
   ["Shop", "#shop"],
   ["Custom Neon", "#color-studio"],
   ["Products", "/products"],
-  ["Inspiration", "#inspiration"],
+  ["Inspiration", "#shop"],
   ["FAQs", "#faq"],
 ] as const;
 
@@ -61,7 +61,7 @@ export function SiteHeader() {
           <EtsyButton className="text-xs px-4 py-2 rounded-full" />
 
           <CustomQuoteButton
-            className="button button--primary text-xs px-4 py-2 rounded-full hidden sm:inline-flex"
+            className="button button--whatsapp text-xs px-4 py-2 rounded-full hidden sm:inline-flex"
             label="Design Your Sign"
           />
         </div>
@@ -87,7 +87,7 @@ export function SiteHeader() {
           )}
         </div>
         <CustomQuoteButton
-          className="button button--primary text-xs w-full py-3 rounded-full text-center"
+          className="button button--whatsapp text-xs w-full py-3 rounded-full text-center"
           label="Start Your Custom Design"
         />
         <EtsyButton className="text-xs w-full py-3 rounded-full text-center mt-2.5" />
