@@ -30,11 +30,19 @@
   --etsy-orange: #f1641e;
   --etsy-fill: #c44f0e;
   --etsy-fill-hover: #a94209;
-  /* WhatsApp brand colors for action buttons and chat links */
+  /* WhatsApp brand colours, kept at WhatsApp's exact swatch.
+     WHITE text on this green is 1.98:1 and fails badly — but the fix is the ink,
+     not the green. Dark ink on the brand swatch is 8.64:1, so the button keeps
+     the colour people recognise AND passes AA comfortably. Darkening the green
+     instead (an earlier attempt) cleared contrast but turned every quote CTA on
+     the site into an anonymous forest green. See .button--whatsapp below: if you
+     ever set that colour back to white, this green has to change with it. */
   --whatsapp-green: #25d366;
   --whatsapp-fill: #25d366;
   --whatsapp-fill-hover: #20bd5a;
   --whatsapp-dark: #128c7e;
+  /* Ink for anything sitting ON the WhatsApp green. */
+  --whatsapp-ink: #1e1a22;
   --whatsapp-shadow: rgba(37, 211, 102, 0.35);
   --ink: #1e1a22;
   /* Muted body text. Kept separate from shadcn's --muted, which is a
@@ -614,7 +622,7 @@ button:active {
 /* WhatsApp button — iconic green brand color, active click feedback, and green glow shadow */
 .button--whatsapp {
   background: var(--whatsapp-fill);
-  color: #ffffff !important;
+  color: var(--whatsapp-ink) !important;
   white-space: nowrap;
   box-shadow: 0 11px 25px var(--whatsapp-shadow);
   transition: background 180ms ease, color 180ms ease, border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
@@ -622,7 +630,7 @@ button:active {
 
 .button--whatsapp:hover {
   background: var(--whatsapp-fill-hover);
-  color: #ffffff !important;
+  color: var(--whatsapp-ink) !important;
   box-shadow: 0 14px 30px rgba(37, 211, 102, 0.45);
 }
 
@@ -634,6 +642,10 @@ button:active {
 /* Etsy's app-icon mark: a rounded square of true Etsy orange with a serif E.
    White on the exact swatch is a logotype, so the 3.2:1 there is fine — the
    glyph is decorative and the link's accessible name comes from aria-label. */
+.etsy-mark::before {
+  content: "E";
+}
+
 .etsy-mark {
   flex: 0 0 auto;
   width: 22px;
@@ -2947,6 +2959,29 @@ button:active {
 .footer-bottom div {
   display: flex;
   gap: 22px;
+}
+
+/* Pre-chat gate. Uses a native <dialog> for the same reason .product-dialog
+   does: showModal() gives focus trapping, Escape-to-close and inert background
+   content for free, none of which is worth hand-rolling. */
+.pre-chat-dialog {
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  width: min(420px, calc(100vw - 32px));
+  max-height: calc(100dvh - 32px);
+  padding: 0;
+  overflow-y: auto;
+  border: 0;
+  border-radius: var(--radius-lg);
+  background: #fff;
+  box-shadow: 0 30px 100px rgba(32, 10, 21, 0.35);
+  z-index: 1000;
+}
+
+.pre-chat-dialog::backdrop {
+  background: rgba(25, 11, 18, 0.56);
+  backdrop-filter: blur(5px);
 }
 
 .product-dialog {

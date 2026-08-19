@@ -2,13 +2,28 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { LegalPage } from "@/components/legal/legal-page";
-import { formattedLastUpdated } from "@/lib/legal";
 
 export const metadata: Metadata = {
   title: "Accessibility Statement",
   description:
-    "The Glownique aims for WCAG 2.2 Level AA. Our homepage currently scores 100/100 on Lighthouse accessibility. Keyboard support, reduced-motion support, and known limitations.",
+    "The Glownique aims for WCAG 2.2 Level AA. Our latest homepage Lighthouse accessibility score, the specific checks currently failing, keyboard and reduced-motion support, and known limitations.",
   alternates: { canonical: "/accessibility" },
+  openGraph: {
+    type: "website",
+    siteName: "The Glownique",
+    title: "Accessibility Statement | The Glownique",
+    description:
+      "The Glownique accessibility statement, WCAG 2.2 Level AA targets, keyboard support and reduced-motion features.",
+    url: "/accessibility",
+    images: [{ url: "/hero/neon-sign-hero.png", alt: "The Glownique Accessibility Statement" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Accessibility Statement | The Glownique",
+    description:
+      "The Glownique accessibility statement, WCAG 2.2 Level AA targets, keyboard support and reduced-motion features.",
+    images: ["/hero/neon-sign-hero.png"],
+  },
 };
 
 // Claims here are deliberately verifiable rather than aspirational. If the
@@ -36,14 +51,39 @@ export default function AccessibilityPage() {
 
       <h2>Where we stand today</h2>
       <p>
-        As of {formattedLastUpdated()}, our homepage scores <strong>100/100</strong> for
-        accessibility in Google Lighthouse (mobile), with zero failed audits. Specifically:
+        Measured on <strong>19 August 2026</strong> against a production build with Google
+        Lighthouse (mobile). The homepage, contact page, guides, business-sign detail pages and
+        policy pages score <strong>100/100</strong>. Three templates score <strong>96/100</strong>:
+        the product hub, the individual product pages and the business-signs hub.
+      </p>
+      <p>
+        The gap is honest and specific. Each sign type has a bright brand colour, and on those
+        three templates the colour is used for small text and for badge labels where it measures
+        between 2.2:1 and 4.1:1 against its background — short of the 4.5:1 that small text needs.
+        We had darker versions of those colours in place and reverted them, because the muted
+        palette lost the identity of the product range. That was a deliberate trade, not an
+        oversight, and it is on our list to solve properly rather than by dulling the brand.
+      </p>
+      <p>
+        In the meantime: none of the affected text is the only way to get information. Every badge
+        repeats a heading next to it, and every accent-coloured label sits beside body text in full
+        contrast. If any of it is hard to read, tell us and we will fix that page first.
       </p>
       <ul>
         <li>
-          <strong>Colour contrast.</strong> Body and interface text meets the 4.5:1 minimum. We use
-          a deeper tone of our brand pink for text and buttons, because the brighter version
-          didn&apos;t pass.
+          <strong>Colour contrast.</strong> Body text and interface text meet the 4.5:1 minimum.
+          The exception is the per-product accent colour described above. Our WhatsApp buttons keep
+          the real WhatsApp green — white text on it is only 1.98:1, so they use dark ink instead,
+          which reads at 8.6:1 without giving up the colour people recognise.
+        </li>
+        <li>
+          <strong>Labels match visible text.</strong> Every control&apos;s accessible name contains
+          the words you can see on it, so voice-control users can activate what they read.
+        </li>
+        <li>
+          <strong>Embedded frames are labelled.</strong> The live-chat widget&apos;s frames are
+          given titles as they appear, so a screen reader announces them rather than reading out an
+          unlabelled frame.
         </li>
         <li>
           <strong>Keyboard navigation.</strong> Interactive controls are reachable and operable by
@@ -62,19 +102,15 @@ export default function AccessibilityPage() {
           <strong>Touch targets.</strong> Buttons and controls meet the 24×24px minimum spacing
           requirement.
         </li>
-        <li>
-          <strong>Labels.</strong> Controls have accessible names that match their visible text, so
-          voice-control users can activate what they can read.
-        </li>
       </ul>
 
       <h2>Known limitations</h2>
       <p>Being honest about the gaps is more useful than claiming perfection:</p>
       <ul>
         <li>
-          <strong>Automated testing has limits.</strong> A 100/100 Lighthouse score checks what a
-          machine can check. It is not the same as a full manual audit with assistive-technology
-          users, which we have not yet commissioned.
+          <strong>Automated testing has limits.</strong> A Lighthouse score checks what a machine
+          can check. Even a perfect score is not the same as a full manual audit with
+          assistive-technology users, which we have not yet commissioned.
         </li>
         <li>
           <strong>Motion-heavy pages.</strong> Even with reduced-motion support, our homepage is

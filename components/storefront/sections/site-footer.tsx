@@ -3,6 +3,7 @@ import Link from "next/link";
 import { StoreIcon } from "@/components/storefront/store-icon";
 import { CustomQuoteButton } from "@/components/storefront/custom-quote-button";
 import { WhatsappIcon } from "@/components/ui/whatsapp-icon";
+import { DELIVERY } from "@/lib/claims";
 import {
   HAS_WHATSAPP,
   SOCIAL_LINKS,
@@ -80,9 +81,10 @@ export function SiteFooter() {
                 href={whatsappQuoteUrl("custom sign")}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2.5 rounded-full bg-[#25D366] px-4 py-2.5 text-xs font-extrabold text-white shadow-md transition-all hover:bg-[#20bd5a] hover:scale-[1.03] active:scale-95"
+                data-meta-source="footer-whatsapp"
+                className="inline-flex items-center gap-2.5 rounded-full bg-[#25D366] px-4 py-2.5 text-xs font-extrabold text-[#1e1a22] shadow-md transition-all hover:bg-[#20bd5a] hover:scale-[1.03] active:scale-95"
               >
-                <WhatsappIcon className="h-4.5 w-4.5 text-white shrink-0" />
+                <WhatsappIcon className="h-4.5 w-4.5 text-[#1e1a22] shrink-0" />
                 <span>WhatsApp: {formatWhatsappDisplayNumber()}</span>
               </a>
             </div>
@@ -117,7 +119,7 @@ export function SiteFooter() {
           <p>
             <StoreIcon name="Truck" />
             <span>
-              <strong>Free worldwide delivery</strong>On every order, no minimum
+              <strong>{DELIVERY.short}</strong>{DELIVERY.supporting}
             </span>
           </p>
           <p>

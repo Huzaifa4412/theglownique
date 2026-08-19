@@ -9,6 +9,22 @@ export const metadata: Metadata = {
   description:
     "The terms covering custom sign quotes, artwork rights, payment through Etsy, production times, delivery and warranty at The Glownique.",
   alternates: { canonical: "/terms" },
+  openGraph: {
+    type: "website",
+    siteName: "The Glownique",
+    title: "Terms of Sale | The Glownique",
+    description:
+      "The terms covering custom sign quotes, artwork rights, payment through Etsy, production times, delivery and warranty.",
+    url: "/terms",
+    images: [{ url: "/hero/neon-sign-hero.png", alt: "The Glownique Terms of Sale" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Terms of Sale | The Glownique",
+    description:
+      "The terms covering custom sign quotes, artwork rights, payment through Etsy, production times, delivery and warranty.",
+    images: ["/hero/neon-sign-hero.png"],
+  },
 };
 
 export default function TermsPage() {

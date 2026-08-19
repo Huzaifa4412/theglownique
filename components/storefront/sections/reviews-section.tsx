@@ -24,7 +24,12 @@ export function ReviewsSection() {
             {ETSY_SHOP_URL ? (
               <>
                 {" "}
-                <a href={ETSY_SHOP_URL} rel="noopener" target="_blank">
+                <a
+                  href={ETSY_SHOP_URL}
+                  rel="noopener"
+                  target="_blank"
+                  data-meta-source="reviews-etsy-link"
+                >
                   Read them all on Etsy
                 </a>
                 .

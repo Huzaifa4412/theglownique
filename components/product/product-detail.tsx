@@ -10,6 +10,7 @@ import { ArrowRight, Check, ChevronDown } from "lucide-react";
 import { getProductPage, getRelatedProducts } from "@/lib/product-catalog";
 import { whatsappQuoteUrl } from "@/lib/site";
 import { WhatsappIcon } from "@/components/ui/whatsapp-icon";
+import { DELIVERY } from "@/lib/claims";
 
 // Canvas-based and only rendered on the LED neon page, so it's split into its
 // own chunk rather than shipped with all four product routes. No `ssr: false`
@@ -116,6 +117,7 @@ export function ProductDetail({ slug }: { slug: string }) {
                 href={quoteUrl}
                 target="_blank"
                 rel="noopener noreferrer"
+                data-meta-source="product-hero-cta"
                 className="button button--whatsapp text-base py-3.5 px-6 font-bold flex items-center gap-2.5"
               >
                 <span>Get a free quote &amp; mockup</span>
@@ -169,7 +171,7 @@ export function ProductDetail({ slug }: { slug: string }) {
       {/* ─────────────────────── TRUST BAR ─────────────────────── */}
       <section className="border-b border-[#eadfe4] bg-white">
         <div className="mx-auto flex max-w-[1320px] flex-wrap items-center justify-center gap-x-8 gap-y-3 px-4 py-5 text-xs font-semibold text-[#5e5862] sm:text-sm">
-          {["Free worldwide delivery", "5-year warranty", "Free design mockup", "Secure Etsy payment"].map((item) => (
+          {[DELIVERY.short, "5-year warranty", "Free design mockup", "Secure Etsy payment"].map((item) => (
             <span key={item} className="inline-flex items-center gap-2">
               <span className="flex h-4 w-4 items-center justify-center rounded-full" style={{ backgroundColor: accent }}>
                 <Check className="h-2.5 w-2.5 text-white" aria-hidden="true" />
@@ -569,14 +571,15 @@ export function ProductDetail({ slug }: { slug: string }) {
             Ready to design your {product.name.replace(/s$/, "").toLowerCase()}?
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-gray-300">
-            Send your idea and we&apos;ll send back a free mockup — with free worldwide delivery, a 5-year
-            warranty and secure Etsy payment on every order.
+            Send your idea and we&apos;ll send back a free mockup — with tracked worldwide delivery, a
+            5-year warranty and secure Etsy payment on every order.
           </p>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
             <a
               href={quoteUrl}
               target="_blank"
               rel="noopener noreferrer"
+              data-meta-source="product-closing-cta"
               className="button button--whatsapp text-base py-3.5 px-6 font-bold flex items-center gap-2.5"
             >
               <span>Get a free quote &amp; mockup</span>

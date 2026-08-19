@@ -21,8 +21,10 @@ import {
 
 import { IconBox } from "@/components/icon-box";
 import { SignTypePreview } from "@/components/storefront/sign-type-preview";
+import { trackQuoteSubmitted } from "@/lib/meta-pixel";
 import { products, type Product, type SignType } from "@/lib/store-data";
 import { HAS_WHATSAPP, WHATSAPP_NUMBER } from "@/lib/site";
+import { buildWhatsappUrl } from "@/lib/whatsapp";
 import { WhatsappIcon } from "@/components/ui/whatsapp-icon";
 
 type ProductDialogProps = {
@@ -166,9 +168,27 @@ export function ProductDialog({
       return;
     }
 
+    // The conversion. Fired before the handoff, because window.open on a mobile
+    // browser can navigate this tab away and kill any pending pixel request —
+    // and fired here rather than caught by the document-level outbound-link
+    // listener in MetaPixelEvents, since this is a completed form and not a bare
+    // click on a chat link. The listener never sees it: window.open isn't a
+    // click on an anchor.
+    trackQuoteSubmitted({
+      productName: product.name,
+      signType: activeSignType,
+      colour: color,
+      size: calculatedSize,
+      usageLocation,
+      deliveryCountry,
+      budget,
+      timeline,
+      hasReferenceFile: Boolean(file),
+    });
+
     closeDialog();
     window.open(
-      `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`,
+      buildWhatsappUrl(message, WHATSAPP_NUMBER),
       "_blank",
       "noopener,noreferrer",
     );

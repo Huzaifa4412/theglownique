@@ -1,4 +1,5 @@
 import { StoreIcon } from "@/components/storefront/store-icon";
+import { DELIVERY } from "@/lib/claims";
 
 export function AnnouncementBar() {
   return (
@@ -10,7 +11,7 @@ export function AnnouncementBar() {
         <div className="announcement__viewport">
           <div className="announcement__track">
             <div className="announcement__group">
-              <span><StoreIcon name="Sparkle" /> Free worldwide delivery on all orders</span>
+              <span><StoreIcon name="Sparkle" /> {DELIVERY.short}</span>
               <span aria-hidden="true">|</span>
               <span>5-year warranty</span>
               <span aria-hidden="true">|</span>
@@ -29,7 +30,7 @@ export function AnnouncementBar() {
               <span>Design support included</span>
             </div>
             <div className="announcement__group" aria-hidden="true">
-              <span><StoreIcon name="Sparkle" /> Free worldwide delivery on all orders</span>
+              <span><StoreIcon name="Sparkle" /> {DELIVERY.short}</span>
               <span aria-hidden="true">|</span>
               <span>5-year warranty</span>
               <span aria-hidden="true">|</span>
