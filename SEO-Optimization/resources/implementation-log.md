@@ -246,3 +246,66 @@ Leads are now visible in the Studio at `/studio` under **Leads → New**.
 - No rate limiting on `/api/leads`. It is spammable. A real fix needs a KV store
   or Vercel's WAF; a per-instance in-memory counter would be theatre on
   serverless.
+
+---
+
+## Release 2026-08-20 — merged and deployed to production
+
+PR [#1](https://github.com/Huzaifa4412/theglownique/pull/1) merged to `master` as
+`e142de8`. Production deployment **Ready**.
+
+### Production had been broken for 14 days
+
+The last successful production deploy before this was **2026-08-05**, even though
+the Sanity and Meta Pixel commits were both on `origin/master`. Cause, confirmed
+from the failed preview build log:
+
+```
+Error: Missing environment variable: NEXT_PUBLIC_SANITY_DATASET
+```
+
+`sanity/env.ts` calls `assertValue`, which throws at build time, and Vercel had
+only `NEXT_PUBLIC_WHATSAPP_NUMBER` configured. Every build after the Sanity commit
+failed. `NEXT_PUBLIC_SANITY_PROJECT_ID` and `NEXT_PUBLIC_SANITY_DATASET` were added
+to Production, and this is the first green production build since 5 August.
+
+Consequence worth recording: the Meta Pixel was committed on 2026-08-14 but never
+reached production, so the "no tracking pixels" privacy claim was wrong in the
+repository rather than on the live site. It was still wrong and still had to go —
+but the exposure was smaller than first stated.
+
+Note that `/api/leads` widened this dependency: previously only `/studio` needed
+the Sanity vars, now the route handler does too. Any environment that builds this
+app must have them.
+
+### Verified against https://www.theglownique.com
+
+`scripts/seo-audit.mjs --base https://www.theglownique.com` → **21 routes, 0
+failures, 0 warnings**. Plus:
+
+| Check | Result |
+|---|---|
+| `/studio` response header | `X-Robots-Tag: noindex, nofollow, noarchive, noimageindex` |
+| Legacy `anthropic-ai` in robots.txt | gone |
+| `Claude-SearchBot` in robots.txt | present |
+| "Free worldwide delivery" on homepage | 0 occurrences |
+| "Tracked worldwide delivery" | 12 occurrences |
+| `/contact` links in homepage nav | 3 (desktop, mobile, footer) |
+| IndexNow key file | 200 |
+| `llms.txt` marks the promo ended | yes |
+| `/privacy` names the Meta Pixel | yes |
+| Distinct sitemap `lastmod` values | 2 — dates are not build-stamped |
+
+### Still open
+
+- **Preview scope for the two `NEXT_PUBLIC_SANITY_*` vars.** Vercel CLI 54.9.1
+  returns `action_required: git_branch_required` even for its own documented
+  `--yes` form, so this needs the dashboard. Until then every PR preview build
+  fails the same way.
+- **`SANITY_API_WRITE_TOKEN` is set for Preview as well as Production.** That was
+  not the recommendation: a preview deploy now writes real `lead` documents into
+  the production dataset, so testing a form on a preview URL creates a real lead.
+  Remove the Preview scope unless that is wanted.
+- **No rate limiting on `/api/leads`**, which is now live and publicly postable.
+- IndexNow has **not** been pinged for this release; run `npm run indexnow -- --all`
+  if you want Bing notified of the changed URLs.
