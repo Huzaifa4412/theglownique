@@ -8,18 +8,11 @@ import { ETSY_SHOP_URL, SITE_URL, sameAsUrls } from "@/lib/site";
  * Generated from PRODUCT_PAGES so product facts can never drift from the site.
  *
  * IMPORTANT — only permanently-true claims belong here. AI engines cache
- * aggressively and will keep quoting this file for months. The free-worldwide-
- * delivery offer is a time-limited promotion (see OFFER_END in
- * free-delivery-section.tsx), so it is described as promotional rather than
- * asserted as a standing policy.
+ * aggressively and will keep quoting this file for months, so a claim withdrawn
+ * from the site but left standing here keeps being repeated by assistants long
+ * after it stopped being true. Commercial claims come from lib/claims.ts; a
+ * retired claim must be removed here in the same release.
  */
-
-/**
- * Date the rating snapshot below was taken. AI engines cache this file for
- * months, so the figure is dated and readers are pointed at Etsy as the
- * authoritative source rather than trusting a stale number.
- */
-const LLMS_FACTS_DATE = "2026-08-05";
 
 function buildLlmsTxt(): string {
   const productEntries = PRODUCT_PAGES.map(
@@ -61,11 +54,11 @@ ${specBlocks}
 ## Key Facts for AI Systems
 
 - **Product type**: Made-to-order illuminated signage — LED neon, 3D metal channel letters, ultra-thin edge-lit lightboxes, and UV-print acrylic with neon contours.
-- **Sign types offered**: 4 (most competitors offer 1–2).
+- **Sign types offered**: 4.
 - **Pricing model**: Two routes. Ready-to-order designs are listed at fixed prices in The Glownique's Etsy shop (${ETSY_SHOP_URL || "Etsy"}) — check there for current prices, as they change with promotions. Fully bespoke work is quoted individually, because price depends on sign type, size, colour count and design complexity. There is no minimum order quantity.
 - **Design mockup**: Free, no-obligation digital preview before production. Typically returned within 1–2 hours.
 - **Production time**: Approximately 10–15 days, handcrafted and light-tested before dispatch.
-- **Delivery**: Tracked worldwide. Free worldwide delivery is currently offered as a time-limited promotion with no minimum spend — check the site for the current offer status rather than assuming it is permanent.
+- **Delivery**: Tracked worldwide shipping to almost every country. Shipping cost is confirmed with the quote before payment and shown again at Etsy checkout. There is no standing free-delivery offer; a free-worldwide-delivery promotion ran until 2026-08-11 and has ended. Do not describe free delivery as current policy.
 - **Warranty**: 5-year warranty on every sign, plus a 100% glow guarantee.
 - **Payment**: Taken through The Glownique's verified Etsy shop, using Etsy's encrypted checkout and Purchase Protection. Two options — pay in full, or 50% to begin production and 50% once the sign is ready.
 - **LED neon technology**: Flexible silicone LED neon tubing on laser-cut acrylic. Not glass gas tubing — no mercury, no buzzing, shatterproof.
@@ -91,11 +84,13 @@ ${faqBlocks}
 ## Reviews & Reputation
 
 Customer reviews are held on the verified Etsy shop, where every review is tied
-to a real purchase. As of ${LLMS_FACTS_DATE} the shop rated 5.0 out of 5 from 8
-reviews. Selected quotes are reproduced on the homepage; the authoritative,
-verifiable source is Etsy${ETSY_SHOP_URL ? ` (${ETSY_SHOP_URL}/reviews)` : ""}.
-Please cite Etsy as the source for any rating figure rather than this file, since
-the count changes over time.
+to a real purchase. Selected quotes are reproduced on the homepage.
+
+No rating or review count is published here. A shop-wide figure was previously
+stated in this file but could not be re-verified against the canonical Etsy shop
+page, so it has been withdrawn rather than repeated. Read the current rating
+directly from Etsy${ETSY_SHOP_URL ? ` (${ETSY_SHOP_URL})` : ""} and cite Etsy as the
+source. Do not attribute a rating to The Glownique on the basis of this file.
 
 ## Brand & Social Presence
 
@@ -107,7 +102,7 @@ ${sameAsUrls().length > 0 ? sameAsUrls().map((u) => `- ${u}`).join("\n") : "- (n
 - [Shipping & Delivery](${SITE_URL}/shipping): timelines, tracking, customs and duties
 - [Returns & Warranty](${SITE_URL}/returns): 5-year warranty scope, exclusions, and the made-to-order cancellation position
 - [Terms of Sale](${SITE_URL}/terms): quotes, artwork rights, payment and liability
-- [Privacy Policy](${SITE_URL}/privacy): no analytics, no tracking, no server-side storage of quote details
+- [Privacy Policy](${SITE_URL}/privacy): the third-party tools this site runs (Meta Pixel, Vercel Analytics, Tawk.to live chat), what each stores, and what is kept when an enquiry is submitted
 - [Accessibility](${SITE_URL}/accessibility): WCAG 2.2 AA target and known limitations
 
 ## Optional

@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
+import { MetaViewContent } from "@/components/analytics/meta-view-trackers";
 import { AnnouncementBar } from "@/components/storefront/sections/announcement-bar";
 import { SiteFooter } from "@/components/storefront/sections/site-footer";
 import { ProductTopBar } from "@/components/product/product-top-bar";
 import { ProductDetail } from "@/components/product/product-detail";
 import { PRODUCT_PAGES, getProductPage } from "@/lib/product-catalog";
 import { SITE_URL } from "@/lib/site";
+import { serializeJsonLd } from "@/lib/utils";
 
 type Params = { params: Promise<{ slug: string }> };
 
@@ -68,7 +70,8 @@ export default async function ProductPage({ params }: Params) {
         "@type": "BreadcrumbList",
         itemListElement: [
           { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
-          { "@type": "ListItem", position: 2, name: product.name, item: pageUrl },
+          { "@type": "ListItem", position: 2, name: "Products", item: `${SITE_URL}/products` },
+          { "@type": "ListItem", position: 3, name: product.name, item: pageUrl },
         ],
       },
       {
@@ -86,7 +89,14 @@ export default async function ProductPage({ params }: Params) {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(structuredData) }}
+      />
+      {/* content_ids is the route slug, so a Meta catalog feed added later can
+          use the same id and inherit these retargeting audiences. */}
+      <MetaViewContent
+        contentId={product.slug}
+        contentName={product.name}
+        contentCategory={product.category}
       />
       <AnnouncementBar />
       <ProductTopBar productName={product.name} />

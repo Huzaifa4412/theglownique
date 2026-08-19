@@ -211,7 +211,7 @@ export function HeroSection() {
             <div>
               <IconBox icon={Truck} />
               <span>
-                <strong>Free delivery</strong>On every order
+                <strong>Tracked delivery</strong>Worldwide
               </span>
             </div>
             <div>

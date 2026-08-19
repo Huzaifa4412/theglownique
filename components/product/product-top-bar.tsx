@@ -17,7 +17,7 @@ export function ProductTopBar({ productName }: { productName: string }) {
 
         <nav
           className="hidden items-center gap-5 text-xs font-bold uppercase tracking-wide text-[#5e5862] lg:flex"
-          aria-label="Product pages"
+          aria-label="Primary navigation"
         >
           <Link href="/" className="transition-colors hover:text-[#ce0754]">
             Home
@@ -31,12 +31,16 @@ export function ProductTopBar({ productName }: { productName: string }) {
               {p.category}
             </Link>
           ))}
+          <Link href="/contact" className="transition-colors hover:text-[#ce0754]">
+            Contact
+          </Link>
         </nav>
 
         <a
           href={whatsappQuoteUrl(productName)}
           target="_blank"
           rel="noopener noreferrer"
+          data-meta-source="product-top-bar"
           className="button button--whatsapp rounded-full px-4 py-2.5 text-sm font-bold flex items-center gap-2"
         >
           <span>Get a free quote</span>

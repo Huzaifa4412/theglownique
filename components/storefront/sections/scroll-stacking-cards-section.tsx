@@ -66,7 +66,7 @@ const STACK_CARDS: StackCardItem[] = [
     title: "Approve & Get Your Quote",
     subtitle: "Two Flexible Payment Options",
     description:
-      "Happy with the mockup? We send a clear, all-in quote — sign, custom options and free worldwide delivery included. Choose the plan that suits you: pay in full, or split it 50/50, with half to begin production and the balance once your sign is ready.",
+      "Happy with the mockup? We send a clear, all-in quote — sign, custom options and tracked delivery included. Choose the plan that suits you: pay in full, or split it 50/50, with half to begin production and the balance once your sign is ready.",
     icon: FileText,
     accentHex: "#0284c7",
     accentText: "#075985",
@@ -114,18 +114,18 @@ const STACK_CARDS: StackCardItem[] = [
     id: "step-6",
     number: "06",
     badge: "We deliver it",
-    title: "Free Worldwide Delivery",
+    title: "Tracked Worldwide Delivery",
     subtitle: "Tracked Right to Your Door",
     description:
-      "Once your sign is ready and the balance is settled, it ships with free worldwide delivery, fully tracked to your door — arriving ready to hang and glow, wherever in the world you are.",
+      "Once your sign is ready and the balance is settled, it ships fully tracked to your door — arriving ready to hang and glow, wherever in the world you are.",
     icon: Truck,
     accentHex: "#0e9f6e",
     accentText: "#047857",
     glowShadow: "rgba(14, 159, 110, 0.16)",
     accentBg: "rgba(14, 159, 110, 0.08)",
     badgeBg: "#ecfdf5",
-    stats: "Free delivery worldwide, fully tracked",
-    previewText: "Free Delivery",
+    stats: "Shipped worldwide, fully tracked",
+    previewText: "Tracked Delivery",
   },
 ];
 
@@ -156,7 +156,7 @@ export function ScrollStackingCardsSection() {
           </h2>
 
           <p className="text-sm sm:text-base text-[#5e5862] leading-relaxed max-w-2xl mx-auto font-normal">
-            Scroll to see how your custom sign goes from first idea to free worldwide delivery — no guesswork, no risk.
+            Scroll to see how your custom sign goes from first idea to tracked delivery — no guesswork, no risk.
           </p>
         </div>
 

@@ -4,12 +4,31 @@ import { useState } from "react";
 import { Sparkles, Tag, ShieldCheck, Zap } from "lucide-react";
 import { CurvedInput } from "@/components/ui/curved-input";
 import { PremiumAccentText } from "@/components/ui/premium-accent-text";
+import { archiveLead } from "@/lib/leads";
+import { trackNewsletterSignup } from "@/lib/meta-pixel";
 
 export function NewsletterSection() {
   const [message, setMessage] = useState("");
 
   const handleEmailSubmit = (email: string) => {
-    setMessage(`Your welcome code is on its way to ${email}.`);
+    // The address is now archived to Sanity, so a signup is a real record
+    // someone can act on. Before this it was discarded and the confirmation
+    // message claimed a code had been sent — a promise nothing could keep.
+    //
+    // The wording below is deliberately "we'll send" rather than "on its way":
+    // the code is sent by hand from the Studio, so the copy has to describe a
+    // commitment, not a delivery that already happened.
+    archiveLead({
+      source: "newsletter",
+      email,
+      topic: "Newsletter signup (10% welcome code)",
+      pagePath: "/",
+      consent: true,
+    });
+    trackNewsletterSignup();
+    setMessage(
+      `Thanks — ${email} is on the list. We'll email your 10% code shortly.`,
+    );
   };
 
   return (

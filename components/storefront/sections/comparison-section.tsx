@@ -1,6 +1,7 @@
 import { CustomQuoteButton } from "@/components/storefront/custom-quote-button";
 import { StoreIcon } from "@/components/storefront/store-icon";
 import { PremiumAccentText } from "@/components/ui/premium-accent-text";
+import { DELIVERY } from "@/lib/claims";
 
 const comparisonRows = [
   ["Free digital mockup", "1–2 hours", "Days"],
@@ -12,7 +13,7 @@ const includedBenefits = [
   "Made to your exact spec",
   "All four sign types",
   "Free design preview",
-  "Free worldwide delivery",
+  DELIVERY.short,
   "5-year warranty",
 ] as const;
 

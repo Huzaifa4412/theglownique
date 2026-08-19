@@ -18,6 +18,7 @@ export type ProductFeature = {
   text: string;
 };
 
+
 export type ProductUseCase = {
   title: string;
   text: string;
@@ -288,7 +289,7 @@ export const PRODUCT_PAGES: ProductPage[] = [
     ],
     metaTitle: "Custom LED Neon Signs — Made to Order",
     metaDescription:
-      "Design custom LED neon signs handcrafted from flexible silicone on acrylic. 13 colours plus RGB, up to 100,000-hour glow, free mockup, 5-year warranty and free worldwide delivery.",
+      "Design custom LED neon signs handcrafted from flexible silicone on acrylic. 13 colours plus RGB, up to 100,000-hour glow, free mockup, 5-year warranty and tracked worldwide delivery.",
   },
   {
     slug: "3d-metal-neon-signs",
@@ -451,7 +452,7 @@ export const PRODUCT_PAGES: ProductPage[] = [
     ],
     metaTitle: "3D Metal Neon Signs — Channel Letters & Logos",
     metaDescription:
-      "Custom 3D metal channel-letter signs — frontlit, halo backlit or dual-lit stainless steel with premium finishes. IP67 outdoor-rated, free mockup, 5-year warranty, free worldwide delivery.",
+      "Custom 3D metal channel-letter signs — frontlit, halo backlit or dual-lit stainless steel with premium finishes. IP67 outdoor-rated, free mockup, 5-year warranty, tracked worldwide delivery.",
   },
   {
     slug: "ultra-thin-lightbox",
@@ -577,7 +578,7 @@ export const PRODUCT_PAGES: ProductPage[] = [
     ],
     metaTitle: "Ultra Thin Slim LED Lightboxes — Edge-Lit Signage",
     metaDescription:
-      "Ultra-thin edge-lit LED lightboxes in slim anodized-aluminium frames with 100% even, shadow-free light and tool-free graphic swaps. Free mockup, 5-year warranty, free worldwide delivery.",
+      "Ultra-thin edge-lit LED lightboxes in slim anodized-aluminium frames with 100% even, shadow-free light and tool-free graphic swaps. Free mockup, 5-year warranty, tracked worldwide delivery.",
   },
   {
     slug: "uv-print-acrylic-signs",
@@ -711,7 +712,7 @@ export const PRODUCT_PAGES: ProductPage[] = [
     ],
     metaTitle: "3D Acrylic Illuminated Neon Signs — Logos & Brand Art",
     metaDescription:
-      "Cost-effective 3D acrylic signs pairing full-colour UV print with glowing LED neon contours — the affordable way to light a detailed, multi-colour logo. Free mockup, 5-year warranty, free worldwide delivery.",
+      "Cost-effective 3D acrylic signs pairing full-colour UV print with glowing LED neon contours — the affordable way to light a detailed, multi-colour logo. Free mockup, 5-year warranty, tracked worldwide delivery.",
   },
 ];
 

@@ -1,5 +1,6 @@
 import { CustomQuoteButton } from "@/components/storefront/custom-quote-button";
 import { PremiumAccentText } from "@/components/ui/premium-accent-text";
+import { serializeJsonLd } from "@/lib/utils";
 
 const faqs = [
   {
@@ -32,7 +33,7 @@ const faqs = [
   },
   {
     q: "Do you offer worldwide delivery, and how much is shipping?",
-    a: "Yes — delivery is currently free worldwide on every order, with no minimum spend, to almost every country. Every sign is carefully packed and tracked to your door.",
+    a: "Yes — we ship to almost every country with tracked delivery. Shipping is confirmed with your quote before you pay, and the exact figure is shown at Etsy checkout, so there is no surprise at the end. Every sign is carefully packed and tracked to your door.",
   },
   {
     q: "How much does a custom neon sign cost?",
@@ -67,7 +68,7 @@ export function FaqSection() {
     >
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(faqJsonLd) }}
       />
 
       <div className="shell max-w-3xl mx-auto px-4">

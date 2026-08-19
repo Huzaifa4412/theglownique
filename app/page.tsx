@@ -3,13 +3,13 @@ import { CategoryRail } from "@/components/storefront/sections/category-rail";
 import { ComparisonSection } from "@/components/storefront/sections/comparison-section";
 import { ConceptToGlowSection } from "@/components/storefront/sections/concept-to-glow-section";
 import { FaqSection } from "@/components/storefront/sections/faq-section";
-import { FreeDeliverySection } from "@/components/storefront/sections/free-delivery-section";
 import { GlowDirectionsSection } from "@/components/storefront/sections/glow-directions-section";
 import { HeroSection } from "@/components/storefront/sections/hero-section";
 import { InspirationSection } from "@/components/storefront/sections/inspiration-section";
 import { NeonColorChangerSection } from "@/components/storefront/sections/neon-color-changer-section";
 import { SignTypesVideoSection } from "@/components/storefront/sections/sign-types-video-section";
 import { NewsletterSection } from "@/components/storefront/sections/newsletter-section";
+import { OrderIncludesSection } from "@/components/storefront/sections/order-includes-section";
 import { OrderTimeline } from "@/components/storefront/sections/order-timeline";
 import { ReviewsSection } from "@/components/storefront/sections/reviews-section";
 import { ScrollStackingCardsSection } from "@/components/storefront/sections/scroll-stacking-cards-section";
@@ -26,7 +26,7 @@ export default function Home() {
       <main id="main-content">
         <HeroSection />
         <CategoryRail />
-        <FreeDeliverySection />
+        <OrderIncludesSection />
         <OrderTimeline />
         <ConceptToGlowSection />
         <NeonColorChangerSection />

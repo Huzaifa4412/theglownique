@@ -6,7 +6,10 @@ import {
   DM_Sans,
   Manrope, Geist } from "next/font/google";
 import "./globals.css";
-import { cn } from "@/lib/utils";
+import { MetaPixel } from "@/components/analytics/meta-pixel";
+import { MetaPixelEvents } from "@/components/analytics/meta-pixel-events";
+import { PreChatGate } from "@/components/chat/pre-chat-gate";
+import { cn, serializeJsonLd } from "@/lib/utils";
 import { sameAsUrls } from "@/lib/site";
 
 const geist = Geist({subsets:['latin'],variable:'--font-sans'});
@@ -43,25 +46,7 @@ export const metadata: Metadata = {
     template: "%s | The Glownique",
   },
   description:
-    "Custom LED neon signs, 3D metal channel letters, ultra-thin lightboxes and UV-print acrylic signs — free design preview, free worldwide delivery and a 5-year warranty.",
-  keywords: [
-    "custom neon signs",
-    "LED neon signs",
-    "personalised neon signs",
-    "custom LED neon sign",
-    "3D metal neon signs",
-    "channel letter signs",
-    "halo lit signs",
-    "frontlit and backlit signs",
-    "ultra thin lightbox",
-    "edge-lit LED lightbox",
-    "3D acrylic UV print signs",
-    "custom logo signs",
-    "business signage",
-    "storefront signs",
-    "wedding neon signs",
-    "neon signs for bedroom",
-  ],
+    "Custom LED neon signs, 3D metal channel letters, ultra-thin lightboxes and UV-print acrylic signs — free design preview, tracked worldwide delivery and a 5-year warranty.",
   applicationName: "The Glownique",
   authors: [{ name: "The Glownique" }],
   creator: "The Glownique",
@@ -76,7 +61,7 @@ export const metadata: Metadata = {
     title:
       "The Glownique | Custom LED Neon Signs, Lightboxes & Business Signage",
     description:
-      "Handcrafted custom LED neon signs, 3D metal channel letters, ultra-thin lightboxes and UV-print acrylic signs — previewed free, delivered free worldwide and backed by a 5-year warranty.",
+      "Handcrafted custom LED neon signs, 3D metal channel letters, ultra-thin lightboxes and UV-print acrylic signs — previewed free, delivered worldwide with tracking and backed by a 5-year warranty.",
     url: "/",
     locale: "en_US",
     images: [
@@ -92,7 +77,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "The Glownique | Custom LED Neon Signs & Signage",
     description:
-      "Handcrafted custom LED neon signs, 3D metal channel letters, ultra-thin lightboxes and UV-print acrylic signs — previewed free, delivered free worldwide with a 5-year warranty.",
+      "Handcrafted custom LED neon signs, 3D metal channel letters, ultra-thin lightboxes and UV-print acrylic signs — previewed free, delivered worldwide with tracking and a 5-year warranty.",
     images: ["/hero/neon-sign-hero.png"],
   },
   robots: {
@@ -114,8 +99,8 @@ export const metadata: Metadata = {
   },
 };
 
-// Honest, layout-invisible structured data for richer search results.
-// Product ratings are intentionally omitted (no verified aggregate rating).
+// Honest, layout-invisible structured data for global entity organization.
+// Commercial Offer/Product nodes are scoped to dedicated product/catalog routes.
 const structuredData = {
   "@context": "https://schema.org",
   "@graph": [
@@ -140,48 +125,6 @@ const structuredData = {
         "Ultra-thin LED lightboxes",
         "UV-print acrylic signs",
       ],
-      hasOfferCatalog: {
-        "@type": "OfferCatalog",
-        name: "Custom sign types",
-        itemListElement: [
-          {
-            "@type": "Offer",
-            itemOffered: {
-              "@type": "Product",
-              name: "Custom LED Neon Sign",
-              description:
-                "Flexible LED silicone neon tubing on laser-cut acrylic, running on safe 12V low voltage for homes, weddings and businesses.",
-            },
-          },
-          {
-            "@type": "Offer",
-            itemOffered: {
-              "@type": "Product",
-              name: "3D Metal Neon Sign",
-              description:
-                "Fabricated stainless-steel channel letters with frontlit, halo backlit or dual-lit LED illumination for storefronts and offices.",
-            },
-          },
-          {
-            "@type": "Offer",
-            itemOffered: {
-              "@type": "Product",
-              name: "Ultra Thin Slim Lightbox",
-              description:
-                "Slim anodized-aluminium lightbox with edge-lit LEDs for uniform, shadow-free illumination and tool-free graphic swaps.",
-            },
-          },
-          {
-            "@type": "Offer",
-            itemOffered: {
-              "@type": "Product",
-              name: "3D Acrylic UV Print Neon Sign",
-              description:
-                "Full-colour UV-printed artwork on premium acrylic paired with glowing LED neon contours for logos and brand art.",
-            },
-          },
-        ],
-      },
     },
     {
       "@type": "WebSite",
@@ -206,37 +149,37 @@ export default function RootLayout({
       <body>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+          dangerouslySetInnerHTML={{ __html: serializeJsonLd(structuredData) }}
         />
         {children}
         <Analytics />
-        <Script id="meta-pixel" strategy="afterInteractive">
-          {`
-            !function(f,b,e,v,n,t,s)
-            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-            n.queue=[];t=b.createElement(e);t.async=!0;
-            t.src=v;s=b.getElementsByTagName(e)[0];
-            s.parentNode.insertBefore(t,s)}(window, document,'script',
-            'https://connect.facebook.net/en_US/fbevents.js');
-            fbq('init', '1768286464221414');
-            fbq('track', 'PageView');
-          `}
-        </Script>
-        <noscript>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            height="1"
-            width="1"
-            style={{ display: "none" }}
-            src="https://www.facebook.com/tr?id=1768286464221414&ev=PageView&noscript=1"
-            alt=""
-          />
-        </noscript>
+        {/* Base pixel + the event layer that fires PageView per route and picks
+            up WhatsApp/Etsy outbound clicks. See lib/meta-pixel.ts for the full
+            event map and for what is deliberately not tracked. */}
+        <MetaPixel />
+        <MetaPixelEvents />
+        {/* Collects name/email/phone before the chat can start, then hands them
+            to Tawk so an abandoned conversation is still followable. */}
+        <PreChatGate />
         <Script id="tawk-to" strategy="lazyOnload">
           {`
             var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+
+            // Keep Tawk's own bubble hidden until our pre-chat form has been
+            // completed (components/chat/pre-chat-gate.tsx). Set BEFORE the embed
+            // script loads, because onLoad fires as soon as the widget is ready
+            // and a React effect cannot reliably beat it.
+            //
+            // A returning visitor already has details stored, so the widget is
+            // revealed immediately rather than gating them a second time. Reading
+            // localStorage here rather than in the component avoids a flash of
+            // the bubble followed by it disappearing.
+            Tawk_API.onLoad = function(){
+              var known = false;
+              try { known = !!localStorage.getItem('glownique:chat-visitor'); } catch (e) {}
+              if (!known && typeof Tawk_API.hideWidget === 'function') Tawk_API.hideWidget();
+            };
+
             (function(){
             var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
             s1.async=true;
@@ -244,6 +187,28 @@ export default function RootLayout({
             s1.charset='UTF-8';
             s1.setAttribute('crossorigin','*');
             s0.parentNode.insertBefore(s1,s0);
+            })();
+
+            // Tawk injects its widget as <iframe> elements with no title, which
+            // a screen reader announces as an unlabelled frame and which fails
+            // the WCAG 2.2 "Frame Titled" check. We can't change what the vendor
+            // renders, so label the frames as they appear. The observer stays
+            // alive because Tawk tears its frames down and rebuilds them when
+            // the widget is opened, minimised or reloaded.
+            (function(){
+              function labelFrames(){
+                var frames = document.querySelectorAll('iframe:not([title])');
+                for (var i = 0; i < frames.length; i++) {
+                  frames[i].setAttribute('title', 'Live chat support');
+                }
+              }
+              labelFrames();
+              if (typeof MutationObserver === 'function') {
+                new MutationObserver(labelFrames).observe(document.body, {
+                  childList: true,
+                  subtree: true,
+                });
+              }
             })();
           `}
         </Script>

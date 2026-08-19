@@ -15,11 +15,29 @@ import {
   StorefrontContext,
   type StorefrontContextValue,
 } from "@/components/storefront/storefront-context";
-import type { CategoryId, Product } from "@/lib/store-data";
+import {
+  trackConfiguratorOpen,
+  trackSearch,
+  trackViewCategory,
+} from "@/lib/meta-pixel";
+import { categoryLabels, type CategoryId, type Product } from "@/lib/store-data";
+
+/**
+ * How long the search box has to be idle before the query is reported.
+ *
+ * Search fires on a debounce because the input tracks every keystroke — without
+ * this, "wedding" would send seven Search events, six of them for prefixes
+ * nobody searched for.
+ */
+const SEARCH_TRACK_DELAY_MS = 900;
+
+/** Below this, a query is a typo or a single letter rather than an intent. */
+const MIN_TRACKED_QUERY_LENGTH = 3;
 
 export function StorefrontShell({ children }: { children: ReactNode }) {
   const rootRef = useRef<HTMLDivElement>(null);
   const toastTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const searchTrackTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [activeCategory, setActiveCategory] = useState<
     "all" | CategoryId
   >("all");
@@ -46,6 +64,10 @@ export function StorefrontShell({ children }: { children: ReactNode }) {
   const chooseCategory = useCallback(
     (category: "all" | CategoryId, shouldScroll = false) => {
       setActiveCategory(category);
+      // "all" is the default and the reset — it says nothing about what the
+      // visitor is shopping for, so it isn't worth an event. A real category is:
+      // "weddings" and "business" are entirely different ad audiences.
+      if (category !== "all") trackViewCategory(categoryLabels[category]);
       if (shouldScroll) scrollToShop();
     },
     [scrollToShop],
@@ -54,6 +76,16 @@ export function StorefrontShell({ children }: { children: ReactNode }) {
   const changeSearch = useCallback(
     (value: string, fromHeader = false) => {
       setSearch(value);
+
+      if (searchTrackTimerRef.current) clearTimeout(searchTrackTimerRef.current);
+      const query = value.trim();
+      if (query.length >= MIN_TRACKED_QUERY_LENGTH) {
+        searchTrackTimerRef.current = setTimeout(
+          () => trackSearch(query),
+          SEARCH_TRACK_DELAY_MS,
+        );
+      }
+
       if (fromHeader && value.length > 1) scrollToShop();
     },
     [scrollToShop],
@@ -66,6 +98,10 @@ export function StorefrontShell({ children }: { children: ReactNode }) {
 
   const openProduct = useCallback((product: Product) => {
     setSelectedProduct(product);
+    // Every route into the quote configurator lands here — the shop grid's
+    // Customize buttons and every CustomQuoteButton on the page — so this is the
+    // one place the AddToCart-equivalent needs to fire.
+    trackConfiguratorOpen(product.name, categoryLabels[product.category]);
   }, []);
 
   const closeProduct = useCallback(() => {
@@ -83,6 +119,7 @@ export function StorefrontShell({ children }: { children: ReactNode }) {
   useEffect(
     () => () => {
       if (toastTimerRef.current) clearTimeout(toastTimerRef.current);
+      if (searchTrackTimerRef.current) clearTimeout(searchTrackTimerRef.current);
       document.body.classList.remove("dialog-open");
     },
     [],

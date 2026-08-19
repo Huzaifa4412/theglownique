@@ -13,6 +13,7 @@ const navigationLinks = [
   ["Products", "/products"],
   ["Inspiration", "#shop"],
   ["FAQs", "#faq"],
+  ["Contact", "/contact"],
 ] as const;
 
 export function SiteHeader() {

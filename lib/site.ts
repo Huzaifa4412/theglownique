@@ -4,7 +4,15 @@
 // again. Set NEXT_PUBLIC_WHATSAPP_NUMBER in .env.local and in the Vercel
 // project settings — digits only, full international format, no "+" or spaces
 // (e.g. 447700900123).
-export const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "";
+import {
+  buildWhatsappUrl,
+  isValidWhatsappNumber,
+  normalizeWhatsappNumber,
+} from "@/lib/whatsapp";
+
+export const WHATSAPP_NUMBER = normalizeWhatsappNumber(
+  process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "",
+);
 
 export const SITE_URL = "https://www.theglownique.com";
 
@@ -18,8 +26,14 @@ export const SITE_URL = "https://www.theglownique.com";
  */
 export const HAS_VERIFIED_REVIEWS = true;
 
-/** True when a usable WhatsApp number is configured. */
-export const HAS_WHATSAPP = WHATSAPP_NUMBER.length > 0;
+/**
+ * True when a usable WhatsApp number is configured.
+ *
+ * Length-checked, not merely non-empty: a truncated or half-pasted value in the
+ * environment would otherwise enable every CTA on the site and send visitors to
+ * a chat with a stranger.
+ */
+export const HAS_WHATSAPP = isValidWhatsappNumber(WHATSAPP_NUMBER);
 
 /**
  * Etsy shop URL. Every payment already runs through Etsy and it holds the only
@@ -65,10 +79,15 @@ export function sameAsUrls(): string[] {
   return [...new Set([...SOCIAL_LINKS.map((s) => s.url), ETSY_SHOP_URL])].filter(Boolean);
 }
 
-/** Build a WhatsApp quote link with a product-specific prefilled message. */
+/**
+ * Build a WhatsApp quote link with a product-specific prefilled message.
+ *
+ * Returns "" when no valid number is configured — callers must treat that as
+ * "hide or disable this CTA", never as a link to render.
+ */
 export function whatsappQuoteUrl(productName: string): string {
   const message = `Hi The Glownique! I'd like a free quote and mockup for a ${productName}. Here's my idea: `;
-  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+  return buildWhatsappUrl(message, WHATSAPP_NUMBER);
 }
 
 /** Format raw international number string into a clean display phone number. */

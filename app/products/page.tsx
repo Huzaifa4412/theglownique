@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
+import { MetaViewCategory } from "@/components/analytics/meta-view-trackers";
 import { AnnouncementBar } from "@/components/storefront/sections/announcement-bar";
 import { SiteFooter } from "@/components/storefront/sections/site-footer";
 import { ProductTopBar } from "@/components/product/product-top-bar";
@@ -10,7 +11,7 @@ import { PRODUCT_PAGES } from "@/lib/product-catalog";
 export const metadata: Metadata = {
   title: "Our Custom Sign Types",
   description:
-    "Explore The Glownique's four custom sign types — LED neon signs, 3D metal channel letters, ultra-thin lightboxes and UV-print acrylic signs. Free mockup, 5-year warranty and free worldwide delivery.",
+    "Explore The Glownique's four custom sign types — LED neon signs, 3D metal channel letters, ultra-thin lightboxes and UV-print acrylic signs. Free mockup, 5-year warranty and tracked worldwide delivery.",
   alternates: { canonical: "/products" },
   openGraph: {
     type: "website",
@@ -21,17 +22,25 @@ export const metadata: Metadata = {
     url: "/products",
     images: [{ url: "/hero/neon-sign-hero.png", alt: "The Glownique custom signs" }],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Our Custom Sign Types | The Glownique",
+    description:
+      "Explore our four custom sign types — LED neon, 3D metal channel letters, ultra-thin lightboxes and UV-print acrylic signs.",
+    images: ["/hero/neon-sign-hero.png"],
+  },
 };
 
 export default function ProductsHubPage() {
   return (
     <>
+      <MetaViewCategory category="All sign types" />
       <AnnouncementBar />
       <ProductTopBar productName="custom sign" />
       <main id="main-content" className="bg-white">
         <section className="border-b border-[#eadfe4] bg-gradient-to-b from-[#fff0f5] to-white py-16 sm:py-20">
           <div className="mx-auto max-w-3xl px-4 text-center sm:px-6">
-            <p className="text-xs font-extrabold uppercase tracking-widest text-[#f40b68]">
+            <p className="text-xs font-extrabold uppercase tracking-widest text-[#ce0754]">
               Explore the range
             </p>
             <h1 className="mt-2 text-4xl font-extrabold tracking-tight text-[#1e1a22] sm:text-5xl">
@@ -39,7 +48,7 @@ export default function ProductsHubPage() {
             </h1>
             <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-[#5e5862]">
               Every sign is handcrafted and made to order, with a free design mockup, a 5-year
-              warranty and free worldwide delivery. Pick a type to see the full details.
+              warranty and tracked worldwide delivery. Pick a type to see the full details.
             </p>
           </div>
         </section>

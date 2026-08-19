@@ -9,6 +9,22 @@ export const metadata: Metadata = {
   description:
     "Every Glownique sign carries a 5-year warranty and a 100% glow guarantee. How faults, transit damage and returns on made-to-order signs are handled.",
   alternates: { canonical: "/returns" },
+  openGraph: {
+    type: "website",
+    siteName: "The Glownique",
+    title: "Returns & 5-Year Warranty | The Glownique",
+    description:
+      "Every Glownique sign carries a 5-year warranty and a 100% glow guarantee.",
+    url: "/returns",
+    images: [{ url: "/hero/neon-sign-hero.png", alt: "The Glownique 5-Year Warranty" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Returns & 5-Year Warranty | The Glownique",
+    description:
+      "Every Glownique sign carries a 5-year warranty and a 100% glow guarantee.",
+    images: ["/hero/neon-sign-hero.png"],
+  },
 };
 
 export default function ReturnsPage() {

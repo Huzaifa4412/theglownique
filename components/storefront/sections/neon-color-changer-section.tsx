@@ -23,6 +23,7 @@ import {
 } from "lucide-react";
 import { CustomQuoteButton } from "@/components/storefront/custom-quote-button";
 import { PremiumAccentText } from "@/components/ui/premium-accent-text";
+import { trackColourCustomised } from "@/lib/meta-pixel";
 import { WhatsappLogo } from "@phosphor-icons/react";
 
 export interface NeonColor {
@@ -402,6 +403,12 @@ export function NeonColorChangerSection({
   // Handle color selection
   const handleSelectColor = (color: NeonColor) => {
     setActiveColor(color);
+    // Picking a colour is the strongest engagement signal on the homepage short
+    // of opening the quote form, and CustomizeProduct is the standard Meta event
+    // for exactly this. Fired per selection rather than debounced: each pick is a
+    // deliberate click, not a keystroke, and which colour they settled on is
+    // worth knowing.
+    trackColourCustomised(color.name);
     if (color.id !== "rgba-cycle") {
       crossfadeTo(color);
     }
