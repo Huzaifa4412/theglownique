@@ -45,7 +45,7 @@ The Glownique does not sell pre-made or off-the-shelf signs.
 
 ${productEntries}
 
-Browse all four types: ${SITE_URL}/products
+Browse all four types: ${SITE_URL}/custom-signage
 
 ## Specifications
 

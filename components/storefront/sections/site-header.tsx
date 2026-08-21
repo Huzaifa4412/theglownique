@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { List, X } from "@phosphor-icons/react";
 import { IconBox } from "@/components/icon-box";
@@ -10,7 +11,7 @@ import { EtsyButton } from "@/components/storefront/etsy-button";
 const navigationLinks = [
   ["Shop", "#shop"],
   ["Custom Neon", "#color-studio"],
-  ["Products", "/products"],
+  ["Products", "/custom-signage"],
   ["Inspiration", "#shop"],
   ["FAQs", "#faq"],
   ["Contact", "/contact"],
@@ -33,7 +34,22 @@ export function SiteHeader() {
         </button>
 
         <Link className="brand" href="/" aria-label="The Glownique home">
-          <span className="brand__mark" aria-hidden="true" />
+          {/* The GQ mark carries no brand name on its own, so the wordmark
+              stays as text and the image is decorative. The link already has
+              an accessible name from aria-label.
+
+              eager rather than priority: Next preloads both, but priority also
+              stamps fetchPriority="high", and 5KB of header chrome shouldn't
+              outrank the hero for bandwidth. */}
+          <Image
+            className="brand__logo"
+            src="/brand/logo-mark.png"
+            alt=""
+            aria-hidden="true"
+            width={100}
+            height={60}
+            loading="eager"
+          />
           THE GLOWNIQUE
         </Link>
 

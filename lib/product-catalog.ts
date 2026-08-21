@@ -710,7 +710,7 @@ export const PRODUCT_PAGES: ProductPage[] = [
         a: "Choose our IP67 waterproof option and your UV-print neon sign is ready for covered outdoor and event use.",
       },
     ],
-    metaTitle: "3D Acrylic Illuminated Neon Signs — Logos & Brand Art",
+    metaTitle: "Custom Acrylic Logo Signs with LED Neon",
     metaDescription:
       "Cost-effective 3D acrylic signs pairing full-colour UV print with glowing LED neon contours — the affordable way to light a detailed, multi-colour logo. Free mockup, 5-year warranty, tracked worldwide delivery.",
   },

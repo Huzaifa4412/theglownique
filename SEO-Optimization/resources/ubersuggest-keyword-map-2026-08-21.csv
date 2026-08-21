@@ -1,0 +1,151 @@
+keyword,cohort,role,target_url,estimated_monthly_volume_us,seo_difficulty,tracker_status,rationale
+neon signs,strategic_benchmark,benchmark,/,40500,34,ok,"Head-term benchmark; tracked for market visibility, not used as a standalone page brief"
+outdoor business signs,strategic_benchmark,benchmark,/business-signs,9900,36,ok,"Head-term benchmark; tracked for market visibility, not used as a standalone page brief"
+custom business signs,strategic_benchmark,benchmark,/business-signs,4400,84,ok,"Head-term benchmark; tracked for market visibility, not used as a standalone page brief"
+storefront signs,strategic_benchmark,benchmark,/business-signs,3600,29,ok,"Head-term benchmark; tracked for market visibility, not used as a standalone page brief"
+acrylic signs,strategic_benchmark,benchmark,/business-signs/acrylic-logo-signs,8100,33,ok,"Head-term benchmark; tracked for market visibility, not used as a standalone page brief"
+custom acrylic signs,strategic_benchmark,benchmark,/business-signs/acrylic-logo-signs,2900,36,ok,"Head-term benchmark; tracked for market visibility, not used as a standalone page brief"
+channel letter signs,strategic_benchmark,benchmark,/business-signs/channel-letter-signs,3600,26,ok,"Head-term benchmark; tracked for market visibility, not used as a standalone page brief"
+custom neon logo signs,strategic_benchmark,benchmark,/business-signs/custom-logo-neon-signs,1300,58,ok,"Head-term benchmark; tracked for market visibility, not used as a standalone page brief"
+neon signs for business,strategic_benchmark,benchmark,/business-signs/custom-logo-neon-signs,590,25,ok,"Head-term benchmark; tracked for market visibility, not used as a standalone page brief"
+lightbox signs,strategic_benchmark,benchmark,/business-signs/lightbox-signs,720,49,ok,"Head-term benchmark; tracked for market visibility, not used as a standalone page brief"
+custom signage,strategic_benchmark,benchmark,/custom-signage,33100,58,ok,"Head-term benchmark; tracked for market visibility, not used as a standalone page brief"
+led neon signs,strategic_benchmark,benchmark,/custom-signage,12100,56,ok,"Head-term benchmark; tracked for market visibility, not used as a standalone page brief"
+custom led neon signs,strategic_benchmark,benchmark,/custom-signage,5400,58,ok,"Head-term benchmark; tracked for market visibility, not used as a standalone page brief"
+light up signs,strategic_benchmark,benchmark,/custom-signage,2400,36,unstable,"Head-term benchmark; tracked for market visibility, not used as a standalone page brief"
+wedding neon signs,strategic_benchmark,benchmark,/custom-signage/wedding-neon-signs,3600,45,ok,"Head-term benchmark; tracked for market visibility, not used as a standalone page brief"
+led signs,strategic_benchmark,benchmark,/products,12100,52,unstable,"Head-term benchmark; tracked for market visibility, not used as a standalone page brief"
+custom neon letters,strategic_benchmark,benchmark,/products/custom-neon-signs,40500,56,ok,"Head-term benchmark; tracked for market visibility, not used as a standalone page brief"
+personalized neon,strategic_benchmark,benchmark,/products/custom-neon-signs,40500,61,ok,"Head-term benchmark; tracked for market visibility, not used as a standalone page brief"
+custom neon signs,strategic_benchmark,benchmark,/products/custom-neon-signs,33100,63,ok,"Head-term benchmark; tracked for market visibility, not used as a standalone page brief"
+custom neon lights,strategic_benchmark,benchmark,/products/custom-neon-signs,2400,44,ok,"Head-term benchmark; tracked for market visibility, not used as a standalone page brief"
+outdoor business signs with lights,live_page,primary,/,880,36,ok,Mapped to an existing page with matching product or commercial intent
+outdoor storefront signs,live_page,secondary,/,590,32,ok,Mapped to an existing page with matching product or commercial intent
+custom storefront signs,live_page,secondary,/,170,42,ok,Mapped to an existing page with matching product or commercial intent
+retail storefront signs,live_page,secondary,/,140,19,ok,Mapped to an existing page with matching product or commercial intent
+custom signage for business,live_page,primary,/business-signs,5400,81,ok,Mapped to an existing page with matching product or commercial intent
+led signs for business,live_page,secondary,/business-signs,2400,29,ok,Mapped to an existing page with matching product or commercial intent
+custom outdoor business signs,live_page,secondary,/business-signs,1300,29,ok,Mapped to an existing page with matching product or commercial intent
+illuminated signs for business,live_page,secondary,/business-signs,1000,30,ok,Mapped to an existing page with matching product or commercial intent
+led outdoor business signs,live_page,secondary,/business-signs,720,36,ok,Mapped to an existing page with matching product or commercial intent
+outdoor illuminated signs,live_page,secondary,/business-signs,480,34,ok,Mapped to an existing page with matching product or commercial intent
+outdoor business signs for buildings,live_page,secondary,/business-signs,390,30,ok,Mapped to an existing page with matching product or commercial intent
+custom illuminated signs,live_page,secondary,/business-signs,140,34,ok,Mapped to an existing page with matching product or commercial intent
+acrylic logo signs,live_page,primary,/business-signs/acrylic-logo-signs,480,35,ok,Mapped to an existing page with matching product or commercial intent
+customizable acrylic signs,live_page,secondary,/business-signs/acrylic-logo-signs,3600,45,ok,Mapped to an existing page with matching product or commercial intent
+office wall signs,live_page,secondary,/business-signs/acrylic-logo-signs,720,27,unstable,Mapped to an existing page with matching product or commercial intent
+acrylic signs for wall,live_page,secondary,/business-signs/acrylic-logo-signs,480,34,ok,Mapped to an existing page with matching product or commercial intent
+printed acrylic signs,live_page,secondary,/business-signs/acrylic-logo-signs,480,32,ok,Mapped to an existing page with matching product or commercial intent
+acrylic signs for office,live_page,secondary,/business-signs/acrylic-logo-signs,390,28,ok,Mapped to an existing page with matching product or commercial intent
+corporate signs,live_page,secondary,/business-signs/acrylic-logo-signs,390,15,ok,Mapped to an existing page with matching product or commercial intent
+custom acrylic logo signs,live_page,secondary,/business-signs/acrylic-logo-signs,70,29,ok,Mapped to an existing page with matching product or commercial intent
+custom channel letter signs,live_page,primary,/business-signs/channel-letter-signs,170,27,ok,Mapped to an existing page with matching product or commercial intent
+led channel letter signs,live_page,secondary,/business-signs/channel-letter-signs,320,14,ok,Mapped to an existing page with matching product or commercial intent
+front lit channel letter signs,live_page,secondary,/business-signs/channel-letter-signs,170,12,ok,Mapped to an existing page with matching product or commercial intent
+reverse channel letter signs,live_page,secondary,/business-signs/channel-letter-signs,140,11,ok,Mapped to an existing page with matching product or commercial intent
+illuminated channel letter signs,live_page,secondary,/business-signs/channel-letter-signs,90,22,ok,Mapped to an existing page with matching product or commercial intent
+what are channel letter signs,live_page,secondary,/business-signs/channel-letter-signs,90,24,ok,Mapped to an existing page with matching product or commercial intent
+backlit channel letter signs,live_page,secondary,/business-signs/channel-letter-signs,70,11,ok,Mapped to an existing page with matching product or commercial intent
+types of channel letter signs,live_page,secondary,/business-signs/channel-letter-signs,40,28,ok,Mapped to an existing page with matching product or commercial intent
+business logo signs,live_page,primary,/business-signs/custom-logo-neon-signs,590,31,ok,Mapped to an existing page with matching product or commercial intent
+lobby signs,live_page,secondary,/business-signs/custom-logo-neon-signs,590,17,ok,Mapped to an existing page with matching product or commercial intent
+lobby signs for business,live_page,secondary,/business-signs/custom-logo-neon-signs,170,14,ok,Mapped to an existing page with matching product or commercial intent
+office logo signs,live_page,secondary,/business-signs/custom-logo-neon-signs,140,24,ok,Mapped to an existing page with matching product or commercial intent
+office logo signs for wall,live_page,secondary,/business-signs/custom-logo-neon-signs,90,21,unstable,Mapped to an existing page with matching product or commercial intent
+custom business logo signs,live_page,secondary,/business-signs/custom-logo-neon-signs,70,30,ok,Mapped to an existing page with matching product or commercial intent
+office lobby signs,live_page,secondary,/business-signs/custom-logo-neon-signs,70,16,ok,Mapped to an existing page with matching product or commercial intent
+custom lobby signs,live_page,secondary,/business-signs/custom-logo-neon-signs,50,13,ok,Mapped to an existing page with matching product or commercial intent
+custom lightbox signs,live_page,primary,/business-signs/lightbox-signs,140,21,ok,Mapped to an existing page with matching product or commercial intent
+custom backlit signage,live_page,secondary,/business-signs/lightbox-signs,590,44,ok,Mapped to an existing page with matching product or commercial intent
+outdoor lightbox signs,live_page,secondary,/business-signs/lightbox-signs,320,24,unstable,Mapped to an existing page with matching product or commercial intent
+business light box sign,live_page,secondary,/business-signs/lightbox-signs,140,35,ok,Mapped to an existing page with matching product or commercial intent
+custom light up signs,live_page,primary,/custom-signage,1900,61,ok,Mapped to an existing page with matching product or commercial intent
+neon lights,live_page,secondary,/custom-signage,18100,32,ok,Mapped to an existing page with matching product or commercial intent
+personalized led sign,live_page,secondary,/custom-signage,12100,47,ok,Mapped to an existing page with matching product or commercial intent
+neon signs lights,live_page,secondary,/custom-signage,5400,45,ok,Mapped to an existing page with matching product or commercial intent
+neon light up signs,live_page,secondary,/custom-signage,3600,33,unstable,Mapped to an existing page with matching product or commercial intent
+neon name sign,live_page,secondary,/custom-signage,2900,72,unstable,Mapped to an existing page with matching product or commercial intent
+neon wall art,live_page,secondary,/custom-signage,720,35,ok,Mapped to an existing page with matching product or commercial intent
+neon wall signs,live_page,secondary,/custom-signage,720,29,ok,Mapped to an existing page with matching product or commercial intent
+custom neon sign cost,live_page,primary,/guides/custom-business-sign-cost,110,24,ok,Mapped to an existing page with matching product or commercial intent
+channel letter signs price,live_page,secondary,/guides/custom-business-sign-cost,210,32,ok,Mapped to an existing page with matching product or commercial intent
+channel letter signs cost,live_page,secondary,/guides/custom-business-sign-cost,170,28,ok,Mapped to an existing page with matching product or commercial intent
+neon sign cost,live_page,secondary,/guides/custom-business-sign-cost,170,20,ok,Mapped to an existing page with matching product or commercial intent
+how much do outdoor business signs cost,live_page,secondary,/guides/custom-business-sign-cost,140,21,ok,Mapped to an existing page with matching product or commercial intent
+how much are custom neon signs,live_page,secondary,/guides/custom-business-sign-cost,110,34,ok,Mapped to an existing page with matching product or commercial intent
+how much do custom neon signs cost,live_page,secondary,/guides/custom-business-sign-cost,90,22,ok,Mapped to an existing page with matching product or commercial intent
+neon colors,live_page,primary,/guides/front-lit-vs-halo-lit-vs-dual-lit,49500,34,ok,Mapped to an existing page with matching product or commercial intent
+neon lights for room,live_page,primary,/products,2400,36,ok,Mapped to an existing page with matching product or commercial intent
+neon lights for bedroom,live_page,secondary,/products,2400,36,ok,Mapped to an existing page with matching product or commercial intent
+bedroom neon signs,live_page,secondary,/products,1600,44,ok,Mapped to an existing page with matching product or commercial intent
+neon sign for room,live_page,secondary,/products,1600,26,ok,Mapped to an existing page with matching product or commercial intent
+custom lighted signs,live_page,secondary,/products,1300,43,ok,Mapped to an existing page with matching product or commercial intent
+illuminated signs,live_page,secondary,/products,1300,25,ok,Mapped to an existing page with matching product or commercial intent
+retail signs,live_page,secondary,/products,720,43,ok,Mapped to an existing page with matching product or commercial intent
+commercial retail signs,live_page,secondary,/products,110,26,ok,Mapped to an existing page with matching product or commercial intent
+3d metal signs,live_page,primary,/products/3d-metal-neon-signs,110,12,ok,Mapped to an existing page with matching product or commercial intent
+metal letter signs,live_page,secondary,/products/3d-metal-neon-signs,1000,38,unstable,Mapped to an existing page with matching product or commercial intent
+dimensional letter signs,live_page,secondary,/products/3d-metal-neon-signs,320,25,ok,Mapped to an existing page with matching product or commercial intent
+outdoor metal letter signs,live_page,secondary,/products/3d-metal-neon-signs,320,24,ok,Mapped to an existing page with matching product or commercial intent
+backlit letters,live_page,secondary,/products/3d-metal-neon-signs,260,13,ok,Mapped to an existing page with matching product or commercial intent
+halo lit letters,live_page,secondary,/products/3d-metal-neon-signs,210,31,ok,Mapped to an existing page with matching product or commercial intent
+front lit signage,live_page,secondary,/products/3d-metal-neon-signs,140,11,ok,Mapped to an existing page with matching product or commercial intent
+custom metal letter signs,live_page,secondary,/products/3d-metal-neon-signs,50,31,ok,Mapped to an existing page with matching product or commercial intent
+customizable neon sign,live_page,primary,/products/custom-neon-signs,33100,63,ok,Mapped to an existing page with matching product or commercial intent
+custom made neon signs,live_page,secondary,/products/custom-neon-signs,33100,61,ok,Mapped to an existing page with matching product or commercial intent
+custom neon led lights,live_page,secondary,/products/custom-neon-signs,5400,55,ok,Mapped to an existing page with matching product or commercial intent
+custom made neon lights,live_page,secondary,/products/custom-neon-signs,2400,36,ok,Mapped to an existing page with matching product or commercial intent
+personalized neon sign,live_page,secondary,/products/custom-neon-signs,1600,62,ok,Mapped to an existing page with matching product or commercial intent
+custom neon signs outdoor,live_page,secondary,/products/custom-neon-signs,260,36,ok,Mapped to an existing page with matching product or commercial intent
+custom neon signs online,live_page,secondary,/products/custom-neon-signs,210,60,ok,Mapped to an existing page with matching product or commercial intent
+large custom neon sign,live_page,secondary,/products/custom-neon-signs,90,30,ok,Mapped to an existing page with matching product or commercial intent
+led light box sign,live_page,primary,/products/ultra-thin-lightbox,170,19,ok,Mapped to an existing page with matching product or commercial intent
+backlit storefront signs,live_page,secondary,/products/ultra-thin-lightbox,90,43,ok,Mapped to an existing page with matching product or commercial intent
+acrylic light box sign,live_page,secondary,/products/ultra-thin-lightbox,50,21,ok,Mapped to an existing page with matching product or commercial intent
+illuminated lightbox signs,live_page,secondary,/products/ultra-thin-lightbox,50,16,ok,Mapped to an existing page with matching product or commercial intent
+3d acrylic signs,live_page,primary,/products/uv-print-acrylic-signs,260,12,ok,Mapped to an existing page with matching product or commercial intent
+custom perspex signs,live_page,secondary,/products/uv-print-acrylic-signs,2900,33,ok,Mapped to an existing page with matching product or commercial intent
+led acrylic signs,live_page,secondary,/products/uv-print-acrylic-signs,720,34,ok,Mapped to an existing page with matching product or commercial intent
+backlit acrylic signs,live_page,secondary,/products/uv-print-acrylic-signs,480,23,ok,Mapped to an existing page with matching product or commercial intent
+illuminated acrylic signs,live_page,secondary,/products/uv-print-acrylic-signs,390,20,ok,Mapped to an existing page with matching product or commercial intent
+custom acrylic signs for business,live_page,secondary,/products/uv-print-acrylic-signs,110,35,ok,Mapped to an existing page with matching product or commercial intent
+gym signs,planned_90_day,primary,/business-signs/gym-signs,1000,17,unstable,Mapped to an approved 90-day landing-page cluster before content production
+neon gym signs,planned_90_day,secondary,/business-signs/gym-signs,590,19,unstable,Mapped to an approved 90-day landing-page cluster before content production
+restaurant signs,planned_90_day,primary,/business-signs/restaurant-signs,2900,34,ok,Mapped to an approved 90-day landing-page cluster before content production
+outdoor restaurant signs,planned_90_day,secondary,/business-signs/restaurant-signs,590,26,ok,Mapped to an approved 90-day landing-page cluster before content production
+neon restaurant signs,planned_90_day,secondary,/business-signs/restaurant-signs,480,32,ok,Mapped to an approved 90-day landing-page cluster before content production
+restaurant led signs,planned_90_day,secondary,/business-signs/restaurant-signs,140,23,ok,Mapped to an approved 90-day landing-page cluster before content production
+shop signs,planned_90_day,primary,/business-signs/retail-signs,1600,33,ok,Mapped to an approved 90-day landing-page cluster before content production
+neon shop signs,planned_90_day,secondary,/business-signs/retail-signs,880,54,ok,Mapped to an approved 90-day landing-page cluster before content production
+retail shop signs,planned_90_day,secondary,/business-signs/retail-signs,390,24,ok,Mapped to an approved 90-day landing-page cluster before content production
+salon signs,planned_90_day,primary,/business-signs/salon-signs,1000,33,ok,Mapped to an approved 90-day landing-page cluster before content production
+barbershop signage,planned_90_day,secondary,/business-signs/salon-signs,1900,29,ok,Mapped to an approved 90-day landing-page cluster before content production
+beauty salon signs,planned_90_day,secondary,/business-signs/salon-signs,880,25,ok,Mapped to an approved 90-day landing-page cluster before content production
+hair salon signs,planned_90_day,secondary,/business-signs/salon-signs,880,25,ok,Mapped to an approved 90-day landing-page cluster before content production
+nail salon signs,planned_90_day,secondary,/business-signs/salon-signs,390,24,ok,Mapped to an approved 90-day landing-page cluster before content production
+outdoor salon signs,planned_90_day,secondary,/business-signs/salon-signs,140,27,unstable,Mapped to an approved 90-day landing-page cluster before content production
+custom bar signs,planned_90_day,primary,/custom-signage/bar-cafe-neon-signs,1600,22,ok,Mapped to an approved 90-day landing-page cluster before content production
+personalized neon bar signs,planned_90_day,secondary,/custom-signage/bar-cafe-neon-signs,33100,45,ok,Mapped to an approved 90-day landing-page cluster before content production
+neon bar signage,planned_90_day,secondary,/custom-signage/bar-cafe-neon-signs,3600,35,ok,Mapped to an approved 90-day landing-page cluster before content production
+cafe signs,planned_90_day,secondary,/custom-signage/bar-cafe-neon-signs,1300,44,unstable,Mapped to an approved 90-day landing-page cluster before content production
+coffee shop signs,planned_90_day,secondary,/custom-signage/bar-cafe-neon-signs,880,42,unstable,Mapped to an approved 90-day landing-page cluster before content production
+custom neon bar signs,planned_90_day,secondary,/custom-signage/bar-cafe-neon-signs,720,37,ok,Mapped to an approved 90-day landing-page cluster before content production
+light up bar signs,planned_90_day,secondary,/custom-signage/bar-cafe-neon-signs,480,31,ok,Mapped to an approved 90-day landing-page cluster before content production
+happy birthday neon sign,planned_90_day,primary,/custom-signage/event-neon-signs,1000,23,ok,Mapped to an approved 90-day landing-page cluster before content production
+neon party sign,planned_90_day,secondary,/custom-signage/event-neon-signs,170,34,ok,Mapped to an approved 90-day landing-page cluster before content production
+gaming neon signs,planned_90_day,primary,/custom-signage/gaming-neon-signs,590,17,ok,Mapped to an approved 90-day landing-page cluster before content production
+game room signage,planned_90_day,secondary,/custom-signage/gaming-neon-signs,480,22,unstable,Mapped to an approved 90-day landing-page cluster before content production
+man cave neon signs,planned_90_day,secondary,/custom-signage/gaming-neon-signs,480,23,ok,Mapped to an approved 90-day landing-page cluster before content production
+neon signs for gaming room,planned_90_day,secondary,/custom-signage/gaming-neon-signs,210,18,ok,Mapped to an approved 90-day landing-page cluster before content production
+video game neon signs,planned_90_day,secondary,/custom-signage/gaming-neon-signs,170,19,ok,Mapped to an approved 90-day landing-page cluster before content production
+neon game room,planned_90_day,secondary,/custom-signage/gaming-neon-signs,140,17,ok,Mapped to an approved 90-day landing-page cluster before content production
+led gaming sign,planned_90_day,secondary,/custom-signage/gaming-neon-signs,110,19,ok,Mapped to an approved 90-day landing-page cluster before content production
+neon wall decor,planned_90_day,primary,/custom-signage/home-neon-decor,260,27,ok,Mapped to an approved 90-day landing-page cluster before content production
+neon wall lights,planned_90_day,secondary,/custom-signage/home-neon-decor,720,35,ok,Mapped to an approved 90-day landing-page cluster before content production
+neon sign for home,planned_90_day,secondary,/custom-signage/home-neon-decor,260,27,ok,Mapped to an approved 90-day landing-page cluster before content production
+wall decor neon sign,planned_90_day,secondary,/custom-signage/home-neon-decor,260,32,ok,Mapped to an approved 90-day landing-page cluster before content production
+neon signs for kitchen,planned_90_day,secondary,/custom-signage/home-neon-decor,210,15,ok,Mapped to an approved 90-day landing-page cluster before content production
+custom neon signs for wedding,planned_90_day,primary,/custom-signage/wedding-neon-signs,210,31,ok,Mapped to an approved 90-day landing-page cluster before content production
+custom signs for wedding,planned_90_day,secondary,/custom-signage/wedding-neon-signs,1600,36,ok,Mapped to an approved 90-day landing-page cluster before content production
+wedding led sign,planned_90_day,secondary,/custom-signage/wedding-neon-signs,480,37,ok,Mapped to an approved 90-day landing-page cluster before content production
+wedding neon signs ideas,planned_90_day,secondary,/custom-signage/wedding-neon-signs,140,32,ok,Mapped to an approved 90-day landing-page cluster before content production

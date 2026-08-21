@@ -11,14 +11,14 @@ import { SITE_URL } from "@/lib/site";
 import { serializeJsonLd } from "@/lib/utils";
 
 export const metadata: Metadata = {
-  title: "3D UV-Print Acrylic Logo Signs for Offices & Stores",
+  title: "Acrylic Logo Signs for Offices & Stores",
   description:
     "Precision full-color UV-printed artwork on premium acrylic paired with glowing LED neon contours. Perfect for corporate reception walls, salons, and offices.",
   alternates: { canonical: "/business-signs/acrylic-logo-signs" },
   openGraph: {
     type: "website",
     siteName: "The Glownique",
-    title: "3D Acrylic Logo Signs | The Glownique",
+    title: "Acrylic Logo Signs for Offices & Stores | The Glownique",
     description:
       "Custom UV-printed acrylic logo signs with glowing LED neon accents for corporate offices and retail spaces.",
     url: "/business-signs/acrylic-logo-signs",
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "3D Acrylic Logo Signs | The Glownique",
+    title: "Acrylic Logo Signs for Offices & Stores | The Glownique",
     description:
       "Custom UV-printed acrylic logo signs with glowing LED neon accents for corporate offices and retail spaces.",
     images: ["/hero/workspace-sign.png"],

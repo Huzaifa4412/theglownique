@@ -114,7 +114,7 @@ export default function AccessibilityPage() {
         </li>
         <li>
           <strong>Motion-heavy pages.</strong> Even with reduced-motion support, our homepage is
-          visually busy. The <Link href="/products">product pages</Link> are calmer if you find that
+          visually busy. The <Link href="/custom-signage">product pages</Link> are calmer if you find that
           difficult.
         </li>
         <li>

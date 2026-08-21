@@ -41,8 +41,7 @@ const siteUrl = "https://www.theglownique.com";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default:
-      "The Glownique | Custom LED Neon Signs, Lightboxes & Business Signage",
+    default: "Custom LED Neon Signs & Business Signage | The Glownique",
     template: "%s | The Glownique",
   },
   description:
@@ -58,8 +57,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     siteName: "The Glownique",
-    title:
-      "The Glownique | Custom LED Neon Signs, Lightboxes & Business Signage",
+    title: "Custom LED Neon Signs & Business Signage | The Glownique",
     description:
       "Handcrafted custom LED neon signs, 3D metal channel letters, ultra-thin lightboxes and UV-print acrylic signs — previewed free, delivered worldwide with tracking and backed by a 5-year warranty.",
     url: "/",
@@ -75,7 +73,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "The Glownique | Custom LED Neon Signs & Signage",
+    title: "Custom LED Neon Signs & Business Signage | The Glownique",
     description:
       "Handcrafted custom LED neon signs, 3D metal channel letters, ultra-thin lightboxes and UV-print acrylic signs — previewed free, delivered worldwide with tracking and a 5-year warranty.",
     images: ["/hero/neon-sign-hero.png"],
@@ -115,6 +113,17 @@ const structuredData = {
       // Profiles we own. Strongest available signal for entity disambiguation —
       // populate SOCIAL_LINKS and ETSY_SHOP_URL in lib/site.ts to fill this.
       ...(sameAsUrls().length > 0 ? { sameAs: sameAsUrls() } : {}),
+      // The brand mark itself, squared onto its plum backing. Google reads
+      // Organization.logo for knowledge-panel and rich-result surfaces and
+      // wants a crawlable raster, so it points at the generated PNG rather
+      // than public/logo.svg (a 950KB SVG wrapping a masked bitmap).
+      // Regenerate both with `npm run brand:icons`.
+      logo: {
+        "@type": "ImageObject",
+        url: `${siteUrl}/brand/logo-512.png`,
+        width: 512,
+        height: 512,
+      },
       image: `${siteUrl}/hero/neon-sign-hero.png`,
       description:
         "The Glownique handcrafts custom LED neon signs, 3D metal channel-letter signs, ultra-thin edge-lit lightboxes and UV-print acrylic signs, made to order with a free design preview.",

@@ -11,14 +11,14 @@ import { SITE_URL } from "@/lib/site";
 import { serializeJsonLd } from "@/lib/utils";
 
 export const metadata: Metadata = {
-  title: "Ultra-Thin Lightbox Signs for Retail & Hospitality",
+  title: "Lightbox Signs for Retail & Restaurants",
   description:
     "Slim anodized aluminum edge-lit lightboxes for retail storefronts, menus, and exhibits. Tool-free graphic replacement, uniform illumination, 5-year warranty.",
   alternates: { canonical: "/business-signs/lightbox-signs" },
   openGraph: {
     type: "website",
     siteName: "The Glownique",
-    title: "Ultra-Thin Lightbox Signs | The Glownique",
+    title: "Lightbox Signs for Retail & Restaurants | The Glownique",
     description:
       "Commercial edge-lit lightboxes for retail displays, menu boards and promotional signage.",
     url: "/business-signs/lightbox-signs",
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Ultra-Thin Lightbox Signs | The Glownique",
+    title: "Lightbox Signs for Retail & Restaurants | The Glownique",
     description:
       "Commercial edge-lit lightboxes for retail displays, menu boards and promotional signage.",
     images: ["/before-after/after-osee-beauty.png"],

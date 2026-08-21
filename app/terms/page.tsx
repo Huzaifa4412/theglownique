@@ -5,14 +5,14 @@ import { LegalPage } from "@/components/legal/legal-page";
 import { LEGAL } from "@/lib/legal";
 
 export const metadata: Metadata = {
-  title: "Terms of Sale",
+  title: "Custom Sign Orders & Terms of Sale",
   description:
     "The terms covering custom sign quotes, artwork rights, payment through Etsy, production times, delivery and warranty at The Glownique.",
   alternates: { canonical: "/terms" },
   openGraph: {
     type: "website",
     siteName: "The Glownique",
-    title: "Terms of Sale | The Glownique",
+    title: "Custom Sign Orders & Terms of Sale | The Glownique",
     description:
       "The terms covering custom sign quotes, artwork rights, payment through Etsy, production times, delivery and warranty.",
     url: "/terms",
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Terms of Sale | The Glownique",
+    title: "Custom Sign Orders & Terms of Sale | The Glownique",
     description:
       "The terms covering custom sign quotes, artwork rights, payment through Etsy, production times, delivery and warranty.",
     images: ["/hero/neon-sign-hero.png"],

@@ -62,7 +62,7 @@ export function MetaGuideView({ guideName }: { guideName: string }) {
 }
 
 /**
- * A category or hub page was viewed — /products, /business-signs.
+ * A category or hub page was viewed — /custom-signage, /business-signs.
  *
  * ViewCategory rather than ViewContent, because a hub lists several sign types
  * and isn't itself a product. Mixing hubs into ViewContent would make the

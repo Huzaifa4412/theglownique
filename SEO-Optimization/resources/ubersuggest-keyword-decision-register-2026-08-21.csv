@@ -1,0 +1,301 @@
+keyword,estimated_monthly_volume_us,seo_difficulty,decision,cohort,role,target_url,reason
+3d acrylic signs,260,12,KEEP,live_page,primary,/products/uv-print-acrylic-signs,Mapped to an existing page with matching product or commercial intent
+3d metal signs,110,12,KEEP,live_page,primary,/products/3d-metal-neon-signs,Mapped to an existing page with matching product or commercial intent
+acrylic backlit signage,480,26,REMOVE,,,,Remove — normalized semantic reorder or singular/plural duplicate of a retained keyword
+acrylic custom signs,3600,30,REMOVE,,,,Remove — normalized semantic reorder or singular/plural duplicate of a retained keyword
+acrylic light box sign,50,21,KEEP,live_page,secondary,/products/ultra-thin-lightbox,Mapped to an existing page with matching product or commercial intent
+acrylic lobby signs,40,30,REMOVE,,,,"Remove — sub-100 volume without stronger exact-page, intent, or competitor evidence"
+acrylic logo signs,480,35,KEEP,live_page,primary,/business-signs/acrylic-logo-signs,Mapped to an existing page with matching product or commercial intent
+acrylic signs,8100,33,KEEP,strategic_benchmark,benchmark,/business-signs/acrylic-logo-signs,"Head-term benchmark; tracked for market visibility, not used as a standalone page brief"
+acrylic signs for office,390,28,KEEP,live_page,secondary,/business-signs/acrylic-logo-signs,Mapped to an existing page with matching product or commercial intent
+acrylic signs for wall,480,34,KEEP,live_page,secondary,/business-signs/acrylic-logo-signs,Mapped to an existing page with matching product or commercial intent
+acrylic signs for weddings,170,35,REMOVE,,,,Remove — lower-priority variant with no unique current or approved 90-day page target
+acrylic signs wedding,1900,20,REMOVE,,,,Remove — lower-priority variant with no unique current or approved 90-day page target
+acrylic signs with lights,480,36,REMOVE,,,,Remove — lower-priority variant with no unique current or approved 90-day page target
+aesthetic neon signs,390,29,REMOVE,,,,Remove — lower-priority variant with no unique current or approved 90-day page target
+backlit acrylic signs,480,23,KEEP,live_page,secondary,/products/uv-print-acrylic-signs,Mapped to an existing page with matching product or commercial intent
+backlit channel letter signs,70,11,KEEP,live_page,secondary,/business-signs/channel-letter-signs,Mapped to an existing page with matching product or commercial intent
+backlit letters,260,13,KEEP,live_page,secondary,/products/3d-metal-neon-signs,Mapped to an existing page with matching product or commercial intent
+backlit letters signage,260,13,REMOVE,,,,Remove — lower-priority variant with no unique current or approved 90-day page target
+backlit lobby signs,40,29,REMOVE,,,,"Remove — sub-100 volume without stronger exact-page, intent, or competitor evidence"
+backlit signage,1900,28,REMOVE,,,,Remove — lower-priority variant with no unique current or approved 90-day page target
+backlit storefront signs,90,43,KEEP,live_page,secondary,/products/ultra-thin-lightbox,Mapped to an existing page with matching product or commercial intent
+bar sign personalized,1600,22,REMOVE,,,,Remove — lower-priority variant with no unique current or approved 90-day page target
+barbershop led sign,90,17,REMOVE,,,,"Remove — sub-100 volume without stronger exact-page, intent, or competitor evidence"
+barbershop signage,1900,29,KEEP,planned_90_day,secondary,/business-signs/salon-signs,Mapped to an approved 90-day landing-page cluster before content production
+beauty salon signs,880,25,KEEP,planned_90_day,secondary,/business-signs/salon-signs,Mapped to an approved 90-day landing-page cluster before content production
+bedroom neon signs,1600,44,KEEP,live_page,secondary,/products,Mapped to an existing page with matching product or commercial intent
+beer neon signs,4400,45,REMOVE,,,,Remove — outside the supported product and brand scope
+birthday neon sign,50,28,REMOVE,,,,"Remove — sub-100 volume without stronger exact-page, intent, or competitor evidence"
+building letters,260,34,REMOVE,,,,Remove — lower-priority variant with no unique current or approved 90-day page target
+building letters signs,140,44,REMOVE,,,,Remove — lower-priority variant with no unique current or approved 90-day page target
+building signage letters,140,35,REMOVE,,,,Remove — lower-priority variant with no unique current or approved 90-day page target
+business light box sign,140,35,KEEP,live_page,secondary,/business-signs/lightbox-signs,Mapped to an existing page with matching product or commercial intent
+business logo signs,590,31,KEEP,live_page,primary,/business-signs/custom-logo-neon-signs,Mapped to an existing page with matching product or commercial intent
+cafe signs,1300,44,KEEP,planned_90_day,secondary,/custom-signage/bar-cafe-neon-signs,Mapped to an approved 90-day landing-page cluster before content production
+channel letter signs,3600,26,KEEP,strategic_benchmark,benchmark,/business-signs/channel-letter-signs,"Head-term benchmark; tracked for market visibility, not used as a standalone page brief"
+channel letter signs cost,170,28,KEEP,live_page,secondary,/guides/custom-business-sign-cost,Mapped to an existing page with matching product or commercial intent
+channel letter signs for business,50,29,REMOVE,,,,"Remove — sub-100 volume without stronger exact-page, intent, or competitor evidence"
+channel letter signs price,210,32,KEEP,live_page,secondary,/guides/custom-business-sign-cost,Mapped to an existing page with matching product or commercial intent
+clear acrylic signs,390,44,REMOVE,,,,Remove — lower-priority variant with no unique current or approved 90-day page target
+coffee shop signs,880,42,KEEP,planned_90_day,secondary,/custom-signage/bar-cafe-neon-signs,Mapped to an approved 90-day landing-page cluster before content production
+commercial light box sign,40,43,REMOVE,,,,"Remove — sub-100 volume without stronger exact-page, intent, or competitor evidence"
+commercial retail signs,110,26,KEEP,live_page,secondary,/products,Mapped to an existing page with matching product or commercial intent
+company acrylic signs,1300,44,REMOVE,,,,Remove — lower-priority variant with no unique current or approved 90-day page target
+corporate signs,390,15,KEEP,live_page,secondary,/business-signs/acrylic-logo-signs,Mapped to an existing page with matching product or commercial intent
+custom 3d metal signs,50,12,REMOVE,,,,"Remove — sub-100 volume without stronger exact-page, intent, or competitor evidence"
+custom acrylic logo signs,70,29,KEEP,live_page,secondary,/business-signs/acrylic-logo-signs,Mapped to an existing page with matching product or commercial intent
+custom acrylic signage,2900,40,REMOVE,,,,Remove — normalized semantic reorder or singular/plural duplicate of a retained keyword
+custom acrylic signs,2900,36,KEEP,strategic_benchmark,benchmark,/business-signs/acrylic-logo-signs,"Head-term benchmark; tracked for market visibility, not used as a standalone page brief"
+custom acrylic signs for business,110,35,KEEP,live_page,secondary,/products/uv-print-acrylic-signs,Mapped to an existing page with matching product or commercial intent
+custom backlit sign,590,35,REMOVE,,,,Remove — normalized semantic reorder or singular/plural duplicate of a retained keyword
+custom backlit signage,590,44,KEEP,live_page,secondary,/business-signs/lightbox-signs,Mapped to an existing page with matching product or commercial intent
+custom bar signs,1600,22,KEEP,planned_90_day,primary,/custom-signage/bar-cafe-neon-signs,Mapped to an approved 90-day landing-page cluster before content production
+custom bar signs neon,880,35,REMOVE,,,,Remove — normalized semantic reorder or singular/plural duplicate of a retained keyword
+custom business logo signs,70,30,KEEP,live_page,secondary,/business-signs/custom-logo-neon-signs,Mapped to an existing page with matching product or commercial intent
+custom business signs,4400,84,KEEP,strategic_benchmark,benchmark,/business-signs,"Head-term benchmark; tracked for market visibility, not used as a standalone page brief"
+custom business signs outdoor,1300,39,REMOVE,,,,Remove — normalized semantic reorder or singular/plural duplicate of a retained keyword
+custom channel letter signs,170,27,KEEP,live_page,primary,/business-signs/channel-letter-signs,Mapped to an existing page with matching product or commercial intent
+custom design neon sign,33100,61,REMOVE,,,,Remove — lower-priority variant with no unique current or approved 90-day page target
+custom design neon signs,33100,65,REMOVE,,,,Remove — lower-priority variant with no unique current or approved 90-day page target
+custom fluorescent sign,33100,63,REMOVE,,,,Remove — outside the supported product and brand scope
+custom gym signs,170,14,REMOVE,,,,Remove — lower-priority variant with no unique current or approved 90-day page target
+custom illuminated signs,140,34,KEEP,live_page,secondary,/business-signs,Mapped to an existing page with matching product or commercial intent
+custom led neon,5400,61,REMOVE,,,,Remove — lower-priority variant with no unique current or approved 90-day page target
+custom led neon signs,5400,58,KEEP,strategic_benchmark,benchmark,/custom-signage,"Head-term benchmark; tracked for market visibility, not used as a standalone page brief"
+custom led signs,9900,53,REMOVE,,,,Remove — lower-priority variant with no unique current or approved 90-day page target
+custom light box sign,140,36,REMOVE,,,,Remove — lower-priority variant with no unique current or approved 90-day page target
+custom light up signs,1900,61,KEEP,live_page,primary,/custom-signage,Mapped to an existing page with matching product or commercial intent
+custom lightbox signs,140,21,KEEP,live_page,primary,/business-signs/lightbox-signs,Mapped to an existing page with matching product or commercial intent
+custom lighted signs,1300,43,KEEP,live_page,secondary,/products,Mapped to an existing page with matching product or commercial intent
+custom lobby signs,50,13,KEEP,live_page,secondary,/business-signs/custom-logo-neon-signs,Mapped to an existing page with matching product or commercial intent
+custom made neon lights,2400,36,KEEP,live_page,secondary,/products/custom-neon-signs,Mapped to an existing page with matching product or commercial intent
+custom made neon signs,33100,61,KEEP,live_page,secondary,/products/custom-neon-signs,Mapped to an existing page with matching product or commercial intent
+custom metal letter signs,50,31,KEEP,live_page,secondary,/products/3d-metal-neon-signs,Mapped to an existing page with matching product or commercial intent
+custom name neon sign,1300,66,REMOVE,,,,Remove — lower-priority variant with no unique current or approved 90-day page target
+custom neon,1300,59,REMOVE,,,,Remove — lower-priority variant with no unique current or approved 90-day page target
+custom neon bar signs,720,37,KEEP,planned_90_day,secondary,/custom-signage/bar-cafe-neon-signs,Mapped to an approved 90-day landing-page cluster before content production
+custom neon led lights,5400,55,KEEP,live_page,secondary,/products/custom-neon-signs,Mapped to an existing page with matching product or commercial intent
+custom neon letters,40500,56,KEEP,strategic_benchmark,benchmark,/products/custom-neon-signs,"Head-term benchmark; tracked for market visibility, not used as a standalone page brief"
+custom neon light design,2400,36,REMOVE,,,,Remove — lower-priority variant with no unique current or approved 90-day page target
+custom neon light signs,1300,60,REMOVE,,,,Remove — lower-priority variant with no unique current or approved 90-day page target
+custom neon lights,2400,44,KEEP,strategic_benchmark,benchmark,/products/custom-neon-signs,"Head-term benchmark; tracked for market visibility, not used as a standalone page brief"
+custom neon logo sign,590,36,REMOVE,,,,Remove — normalized semantic reorder or singular/plural duplicate of a retained keyword
+custom neon logo signs,1300,58,KEEP,strategic_benchmark,benchmark,/business-signs/custom-logo-neon-signs,"Head-term benchmark; tracked for market visibility, not used as a standalone page brief"
+custom neon name sign,1300,67,REMOVE,,,,Remove — lower-priority variant with no unique current or approved 90-day page target
+custom neon sign,33100,60,REMOVE,,,,Remove — normalized semantic reorder or singular/plural duplicate of a retained keyword
+custom neon sign cost,110,24,KEEP,live_page,primary,/guides/custom-business-sign-cost,Mapped to an existing page with matching product or commercial intent
+custom neon signs,33100,63,KEEP,strategic_benchmark,benchmark,/products/custom-neon-signs,"Head-term benchmark; tracked for market visibility, not used as a standalone page brief"
+custom neon signs for bar,720,33,REMOVE,,,,Remove — lower-priority variant with no unique current or approved 90-day page target
+custom neon signs for business,140,56,REMOVE,,,,Remove — lower-priority variant with no unique current or approved 90-day page target
+custom neon signs for restaurants,70,18,REMOVE,,,,"Remove — sub-100 volume without stronger exact-page, intent, or competitor evidence"
+custom neon signs for wedding,210,31,KEEP,planned_90_day,primary,/custom-signage/wedding-neon-signs,Mapped to an approved 90-day landing-page cluster before content production
+custom neon signs logo,720,59,REMOVE,,,,Remove — normalized semantic reorder or singular/plural duplicate of a retained keyword
+custom neon signs online,210,60,KEEP,live_page,secondary,/products/custom-neon-signs,Mapped to an existing page with matching product or commercial intent
+custom neon signs outdoor,260,36,KEEP,live_page,secondary,/products/custom-neon-signs,Mapped to an existing page with matching product or commercial intent
+custom neon wall signs,90,59,REMOVE,,,,"Remove — sub-100 volume without stronger exact-page, intent, or competitor evidence"
+custom neon wedding sign,260,32,REMOVE,,,,Remove — lower-priority variant with no unique current or approved 90-day page target
+custom neon wedding signs,260,33,REMOVE,,,,Remove — lower-priority variant with no unique current or approved 90-day page target
+custom outdoor business signs,1300,29,KEEP,live_page,secondary,/business-signs,Mapped to an existing page with matching product or commercial intent
+custom perspex signs,2900,33,KEEP,live_page,secondary,/products/uv-print-acrylic-signs,Mapped to an existing page with matching product or commercial intent
+custom signage,33100,58,KEEP,strategic_benchmark,benchmark,/custom-signage,"Head-term benchmark; tracked for market visibility, not used as a standalone page brief"
+custom signage for business,5400,81,KEEP,live_page,primary,/business-signs,Mapped to an existing page with matching product or commercial intent
+custom signs,27100,54,REMOVE,,,,Remove — normalized semantic reorder or singular/plural duplicate of a retained keyword
+custom signs for bars,1600,25,REMOVE,,,,Remove — lower-priority variant with no unique current or approved 90-day page target
+custom signs for businesses,8100,38,REMOVE,,,,Remove — normalized semantic reorder or singular/plural duplicate of a retained keyword
+custom signs for wedding,1600,36,KEEP,planned_90_day,secondary,/custom-signage/wedding-neon-signs,Mapped to an approved 90-day landing-page cluster before content production
+custom signs outdoor,2400,34,REMOVE,,,,Remove — lower-priority variant with no unique current or approved 90-day page target
+custom signs that light up,2400,62,REMOVE,,,,Remove — lower-priority variant with no unique current or approved 90-day page target
+custom storefront signs,170,42,KEEP,live_page,secondary,/,Mapped to an existing page with matching product or commercial intent
+custom wedding neon signs,90,32,REMOVE,,,,"Remove — sub-100 volume without stronger exact-page, intent, or competitor evidence"
+customizable acrylic signs,3600,45,KEEP,live_page,secondary,/business-signs/acrylic-logo-signs,Mapped to an existing page with matching product or commercial intent
+customizable light up sign,1900,60,REMOVE,,,,Remove — lower-priority variant with no unique current or approved 90-day page target
+customizable neon sign,33100,63,KEEP,live_page,primary,/products/custom-neon-signs,Mapped to an existing page with matching product or commercial intent
+customized parking signs,2900,44,REMOVE,,,,Remove — outside the supported product and brand scope
+customneonsign,33100,71,REMOVE,,,,Remove — lower-priority variant with no unique current or approved 90-day page target
+dimensional letter signs,320,25,KEEP,live_page,secondary,/products/3d-metal-neon-signs,Mapped to an existing page with matching product or commercial intent
+dorm room neon signs,90,23,REMOVE,,,,"Remove — sub-100 volume without stronger exact-page, intent, or competitor evidence"
+edge lit signs,210,23,REMOVE,,,,Remove — lower-priority variant with no unique current or approved 90-day page target
+event neon signs,70,45,REMOVE,,,,"Remove — sub-100 volume without stronger exact-page, intent, or competitor evidence"
+exterior building letters,170,34,REMOVE,,,,Remove — lower-priority variant with no unique current or approved 90-day page target
+exterior letters for buildings,170,34,REMOVE,,,,Remove — lower-priority variant with no unique current or approved 90-day page target
+front lit channel letter signs,170,12,KEEP,live_page,secondary,/business-signs/channel-letter-signs,Mapped to an existing page with matching product or commercial intent
+front lit signage,140,11,KEEP,live_page,secondary,/products/3d-metal-neon-signs,Mapped to an existing page with matching product or commercial intent
+game room signage,480,22,KEEP,planned_90_day,secondary,/custom-signage/gaming-neon-signs,Mapped to an approved 90-day landing-page cluster before content production
+gamer neon signs,170,19,REMOVE,,,,Remove — lower-priority variant with no unique current or approved 90-day page target
+gaming neon signs,590,17,KEEP,planned_90_day,primary,/custom-signage/gaming-neon-signs,Mapped to an approved 90-day landing-page cluster before content production
+glow party sign,90,23,REMOVE,,,,"Remove — sub-100 volume without stronger exact-page, intent, or competitor evidence"
+gym signs,1000,17,KEEP,planned_90_day,primary,/business-signs/gym-signs,Mapped to an approved 90-day landing-page cluster before content production
+hair salon signs,880,25,KEEP,planned_90_day,secondary,/business-signs/salon-signs,Mapped to an approved 90-day landing-page cluster before content production
+hair salon signs outdoor,170,26,REMOVE,,,,Remove — lower-priority variant with no unique current or approved 90-day page target
+halo lit letters,210,31,KEEP,live_page,secondary,/products/3d-metal-neon-signs,Mapped to an existing page with matching product or commercial intent
+happy birthday led sign,720,23,REMOVE,,,,Remove — lower-priority variant with no unique current or approved 90-day page target
+happy birthday neon sign,1000,23,KEEP,planned_90_day,primary,/custom-signage/event-neon-signs,Mapped to an approved 90-day landing-page cluster before content production
+how much are custom neon signs,110,34,KEEP,live_page,secondary,/guides/custom-business-sign-cost,Mapped to an existing page with matching product or commercial intent
+how much do custom neon signs cost,90,22,KEEP,live_page,secondary,/guides/custom-business-sign-cost,Mapped to an existing page with matching product or commercial intent
+how much do outdoor business signs cost,140,21,KEEP,live_page,secondary,/guides/custom-business-sign-cost,Mapped to an existing page with matching product or commercial intent
+ideas for restaurant signs,320,36,REMOVE,,,,Remove — lower-priority variant with no unique current or approved 90-day page target
+illuminated acrylic signs,390,20,KEEP,live_page,secondary,/products/uv-print-acrylic-signs,Mapped to an existing page with matching product or commercial intent
+illuminated business signs,90,22,REMOVE,,,,"Remove — sub-100 volume without stronger exact-page, intent, or competitor evidence"
+illuminated channel letter signs,90,22,KEEP,live_page,secondary,/business-signs/channel-letter-signs,Mapped to an existing page with matching product or commercial intent
+illuminated lightbox signs,50,16,KEEP,live_page,secondary,/products/ultra-thin-lightbox,Mapped to an existing page with matching product or commercial intent
+illuminated restaurant signs,50,20,REMOVE,,,,"Remove — sub-100 volume without stronger exact-page, intent, or competitor evidence"
+illuminated signage,1300,36,REMOVE,,,,Remove — normalized semantic reorder or singular/plural duplicate of a retained keyword
+illuminated signs,1300,25,KEEP,live_page,secondary,/products,Mapped to an existing page with matching product or commercial intent
+illuminated signs for business,1000,30,KEEP,live_page,secondary,/business-signs,Mapped to an existing page with matching product or commercial intent
+large custom neon sign,90,30,KEEP,live_page,secondary,/products/custom-neon-signs,Mapped to an existing page with matching product or commercial intent
+led acrylic signs,720,34,KEEP,live_page,secondary,/products/uv-print-acrylic-signs,Mapped to an existing page with matching product or commercial intent
+led backlit letters,70,22,REMOVE,,,,"Remove — sub-100 volume without stronger exact-page, intent, or competitor evidence"
+led backlit signage,480,34,REMOVE,,,,Remove — lower-priority variant with no unique current or approved 90-day page target
+led business sign,2900,41,REMOVE,,,,Remove — lower-priority variant with no unique current or approved 90-day page target
+led channel letter signs,320,14,KEEP,live_page,secondary,/business-signs/channel-letter-signs,Mapped to an existing page with matching product or commercial intent
+led gaming sign,110,19,KEEP,planned_90_day,secondary,/custom-signage/gaming-neon-signs,Mapped to an approved 90-day landing-page cluster before content production
+led light box sign,170,19,KEEP,live_page,primary,/products/ultra-thin-lightbox,Mapped to an existing page with matching product or commercial intent
+led light sign,1600,34,REMOVE,,,,Remove — lower-priority variant with no unique current or approved 90-day page target
+led neon,1300,27,REMOVE,,,,Remove — lower-priority variant with no unique current or approved 90-day page target
+led neon signage,12100,44,REMOVE,,,,Remove — normalized semantic reorder or singular/plural duplicate of a retained keyword
+led neon signs,12100,56,KEEP,strategic_benchmark,benchmark,/custom-signage,"Head-term benchmark; tracked for market visibility, not used as a standalone page brief"
+led neon signs for business,110,41,REMOVE,,,,Remove — lower-priority variant with no unique current or approved 90-day page target
+led neon wall art,90,28,REMOVE,,,,"Remove — sub-100 volume without stronger exact-page, intent, or competitor evidence"
+led open sign,2400,26,REMOVE,,,,Remove — lower-priority variant with no unique current or approved 90-day page target
+led outdoor business signs,720,36,KEEP,live_page,secondary,/business-signs,Mapped to an existing page with matching product or commercial intent
+led personalized signs,9900,61,REMOVE,,,,Remove — normalized semantic reorder or singular/plural duplicate of a retained keyword
+led restaurant signs,140,17,REMOVE,,,,Remove — normalized semantic reorder or singular/plural duplicate of a retained keyword
+led sign,12100,38,REMOVE,,,,Remove — normalized semantic reorder or singular/plural duplicate of a retained keyword
+led signs,12100,52,KEEP,strategic_benchmark,benchmark,/products,"Head-term benchmark; tracked for market visibility, not used as a standalone page brief"
+led signs for bedroom,880,30,REMOVE,,,,Remove — lower-priority variant with no unique current or approved 90-day page target
+led signs for business,2400,29,KEEP,live_page,secondary,/business-signs,Mapped to an existing page with matching product or commercial intent
+led signs for restaurants,140,26,REMOVE,,,,Remove — lower-priority variant with no unique current or approved 90-day page target
+led signs for room,880,35,REMOVE,,,,Remove — lower-priority variant with no unique current or approved 90-day page target
+led wedding signs,480,30,REMOVE,,,,Remove — normalized semantic reorder or singular/plural duplicate of a retained keyword
+light box sign,1300,26,REMOVE,,,,Remove — lower-priority variant with no unique current or approved 90-day page target
+light box sign for business,40,19,REMOVE,,,,"Remove — sub-100 volume without stronger exact-page, intent, or competitor evidence"
+light box signage,1300,26,REMOVE,,,,Remove — lower-priority variant with no unique current or approved 90-day page target
+light up acrylic signs,320,23,REMOVE,,,,Remove — lower-priority variant with no unique current or approved 90-day page target
+light up bar signs,480,31,KEEP,planned_90_day,secondary,/custom-signage/bar-cafe-neon-signs,Mapped to an approved 90-day landing-page cluster before content production
+light up sign personalized,1900,61,REMOVE,,,,Remove — lower-priority variant with no unique current or approved 90-day page target
+light up signs,2400,36,KEEP,strategic_benchmark,benchmark,/custom-signage,"Head-term benchmark; tracked for market visibility, not used as a standalone page brief"
+lightbox signs,720,49,KEEP,strategic_benchmark,benchmark,/business-signs/lightbox-signs,"Head-term benchmark; tracked for market visibility, not used as a standalone page brief"
+lighted custom signs,1300,28,REMOVE,,,,Remove — normalized semantic reorder or singular/plural duplicate of a retained keyword
+lighted outdoor business signs,720,29,REMOVE,,,,Remove — lower-priority variant with no unique current or approved 90-day page target
+lighting signs,2400,53,REMOVE,,,,Remove — lower-priority variant with no unique current or approved 90-day page target
+lobby signs,590,17,KEEP,live_page,secondary,/business-signs/custom-logo-neon-signs,Mapped to an existing page with matching product or commercial intent
+lobby signs for business,170,14,KEEP,live_page,secondary,/business-signs/custom-logo-neon-signs,Mapped to an existing page with matching product or commercial intent
+man cave led sign,140,23,REMOVE,,,,Remove — lower-priority variant with no unique current or approved 90-day page target
+man cave neon signs,480,23,KEEP,planned_90_day,secondary,/custom-signage/gaming-neon-signs,Mapped to an approved 90-day landing-page cluster before content production
+man cave signs that light up,70,15,REMOVE,,,,"Remove — sub-100 volume without stronger exact-page, intent, or competitor evidence"
+metal building letters,30,13,REMOVE,,,,"Remove — sub-100 volume without stronger exact-page, intent, or competitor evidence"
+metal letter signs,1000,38,KEEP,live_page,secondary,/products/3d-metal-neon-signs,Mapped to an existing page with matching product or commercial intent
+metal letter signs for business,20,36,REMOVE,,,,"Remove — sub-100 volume without stronger exact-page, intent, or competitor evidence"
+nail salon signs,390,24,KEEP,planned_90_day,secondary,/business-signs/salon-signs,Mapped to an approved 90-day landing-page cluster before content production
+neon and led signs,12100,51,REMOVE,,,,Remove — lower-priority variant with no unique current or approved 90-day page target
+neon bar signage,3600,35,KEEP,planned_90_day,secondary,/custom-signage/bar-cafe-neon-signs,Mapped to an approved 90-day landing-page cluster before content production
+neon cafe signs,170,23,REMOVE,,,,Remove — lower-priority variant with no unique current or approved 90-day page target
+neon colors,49500,34,KEEP,live_page,primary,/guides/front-lit-vs-halo-lit-vs-dual-lit,Mapped to an existing page with matching product or commercial intent
+neon for restaurant,170,23,REMOVE,,,,Remove — lower-priority variant with no unique current or approved 90-day page target
+neon game room,140,17,KEEP,planned_90_day,secondary,/custom-signage/gaming-neon-signs,Mapped to an approved 90-day landing-page cluster before content production
+neon gamer signs,110,18,REMOVE,,,,Remove — lower-priority variant with no unique current or approved 90-day page target
+neon gym sign,480,17,REMOVE,,,,Remove — normalized semantic reorder or singular/plural duplicate of a retained keyword
+neon gym signs,590,19,KEEP,planned_90_day,secondary,/business-signs/gym-signs,Mapped to an approved 90-day landing-page cluster before content production
+neon hair salon signs,390,17,REMOVE,,,,Remove — lower-priority variant with no unique current or approved 90-day page target
+neon led custom,4400,64,REMOVE,,,,Remove — lower-priority variant with no unique current or approved 90-day page target
+neon led lights,1300,22,REMOVE,,,,Remove — lower-priority variant with no unique current or approved 90-day page target
+neon led sign custom,4400,62,REMOVE,,,,Remove — normalized semantic reorder or singular/plural duplicate of a retained keyword
+neon light home decor,90,29,REMOVE,,,,"Remove — sub-100 volume without stronger exact-page, intent, or competitor evidence"
+neon light signage,3600,30,REMOVE,,,,Remove — normalized semantic reorder or singular/plural duplicate of a retained keyword
+neon light up signs,3600,33,KEEP,live_page,secondary,/custom-signage,Mapped to an existing page with matching product or commercial intent
+neon light wall art,70,24,REMOVE,,,,"Remove — sub-100 volume without stronger exact-page, intent, or competitor evidence"
+neon lighting signage,3600,43,REMOVE,,,,Remove — lower-priority variant with no unique current or approved 90-day page target
+neon lights,18100,32,KEEP,live_page,secondary,/custom-signage,Mapped to an existing page with matching product or commercial intent
+neon lights for bedroom,2400,36,KEEP,live_page,secondary,/products,Mapped to an existing page with matching product or commercial intent
+neon lights for room,2400,36,KEEP,live_page,primary,/products,Mapped to an existing page with matching product or commercial intent
+neon man cave lights,110,18,REMOVE,,,,Remove — lower-priority variant with no unique current or approved 90-day page target
+neon name sign,2900,72,KEEP,live_page,secondary,/custom-signage,Mapped to an existing page with matching product or commercial intent
+neon name signs,2400,60,REMOVE,,,,Remove — normalized semantic reorder or singular/plural duplicate of a retained keyword
+neon open sign,3600,48,REMOVE,,,,Remove — lower-priority variant with no unique current or approved 90-day page target
+neon party sign,170,34,KEEP,planned_90_day,secondary,/custom-signage/event-neon-signs,Mapped to an approved 90-day landing-page cluster before content production
+neon restaurant signs,480,32,KEEP,planned_90_day,secondary,/business-signs/restaurant-signs,Mapped to an approved 90-day landing-page cluster before content production
+neon salon signs,70,15,REMOVE,,,,"Remove — sub-100 volume without stronger exact-page, intent, or competitor evidence"
+neon shop signs,880,54,KEEP,planned_90_day,secondary,/business-signs/retail-signs,Mapped to an approved 90-day landing-page cluster before content production
+neon sign bedroom,1600,31,REMOVE,,,,Remove — normalized semantic reorder or singular/plural duplicate of a retained keyword
+neon sign cost,170,20,KEEP,live_page,secondary,/guides/custom-business-sign-cost,Mapped to an existing page with matching product or commercial intent
+neon sign custom,4400,64,REMOVE,,,,Remove — normalized semantic reorder or singular/plural duplicate of a retained keyword
+neon sign for gym,70,16,REMOVE,,,,"Remove — sub-100 volume without stronger exact-page, intent, or competitor evidence"
+neon sign for home,260,27,KEEP,planned_90_day,secondary,/custom-signage/home-neon-decor,Mapped to an approved 90-day landing-page cluster before content production
+neon sign for room,1600,26,KEEP,live_page,secondary,/products,Mapped to an existing page with matching product or commercial intent
+neon sign ideas,210,32,REMOVE,,,,Remove — lower-priority variant with no unique current or approved 90-day page target
+neon sign led lights,12100,44,REMOVE,,,,Remove — lower-priority variant with no unique current or approved 90-day page target
+neon sign store near me,1900,45,REMOVE,,,,Remove — local-intent query is unsupported by the current national ecommerce model
+neon signs,40500,34,KEEP,strategic_benchmark,benchmark,/,"Head-term benchmark; tracked for market visibility, not used as a standalone page brief"
+neon signs and lights,3600,30,REMOVE,,,,Remove — lower-priority variant with no unique current or approved 90-day page target
+neon signs custom,33100,63,REMOVE,,,,Remove — normalized semantic reorder or singular/plural duplicate of a retained keyword
+neon signs for bars,4400,37,REMOVE,,,,Remove — lower-priority variant with no unique current or approved 90-day page target
+neon signs for business,590,25,KEEP,strategic_benchmark,benchmark,/business-signs/custom-logo-neon-signs,"Head-term benchmark; tracked for market visibility, not used as a standalone page brief"
+neon signs for gaming room,210,18,KEEP,planned_90_day,secondary,/custom-signage/gaming-neon-signs,Mapped to an approved 90-day landing-page cluster before content production
+neon signs for kitchen,210,15,KEEP,planned_90_day,secondary,/custom-signage/home-neon-decor,Mapped to an approved 90-day landing-page cluster before content production
+neon signs lights,5400,45,KEEP,live_page,secondary,/custom-signage,Mapped to an existing page with matching product or commercial intent
+neon signs near me,1900,25,REMOVE,,,,Remove — local-intent query is unsupported by the current national ecommerce model
+neon wall art,720,35,KEEP,live_page,secondary,/custom-signage,Mapped to an existing page with matching product or commercial intent
+neon wall decor,260,27,KEEP,planned_90_day,primary,/custom-signage/home-neon-decor,Mapped to an approved 90-day landing-page cluster before content production
+neon wall lights,720,35,KEEP,planned_90_day,secondary,/custom-signage/home-neon-decor,Mapped to an approved 90-day landing-page cluster before content production
+neon wall signs,720,29,KEEP,live_page,secondary,/custom-signage,Mapped to an existing page with matching product or commercial intent
+neon window signs,140,26,REMOVE,,,,Remove — lower-priority variant with no unique current or approved 90-day page target
+office lobby signs,70,16,KEEP,live_page,secondary,/business-signs/custom-logo-neon-signs,Mapped to an existing page with matching product or commercial intent
+office logo signs,140,24,KEEP,live_page,secondary,/business-signs/custom-logo-neon-signs,Mapped to an existing page with matching product or commercial intent
+office logo signs for wall,90,21,KEEP,live_page,secondary,/business-signs/custom-logo-neon-signs,Mapped to an existing page with matching product or commercial intent
+office neon signs,260,16,REMOVE,,,,Remove — lower-priority variant with no unique current or approved 90-day page target
+office wall signs,720,27,KEEP,live_page,secondary,/business-signs/acrylic-logo-signs,Mapped to an existing page with matching product or commercial intent
+open led light sign,2400,39,REMOVE,,,,Remove — lower-priority variant with no unique current or approved 90-day page target
+outdoor acrylic signs,260,36,REMOVE,,,,Remove — lower-priority variant with no unique current or approved 90-day page target
+outdoor business signs,9900,36,KEEP,strategic_benchmark,benchmark,/business-signs,"Head-term benchmark; tracked for market visibility, not used as a standalone page brief"
+outdoor business signs for buildings,390,30,KEEP,live_page,secondary,/business-signs,Mapped to an existing page with matching product or commercial intent
+outdoor business signs ideas,390,36,REMOVE,,,,Remove — lower-priority variant with no unique current or approved 90-day page target
+outdoor business signs with lights,880,36,KEEP,live_page,primary,/,Mapped to an existing page with matching product or commercial intent
+outdoor illuminated signs,480,34,KEEP,live_page,secondary,/business-signs,Mapped to an existing page with matching product or commercial intent
+outdoor light box signage,320,20,REMOVE,,,,Remove — lower-priority variant with no unique current or approved 90-day page target
+outdoor lightbox signs,320,24,KEEP,live_page,secondary,/business-signs/lightbox-signs,Mapped to an existing page with matching product or commercial intent
+outdoor metal letter signs,320,24,KEEP,live_page,secondary,/products/3d-metal-neon-signs,Mapped to an existing page with matching product or commercial intent
+outdoor neon signs for business,90,26,REMOVE,,,,"Remove — sub-100 volume without stronger exact-page, intent, or competitor evidence"
+outdoor restaurant signs,590,26,KEEP,planned_90_day,secondary,/business-signs/restaurant-signs,Mapped to an approved 90-day landing-page cluster before content production
+outdoor retail signs,210,44,REMOVE,,,,Remove — lower-priority variant with no unique current or approved 90-day page target
+outdoor salon signs,140,27,KEEP,planned_90_day,secondary,/business-signs/salon-signs,Mapped to an approved 90-day landing-page cluster before content production
+outdoor storefront signs,590,32,KEEP,live_page,secondary,/,Mapped to an existing page with matching product or commercial intent
+party neon signs,170,21,REMOVE,,,,Remove — normalized semantic reorder or singular/plural duplicate of a retained keyword
+personalized bar signs,480,18,REMOVE,,,,Remove — lower-priority variant with no unique current or approved 90-day page target
+personalized bar signs neon,720,37,REMOVE,,,,Remove — normalized semantic reorder or singular/plural duplicate of a retained keyword
+personalized led sign,12100,47,KEEP,live_page,secondary,/custom-signage,Mapped to an existing page with matching product or commercial intent
+personalized light signs,1300,60,REMOVE,,,,Remove — lower-priority variant with no unique current or approved 90-day page target
+personalized neon,40500,61,KEEP,strategic_benchmark,benchmark,/products/custom-neon-signs,"Head-term benchmark; tracked for market visibility, not used as a standalone page brief"
+personalized neon bar signs,33100,45,KEEP,planned_90_day,secondary,/custom-signage/bar-cafe-neon-signs,Mapped to an approved 90-day landing-page cluster before content production
+personalized neon sign,1600,62,KEEP,live_page,secondary,/products/custom-neon-signs,Mapped to an existing page with matching product or commercial intent
+printed acrylic signs,480,32,KEEP,live_page,secondary,/business-signs/acrylic-logo-signs,Mapped to an existing page with matching product or commercial intent
+restaurant led signs,140,23,KEEP,planned_90_day,secondary,/business-signs/restaurant-signs,Mapped to an approved 90-day landing-page cluster before content production
+restaurant signs,2900,34,KEEP,planned_90_day,primary,/business-signs/restaurant-signs,Mapped to an approved 90-day landing-page cluster before content production
+restaurant signs for outside,590,36,REMOVE,,,,Remove — lower-priority variant with no unique current or approved 90-day page target
+retail shop signs,390,24,KEEP,planned_90_day,secondary,/business-signs/retail-signs,Mapped to an approved 90-day landing-page cluster before content production
+retail signs,720,43,KEEP,live_page,secondary,/products,Mapped to an existing page with matching product or commercial intent
+retail storefront signs,140,19,KEEP,live_page,secondary,/,Mapped to an existing page with matching product or commercial intent
+reverse channel letter signs,140,11,KEEP,live_page,secondary,/business-signs/channel-letter-signs,Mapped to an existing page with matching product or commercial intent
+reverse lit channel letter signs,90,10,REMOVE,,,,"Remove — sub-100 volume without stronger exact-page, intent, or competitor evidence"
+salon signs,1000,33,KEEP,planned_90_day,primary,/business-signs/salon-signs,Mapped to an approved 90-day landing-page cluster before content production
+salon signs ideas,210,30,REMOVE,,,,Remove — lower-priority variant with no unique current or approved 90-day page target
+shop signs,1600,33,KEEP,planned_90_day,primary,/business-signs/retail-signs,Mapped to an approved 90-day landing-page cluster before content production
+shop signs near me,18100,65,REMOVE,,,,Remove — local-intent query is unsupported by the current national ecommerce model
+sign neon custom,33100,53,REMOVE,,,,Remove — normalized semantic reorder or singular/plural duplicate of a retained keyword
+signage lightbox,1300,25,REMOVE,,,,Remove — normalized semantic reorder or singular/plural duplicate of a retained keyword
+storefront letters,50,19,REMOVE,,,,"Remove — sub-100 volume without stronger exact-page, intent, or competitor evidence"
+storefront retail signs,210,39,REMOVE,,,,Remove — normalized semantic reorder or singular/plural duplicate of a retained keyword
+storefront signs,3600,29,KEEP,strategic_benchmark,benchmark,/business-signs,"Head-term benchmark; tracked for market visibility, not used as a standalone page brief"
+storefront signs for business,260,28,REMOVE,,,,Remove — lower-priority variant with no unique current or approved 90-day page target
+types of channel letter signs,40,28,KEEP,live_page,secondary,/business-signs/channel-letter-signs,Mapped to an existing page with matching product or commercial intent
+video game neon signs,170,19,KEEP,planned_90_day,secondary,/custom-signage/gaming-neon-signs,Mapped to an approved 90-day landing-page cluster before content production
+vintage neon signs,2400,29,REMOVE,,,,Remove — lower-priority variant with no unique current or approved 90-day page target
+wall decor neon sign,260,32,KEEP,planned_90_day,secondary,/custom-signage/home-neon-decor,Mapped to an approved 90-day landing-page cluster before content production
+wedding led sign,480,37,KEEP,planned_90_day,secondary,/custom-signage/wedding-neon-signs,Mapped to an approved 90-day landing-page cluster before content production
+wedding light sign,90,38,REMOVE,,,,"Remove — sub-100 volume without stronger exact-page, intent, or competitor evidence"
+wedding neon sign,2900,42,REMOVE,,,,Remove — normalized semantic reorder or singular/plural duplicate of a retained keyword
+wedding neon signs,3600,45,KEEP,strategic_benchmark,benchmark,/custom-signage/wedding-neon-signs,"Head-term benchmark; tracked for market visibility, not used as a standalone page brief"
+wedding neon signs ideas,140,32,KEEP,planned_90_day,secondary,/custom-signage/wedding-neon-signs,Mapped to an approved 90-day landing-page cluster before content production
+what are channel letter signs,90,24,KEEP,live_page,secondary,/business-signs/channel-letter-signs,Mapped to an existing page with matching product or commercial intent
+what are neon colors,1600,29,REMOVE,,,,Remove — lower-priority variant with no unique current or approved 90-day page target
+yoga signage,260,22,REMOVE,,,,Remove — lower-priority variant with no unique current or approved 90-day page target

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 import { StoreIcon } from "@/components/storefront/store-icon";
@@ -71,6 +72,14 @@ export function SiteFooter() {
       <div className="shell footer__grid">
         <div className="footer-brand">
           <Link className="brand" href="/">
+            <Image
+              className="brand__logo"
+              src="/brand/logo-mark.png"
+              alt=""
+              aria-hidden="true"
+              width={100}
+              height={60}
+            />
             THE GLOWNIQUE
           </Link>
           <p>Custom LED neon signs, 3D metal channel letters, ultra-thin lightboxes and UV-print acrylic signs — handcrafted to turn your ideas into something unforgettable.</p>

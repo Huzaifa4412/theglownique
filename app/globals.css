@@ -316,13 +316,17 @@ h2 {
   white-space: nowrap;
 }
 
-.brand__mark {
-  width: 10px;
-  height: 24px;
-  border-radius: 999px;
-  background: var(--pink);
-  box-shadow: 0 0 12px rgba(244, 11, 104, 0.7);
-  transform: rotate(28deg);
+/* The rose-gold GQ mark, used as drawn — untrimmed, so roughly a quarter of
+   this height is the artwork's own transparent margin and the visible
+   letterforms land around 33px. That is why 46 rather than the 34 a trimmed
+   mark needed; below ~40 the neon outline starts to break up against the
+   near-white header. Height-sized so the 1.67:1 canvas keeps its aspect next
+   to the wordmark, with a pink glow to seat it in the same lit world as the
+   signage instead of looking pasted on. */
+.brand__logo {
+  width: auto;
+  height: 46px;
+  filter: drop-shadow(0 1px 7px rgba(244, 11, 104, 0.3));
 }
 
 .desktop-nav {
@@ -3665,9 +3669,14 @@ button:active {
     font-size: 1rem;
   }
 
-  .brand__mark {
-    width: 8px;
-    height: 20px;
+  /* No room for the mark in a sticky bar this narrow: the wordmark, a menu
+     button and a CTA already fill a 360px viewport, and .brand is nowrap so
+     the overflow would push the CTA off-screen rather than wrap. The name
+     identifies the brand better than an abstract monogram anyway, so the
+     wordmark keeps the space. The footer lockup, which has room, still shows
+     the mark at every width. */
+  header .brand__logo {
+    display: none;
   }
 
   .mobile-nav {

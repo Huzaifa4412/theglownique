@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { WhatsappIcon } from "@/components/ui/whatsapp-icon";
 
@@ -11,7 +12,15 @@ export function ProductTopBar({ productName }: { productName: string }) {
     <header className="sticky top-0 z-50 border-b border-[#eadfe4] bg-white/85 backdrop-blur-md">
       <div className="mx-auto flex max-w-[1320px] items-center justify-between gap-4 px-4 py-3 sm:px-6">
         <Link href="/" className="brand" aria-label="The Glownique home">
-          <span className="brand__mark" aria-hidden="true" />
+          <Image
+            className="brand__logo"
+            src="/brand/logo-mark.png"
+            alt=""
+            aria-hidden="true"
+            width={100}
+            height={60}
+            loading="eager"
+          />
           THE GLOWNIQUE
         </Link>
 

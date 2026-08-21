@@ -45,16 +45,32 @@ const BASELINE = "2026-08-11";
 /** This release: expired free-delivery promotion withdrawn, privacy corrected. */
 const CLAIMS_RELEASE = "2026-08-19";
 
+/** Ubersuggest issue fixes: title lengths and the canonical signage hub URL. */
+const SEO_ISSUES_RELEASE = "2026-08-21";
+
+/** The journal launches: /blog hub, category archives and the first posts. */
+const BLOG_RELEASE = "2026-08-22";
+
 export const ROUTES: readonly RouteEntry[] = [
   // Home — free-delivery promo section removed, FAQ and comparison copy revised.
-  { path: "/", lastModified: CLAIMS_RELEASE, changeFrequency: "weekly", priority: 1.0, indexable: true },
+  { path: "/", lastModified: SEO_ISSUES_RELEASE, changeFrequency: "weekly", priority: 1.0, indexable: true },
 
   // B2B hub and destinations.
   { path: "/business-signs", lastModified: BASELINE, changeFrequency: "weekly", priority: 0.95, indexable: true },
   { path: "/business-signs/custom-logo-neon-signs", lastModified: BASELINE, changeFrequency: "monthly", priority: 0.9, indexable: true },
   { path: "/business-signs/channel-letter-signs", lastModified: BASELINE, changeFrequency: "monthly", priority: 0.9, indexable: true },
-  { path: "/business-signs/lightbox-signs", lastModified: BASELINE, changeFrequency: "monthly", priority: 0.9, indexable: true },
-  { path: "/business-signs/acrylic-logo-signs", lastModified: BASELINE, changeFrequency: "monthly", priority: 0.9, indexable: true },
+  { path: "/business-signs/lightbox-signs", lastModified: SEO_ISSUES_RELEASE, changeFrequency: "monthly", priority: 0.9, indexable: true },
+  { path: "/business-signs/acrylic-logo-signs", lastModified: SEO_ISSUES_RELEASE, changeFrequency: "monthly", priority: 0.9, indexable: true },
+
+  // Journal hub.
+  //
+  // Only the hub is listed here. Individual posts and category archives live in
+  // Sanity, so their URLs and dates are not knowable from a static manifest —
+  // app/sitemap.ts appends them at build time from the same data the pages use.
+  // The audit in scripts/seo-audit.mjs asserts that everything in this file is
+  // present in the sitemap, not that the sitemap contains nothing else, so the
+  // appended URLs pass through it cleanly.
+  { path: "/blog", lastModified: BLOG_RELEASE, changeFrequency: "weekly", priority: 0.7, indexable: true },
 
   // Decision guides.
   { path: "/guides", lastModified: BASELINE, changeFrequency: "weekly", priority: 0.85, indexable: true },
@@ -62,10 +78,11 @@ export const ROUTES: readonly RouteEntry[] = [
   { path: "/guides/front-lit-vs-halo-lit-vs-dual-lit", lastModified: BASELINE, changeFrequency: "monthly", priority: 0.8, indexable: true },
 
   // Broad product catalog — meta descriptions revised with the delivery claim.
-  { path: "/products", lastModified: CLAIMS_RELEASE, changeFrequency: "weekly", priority: 0.8, indexable: true },
+  { path: "/custom-signage", lastModified: SEO_ISSUES_RELEASE, changeFrequency: "weekly", priority: 0.8, indexable: true },
   ...PRODUCT_PAGES.map((product) => ({
     path: `/products/${product.slug}`,
-    lastModified: CLAIMS_RELEASE,
+    lastModified:
+      product.slug === "uv-print-acrylic-signs" ? SEO_ISSUES_RELEASE : CLAIMS_RELEASE,
     changeFrequency: "monthly" as const,
     priority: 0.75,
     indexable: true,
@@ -79,7 +96,7 @@ export const ROUTES: readonly RouteEntry[] = [
   { path: "/shipping", lastModified: CLAIMS_RELEASE, changeFrequency: "yearly", priority: 0.4, indexable: true },
   { path: "/privacy", lastModified: CLAIMS_RELEASE, changeFrequency: "yearly", priority: 0.4, indexable: true },
   { path: "/returns", lastModified: BASELINE, changeFrequency: "yearly", priority: 0.4, indexable: true },
-  { path: "/terms", lastModified: BASELINE, changeFrequency: "yearly", priority: 0.4, indexable: true },
+  { path: "/terms", lastModified: SEO_ISSUES_RELEASE, changeFrequency: "yearly", priority: 0.4, indexable: true },
   { path: "/accessibility", lastModified: BASELINE, changeFrequency: "yearly", priority: 0.4, indexable: true },
 
   // Not public content. Served with X-Robots-Tag: noindex from next.config.ts,

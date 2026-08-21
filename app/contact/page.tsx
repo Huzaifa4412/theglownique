@@ -519,7 +519,7 @@ export default function ContactPage() {
                   </li>
                   <li>
                     <Link
-                      href="/products"
+                      href="/custom-signage"
                       className="font-semibold text-[#ce0754] hover:underline"
                     >
                       Browse sign types and specs
