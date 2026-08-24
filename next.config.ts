@@ -8,6 +8,16 @@ const nextConfig: NextConfig = {
     // AVIF first, WebP fallback. Order matters: the first format matching the
     // request's Accept header wins.
     formats: ["image/avif", "image/webp"],
+    // Blog imagery is uploaded to Sanity and served from its asset CDN. Scoped
+    // to the asset host only — a wildcard here would let any Sanity project's
+    // URL be proxied through, and paid for, by this deployment.
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "cdn.sanity.io",
+        pathname: "/images/**",
+      },
+    ],
     // Product photography doesn't change once shipped — cache optimized
     // variants for 31 days instead of the 4-hour default.
     minimumCacheTTL: 2678400,

@@ -4,6 +4,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useRef } from "react";
 
 import { trackEtsyOutbound, trackPageView, trackWhatsappContact } from "@/lib/meta-pixel";
+import { recordOutboundClick } from "@/lib/outbound-click";
 
 /**
  * Hostnames that mean "this visitor is leaving to talk to us".
@@ -50,6 +51,13 @@ function isEtsyHost(host: string) {
  * worth adding to any link whose position matters, since without it the event
  * only records the page.
  *
+ * Both are additionally posted to /api/outbound-click and stored as
+ * `outboundClick` documents, so the numbers survive an ad blocker killing the
+ * Pixel and are readable in the Studio without a Meta login. They are the same
+ * document type with a `channel` field, because the useful question is
+ * comparative: on this page, did people take the WhatsApp route or the Etsy
+ * one.
+ *
  * Deliberately NOT handled here: the quote form's WhatsApp handoff. That goes
  * through window.open() rather than an anchor, and fires Lead explicitly in
  * product-dialog.tsx — a completed form is a different, stronger event than a
@@ -94,11 +102,18 @@ export function MetaPixelEvents() {
 
       if (WHATSAPP_HOSTS.includes(host)) {
         trackWhatsappContact(source, pathname);
+        // Also recorded first-party, in our own dataset. The Pixel answers
+        // "did the ad work" and only for visitors who allow it; this answers
+        // "which CTA on which page actually gets clicked" for everyone, and
+        // survives the Pixel being blocked or removed. Neither is a record of
+        // a conversation — see app/api/outbound-click/route.ts.
+        recordOutboundClick("whatsapp", source, pathname);
         return;
       }
 
       if (isEtsyHost(host)) {
         trackEtsyOutbound(source, pathname);
+        recordOutboundClick("etsy", source, pathname);
       }
     };
 

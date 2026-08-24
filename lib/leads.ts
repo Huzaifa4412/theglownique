@@ -7,7 +7,12 @@
  * token. Nothing here talks to Sanity directly.
  */
 
-export type LeadSource = "contact-form" | "pre-chat" | "newsletter";
+export type LeadSource =
+  | "contact-form"
+  | "pre-chat"
+  | "newsletter"
+  /** The product configurator dialog's "get a quote" handoff. */
+  | "quote-dialog";
 
 export type LeadPayload = {
   source: LeadSource;

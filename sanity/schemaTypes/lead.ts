@@ -167,6 +167,7 @@ export const lead = defineType({
       options: {
         list: [
           { title: "Contact page form", value: "contact-form" },
+          { title: "Quote configurator", value: "quote-dialog" },
           { title: "Live chat pre-chat form", value: "pre-chat" },
           { title: "Newsletter signup", value: "newsletter" },
         ],
@@ -235,7 +236,9 @@ export const lead = defineType({
           ? "chat"
           : source === "newsletter"
             ? "newsletter"
-            : "contact form";
+            : source === "quote-dialog"
+              ? "configurator"
+              : "contact form";
       return {
         title: title || email || "Unnamed lead",
         subtitle: [status?.toUpperCase(), channel, when]

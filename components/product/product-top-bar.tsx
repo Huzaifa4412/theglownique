@@ -40,6 +40,9 @@ export function ProductTopBar({ productName }: { productName: string }) {
               {p.category}
             </Link>
           ))}
+          <Link href="/blog" className="transition-colors hover:text-[#ce0754]">
+            Journal
+          </Link>
           <Link href="/contact" className="transition-colors hover:text-[#ce0754]">
             Contact
           </Link>

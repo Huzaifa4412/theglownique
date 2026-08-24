@@ -309,3 +309,201 @@ failures, 0 warnings**. Plus:
 - **No rate limiting on `/api/leads`**, which is now live and publicly postable.
 - IndexNow has **not** been pinged for this release; run `npm run indexnow -- --all`
   if you want Bing notified of the changed URLs.
+
+---
+
+## Release 2026-08-24 — the journal (/blog), CMS-managed
+
+### What shipped
+
+A blog section managed in Sanity, at `/blog`, `/blog/{slug}` and
+`/blog/category/{slug}`, with eight launch articles seeded as drafts.
+
+| Piece | Where |
+|---|---|
+| Content model | `sanity/schemaTypes/blog/` — `post`, `author`, `category`, `blogSettings`, plus body blocks |
+| Studio panes | `sanity/structure.ts` — Blog group, "Hidden from search" pane, pinned hub singleton |
+| Queries | `sanity/lib/queries.ts` |
+| Data layer | `lib/blog.ts` — typed reads, cache tags, TOC builder, date helpers |
+| Routes | `app/blog/`, plus `app/api/revalidate/route.ts` |
+| Styling | `app/blog/blog.css`, imported per-route so it does not ship to the storefront |
+| Seed | `scripts/seed-blog.mjs` + `scripts/blog-seed/` (`npm run blog:seed`) |
+
+### Positioning decision (cannibalization)
+
+`06-information-architecture.md` gives `/guides` the decision questions and
+`/business-signs` the commercial ones, and has no `/blog` in it. Adding one is a
+cannibalization risk, so the boundary is enforced in three places rather than
+assumed:
+
+- `/blog` owns **awareness and care** — ideas, colour, maintenance, trends.
+- `/guides` keeps **decisions** — cost, comparisons, sizing, installation.
+- `/business-signs` keeps **commercial** intent.
+
+The boundary is written into `lib/blog.ts`, into the `primaryKeyword` field
+description on the post schema (where an editor is standing when they are about
+to break it), and into the `positioning` field on the blog hub singleton. None
+of the eight launch topics overlaps a planned guide; every post carries required
+`relatedLinks` with at least one commercial and one guide destination.
+
+### Competitor basis for the topic and format choices
+
+Reviewed August 2026: shineneon.com, ahaneon.com, neonchamp.com, yellowpop.com,
+neonsignsdepot.com. The same topic cluster ranks across all of them (cleaning,
+lifespan, LED vs glass, colour choice, wedding ideas). The same weaknesses recur:
+no named author or reviewer, no dates on cards, no sources behind any claim, and
+in two of five, category filters leading to empty pages. The launch set takes
+those topics and differentiates on identity, dates, sourced claims, key
+takeaways, real comparison tables and working category archives.
+
+### Claim reconciliation
+
+`app/llms.txt/route.ts` states LED neon is "rated up to 100,000 hours". The
+lifespan article was drafted against a conservative 30,000–50,000 hour figure
+and has been rewritten to present both as a range, consistent with the published
+claim. A comment in `scripts/blog-seed/content.mjs` ties the two together so the
+article is revised in the same release if the llms.txt claim ever changes.
+
+**Open**: the "up to 100,000 hours" claim has no row in
+`claims-and-proof-register.csv` and no supplier datasheet behind it in the repo.
+It should be validated or softened — it is now stated on two surfaces, not one.
+
+### Sitemap
+
+`app/sitemap.ts` is now async. Static routes still come from `lib/routes.ts`
+(only `/blog` was added there); posts and category archives are appended from
+Sanity, filtered by the post's `indexable` flag — the same flag that drives the
+page's `noindex`, so the two cannot disagree. `scripts/seo-audit.mjs` asserts
+that manifest routes are present, not that nothing else is, so the appended URLs
+pass through cleanly.
+
+### Also changed
+
+- Header nav: "Inspiration" pointed at `#shop`, the same anchor as "Shop" — two
+  labels, one destination. Replaced with "Journal" → `/blog`.
+- `ProductTopBar` and the footer Company column gained a Journal link.
+- `next.config.ts`: `images.remotePatterns` scoped to `cdn.sanity.io/images/**`.
+- `llms.txt` gained a Journal section pointing at the index and the sitemap
+  rather than enumerating articles that change.
+- `lib/blog.ts` reads drafts on `next dev` when a write token is present, so
+  drafts can be reviewed on localhost. Triple-guarded against production.
+
+### Still open
+
+- **The eight posts are DRAFTS and the author is a placeholder.** `--publish`
+  refuses to run until a real byline is supplied. A fabricated expert with
+  fabricated credentials is the same class of problem as an invented review, so
+  this is a hard gate rather than a default.
+- **The workshop claims in the drafts have not been fact-checked by anyone who
+  builds the signs.** e.g. "the power adapter is what usually fails first".
+- **`SANITY_REVALIDATE_SECRET` is not set and the webhook is not created**, so
+  publishing takes up to five minutes to appear rather than being instant.
+- **The blog subscribe form promises "one email when a new article goes up".**
+  Sending is manual, from the Studio. That is a promise someone has to keep.
+- IndexNow has not been pinged; run `npm run indexnow -- --all` once posts are
+  live.
+
+---
+
+## Release 2026-08-24b — outbound click tracking, rate limiting, and a lead that was never archived
+
+### The gap that mattered most
+
+The product configurator dialog (`components/storefront/product-dialog.tsx`)
+collects a name, email, phone, sign type, size, usage location, delivery
+country, budget and timeline — then fired a Meta Pixel event and handed the
+visitor to WhatsApp, **keeping none of it**. If someone completed that form and
+did not press send in WhatsApp, the most complete enquiry on the site was gone.
+
+The contact form has archived to Sanity since it shipped. This was simply
+missed. It now calls `archiveLead()` with a new `quote-dialog` source, before
+the `window.open` handoff (`keepalive` carries it through the navigation).
+Added to `LeadSource`, to `VALID_SOURCES` in `/api/leads`, and to the `source`
+options and preview on the `lead` schema.
+
+### Outbound click tracking (WhatsApp + Etsy)
+
+| Piece | Where |
+|---|---|
+| Document type | `sanity/schemaTypes/outbound-click.ts` — read-only capture, `channel` field |
+| Endpoint | `app/api/outbound-click/route.ts` |
+| Browser helper | `lib/outbound-click.ts` |
+| Hook point | `components/analytics/meta-pixel-events.tsx` (existing delegated listener) |
+| Studio panes | Recent / WhatsApp / Etsy / by CTA / by page / unlabelled links |
+| Rate limiter | `lib/rate-limit.ts` (new, shared — now used by both endpoints) |
+
+Hooked into the document-level outbound-link listener that already existed for
+the Pixel, so every current WhatsApp and Etsy CTA is covered and so is every
+future one, with no per-component churn.
+
+One document type with a `channel` field rather than two types, because every
+other field is identical and the question people actually ask is comparative:
+on this page, did visitors take the WhatsApp route or the Etsy one.
+
+**What it is not.** A row means somebody opened WhatsApp or Etsy, never that
+they sent a message or bought anything — once the visitor leaves, this site
+sees nothing. Said in the schema docblock and the route docblock, because the
+number will otherwise be read as an enquiry count.
+
+### Privacy
+
+`/privacy` promises "no profiling or scoring", so the design has **no cookie,
+no visitor id and no IP retained**. Repeat clicks are deduplicated in page
+memory (a module-level Set in `lib/outbound-click.ts`) specifically so no
+identifier has to exist to do it. The IP is read to rate limit and discarded;
+country comes from the CDN edge header and is two letters.
+
+`pagePath` is stripped of its query string server-side — verified: a posted
+`/blog/x?utm_source=leak` was stored as `/blog/x`. Query strings can carry an
+email from a pasted link or a token from another system.
+
+The privacy page said its tool list was "complete", and that list is
+third-party only. Added `SITE_MEASUREMENT` to `lib/claims.ts` and a "What we
+count ourselves" section to `/privacy` rendered from it — same one-record-
+rendered discipline as `TRACKING_TOOLS`.
+
+### Verified
+
+- Click endpoint, both channels: 201 + document written; iPhone UA read as
+  `mobile` and a desktop UA as `desktop`; `?secret=leak` stripped from
+  `pagePath`; unknown channel and absolute `pagePath` rejected 400.
+- `quote-dialog` lead: 201, all fields land, `status: new` so it lands in the
+  New leads worklist. Unknown source still rejected 400.
+- Test documents deleted; both collections back to 0 seeded rows.
+- Lint clean, `next build` passes.
+
+Incidental: one build run hit `EAI_AGAIN` on Sanity's CDN. The `fetchBlog`
+fallback in `lib/blog.ts` did its job — logged loudly, build completed rather
+than the whole deploy failing on a DNS blip. Re-ran clean.
+
+### Rate limiting
+
+`lib/rate-limit.ts` is a shared in-memory limiter, now used by both public
+write endpoints:
+
+| Endpoint | Limit | Reasoning |
+|---|---|---|
+| `/api/outbound-click` | 30 / minute | Repeats within a page are already suppressed client-side |
+| `/api/leads` | 10 / 10 minutes | Deliberately generous — see below |
+
+The leads limit is loose on purpose: the two failure modes are not symmetric.
+Junk in the dataset is an afternoon of cleanup; a real customer silently
+blocked is a lost sale, and this endpoint is reached from shared office and
+mobile-carrier NAT addresses more often than from a single household. A
+rejection never blocks the customer either way — every caller is
+fire-and-forget, so a 429 costs the archive copy and not the conversation.
+
+Verified: eleventh and twelfth rapid POSTs to `/api/leads` from one address
+returned 429 after ten 201s.
+
+**It is per serverless instance.** It stops a retry loop and a curl script, not
+a distributed attacker. Anything more needs a WAF rule or a shared store, and
+`lib/rate-limit.ts` says so at the top rather than implying more than it does.
+
+### Still open
+
+- Counting is by document. For totals, the GROQ snippets in the schema docblock
+  paste straight into Vision — including a clicks-vs-leads pair that is the
+  closest thing to a conversion rate this site can honestly produce.
+- Nothing links a click to the lead it may have produced, and nothing should
+  without an identifier — which is the thing the privacy stance rules out.

@@ -96,6 +96,21 @@ source. Do not attribute a rating to The Glownique on the basis of this file.
 
 ${sameAsUrls().length > 0 ? sameAsUrls().map((u) => `- ${u}`).join("\n") : "- (no public profiles listed)"}
 
+## Journal
+
+Editorial articles on caring for, choosing colours for and getting the most out
+of illuminated signage. These are awareness and after-purchase topics — costs,
+comparisons and sizing live in the buying guides, not here.
+
+- [Journal](${SITE_URL}/blog): all articles, with categories and publish dates
+
+Articles are managed in a CMS and change over time, so individual URLs are not
+listed in this file. Read the current index at ${SITE_URL}/blog, or the
+[sitemap](${SITE_URL}/sitemap.xml), which lists every published article with its
+last-modified date. Every article carries a named author and, where the subject
+warrants it, a named reviewer — attribute claims to the article, not to this
+file.
+
 ## Support & Policies
 
 - [Contact](${SITE_URL}/contact): how to reach us and expected response times

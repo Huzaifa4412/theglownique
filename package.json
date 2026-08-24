@@ -9,12 +9,14 @@
     "lint": "eslint",
     "seo:audit": "node scripts/seo-audit.mjs",
     "indexnow": "node scripts/indexnow-submit.mjs",
-    "brand:icons": "node scripts/generate-brand-icons.mjs"
+    "brand:icons": "node scripts/generate-brand-icons.mjs",
+    "blog:seed": "node scripts/seed-blog.mjs"
   },
   "dependencies": {
     "@base-ui/react": "^1.6.0",
     "@gsap/react": "^2.1.2",
     "@phosphor-icons/react": "^2.1.10",
+    "@portabletext/react": "^7.0.1",
     "@sanity/image-url": "2",
     "@sanity/vision": "5",
     "@tabler/icons-react": "^3.46.0",

@@ -2,7 +2,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { LegalPage } from "@/components/legal/legal-page";
-import { HAS_ADVERTISING_TRACKING, TRACKING_TOOLS } from "@/lib/claims";
+import {
+  HAS_ADVERTISING_TRACKING,
+  HAS_SITE_MEASUREMENT,
+  SITE_MEASUREMENT,
+  TRACKING_TOOLS,
+} from "@/lib/claims";
 import { HAS_ADDRESS, HAS_EMAIL, LEGAL } from "@/lib/legal";
 
 export const metadata: Metadata = {
@@ -59,6 +64,31 @@ export default function PrivacyPage() {
           </li>
         ))}
       </ul>
+      {HAS_SITE_MEASUREMENT && (
+        <>
+          <h2>What we count ourselves</h2>
+          <p>
+            Separately from the tools above, we count a couple of things in our own records
+            rather than anyone else&apos;s. This list is generated from the same record the site
+            code uses, so nothing can be counted without appearing here.
+          </p>
+          <ul>
+            {SITE_MEASUREMENT.map((item) => (
+              <li key={item.name}>
+                <strong>{item.name}.</strong> We use it to {item.purpose}. It records{" "}
+                {item.stores}. It does not record {item.doesNotStore}.
+              </li>
+            ))}
+          </ul>
+          <p>
+            None of it is tied to you. There is no cookie and no identifier behind any of it,
+            which means we can tell you that a button was clicked two hundred times and we
+            genuinely cannot tell you whether that was two hundred people or one person having a
+            bad day. That is the trade we have deliberately made.
+          </p>
+        </>
+      )}
+
       {HAS_ADVERTISING_TRACKING && (
         <>
           <h2>Advertising and the Meta Pixel</h2>

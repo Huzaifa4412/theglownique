@@ -38,6 +38,7 @@ const footerColumns = [
       // "Our process" removed: it pointed at /#about too, so two labels
       // resolved to one destination. "How it works" (above) covers the process.
       ["Case studies", "/#inspiration"],
+      ["Journal", "/blog"],
       ["Contact", "/contact"],
     ],
   },

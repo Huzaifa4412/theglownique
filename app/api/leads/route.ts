@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 
 import { LEAD_LIMITS, type LeadPayload } from "@/lib/leads";
+import { callerKey, createRateLimiter } from "@/lib/rate-limit";
 import {
   HAS_SANITY_WRITE_ACCESS,
   writeClient,
@@ -26,6 +27,25 @@ import {
 // Uses a request body and a secret, so it must never be statically evaluated.
 export const dynamic = "force-dynamic";
 
+/**
+ * Ten submissions per ten minutes, per address.
+ *
+ * Deliberately generous, because the cost of the two failure modes is not
+ * symmetric. A spam loop writing junk into the dataset is an afternoon of
+ * cleanup. A real customer silently blocked is a lost sale — and this endpoint
+ * is reached from a shared office IP or a mobile-carrier NAT more often than
+ * from a single household.
+ *
+ * A rejection here never blocks the customer: every caller is fire-and-forget
+ * (see archiveLead in lib/leads.ts) and the visitor is already on their way to
+ * WhatsApp or the chat widget by the time this responds. So a 429 costs the
+ * archive copy, never the conversation.
+ *
+ * The limiter is in-memory and therefore per serverless instance — see
+ * lib/rate-limit.ts for what that is and is not worth.
+ */
+const checkRate = createRateLimiter({ limit: 10, windowMs: 10 * 60_000 });
+
 /** Only these keys are ever written. Anything else in the body is discarded. */
 const STRING_FIELDS = [
   "name",
@@ -43,7 +63,12 @@ const STRING_FIELDS = [
   "pagePath",
 ] as const;
 
-const VALID_SOURCES = new Set(["contact-form", "pre-chat", "newsletter"]);
+const VALID_SOURCES = new Set([
+  "contact-form",
+  "pre-chat",
+  "newsletter",
+  "quote-dialog",
+]);
 
 /** Newsletter signups only ask for an email, so a name cannot be required. */
 const SOURCES_WITHOUT_NAME = new Set(["newsletter"]);
@@ -58,6 +83,15 @@ function clean(value: unknown, max: number): string | undefined {
 }
 
 export async function POST(request: Request) {
+  const { allowed, retryAfterSeconds } = checkRate(callerKey(request));
+  if (!allowed) {
+    console.warn("[leads] Rate limit hit — submission rejected.");
+    return NextResponse.json(
+      { error: "Too many requests" },
+      { status: 429, headers: { "Retry-After": String(retryAfterSeconds) } },
+    );
+  }
+
   let body: Partial<LeadPayload>;
   try {
     body = (await request.json()) as Partial<LeadPayload>;
