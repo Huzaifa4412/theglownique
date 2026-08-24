@@ -1,12 +1,16 @@
 import type { MetadataRoute } from "next";
 
+import { getCategoryRoutes, getPostRoutes } from "@/lib/blog";
 import { INDEXABLE_ROUTES } from "@/lib/routes";
 import { SITE_URL } from "@/lib/site";
 
 /**
- * Sitemap, generated from the route manifest in lib/routes.ts (TECH-05).
+ * Sitemap.
  *
- * Two properties this file exists to guarantee:
+ * Two sources, one file, and they are separate on purpose.
+ *
+ * STATIC routes come from the manifest in lib/routes.ts (TECH-05). Two
+ * properties that file exists to guarantee:
  *
  * - `lastModified` is a real material modification date, not the build clock.
  *   An unchanged rebuild must not advance any date, and editing one page must
@@ -14,14 +18,54 @@ import { SITE_URL } from "@/lib/site";
  * - Only indexable canonical URLs appear. Anything the manifest marks
  *   non-indexable cannot leak in, because the filter happens at the source.
  *
+ * BLOG routes cannot come from a hand-maintained manifest — the whole point of
+ * putting posts in Sanity is that publishing one is not a code change. They
+ * carry the same two guarantees by other means: the date is the post's own
+ * `updatedAt`/`publishedAt`, which an editor only bumps for a material change
+ * (the schema says so at the field), and a post with `indexable: false` is
+ * filtered out here exactly as a non-indexable static route is. That flag also
+ * drives the `noindex` on the page itself, so the two cannot disagree.
+ *
  * `changeFrequency` and `priority` are carried for other consumers; Google
  * ignores both, so neither is worth spending attention on.
  */
-export default function sitemap(): MetadataRoute.Sitemap {
-  return INDEXABLE_ROUTES.map((route) => ({
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const staticEntries: MetadataRoute.Sitemap = INDEXABLE_ROUTES.map((route) => ({
     url: route.path === "/" ? SITE_URL : `${SITE_URL}${route.path}`,
     lastModified: new Date(route.lastModified),
     changeFrequency: route.changeFrequency,
     priority: route.priority,
   }));
+
+  const [posts, categories] = await Promise.all([getPostRoutes(), getCategoryRoutes()]);
+
+  const postEntries: MetadataRoute.Sitemap = posts
+    .filter((post) => post.indexable !== false)
+    .map((post) => ({
+      url: `${SITE_URL}/blog/${post.slug}`,
+      lastModified: new Date(post.updatedAt ?? post.publishedAt),
+      changeFrequency: "monthly" as const,
+      priority: 0.6,
+    }));
+
+  /**
+   * Archives get the date of the newest post they contain. A category page's
+   * content genuinely is its post list, so "changed when a post was added" is
+   * the honest answer — and it means an archive nobody has published into for
+   * a year stops claiming to be fresh.
+   */
+  const newestByCategory = new Date(
+    posts.length > 0
+      ? Math.max(...posts.map((post) => new Date(post.updatedAt ?? post.publishedAt).getTime()))
+      : Date.now(),
+  );
+
+  const categoryEntries: MetadataRoute.Sitemap = categories.map((category) => ({
+    url: `${SITE_URL}/blog/category/${category.slug}`,
+    lastModified: newestByCategory,
+    changeFrequency: "weekly" as const,
+    priority: 0.5,
+  }));
+
+  return [...staticEntries, ...postEntries, ...categoryEntries];
 }

@@ -133,3 +133,44 @@ export const TRACKING_TOOLS: readonly TrackingTool[] = [
 export const HAS_ADVERTISING_TRACKING = TRACKING_TOOLS.some(
   (tool) => tool.advertising,
 );
+
+// ── First-party measurement (CLM-017) ───────────────────────────────────────
+//
+// TRACKING_TOOLS above is the list of THIRD-PARTY tools, and /privacy renders
+// it under that heading. Measurement we do ourselves, in our own dataset, is
+// not covered by it and needs its own record — otherwise the privacy page's
+// claim that its list is "complete" quietly stops being true.
+//
+// The constraint every entry here has to satisfy: /privacy also promises "no
+// profiling or scoring". That is only survivable while first-party measurement
+// stays aggregate — no cookie, no visitor identifier, no IP retained, nothing
+// capable of linking two events to one person. Repeat WhatsApp clicks are
+// deduplicated in page memory for exactly that reason (lib/outbound-click.ts).
+//
+// If a field is ever added that could identify somebody, either this promise
+// changes on /privacy in the same release, or the field does not ship.
+
+export type SiteMeasurement = {
+  name: string;
+  /** What it measures, in plain language. */
+  purpose: string;
+  /** Everything that is written down. Must be exhaustive. */
+  stores: string;
+  /** What is deliberately not written down. */
+  doesNotStore: string;
+};
+
+export const SITE_MEASUREMENT: readonly SiteMeasurement[] = [
+  {
+    name: "WhatsApp and Etsy button clicks",
+    purpose:
+      "count which buttons people actually use, and on which pages, so we can fix the ones that do not work",
+    stores:
+      "which of the two buttons was clicked, the page path it was on, whether the device was a phone or a computer, the two-letter country your network resolves to, the site that referred you if you came from one, and any campaign tags in the link you arrived on",
+    doesNotStore:
+      "no cookie, no identifier of any kind, no IP address, no page address beyond the path, and nothing about what happens after you leave — once you are in WhatsApp or on Etsy we cannot see the conversation or the order",
+  },
+];
+
+/** True when any first-party measurement ships. Gates the privacy section. */
+export const HAS_SITE_MEASUREMENT = SITE_MEASUREMENT.length > 0;

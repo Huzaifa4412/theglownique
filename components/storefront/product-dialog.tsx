@@ -21,6 +21,7 @@ import {
 
 import { IconBox } from "@/components/icon-box";
 import { SignTypePreview } from "@/components/storefront/sign-type-preview";
+import { archiveLead } from "@/lib/leads";
 import { trackQuoteSubmitted } from "@/lib/meta-pixel";
 import { products, type Product, type SignType } from "@/lib/store-data";
 import { HAS_WHATSAPP, WHATSAPP_NUMBER } from "@/lib/site";
@@ -184,6 +185,40 @@ export function ProductDialog({
       budget,
       timeline,
       hasReferenceFile: Boolean(file),
+    });
+
+    // Archive it too, and archive it BEFORE the handoff for the same reason the
+    // pixel call is here: window.open can navigate this tab away and kill a
+    // pending request. archiveLead uses `keepalive` so it survives that.
+    //
+    // Until this existed, the most complete enquiry on the site — a finished
+    // configurator carrying a name, an email, a phone number, a size and a
+    // budget — was reported to Meta and then handed to WhatsApp, and kept
+    // nowhere we control. If the visitor got as far as WhatsApp and then did
+    // not press send, the whole thing was gone. The contact form has archived
+    // since it shipped; this was simply missed.
+    //
+    // `message` deliberately carries the same text the visitor is about to
+    // send, so the Studio record and the chat cannot disagree about what was
+    // asked for. The uploaded reference file is named but not uploaded: it
+    // travels in WhatsApp, and copying a customer's artwork into the CMS is a
+    // bigger decision than this handoff should be making on its own.
+    archiveLead({
+      source: "quote-dialog",
+      name: fullName,
+      email,
+      phone,
+      country: deliveryCountry,
+      topic: `Quote request — ${product.name}`,
+      message,
+      signType: activeSignType,
+      size: calculatedSize,
+      usageLocation,
+      budget,
+      timeline,
+      pagePath: window.location.pathname,
+      // The form cannot be submitted without ticking the terms box.
+      consent: agreeTerms,
     });
 
     closeDialog();

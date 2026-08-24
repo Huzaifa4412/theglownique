@@ -8,11 +8,14 @@ import { IconBox } from "@/components/icon-box";
 import { CustomQuoteButton } from "@/components/storefront/custom-quote-button";
 import { EtsyButton } from "@/components/storefront/etsy-button";
 
+// "Inspiration" used to point at #shop, the same anchor as "Shop" — two labels,
+// one destination. The journal is the page that label was always describing, so
+// it takes the slot rather than a seventh item being added beside a duplicate.
 const navigationLinks = [
   ["Shop", "#shop"],
   ["Custom Neon", "#color-studio"],
   ["Products", "/custom-signage"],
-  ["Inspiration", "#shop"],
+  ["Journal", "/blog"],
   ["FAQs", "#faq"],
   ["Contact", "/contact"],
 ] as const;
