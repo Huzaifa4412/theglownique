@@ -1,3 +1,5 @@
+import { randomUUID } from "node:crypto";
+
 import { NextResponse } from "next/server";
 
 import { callerKey, createRateLimiter } from "@/lib/rate-limit";
@@ -134,7 +136,12 @@ export async function POST(request: Request) {
     return NextResponse.json({ recorded: false }, { status: 202 });
   }
 
-  const document: { _type: "outboundClick" } & Record<string, unknown> = {
+  // Dotted `_id`, for the same reason as /api/leads: this dataset is public so
+  // the blog can be read anonymously, and a public dataset grants anonymous read
+  // on every id without a dot. These rows are analytics — country, device,
+  // referrer, campaign — and they are ours, not the internet's.
+  const document: { _type: "outboundClick"; _id: string } & Record<string, unknown> = {
+    _id: `outboundClick.${randomUUID()}`,
     _type: "outboundClick",
     channel,
     // Server clock, not the browser's: a device with a wrong date would

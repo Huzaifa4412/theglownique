@@ -123,7 +123,12 @@ export type BlogPost = BlogPostCard & {
   primaryKeyword: string | null;
   relatedLinks: BlogRelatedLink[] | null;
   sources: BlogSource[] | null;
-  author: BlogAuthor & { name: string; role: string };
+  /**
+   * References can resolve to null for anonymous Content Lake reads when the
+   * referenced author is not public. The post must still render instead of
+   * turning a CMS visibility mismatch into a 500 response.
+   */
+  author: BlogAuthor | null;
   reviewer: BlogAuthor | null;
   related: BlogPostCard[] | null;
 };

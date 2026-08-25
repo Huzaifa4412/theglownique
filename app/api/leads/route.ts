@@ -1,3 +1,5 @@
+import { randomUUID } from "node:crypto";
+
 import { NextResponse } from "next/server";
 
 import { LEAD_LIMITS, type LeadPayload } from "@/lib/leads";
@@ -124,7 +126,16 @@ export async function POST(request: Request) {
 
   // `_type` typed as a literal, not just a string key, because Sanity's create()
   // requires a document stub that provably has one.
-  const document: { _type: "lead" } & Record<string, unknown> = {
+  //
+  // The dotted `_id` is not cosmetic — it is what keeps this document private.
+  // The dataset is public (the blog is read anonymously by the frontend), and a
+  // public dataset's default ACL grants anonymous read on `_id in path("*")`,
+  // which matches every id WITHOUT a dot. A lead carries a name, a phone number
+  // and a message, so it must never match that rule: prefixing the id puts it on
+  // the `lead.*` path, outside the public grant, readable only with a token.
+  // Nothing else on this route protects it, so do not "tidy" this away.
+  const document: { _type: "lead"; _id: string } & Record<string, unknown> = {
+    _id: `lead.${randomUUID()}`,
     _type: "lead",
     status: "new",
     source,

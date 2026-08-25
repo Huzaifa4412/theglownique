@@ -97,13 +97,17 @@ export default async function BlogPostPage({ params }: Params) {
   const related = post.related ?? [];
   const faqs = post.faqs ?? [];
 
-  const authorNode = {
-    "@type": "Person",
-    name: post.author.name,
-    jobTitle: post.author.role,
-    description: post.author.expertise,
-    ...(post.author.links?.length ? { sameAs: post.author.links.map((link) => link.url) } : {}),
-  };
+  const authorNode = post.author
+    ? {
+        "@type": "Person",
+        name: post.author.name,
+        jobTitle: post.author.role,
+        description: post.author.expertise,
+        ...(post.author.links?.length
+          ? { sameAs: post.author.links.map((link) => link.url) }
+          : {}),
+      }
+    : { "@id": `${SITE_URL}/#organization` };
 
   const structuredData = {
     "@context": "https://schema.org",
@@ -121,7 +125,7 @@ export default async function BlogPostPage({ params }: Params) {
         articleSection: post.category?.title,
         author: authorNode,
         // Only claim a reviewer when a different person actually reviewed it.
-        ...(post.reviewer && post.reviewer.name !== post.author.name
+        ...(post.reviewer && post.reviewer.name !== post.author?.name
           ? {
               reviewedBy: {
                 "@type": "Person",
@@ -214,17 +218,21 @@ export default async function BlogPostPage({ params }: Params) {
               <p className="blog-post__summary">{post.summary}</p>
 
               <div className="blog-post__byline">
-                <span>
-                  By <strong>{post.author.name}</strong>, {post.author.role}
-                </span>
-                <span aria-hidden="true">·</span>
+                {post.author ? (
+                  <>
+                    <span>
+                      By <strong>{post.author.name}</strong>, {post.author.role}
+                    </span>
+                    <span aria-hidden="true">·</span>
+                  </>
+                ) : null}
                 <time dateTime={byline.iso}>
                   {byline.wasUpdated ? "Updated " : ""}
                   {byline.label}
                 </time>
                 <span aria-hidden="true">·</span>
                 <span>{post.readingMinutes} min read</span>
-                {post.reviewer && post.reviewer.name !== post.author.name ? (
+                {post.reviewer && post.reviewer.name !== post.author?.name ? (
                   <>
                     <span aria-hidden="true">·</span>
                     <span>Reviewed by {post.reviewer.name}</span>
@@ -311,7 +319,7 @@ export default async function BlogPostPage({ params }: Params) {
                 </section>
               ) : null}
 
-              <AuthorCard author={post.author} reviewer={post.reviewer} />
+              {post.author ? <AuthorCard author={post.author} reviewer={post.reviewer} /> : null}
 
               <section className="blog-cta" aria-labelledby="blog-cta-heading">
                 <div>

@@ -34,6 +34,22 @@
  * for content it owns. Re-running it restores the seeded state — which also
  * means it will overwrite edits made in the Studio to these specific
  * documents. It never touches anything it did not create.
+ *
+ * ── Why no id contains a dot ────────────────────────────────────────────────
+ *
+ * `author-workshop-lead`, not `author.workshop-lead`. This looks like a naming
+ * preference and is not: a public Sanity dataset grants anonymous read via the
+ * ACL rule `_id in path("*")`, and `path("*")` matches a single path segment —
+ * every id WITHOUT a dot. A dot makes the id a two-segment path that falls
+ * outside the grant, so the document becomes invisible to the frontend's
+ * anonymous reads while still looking perfectly published in the Studio.
+ *
+ * That failure already happened once. Authors and categories were seeded with
+ * dotted ids, so `author->` and `category->` resolved to null on every post
+ * page in production, which the post route then dereferenced — a 500 on every
+ * article while /blog itself rendered fine. Public content: no dots. Private
+ * content — leads, outbound clicks — deliberately keeps the dot, and both API
+ * routes depend on it. See the comment in app/api/leads/route.ts.
  */
 
 import { createClient } from "@sanity/client";

@@ -59,7 +59,7 @@ import {
 
 export const categories = [
   {
-    _id: "category.care-and-setup",
+    _id: "category-care-and-setup",
     slug: "care-and-setup",
     title: "Care & Setup",
     order: 10,
@@ -69,7 +69,7 @@ export const categories = [
       "A custom sign is built once and lived with for years, and almost everything that goes wrong in those years is preventable. These are the practical articles: how to clean acrylic without hazing it, how to hang a sign on the wall you actually have, what the power adapter is doing, and how to tell a failing driver from a failing sign. If you are still deciding what to buy, the buying guides cover that side.",
   },
   {
-    _id: "category.colour-and-design",
+    _id: "category-colour-and-design",
     slug: "colour-and-design",
     title: "Colour & Design",
     order: 20,
@@ -79,7 +79,7 @@ export const categories = [
       "Lit colour does not work like printed colour. A palette signed off on a screen can arrive on a wall looking wrong, not because anything was made incorrectly but because emitted light and reflected ink are different materials. These articles cover what actually changes when a brand goes from a style guide to a glowing object: which hues hold up, which typefaces survive being bent into tube, and how scale changes legibility.",
   },
   {
-    _id: "category.ideas-and-inspiration",
+    _id: "category-ideas-and-inspiration",
     slug: "ideas-and-inspiration",
     title: "Ideas & Inspiration",
     order: 30,
@@ -89,7 +89,7 @@ export const categories = [
       "Idea lists are easy to write and mostly useless, because the picture never tells you the size, the mounting or whether it worked in the room. These are put together the other way round: the idea, then the constraint that shaped it, then what to specify if you want the same result. Use them to arrive at a brief, not just a mood board.",
   },
   {
-    _id: "category.sign-basics",
+    _id: "category-sign-basics",
     slug: "sign-basics",
     title: "Sign Basics",
     order: 40,
@@ -99,7 +99,7 @@ export const categories = [
       "Background rather than buying advice: what LED neon flex actually is, how it differs from the glass tube it is named after, what a driver does, and why an IP rating on a component is not an IP rating on an installation. Understanding the material makes every later decision easier — and makes it much harder for anyone to sell you the wrong thing.",
   },
   {
-    _id: "category.trends",
+    _id: "category-trends",
     slug: "trends",
     title: "Trends",
     order: 50,
@@ -121,7 +121,7 @@ export const categories = [
 // either interactively, or with --author "Name|Role|Experience".
 
 export const AUTHOR_PLACEHOLDER = {
-  _id: "author.workshop-lead",
+  _id: "author-workshop-lead",
   slug: "workshop-lead",
   name: "SET YOUR NAME IN THE STUDIO",
   role: "Workshop lead, illuminated signage",
@@ -181,10 +181,10 @@ const LINK_BUSINESS_HUB = {
 export const posts = [
   // ────────────────────────────────────────────────────────────────────────
   {
-    _id: "post.how-to-clean-led-neon-signs",
+    _id: "post-how-to-clean-led-neon-signs",
     slug: "how-to-clean-and-maintain-led-neon-signs",
     title: "How to Clean and Maintain an LED Neon Sign",
-    category: "category.care-and-setup",
+    category: "category-care-and-setup",
     cover: "neon-custom-name",
     coverAlt:
       "A pink custom-name LED neon sign mounted on a clear acrylic backboard against a pale wall",
@@ -382,10 +382,10 @@ export const posts = [
 
   // ────────────────────────────────────────────────────────────────────────
   {
-    _id: "post.how-long-do-led-neon-signs-last",
+    _id: "post-how-long-do-led-neon-signs-last",
     slug: "how-long-do-led-neon-signs-last",
     title: "How Long Does an LED Neon Sign Actually Last?",
-    category: "category.care-and-setup",
+    category: "category-care-and-setup",
     cover: "neon-bar",
     coverAlt: "A warm-white LED neon bar sign glowing above a row of bottles in a dim room",
     coverCaption:
@@ -556,10 +556,10 @@ export const posts = [
 
   // ────────────────────────────────────────────────────────────────────────
   {
-    _id: "post.how-to-hang-a-neon-sign",
+    _id: "post-how-to-hang-a-neon-sign",
     slug: "how-to-hang-a-neon-sign",
     title: "How to Hang a Neon Sign on the Wall You Actually Have",
-    category: "category.care-and-setup",
+    category: "category-care-and-setup",
     cover: "neon-bedroom",
     coverAlt:
       "A soft pink script LED neon sign hung above a bed, mounted flat against a painted plaster wall",
@@ -743,10 +743,10 @@ export const posts = [
 
   // ────────────────────────────────────────────────────────────────────────
   {
-    _id: "post.led-neon-vs-glass-neon",
+    _id: "post-led-neon-vs-glass-neon",
     slug: "led-neon-vs-glass-neon",
     title: "LED Neon vs Glass Neon: What Is Actually Different",
-    category: "category.sign-basics",
+    category: "category-sign-basics",
     cover: "neon-shapes",
     coverAlt:
       "A grid of LED neon signs in different shapes and colours showing the range of forms the flexible tube can be bent into",
@@ -933,10 +933,10 @@ export const posts = [
 
   // ────────────────────────────────────────────────────────────────────────
   {
-    _id: "post.neon-sign-colours-brand-palette",
+    _id: "post-neon-sign-colours-brand-palette",
     slug: "choosing-neon-sign-colours-for-your-brand",
     title: "Choosing Neon Colours That Actually Match Your Brand",
-    category: "category.colour-and-design",
+    category: "category-colour-and-design",
     cover: "neon-game-room",
     coverAlt:
       "A multi-colour LED neon game room sign combining blue, pink and yellow tube against a dark wall",
@@ -1118,10 +1118,10 @@ export const posts = [
 
   // ────────────────────────────────────────────────────────────────────────
   {
-    _id: "post.neon-sign-ideas-weddings-events",
+    _id: "post-neon-sign-ideas-weddings-events",
     slug: "neon-sign-ideas-for-weddings-and-events",
     title: "Neon Sign Ideas for Weddings and Events (and What to Specify)",
-    category: "category.ideas-and-inspiration",
+    category: "category-ideas-and-inspiration",
     cover: "neon-wedding",
     coverAlt:
       "A warm white script LED neon sign reading a couple's names, mounted on a clear acrylic backboard behind a wedding table",
@@ -1298,10 +1298,10 @@ export const posts = [
 
   // ────────────────────────────────────────────────────────────────────────
   {
-    _id: "post.illuminated-signage-trends-2026",
+    _id: "post-illuminated-signage-trends-2026",
     slug: "illuminated-signage-trends-2026",
     title: "Illuminated Signage in 2026: What Changed, and What to Ignore",
-    category: "category.trends",
+    category: "category-trends",
     cover: "channel-corporate",
     coverAlt:
       "A brushed-metal halo-lit corporate logo sign mounted on a dark reception wall with a soft glow behind the letters",
@@ -1464,10 +1464,10 @@ export const posts = [
 
 // The seventh post is separated only for readability of the array above.
 posts.push({
-  _id: "post.neon-signs-for-gyms-and-studios",
+  _id: "post-neon-signs-for-gyms-and-studios",
   slug: "neon-sign-ideas-for-gyms-and-studios",
   title: "Neon Signs for Gyms and Studios: What Survives the Room",
-  category: "category.ideas-and-inspiration",
+  category: "category-ideas-and-inspiration",
   cover: "neon-gym",
   coverAlt:
     "A bold LED neon motivational sign on a dark gym wall above free weights, lit in a single strong colour",
