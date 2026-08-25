@@ -4,6 +4,14 @@ import { getCategoryRoutes, getPostRoutes } from "@/lib/blog";
 import { INDEXABLE_ROUTES } from "@/lib/routes";
 import { SITE_URL } from "@/lib/site";
 
+function absoluteUrl(path: string): string {
+  return new URL(path, `${SITE_URL}/`).href;
+}
+
+function dedupeByUrl(entries: MetadataRoute.Sitemap): MetadataRoute.Sitemap {
+  return [...new Map(entries.map((entry) => [entry.url, entry])).values()];
+}
+
 /**
  * Sitemap.
  *
@@ -31,10 +39,13 @@ import { SITE_URL } from "@/lib/site";
  */
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticEntries: MetadataRoute.Sitemap = INDEXABLE_ROUTES.map((route) => ({
-    url: route.path === "/" ? SITE_URL : `${SITE_URL}${route.path}`,
+    url: absoluteUrl(route.path),
     lastModified: new Date(route.lastModified),
     changeFrequency: route.changeFrequency,
     priority: route.priority,
+    ...(route.images?.length
+      ? { images: route.images.map((imagePath) => absoluteUrl(imagePath)) }
+      : {}),
   }));
 
   const [posts, categories] = await Promise.all([getPostRoutes(), getCategoryRoutes()]);
@@ -42,7 +53,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const postEntries: MetadataRoute.Sitemap = posts
     .filter((post) => post.indexable !== false)
     .map((post) => ({
-      url: `${SITE_URL}/blog/${post.slug}`,
+      url: absoluteUrl(`/blog/${post.slug}`),
       lastModified: new Date(post.updatedAt ?? post.publishedAt),
       changeFrequency: "monthly" as const,
       priority: 0.6,
@@ -54,18 +65,20 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
    * the honest answer — and it means an archive nobody has published into for
    * a year stops claiming to be fresh.
    */
+  const blogHubLastModified =
+    INDEXABLE_ROUTES.find((route) => route.path === "/blog")?.lastModified ?? "2026-08-22";
   const newestByCategory = new Date(
     posts.length > 0
       ? Math.max(...posts.map((post) => new Date(post.updatedAt ?? post.publishedAt).getTime()))
-      : Date.now(),
+      : blogHubLastModified,
   );
 
   const categoryEntries: MetadataRoute.Sitemap = categories.map((category) => ({
-    url: `${SITE_URL}/blog/category/${category.slug}`,
+    url: absoluteUrl(`/blog/category/${category.slug}`),
     lastModified: newestByCategory,
     changeFrequency: "weekly" as const,
     priority: 0.5,
   }));
 
-  return [...staticEntries, ...postEntries, ...categoryEntries];
+  return dedupeByUrl([...staticEntries, ...postEntries, ...categoryEntries]);
 }

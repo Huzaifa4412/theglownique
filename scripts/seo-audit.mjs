@@ -26,6 +26,7 @@ const PRODUCTION_ORIGIN = "https://www.theglownique.com";
 
 const failures = [];
 const warnings = [];
+const assetsToCheck = new Set();
 
 const fail = (route, message) => failures.push(`${route}: ${message}`);
 const warn = (route, message) => warnings.push(`${route}: ${message}`);
@@ -42,8 +43,8 @@ const RETIRED_CLAIM_PATTERNS = [
   // first missed and which shipped to production on /contact as a result.
   // Deliberately narrow on the second: "free" must be followed by worldwide or
   // "of charge", so "tracked delivery and a free design mockup" stays legal.
-  { label: "free-delivery promotion (CLM-001, ended 2026-08-11)", re: /free\s+(worldwide\s+)?(delivery|shipping)/i },
-  { label: "free-delivery promotion, reversed word order (CLM-001)", re: /(delivery|shipping)[^.]{0,20}free\s+(worldwide|of charge)/i },
+  { label: "free-delivery promotion (CLM-001, ended 2026-08-11)", re: /\bfree\s+(worldwide\s+)?(delivery|shipping)\b/i },
+  { label: "free-delivery promotion, reversed word order (CLM-001)", re: /\b(delivery|shipping)\b[^.]{0,20}\bfree\s+(worldwide|of charge)\b/i },
   { label: "\"no tracking pixels\" while the Meta Pixel ships (CLM-016)", re: /no\s+(advertising\s+cookies\s+or\s+)?tracking\s+pixels/i },
 ];
 
@@ -116,7 +117,12 @@ function checkPage(route, html, status, headers) {
   // ── Title and description ─────────────────────────────────────────────────
   const title = tag(html, /<title>([^<]*)<\/title>/i);
   if (!title) fail(path, "no <title>");
-  else if (title.length > 70) warn(path, `title is ${title.length} chars and will truncate in SERPs`);
+  else {
+    if (title.length > 65) warn(path, `title is ${title.length} chars and may truncate in SERPs`);
+    if (/\|\s*The Glownique\s*\|\s*The Glownique$/i.test(title)) {
+      fail(path, "title repeats the brand because page metadata includes the layout template suffix");
+    }
+  }
 
   const description = tag(html, /<meta name="description" content="([^"]*)"/i);
   if (!description) fail(path, "no meta description");
@@ -128,9 +134,12 @@ function checkPage(route, html, status, headers) {
   } else if (path !== "/" && ogUrl.replace(/\/$/, "") === PRODUCTION_ORIGIN) {
     fail(path, "og:url inherited the homepage URL");
   }
-  for (const property of ["og:title", "og:description", "og:image"]) {
+  for (const property of ["og:title", "og:description"]) {
     if (!html.includes(`property="${property}"`)) fail(path, `no ${property}`);
   }
+  const ogImage = tag(html, /<meta property="og:image" content="([^"]+)"/i);
+  if (!ogImage) fail(path, "no og:image");
+  else assetsToCheck.add(ogImage);
   for (const name of ["twitter:card", "twitter:title", "twitter:description"]) {
     if (!html.includes(`name="${name}"`)) fail(path, `no ${name}`);
   }
@@ -172,33 +181,108 @@ async function checkSitemap(manifest) {
     fail("/sitemap.xml", `HTTP ${response.status}`);
     return;
   }
+  if (!/xml/i.test(response.headers.get("content-type") ?? "")) {
+    fail("/sitemap.xml", "response is not served as XML");
+  }
+
   const xml = await response.text();
-  const urls = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
+  const urls = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
+  const imageUrls = [...xml.matchAll(/<image:loc>([^<]+)<\/image:loc>/g)].map(
+    (match) => match[1],
+  );
+
+  for (const imageUrl of imageUrls) assetsToCheck.add(imageUrl);
+  if (imageUrls.length === 0) {
+    fail("/sitemap.xml", "contains no image entries for this visual product catalog");
+  }
+  if (new Set(urls).size !== urls.length) {
+    fail("/sitemap.xml", "contains duplicate URL entries");
+  }
 
   for (const route of manifest) {
     const expected = route.path === "/" ? `${PRODUCTION_ORIGIN}/` : `${PRODUCTION_ORIGIN}${route.path}`;
-    const present = urls.some((u) => u.replace(/\/$/, "") === expected.replace(/\/$/, ""));
+    const present = urls.some((url) => url.replace(/\/$/, "") === expected.replace(/\/$/, ""));
     if (route.indexable && !present) fail("/sitemap.xml", `missing indexable route ${route.path}`);
     if (!route.indexable && present) fail("/sitemap.xml", `contains non-indexable route ${route.path}`);
   }
 
-  // A build-clock timestamp is the defect TECH-05 exists to prevent.
+  for (const value of urls) {
+    try {
+      const url = new URL(value);
+      if (url.origin !== PRODUCTION_ORIGIN) {
+        fail("/sitemap.xml", `contains URL on a different origin: ${value}`);
+      }
+      if (url.search || url.hash) {
+        fail("/sitemap.xml", `contains a query string or fragment: ${value}`);
+      }
+    } catch {
+      fail("/sitemap.xml", `contains an invalid URL: ${value}`);
+    }
+  }
+
+  const rawDates = [...xml.matchAll(/<lastmod>([^<]+)<\/lastmod>/gi)].map((match) => match[1]);
+  if (rawDates.length !== urls.length) {
+    fail("/sitemap.xml", `${urls.length} URLs but ${rawDates.length} lastmod values`);
+  }
+
   const today = new Date().toISOString().slice(0, 10);
-  const dates = [...xml.matchAll(/<lastmod>([^<]+)<\/lastmod>/gi)].map((m) => m[1].slice(0, 10));
+  for (const rawDate of rawDates) {
+    const timestamp = Date.parse(rawDate);
+    if (Number.isNaN(timestamp)) fail("/sitemap.xml", `invalid lastmod value: ${rawDate}`);
+    if (rawDate.slice(0, 10) > today) fail("/sitemap.xml", `future lastmod value: ${rawDate}`);
+  }
+
+  const dates = rawDates.map((date) => date.slice(0, 10));
   if (dates.length > 1 && new Set(dates).size === 1 && dates[0] === today) {
     fail("/sitemap.xml", "every lastmod equals today — dates look generated from the build clock");
   }
 }
 
-async function checkLlmsTxt() {
+async function checkRobotsTxt() {
+  const response = await fetch(`${BASE}/robots.txt`);
+  if (!response.ok) {
+    fail("/robots.txt", `HTTP ${response.status}`);
+    return;
+  }
+  if (!/text\/plain/i.test(response.headers.get("content-type") ?? "")) {
+    fail("/robots.txt", "response is not served as plain text");
+  }
+
+  const text = await response.text();
+  const groups = text.split(/\r?\n\s*\r?\n/);
+  const universal = groups.find((group) => /^User-agent:\s*\*\s*$/im.test(group)) ?? "";
+
+  if (!universal) fail("/robots.txt", "missing User-agent: * group");
+  if (!/^Allow:\s*\/\s*$/im.test(universal)) fail("/robots.txt", "public crawl is not explicitly allowed");
+  if (/^Disallow:\s*\/\s*$/im.test(universal)) fail("/robots.txt", "universal group blocks the whole site");
+  for (const path of ["/api/", "/_vercel/"]) {
+    if (!text.includes(`Disallow: ${path}`)) fail("/robots.txt", `does not disallow ${path}`);
+  }
+  if (/^Disallow:\s*\/studio\/?\s*$/im.test(text)) {
+    fail("/robots.txt", "blocks /studio, preventing crawlers from seeing its X-Robots-Tag noindex");
+  }
+  if (!text.includes(`Sitemap: ${PRODUCTION_ORIGIN}/sitemap.xml`)) {
+    fail("/robots.txt", "does not advertise the canonical sitemap URL");
+  }
+  for (const crawler of ["Googlebot", "Googlebot-Image", "Bingbot", "OAI-SearchBot", "PerplexityBot"]) {
+    if (!text.includes(`User-Agent: ${crawler}`) && !text.includes(`User-agent: ${crawler}`)) {
+      fail("/robots.txt", `missing documented policy for ${crawler}`);
+    }
+  }
+}
+
+async function checkLlmsTxt(manifest) {
   const response = await fetch(`${BASE}/llms.txt`);
   if (!response.ok) {
     fail("/llms.txt", `HTTP ${response.status}`);
     return;
   }
+  if (!/text\/plain/i.test(response.headers.get("content-type") ?? "")) {
+    fail("/llms.txt", "response is not served as plain text");
+  }
+
   const text = await response.text();
   for (const claim of RETIRED_CLAIM_PATTERNS) {
-    // llms.txt is allowed to name a retired claim only to say it has ended.
     const lines = text.split("\n").filter((line) => claim.re.test(line));
     for (const line of lines) {
       if (!/ended|withdraw|no longer|not current|no standing/i.test(line)) {
@@ -209,6 +293,51 @@ async function checkLlmsTxt() {
   }
   if (/\b5\.0 out of 5 from \d+ reviews\b/i.test(text)) {
     fail("/llms.txt", "publishes an unverified shop-wide review count (CLM-012)");
+  }
+  if (!text.startsWith("# The Glownique\n\n> ")) {
+    fail("/llms.txt", "must start with the site H1 followed by a summary blockquote");
+  }
+
+  for (const route of manifest.filter((entry) => entry.indexable)) {
+    const expected = route.path === "/" ? `${PRODUCTION_ORIGIN}/` : `${PRODUCTION_ORIGIN}${route.path}`;
+    if (!text.includes(`](${expected})`) && !text.includes(`](${expected}):`)) {
+      fail("/llms.txt", `missing canonical indexable route ${route.path}`);
+    }
+  }
+
+  for (const section of text.split("\n## ").slice(1)) {
+    const heading = section.split("\n", 1)[0];
+    if (!/\n- \[[^\]]+\]\(https:\/\//.test(section)) {
+      fail("/llms.txt", `section "${heading}" contains no linked resources`);
+    }
+  }
+}
+
+async function checkAssets() {
+  for (const assetUrl of assetsToCheck) {
+    let parsed;
+    try {
+      parsed = new URL(assetUrl);
+    } catch {
+      fail("asset", `invalid absolute URL: ${assetUrl}`);
+      continue;
+    }
+
+    // External CMS assets are owned by their provider and should not make local
+    // validation network-dependent. Project-owned assets are checked locally.
+    if (parsed.origin !== PRODUCTION_ORIGIN) continue;
+
+    const target = `${BASE}${parsed.pathname}${parsed.search}`;
+    try {
+      const response = await fetch(target, { method: "HEAD" });
+      if (!response.ok) {
+        fail(parsed.pathname, `referenced image returned HTTP ${response.status}`);
+      } else if (!/^image\//i.test(response.headers.get("content-type") ?? "")) {
+        fail(parsed.pathname, "referenced image is not served with an image content type");
+      }
+    } catch (error) {
+      fail(parsed.pathname, `image request failed: ${error.message}`);
+    }
   }
 }
 
@@ -227,7 +356,9 @@ async function main() {
   }
 
   await checkSitemap(manifest);
-  await checkLlmsTxt();
+  await checkRobotsTxt();
+  await checkLlmsTxt(manifest);
+  await checkAssets();
 
   for (const warning of warnings) console.log(`  warn  ${warning}`);
   for (const failure of failures) console.log(`  FAIL  ${failure}`);

@@ -49,7 +49,7 @@ const b2bProducts = [
     category: "Storefront & Exterior",
     tagline: "Fabricated stainless-steel letters with frontlit, halo backlit or dual-lit LED illumination.",
     specs: ["Frontlit / Halo / Dual-lit", "316 Stainless Steel", "Architectural Finishes", "Commercial Grade"],
-    image: "/hero/business-coffee.png",
+    image: "/3d-metallic-neon-sign/corporte/056b3189-6a8c-482a-8334-53ded7aff3e1.png",
     accent: "#d97706",
   },
   {
@@ -58,7 +58,7 @@ const b2bProducts = [
     category: "Retail & Display",
     tagline: "Slim anodized aluminum lightboxes with edge-lit LEDs for uniform, shadow-free graphics.",
     specs: ["Ultra-Slim Profile", "Edge-Lit Uniform LED", "Tool-Free Graphic Swap", "Wall / Window Mount"],
-    image: "/before-after/after-osee-beauty.png",
+    image: "/ultra-thin-slim-lightbox/main-hero.png",
     accent: "#2563eb",
   },
   {
@@ -67,7 +67,7 @@ const b2bProducts = [
     category: "Office & Reception",
     tagline: "Full-color UV-printed artwork on crystal-clear acrylic paired with glowing LED neon contours.",
     specs: ["High-Res UV Print", "Layered 3D Acrylic", "LED Contour Glow", "Precision Laser Cut"],
-    image: "/hero/workspace-sign.png",
+    image: "/3d-arcylic/3235dc09-6dac-4056-88b6-55fc26e28571.png",
     accent: "#7c3aed",
   },
 ];

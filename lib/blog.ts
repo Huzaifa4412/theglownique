@@ -246,13 +246,13 @@ export function getCategoryRoutes(): Promise<{ slug: string }[]> {
 
 /** Copy the hub falls back to before anyone has filled in the singleton. */
 export const BLOG_SETTINGS_FALLBACK: BlogSettings = {
-  eyebrow: "The Glownique Journal",
-  heading: "Ideas, colour and care for illuminated signs",
+  eyebrow: "The Glownique Blog & Journal",
+  heading: "Ideas, Colour & Care for Illuminated Signs",
   intro:
     "Notes from the workshop on designing, choosing and looking after custom signage — what actually holds up on a wall, how colour behaves once it is lit, and the details worth deciding before a sign is built.",
-  seoTitle: "Neon & Signage Journal",
+  seoTitle: "Custom Neon & Signage Blog | Ideas & Insights",
   seoDescription:
-    "Ideas, colour theory, care advice and signage trends from the workshop behind The Glownique's custom LED neon, channel letter and lightbox signs.",
+    "Explore The Glownique's custom neon and signage blog. Practical tips, colour theory, care advice and illuminated sign design trends from our workshop.",
   newsletterHeading: "New sign ideas, once a month",
   newsletterText:
     "One email a month with new work, colour ideas and practical advice. No promotions you did not ask for.",

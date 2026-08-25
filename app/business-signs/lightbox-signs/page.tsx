@@ -11,25 +11,25 @@ import { SITE_URL } from "@/lib/site";
 import { serializeJsonLd } from "@/lib/utils";
 
 export const metadata: Metadata = {
-  title: "Lightbox Signs for Retail & Restaurants",
+  title: "Custom Ultra-Thin LED Lightbox Signs",
   description:
-    "Slim anodized aluminum edge-lit lightboxes for retail storefronts, menus, and exhibits. Tool-free graphic replacement, uniform illumination, 5-year warranty.",
+    "Custom backlit signage & ultra-thin LED lightbox signs for retail storefronts, menus & exhibits. Even edge-lit illumination with tool-free graphic replacement. 5-year warranty.",
   alternates: { canonical: "/business-signs/lightbox-signs" },
   openGraph: {
     type: "website",
     siteName: "The Glownique",
-    title: "Lightbox Signs for Retail & Restaurants | The Glownique",
+    title: "Custom Lightbox Signs & Ultra-Thin LED Lightboxes | The Glownique",
     description:
-      "Commercial edge-lit lightboxes for retail displays, menu boards and promotional signage.",
+      "Commercial edge-lit lightboxes and backlit signage for retail displays, menu boards and promotional storefronts.",
     url: "/business-signs/lightbox-signs",
-    images: [{ url: "/before-after/after-osee-beauty.png", alt: "Ultra-Thin Lightbox Sign" }],
+    images: [{ url: "/ultra-thin-slim-lightbox/main-hero.png", alt: "Custom Ultra-Thin Lightbox Sign" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Lightbox Signs for Retail & Restaurants | The Glownique",
+    title: "Custom Lightbox Signs & Ultra-Thin LED Lightboxes | The Glownique",
     description:
-      "Commercial edge-lit lightboxes for retail displays, menu boards and promotional signage.",
-    images: ["/before-after/after-osee-beauty.png"],
+      "Commercial edge-lit lightboxes and backlit signage for retail displays and storefronts.",
+    images: ["/ultra-thin-slim-lightbox/main-hero.png"],
   },
 };
 
@@ -42,10 +42,10 @@ export default function LightboxSignsPage() {
       {
         "@type": "Product",
         "@id": `${pageUrl}#product`,
-        name: "Ultra-Thin Lightbox Signs",
+        name: "Custom Ultra-Thin Lightbox Signs",
         description:
-          "Ultra-thin anodized aluminum lightbox signs featuring edge-lit LED illumination for vibrant, shadow-free commercial display graphics.",
-        image: `${SITE_URL}/before-after/after-osee-beauty.png`,
+          "Ultra-thin anodized aluminum custom lightbox signs featuring edge-lit LED illumination for vibrant, shadow-free commercial display graphics.",
+        image: `${SITE_URL}/ultra-thin-slim-lightbox/main-hero.png`,
         category: "Commercial Display Signage",
         brand: { "@type": "Brand", name: "The Glownique" },
         url: pageUrl,
@@ -55,7 +55,7 @@ export default function LightboxSignsPage() {
         itemListElement: [
           { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
           { "@type": "ListItem", position: 2, name: "Business Signs", item: `${SITE_URL}/business-signs` },
-          { "@type": "ListItem", position: 3, name: "Ultra-Thin Lightbox Signs", item: pageUrl },
+          { "@type": "ListItem", position: 3, name: "Lightbox Signs", item: pageUrl },
         ],
       },
     ],
@@ -69,7 +69,7 @@ export default function LightboxSignsPage() {
       />
       <MetaViewContent
         contentId="lightbox-signs"
-        contentName="Ultra-Thin Lightbox Signs"
+        contentName="Custom Ultra-Thin Lightbox Signs"
         contentCategory="Business signage"
       />
       <AnnouncementBar />
@@ -84,26 +84,26 @@ export default function LightboxSignsPage() {
             </nav>
 
             <p className="text-xs font-extrabold uppercase tracking-widest text-[#ce0754]">
-              Retail & Menu Display Signage
+              High-Luminance Commercial Displays
             </p>
             <h1 className="mt-2 text-4xl font-extrabold tracking-tight text-[#1e1a22] sm:text-5xl">
-              Ultra-Thin Edge-Lit Lightbox Signs
+              Custom Lightbox Signs
             </h1>
             <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-[#5e5862] sm:text-lg">
-              Sleek, tool-free graphic lightboxes designed for vibrant retail windows, restaurant menu displays, and trade show promotions.
+              Ultra-slim anodized aluminum edge-lit lightboxes delivering perfectly distributed, shadow-free backlighting. Designed for retail storefronts, hospitality menus, and exhibition backdrops.
             </p>
 
             <div className="mt-8 flex flex-wrap justify-center gap-4">
               <CustomQuoteButton
                 className="button button--whatsapp text-base px-8 py-3.5"
                 label="Get a Lightbox Quote"
-                productName="ultra-thin lightbox sign"
+                productName="Ultra-thin lightbox sign"
               />
               <Link
                 href="/products/ultra-thin-lightbox"
                 className="inline-flex items-center gap-2 rounded-xl border border-[#eadfe4] bg-white px-6 py-3.5 text-sm font-bold text-[#1e1a22] hover:border-[#f40b68]"
               >
-                View Lightbox Catalog Specs →
+                View Lightbox Specifications →
               </Link>
             </div>
           </div>
@@ -114,8 +114,8 @@ export default function LightboxSignsPage() {
             <div className="grid gap-12 md:grid-cols-2 md:items-center">
               <div className="relative aspect-square overflow-hidden rounded-3xl bg-black/5 shadow-lg">
                 <Image
-                  src="/before-after/after-osee-beauty.png"
-                  alt="Ultra-thin lightbox sign in beauty reception"
+                  src="/ultra-thin-slim-lightbox/main-hero.png"
+                  alt="Custom Ultra-Thin Lightbox Sign display in retail boutique"
                   fill
                   className="object-cover"
                 />
@@ -123,24 +123,24 @@ export default function LightboxSignsPage() {
 
               <div className="space-y-6">
                 <h2 className="text-3xl font-extrabold text-[#1e1a22]">
-                  Sleek Profile & Easy Graphic Swaps
+                  Edge-Lit Diffusion Technology
                 </h2>
                 <p className="text-sm leading-relaxed text-[#5e5862]">
-                  Traditional heavy cabinet lightboxes are bulky and cumbersome to update. Our slim edge-lit aluminum lightboxes combine architectural elegance with effortless maintenance.
+                  Traditional fluorescent lightbox cabinets are bulky and develop hot spots. Our custom slim lightboxes use an optical-grade acrylic light-guide panel (LGP) with high-density LED perimeter strips for 100% uniform brightness.
                 </p>
 
-                <ul className="space-y-3 text-sm font-medium text-[#1e1a22]">
-                  <li className="flex items-start gap-2">
-                    <span className="font-bold text-[#2563eb]">✓</span>
-                    <span><strong>Slim Anodized Aluminum Frame:</strong> Ultra-thin depth sits flush on walls or hangs in window displays.</span>
+                <ul className="space-y-4 text-sm text-[#1e1a22]">
+                  <li className="rounded-xl border border-[#eadfe4] bg-[#faf7f8] p-4">
+                    <strong className="block text-base font-extrabold text-[#1e1a22]">Ultra-Thin Profile</strong>
+                    <span className="text-[#5e5862]">Depth starting from just 18mm to 28mm for flush, modern architectural integration.</span>
                   </li>
-                  <li className="flex items-start gap-2">
-                    <span className="font-bold text-[#2563eb]">✓</span>
-                    <span><strong>Uniform Edge-Lit Diffusion:</strong> High-density LEDs provide continuous, shadow-free backlighting.</span>
+                  <li className="rounded-xl border border-[#eadfe4] bg-[#faf7f8] p-4">
+                    <strong className="block text-base font-extrabold text-[#1e1a22]">Tool-Free Graphic Swaps</strong>
+                    <span className="text-[#5e5862]">Snap-frame and silicone-edge (SEG) options allow graphics to be replaced in under 60 seconds without tools.</span>
                   </li>
-                  <li className="flex items-start gap-2">
-                    <span className="font-bold text-[#2563eb]">✓</span>
-                    <span><strong>Snap-Frame Graphic Replacement:</strong> Swap promotional posters and seasonal menu graphics in under a minute.</span>
+                  <li className="rounded-xl border border-[#eadfe4] bg-[#faf7f8] p-4">
+                    <strong className="block text-base font-extrabold text-[#1e1a22]">High-CRI Daylight Illumination</strong>
+                    <span className="text-[#5e5862]">6500K daylight-balanced illumination reveals true brand colors with zero flicker.</span>
                   </li>
                 </ul>
               </div>

@@ -30,6 +30,8 @@ export type RouteEntry = {
   lastModified: string;
   changeFrequency: "always" | "hourly" | "daily" | "weekly" | "monthly" | "yearly" | "never";
   priority: number;
+  /** Crawlable images that materially represent this page. */
+  images?: readonly string[];
   /**
    * False means: keep out of the sitemap, and expect the live response to carry
    * a noindex. The audit script enforces both directions.
@@ -48,19 +50,66 @@ const CLAIMS_RELEASE = "2026-08-19";
 /** Ubersuggest issue fixes: title lengths and the canonical signage hub URL. */
 const SEO_ISSUES_RELEASE = "2026-08-21";
 
-/** The journal launches: /blog hub, category archives and the first posts. */
-const BLOG_RELEASE = "2026-08-22";
+/** Current commercial-page copy, metadata and image refresh. */
+const CONTENT_REFRESH_RELEASE = "2026-08-24";
 
 export const ROUTES: readonly RouteEntry[] = [
   // Home — free-delivery promo section removed, FAQ and comparison copy revised.
-  { path: "/", lastModified: SEO_ISSUES_RELEASE, changeFrequency: "weekly", priority: 1.0, indexable: true },
+  {
+    path: "/",
+    lastModified: SEO_ISSUES_RELEASE,
+    changeFrequency: "weekly",
+    priority: 1.0,
+    images: ["/hero/neon-sign-hero.png"],
+    indexable: true,
+  },
 
   // B2B hub and destinations.
-  { path: "/business-signs", lastModified: BASELINE, changeFrequency: "weekly", priority: 0.95, indexable: true },
-  { path: "/business-signs/custom-logo-neon-signs", lastModified: BASELINE, changeFrequency: "monthly", priority: 0.9, indexable: true },
-  { path: "/business-signs/channel-letter-signs", lastModified: BASELINE, changeFrequency: "monthly", priority: 0.9, indexable: true },
-  { path: "/business-signs/lightbox-signs", lastModified: SEO_ISSUES_RELEASE, changeFrequency: "monthly", priority: 0.9, indexable: true },
-  { path: "/business-signs/acrylic-logo-signs", lastModified: SEO_ISSUES_RELEASE, changeFrequency: "monthly", priority: 0.9, indexable: true },
+  {
+    path: "/business-signs",
+    lastModified: CONTENT_REFRESH_RELEASE,
+    changeFrequency: "weekly",
+    priority: 0.95,
+    images: [
+      "/hero/neon-sign-hero.png",
+      "/3d-metallic-neon-sign/corporte/056b3189-6a8c-482a-8334-53ded7aff3e1.png",
+      "/ultra-thin-slim-lightbox/main-hero.png",
+      "/3d-arcylic/3235dc09-6dac-4056-88b6-55fc26e28571.png",
+    ],
+    indexable: true,
+  },
+  {
+    path: "/business-signs/custom-logo-neon-signs",
+    lastModified: CONTENT_REFRESH_RELEASE,
+    changeFrequency: "monthly",
+    priority: 0.9,
+    images: ["/hero/neon-sign-hero.png"],
+    indexable: true,
+  },
+  {
+    path: "/business-signs/channel-letter-signs",
+    lastModified: CONTENT_REFRESH_RELEASE,
+    changeFrequency: "monthly",
+    priority: 0.9,
+    images: ["/3d-metallic-neon-sign/corporte/056b3189-6a8c-482a-8334-53ded7aff3e1.png"],
+    indexable: true,
+  },
+  {
+    path: "/business-signs/lightbox-signs",
+    lastModified: CONTENT_REFRESH_RELEASE,
+    changeFrequency: "monthly",
+    priority: 0.9,
+    images: ["/ultra-thin-slim-lightbox/main-hero.png"],
+    indexable: true,
+  },
+  {
+    path: "/business-signs/acrylic-logo-signs",
+    lastModified: CONTENT_REFRESH_RELEASE,
+    changeFrequency: "monthly",
+    priority: 0.9,
+    images: ["/3d-arcylic/3235dc09-6dac-4056-88b6-55fc26e28571.png"],
+    indexable: true,
+  },
 
   // Journal hub.
   //
@@ -70,27 +119,69 @@ export const ROUTES: readonly RouteEntry[] = [
   // The audit in scripts/seo-audit.mjs asserts that everything in this file is
   // present in the sitemap, not that the sitemap contains nothing else, so the
   // appended URLs pass through it cleanly.
-  { path: "/blog", lastModified: BLOG_RELEASE, changeFrequency: "weekly", priority: 0.7, indexable: true },
+  {
+    path: "/blog",
+    lastModified: CONTENT_REFRESH_RELEASE,
+    changeFrequency: "weekly",
+    priority: 0.7,
+    indexable: true,
+  },
 
   // Decision guides.
-  { path: "/guides", lastModified: BASELINE, changeFrequency: "weekly", priority: 0.85, indexable: true },
-  { path: "/guides/custom-business-sign-cost", lastModified: BASELINE, changeFrequency: "monthly", priority: 0.8, indexable: true },
-  { path: "/guides/front-lit-vs-halo-lit-vs-dual-lit", lastModified: BASELINE, changeFrequency: "monthly", priority: 0.8, indexable: true },
+  {
+    path: "/guides",
+    lastModified: BASELINE,
+    changeFrequency: "weekly",
+    priority: 0.85,
+    images: ["/hero/neon-sign-hero.png"],
+    indexable: true,
+  },
+  {
+    path: "/guides/custom-business-sign-cost",
+    lastModified: BASELINE,
+    changeFrequency: "monthly",
+    priority: 0.8,
+    images: ["/hero/neon-sign-hero.png"],
+    indexable: true,
+  },
+  {
+    path: "/guides/front-lit-vs-halo-lit-vs-dual-lit",
+    lastModified: CONTENT_REFRESH_RELEASE,
+    changeFrequency: "monthly",
+    priority: 0.8,
+    images: ["/3d-metallic-neon-sign/corporte/056b3189-6a8c-482a-8334-53ded7aff3e1.png"],
+    indexable: true,
+  },
 
   // Broad product catalog — meta descriptions revised with the delivery claim.
-  { path: "/custom-signage", lastModified: SEO_ISSUES_RELEASE, changeFrequency: "weekly", priority: 0.8, indexable: true },
+  {
+    path: "/custom-signage",
+    lastModified: SEO_ISSUES_RELEASE,
+    changeFrequency: "weekly",
+    priority: 0.8,
+    images: ["/hero/neon-sign-hero.png"],
+    indexable: true,
+  },
   ...PRODUCT_PAGES.map((product) => ({
     path: `/products/${product.slug}`,
     lastModified:
       product.slug === "uv-print-acrylic-signs" ? SEO_ISSUES_RELEASE : CLAIMS_RELEASE,
     changeFrequency: "monthly" as const,
     priority: 0.75,
+    images: [product.heroImage],
     indexable: true,
   })),
 
   // Contact is a conversion destination, not a policy page — hence the higher
   // priority than the policy block below.
-  { path: "/contact", lastModified: CLAIMS_RELEASE, changeFrequency: "monthly", priority: 0.7, indexable: true },
+  {
+    path: "/contact",
+    lastModified: CLAIMS_RELEASE,
+    changeFrequency: "monthly",
+    priority: 0.7,
+    images: ["/hero/neon-sign-hero.png"],
+    indexable: true,
+  },
 
   // Policy and trust routes.
   { path: "/shipping", lastModified: CLAIMS_RELEASE, changeFrequency: "yearly", priority: 0.4, indexable: true },

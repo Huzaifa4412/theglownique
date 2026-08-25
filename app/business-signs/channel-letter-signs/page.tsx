@@ -11,25 +11,25 @@ import { SITE_URL } from "@/lib/site";
 import { serializeJsonLd } from "@/lib/utils";
 
 export const metadata: Metadata = {
-  title: "3D Metal Channel Letter Signs for Storefronts",
+  title: "Front-Lit & Halo-Lit Channel Letter Signs",
   description:
-    "Fabricated stainless-steel 3D channel letters with front-lit, halo backlit or dual-lit LED illumination. Commercial-grade storefront signage with 5-year warranty.",
+    "Custom 3D metal & LED channel letter signs for commercial storefronts. Front-lit, reverse halo-lit & dual-lit configurations with raceway or flush mounting. 5-year warranty.",
   alternates: { canonical: "/business-signs/channel-letter-signs" },
   openGraph: {
     type: "website",
     siteName: "The Glownique",
-    title: "3D Metal Channel Letter Signs | The Glownique",
+    title: "Custom Channel Letter Signs | Front-Lit & Reverse Halo Letters | The Glownique",
     description:
-      "Commercial 3D metal channel letters for exterior storefronts and corporate offices. Frontlit, halo-lit & dual-lit options.",
+      "Architectural 3D metal & LED channel letter signs for commercial storefronts and building façades. Front-lit, reverse halo & dual-lit.",
     url: "/business-signs/channel-letter-signs",
-    images: [{ url: "/hero/business-coffee.png", alt: "3D Metal Channel Letter Signs" }],
+    images: [{ url: "/3d-metallic-neon-sign/corporte/056b3189-6a8c-482a-8334-53ded7aff3e1.png", alt: "Custom 3D Metal Channel Letter Signs" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "3D Metal Channel Letter Signs | The Glownique",
+    title: "Custom Channel Letter Signs | Front-Lit & Reverse Halo Letters | The Glownique",
     description:
-      "Commercial 3D metal channel letters for exterior storefronts and corporate offices.",
-    images: ["/hero/business-coffee.png"],
+      "Architectural 3D metal & LED channel letter signs for commercial storefronts and building façades.",
+    images: ["/3d-metallic-neon-sign/corporte/056b3189-6a8c-482a-8334-53ded7aff3e1.png"],
   },
 };
 
@@ -45,7 +45,7 @@ export default function ChannelLetterSignsPage() {
         name: "3D Metal Channel Letter Signs",
         description:
           "Custom fabricated 3D stainless steel channel letters offering front-lit, halo backlit, or dual-lit LED illumination for architectural storefronts and building façades.",
-        image: `${SITE_URL}/hero/business-coffee.png`,
+        image: `${SITE_URL}/3d-metallic-neon-sign/corporte/056b3189-6a8c-482a-8334-53ded7aff3e1.png`,
         category: "Exterior Commercial Signage",
         brand: { "@type": "Brand", name: "The Glownique" },
         url: pageUrl,
@@ -114,7 +114,7 @@ export default function ChannelLetterSignsPage() {
             <div className="grid gap-12 md:grid-cols-2 md:items-center">
               <div className="relative aspect-square overflow-hidden rounded-3xl bg-black/5 shadow-lg">
                 <Image
-                  src="/hero/business-coffee.png"
+                  src="/3d-metallic-neon-sign/corporte/056b3189-6a8c-482a-8334-53ded7aff3e1.png"
                   alt="3D Metal Channel Letter Sign on commercial storefront"
                   fill
                   className="object-cover"

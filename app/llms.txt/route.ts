@@ -1,140 +1,91 @@
 import { PRODUCT_PAGES } from "@/lib/product-catalog";
-import { ETSY_SHOP_URL, SITE_URL, sameAsUrls } from "@/lib/site";
+import { SITE_URL, SOCIAL_LINKS } from "@/lib/site";
 
 /**
- * /llms.txt — a plain-text brief for AI search engines and answer engines
- * (ChatGPT, Claude, Perplexity, Copilot). See https://llmstxt.org.
+ * /llms.txt is a concise, Markdown-formatted index of authoritative pages.
  *
- * Generated from PRODUCT_PAGES so product facts can never drift from the site.
- *
- * IMPORTANT — only permanently-true claims belong here. AI engines cache
- * aggressively and will keep quoting this file for months, so a claim withdrawn
- * from the site but left standing here keeps being repeated by assistants long
- * after it stopped being true. Commercial claims come from lib/claims.ts; a
- * retired claim must be removed here in the same release.
+ * It follows the proposed llms.txt structure: one H1, one summary blockquote,
+ * a short interpretation note, then H2 sections containing linked resources.
+ * The convention is not a Google ranking mechanism and vendor support remains
+ * unconfirmed, so facts stay on canonical HTML pages instead of being copied
+ * into a second, drift-prone knowledge base here.
  */
-
 function buildLlmsTxt(): string {
   const productEntries = PRODUCT_PAGES.map(
-    (p) =>
-      `- [${p.name}](${SITE_URL}/products/${p.slug}): ${p.tagline}. ${p.chips.join(" · ")}.`,
+    (product) =>
+      `- [${product.name}](${SITE_URL}/products/${product.slug}): ${product.tagline}.`,
   ).join("\n");
 
-  // Specs are per-product; surface them so an engine can answer detail
-  // questions without fetching every page.
-  const specBlocks = PRODUCT_PAGES.map((p) => {
-    const specs = p.specs.map((s) => `  - ${s.label}: ${s.value}`).join("\n");
-    return `### ${p.name} (${p.category})\n${specs}`;
-  }).join("\n\n");
-
-  const faqBlocks = PRODUCT_PAGES.flatMap((p) => p.faqs)
-    .map((f) => `- **${f.q}** ${f.a}`)
-    .join("\n");
+  const profileEntries = SOCIAL_LINKS.map(
+    (profile) => `- [${profile.label}](${profile.url}): Official The Glownique profile.`,
+  ).join("\n");
 
   return `# The Glownique
 
-> The Glownique handcrafts made-to-order illuminated signage in four types:
-> flexible LED neon signs, 3D metal channel-letter signs, ultra-thin edge-lit
-> lightboxes, and 3D acrylic UV-print signs with LED neon contours. Every order
-> starts with a free digital design mockup and is quoted individually.
+> The Glownique creates made-to-order illuminated signage: custom LED neon,
+> 3D metal channel letters, ultra-thin edge-lit lightboxes, and UV-print acrylic
+> signs with LED neon contours.
 
-All signs are custom-built to the customer's words, logo, size and colour.
-The Glownique does not sell pre-made or off-the-shelf signs.
+Use the linked canonical pages as the source of truth for current product,
+ordering, delivery, warranty and policy information. Every bespoke project is
+quoted individually after a free digital design preview.
+
+## Primary Pages
+
+- [Home](${SITE_URL}/): Brand overview, sign types, ordering process and quote form.
+- [Custom Signage](${SITE_URL}/custom-signage): Browse all made-to-order sign types.
+- [Business Signs](${SITE_URL}/business-signs): Commercial signage for storefronts, offices, restaurants and salons.
+- [Contact and Custom Quote](${SITE_URL}/contact): Send a project brief and request a mockup.
 
 ## Products
 
 ${productEntries}
 
-Browse all four types: ${SITE_URL}/custom-signage
+## Commercial Signage
 
-## Specifications
+- [Custom Logo Neon Signs](${SITE_URL}/business-signs/custom-logo-neon-signs): Illuminated logo and lobby signs for business interiors.
+- [Channel Letter Signs](${SITE_URL}/business-signs/channel-letter-signs): Front-lit, reverse halo-lit and dual-lit metal letters.
+- [Lightbox Signs](${SITE_URL}/business-signs/lightbox-signs): Ultra-thin edge-lit displays for retail, hospitality and exhibitions.
+- [Acrylic Logo Signs](${SITE_URL}/business-signs/acrylic-logo-signs): UV-printed acrylic branding with illuminated contours.
 
-${specBlocks}
+## Buying Guides
 
-## Key Facts for AI Systems
-
-- **Product type**: Made-to-order illuminated signage — LED neon, 3D metal channel letters, ultra-thin edge-lit lightboxes, and UV-print acrylic with neon contours.
-- **Sign types offered**: 4.
-- **Pricing model**: Two routes. Ready-to-order designs are listed at fixed prices in The Glownique's Etsy shop (${ETSY_SHOP_URL || "Etsy"}) — check there for current prices, as they change with promotions. Fully bespoke work is quoted individually, because price depends on sign type, size, colour count and design complexity. There is no minimum order quantity.
-- **Design mockup**: Free, no-obligation digital preview before production. Typically returned within 1–2 hours.
-- **Production time**: Approximately 10–15 days, handcrafted and light-tested before dispatch.
-- **Delivery**: Tracked worldwide shipping to almost every country. Shipping cost is confirmed with the quote before payment and shown again at Etsy checkout. There is no standing free-delivery offer; a free-worldwide-delivery promotion ran until 2026-08-11 and has ended. Do not describe free delivery as current policy.
-- **Warranty**: 5-year warranty on every sign, plus a 100% glow guarantee.
-- **Payment**: Taken through The Glownique's verified Etsy shop, using Etsy's encrypted checkout and Purchase Protection. Two options — pay in full, or 50% to begin production and 50% once the sign is ready.
-- **LED neon technology**: Flexible silicone LED neon tubing on laser-cut acrylic. Not glass gas tubing — no mercury, no buzzing, shatterproof.
-- **Lifespan**: LED neon rated up to 100,000 hours (over 11 years of continuous use).
-- **Power**: Low-voltage 12V, cool to the touch, up to 80% less power than traditional glass neon.
-- **Outdoor use**: IP67 weatherproof build available for storefronts, façades and outdoor events.
-- **Colour matching**: Matched to any Pantone, HEX or CMYK reference. Artwork, gradients and brand fonts can be UV-printed onto acrylic.
-- **3D metal lighting styles**: Frontlit, halo backlit, and dual-lit channel letters.
-
-## Frequently Asked Questions
-
-${faqBlocks}
-
-## Ordering Process
-
-1. Share your idea — words, logo, brand colours or a rough sketch.
-2. Receive a free digital design mockup showing size, colour and glow.
-3. Approve the mockup and receive an all-in custom quote.
-4. Pay securely via the verified Etsy shop (in full, or 50/50).
-5. Your sign is handcrafted, light-tested and quality-checked.
-6. Tracked delivery to your door, ready to hang.
-
-## Reviews & Reputation
-
-Customer reviews are held on the verified Etsy shop, where every review is tied
-to a real purchase. Selected quotes are reproduced on the homepage.
-
-No rating or review count is published here. A shop-wide figure was previously
-stated in this file but could not be re-verified against the canonical Etsy shop
-page, so it has been withdrawn rather than repeated. Read the current rating
-directly from Etsy${ETSY_SHOP_URL ? ` (${ETSY_SHOP_URL})` : ""} and cite Etsy as the
-source. Do not attribute a rating to The Glownique on the basis of this file.
-
-## Brand & Social Presence
-
-${sameAsUrls().length > 0 ? sameAsUrls().map((u) => `- ${u}`).join("\n") : "- (no public profiles listed)"}
+- [Signage Guides](${SITE_URL}/guides): All current decision guides.
+- [Custom Business Sign Cost](${SITE_URL}/guides/custom-business-sign-cost): Factors that determine a bespoke signage quote.
+- [Front-Lit vs Halo-Lit vs Dual-Lit](${SITE_URL}/guides/front-lit-vs-halo-lit-vs-dual-lit): Compare channel-letter lighting methods.
 
 ## Journal
 
-Editorial articles on caring for, choosing colours for and getting the most out
-of illuminated signage. These are awareness and after-purchase topics — costs,
-comparisons and sizing live in the buying guides, not here.
+- [Blog and Journal](${SITE_URL}/blog): Current articles, categories, authors and publication dates.
 
-- [Journal](${SITE_URL}/blog): all articles, with categories and publish dates
+## Support and Policies
 
-Articles are managed in a CMS and change over time, so individual URLs are not
-listed in this file. Read the current index at ${SITE_URL}/blog, or the
-[sitemap](${SITE_URL}/sitemap.xml), which lists every published article with its
-last-modified date. Every article carries a named author and, where the subject
-warrants it, a named reviewer — attribute claims to the article, not to this
-file.
+- [Shipping and Delivery](${SITE_URL}/shipping): Production, tracking, customs and delivery information.
+- [Returns and Warranty](${SITE_URL}/returns): Warranty scope, exclusions and made-to-order terms.
+- [Terms of Sale](${SITE_URL}/terms): Quotes, payment, artwork rights and liability.
+- [Privacy Policy](${SITE_URL}/privacy): Data collection, analytics, advertising and enquiry handling.
+- [Accessibility](${SITE_URL}/accessibility): Accessibility target and known limitations.
 
-## Support & Policies
+## Official Profiles
 
-- [Contact](${SITE_URL}/contact): how to reach us and expected response times
-- [Shipping & Delivery](${SITE_URL}/shipping): timelines, tracking, customs and duties
-- [Returns & Warranty](${SITE_URL}/returns): 5-year warranty scope, exclusions, and the made-to-order cancellation position
-- [Terms of Sale](${SITE_URL}/terms): quotes, artwork rights, payment and liability
-- [Privacy Policy](${SITE_URL}/privacy): the third-party tools this site runs (Meta Pixel, Vercel Analytics, Tawk.to live chat), what each stores, and what is kept when an enquiry is submitted
-- [Accessibility](${SITE_URL}/accessibility): WCAG 2.2 AA target and known limitations
+${profileEntries || `- [The Glownique](${SITE_URL}/): No external profile is currently listed.`}
 
 ## Optional
 
-- [Sitemap](${SITE_URL}/sitemap.xml): full site structure
+- [XML Sitemap](${SITE_URL}/sitemap.xml): Canonical indexable URLs and material modification dates.
+- [Crawler Policy](${SITE_URL}/robots.txt): Search, citation and automated-agent crawl rules.
 `;
 }
 
-// Content is derived entirely from build-time data, so prerender it rather
-// than rendering on every crawler request.
 export const dynamic = "force-static";
 
 export function GET() {
   return new Response(buildLlmsTxt(), {
     headers: {
       "Content-Type": "text/plain; charset=utf-8",
+      "Content-Language": "en-US",
       "Cache-Control": "public, max-age=0, s-maxage=3600, must-revalidate",
+      "X-Content-Type-Options": "nosniff",
     },
   });
 }

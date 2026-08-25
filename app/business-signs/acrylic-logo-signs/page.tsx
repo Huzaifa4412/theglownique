@@ -11,25 +11,25 @@ import { SITE_URL } from "@/lib/site";
 import { serializeJsonLd } from "@/lib/utils";
 
 export const metadata: Metadata = {
-  title: "Acrylic Logo Signs for Offices & Stores",
+  title: "Custom Acrylic Logo & 3D Office Signs",
   description:
-    "Precision full-color UV-printed artwork on premium acrylic paired with glowing LED neon contours. Perfect for corporate reception walls, salons, and offices.",
+    "Custom acrylic logo signs & 3D office wall signs for corporate reception, salons & storefronts. Precision UV print on acrylic with glowing LED neon contours. 5-year warranty.",
   alternates: { canonical: "/business-signs/acrylic-logo-signs" },
   openGraph: {
     type: "website",
     siteName: "The Glownique",
-    title: "Acrylic Logo Signs for Offices & Stores | The Glownique",
+    title: "Custom Acrylic Logo Signs & 3D Office Signs | The Glownique",
     description:
-      "Custom UV-printed acrylic logo signs with glowing LED neon accents for corporate offices and retail spaces.",
+      "Custom UV-printed acrylic logo signs & 3D office wall signs with glowing LED neon accents for corporate offices, salons, and retail spaces.",
     url: "/business-signs/acrylic-logo-signs",
-    images: [{ url: "/hero/workspace-sign.png", alt: "3D Acrylic Logo Signs" }],
+    images: [{ url: "/3d-arcylic/3235dc09-6dac-4056-88b6-55fc26e28571.png", alt: "Custom 3D Acrylic Logo Signs" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Acrylic Logo Signs for Offices & Stores | The Glownique",
+    title: "Custom Acrylic Logo Signs & 3D Office Signs | The Glownique",
     description:
-      "Custom UV-printed acrylic logo signs with glowing LED neon accents for corporate offices and retail spaces.",
-    images: ["/hero/workspace-sign.png"],
+      "Custom UV-printed acrylic logo signs & 3D office wall signs with glowing LED neon accents for corporate offices and retail spaces.",
+    images: ["/3d-arcylic/3235dc09-6dac-4056-88b6-55fc26e28571.png"],
   },
 };
 
@@ -45,7 +45,7 @@ export default function AcrylicLogoSignsPage() {
         name: "3D UV-Print Acrylic Logo Signs",
         description:
           "High-precision full-color UV printed artwork on clear or tinted acrylic backings integrated with custom LED neon lighting for corporate branding.",
-        image: `${SITE_URL}/hero/workspace-sign.png`,
+        image: `${SITE_URL}/3d-arcylic/3235dc09-6dac-4056-88b6-55fc26e28571.png`,
         category: "Corporate & Interior Signage",
         brand: { "@type": "Brand", name: "The Glownique" },
         url: pageUrl,
@@ -87,7 +87,7 @@ export default function AcrylicLogoSignsPage() {
               Corporate & Reception Signage
             </p>
             <h1 className="mt-2 text-4xl font-extrabold tracking-tight text-[#1e1a22] sm:text-5xl">
-              3D UV-Print Acrylic Logo Signs
+              Custom Acrylic Logo Signs
             </h1>
             <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-[#5e5862] sm:text-lg">
               Combine razor-sharp UV printing for intricate logo details, gradients, and typography with glowing LED neon contours for an unforgettable reception wall statement.
@@ -114,7 +114,7 @@ export default function AcrylicLogoSignsPage() {
             <div className="grid gap-12 md:grid-cols-2 md:items-center">
               <div className="relative aspect-square overflow-hidden rounded-3xl bg-black/5 shadow-lg">
                 <Image
-                  src="/hero/workspace-sign.png"
+                  src="/3d-arcylic/3235dc09-6dac-4056-88b6-55fc26e28571.png"
                   alt="3D UV-Print Acrylic Logo Sign in office reception"
                   fill
                   className="object-cover"

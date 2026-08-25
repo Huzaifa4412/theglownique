@@ -38,6 +38,8 @@ import { SITE_URL } from "@/lib/site";
  */
 const SEARCH_AND_CITATION_CRAWLERS = [
   "Googlebot", // Google Search, and therefore Google's AI surfaces
+  "Googlebot-Image", // Google Images — important for a visual product catalog
+  "Googlebot-Video", // Product and workshop videos discoverable in Google
   "Bingbot", // Bing, Microsoft Copilot
   "DuckDuckBot", // DuckDuckGo
   "OAI-SearchBot", // ChatGPT search results
@@ -70,7 +72,7 @@ const USER_TRIGGERED_AGENTS = ["ChatGPT-User", "Perplexity-User", "Claude-User"]
 
 // Not public content. /studio is excluded from this list on purpose — see note 1
 // above. Add paths here only when they should never be fetched at all.
-const NON_PUBLIC_PATHS = ["/api/"];
+const NON_PUBLIC_PATHS = ["/api/", "/_vercel/"];
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -91,6 +93,5 @@ export default function robots(): MetadataRoute.Robots {
       },
     ],
     sitemap: `${SITE_URL}/sitemap.xml`,
-    host: SITE_URL,
   };
 }

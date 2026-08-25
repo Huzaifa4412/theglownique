@@ -11,14 +11,14 @@ import { SITE_URL } from "@/lib/site";
 import { serializeJsonLd } from "@/lib/utils";
 
 export const metadata: Metadata = {
-  title: "Custom Logo Neon Signs for Business",
+  title: "Custom Logo Neon & Lobby Signs for Business",
   description:
-    "Custom LED logo neon signs for business brand walls, reception areas, restaurants and salons. Exact Pantone color matching, 12V low voltage and 5-year warranty.",
+    "Custom logo neon signs & lobby signs for business branding, reception walls, restaurants, and salons. Pantone color matching, 12V energy efficiency & 5-year warranty.",
   alternates: { canonical: "/business-signs/custom-logo-neon-signs" },
   openGraph: {
     type: "website",
     siteName: "The Glownique",
-    title: "Custom Logo Neon Signs for Business | The Glownique",
+    title: "Custom Logo Neon Signs & Lobby Signs for Business | The Glownique",
     description:
       "Precision-crafted LED logo neon signs for commercial spaces. Custom cut acrylic backings, Pantone brand matching, free design mockup.",
     url: "/business-signs/custom-logo-neon-signs",
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Custom Logo Neon Signs for Business | The Glownique",
+    title: "Custom Logo Neon Signs & Lobby Signs for Business | The Glownique",
     description:
       "Precision-crafted LED logo neon signs for commercial spaces. Custom cut acrylic backings, Pantone brand matching, free design mockup.",
     images: ["/hero/neon-sign-hero.png"],
@@ -69,7 +69,7 @@ export default function CustomLogoNeonSignsPage() {
       />
       <MetaViewContent
         contentId="custom-logo-neon-signs"
-        contentName="Custom Logo Neon Signs"
+        contentName="Custom Logo Neon Signs for Business"
         contentCategory="Business signage"
       />
       <AnnouncementBar />
@@ -84,27 +84,26 @@ export default function CustomLogoNeonSignsPage() {
             </nav>
 
             <p className="text-xs font-extrabold uppercase tracking-widest text-[#ce0754]">
-              Commercial Brand Signage
+              Commercial Brand Illumination
             </p>
             <h1 className="mt-2 text-4xl font-extrabold tracking-tight text-[#1e1a22] sm:text-5xl">
               Custom Logo Neon Signs for Business
             </h1>
             <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-[#5e5862] sm:text-lg">
-              Transform your business logo, brand slogan or mascot into a stunning, energy-efficient
-              illuminated focal point. Handcrafted with safe 12V silicone LED neon on high-grade acrylic.
+              Transform your business logo into an eye-catching LED neon centerpiece. Custom fabricated for office lobby walls, salons, restaurants, retail storefronts, and pop-up activations.
             </p>
 
             <div className="mt-8 flex flex-wrap justify-center gap-4">
               <CustomQuoteButton
                 className="button button--whatsapp text-base px-8 py-3.5"
-                label="Get a Free Logo Mockup & Quote"
+                label="Get a Free Logo Mockup"
                 productName="custom logo neon sign"
               />
               <Link
                 href="/products/custom-neon-signs"
                 className="inline-flex items-center gap-2 rounded-xl border border-[#eadfe4] bg-white px-6 py-3.5 text-sm font-bold text-[#1e1a22] hover:border-[#f40b68]"
               >
-                View General Product Specs →
+                View Neon Product Specs →
               </Link>
             </div>
           </div>
@@ -116,7 +115,7 @@ export default function CustomLogoNeonSignsPage() {
               <div className="relative aspect-square overflow-hidden rounded-3xl bg-black/5 shadow-lg">
                 <Image
                   src="/hero/neon-sign-hero.png"
-                  alt="Custom Logo Neon Sign for business feature wall"
+                  alt="Custom LED Logo Neon Sign on restaurant wall"
                   fill
                   className="object-cover"
                 />
@@ -124,40 +123,26 @@ export default function CustomLogoNeonSignsPage() {
 
               <div className="space-y-6">
                 <h2 className="text-3xl font-extrabold text-[#1e1a22]">
-                  Built for Business Impact & Durability
+                  Built Exactly to Your Vector Logo
                 </h2>
                 <p className="text-sm leading-relaxed text-[#5e5862]">
-                  Whether you are outfitting a retail store, office reception, restaurant bar or fitness studio,
-                  our commercial LED logo signs deliver eye-catching visibility without high energy bills.
+                  Send us your AI, EPS, SVG, or high-res PNG file. Our engineering team maps your artwork onto laser-cut acrylic backings with exact Pantone color matching and 50,000-hour rated LED silicone tubing.
                 </p>
 
-                <ul className="space-y-3 text-sm font-medium text-[#1e1a22]">
-                  <li className="flex items-start gap-2">
-                    <span className="font-bold text-[#ce0754]">✓</span>
-                    <span><strong>Pantone & HEX Color Matching:</strong> Exact brand color alignment for contours and backings.</span>
+                <ul className="space-y-4 text-sm text-[#1e1a22]">
+                  <li className="rounded-xl border border-[#eadfe4] bg-[#faf7f8] p-4">
+                    <strong className="block text-base font-extrabold text-[#1e1a22]">100% Brand Font & Contour Accuracy</strong>
+                    <span className="text-[#5e5862]">We custom bend flexible shatterproof silicone to follow intricate scripts, symbols, and geometric shapes.</span>
                   </li>
-                  <li className="flex items-start gap-2">
-                    <span className="font-bold text-[#ce0754]">✓</span>
-                    <span><strong>Safe 12V Low Voltage:</strong> Cool to touch, shatterproof silicone tubing with 100,000-hour LED lifespan.</span>
+                  <li className="rounded-xl border border-[#eadfe4] bg-[#faf7f8] p-4">
+                    <strong className="block text-base font-extrabold text-[#1e1a22]">Cool-to-the-Touch 12V Operation</strong>
+                    <span className="text-[#5e5862]">Safe for high-traffic public reception areas, child-accessible venues, and commercial interiors.</span>
                   </li>
-                  <li className="flex items-start gap-2">
-                    <span className="font-bold text-[#ce0754]">✓</span>
-                    <span><strong>IP67 Outdoor Option:</strong> Full waterproofing available for exterior storefront entryways.</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="font-bold text-[#ce0754]">✓</span>
-                    <span><strong>5-Year Warranty:</strong> Complete coverage on LEDs, power transformers, and craftsmanship.</span>
+                  <li className="rounded-xl border border-[#eadfe4] bg-[#faf7f8] p-4">
+                    <strong className="block text-base font-extrabold text-[#1e1a22]">Free Design Mockup with Sizing</strong>
+                    <span className="text-[#5e5862]">See a true-to-scale digital preview of your glowing logo before committing to production.</span>
                   </li>
                 </ul>
-
-                <div className="pt-4">
-                  <Link
-                    href="/guides/custom-business-sign-cost"
-                    className="text-sm font-bold text-[#ce0754] underline"
-                  >
-                    Compare custom logo sign cost factors in our business guide →
-                  </Link>
-                </div>
               </div>
             </div>
           </div>

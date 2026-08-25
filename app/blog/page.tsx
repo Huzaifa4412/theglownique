@@ -129,7 +129,7 @@ export default async function BlogHubPage() {
         "@type": "BreadcrumbList",
         itemListElement: [
           { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
-          { "@type": "ListItem", position: 2, name: "Journal", item: pageUrl },
+          { "@type": "ListItem", position: 2, name: "Blog & Journal", item: pageUrl },
         ],
       },
     ],
@@ -151,7 +151,7 @@ export default async function BlogHubPage() {
             <nav className="blog-breadcrumb" aria-label="Breadcrumb">
               <Link href="/">Home</Link>
               <span aria-hidden="true">›</span>
-              <span aria-current="page">Journal</span>
+              <span aria-current="page">Blog & Journal</span>
             </nav>
             <p className="eyebrow">{copy.eyebrow}</p>
             <h1 className="blog-hero__title">{copy.heading}</h1>
