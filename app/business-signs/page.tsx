@@ -75,19 +75,27 @@ const b2bProducts = [
 const industries = [
   {
     name: "Retail & Storefronts",
-    desc: "Outdoor channel letters, window LED neon and promotional lightboxes engineered to boost foot traffic and road visibility.",
+    desc: "Outdoor channel letters, storefront signs, window LED neon and promotional lightboxes engineered to boost foot traffic and street-level road visibility.",
   },
   {
-    name: "Corporate Offices & Receptions",
-    desc: "Refined halo-lit 3D metal letters and UV-printed acrylic logo signs that establish brand authority in executive suites and lobbies.",
+    name: "Corporate Offices & Lobby Walls",
+    desc: "Custom office signs for walls with logo, acrylic logo signs with stainless standoffs, and halo-lit 3D metal letters that establish brand authority.",
   },
   {
     name: "Restaurants, Bars & Cafés",
-    desc: "Warm ambient glow, photo-ready feature wall neon, and quick-swap edge-lit menu boards that elevate dining atmosphere.",
+    desc: "Custom bar neon signs, neon restaurant signs, cafe menu lightboxes, and warm ambient glowing wall art that elevates dining hospitality.",
   },
   {
-    name: "Salons, Spas & Studios",
-    desc: "Instagram-worthy custom script neon signs and elegant metallic plaques that customers love to photograph and share.",
+    name: "Salons, Spas & Barbershops",
+    desc: "Custom salon neon signs, hair salon logos, barbershop signage, and glamorous mirror plaques that clients love to photograph and share on social media.",
+  },
+  {
+    name: "Gyms & Fitness Studios",
+    desc: "High-impact gym neon signs, motivational wall lights, and durable sweat-resistant illuminated workout area branding.",
+  },
+  {
+    name: "Event Spaces & Photo Booths",
+    desc: "Personalized neon event backdrops, happy birthday neon signs, wedding neon signs, and photo-ready branded focal points.",
   },
 ];
 

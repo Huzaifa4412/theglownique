@@ -11,24 +11,24 @@ import { SITE_URL } from "@/lib/site";
 import { serializeJsonLd } from "@/lib/utils";
 
 export const metadata: Metadata = {
-  title: "Custom Acrylic Logo Signs for Offices",
+  title: "Custom Acrylic Signs for Business & 3D Office Wall Signs",
   description:
-    "Custom UV-printed acrylic logo signs with glowing LED neon accents for corporate offices, reception desks, salons and retail walls. Free design mockup & 5-year warranty.",
+    "Custom acrylic signs for business walls with logo, 3D UV-printed letters, stainless standoff mounting and glowing LED neon contours. Free design mockup & 5-year warranty.",
   alternates: { canonical: "/business-signs/acrylic-logo-signs" },
   openGraph: {
     type: "website",
     siteName: "The Glownique",
-    title: "Custom Acrylic Logo Signs for Offices | The Glownique",
+    title: "Custom Acrylic Signs for Business & 3D Office Wall Signs | The Glownique",
     description:
-      "Custom UV-printed acrylic logo signs with glowing LED neon accents for corporate offices and retail spaces.",
+      "Custom acrylic signs for business walls, corporate offices, reception desks and retail spaces with UV print & LED neon.",
     url: "/business-signs/acrylic-logo-signs",
-    images: [{ url: "/hero/workspace-sign.png", alt: "3D Acrylic Logo Signs" }],
+    images: [{ url: "/hero/workspace-sign.png", alt: "3D Acrylic Logo Signs for Business" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Custom Acrylic Logo Signs for Offices | The Glownique",
+    title: "Custom Acrylic Signs for Business & 3D Office Wall Signs | The Glownique",
     description:
-      "Custom UV-printed acrylic logo signs with glowing LED neon accents for corporate offices and retail spaces.",
+      "Custom acrylic signs for business walls, corporate offices and reception desks with free mockup.",
     images: ["/hero/workspace-sign.png"],
   },
 };

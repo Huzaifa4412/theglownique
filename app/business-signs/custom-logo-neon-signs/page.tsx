@@ -11,22 +11,22 @@ import { SITE_URL } from "@/lib/site";
 import { serializeJsonLd } from "@/lib/utils";
 
 export const metadata: Metadata = {
-  title: "Custom Logo Neon Signs for Office Walls",
+  title: "Custom Logo Neon Signs for Business, Bars, Salons & Offices",
   description:
-    "Custom LED logo neon signs for business brand walls, reception lobbies, restaurants and retail storefronts. Exact Pantone color matching, safe 12V power and 5-year warranty.",
+    "Custom LED logo neon signs for business brand walls, cocktail bars, restaurants, hair salons, gyms & office lobbies. Exact Pantone match, safe 12V voltage & 5-year warranty.",
   alternates: { canonical: "/business-signs/custom-logo-neon-signs" },
   openGraph: {
     type: "website",
     siteName: "The Glownique",
-    title: "Custom Logo Neon Signs for Office Walls | The Glownique",
+    title: "Custom Logo Neon Signs for Business, Bars, Salons & Offices | The Glownique",
     description:
-      "Precision-crafted LED logo neon signs for corporate offices, reception desks, retail storefronts and hospitality venues.",
+      "Precision-crafted LED logo neon signs for corporate offices, cocktail bars, beauty salons, fitness gyms and storefronts.",
     url: "/business-signs/custom-logo-neon-signs",
     images: [{ url: "/hero/neon-sign-hero.png", alt: "Custom Logo Neon Signs for Business" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Custom Logo Neon Signs for Office Walls | The Glownique",
+    title: "Custom Logo Neon Signs for Business, Bars, Salons & Offices | The Glownique",
     description:
       "Precision-crafted LED logo neon signs for commercial spaces with free digital mockup.",
     images: ["/hero/neon-sign-hero.png"],
@@ -196,22 +196,30 @@ export default function CustomLogoNeonSignsPage() {
             <h2 className="text-3xl font-extrabold text-center text-[#1e1a22] mb-10">
               Popular Business Logo Neon Sign Applications
             </h2>
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               <div className="rounded-2xl border border-[#eadfe4] bg-white p-6 shadow-sm">
-                <h3 className="font-extrabold text-[#1e1a22]">Office &amp; Lobbies</h3>
+                <h3 className="font-extrabold text-[#1e1a22]">Corporate Offices &amp; Lobbies</h3>
                 <p className="mt-2 text-xs text-[#5e5862]">Reception brand walls and executive conference rooms that project contemporary prestige.</p>
               </div>
               <div className="rounded-2xl border border-[#eadfe4] bg-white p-6 shadow-sm">
-                <h3 className="font-extrabold text-[#1e1a22]">Retail Storefronts</h3>
-                <p className="mt-2 text-xs text-[#5e5862]">Window hanging and in-store visual merchandising displays that drive foot traffic.</p>
+                <h3 className="font-extrabold text-[#1e1a22]">Bars, Cafés &amp; Restaurants</h3>
+                <p className="mt-2 text-xs text-[#5e5862]">Custom bar neon signs, dining wall emblems, and Instagram photo backdrop moments.</p>
               </div>
               <div className="rounded-2xl border border-[#eadfe4] bg-white p-6 shadow-sm">
-                <h3 className="font-extrabold text-[#1e1a22]">Hospitality &amp; Bars</h3>
-                <p className="mt-2 text-xs text-[#5e5862]">Atmospheric cocktail bar signs, restaurant wall emblems and Instagram photo moments.</p>
+                <h3 className="font-extrabold text-[#1e1a22]">Salons, Spas &amp; Barbershops</h3>
+                <p className="mt-2 text-xs text-[#5e5862]">Chic salon neon signs and mirror plaques that turn clients into organic social media advocates.</p>
               </div>
               <div className="rounded-2xl border border-[#eadfe4] bg-white p-6 shadow-sm">
-                <h3 className="font-extrabold text-[#1e1a22]">Salons &amp; Studios</h3>
-                <p className="mt-2 text-xs text-[#5e5862]">Chic, photo-ready backdrop signs that turn clients into organic social media advocates.</p>
+                <h3 className="font-extrabold text-[#1e1a22]">Gyms &amp; Fitness Studios</h3>
+                <p className="mt-2 text-xs text-[#5e5862]">High-energy motivational gym neon signs that boost workout intensity and community branding.</p>
+              </div>
+              <div className="rounded-2xl border border-[#eadfe4] bg-white p-6 shadow-sm">
+                <h3 className="font-extrabold text-[#1e1a22]">Retail Storefronts &amp; Windows</h3>
+                <p className="mt-2 text-xs text-[#5e5862]">Window hanging and in-store visual merchandising displays that drive street foot traffic.</p>
+              </div>
+              <div className="rounded-2xl border border-[#eadfe4] bg-white p-6 shadow-sm">
+                <h3 className="font-extrabold text-[#1e1a22]">Events &amp; Photo Backdrops</h3>
+                <p className="mt-2 text-xs text-[#5e5862]">Pop-up trade shows, wedding backdrops, and product launch statement signs.</p>
               </div>
             </div>
           </div>
