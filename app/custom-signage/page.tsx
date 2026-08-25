@@ -11,14 +11,14 @@ import { SITE_URL } from "@/lib/site";
 import { serializeJsonLd } from "@/lib/utils";
 
 export const metadata: Metadata = {
-  title: "Custom Signage & Light Up Signs for Homes & Businesses",
+  title: "Custom Signage & Light Up Signs",
   description:
     "Handcrafted custom LED neon signs, personalized light up signs, 3D metal letters, ultra-thin lightboxes & UV-print acrylic signs. Free design mockup & 5-year warranty.",
   alternates: { canonical: "/custom-signage" },
   openGraph: {
     type: "website",
     siteName: "The Glownique",
-    title: "Custom Signage & Light Up Signs for Homes & Businesses | The Glownique",
+    title: "Custom Signage & Light Up Signs | The Glownique",
     description:
       "Explore custom LED neon signs, 3D metal channel letters, ultra-thin lightboxes and UV-print acrylic signage with free mockup.",
     url: "/custom-signage",
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Custom Signage & Light Up Signs for Homes & Businesses | The Glownique",
+    title: "Custom Signage & Light Up Signs | The Glownique",
     description:
       "Explore custom LED neon signs, 3D metal channel letters, ultra-thin lightboxes and UV-print acrylic signage.",
     images: ["/hero/neon-sign-hero.png"],
@@ -43,7 +43,7 @@ export default function CustomSignagePage() {
         "@type": "CollectionPage",
         "@id": `${pageUrl}#webpage`,
         url: pageUrl,
-        name: "Custom Signage & Light Up Signs for Homes & Businesses",
+        name: "Custom Signage & Light Up Signs",
         description:
           "Explore custom LED neon signs, 3D metal channel letters, ultra-thin lightboxes and UV-print acrylic signage.",
         publisher: { "@id": `${SITE_URL}/#organization` },

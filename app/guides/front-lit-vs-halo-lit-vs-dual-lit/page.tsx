@@ -10,22 +10,22 @@ import { SITE_URL } from "@/lib/site";
 import { serializeJsonLd } from "@/lib/utils";
 
 export const metadata: Metadata = {
-  title: "Front-Lit vs Halo-Lit vs Dual-Lit Channel Letters: Storefront Lighting Guide",
+  title: "Front-Lit vs Halo-Lit vs Dual-Lit Letters",
   description:
     "Compare 3D metal channel letter illumination styles — front-lit, halo backlit and dual-lit. Learn about day & night legibility, wall reflection requirements, and storefront aesthetics.",
   alternates: { canonical: "/guides/front-lit-vs-halo-lit-vs-dual-lit" },
   openGraph: {
     type: "article",
     siteName: "The Glownique",
-    title: "Front-Lit vs Halo-Lit vs Dual-Lit Channel Letters | The Glownique",
+    title: "Front-Lit vs Halo-Lit vs Dual-Lit Letters | The Glownique",
     description:
       "Comparative guide for storefront channel letter lighting methods, wall reflection requirements, and aesthetic impact.",
     url: "/guides/front-lit-vs-halo-lit-vs-dual-lit",
-    images: [{ url: "/hero/business-coffee.png", alt: "Front-Lit vs Halo-Lit vs Dual-Lit Channel Letters" }],
+    images: [{ url: "/hero/business-coffee.png", alt: "Front-Lit vs Halo-Lit vs Dual-Lit Letters" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Front-Lit vs Halo-Lit vs Dual-Lit Channel Letters | The Glownique",
+    title: "Front-Lit vs Halo-Lit vs Dual-Lit Letters | The Glownique",
     description:
       "Comparative guide for storefront channel letter lighting methods, wall reflection requirements, and aesthetic impact.",
     images: ["/hero/business-coffee.png"],
@@ -93,7 +93,7 @@ export default function LightingComparisonGuidePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: serializeJsonLd(structuredData) }}
       />
-      <MetaGuideView guideName="Front-Lit vs Halo-Lit vs Dual-Lit Channel Letters" />
+      <MetaGuideView guideName="Front-Lit vs Halo-Lit vs Dual-Lit Letters" />
       <AnnouncementBar />
       <ProductTopBar productName="channel letter guide" />
       <main id="main-content" className="bg-white">

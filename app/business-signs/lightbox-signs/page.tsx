@@ -11,14 +11,14 @@ import { SITE_URL } from "@/lib/site";
 import { serializeJsonLd } from "@/lib/utils";
 
 export const metadata: Metadata = {
-  title: "Custom Lightbox Signs & Ultra-Thin LED Backlit Signage",
+  title: "Custom Lightbox Signs & LED Backlit Signage",
   description:
     "Custom edge-lit LED lightbox signs and slim backlit displays for retail stores, restaurant menus, lobbies and trade shows. Snap-frame graphic swaps with 5-year warranty.",
   alternates: { canonical: "/business-signs/lightbox-signs" },
   openGraph: {
     type: "website",
     siteName: "The Glownique",
-    title: "Custom Lightbox Signs & Ultra-Thin LED Backlit Signage | The Glownique",
+    title: "Custom Lightbox Signs & LED Backlit Signage | The Glownique",
     description:
       "Commercial edge-lit lightboxes for retail storefronts, restaurant menu boards and promotional backlit displays.",
     url: "/business-signs/lightbox-signs",
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Custom Lightbox Signs & Ultra-Thin LED Backlit Signage | The Glownique",
+    title: "Custom Lightbox Signs & LED Backlit Signage | The Glownique",
     description:
       "Commercial edge-lit lightboxes for retail displays, menu boards and promotional signage.",
     images: ["/before-after/after-osee-beauty.png"],

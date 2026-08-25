@@ -27,6 +27,31 @@ const PRODUCTION_ORIGIN = "https://www.theglownique.com";
 const failures = [];
 const warnings = [];
 
+/** Rendered <title> ceiling, brand suffix included. See the note in checkPage. */
+const TITLE_MAX = 60;
+
+/** target path -> pages linking to it. Filled during the crawl. */
+const internalLinks = new Map();
+
+/**
+ * Normalise an href to a same-site path, or null if it points elsewhere.
+ *
+ * Absolute links to the production origin count as internal: a link written as
+ * https://www.theglownique.com/blog/x is exactly as broken as /blog/x when the
+ * target does not exist, and CMS-authored links use both forms.
+ */
+function internalTarget(href) {
+  if (/^(mailto:|tel:|javascript:)/i.test(href)) return null;
+  try {
+    const url = new URL(href, `${BASE}/`);
+    const origin = new URL(BASE).origin;
+    if (url.origin !== origin && url.origin !== PRODUCTION_ORIGIN) return null;
+    return (url.pathname.replace(/\/$/, "") || "/") + url.search;
+  } catch {
+    return null;
+  }
+}
+
 const fail = (route, message) => failures.push(`${route}: ${message}`);
 const warn = (route, message) => warnings.push(`${route}: ${message}`);
 
@@ -42,8 +67,8 @@ const RETIRED_CLAIM_PATTERNS = [
   // first missed and which shipped to production on /contact as a result.
   // Deliberately narrow on the second: "free" must be followed by worldwide or
   // "of charge", so "tracked delivery and a free design mockup" stays legal.
-  { label: "free-delivery promotion (CLM-001, ended 2026-08-11)", re: /free\s+(worldwide\s+)?(delivery|shipping)/i },
-  { label: "free-delivery promotion, reversed word order (CLM-001)", re: /(delivery|shipping)[^.]{0,20}free\s+(worldwide|of charge)/i },
+  { label: "free-delivery promotion (CLM-001, ended 2026-08-11)", re: /\bfree\s+(worldwide\s+)?(delivery|shipping)\b/i },
+  { label: "free-delivery promotion, reversed word order (CLM-001)", re: /\b(delivery|shipping)\b[^.]{0,20}\bfree\s+(worldwide|of charge)\b/i },
   { label: "\"no tracking pixels\" while the Meta Pixel ships (CLM-016)", re: /no\s+(advertising\s+cookies\s+or\s+)?tracking\s+pixels/i },
 ];
 
@@ -114,9 +139,32 @@ function checkPage(route, html, status, headers) {
   }
 
   // ── Title and description ─────────────────────────────────────────────────
+  //
+  // 60 is a hard limit, not a warning. Site audits flag anything longer, and 17
+  // pages had drifted past it before anyone noticed — a warning nobody reads is
+  // how that happens. Remember the budget is shared: app/layout.tsx appends
+  // " | The Glownique" via `title.template`, so a page-level title has
+  // TITLE_MAX - 16 = 44 characters to work with. A page that genuinely needs
+  // more should use `title.absolute` and spend the brand's 16 on keywords,
+  // rather than pushing the rendered title over the line.
   const title = tag(html, /<title>([^<]*)<\/title>/i);
   if (!title) fail(path, "no <title>");
-  else if (title.length > 70) warn(path, `title is ${title.length} chars and will truncate in SERPs`);
+  else if (title.length > TITLE_MAX) {
+    fail(path, `title is ${title.length} chars, over the ${TITLE_MAX} limit: "${title}"`);
+  }
+
+  // A second pipe reads as a broken template rather than a considered title.
+  if (title && (title.match(/\|/g) ?? []).length > 1) {
+    fail(path, `title has ${(title.match(/\|/g) ?? []).length} pipes: "${title}"`);
+  }
+
+  // Internal links, banked for checkInternalLinks() once every page is crawled.
+  for (const [, href] of html.matchAll(/<a\s[^>]*?href="([^"#][^"]*)"/gi)) {
+    const target = internalTarget(href);
+    if (!target) continue;
+    if (!internalLinks.has(target)) internalLinks.set(target, new Set());
+    internalLinks.get(target).add(path);
+  }
 
   const description = tag(html, /<meta name="description" content="([^"]*)"/i);
   if (!description) fail(path, "no meta description");
@@ -166,6 +214,20 @@ function checkPage(route, html, status, headers) {
   }
 }
 
+/** Public paths according to the sitemap — the only list that knows the CMS. */
+async function readSitemapPaths() {
+  try {
+    const response = await fetch(`${BASE}/sitemap.xml`);
+    if (!response.ok) return [];
+    const xml = await response.text();
+    return [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)]
+      .map((match) => match[1].replace(PRODUCTION_ORIGIN, "").replace(/\/$/, "") || "/")
+      .filter((path) => path.startsWith("/"));
+  } catch {
+    return [];
+  }
+}
+
 async function checkSitemap(manifest) {
   const response = await fetch(`${BASE}/sitemap.xml`);
   if (!response.ok) {
@@ -212,11 +274,65 @@ async function checkLlmsTxt() {
   }
 }
 
+/**
+ * Every internal link resolves.
+ *
+ * This exists because three published posts linked /blog/how-to-hang-a-neon-sign
+ * — a post that was still an unpublished draft. One dead target produced two
+ * separate audit findings ("3 pages with broken links" and "1 page returned
+ * 4XX"), and nothing in the codebase could have caught it: the href was CMS
+ * content pointing at a route the CMS itself decides whether to publish.
+ *
+ * So the check runs against rendered HTML rather than the route manifest, and it
+ * reports the pages doing the linking — those are the pages that need editing.
+ */
+async function checkInternalLinks(crawled) {
+  const targets = [...internalLinks.keys()].filter((target) => !crawled.has(target));
+  const results = await Promise.all(
+    targets.map(async (target) => {
+      try {
+        const response = await fetch(`${BASE}${target}`, { redirect: "manual" });
+        return [target, response.status];
+      } catch (error) {
+        return [target, `request failed: ${error.message}`];
+      }
+    }),
+  );
+
+  for (const [target, status] of results) {
+    if (status === 200) continue;
+    const sources = [...internalLinks.get(target)].sort();
+    // A redirect is a link worth rewriting, not a broken one.
+    if (typeof status === "number" && status >= 300 && status < 400) {
+      warn(target, `linked from ${sources.join(", ")} but redirects (${status})`);
+      continue;
+    }
+    fail(target, `broken link (HTTP ${status}) from ${sources.join(", ")}`);
+  }
+}
+
 async function main() {
   const manifest = await readRouteManifest();
-  console.log(`SEO audit — ${manifest.length} routes against ${BASE}\n`);
 
-  for (const route of manifest) {
+  // lib/routes.ts cannot list the blog: posts and category archives are created
+  // in the CMS, so the manifest has no idea they exist and every check in
+  // checkPage silently skipped them — which is how 6 overlong post titles and 3
+  // broken post links reached production. The sitemap is the only list that
+  // knows the full public surface, so the crawl is manifest ∪ sitemap.
+  const routes = [...manifest];
+  const known = new Set(manifest.map((route) => route.path));
+  for (const path of await readSitemapPaths()) {
+    if (known.has(path)) continue;
+    known.add(path);
+    routes.push({ path, indexable: true });
+  }
+
+  console.log(
+    `SEO audit — ${routes.length} routes against ${BASE}` +
+      ` (${manifest.length} from lib/routes.ts, ${routes.length - manifest.length} from the sitemap)\n`,
+  );
+
+  for (const route of routes) {
     try {
       const response = await fetch(`${BASE}${route.path}`, { redirect: "manual" });
       const html = await response.text();
@@ -226,6 +342,7 @@ async function main() {
     }
   }
 
+  await checkInternalLinks(known);
   await checkSitemap(manifest);
   await checkLlmsTxt();
 

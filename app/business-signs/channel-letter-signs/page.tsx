@@ -11,14 +11,14 @@ import { SITE_URL } from "@/lib/site";
 import { serializeJsonLd } from "@/lib/utils";
 
 export const metadata: Metadata = {
-  title: "Custom Channel Letter Signs & LED 3D Metal Letters",
+  title: "Custom Channel Letter Signs & 3D Letters",
   description:
     "Custom 3D metal channel letter signs for commercial storefronts & building façades. Front-lit, reverse halo-lit & dual-lit fabricated stainless steel with 5-year warranty.",
   alternates: { canonical: "/business-signs/channel-letter-signs" },
   openGraph: {
     type: "website",
     siteName: "The Glownique",
-    title: "Custom Channel Letter Signs & LED 3D Metal Letters | The Glownique",
+    title: "Custom Channel Letter Signs & 3D Letters | The Glownique",
     description:
       "Commercial 3D metal channel letters for exterior storefronts and corporate building façades. Frontlit, halo-lit & dual-lit options with IP67 waterproofing.",
     url: "/business-signs/channel-letter-signs",
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Custom Channel Letter Signs & LED 3D Metal Letters | The Glownique",
+    title: "Custom Channel Letter Signs & 3D Letters | The Glownique",
     description:
       "Commercial 3D metal channel letters for exterior storefronts and corporate building façades.",
     images: ["/hero/business-coffee.png"],

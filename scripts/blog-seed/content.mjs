@@ -194,7 +194,7 @@ export const posts = [
     publishedAt: "2026-08-22T09:00:00Z",
     featured: false,
     primaryKeyword: "how to clean led neon signs",
-    seoTitle: "How to Clean an LED Neon Sign (Without Hazing It)",
+    seoTitle: "How to Clean an LED Neon Sign",
     seoDescription:
       "Dust it dry, spray the cloth and never the sign, and keep alcohol away from the acrylic. A workshop guide to cleaning and maintaining an LED neon sign.",
     summary:
@@ -569,7 +569,7 @@ export const posts = [
     publishedAt: "2026-08-22T10:00:00Z",
     featured: false,
     primaryKeyword: "how to hang a neon sign",
-    seoTitle: "How to Hang a Neon Sign: Mounting Options by Wall Type",
+    seoTitle: "How to Hang a Neon Sign by Wall Type",
     seoDescription:
       "Plasterboard, brick, tile, glass or rental: the right fixing for each, plus the height and cable-routing decisions to make before you drill anything.",
     summary:
@@ -946,7 +946,7 @@ export const posts = [
     publishedAt: "2026-08-22T11:00:00Z",
     featured: false,
     primaryKeyword: "neon sign colours",
-    seoTitle: "Choosing Neon Sign Colours to Match Your Brand",
+    seoTitle: "Choosing Neon Sign Colours for a Brand",
     seoDescription:
       "Why a brand hex code does not transfer straight to a lit sign, which colours hold up at distance, and how wall colour and ambient light change the result.",
     summary:

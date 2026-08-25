@@ -287,7 +287,7 @@ export const PRODUCT_PAGES: ProductPage[] = [
         a: "Choose our IP67 weatherproof build and your sign is ready for storefronts, façades and outdoor events, rain or shine.",
       },
     ],
-    metaTitle: "Custom LED Neon Signs — Made to Order Neon Lights & Signs",
+    metaTitle: "Custom LED Neon Signs — Made to Order",
     metaDescription:
       "Handcrafted custom LED neon signs made to order with free digital preview. 13 colours plus RGB, up to 100,000-hour glow, safe 12V voltage, 5-year warranty and tracked worldwide delivery.",
   },
@@ -450,7 +450,7 @@ export const PRODUCT_PAGES: ProductPage[] = [
         a: "Yes. Send your logo and we'll fabricate letters and shapes to match, then send a free mockup showing sizing, finish and lighting before production.",
       },
     ],
-    metaTitle: "3D Metal Signs & Channel Letters — Frontlit & Halo Backlit",
+    metaTitle: "3D Metal Signs & LED Channel Letters",
     metaDescription:
       "Custom 3D metal channel-letter signs — frontlit, halo backlit and dual-lit stainless steel lettering. IP67 weatherproof with 5-year warranty & free design mockup.",
   },
@@ -576,7 +576,7 @@ export const PRODUCT_PAGES: ProductPage[] = [
         a: "Very. They run on low-voltage 12V/24V LEDs that use far less power than fluorescent lightboxes and last for years with minimal maintenance.",
       },
     ],
-    metaTitle: "Ultra Thin Slim LED Lightboxes — Edge-Lit Backlit Signs",
+    metaTitle: "Ultra-Thin LED Lightboxes — Edge-Lit Signs",
     metaDescription:
       "Ultra-thin edge-lit LED lightboxes in slim anodized aluminum frames with 100% even, shadow-free light and tool-free graphic swaps. 5-year warranty & free mockup.",
   },
@@ -710,7 +710,7 @@ export const PRODUCT_PAGES: ProductPage[] = [
         a: "Choose our IP67 waterproof option and your UV-print neon sign is ready for covered outdoor and event use.",
       },
     ],
-    metaTitle: "3D Acrylic Signs with LED Neon & UV Print Logos",
+    metaTitle: "3D Acrylic Signs with UV-Print Logos",
     metaDescription:
       "Custom 3D acrylic signs pairing full-colour UV print with glowing LED neon contours. Exact Pantone matching, multi-layer depth, 5-year warranty & free mockup.",
   },

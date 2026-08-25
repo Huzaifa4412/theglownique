@@ -10,22 +10,22 @@ import { SITE_URL } from "@/lib/site";
 import { serializeJsonLd } from "@/lib/utils";
 
 export const metadata: Metadata = {
-  title: "How Much Do Custom Business Signs & Neon Signs Cost? (2026 Price Guide)",
+  title: "Custom Business Sign Cost: 2026 Guide",
   description:
     "Comprehensive pricing guide for custom business signs — LED neon signs, 3D channel letters, lightboxes & acrylic logo signs. Learn cost drivers, sizing factors and installation variables.",
   alternates: { canonical: "/guides/custom-business-sign-cost" },
   openGraph: {
     type: "article",
     siteName: "The Glownique",
-    title: "Custom Business Sign Cost Guide | The Glownique",
+    title: "Custom Business Sign Cost: 2026 Guide | The Glownique",
     description:
       "Understand what determines custom business sign pricing — sign technology, sizing, illumination styles, weatherproofing and custom quotes.",
     url: "/guides/custom-business-sign-cost",
-    images: [{ url: "/hero/neon-sign-hero.png", alt: "Custom Business Sign Cost Guide" }],
+    images: [{ url: "/hero/neon-sign-hero.png", alt: "Custom Business Sign Cost: 2026 Guide" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Custom Business Sign Cost Guide | The Glownique",
+    title: "Custom Business Sign Cost: 2026 Guide | The Glownique",
     description:
       "Understand what determines custom business sign pricing — sign technology, sizing, illumination styles, weatherproofing and custom quotes.",
     images: ["/hero/neon-sign-hero.png"],
@@ -73,7 +73,7 @@ export default function CustomBusinessSignCostGuidePage() {
         itemListElement: [
           { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
           { "@type": "ListItem", position: 2, name: "Guides", item: `${SITE_URL}/guides` },
-          { "@type": "ListItem", position: 3, name: "Custom Business Sign Cost Guide", item: pageUrl },
+          { "@type": "ListItem", position: 3, name: "Custom Business Sign Cost: 2026 Guide", item: pageUrl },
         ],
       },
       {
@@ -93,7 +93,7 @@ export default function CustomBusinessSignCostGuidePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: serializeJsonLd(structuredData) }}
       />
-      <MetaGuideView guideName="Custom Business Sign Cost Guide" />
+      <MetaGuideView guideName="Custom Business Sign Cost: 2026 Guide" />
       <AnnouncementBar />
       <ProductTopBar productName="cost guide" />
       <main id="main-content" className="bg-white">

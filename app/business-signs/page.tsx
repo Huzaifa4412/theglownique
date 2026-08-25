@@ -11,14 +11,14 @@ import { SITE_URL } from "@/lib/site";
 import { serializeJsonLd } from "@/lib/utils";
 
 export const metadata: Metadata = {
-  title: "Custom Business Signs & Outdoor Storefront Signage",
+  title: "Custom Business & Storefront Signs",
   description:
     "National supplier of custom illuminated business signage — 3D metal channel letters, outdoor storefront signs, custom logo neon signs, ultra-thin lightboxes & acrylic signs. Free mockup & 5-year warranty.",
   alternates: { canonical: "/business-signs" },
   openGraph: {
     type: "website",
     siteName: "The Glownique",
-    title: "Custom Business Signs & Outdoor Storefront Signage | The Glownique",
+    title: "Custom Business & Storefront Signs | The Glownique",
     description:
       "Handcrafted custom illuminated business signs for storefronts, offices, restaurants, salons and events — LED neon, 3D channel letters, lightboxes & acrylic logo signs.",
     url: "/business-signs",
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Custom Business Signs & Outdoor Storefront Signage | The Glownique",
+    title: "Custom Business & Storefront Signs | The Glownique",
     description:
       "Handcrafted custom illuminated business signs — LED neon, 3D channel letters, lightboxes & acrylic logo signs.",
     images: ["/hero/neon-sign-hero.png"],
@@ -114,7 +114,7 @@ export default function BusinessSignsHubPage() {
         "@type": "CollectionPage",
         "@id": `${pageUrl}#webpage`,
         url: pageUrl,
-        name: "Custom Business Signs & Outdoor Storefront Signage",
+        name: "Custom Business & Storefront Signs",
         description:
           "National supplier of custom illuminated business signs including logo neon signs, 3D metal channel letters, lightboxes and acrylic logo signs.",
         publisher: { "@id": `${SITE_URL}/#organization` },
