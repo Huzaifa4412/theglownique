@@ -15,51 +15,52 @@ export function ConceptToGlowSection() {
     >
       <div className="shell concept-to-glow__inner">
         <div className="concept-to-glow__copy">
-          <p className="eyebrow">See it before it shines</p>
+          <p className="eyebrow">See it on the wall first</p>
           <h2 id="concept-to-glow-heading">
-            From concept <span>to glow.</span>
+            From bare wall <span>to backlit.</span>
           </h2>
           <p className="concept-to-glow__intro">
-            Drag across the preview to see how your sketch or logo transforms into a finished
-            custom neon sign — colour-matched, light-tested and ready to hang.
+            Drag across the preview to see the same reception wall before and after a backlit logo
+            sign. The letters stay solid — the LEDs face the wall behind them, so what you see is
+            the halo, never the light source.
           </p>
           <div className="concept-to-glow__proof" aria-label="Design guarantees">
             <span>Free preview</span>
-            <span>Colour matched</span>
-            <span>Ready to hang</span>
+            <span>Warm white halo</span>
+            <span>Standoff mounted</span>
           </div>
           <CustomQuoteButton
             className="button button--whatsapp concept-to-glow__cta"
-            label="Start your design"
+            label="Design your backlit sign"
           />
         </div>
 
         <div className="concept-to-glow__stage">
           <div className="concept-to-glow__labels" aria-hidden="true">
-            <span>Design preview</span>
-            <span>Finished glow</span>
+            <span>Bare wall</span>
+            <span>Backlit</span>
           </div>
           <div className="concept-to-glow__compare">
             <Compare
               className="concept-to-glow__compare-surface"
               firstImage="/before-after/before.png"
               secondImage="/before-after/after.png"
-              firstImageAlt="Digital design preview of a custom neon sign before production"
-              secondImageAlt="The same custom neon sign finished and glowing on a wall"
+              firstImageAlt="A salon reception wall, bare, before a backlit logo sign is fitted"
+              secondImageAlt="The same reception wall with a backlit logo sign, warm white light haloing the letters against the wall"
               firstImageClassName="concept-to-glow__before"
               secondImageClassname="concept-to-glow__after"
               initialSliderPercentage={38}
               slideMode="drag"
               showHandlebar
               autoplay={false}
-              ariaLabel="Compare the design preview with the finished neon sign"
+              ariaLabel="Compare the bare wall with the finished backlit sign"
             />
             <div className="concept-to-glow__grid" aria-hidden="true" />
             <span className="concept-to-glow__note concept-to-glow__note--top">
-              Your words, mapped to light
+              Lit from behind, not in front
             </span>
             <span className="concept-to-glow__note concept-to-glow__note--bottom">
-              Handcrafted in your colour
+              Glow, never glare
             </span>
           </div>
           <p className="concept-to-glow__hint">

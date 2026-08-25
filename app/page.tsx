@@ -26,13 +26,13 @@ export default function Home() {
       <main id="main-content">
         <HeroSection />
         <CategoryRail />
+        <NeonColorChangerSection />
+        <ConceptToGlowSection />
         <OrderIncludesSection />
         <OrderTimeline />
-        <ConceptToGlowSection />
-        <NeonColorChangerSection />
+        <ComparisonSection />
         <SignTypesVideoSection />
         <ScrollStackingCardsSection />
-        <ComparisonSection />
         <ShopSection />
         <GlowDirectionsSection />
         <InspirationSection />
