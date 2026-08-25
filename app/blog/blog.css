@@ -707,14 +707,23 @@
   font-weight: 800;
 }
 
-.blog-prose a {
+/* Body links, not buttons.
+ *
+ * `:not(.button)` is load-bearing. An inline CTA block is portable text like
+ * any other, so its <Link> is an <a> inside .blog-prose — and .blog-prose a
+ * (0,1,1) outranks .button--primary (0,1,0). Without the exclusion the label
+ * inherits pink-dark on a pink-dark background: an invisible button with an
+ * underline through it. Excluding the class rather than raising specificity on
+ * each variant means any button dropped into prose later still looks like a
+ * button. */
+.blog-prose a:not(.button) {
   color: var(--pink-dark);
   font-weight: 700;
   text-decoration: underline;
   text-underline-offset: 2px;
 }
 
-.blog-prose a:hover {
+.blog-prose a:not(.button):hover {
   color: var(--pink-darker);
 }
 
