@@ -11,27 +11,46 @@ import { SITE_URL } from "@/lib/site";
 import { serializeJsonLd } from "@/lib/utils";
 
 export const metadata: Metadata = {
-  title: "Lightbox Signs for Retail & Restaurants",
+  title: "Custom Lightbox Signs & Ultra-Thin LED Backlit Signage",
   description:
-    "Slim anodized aluminum edge-lit lightboxes for retail storefronts, menus, and exhibits. Tool-free graphic replacement, uniform illumination, 5-year warranty.",
+    "Custom edge-lit LED lightbox signs and slim backlit displays for retail stores, restaurant menus, lobbies and trade shows. Snap-frame graphic swaps with 5-year warranty.",
   alternates: { canonical: "/business-signs/lightbox-signs" },
   openGraph: {
     type: "website",
     siteName: "The Glownique",
-    title: "Lightbox Signs for Retail & Restaurants | The Glownique",
+    title: "Custom Lightbox Signs & Ultra-Thin LED Backlit Signage | The Glownique",
     description:
-      "Commercial edge-lit lightboxes for retail displays, menu boards and promotional signage.",
+      "Commercial edge-lit lightboxes for retail storefronts, restaurant menu boards and promotional backlit displays.",
     url: "/business-signs/lightbox-signs",
     images: [{ url: "/before-after/after-osee-beauty.png", alt: "Ultra-Thin Lightbox Sign" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Lightbox Signs for Retail & Restaurants | The Glownique",
+    title: "Custom Lightbox Signs & Ultra-Thin LED Backlit Signage | The Glownique",
     description:
       "Commercial edge-lit lightboxes for retail displays, menu boards and promotional signage.",
     images: ["/before-after/after-osee-beauty.png"],
   },
 };
+
+const lightboxFaqs = [
+  {
+    q: "How thin is an ultra-thin LED lightbox sign?",
+    a: "Our slim commercial lightboxes have an overall profile under 1 inch (~25mm) deep. They sit virtually flush against interior walls or suspend cleanly in storefront window displays without bulky enclosures.",
+  },
+  {
+    q: "How does edge-lit LED illumination prevent hotspots?",
+    a: "We mount high-density SMD LEDs along the precision-extruded aluminum frame, directing light into an optical-grade acrylic light-guide panel (LGP) with micro-laser etched dot matrices for 100% uniform, shadow-free backlighting.",
+  },
+  {
+    q: "How do you change promotional graphics or restaurant menus?",
+    a: "Our lightboxes feature tool-free front-loading snap frames or magnetic front covers. Simply flip open the four edges, insert a new backlit film poster, and snap the frame shut in under 60 seconds.",
+  },
+  {
+    q: "Can lightbox signs be mounted double-sided in storefront windows?",
+    a: "Yes. We offer both single-sided wall-mount models and double-sided ceiling-hung lightboxes equipped with aircraft cable suspension systems for dual-facing retail window visibility.",
+  },
+];
 
 export default function LightboxSignsPage() {
   const pageUrl = `${SITE_URL}/business-signs/lightbox-signs`;
@@ -57,6 +76,14 @@ export default function LightboxSignsPage() {
           { "@type": "ListItem", position: 2, name: "Business Signs", item: `${SITE_URL}/business-signs` },
           { "@type": "ListItem", position: 3, name: "Ultra-Thin Lightbox Signs", item: pageUrl },
         ],
+      },
+      {
+        "@type": "FAQPage",
+        mainEntity: lightboxFaqs.map((faq) => ({
+          "@type": "Question",
+          name: faq.q,
+          acceptedAnswer: { "@type": "Answer", text: faq.a },
+        })),
       },
     ],
   };
@@ -84,10 +111,10 @@ export default function LightboxSignsPage() {
             </nav>
 
             <p className="text-xs font-extrabold uppercase tracking-widest text-[#ce0754]">
-              Retail & Menu Display Signage
+              Retail &amp; Menu Display Signage
             </p>
             <h1 className="mt-2 text-4xl font-extrabold tracking-tight text-[#1e1a22] sm:text-5xl">
-              Ultra-Thin Edge-Lit Lightbox Signs
+              Custom Lightbox Signs &amp; Ultra-Thin Displays
             </h1>
             <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-[#5e5862] sm:text-lg">
               Sleek, tool-free graphic lightboxes designed for vibrant retail windows, restaurant menu displays, and trade show promotions.
@@ -123,7 +150,7 @@ export default function LightboxSignsPage() {
 
               <div className="space-y-6">
                 <h2 className="text-3xl font-extrabold text-[#1e1a22]">
-                  Sleek Profile & Easy Graphic Swaps
+                  Sleek Profile &amp; Easy Graphic Swaps
                 </h2>
                 <p className="text-sm leading-relaxed text-[#5e5862]">
                   Traditional heavy cabinet lightboxes are bulky and cumbersome to update. Our slim edge-lit aluminum lightboxes combine architectural elegance with effortless maintenance.
@@ -144,6 +171,50 @@ export default function LightboxSignsPage() {
                   </li>
                 </ul>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Applications */}
+        <section className="border-t border-[#eadfe4] bg-[#faf7f8] py-16 sm:py-20">
+          <div className="mx-auto max-w-5xl px-4 sm:px-6">
+            <h2 className="text-3xl font-extrabold text-center text-[#1e1a22] mb-10">
+              Commercial Lightbox Sign Applications
+            </h2>
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              <div className="rounded-2xl border border-[#eadfe4] bg-white p-6 shadow-sm">
+                <h3 className="font-extrabold text-[#1e1a22]">Retail Windows</h3>
+                <p className="mt-2 text-xs text-[#5e5862]">High-contrast window-hung backlit displays that capture pedestrian attention 24/7.</p>
+              </div>
+              <div className="rounded-2xl border border-[#eadfe4] bg-white p-6 shadow-sm">
+                <h3 className="font-extrabold text-[#1e1a22]">Menu Boards</h3>
+                <p className="mt-2 text-xs text-[#5e5862]">Evenly lit, easy-to-read overhead food and beverage menus with quick seasonal swaps.</p>
+              </div>
+              <div className="rounded-2xl border border-[#eadfe4] bg-white p-6 shadow-sm">
+                <h3 className="font-extrabold text-[#1e1a22]">Trade Shows</h3>
+                <p className="mt-2 text-xs text-[#5e5862]">Lightweight, ultra-portable illuminated graphic booths and modular display stands.</p>
+              </div>
+              <div className="rounded-2xl border border-[#eadfe4] bg-white p-6 shadow-sm">
+                <h3 className="font-extrabold text-[#1e1a22]">Lobby Displays</h3>
+                <p className="mt-2 text-xs text-[#5e5862]">Wayfinding directories, corporate partner walls and premium art feature frames.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQs */}
+        <section className="border-t border-[#eadfe4] bg-white py-16 sm:py-20">
+          <div className="mx-auto max-w-4xl px-4 sm:px-6">
+            <h2 className="text-3xl font-extrabold text-center text-[#1e1a22] mb-8">
+              Commercial Lightbox FAQs
+            </h2>
+            <div className="space-y-4">
+              {lightboxFaqs.map((faq) => (
+                <div key={faq.q} className="rounded-2xl border border-[#eadfe4] bg-[#fdfafb] p-6">
+                  <h3 className="text-base font-extrabold text-[#1e1a22]">{faq.q}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-[#5e5862]">{faq.a}</p>
+                </div>
+              ))}
             </div>
           </div>
         </section>

@@ -130,9 +130,13 @@ const structuredData = {
       slogan: "Designed with feeling. Built to glow.",
       knowsAbout: [
         "Custom LED neon signs",
+        "Custom neon signs for business",
         "3D metal channel letter signs",
         "Ultra-thin LED lightboxes",
         "UV-print acrylic signs",
+        "Storefront signage",
+        "Commercial illuminated signage",
+        "Custom wedding and event neon signs",
       ],
     },
     {

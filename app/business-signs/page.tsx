@@ -11,22 +11,22 @@ import { SITE_URL } from "@/lib/site";
 import { serializeJsonLd } from "@/lib/utils";
 
 export const metadata: Metadata = {
-  title: "Custom Business Signs & Storefront Signage",
+  title: "Custom Business Signs & Outdoor Storefront Signage",
   description:
-    "National supplier of custom illuminated business signs — logo neon signs, 3D metal channel letters, ultra-thin lightboxes and UV-print acrylic signs. Free mockup & 5-year warranty.",
+    "National supplier of custom illuminated business signage — 3D metal channel letters, outdoor storefront signs, custom logo neon signs, ultra-thin lightboxes & acrylic signs. Free mockup & 5-year warranty.",
   alternates: { canonical: "/business-signs" },
   openGraph: {
     type: "website",
     siteName: "The Glownique",
-    title: "Custom Business Signs & Storefront Signage | The Glownique",
+    title: "Custom Business Signs & Outdoor Storefront Signage | The Glownique",
     description:
-      "Handcrafted custom illuminated business signs for storefronts, offices, restaurants, salons and events — LED neon, channel letters, lightboxes & acrylic logo signs.",
+      "Handcrafted custom illuminated business signs for storefronts, offices, restaurants, salons and events — LED neon, 3D channel letters, lightboxes & acrylic logo signs.",
     url: "/business-signs",
     images: [{ url: "/hero/neon-sign-hero.png", alt: "The Glownique Custom Business Signage" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Custom Business Signs & Storefront Signage | The Glownique",
+    title: "Custom Business Signs & Outdoor Storefront Signage | The Glownique",
     description:
       "Handcrafted custom illuminated business signs — LED neon, 3D channel letters, lightboxes & acrylic logo signs.",
     images: ["/hero/neon-sign-hero.png"],
@@ -38,7 +38,7 @@ const b2bProducts = [
     slug: "custom-logo-neon-signs",
     name: "Custom Logo Neon Signs",
     category: "Brand & Interior",
-    tagline: "Flexible LED silicone neon tubing mapped precisely to your brand logo and Pantone colors.",
+    tagline: "Flexible LED silicone neon tubing mapped precisely to your brand logo, corporate typography, and Pantone colors.",
     specs: ["12V Low Voltage", "Shatterproof Silicone", "Pantone & HEX Match", "Indoor & IP67 Outdoor"],
     image: "/hero/neon-sign-hero.png",
     accent: "#f40b68",
@@ -47,7 +47,7 @@ const b2bProducts = [
     slug: "channel-letter-signs",
     name: "3D Metal Channel Letter Signs",
     category: "Storefront & Exterior",
-    tagline: "Fabricated stainless-steel letters with frontlit, halo backlit or dual-lit LED illumination.",
+    tagline: "Fabricated stainless-steel 3D letters with frontlit, halo backlit or dual-lit LED illumination for outdoor building façades.",
     specs: ["Frontlit / Halo / Dual-lit", "316 Stainless Steel", "Architectural Finishes", "Commercial Grade"],
     image: "/hero/business-coffee.png",
     accent: "#d97706",
@@ -56,7 +56,7 @@ const b2bProducts = [
     slug: "lightbox-signs",
     name: "Ultra-Thin Lightbox Signs",
     category: "Retail & Display",
-    tagline: "Slim anodized aluminum lightboxes with edge-lit LEDs for uniform, shadow-free graphics.",
+    tagline: "Slim anodized aluminum lightboxes with edge-lit matrix LEDs for uniform, shadow-free promotional and menu displays.",
     specs: ["Ultra-Slim Profile", "Edge-Lit Uniform LED", "Tool-Free Graphic Swap", "Wall / Window Mount"],
     image: "/before-after/after-osee-beauty.png",
     accent: "#2563eb",
@@ -65,10 +65,29 @@ const b2bProducts = [
     slug: "acrylic-logo-signs",
     name: "3D UV-Print Acrylic Logo Signs",
     category: "Office & Reception",
-    tagline: "Full-color UV-printed artwork on crystal-clear acrylic paired with glowing LED neon contours.",
+    tagline: "Full-color UV-printed artwork on crystal-clear acrylic paired with glowing LED neon contours for executive brand walls.",
     specs: ["High-Res UV Print", "Layered 3D Acrylic", "LED Contour Glow", "Precision Laser Cut"],
     image: "/hero/workspace-sign.png",
     accent: "#7c3aed",
+  },
+];
+
+const industries = [
+  {
+    name: "Retail & Storefronts",
+    desc: "Outdoor channel letters, window LED neon and promotional lightboxes engineered to boost foot traffic and road visibility.",
+  },
+  {
+    name: "Corporate Offices & Receptions",
+    desc: "Refined halo-lit 3D metal letters and UV-printed acrylic logo signs that establish brand authority in executive suites and lobbies.",
+  },
+  {
+    name: "Restaurants, Bars & Cafés",
+    desc: "Warm ambient glow, photo-ready feature wall neon, and quick-swap edge-lit menu boards that elevate dining atmosphere.",
+  },
+  {
+    name: "Salons, Spas & Studios",
+    desc: "Instagram-worthy custom script neon signs and elegant metallic plaques that customers love to photograph and share.",
   },
 ];
 
@@ -76,12 +95,12 @@ const b2bGuides = [
   {
     slug: "custom-business-sign-cost",
     title: "Custom Business Sign Cost Guide",
-    desc: "Understand price drivers, sizing, materials and installation costs before buying.",
+    desc: "Detailed pricing drivers, sizing formulas, materials, and installation considerations for commercial signage budgets.",
   },
   {
     slug: "front-lit-vs-halo-lit-vs-dual-lit",
     title: "Front-Lit vs Halo-Lit vs Dual-Lit Channel Letters",
-    desc: "Compare visibility, wall requirements and aesthetic impact for storefront channel letters.",
+    desc: "Compare visibility, wall reflection physics, and daytime vs nighttime legibility for exterior storefront channel letters.",
   },
 ];
 
@@ -95,7 +114,7 @@ export default function BusinessSignsHubPage() {
         "@type": "CollectionPage",
         "@id": `${pageUrl}#webpage`,
         url: pageUrl,
-        name: "Custom Business Signs & Storefront Signage",
+        name: "Custom Business Signs & Outdoor Storefront Signage",
         description:
           "National supplier of custom illuminated business signs including logo neon signs, 3D metal channel letters, lightboxes and acrylic logo signs.",
         publisher: { "@id": `${SITE_URL}/#organization` },
@@ -127,11 +146,11 @@ export default function BusinessSignsHubPage() {
               Commercial Signage Hub
             </p>
             <h1 className="mt-3 text-4xl font-extrabold tracking-tight text-[#1e1a22] sm:text-5xl lg:text-6xl">
-              Custom Illuminated Business Signs
+              Custom Business Signs &amp; Storefront Signage
             </h1>
             <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-[#5e5862]">
-              Handcrafted, made-to-order business signage for national storefronts, offices, restaurants,
-              salons and commercial spaces. Delivered nationwide with a free design preview, 5-year warranty,
+              Handcrafted, made-to-order commercial signage for storefronts, corporate offices, restaurants,
+              salons and retail brands. Delivered nationwide with a free design preview, 5-year warranty,
               and direct factory support.
             </p>
             <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
@@ -216,6 +235,35 @@ export default function BusinessSignsHubPage() {
                       />
                     </div>
                   </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Industry Solutions Grid */}
+        <section className="border-t border-[#eadfe4] bg-white py-16 sm:py-24">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6">
+            <div className="mb-12 text-center">
+              <p className="text-xs font-extrabold uppercase tracking-widest text-[#ce0754]">
+                Industry Applications
+              </p>
+              <h2 className="mt-2 text-3xl font-extrabold text-[#1e1a22] sm:text-4xl">
+                Commercial Signage Tailored by Industry
+              </h2>
+              <p className="mx-auto mt-3 max-w-xl text-base text-[#5e5862]">
+                Custom engineered signage solutions matching architectural codes, visibility needs, and brand aesthetic.
+              </p>
+            </div>
+
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              {industries.map((ind) => (
+                <div
+                  key={ind.name}
+                  className="rounded-2xl border border-[#eadfe4] bg-[#fdfafb] p-6 shadow-sm transition-all hover:border-[#f40b68]"
+                >
+                  <h3 className="text-lg font-extrabold text-[#1e1a22]">{ind.name}</h3>
+                  <p className="mt-2 text-xs leading-relaxed text-[#5e5862]">{ind.desc}</p>
                 </div>
               ))}
             </div>

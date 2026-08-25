@@ -51,9 +51,9 @@ export function ShopSection() {
     <section className="shop-section shell" id="shop">
       <div className="section-heading">
         <div>
-          <p className="eyebrow">The signs everyone loves</p>
+          <p className="eyebrow">Trending designs &amp; custom favorites</p>
           <h2>
-            Best-selling <PremiumAccentText>neon signs</PremiumAccentText>
+            Best-selling <PremiumAccentText>custom neon signs</PremiumAccentText>
           </h2>
         </div>
         <label className="catalog-search">

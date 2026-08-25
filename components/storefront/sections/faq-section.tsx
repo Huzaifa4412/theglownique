@@ -4,44 +4,44 @@ import { serializeJsonLd } from "@/lib/utils";
 
 const faqs = [
   {
-    q: "What types of custom signs does The Glownique make?",
-    a: "We handcraft four custom sign types: flexible LED neon signs, 3D metal channel-letter signs (frontlit, halo backlit or dual-lit), ultra-thin edge-lit lightboxes, and 3D acrylic signs that pair full-colour UV print with glowing LED neon contours.",
+    q: "What types of custom business signs and neon signs does The Glownique make?",
+    a: "We handcraft four distinct custom signage types: flexible silicone LED neon signs, 3D metal channel-letter signs (available frontlit, halo backlit or dual-lit), ultra-thin edge-lit lightboxes for retail, and 3D acrylic signs pairing high-definition UV print with glowing LED neon contours.",
   },
   {
-    q: "How long do LED neon signs last?",
-    a: "Our LED neon is rated for up to 100,000 hours of glow — over 11 years even if left on 24/7 — while using up to 80% less power than traditional glass neon.",
+    q: "How long do custom LED neon signs last compared to traditional glass neon?",
+    a: "Our commercial-grade LED neon is rated for up to 100,000 hours of continuous glow — over 11 years even if illuminated 24/7. They consume up to 80% less energy than traditional glass neon, generate zero buzz, and remain completely cool to the touch.",
   },
   {
-    q: "Are LED neon signs safe, and do they get hot?",
-    a: "Yes. Our signs run on low 12V power, stay cool to the touch, and use shatterproof silicone instead of fragile glass, so they're safe for bedrooms, kids' rooms, weddings and busy commercial spaces.",
+    q: "Are custom LED neon signs safe and shatterproof?",
+    a: "Yes. Our signs operate on low 12V DC power, stay cool to the touch, and use flexible, shatterproof silicone tubing rather than fragile glass or hazardous gases. They are safe for bedrooms, homes, weddings, bars, restaurants and busy commercial storefronts.",
   },
   {
-    q: "Can I see a design preview before I order?",
-    a: "Always. Send your words, logo or a rough sketch and we'll send a free, colour-matched digital mockup to approve before anything goes into production — with no obligation.",
+    q: "Can I receive a free design preview and mockup before ordering?",
+    a: "Always. Simply share your words, business logo, brand colours or a rough sketch. Our design team will prepare a free, colour-matched digital mockup showing exact sizing, lighting and font style before production begins — with zero obligation.",
   },
   {
-    q: "Can you match my exact brand colours and logo?",
-    a: "Yes. We colour-match to any Pantone, HEX or CMYK code, and can UV-print artwork, gradients and brand fonts onto premium acrylic, then trace them in LED neon for a precise brand match.",
+    q: "Can you match exact corporate brand colours, logos and fonts?",
+    a: "Yes. We accurately match any Pantone, HEX or CMYK colour code. We can UV-print complex vector logos, detailed gradients and custom typography directly onto premium acrylic or fabricate custom 3D metal letters to your exact brand guidelines.",
   },
   {
-    q: "Can the signs be used outdoors?",
-    a: "Yes. Choose our IP67 weatherproof build for storefronts, façades and outdoor events; indoor signs are optimised for interior walls, receptions and rooms.",
+    q: "Can your custom signs be used outdoors for storefronts and commercial façades?",
+    a: "Yes. We build IP67 weatherproof signs engineered specifically for exterior storefronts, building façades and outdoor commercial installations. Interior signs are optimised for office receptions, studios, gyms and home decor.",
   },
   {
-    q: "How long does it take to make and deliver my sign?",
-    a: "Most custom signs are handcrafted in around 10–15 days and then sent with tracked delivery. If you're working to a deadline, tell us and we'll do our best to prioritise it.",
+    q: "How long does custom sign fabrication and delivery take?",
+    a: "Custom signs are handcrafted in approximately 10–15 days and shipped with tracked international delivery. If you have an upcoming event, wedding or grand opening deadline, let us know and we will do our best to accommodate your schedule.",
   },
   {
-    q: "Do you offer worldwide delivery, and how much is shipping?",
-    a: "Yes — we ship to almost every country with tracked delivery. Shipping is confirmed with your quote before you pay, and the exact figure is shown at Etsy checkout, so there is no surprise at the end. Every sign is carefully packed and tracked to your door.",
+    q: "How much does a custom neon sign or business sign cost?",
+    a: "Popular ready-to-order designs have transparent fixed prices in our verified Etsy shop. For bespoke signs, pricing depends on the sign type, dimensions, lighting style, materials and design complexity. Contact us for a free, itemised project quote.",
   },
   {
-    q: "How much does a custom neon sign cost?",
-    a: "There are two routes. Ready-to-order designs are listed at fixed prices in our Etsy shop, so you can see exactly what they cost before you commit. Fully bespoke work is quoted individually, because the price depends on the sign type, size, colours and complexity of your design — share your idea and we'll send a no-obligation quote.",
+    q: "How is payment handled and is my order protected?",
+    a: "All orders are securely processed through our verified Etsy shop, providing full encrypted checkout and Etsy Purchase Protection. We offer flexible payment options including paying in full or splitting 50/50 upon project milestones.",
   },
   {
-    q: "Is my sign covered by a warranty?",
-    a: "Yes. Every sign is quality-checked before dispatch and backed by a 5-year warranty and our 100% glow guarantee — so you can order with complete confidence.",
+    q: "Is my sign backed by a warranty and quality guarantee?",
+    a: "Yes. Every sign undergoes rigorous multi-point electrical and luminance quality checks before packaging and is backed by a 5-year warranty and our 100% glow guarantee.",
   },
 ];
 

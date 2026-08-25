@@ -155,10 +155,10 @@ export function HeroSection() {
     >
       <div className="hero__copy shell-edge">
         <p className="eyebrow hero__eyebrow">
-          <span aria-hidden="true" /> Custom LED neon signs
+          <span aria-hidden="true" /> Handcrafted Custom Neon &amp; Business Signage
         </p>
         <h1 id="hero-heading" className="hero-title">
-          <span className="sr-only">Light up what feels like you.</span>
+          <span className="sr-only">Custom LED Neon Signs &amp; Business Signage Handcrafted to Glow</span>
           <span className="hero-title__line" aria-hidden="true">
             <span>Light up</span>
           </span>
@@ -196,15 +196,15 @@ export function HeroSection() {
           </span>
         </h1>
         <p className="hero__intro">
-          Turn your favourite words, logo or moment into a handcrafted custom
-          neon sign — previewed free, made to order, and ready to glow.
+          Transform your brand logo, favourite words or business storefront into a handcrafted custom
+          neon sign, 3D metal channel letters, or edge-lit lightbox — previewed free, made to order, and ready to glow.
         </p>
         <div className="hero__actions">
           <a className="button button--primary" href="#custom">
             Create your sign <IconBox icon={ArrowRight} />
           </a>
-          <a className="button button--secondary" href="#shop">
-            Explore the glow
+          <a className="button button--secondary" href="#categories">
+            Explore sign types
           </a>
         </div>
           {/* <div className="trust-row" aria-label="Store guarantees">

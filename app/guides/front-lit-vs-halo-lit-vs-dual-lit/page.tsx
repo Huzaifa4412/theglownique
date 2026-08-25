@@ -10,7 +10,7 @@ import { SITE_URL } from "@/lib/site";
 import { serializeJsonLd } from "@/lib/utils";
 
 export const metadata: Metadata = {
-  title: "Front-Lit vs Halo-Lit vs Dual-Lit Channel Letters",
+  title: "Front-Lit vs Halo-Lit vs Dual-Lit Channel Letters: Storefront Lighting Guide",
   description:
     "Compare 3D metal channel letter illumination styles — front-lit, halo backlit and dual-lit. Learn about day & night legibility, wall reflection requirements, and storefront aesthetics.",
   alternates: { canonical: "/guides/front-lit-vs-halo-lit-vs-dual-lit" },
@@ -31,6 +31,25 @@ export const metadata: Metadata = {
     images: ["/hero/business-coffee.png"],
   },
 };
+
+const lightingFaqs = [
+  {
+    q: "Which channel letter lighting style is best for highway or high-traffic street visibility?",
+    a: "Front-lit channel letters are best for long-distance road visibility. The glowing acrylic face produces direct, high-contrast illumination that is easily legible through vehicle windshields and at high driving speeds.",
+  },
+  {
+    q: "Do halo-lit channel letters work on dark or textured exterior walls?",
+    a: "Halo-lit letters reflect light off the building wall surface. They work best on light to medium matte surfaces (such as stucco, concrete, brick, or light-colored composite panels). On very dark or glossy surfaces, halo reflection is diminished unless a contrasting architectural backer panel is installed.",
+  },
+  {
+    q: "Can front-lit and halo-lit letters have different LED colors on the same sign?",
+    a: "Yes. Dual-lit channel letters can be fabricated with an internal light baffle that allows the front face to glow in bright white or brand corporate colors while the rear halo projects a contrasting accent color onto the wall.",
+  },
+  {
+    q: "Are channel letters energy efficient?",
+    a: "Yes. All our channel letter signs utilize commercial-grade 12V/24V low-voltage LEDs that consume up to 80% less power than traditional neon gas tubes while delivering 100,000 hours of continuous rated life.",
+  },
+];
 
 export default function LightingComparisonGuidePage() {
   const pageUrl = `${SITE_URL}/guides/front-lit-vs-halo-lit-vs-dual-lit`;
@@ -57,6 +76,14 @@ export default function LightingComparisonGuidePage() {
           { "@type": "ListItem", position: 3, name: "Front-Lit vs Halo-Lit vs Dual-Lit", item: pageUrl },
         ],
       },
+      {
+        "@type": "FAQPage",
+        mainEntity: lightingFaqs.map((faq) => ({
+          "@type": "Question",
+          name: faq.q,
+          acceptedAnswer: { "@type": "Answer", text: faq.a },
+        })),
+      },
     ],
   };
 
@@ -79,7 +106,7 @@ export default function LightingComparisonGuidePage() {
             </nav>
 
             <p className="text-xs font-extrabold uppercase tracking-widest text-[#ce0754]">
-              Illumination & Technology Guide
+              Illumination &amp; Technology Guide
             </p>
             <h1 className="mt-2 text-4xl font-extrabold tracking-tight text-[#1e1a22] sm:text-5xl">
               Front-Lit vs. Halo-Lit vs. Dual-Lit Channel Letters
@@ -153,6 +180,21 @@ export default function LightingComparisonGuidePage() {
                 </div>
               </div>
 
+              {/* Lighting FAQs */}
+              <div className="mt-12">
+                <h3 className="text-2xl font-extrabold text-[#1e1a22] mb-6">
+                  Frequently Asked Channel Letter Lighting Questions
+                </h3>
+                <div className="space-y-4">
+                  {lightingFaqs.map((faq) => (
+                    <div key={faq.q} className="rounded-2xl border border-[#eadfe4] bg-[#fdfafb] p-6">
+                      <h4 className="text-base font-extrabold text-[#1e1a22]">{faq.q}</h4>
+                      <p className="mt-2 text-sm leading-relaxed text-[#5e5862]">{faq.a}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
               <div className="mt-12 rounded-3xl border border-[#eadfe4] bg-[#fff0f5] p-8 text-center">
                 <h3 className="text-2xl font-extrabold text-[#1e1a22]">
                   Need Help Deciding Which Lighting Style Fits Your Storefront?
@@ -168,7 +210,7 @@ export default function LightingComparisonGuidePage() {
                   />
                   <Link
                     href="/business-signs/channel-letter-signs"
-                    className="inline-flex items-center gap-2 rounded-xl border border-[#eadfe4] bg-white px-6 py-3 py-3 text-sm font-bold text-[#1e1a22] hover:border-[#f40b68]"
+                    className="inline-flex items-center gap-2 rounded-xl border border-[#eadfe4] bg-white px-6 py-3 text-sm font-bold text-[#1e1a22] hover:border-[#f40b68]"
                   >
                     View Channel Letter Sign Product Page →
                   </Link>

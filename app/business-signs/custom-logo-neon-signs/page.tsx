@@ -11,27 +11,46 @@ import { SITE_URL } from "@/lib/site";
 import { serializeJsonLd } from "@/lib/utils";
 
 export const metadata: Metadata = {
-  title: "Custom Logo Neon Signs for Business",
+  title: "Custom Logo Neon Signs for Business & Office Lobby Walls",
   description:
-    "Custom LED logo neon signs for business brand walls, reception areas, restaurants and salons. Exact Pantone color matching, 12V low voltage and 5-year warranty.",
+    "Custom LED logo neon signs for business brand walls, reception lobbies, restaurants and retail storefronts. Exact Pantone color matching, safe 12V power and 5-year warranty.",
   alternates: { canonical: "/business-signs/custom-logo-neon-signs" },
   openGraph: {
     type: "website",
     siteName: "The Glownique",
-    title: "Custom Logo Neon Signs for Business | The Glownique",
+    title: "Custom Logo Neon Signs for Business & Office Lobby Walls | The Glownique",
     description:
-      "Precision-crafted LED logo neon signs for commercial spaces. Custom cut acrylic backings, Pantone brand matching, free design mockup.",
+      "Precision-crafted LED logo neon signs for corporate offices, reception desks, retail storefronts and hospitality venues.",
     url: "/business-signs/custom-logo-neon-signs",
     images: [{ url: "/hero/neon-sign-hero.png", alt: "Custom Logo Neon Signs for Business" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Custom Logo Neon Signs for Business | The Glownique",
+    title: "Custom Logo Neon Signs for Business & Office Lobby Walls | The Glownique",
     description:
-      "Precision-crafted LED logo neon signs for commercial spaces. Custom cut acrylic backings, Pantone brand matching, free design mockup.",
+      "Precision-crafted LED logo neon signs for commercial spaces with free digital mockup.",
     images: ["/hero/neon-sign-hero.png"],
   },
 };
+
+const logoNeonFaqs = [
+  {
+    q: "Can you turn any company logo into a custom neon sign?",
+    a: "Yes. Simply upload your vector logo file (AI, EPS, SVG, or high-resolution PNG/PDF). Our design engineers will map neon tubing paths, optimize line weights for glowing readability, and provide a 100% free digital proof before fabrication.",
+  },
+  {
+    q: "How do you match our exact corporate brand colors?",
+    a: "We match standard Pantone (PMS), HEX and CMYK brand color guidelines. We offer 13 distinct core silicone neon colors, full RGB addressable tubing, and precision-matched acrylic backboards.",
+  },
+  {
+    q: "Are LED neon logo signs safe for commercial office spaces and high-traffic areas?",
+    a: "Absolutely. Unlike fragile glass neon that operates at 3,000–15,000V, our commercial LED neon operates on safe 12V DC power. It produces zero heat, no buzzing noise, contains zero mercury, and uses flexible shatterproof silicone.",
+  },
+  {
+    q: "What acrylic backboard cuts are available for business logos?",
+    a: "We offer Cut to Shape (follows the silhouette of your logo), Cut to Letter (acrylic tightly routed around individual letters for an invisible backing effect), and Cut to Rectangle/Square (acrylic backer board with pre-drilled standoff holes).",
+  },
+];
 
 export default function CustomLogoNeonSignsPage() {
   const pageUrl = `${SITE_URL}/business-signs/custom-logo-neon-signs`;
@@ -57,6 +76,14 @@ export default function CustomLogoNeonSignsPage() {
           { "@type": "ListItem", position: 2, name: "Business Signs", item: `${SITE_URL}/business-signs` },
           { "@type": "ListItem", position: 3, name: "Custom Logo Neon Signs", item: pageUrl },
         ],
+      },
+      {
+        "@type": "FAQPage",
+        mainEntity: logoNeonFaqs.map((faq) => ({
+          "@type": "Question",
+          name: faq.q,
+          acceptedAnswer: { "@type": "Answer", text: faq.a },
+        })),
       },
     ],
   };
@@ -90,8 +117,8 @@ export default function CustomLogoNeonSignsPage() {
               Custom Logo Neon Signs for Business
             </h1>
             <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-[#5e5862] sm:text-lg">
-              Transform your business logo, brand slogan or mascot into a stunning, energy-efficient
-              illuminated focal point. Handcrafted with safe 12V silicone LED neon on high-grade acrylic.
+              Transform your business logo, brand slogan or corporate mascot into a vibrant, energy-efficient
+              illuminated centerpiece. Handcrafted with safe 12V silicone LED neon on optical cast acrylic.
             </p>
 
             <div className="mt-8 flex flex-wrap justify-center gap-4">
@@ -124,7 +151,7 @@ export default function CustomLogoNeonSignsPage() {
 
               <div className="space-y-6">
                 <h2 className="text-3xl font-extrabold text-[#1e1a22]">
-                  Built for Business Impact & Durability
+                  Built for Maximum Commercial Visibility &amp; Longevity
                 </h2>
                 <p className="text-sm leading-relaxed text-[#5e5862]">
                   Whether you are outfitting a retail store, office reception, restaurant bar or fitness studio,
@@ -134,7 +161,7 @@ export default function CustomLogoNeonSignsPage() {
                 <ul className="space-y-3 text-sm font-medium text-[#1e1a22]">
                   <li className="flex items-start gap-2">
                     <span className="font-bold text-[#ce0754]">✓</span>
-                    <span><strong>Pantone & HEX Color Matching:</strong> Exact brand color alignment for contours and backings.</span>
+                    <span><strong>Pantone &amp; HEX Color Matching:</strong> Exact brand color alignment for contours and backings.</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="font-bold text-[#ce0754]">✓</span>
@@ -159,6 +186,50 @@ export default function CustomLogoNeonSignsPage() {
                   </Link>
                 </div>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Commercial Logo Applications */}
+        <section className="border-t border-[#eadfe4] bg-[#faf7f8] py-16 sm:py-20">
+          <div className="mx-auto max-w-5xl px-4 sm:px-6">
+            <h2 className="text-3xl font-extrabold text-center text-[#1e1a22] mb-10">
+              Popular Business Logo Neon Sign Applications
+            </h2>
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              <div className="rounded-2xl border border-[#eadfe4] bg-white p-6 shadow-sm">
+                <h3 className="font-extrabold text-[#1e1a22]">Office &amp; Lobbies</h3>
+                <p className="mt-2 text-xs text-[#5e5862]">Reception brand walls and executive conference rooms that project contemporary prestige.</p>
+              </div>
+              <div className="rounded-2xl border border-[#eadfe4] bg-white p-6 shadow-sm">
+                <h3 className="font-extrabold text-[#1e1a22]">Retail Storefronts</h3>
+                <p className="mt-2 text-xs text-[#5e5862]">Window hanging and in-store visual merchandising displays that drive foot traffic.</p>
+              </div>
+              <div className="rounded-2xl border border-[#eadfe4] bg-white p-6 shadow-sm">
+                <h3 className="font-extrabold text-[#1e1a22]">Hospitality &amp; Bars</h3>
+                <p className="mt-2 text-xs text-[#5e5862]">Atmospheric cocktail bar signs, restaurant wall emblems and Instagram photo moments.</p>
+              </div>
+              <div className="rounded-2xl border border-[#eadfe4] bg-white p-6 shadow-sm">
+                <h3 className="font-extrabold text-[#1e1a22]">Salons &amp; Studios</h3>
+                <p className="mt-2 text-xs text-[#5e5862]">Chic, photo-ready backdrop signs that turn clients into organic social media advocates.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ Section */}
+        <section className="border-t border-[#eadfe4] bg-white py-16 sm:py-20">
+          <div className="mx-auto max-w-4xl px-4 sm:px-6">
+            <h2 className="text-3xl font-extrabold text-center text-[#1e1a22] mb-8">
+              Business Logo Neon Sign FAQs
+            </h2>
+            <div className="space-y-4">
+              {logoNeonFaqs.map((faq) => (
+                <div key={faq.q} className="rounded-2xl border border-[#eadfe4] bg-[#fdfafb] p-6">
+                  <h3 className="text-base font-extrabold text-[#1e1a22]">{faq.q}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-[#5e5862]">{faq.a}</p>
+                </div>
+              ))}
             </div>
           </div>
         </section>

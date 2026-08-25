@@ -287,9 +287,9 @@ export const PRODUCT_PAGES: ProductPage[] = [
         a: "Choose our IP67 weatherproof build and your sign is ready for storefronts, façades and outdoor events, rain or shine.",
       },
     ],
-    metaTitle: "Custom LED Neon Signs — Made to Order",
+    metaTitle: "Custom LED Neon Signs — Made to Order Neon Lights & Signs",
     metaDescription:
-      "Design custom LED neon signs handcrafted from flexible silicone on acrylic. 13 colours plus RGB, up to 100,000-hour glow, free mockup, 5-year warranty and tracked worldwide delivery.",
+      "Handcrafted custom LED neon signs made to order with free digital preview. 13 colours plus RGB, up to 100,000-hour glow, safe 12V voltage, 5-year warranty and tracked worldwide delivery.",
   },
   {
     slug: "3d-metal-neon-signs",
@@ -450,9 +450,9 @@ export const PRODUCT_PAGES: ProductPage[] = [
         a: "Yes. Send your logo and we'll fabricate letters and shapes to match, then send a free mockup showing sizing, finish and lighting before production.",
       },
     ],
-    metaTitle: "3D Metal Neon Signs — Channel Letters & Logos",
+    metaTitle: "3D Metal Signs & Channel Letters — Frontlit & Halo Backlit",
     metaDescription:
-      "Custom 3D metal channel-letter signs — frontlit, halo backlit or dual-lit stainless steel with premium finishes. IP67 outdoor-rated, free mockup, 5-year warranty, tracked worldwide delivery.",
+      "Custom 3D metal channel-letter signs — frontlit, halo backlit and dual-lit stainless steel lettering. IP67 weatherproof with 5-year warranty & free design mockup.",
   },
   {
     slug: "ultra-thin-lightbox",
@@ -576,9 +576,9 @@ export const PRODUCT_PAGES: ProductPage[] = [
         a: "Very. They run on low-voltage 12V/24V LEDs that use far less power than fluorescent lightboxes and last for years with minimal maintenance.",
       },
     ],
-    metaTitle: "Ultra Thin Slim LED Lightboxes — Edge-Lit Signage",
+    metaTitle: "Ultra Thin Slim LED Lightboxes — Edge-Lit Backlit Signs",
     metaDescription:
-      "Ultra-thin edge-lit LED lightboxes in slim anodized-aluminium frames with 100% even, shadow-free light and tool-free graphic swaps. Free mockup, 5-year warranty, tracked worldwide delivery.",
+      "Ultra-thin edge-lit LED lightboxes in slim anodized aluminum frames with 100% even, shadow-free light and tool-free graphic swaps. 5-year warranty & free mockup.",
   },
   {
     slug: "uv-print-acrylic-signs",
@@ -710,9 +710,9 @@ export const PRODUCT_PAGES: ProductPage[] = [
         a: "Choose our IP67 waterproof option and your UV-print neon sign is ready for covered outdoor and event use.",
       },
     ],
-    metaTitle: "Custom Acrylic Logo Signs with LED Neon",
+    metaTitle: "3D Acrylic Signs with LED Neon & UV Print Logos",
     metaDescription:
-      "Cost-effective 3D acrylic signs pairing full-colour UV print with glowing LED neon contours — the affordable way to light a detailed, multi-colour logo. Free mockup, 5-year warranty, tracked worldwide delivery.",
+      "Custom 3D acrylic signs pairing full-colour UV print with glowing LED neon contours. Exact Pantone matching, multi-layer depth, 5-year warranty & free mockup.",
   },
 ];
 

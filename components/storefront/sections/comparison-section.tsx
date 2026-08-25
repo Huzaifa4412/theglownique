@@ -36,8 +36,7 @@ export function ComparisonSection() {
             Why choose <PremiumAccentText>The Glownique?</PremiumAccentText>
           </h2>
           <p className="mt-5 max-w-sm text-sm leading-6 text-white/75">
-            A free design preview, honest timelines and a sign handcrafted
-            around your brand — that&apos;s the difference.
+            Handcrafted custom neon signs, 3D channel letters and commercial lightboxes with free digital mockups, honest timelines and 5-year warranty protection — that&apos;s the difference.
           </p>
           <CustomQuoteButton
             className="comparison-cta button button--whatsapp mt-7 inline-flex items-center gap-3 rounded-full px-6 py-3.5 text-xs font-extrabold uppercase tracking-[0.13em]"

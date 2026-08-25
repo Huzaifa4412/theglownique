@@ -20,8 +20,8 @@ export function ConceptToGlowSection() {
             From concept <span>to glow.</span>
           </h2>
           <p className="concept-to-glow__intro">
-            Drag across the preview to see how your idea becomes a finished
-            custom neon sign — colour-matched and ready to hang.
+            Drag across the preview to see how your sketch or logo transforms into a finished
+            custom neon sign — colour-matched, light-tested and ready to hang.
           </p>
           <div className="concept-to-glow__proof" aria-label="Design guarantees">
             <span>Free preview</span>

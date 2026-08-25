@@ -10,9 +10,9 @@ import { SITE_URL } from "@/lib/site";
 import { serializeJsonLd } from "@/lib/utils";
 
 export const metadata: Metadata = {
-  title: "What a Custom Business Sign Costs",
+  title: "How Much Do Custom Business Signs & Neon Signs Cost? (2026 Price Guide)",
   description:
-    "Comprehensive pricing guide for custom business signage — LED neon signs, 3D channel letters, lightboxes & acrylic logo signs. Learn cost drivers, sizing factors and installation variables.",
+    "Comprehensive pricing guide for custom business signs — LED neon signs, 3D channel letters, lightboxes & acrylic logo signs. Learn cost drivers, sizing factors and installation variables.",
   alternates: { canonical: "/guides/custom-business-sign-cost" },
   openGraph: {
     type: "article",
@@ -31,6 +31,25 @@ export const metadata: Metadata = {
     images: ["/hero/neon-sign-hero.png"],
   },
 };
+
+const costFaqs = [
+  {
+    q: "How much does a custom neon sign cost?",
+    a: "Small to medium custom LED neon signs (approx 20–36 inches) typically range from $120 to $350. Large commercial feature wall signs (40–80+ inches) range from $400 to $900+ depending on total tubing length, font complexity, and acrylic cut style.",
+  },
+  {
+    q: "What is the average price of 3D metal channel letter signs for storefronts?",
+    a: "Fabricated commercial channel letter signs typically range from $800 to $3,500+ depending on letter height, stainless steel grade (304 vs 316), illumination style (frontlit, halo backlit, or dual-lit), and raceway vs flush mounting.",
+  },
+  {
+    q: "Why is a 3D acrylic UV-print sign more economical for complex logos?",
+    a: "When a logo has multiple gradient colors, small tagline text, or intricate emblems, rendering it purely in hand-bent neon tubing requires dozens of manual solder joints and metres of silicone tube. With UV-print acrylic, the printer produces high-definition detail in one pass, allowing neon to be placed only along key glowing contours — cutting build time and cost by 30–50%.",
+  },
+  {
+    q: "Are design mockups and quote revisions free before ordering?",
+    a: "Yes. The Glownique provides 100% free digital design mockups and itemized quotes with zero upfront payment or purchase obligation.",
+  },
+];
 
 export default function CustomBusinessSignCostGuidePage() {
   const pageUrl = `${SITE_URL}/guides/custom-business-sign-cost`;
@@ -57,6 +76,14 @@ export default function CustomBusinessSignCostGuidePage() {
           { "@type": "ListItem", position: 3, name: "Custom Business Sign Cost Guide", item: pageUrl },
         ],
       },
+      {
+        "@type": "FAQPage",
+        mainEntity: costFaqs.map((faq) => ({
+          "@type": "Question",
+          name: faq.q,
+          acceptedAnswer: { "@type": "Answer", text: faq.a },
+        })),
+      },
     ],
   };
 
@@ -79,7 +106,7 @@ export default function CustomBusinessSignCostGuidePage() {
             </nav>
 
             <p className="text-xs font-extrabold uppercase tracking-widest text-[#ce0754]">
-              Pricing & Procurement Guide
+              Pricing &amp; Procurement Guide
             </p>
             <h1 className="mt-2 text-4xl font-extrabold tracking-tight text-[#1e1a22] sm:text-5xl">
               Custom Business Sign Cost Guide
@@ -140,14 +167,14 @@ export default function CustomBusinessSignCostGuidePage() {
 
               <div className="mt-6 space-y-6 text-sm text-[#5e5862] leading-relaxed">
                 <div>
-                  <h4 className="text-lg font-bold text-[#1e1a22]">1. Physical Dimensions & Scale</h4>
+                  <h4 className="text-lg font-bold text-[#1e1a22]">1. Physical Dimensions &amp; Scale</h4>
                   <p className="mt-1">
                     Larger signs require wider acrylic backers, additional structural bracing, and a higher density of LED modules and power transformers.
                   </p>
                 </div>
 
                 <div>
-                  <h4 className="text-lg font-bold text-[#1e1a22]">2. Illumination Method & LEDs</h4>
+                  <h4 className="text-lg font-bold text-[#1e1a22]">2. Illumination Method &amp; LEDs</h4>
                   <p className="mt-1">
                     Single-color LED neon is cost-effective, while RGB color-changing LEDs or dual-lit (front-lit + rear halo) 3D metal letters require dual wiring runs and advanced controllers.
                   </p>
@@ -158,6 +185,21 @@ export default function CustomBusinessSignCostGuidePage() {
                   <p className="mt-1">
                     Exterior storefront signs require IP67 sealed silicone tubing, waterproof transformers, and weather-resistant backing materials to withstand rain, wind, and UV exposure.
                   </p>
+                </div>
+              </div>
+
+              {/* Pricing FAQs Section */}
+              <div className="mt-12">
+                <h3 className="text-2xl font-extrabold text-[#1e1a22] mb-6">
+                  Frequently Asked Pricing Questions
+                </h3>
+                <div className="space-y-4">
+                  {costFaqs.map((faq) => (
+                    <div key={faq.q} className="rounded-2xl border border-[#eadfe4] bg-[#fdfafb] p-6">
+                      <h4 className="text-base font-extrabold text-[#1e1a22]">{faq.q}</h4>
+                      <p className="mt-2 text-sm leading-relaxed text-[#5e5862]">{faq.a}</p>
+                    </div>
+                  ))}
                 </div>
               </div>
 

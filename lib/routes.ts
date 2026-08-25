@@ -51,38 +51,33 @@ const SEO_ISSUES_RELEASE = "2026-08-21";
 /** The journal launches: /blog hub, category archives and the first posts. */
 const BLOG_RELEASE = "2026-08-22";
 
+/** Comprehensive site-wide SEO keyword optimization across B2B hubs, products, guides & home. */
+const CURRENT_SEO_RELEASE = "2026-08-25";
+
 export const ROUTES: readonly RouteEntry[] = [
-  // Home — free-delivery promo section removed, FAQ and comparison copy revised.
-  { path: "/", lastModified: SEO_ISSUES_RELEASE, changeFrequency: "weekly", priority: 1.0, indexable: true },
+  // Home — primary H1 keywords, FAQ schemas and entity grounded content.
+  { path: "/", lastModified: CURRENT_SEO_RELEASE, changeFrequency: "weekly", priority: 1.0, indexable: true },
 
   // B2B hub and destinations.
-  { path: "/business-signs", lastModified: BASELINE, changeFrequency: "weekly", priority: 0.95, indexable: true },
-  { path: "/business-signs/custom-logo-neon-signs", lastModified: BASELINE, changeFrequency: "monthly", priority: 0.9, indexable: true },
-  { path: "/business-signs/channel-letter-signs", lastModified: BASELINE, changeFrequency: "monthly", priority: 0.9, indexable: true },
-  { path: "/business-signs/lightbox-signs", lastModified: SEO_ISSUES_RELEASE, changeFrequency: "monthly", priority: 0.9, indexable: true },
-  { path: "/business-signs/acrylic-logo-signs", lastModified: SEO_ISSUES_RELEASE, changeFrequency: "monthly", priority: 0.9, indexable: true },
+  { path: "/business-signs", lastModified: CURRENT_SEO_RELEASE, changeFrequency: "weekly", priority: 0.95, indexable: true },
+  { path: "/business-signs/custom-logo-neon-signs", lastModified: CURRENT_SEO_RELEASE, changeFrequency: "monthly", priority: 0.9, indexable: true },
+  { path: "/business-signs/channel-letter-signs", lastModified: CURRENT_SEO_RELEASE, changeFrequency: "monthly", priority: 0.9, indexable: true },
+  { path: "/business-signs/lightbox-signs", lastModified: CURRENT_SEO_RELEASE, changeFrequency: "monthly", priority: 0.9, indexable: true },
+  { path: "/business-signs/acrylic-logo-signs", lastModified: CURRENT_SEO_RELEASE, changeFrequency: "monthly", priority: 0.9, indexable: true },
 
   // Journal hub.
-  //
-  // Only the hub is listed here. Individual posts and category archives live in
-  // Sanity, so their URLs and dates are not knowable from a static manifest —
-  // app/sitemap.ts appends them at build time from the same data the pages use.
-  // The audit in scripts/seo-audit.mjs asserts that everything in this file is
-  // present in the sitemap, not that the sitemap contains nothing else, so the
-  // appended URLs pass through it cleanly.
   { path: "/blog", lastModified: BLOG_RELEASE, changeFrequency: "weekly", priority: 0.7, indexable: true },
 
   // Decision guides.
-  { path: "/guides", lastModified: BASELINE, changeFrequency: "weekly", priority: 0.85, indexable: true },
-  { path: "/guides/custom-business-sign-cost", lastModified: BASELINE, changeFrequency: "monthly", priority: 0.8, indexable: true },
-  { path: "/guides/front-lit-vs-halo-lit-vs-dual-lit", lastModified: BASELINE, changeFrequency: "monthly", priority: 0.8, indexable: true },
+  { path: "/guides", lastModified: CURRENT_SEO_RELEASE, changeFrequency: "weekly", priority: 0.85, indexable: true },
+  { path: "/guides/custom-business-sign-cost", lastModified: CURRENT_SEO_RELEASE, changeFrequency: "monthly", priority: 0.8, indexable: true },
+  { path: "/guides/front-lit-vs-halo-lit-vs-dual-lit", lastModified: CURRENT_SEO_RELEASE, changeFrequency: "monthly", priority: 0.8, indexable: true },
 
-  // Broad product catalog — meta descriptions revised with the delivery claim.
-  { path: "/custom-signage", lastModified: SEO_ISSUES_RELEASE, changeFrequency: "weekly", priority: 0.8, indexable: true },
+  // Broad product catalog — meta descriptions revised with target keywords.
+  { path: "/custom-signage", lastModified: CURRENT_SEO_RELEASE, changeFrequency: "weekly", priority: 0.8, indexable: true },
   ...PRODUCT_PAGES.map((product) => ({
     path: `/products/${product.slug}`,
-    lastModified:
-      product.slug === "uv-print-acrylic-signs" ? SEO_ISSUES_RELEASE : CLAIMS_RELEASE,
+    lastModified: CURRENT_SEO_RELEASE,
     changeFrequency: "monthly" as const,
     priority: 0.75,
     indexable: true,

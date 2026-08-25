@@ -75,8 +75,11 @@ export function CategoryRail() {
     <section
       className="category-rail shell"
       id="categories"
-      aria-label="Shop by sign type"
+      aria-labelledby="categories-heading"
     >
+      <h2 id="categories-heading" className="sr-only">
+        Explore Custom Sign Types by Application
+      </h2>
       {CATEGORY_RAIL_ITEMS.map((item) => (
         <Link
           key={item.id}

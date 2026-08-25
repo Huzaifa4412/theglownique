@@ -41,11 +41,18 @@ function buildLlmsTxt(): string {
 All signs are custom-built to the customer's words, logo, size and colour.
 The Glownique does not sell pre-made or off-the-shelf signs.
 
-## Products
+## Products & Signage Hubs
 
 ${productEntries}
 
-Browse all four types: ${SITE_URL}/custom-signage
+- [Custom Signage Range](${SITE_URL}/custom-signage): Overview of all 4 handcrafted sign types for home & business.
+- [Commercial Business Signage Hub](${SITE_URL}/business-signs): B2B architectural signage, storefront channel letters, corporate logo signs & lightboxes.
+
+## Commercial & Buying Guides
+
+- [Custom Business Sign Cost Guide](${SITE_URL}/guides/custom-business-sign-cost): Pricing breakdown, sizing factors and installation variables.
+- [Front-Lit vs Halo-Lit Channel Letters](${SITE_URL}/guides/front-lit-vs-halo-lit-vs-dual-lit): Technical lighting comparison for storefront building façades.
+- [All Signage Guides & Comparisons](${SITE_URL}/guides): Complete index of buyer resources.
 
 ## Specifications
 
