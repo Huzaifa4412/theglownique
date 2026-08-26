@@ -11,22 +11,22 @@ import { SITE_URL } from "@/lib/site";
 import { serializeJsonLd } from "@/lib/utils";
 
 export const metadata: Metadata = {
-  title: "Custom Logo Neon Signs for Business, Bars, Salons & Offices",
+  title: "Custom Business Logo LED Neon Signs",
   description:
     "Custom LED logo neon signs for business brand walls, cocktail bars, restaurants, hair salons, gyms & office lobbies. Exact Pantone match, safe 12V voltage & 5-year warranty.",
   alternates: { canonical: "/business-signs/custom-logo-neon-signs" },
   openGraph: {
     type: "website",
     siteName: "The Glownique",
-    title: "Custom Logo Neon Signs for Business, Bars, Salons & Offices | The Glownique",
+    title: "Custom Business Logo LED Neon Signs | The Glownique",
     description:
       "Precision-crafted LED logo neon signs for corporate offices, cocktail bars, beauty salons, fitness gyms and storefronts.",
     url: "/business-signs/custom-logo-neon-signs",
-    images: [{ url: "/hero/neon-sign-hero.png", alt: "Custom Logo Neon Signs for Business" }],
+    images: [{ url: "/hero/neon-sign-hero.webp", alt: "Custom Logo Neon Signs for Business" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Custom Logo Neon Signs for Business, Bars, Salons & Offices | The Glownique",
+    title: "Custom Business Logo LED Neon Signs | The Glownique",
     description:
       "Precision-crafted LED logo neon signs for commercial spaces with free digital mockup.",
     images: ["/hero/neon-sign-hero.png"],
