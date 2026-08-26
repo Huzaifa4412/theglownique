@@ -163,24 +163,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={cn(dmSans.variable, manrope.variable, cormorant.variable, "font-sans", geist.variable)}>
-      <head>
-        {/* Google tag (gtag.js) */}
-        <script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=G-6PWLMLHEMK"
-        />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-
-              gtag('config', 'G-6PWLMLHEMK');
-            `,
-          }}
-        />
-      </head>
       <body>
         <script
           type="application/ld+json"
@@ -188,6 +170,19 @@ export default function RootLayout({
         />
         {children}
         <Analytics />
+        <Script
+          id="google-analytics-loader"
+          src="https://www.googletagmanager.com/gtag/js?id=G-6PWLMLHEMK"
+          strategy="lazyOnload"
+        />
+        <Script id="google-analytics" strategy="lazyOnload">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-6PWLMLHEMK');
+          `}
+        </Script>
         {/* Base pixel + the event layer that fires PageView per route and picks
             up WhatsApp/Etsy outbound clicks. See lib/meta-pixel.ts for the full
             event map and for what is deliberately not tracked. */}

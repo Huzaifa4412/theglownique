@@ -2,11 +2,10 @@
 
 import { useMemo, useState, type FormEvent } from "react";
 
-import posthog from "posthog-js";
-
 import { WhatsappIcon } from "@/components/ui/whatsapp-icon";
 import { archiveLead } from "@/lib/leads";
 import { trackQuoteSubmitted, trackWhatsappContact } from "@/lib/meta-pixel";
+import { capturePostHog } from "@/lib/posthog-client";
 import { HAS_WHATSAPP, WHATSAPP_NUMBER } from "@/lib/site";
 import {
   buildContactMessage,
@@ -228,7 +227,7 @@ export function ContactForm() {
       trackWhatsappContact("contact-page-form", "/contact");
     }
 
-    posthog.capture("quote_submitted", {
+    capturePostHog("quote_submitted", {
       topic,
       sign_type: activeTopic.wantsSpec ? signType || undefined : undefined,
       size: activeTopic.wantsSpec ? size || undefined : undefined,

@@ -17,7 +17,6 @@ import {
 } from "react";
 
 import { IconBox } from "@/components/icon-box";
-import { gsap, useGSAP } from "@/components/storefront/gsap";
 import { useStorefront } from "@/components/storefront/storefront-context";
 import TextType from "@/components/TextType";
 import { categoryLabels, heroSlides } from "@/lib/store-data";
@@ -26,9 +25,6 @@ const CAROUSEL_DURATION = 5500;
 
 export function HeroSection() {
   const heroRef = useRef<HTMLElement>(null);
-  const slideRefs = useRef<Array<HTMLElement | null>>([]);
-  const previousSlideRef = useRef(0);
-  const directionRef = useRef(1);
   const pointerStartRef = useRef(0);
   const [activeSlide, setActiveSlide] = useState(0);
   const [carouselPaused, setCarouselPaused] = useState(false);
@@ -37,13 +33,11 @@ export function HeroSection() {
   const activeHero = heroSlides[activeSlide];
 
   const goToSlide = useCallback(
-    (requested: number, direction?: number) => {
+    (requested: number) => {
       const nextIndex =
         (requested + heroSlides.length) % heroSlides.length;
 
       if (nextIndex === activeSlide) return;
-      directionRef.current =
-        direction ?? (nextIndex > activeSlide ? 1 : -1);
       setActiveSlide(nextIndex);
     },
     [activeSlide],
@@ -59,7 +53,7 @@ export function HeroSection() {
   useEffect(() => {
     if (carouselPaused || !pageVisible || reducedMotion) return;
     const timer = window.setTimeout(
-      () => goToSlide(activeSlide + 1, 1),
+      () => goToSlide(activeSlide + 1),
       CAROUSEL_DURATION,
     );
     return () => window.clearTimeout(timer);
@@ -71,93 +65,10 @@ export function HeroSection() {
     reducedMotion,
   ]);
 
-  useGSAP(
-    () => {
-      const previousIndex = previousSlideRef.current;
-      if (previousIndex === activeSlide) return;
-
-      const current = slideRefs.current[previousIndex];
-      const next = slideRefs.current[activeSlide];
-      const meta = heroRef.current?.querySelector(".slide-meta");
-
-      previousSlideRef.current = activeSlide;
-      if (!current || !next || !meta) return;
-
-      if (reducedMotion) {
-        gsap.set(current, { autoAlpha: 0, visibility: "hidden" });
-        gsap.set(next, {
-          autoAlpha: 1,
-          visibility: "visible",
-          xPercent: 0,
-          scale: 1,
-        });
-        return;
-      }
-
-      const direction = directionRef.current;
-
-      // Pause video on previous slide if any
-      const prevVideo = current.querySelector("video");
-      if (prevVideo) {
-        prevVideo.pause();
-      }
-
-      // Play video on next slide if any
-      const nextVideo = next.querySelector("video");
-      if (nextVideo) {
-        nextVideo.play().catch(() => {});
-      }
-
-      gsap.set(current, { visibility: "visible" });
-      gsap.set(next, {
-        visibility: "visible",
-        autoAlpha: 0,
-        xPercent: direction * 5,
-        scale: 1.035,
-      });
-
-      gsap
-        .timeline()
-        .to(
-          current,
-          {
-            autoAlpha: 0,
-            xPercent: direction * -3,
-            scale: 1.025,
-            duration: 0.8,
-          },
-          0,
-        )
-        .to(
-          next,
-          {
-            autoAlpha: 1,
-            xPercent: 0,
-            scale: 1,
-            duration: 1.05,
-            ease: "power3.inOut",
-          },
-          0.08,
-        )
-        .fromTo(
-          meta.children,
-          { autoAlpha: 0, y: 18 },
-          { autoAlpha: 1, y: 0, duration: 0.48, stagger: 0.045 },
-          0.34,
-        )
-        .set(current, { visibility: "hidden" });
-    },
-    {
-      dependencies: [activeSlide, reducedMotion],
-      scope: heroRef,
-      revertOnUpdate: true,
-    },
-  );
-
   const handlePointerUp = (event: ReactPointerEvent<HTMLElement>) => {
     const delta = event.clientX - pointerStartRef.current;
     if (Math.abs(delta) < 45) return;
-    goToSlide(activeSlide + (delta < 0 ? 1 : -1), delta < 0 ? 1 : -1);
+    goToSlide(activeSlide + (delta < 0 ? 1 : -1));
   };
 
   return (
@@ -269,10 +180,10 @@ export function HeroSection() {
         onPointerUp={handlePointerUp}
         onKeyDown={(event) => {
           if (event.key === "ArrowRight") {
-            goToSlide(activeSlide + 1, 1);
+            goToSlide(activeSlide + 1);
           }
           if (event.key === "ArrowLeft") {
-            goToSlide(activeSlide - 1, -1);
+            goToSlide(activeSlide - 1);
           }
         }}
       >
@@ -363,9 +274,6 @@ export function HeroSection() {
           {heroSlides.map((slide, index) => (
             <article
               key={slide.id}
-              ref={(node) => {
-                slideRefs.current[index] = node;
-              }}
               className={`hero-slide${index === activeSlide ? " is-active" : ""}${index === 0 ? " hero-slide--neon" : ""}`}
               aria-hidden={index !== activeSlide}
             >
@@ -431,14 +339,14 @@ export function HeroSection() {
                   }
                   fill
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 75vw, 58vw"
-                  // Slide 1 is the LCP element, so it must load eagerly and be
-                  // preloaded. fetchPriority alone left it loading="lazy",
-                  // which delayed LCP discovery by ~900ms. `priority` sets
-                  // eager loading + fetchpriority=high + the preload link.
+                  // Slide 1 is the LCP element. Next.js 16 deprecates `priority`;
+                  // eager loading plus explicit high fetch priority keeps it
+                  // discoverable immediately without combining conflicting
+                  // preload/loading props.
                   // Every other slide stays lazy — preloading off-screen
                   // images is what put 3.44MB of PNG on the critical path.
-                  priority={index === 0}
                   loading={index === 0 ? "eager" : "lazy"}
+                  fetchPriority={index === 0 ? "high" : undefined}
                   placeholder={index === 0 || index === 3 ? undefined : "blur"}
                 />
               )}
@@ -483,7 +391,7 @@ export function HeroSection() {
             className="carousel-arrow carousel-prev"
             type="button"
             aria-label="Previous collection"
-            onClick={() => goToSlide(activeSlide - 1, -1)}
+            onClick={() => goToSlide(activeSlide - 1)}
           >
             <IconBox icon={ArrowLeft} />
           </button>
@@ -510,7 +418,7 @@ export function HeroSection() {
             className="carousel-arrow carousel-next"
             type="button"
             aria-label="Next collection"
-            onClick={() => goToSlide(activeSlide + 1, 1)}
+            onClick={() => goToSlide(activeSlide + 1)}
           >
             <IconBox icon={ArrowRight} />
           </button>

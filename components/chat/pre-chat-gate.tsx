@@ -10,10 +10,9 @@ import {
   type FormEvent,
 } from "react";
 
-import posthog from "posthog-js";
-
 import { archiveLead } from "@/lib/leads";
 import { trackChatStarted } from "@/lib/meta-pixel";
+import { capturePostHog } from "@/lib/posthog-client";
 import {
   getChatVisitorSnapshot,
   getServerChatVisitorSnapshot,
@@ -110,7 +109,7 @@ export function PreChatGate() {
       consent: true,
     });
     trackChatStarted(pathname ?? "/");
-    posthog.capture("chat_initiated", { page_path: pathname ?? "/" });
+    capturePostHog("chat_initiated", { page_path: pathname ?? "/" });
 
     closeDialog();
     setStartedHere(true);

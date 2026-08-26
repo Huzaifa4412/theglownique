@@ -9,19 +9,18 @@ import {
   type ReactNode,
 } from "react";
 
-import { useStorefrontMotion } from "@/components/storefront/hooks/use-storefront-motion";
 import { ProductDialog } from "@/components/storefront/product-dialog";
+import { StorefrontMotionLoader } from "@/components/storefront/storefront-motion-loader";
 import {
   StorefrontContext,
   type StorefrontContextValue,
 } from "@/components/storefront/storefront-context";
-import posthog from "posthog-js";
-
 import {
   trackConfiguratorOpen,
   trackSearch,
   trackViewCategory,
 } from "@/lib/meta-pixel";
+import { capturePostHog } from "@/lib/posthog-client";
 import { categoryLabels, type CategoryId, type Product } from "@/lib/store-data";
 
 /**
@@ -71,7 +70,7 @@ export function StorefrontShell({ children }: { children: ReactNode }) {
       // "weddings" and "business" are entirely different ad audiences.
       if (category !== "all") {
         trackViewCategory(categoryLabels[category]);
-        posthog.capture("catalog_filtered", { category: categoryLabels[category] });
+        capturePostHog("catalog_filtered", { category: categoryLabels[category] });
       }
       if (shouldScroll) scrollToShop();
     },
@@ -87,7 +86,7 @@ export function StorefrontShell({ children }: { children: ReactNode }) {
       if (query.length >= MIN_TRACKED_QUERY_LENGTH) {
         searchTrackTimerRef.current = setTimeout(() => {
           trackSearch(query);
-          posthog.capture("catalog_searched", { query_length: query.length });
+          capturePostHog("catalog_searched", { query_length: query.length });
         }, SEARCH_TRACK_DELAY_MS);
       }
 
@@ -107,7 +106,7 @@ export function StorefrontShell({ children }: { children: ReactNode }) {
     // Customize buttons and every CustomQuoteButton on the page — so this is the
     // one place the AddToCart-equivalent needs to fire.
     trackConfiguratorOpen(product.name, categoryLabels[product.category]);
-    posthog.capture("configurator_opened", {
+    capturePostHog("configurator_opened", {
       product_name: product.name,
       category: categoryLabels[product.category],
     });
@@ -133,8 +132,6 @@ export function StorefrontShell({ children }: { children: ReactNode }) {
     },
     [],
   );
-
-  useStorefrontMotion(rootRef, reducedMotion);
 
   const contextValue = useMemo<StorefrontContextValue>(
     () => ({
@@ -162,6 +159,10 @@ export function StorefrontShell({ children }: { children: ReactNode }) {
   return (
     <StorefrontContext.Provider value={contextValue}>
       <div ref={rootRef}>
+        <StorefrontMotionLoader
+          rootRef={rootRef}
+          reducedMotion={reducedMotion}
+        />
         <div className="scroll-progress" aria-hidden="true">
           <span className="scroll-progress__bar" />
         </div>

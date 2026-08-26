@@ -4,10 +4,9 @@ import { useState } from "react";
 import { Sparkles, Tag, ShieldCheck, Zap } from "lucide-react";
 import { CurvedInput } from "@/components/ui/curved-input";
 import { PremiumAccentText } from "@/components/ui/premium-accent-text";
-import posthog from "posthog-js";
-
 import { archiveLead } from "@/lib/leads";
 import { trackNewsletterSignup } from "@/lib/meta-pixel";
+import { capturePostHog } from "@/lib/posthog-client";
 
 export function NewsletterSection() {
   const [message, setMessage] = useState("");
@@ -28,7 +27,7 @@ export function NewsletterSection() {
       consent: true,
     });
     trackNewsletterSignup();
-    posthog.capture("newsletter_signed_up", { source: "homepage_newsletter" });
+    capturePostHog("newsletter_signed_up", { source: "homepage_newsletter" });
     setMessage(
       `Thanks — ${email} is on the list. We'll email your 10% code shortly.`,
     );

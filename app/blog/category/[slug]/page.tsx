@@ -127,6 +127,11 @@ export default async function BlogCategoryPage({ params }: Params) {
   };
 
   const newest = posts[0];
+  const newestDate = newest?.publishedAt ? new Date(newest.publishedAt) : null;
+  const latestYear =
+    newestDate && !Number.isNaN(newestDate.getTime())
+      ? newestDate.getFullYear()
+      : null;
 
   return (
     <>
@@ -149,7 +154,7 @@ export default async function BlogCategoryPage({ params }: Params) {
             </nav>
             <p className="eyebrow">
               {posts.length} article{posts.length === 1 ? "" : "s"}
-              {newest ? ` · latest ${new Date(isoDate(newest.publishedAt)).getFullYear()}` : ""}
+              {latestYear ? ` · latest ${latestYear}` : ""}
             </p>
             <h1 className="blog-hero__title">{category.title}</h1>
             <p className="blog-hero__intro">{intro}</p>

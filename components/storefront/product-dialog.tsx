@@ -21,7 +21,7 @@ import {
 
 import { IconBox } from "@/components/icon-box";
 import { SignTypePreview } from "@/components/storefront/sign-type-preview";
-import posthog from "posthog-js";
+import { capturePostHog } from "@/lib/posthog-client";
 import { archiveLead } from "@/lib/leads";
 import { trackQuoteSubmitted } from "@/lib/meta-pixel";
 import { products, type Product, type SignType } from "@/lib/store-data";
@@ -187,7 +187,7 @@ export function ProductDialog({
       timeline,
       hasReferenceFile: Boolean(file),
     });
-    posthog.capture("configurator_quote_submitted", {
+    capturePostHog("configurator_quote_submitted", {
       product_name: product.name,
       sign_type: activeSignType,
       color,

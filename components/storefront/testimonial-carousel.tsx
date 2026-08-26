@@ -1,66 +1,86 @@
 "use client";
 
-import { useRef } from "react";
-import {
-  A11y,
-  Autoplay,
-  EffectCoverflow,
-  Navigation,
-  Pagination,
-} from "swiper/modules";
-import { Swiper, SwiperSlide } from "swiper/react";
-import type { Swiper as SwiperInstance } from "swiper";
-import "swiper/css";
-import "swiper/css/effect-coverflow";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { StoreIcon } from "@/components/storefront/store-icon";
 import { useStorefront } from "@/components/storefront/storefront-context";
 import { testimonials } from "@/lib/store-data";
 
 export function TestimonialCarousel() {
-  const swiperRef = useRef<SwiperInstance | null>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
+  const scrollFrameRef = useRef<number | null>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
   const { reducedMotion } = useStorefront();
+
+  const scrollToIndex = useCallback(
+    (requestedIndex: number) => {
+      const index =
+        (requestedIndex + testimonials.length) % testimonials.length;
+      const track = trackRef.current;
+      const slide = track?.children.item(index) as HTMLElement | null;
+      if (!track || !slide) return;
+
+      track.scrollTo({
+        left: slide.offsetLeft - track.offsetLeft,
+        behavior: reducedMotion ? "auto" : "smooth",
+      });
+      setActiveIndex(index);
+    },
+    [reducedMotion],
+  );
+
+  const handleScroll = useCallback(() => {
+    const track = trackRef.current;
+    if (!track || scrollFrameRef.current !== null) return;
+
+    scrollFrameRef.current = window.requestAnimationFrame(() => {
+      const center = track.scrollLeft + track.clientWidth / 2;
+      let closestIndex = 0;
+      let closestDistance = Number.POSITIVE_INFINITY;
+
+      Array.from(track.children).forEach((child, index) => {
+        const slide = child as HTMLElement;
+        const distance = Math.abs(
+          slide.offsetLeft + slide.clientWidth / 2 - center,
+        );
+        if (distance < closestDistance) {
+          closestDistance = distance;
+          closestIndex = index;
+        }
+      });
+
+      setActiveIndex(closestIndex);
+      scrollFrameRef.current = null;
+    });
+  }, []);
+
+  useEffect(
+    () => () => {
+      if (scrollFrameRef.current !== null) {
+        window.cancelAnimationFrame(scrollFrameRef.current);
+      }
+    },
+    [],
+  );
 
   return (
     <div className="testimonial-carousel" aria-label="Customer testimonials">
       <div className="testimonial-carousel__spark testimonial-carousel__spark--one" aria-hidden="true">✦</div>
       <div className="testimonial-carousel__spark testimonial-carousel__spark--two" aria-hidden="true">✦</div>
-      <Swiper
-        modules={[A11y, Autoplay, EffectCoverflow, Navigation, Pagination]}
-        onSwiper={(swiper) => { swiperRef.current = swiper; }}
-        className="testimonial-swiper"
-        effect={reducedMotion ? "slide" : "coverflow"}
-        speed={reducedMotion ? 0 : 650}
-        slidesPerView={1.06}
-        spaceBetween={12}
-        centeredSlides
-        coverflowEffect={{
-          rotate: 2,
-          stretch: "4%",
-          depth: 90,
-          scale: 0.92,
-          modifier: 1.25,
-          slideShadows: false,
-        }}
-        loop
-        grabCursor
-        slideToClickedSlide
-        autoplay={reducedMotion ? false : { delay: 4600, disableOnInteraction: false, pauseOnMouseEnter: true }}
-        pagination={{ clickable: true, el: ".testimonial-carousel__pagination" }}
-        navigation={false}
-        a11y={{
-          prevSlideMessage: "Previous testimonial",
-          nextSlideMessage: "Next testimonial",
-          slideLabelMessage: "Testimonial {{index}} of {{slidesLength}}",
-        }}
-        breakpoints={{
-          680: { slidesPerView: 1.45, spaceBetween: 18 },
-          1040: { slidesPerView: 2.15, spaceBetween: 22 },
-        }}
+      <div
+        ref={trackRef}
+        className="testimonial-track"
+        onScroll={handleScroll}
+        role="region"
+        aria-label="Scrollable customer testimonials"
+        tabIndex={0}
       >
-        {testimonials.map((item) => (
-          <SwiperSlide key={item.name}>
+        {testimonials.map((item, index) => (
+          <div
+            className={`testimonial-slide${index === activeIndex ? " is-active" : ""}`}
+            key={item.name}
+            role="group"
+            aria-label={`Testimonial ${index + 1} of ${testimonials.length}`}
+          >
             <article className="review-card">
               {/* Stars and the "Verified" badge render only when the review
                   data actually carries them — never as a hardcoded default. */}
@@ -92,14 +112,25 @@ export function TestimonialCarousel() {
                 <span className="review-card__shine" aria-hidden="true">✦</span>
               </footer>
             </article>
-          </SwiperSlide>
+          </div>
         ))}
-      </Swiper>
+      </div>
       <div className="testimonial-carousel__controls">
-        <div className="testimonial-carousel__pagination" aria-label="Choose testimonial" />
+        <div className="testimonial-carousel__pagination" aria-label="Choose testimonial">
+          {testimonials.map((item, index) => (
+            <button
+              key={item.name}
+              type="button"
+              className={index === activeIndex ? "is-active" : ""}
+              aria-label={`Show testimonial ${index + 1}`}
+              aria-current={index === activeIndex ? "true" : undefined}
+              onClick={() => scrollToIndex(index)}
+            />
+          ))}
+        </div>
         <div className="testimonial-carousel__arrows">
-          <button type="button" className="testimonial-carousel__arrow" aria-label="Previous testimonial" onClick={() => swiperRef.current?.slidePrev()}><span aria-hidden="true">←</span></button>
-          <button type="button" className="testimonial-carousel__arrow" aria-label="Next testimonial" onClick={() => swiperRef.current?.slideNext()}><span aria-hidden="true">→</span></button>
+          <button type="button" className="testimonial-carousel__arrow" aria-label="Previous testimonial" onClick={() => scrollToIndex(activeIndex - 1)}><span aria-hidden="true">←</span></button>
+          <button type="button" className="testimonial-carousel__arrow" aria-label="Next testimonial" onClick={() => scrollToIndex(activeIndex + 1)}><span aria-hidden="true">→</span></button>
         </div>
       </div>
     </div>
