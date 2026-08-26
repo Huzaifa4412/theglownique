@@ -1867,6 +1867,7 @@ button:active {
 
 .product-card {
   min-width: 0;
+  position: relative;
 }
 
 .product-card__surface {

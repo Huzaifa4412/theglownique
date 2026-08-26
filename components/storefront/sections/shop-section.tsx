@@ -99,30 +99,27 @@ export function ShopSection() {
       <div className="product-grid">
         {filteredProducts.map((product) => (
           <article
-            className="product-card cursor-pointer group"
+            className="product-card group"
             key={product.id}
-            onClick={() => openProduct(product)}
-            role="button"
-            tabIndex={0}
-            onKeyDown={(event) => {
-              if (event.key === "Enter" || event.key === " ") {
-                event.preventDefault();
-                openProduct(product);
-              }
-            }}
-            aria-label={`Customize ${product.name}`}
+            aria-labelledby={`product-title-${product.id}`}
           >
             <div className="product-card__surface">
               <ProductVisual product={product} />
             </div>
             <div className="product-card__info">
               <div>
-                <h3>{product.name}</h3>
+                <h3 id={`product-title-${product.id}`}>{product.name}</h3>
                 <p>{product.size}</p>
               </div>
-              <span className="text-[#f40b68] font-extrabold text-xs uppercase tracking-wider flex items-center gap-1 group-hover:translate-x-0.5 transition-all">
-                Customize →
-              </span>
+              <button
+                type="button"
+                className="text-[#ce0754] group-hover:text-[#f40b68] font-extrabold text-xs uppercase tracking-wider flex items-center gap-1 transition-colors after:absolute after:inset-0 after:content-[''] after:cursor-pointer"
+                onClick={() => openProduct(product)}
+                aria-label={`Customize ${product.name}`}
+              >
+                <span>Customize</span>
+                <span aria-hidden="true">→</span>
+              </button>
             </div>
             {/* Claims we can actually stand behind. Star ratings and review
                 counts belong here only once they come from verified reviews —
