@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Sparkles, Play, Pause, Volume2, VolumeX, Zap, Film } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -130,7 +130,29 @@ export function SignTypesVideoSection() {
   const [activeAcrylicVideoIndex, setActiveAcrylicVideoIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
   const [isMuted, setIsMuted] = useState(true);
+  const [isInView, setIsInView] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+    if (!("IntersectionObserver" in window)) {
+      setIsInView(true);
+      return;
+    }
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "300px" },
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   const currentType = SIGN_TYPES_DATA[activeTab];
   const is3dMetalTab = currentType.id === "3d-metal";
@@ -176,6 +198,7 @@ export function SignTypesVideoSection() {
 
   return (
     <section
+      ref={sectionRef}
       className="sign-types-section relative py-20 md:py-28 bg-[#0c0a0e] text-white overflow-hidden border-t border-white/10"
       id="product-sign-types"
       aria-labelledby="sign-types-heading"
@@ -244,7 +267,8 @@ export function SignTypesVideoSection() {
                   ref={videoRef}
                   src={currentVideoSrc}
                   poster={currentPosterSrc ?? undefined}
-                  autoPlay
+                  preload={isInView ? "auto" : "none"}
+                  autoPlay={isInView && isPlaying}
                   loop
                   muted={isMuted}
                   playsInline

@@ -95,6 +95,19 @@ export function HeroSection() {
       }
 
       const direction = directionRef.current;
+
+      // Pause video on previous slide if any
+      const prevVideo = current.querySelector("video");
+      if (prevVideo) {
+        prevVideo.pause();
+      }
+
+      // Play video on next slide if any
+      const nextVideo = next.querySelector("video");
+      if (nextVideo) {
+        nextVideo.play().catch(() => {});
+      }
+
       gsap.set(current, { visibility: "visible" });
       gsap.set(next, {
         visibility: "visible",
@@ -360,7 +373,8 @@ export function HeroSection() {
                 <video
                   src="/3d-metallic-neon-sign/videos/2.mp4"
                   poster="/3d-metallic-neon-sign/corporte/056b3189-6a8c-482a-8334-53ded7aff3e1.png"
-                  autoPlay
+                  preload={activeSlide === 1 ? "auto" : "none"}
+                  autoPlay={activeSlide === 1}
                   loop
                   muted
                   playsInline
@@ -370,7 +384,8 @@ export function HeroSection() {
                 <video
                   src="/3d-arcylic/videos/25763cbb2ca6866a574a4dde5853343c.mp4"
                   poster="/3d-arcylic/3235dc09-6dac-4056-88b6-55fc26e28571.png"
-                  autoPlay
+                  preload={activeSlide === 2 ? "auto" : "none"}
+                  autoPlay={activeSlide === 2}
                   loop
                   muted
                   playsInline
@@ -380,7 +395,7 @@ export function HeroSection() {
                 <Image
                   src={
                     index === 0
-                      ? "/hero/neon-sign-hero.png"
+                      ? "/hero/neon-sign-hero.webp"
                       : index === 3
                       ? "/ultra-thin-slim-lightbox/main-hero.png"
                       : slide.image

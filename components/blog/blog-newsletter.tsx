@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { usePathname } from "next/navigation";
 import { ArrowRight, Check } from "lucide-react";
+import posthog from "posthog-js";
 
 import { archiveLead } from "@/lib/leads";
 import { trackNewsletterSignup } from "@/lib/meta-pixel";
@@ -45,6 +46,7 @@ export function BlogNewsletter({
       consent: true,
     });
     trackNewsletterSignup();
+    posthog.capture("blog_newsletter_signed_up", { page_path: pathname });
     setDone(true);
   };
 

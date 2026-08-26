@@ -21,6 +21,7 @@ import {
 
 import { IconBox } from "@/components/icon-box";
 import { SignTypePreview } from "@/components/storefront/sign-type-preview";
+import posthog from "posthog-js";
 import { archiveLead } from "@/lib/leads";
 import { trackQuoteSubmitted } from "@/lib/meta-pixel";
 import { products, type Product, type SignType } from "@/lib/store-data";
@@ -185,6 +186,17 @@ export function ProductDialog({
       budget,
       timeline,
       hasReferenceFile: Boolean(file),
+    });
+    posthog.capture("configurator_quote_submitted", {
+      product_name: product.name,
+      sign_type: activeSignType,
+      color,
+      size: calculatedSize,
+      usage_location: usageLocation,
+      delivery_country: deliveryCountry,
+      budget,
+      timeline,
+      has_reference_file: Boolean(file),
     });
 
     // Archive it too, and archive it BEFORE the handoff for the same reason the

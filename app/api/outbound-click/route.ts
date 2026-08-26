@@ -174,7 +174,6 @@ export async function POST(request: Request) {
     const posthog = getPostHogClient();
     if (posthog) {
       posthog.capture({
-        distinctId: `anonymous-${randomUUID()}`,
         event: "outbound_click_tracked",
         properties: {
           channel,

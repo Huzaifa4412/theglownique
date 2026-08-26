@@ -110,7 +110,6 @@ export function PreChatGate() {
       consent: true,
     });
     trackChatStarted(pathname ?? "/");
-    posthog.identify(visitor.email, { name: visitor.name });
     posthog.capture("chat_initiated", { page_path: pathname ?? "/" });
 
     closeDialog();

@@ -4,17 +4,21 @@ let posthogClient: PostHog | null = null;
 
 export function getPostHogClient(): PostHog | null {
   const token = process.env.NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN;
-  if (!token) {
+  const host = process.env.NEXT_PUBLIC_POSTHOG_HOST;
+  if (!token || !host) {
     if (process.env.NODE_ENV !== "production") {
+      const missingVariable = !token
+        ? "NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN"
+        : "NEXT_PUBLIC_POSTHOG_HOST";
       console.error(
-        "NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN variable required by PostHog is missing or un-configured, this causes events to be silently missed. This error stops appearing once NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN is configured",
+        `${missingVariable} variable required by PostHog is missing or un-configured, this causes events to be silently missed. This error stops appearing once ${missingVariable} is configured`,
       );
     }
     return null;
   }
   if (!posthogClient) {
     posthogClient = new PostHog(token, {
-      host: process.env.NEXT_PUBLIC_POSTHOG_HOST ?? "https://us.i.posthog.com",
+      host,
       flushAt: 1,
       flushInterval: 0,
     });

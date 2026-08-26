@@ -28,7 +28,6 @@ export function NewsletterSection() {
       consent: true,
     });
     trackNewsletterSignup();
-    posthog.identify(email, {});
     posthog.capture("newsletter_signed_up", { source: "homepage_newsletter" });
     setMessage(
       `Thanks — ${email} is on the list. We'll email your 10% code shortly.`,

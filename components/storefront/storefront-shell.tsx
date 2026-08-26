@@ -87,7 +87,7 @@ export function StorefrontShell({ children }: { children: ReactNode }) {
       if (query.length >= MIN_TRACKED_QUERY_LENGTH) {
         searchTrackTimerRef.current = setTimeout(() => {
           trackSearch(query);
-          posthog.capture("catalog_searched", { query });
+          posthog.capture("catalog_searched", { query_length: query.length });
         }, SEARCH_TRACK_DELAY_MS);
       }
 

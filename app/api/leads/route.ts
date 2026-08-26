@@ -157,7 +157,6 @@ export async function POST(request: Request) {
     const posthog = getPostHogClient();
     if (posthog) {
       posthog.capture({
-        distinctId: email,
         event: "lead_archived",
         properties: { source, topic: clean(body.topic, LEAD_LIMITS.short) },
       });

@@ -228,8 +228,6 @@ export function ContactForm() {
       trackWhatsappContact("contact-page-form", "/contact");
     }
 
-    // Identify the visitor by email so server-side lead events correlate.
-    posthog.identify(email.trim(), { name: fullName.trim() });
     posthog.capture("quote_submitted", {
       topic,
       sign_type: activeTopic.wantsSpec ? signType || undefined : undefined,

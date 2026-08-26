@@ -51,3 +51,6 @@ graphify-out/
 # OS files
 desktop.ini
 .env.local
+
+# posthog wizard cache
+.posthog-wizard-cache/
