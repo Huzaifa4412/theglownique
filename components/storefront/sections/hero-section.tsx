@@ -372,7 +372,7 @@ export function HeroSection() {
               {index === 1 ? (
                 <video
                   src="/3d-metallic-neon-sign/videos/2.mp4"
-                  poster="/3d-metallic-neon-sign/corporte/056b3189-6a8c-482a-8334-53ded7aff3e1.png"
+                  poster="/3d-metallic-neon-sign/corporte/056b3189-6a8c-482a-8334-53ded7aff3e1.webp"
                   preload={activeSlide === 1 ? "auto" : "none"}
                   autoPlay={activeSlide === 1}
                   loop
@@ -383,7 +383,7 @@ export function HeroSection() {
               ) : index === 2 ? (
                 <video
                   src="/3d-arcylic/videos/25763cbb2ca6866a574a4dde5853343c.mp4"
-                  poster="/3d-arcylic/3235dc09-6dac-4056-88b6-55fc26e28571.png"
+                  poster="/3d-arcylic/3235dc09-6dac-4056-88b6-55fc26e28571.webp"
                   preload={activeSlide === 2 ? "auto" : "none"}
                   autoPlay={activeSlide === 2}
                   loop
@@ -397,7 +397,7 @@ export function HeroSection() {
                     index === 0
                       ? "/hero/neon-sign-hero.webp"
                       : index === 3
-                      ? "/ultra-thin-slim-lightbox/main-hero.png"
+                      ? "/ultra-thin-slim-lightbox/main-hero.webp"
                       : slide.image
                   }
                   alt={

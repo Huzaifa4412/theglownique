@@ -124,7 +124,7 @@ export const PRODUCT_PAGES: ProductPage[] = [
     category: "Neon Sign",
     tagline: "Flexible silicone LED neon, handcrafted to your words",
     accent: "#f40b68",
-    heroImage: "/hero/neon-sign-hero.png",
+    heroImage: "/hero/neon-sign-hero.webp",
     heroVideo: "/neon-sign/Videos/en-GB_1fa05acfc3a2cdf80c7787c5f585c30a.mp4",
     intro:
       "Turn a phrase, a name or a logo into a glowing centrepiece. Our custom LED neon signs are handcrafted from flexible, shatterproof silicone tubing mounted on clear, laser-cut acrylic — the safe, modern successor to fragile glass neon. Running cool on low 12V power, they're made for bedrooms, weddings, cafés, studios and storefronts alike.",
@@ -206,7 +206,7 @@ export const PRODUCT_PAGES: ProductPage[] = [
     backings: {
       heading: "Cut to square, cut to shape or cut to letter",
       body: "Every sign sits on a laser-cut acrylic backboard, and how we cut it changes the whole character of the piece — from a clean panel that frames the glow to letters that look painted straight onto the wall. Not sure which suits your design? Send it over and we'll show you all three in your free mockup.",
-      image: "/neon-sign/allshape.png",
+      image: "/neon-sign/allshape.webp",
       imageAlt:
         "The same script neon word shown three ways: on a rectangular acrylic panel (cut to square), on one panel following the word's outline (cut to shape), and with the acrylic cut around each letter (cut to letter).",
       // Order matches the comparison photo left-to-right, and reads as a
@@ -260,7 +260,7 @@ export const PRODUCT_PAGES: ProductPage[] = [
       },
     ],
     gallery: [
-      { src: "/hero/neon-sign-hero.png", alt: "Good Vibes custom LED neon sign glowing on a dark wall" },
+      { src: "/hero/neon-sign-hero.webp", alt: "Good Vibes custom LED neon sign glowing on a dark wall" },
       { src: "/neon-sign/Marriage/iap_600x600.7378705048_ipwhq76b.webp", alt: "Happily Ever After wedding neon sign" },
       { src: "/neon-sign/Gym/iap_600x600.7178660214_6320z3ec.webp", alt: "No Pain No Gain gym LED neon sign" },
       { src: "/neon-sign/Custom name/iap_600x600.6574462695_efoprbvt.webp", alt: "Personalised custom name LED neon sign" },
@@ -297,7 +297,7 @@ export const PRODUCT_PAGES: ProductPage[] = [
     category: "3D Metal Neon Sign",
     tagline: "Fabricated stainless-steel channel letters — frontlit, halo backlit or dual-lit",
     accent: "#e0a23c",
-    heroImage: "/3d-metallic-neon-sign/corporte/056b3189-6a8c-482a-8334-53ded7aff3e1.png",
+    heroImage: "/3d-metallic-neon-sign/corporte/056b3189-6a8c-482a-8334-53ded7aff3e1.webp",
     heroVideo: "/3d-metallic-neon-sign/videos/2.mp4",
     intro:
       "Give your brand a premium, architectural presence with 3D metal channel letters. Each letter is fabricated from stainless steel and lit from within by energy-efficient LED — choose bold frontlit faces, a soft halo backlit glow, or dual-lit for both. Engineered for commercial use, they command attention on storefronts, lobbies and façades, day and night.",
@@ -333,7 +333,7 @@ export const PRODUCT_PAGES: ProductPage[] = [
         "Brushed, mirrored or matte metal finishing",
         "Flush, standoff, raceway or backing-panel mounts",
       ],
-      image: "/3d-metallic-neon-sign/frontlit/2.png",
+      image: "/3d-metallic-neon-sign/frontlit/2.webp",
       imageAlt: "Fabricated stainless-steel channel letter R with a glowing white face and brushed metal returns",
     },
     specs: [
@@ -372,7 +372,7 @@ export const PRODUCT_PAGES: ProductPage[] = [
           summary: "The loudest",
           text: "The face of every letter is a lit panel, so the wordmark itself glows. It's the most readable option from across a street or in daylight, and the face carries your brand colour rather than the wall — tint or print it any shade you like.",
           bestFor: "Storefronts, roadside frontage and busy streets",
-          image: "/3d-metallic-neon-sign/frontlit/image.png",
+          image: "/3d-metallic-neon-sign/frontlit/image.webp",
           imageAlt:
             "Frontlit 3D metal channel letters spelling Food Opera, the script faces glowing bright orange against a plain wall",
         },
@@ -381,7 +381,7 @@ export const PRODUCT_PAGES: ProductPage[] = [
           summary: "The premium one",
           text: "The face stays solid metal and the LED throws backwards instead, ringing each letter in a soft halo on the wall. You read the shape rather than the glow, which is exactly why it's the default for reception walls — it reads expensive rather than loud.",
           bestFor: "Lobbies, receptions and interior feature walls",
-          image: "/3d-metallic-neon-sign/Salon/generated/235762e8-14ec-4167-b534-2dad36c826ba.png",
+          image: "/3d-metallic-neon-sign/Salon/generated/235762e8-14ec-4167-b534-2dad36c826ba.webp",
           imageAlt:
             "Halo backlit 3D metal salon logo in brushed gold, glowing softly onto the reception wall behind it",
         },
@@ -390,7 +390,7 @@ export const PRODUCT_PAGES: ProductPage[] = [
           summary: "The full effect",
           text: "Both at once — a lit face for readability, a halo behind it for depth. Add a baffle inside the channel and the two can run separate colours, so a crisp white face can sit over a coloured glow.",
           bestFor: "Flagship signage and anywhere impact matters most",
-          image: "/3d-metallic-neon-sign/duallit/2.png",
+          image: "/3d-metallic-neon-sign/duallit/2.webp",
           imageAlt:
             "Dual-lit 3D metal letters spelling AMERICA, with glowing white faces and a halo of light spilling onto the floor behind",
         },
@@ -400,33 +400,33 @@ export const PRODUCT_PAGES: ProductPage[] = [
       {
         title: "Storefronts & façades",
         text: "Pull customers in from across the street with a premium illuminated logo.",
-        image: "/3d-metallic-neon-sign/corporte/056b3189-6a8c-482a-8334-53ded7aff3e1.png",
+        image: "/3d-metallic-neon-sign/corporte/056b3189-6a8c-482a-8334-53ded7aff3e1.webp",
         alt: "Corporate 3D metal channel-letter storefront sign",
       },
       {
         title: "Corporate lobbies",
         text: "A refined halo-lit logo that makes reception areas feel established and premium.",
-        image: "/3d-metallic-neon-sign/corporte/14d4b621-c697-428a-b727-1c91b78e9e08.png",
+        image: "/3d-metallic-neon-sign/corporte/14d4b621-c697-428a-b727-1c91b78e9e08.webp",
         alt: "Corporate reception 3D metal logo sign",
       },
       {
         title: "Restaurants & cafés",
         text: "Warm, inviting metal signage that photographs beautifully and lasts for years.",
-        image: "/3d-metallic-neon-sign/Resturants/generated/026ad950-fafb-4407-8420-c83be7f49365.png",
+        image: "/3d-metallic-neon-sign/Resturants/generated/026ad950-fafb-4407-8420-c83be7f49365.webp",
         alt: "Restaurant 3D metal dual-lit sign",
       },
       {
         title: "Salons & studios",
         text: "A halo-lit wordmark that turns a feature wall into a signature brand moment.",
-        image: "/3d-metallic-neon-sign/Salon/generated/235762e8-14ec-4167-b534-2dad36c826ba.png",
+        image: "/3d-metallic-neon-sign/Salon/generated/235762e8-14ec-4167-b534-2dad36c826ba.webp",
         alt: "Salon 3D metal halo backlit sign",
       },
     ],
     gallery: [
-      { src: "/3d-metallic-neon-sign/corporte/056b3189-6a8c-482a-8334-53ded7aff3e1.png", alt: "Corporate 3D metal channel-letter sign" },
-      { src: "/3d-metallic-neon-sign/corporte/14d4b621-c697-428a-b727-1c91b78e9e08.png", alt: "Illuminated 3D metal logo sign" },
-      { src: "/3d-metallic-neon-sign/Resturants/generated/026ad950-fafb-4407-8420-c83be7f49365.png", alt: "Restaurant dual-lit metal sign" },
-      { src: "/3d-metallic-neon-sign/Salon/generated/235762e8-14ec-4167-b534-2dad36c826ba.png", alt: "Salon halo backlit metal sign" },
+      { src: "/3d-metallic-neon-sign/corporte/056b3189-6a8c-482a-8334-53ded7aff3e1.webp", alt: "Corporate 3D metal channel-letter sign" },
+      { src: "/3d-metallic-neon-sign/corporte/14d4b621-c697-428a-b727-1c91b78e9e08.webp", alt: "Illuminated 3D metal logo sign" },
+      { src: "/3d-metallic-neon-sign/Resturants/generated/026ad950-fafb-4407-8420-c83be7f49365.webp", alt: "Restaurant dual-lit metal sign" },
+      { src: "/3d-metallic-neon-sign/Salon/generated/235762e8-14ec-4167-b534-2dad36c826ba.webp", alt: "Salon halo backlit metal sign" },
     ],
     faqs: [
       {
@@ -460,7 +460,7 @@ export const PRODUCT_PAGES: ProductPage[] = [
     category: "Ultra Thin Lightbox",
     tagline: "Slim aluminium lightbox with 100% even, edge-lit LED glow",
     accent: "#0e9f6e",
-    heroImage: "/ultra-thin-slim-lightbox/main-hero.png",
+    heroImage: "/ultra-thin-slim-lightbox/main-hero.webp",
     intro:
       "A modern illuminated display that's under an inch deep. Our ultra-thin slim lightboxes use edge-lit LED technology inside a sleek anodized-aluminium frame to deliver 100% even, shadow-free light across the entire face. Graphics slide out and swap in seconds — perfect for retail displays, menu boards, lobbies and modern storefronts.",
     chips: ["Under 1-inch slim", "Edge-lit, shadow-free", "Tool-free graphic swap", "Retail & commercial"],
@@ -543,16 +543,16 @@ export const PRODUCT_PAGES: ProductPage[] = [
       {
         title: "Storefront windows",
         text: "High-contrast, eye-catching displays that draw foot traffic day and night.",
-        image: "/ultra-thin-slim-lightbox/Storefront windows.jpg",
+        image: "/ultra-thin-slim-lightbox/Storefront windows.webp",
         alt: "Storefront window ultra-thin lightbox display",
       },
     ],
     gallery: [
-      { src: "/ultra-thin-slim-lightbox/main-hero.png", alt: "Ultra-thin slim LED lightbox transformation" },
+      { src: "/ultra-thin-slim-lightbox/main-hero.webp", alt: "Ultra-thin slim LED lightbox transformation" },
       { src: "/ultra-thin-slim-lightbox/Retail displays.jpg", alt: "Retail ultra-thin slim LED lightbox display" },
       { src: "/ultra-thin-slim-lightbox/Menu boards.jpg", alt: "Illuminated slim lightbox menu board" },
       { src: "/ultra-thin-slim-lightbox/Lobbies & branding.jpg", alt: "Corporate lobby slim lightbox branding sign" },
-      { src: "/ultra-thin-slim-lightbox/Storefront windows.jpg", alt: "Storefront window ultra-thin lightbox display" },
+      { src: "/ultra-thin-slim-lightbox/Storefront windows.webp", alt: "Storefront window ultra-thin lightbox display" },
     ],
     faqs: [
       {
@@ -586,7 +586,7 @@ export const PRODUCT_PAGES: ProductPage[] = [
     category: "3D Acrylic Neon Sign",
     tagline: "Full-colour UV artwork on acrylic, traced with glowing LED neon",
     accent: "#7c3aed",
-    heroImage: "/3d-arcylic/3235dc09-6dac-4056-88b6-55fc26e28571.png",
+    heroImage: "/3d-arcylic/3235dc09-6dac-4056-88b6-55fc26e28571.webp",
     heroVideo: "/3d-arcylic/videos/25763cbb2ca6866a574a4dde5853343c.mp4",
     intro:
       "When a logo needs more than one colour, this is the sign. High-definition UV printing lays sharp, full-colour artwork, gradients and brand fonts directly onto premium acrylic, and we trace it with glowing LED neon contours. The result is rich, photo-quality detail combined with the glow of neon — colour-matched to your exact brand. It's also the most cost-effective way to light up a detailed design: the print handles the intricate work that would otherwise take metres of hand-bent tubing, so more of your budget goes into the artwork and less into labour.",
@@ -623,7 +623,7 @@ export const PRODUCT_PAGES: ProductPage[] = [
         "Optional multi-layer 3D build for depth",
         "Less hand-bent tubing per design — a lower build cost",
       ],
-      image: "/3d-arcylic/fff64032-bdaa-459c-8caf-a4ac67b89f19.png",
+      image: "/3d-arcylic/fff64032-bdaa-459c-8caf-a4ac67b89f19.webp",
       imageAlt: "Layered 3D acrylic UV-print neon studio sign",
     },
     specs: [
@@ -658,31 +658,31 @@ export const PRODUCT_PAGES: ProductPage[] = [
       {
         title: "Logo & brand walls",
         text: "A full-colour logo that glows — ideal for receptions, studios and offices.",
-        image: "/3d-arcylic/3235dc09-6dac-4056-88b6-55fc26e28571.png",
+        image: "/3d-arcylic/3235dc09-6dac-4056-88b6-55fc26e28571.webp",
         alt: "3D acrylic UV-print neon logo brand wall",
       },
       {
         title: "Photo booths & events",
         text: "Photo-ready, on-brand backdrops that make every picture look premium.",
-        image: "/3d-arcylic/fff64032-bdaa-459c-8caf-a4ac67b89f19.png",
+        image: "/3d-arcylic/fff64032-bdaa-459c-8caf-a4ac67b89f19.webp",
         alt: "Layered acrylic UV-print neon event sign",
       },
       {
         title: "Retail & hospitality",
         text: "Colour-rich signage that captures artwork neon alone simply can't.",
-        image: "/3d-arcylic/3235dc09-6dac-4056-88b6-55fc26e28571.png",
+        image: "/3d-arcylic/3235dc09-6dac-4056-88b6-55fc26e28571.webp",
         alt: "Retail 3D acrylic UV-print neon sign",
       },
       {
         title: "Custom art pieces",
         text: "Bespoke wall art blending print and neon into a one-of-a-kind statement.",
-        image: "/3d-arcylic/fff64032-bdaa-459c-8caf-a4ac67b89f19.png",
+        image: "/3d-arcylic/fff64032-bdaa-459c-8caf-a4ac67b89f19.webp",
         alt: "Custom UV-print neon acrylic wall art",
       },
     ],
     gallery: [
-      { src: "/3d-arcylic/3235dc09-6dac-4056-88b6-55fc26e28571.png", alt: "3D acrylic UV-print neon contour sign" },
-      { src: "/3d-arcylic/fff64032-bdaa-459c-8caf-a4ac67b89f19.png", alt: "Layered 3D acrylic UV-print neon sign" },
+      { src: "/3d-arcylic/3235dc09-6dac-4056-88b6-55fc26e28571.webp", alt: "3D acrylic UV-print neon contour sign" },
+      { src: "/3d-arcylic/fff64032-bdaa-459c-8caf-a4ac67b89f19.webp", alt: "Layered 3D acrylic UV-print neon sign" },
     ],
     faqs: [
       {

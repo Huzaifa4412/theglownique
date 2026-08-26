@@ -70,6 +70,16 @@ const nextConfig: NextConfig = {
           },
         ],
       },
+      {
+        // Cache static public media assets aggressively (1 year immutable)
+        source: "/:path*.(ico|png|jpg|jpeg|webp|avif|svg|mp4|webm|woff2)",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+        ],
+      },
     ];
   },
 };

@@ -18,7 +18,7 @@ const inspirationSlides = [
     badge: "1. Neon Sign",
   },
   {
-    image: "/3d-metallic-neon-sign/corporte/056b3189-6a8c-482a-8334-53ded7aff3e1.png",
+    image: "/3d-metallic-neon-sign/corporte/056b3189-6a8c-482a-8334-53ded7aff3e1.webp",
     alt: "Corporate HQ 3D Metallic Channel Lettering Sign",
     label: "3D Metal Signage",
     tag: "Preview 02",
@@ -42,7 +42,7 @@ const inspirationSlides = [
     badge: "3. Lightbox Sign",
   },
   {
-    image: "/3d-arcylic/3235dc09-6dac-4056-88b6-55fc26e28571.png",
+    image: "/3d-arcylic/3235dc09-6dac-4056-88b6-55fc26e28571.webp",
     alt: "3D Acrylic UV Print Neon Sign with glowing contour",
     label: "3D Acrylic UV Print",
     tag: "Preview 05",

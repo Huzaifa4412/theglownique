@@ -43,8 +43,8 @@ export function ConceptToGlowSection() {
           <div className="concept-to-glow__compare">
             <Compare
               className="concept-to-glow__compare-surface"
-              firstImage="/before-after/before.png"
-              secondImage="/before-after/after.png"
+              firstImage="/before-after/before.webp"
+              secondImage="/before-after/after.webp"
               firstImageAlt="A salon reception wall, bare, before a backlit logo sign is fitted"
               secondImageAlt="The same reception wall with a backlit logo sign, warm white light haloing the letters against the wall"
               firstImageClassName="concept-to-glow__before"

@@ -12,28 +12,28 @@ export const METALLIC_3D_VIDEOS = [
     id: "3d-vid-1",
     title: "Frontlit & Backlit 3D Channel",
     video: "/3d-metallic-neon-sign/videos/2.mp4",
-    poster: "/3d-metallic-neon-sign/corporte/056b3189-6a8c-482a-8334-53ded7aff3e1.png",
+    poster: "/3d-metallic-neon-sign/corporte/056b3189-6a8c-482a-8334-53ded7aff3e1.webp",
     tag: "3D Dual-Lit",
   },
   {
     id: "3d-vid-2",
     title: "Halo Backlit Architectural Glow",
     video: "/3d-metallic-neon-sign/videos/3.mp4",
-    poster: "/3d-metallic-neon-sign/Salon/generated/235762e8-14ec-4167-b534-2dad36c826ba.png",
+    poster: "/3d-metallic-neon-sign/Salon/generated/235762e8-14ec-4167-b534-2dad36c826ba.webp",
     tag: "Halo Glow",
   },
   {
     id: "3d-vid-3",
     title: "Precision Metal Fabrication",
     video: "/3d-metallic-neon-sign/videos/4.mp4",
-    poster: "/3d-metallic-neon-sign/corporte/14d4b621-c697-428a-b727-1c91b78e9e08.png",
+    poster: "/3d-metallic-neon-sign/corporte/14d4b621-c697-428a-b727-1c91b78e9e08.webp",
     tag: "Stainless Steel",
   },
   {
     id: "3d-vid-4",
     title: "Storefront Dual-Tone Showcase",
     video: "/3d-metallic-neon-sign/videos/5.mp4",
-    poster: "/3d-metallic-neon-sign/Resturants/generated/026ad950-fafb-4407-8420-c83be7f49365.png",
+    poster: "/3d-metallic-neon-sign/Resturants/generated/026ad950-fafb-4407-8420-c83be7f49365.webp",
     tag: "Commercial Grade",
   },
 ];
@@ -43,14 +43,14 @@ export const ACRYLIC_UV_VIDEOS = [
     id: "acrylic-vid-1",
     title: "3D Acrylic UV Contour Glow",
     video: "/3d-arcylic/videos/25763cbb2ca6866a574a4dde5853343c.mp4",
-    poster: "/3d-arcylic/3235dc09-6dac-4056-88b6-55fc26e28571.png",
+    poster: "/3d-arcylic/3235dc09-6dac-4056-88b6-55fc26e28571.webp",
     tag: "UV Contour Neon",
   },
   {
     id: "acrylic-vid-2",
     title: "Layered 3D Acrylic Studio Showcase",
     video: "/3d-arcylic/videos/a2011a7af86d39e5177de4f68400b705.mp4",
-    poster: "/3d-arcylic/fff64032-bdaa-459c-8caf-a4ac67b89f19.png",
+    poster: "/3d-arcylic/fff64032-bdaa-459c-8caf-a4ac67b89f19.webp",
     tag: "Photographic Depth",
   },
 ];
@@ -63,7 +63,7 @@ export const ACRYLIC_UV_VIDEOS = [
  * real lightbox video exists the stage shows this photo instead of a <video>.
  */
 export const LIGHTBOX_STILL = {
-  image: "/ultra-thin-slim-lightbox/main-hero.png",
+  image: "/ultra-thin-slim-lightbox/main-hero.webp",
   alt: "Custom shop sign shown as flat artwork beside the finished, illuminated lightbox mounted on a wall",
   label: "Artwork to Finished Sign",
 };
@@ -93,7 +93,7 @@ export const SIGN_TYPES_DATA = [
     features: ["Frontlit, halo backlit or dual-lit", "Brushed, mirrored & metallic finishes", "IP67 weatherproof for outdoors"],
     badge: "Architectural Grade",
     video: "/3d-metallic-neon-sign/videos/2.mp4",
-    poster: "/3d-metallic-neon-sign/corporte/056b3189-6a8c-482a-8334-53ded7aff3e1.png",
+    poster: "/3d-metallic-neon-sign/corporte/056b3189-6a8c-482a-8334-53ded7aff3e1.webp",
   },
   {
     id: "lightbox",
@@ -120,7 +120,7 @@ export const SIGN_TYPES_DATA = [
     features: ["High-def full-colour UV print", "Glowing LED neon contours", "Matched to any Pantone / HEX / CMYK"],
     badge: "Art & Branding",
     video: "/3d-arcylic/videos/25763cbb2ca6866a574a4dde5853343c.mp4",
-    poster: "/3d-arcylic/3235dc09-6dac-4056-88b6-55fc26e28571.png",
+    poster: "/3d-arcylic/3235dc09-6dac-4056-88b6-55fc26e28571.webp",
   },
 ];
 

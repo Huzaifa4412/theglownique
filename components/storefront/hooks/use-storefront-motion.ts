@@ -37,34 +37,50 @@ export function useStorefrontMotion(
         },
         (context) => {
           if (context.conditions?.reduceMotion) {
-            gsap.set(
-              all<HTMLElement>(
-                ".announcement__inner, .header__inner, .hero__copy > *, .hero-showcase, .hero-curve__line, .hero-curve__trail",
-              ),
-              { clearProps: "transform,opacity,visibility" },
+            const reduceEls = all<HTMLElement>(
+              ".announcement, .header__inner, .hero__copy > *, .hero-showcase, .hero-curve__line, .hero-curve__trail",
             );
+            if (reduceEls.length > 0) {
+              gsap.set(reduceEls, {
+                clearProps: "transform,opacity,visibility",
+              });
+            }
             return;
           }
 
-          const heroIntroTimeline = gsap
-            .timeline()
-            .from(".announcement__inner", {
+          const heroIntroTimeline = gsap.timeline();
+
+          const announcementEl = one(".announcement");
+          if (announcementEl) {
+            heroIntroTimeline.from(announcementEl, {
               autoAlpha: 0,
               y: -8,
               duration: 0.45,
-            })
-            .from(
-              ".header__inner",
+            });
+          }
+
+          const headerInner = one(".header__inner");
+          if (headerInner) {
+            heroIntroTimeline.from(
+              headerInner,
               { autoAlpha: 0, y: -12, duration: 0.55 },
-              "-=0.2",
-            )
-            .from(
-              ".hero__eyebrow",
+              announcementEl ? "-=0.2" : 0,
+            );
+          }
+
+          const heroEyebrow = one(".hero__eyebrow");
+          if (heroEyebrow) {
+            heroIntroTimeline.from(
+              heroEyebrow,
               { autoAlpha: 0, x: -20, duration: 0.5 },
               "-=0.2",
-            )
-            .from(
-              ".hero-title__line > span",
+            );
+          }
+
+          const heroTitleSpans = all(".hero-title__line > span");
+          if (heroTitleSpans.length > 0) {
+            heroIntroTimeline.from(
+              heroTitleSpans,
               {
                 yPercent: 118,
                 rotate: 2.5,
@@ -73,9 +89,13 @@ export function useStorefrontMotion(
                 ease: "power4.out",
               },
               "-=0.3",
-            )
-            .from(
-              ".hero__intro, .hero__actions",
+            );
+          }
+
+          const heroIntroActions = all(".hero__intro, .hero__actions");
+          if (heroIntroActions.length > 0) {
+            heroIntroTimeline.from(
+              heroIntroActions,
               {
                 autoAlpha: 0,
                 y: 22,
@@ -83,9 +103,13 @@ export function useStorefrontMotion(
                 duration: 0.58,
               },
               "-=0.44",
-            )
-            .from(
-              ".trust-row > div",
+            );
+          }
+
+          const trustDivs = all(".trust-row > div");
+          if (trustDivs.length > 0) {
+            heroIntroTimeline.from(
+              trustDivs,
               {
                 autoAlpha: 0,
                 y: 15,
@@ -93,9 +117,13 @@ export function useStorefrontMotion(
                 duration: 0.45,
               },
               "-=0.28",
-            )
-            .from(
-              ".hero-showcase",
+            );
+          }
+
+          const heroShowcase = one(".hero-showcase");
+          if (heroShowcase) {
+            heroIntroTimeline.from(
+              heroShowcase,
               {
                 autoAlpha: 0,
                 x: context.conditions?.desktop ? 44 : 0,
@@ -103,35 +131,48 @@ export function useStorefrontMotion(
                 duration: 0.9,
               },
               "-=0.88",
-            )
-            .from(
-              ".hero-slide.is-active img",
+            );
+          }
+
+          const activeSlideImg = one(".hero-slide.is-active img");
+          if (activeSlideImg) {
+            heroIntroTimeline.from(
+              activeSlideImg,
               { scale: 1.08, duration: 1.4, ease: "power2.out" },
               "<",
-            )
-            .to(
-              ".hero-curve__line",
+            );
+          }
+
+          const heroCurveLine = one(".hero-curve__line");
+          if (heroCurveLine) {
+            heroIntroTimeline.to(
+              heroCurveLine,
               {
                 strokeDashoffset: 0,
                 duration: 1.35,
                 ease: "power2.inOut",
               },
               "-=0.72",
-            )
-            .to(
-              ".hero-curve__trail",
+            );
+          }
+
+          const heroCurveTrail = one(".hero-curve__trail");
+          if (heroCurveTrail) {
+            heroIntroTimeline.to(
+              heroCurveTrail,
               { autoAlpha: 0.9, duration: 0.45 },
               "-=0.42",
             );
 
-          heroIntroTimeline.add(() => {
-            gsap.to(".hero-curve__trail", {
-              strokeDashoffset: -1,
-              duration: 6.5,
-              repeat: -1,
-              ease: "none",
+            heroIntroTimeline.add(() => {
+              gsap.to(heroCurveTrail, {
+                strokeDashoffset: -1,
+                duration: 6.5,
+                repeat: -1,
+                ease: "none",
+              });
             });
-          });
+          }
 
           const scrollProgress = one<HTMLElement>(
             ".scroll-progress__bar",
@@ -156,14 +197,14 @@ export function useStorefrontMotion(
           const heroCopy = hero
             ? one<HTMLElement>(".hero__copy", hero)
             : null;
-          const heroShowcase = hero
+          const heroShowcaseBox = hero
             ? one<HTMLElement>(".hero-showcase", hero)
             : null;
           const heroMeta = hero
             ? one<HTMLElement>(".slide-meta", hero)
             : null;
 
-          if (hero && heroCopy && heroShowcase) {
+          if (hero && heroCopy && heroShowcaseBox) {
             const heroScroll = gsap.timeline({
               scrollTrigger: {
                 trigger: hero,
@@ -184,7 +225,7 @@ export function useStorefrontMotion(
                 0,
               )
               .to(
-                heroShowcase,
+                heroShowcaseBox,
                 {
                   y: context.conditions?.desktop ? 48 : 22,
                   scale: context.conditions?.desktop ? 1.035 : 1.015,
@@ -208,12 +249,14 @@ export function useStorefrontMotion(
           all<HTMLElement>(
             "[data-reveal], .shop-section, .reviews, .newsletter",
           ).forEach((section) => {
+            const children = Array.from(section.children);
+            if (children.length === 0) return;
             ScrollTrigger.create({
               trigger: section,
               start: "top 84%",
               once: true,
               onEnter: () => {
-                gsap.from(Array.from(section.children), {
+                gsap.from(children, {
                   autoAlpha: 0,
                   y: 32,
                   duration: 0.72,
@@ -242,36 +285,43 @@ export function useStorefrontMotion(
               timelineSection,
             );
 
-            gsap.set(paths, { autoAlpha: 0, strokeDashoffset: 48 });
+            if (paths.length > 0) {
+              gsap.set(paths, { autoAlpha: 0, strokeDashoffset: 48 });
+            }
+
             ScrollTrigger.create({
               trigger: timelineSection,
               start: "top 72%",
               once: true,
               onEnter: () => {
-                const timeline = gsap
-                  .timeline()
-                  .from(Array.from(timelineHeading.children), {
+                const timeline = gsap.timeline();
+                const headingChildren = Array.from(timelineHeading.children);
+                if (headingChildren.length > 0) {
+                  timeline.from(headingChildren, {
                     autoAlpha: 0,
                     y: 22,
                     duration: 0.56,
                     stagger: 0.07,
-                  })
-                  .from(steps[0], {
+                  });
+                }
+                if (steps.length > 0 && steps[0]) {
+                  timeline.from(steps[0], {
                     autoAlpha: 0,
                     y: 24,
                     scale: 0.86,
                     duration: 0.48,
                   });
+                }
 
                 paths.forEach((path, index) => {
-                  timeline
-                    .to(path, {
-                      autoAlpha: 1,
-                      strokeDashoffset: 0,
-                      duration: 0.54,
-                      ease: "power2.inOut",
-                    })
-                    .from(
+                  timeline.to(path, {
+                    autoAlpha: 1,
+                    strokeDashoffset: 0,
+                    duration: 0.54,
+                    ease: "power2.inOut",
+                  });
+                  if (steps[index + 1]) {
+                    timeline.from(
                       steps[index + 1],
                       {
                         autoAlpha: 0,
@@ -281,16 +331,19 @@ export function useStorefrontMotion(
                       },
                       "-=0.12",
                     );
+                  }
                 });
 
-                timeline.add(() => {
-                  gsap.to(paths, {
-                    strokeDashoffset: -72,
-                    duration: 5,
-                    repeat: -1,
-                    ease: "none",
+                if (paths.length > 0) {
+                  timeline.add(() => {
+                    gsap.to(paths, {
+                      strokeDashoffset: -72,
+                      duration: 5,
+                      repeat: -1,
+                      ease: "none",
+                    });
                   });
-                });
+                }
               },
             });
           }
@@ -316,20 +369,23 @@ export function useStorefrontMotion(
                 start: "top 78%",
                 once: true,
                 onEnter: () => {
-                  gsap
-                    .timeline()
-                    .from(Array.from(timelineHeading.children), {
+                  const timeline = gsap.timeline();
+                  const headingChildren = Array.from(timelineHeading.children);
+                  if (headingChildren.length > 0) {
+                    timeline.from(headingChildren, {
                       autoAlpha: 0,
                       y: 18,
                       duration: 0.5,
                       stagger: 0.06,
-                    })
-                    .to(mobileTrack, {
-                      scaleY: 1,
-                      duration: 0.85,
-                      ease: "power2.inOut",
-                    })
-                    .from(
+                    });
+                  }
+                  timeline.to(mobileTrack, {
+                    scaleY: 1,
+                    duration: 0.85,
+                    ease: "power2.inOut",
+                  });
+                  if (mobileSteps.length > 0) {
+                    timeline.from(
                       mobileSteps,
                       {
                         autoAlpha: 0,
@@ -339,6 +395,7 @@ export function useStorefrontMotion(
                       },
                       "-=0.62",
                     );
+                  }
                 },
               });
             }
@@ -361,14 +418,15 @@ export function useStorefrontMotion(
               start: "top 78%",
               once: true,
               onEnter: () => {
-                const timeline = gsap
-                  .timeline()
-                  .from(conceptCopy, {
+                const timeline = gsap.timeline();
+                if (conceptCopy.length > 0) {
+                  timeline.from(conceptCopy, {
                     autoAlpha: 0,
                     x: -24,
                     duration: 0.5,
                     stagger: 0.06,
                   });
+                }
 
                 if (conceptStage) {
                   timeline.from(
@@ -380,7 +438,7 @@ export function useStorefrontMotion(
                       duration: 0.8,
                       ease: "power3.out",
                     },
-                    "-=0.36",
+                    conceptCopy.length > 0 ? "-=0.36" : 0,
                   );
                 }
               },
@@ -427,6 +485,10 @@ export function useStorefrontMotion(
           }
 
           if (comparisonSection) {
+            const comparisonShell = one<HTMLElement>(
+              ".comparison-shell",
+              comparisonSection,
+            );
             const comparisonCopy = all<HTMLElement>(
               ".comparison-copy > *",
               comparisonSection,
@@ -445,14 +507,16 @@ export function useStorefrontMotion(
               start: "top 78%",
               once: true,
               onEnter: () => {
-                const timeline = gsap
-                  .timeline()
-                  .from(comparisonSection.querySelector(".comparison-shell"), {
+                const timeline = gsap.timeline();
+                if (comparisonShell) {
+                  timeline.from(comparisonShell, {
                     autoAlpha: 0,
                     y: 28,
                     duration: 0.65,
-                  })
-                  .from(
+                  });
+                }
+                if (comparisonCopy.length > 0) {
+                  timeline.from(
                     comparisonCopy,
                     {
                       autoAlpha: 0,
@@ -460,9 +524,11 @@ export function useStorefrontMotion(
                       duration: 0.45,
                       stagger: 0.06,
                     },
-                    "-=0.35",
-                  )
-                  .from(
+                    comparisonShell ? "-=0.35" : 0,
+                  );
+                }
+                if (comparisonTableRows.length > 0) {
+                  timeline.from(
                     comparisonTableRows,
                     {
                       autoAlpha: 0,
@@ -472,6 +538,7 @@ export function useStorefrontMotion(
                     },
                     "-=0.46",
                   );
+                }
 
                 if (comparisonRail) {
                   timeline.fromTo(
@@ -543,19 +610,20 @@ export function useStorefrontMotion(
                 );
               }
 
-              inspirationTimeline
-                .from(
-                  inspirationVisual,
-                  {
-                    autoAlpha: 0,
-                    x: -70,
-                    rotation: -5,
-                    scale: 0.9,
-                    duration: 0.8,
-                  },
-                  0,
-                )
-                .from(
+              inspirationTimeline.from(
+                inspirationVisual,
+                {
+                  autoAlpha: 0,
+                  x: -70,
+                  rotation: -5,
+                  scale: 0.9,
+                  duration: 0.8,
+                },
+                0,
+              );
+
+              if (inspirationCopy.length > 0) {
+                inspirationTimeline.from(
                   inspirationCopy,
                   {
                     autoAlpha: 0,
@@ -564,8 +632,11 @@ export function useStorefrontMotion(
                     duration: 0.72,
                   },
                   0.12,
-                )
-                .from(
+                );
+              }
+
+              if (inspirationSteps.length > 0) {
+                inspirationTimeline.from(
                   inspirationSteps,
                   {
                     autoAlpha: 0,
@@ -575,6 +646,7 @@ export function useStorefrontMotion(
                   },
                   0.48,
                 );
+              }
 
               if (inspirationAction) {
                 inspirationTimeline.from(
