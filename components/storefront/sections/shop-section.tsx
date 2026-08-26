@@ -1,9 +1,6 @@
 "use client";
 
-import {
-  MagnifyingGlass,
-  SlidersHorizontal,
-} from "@phosphor-icons/react";
+import { MagnifyingGlass } from "@phosphor-icons/react";
 import { useEffect, useMemo } from "react";
 
 import { IconBox } from "@/components/icon-box";
@@ -101,29 +98,31 @@ export function ShopSection() {
 
       <div className="product-grid">
         {filteredProducts.map((product) => (
-          <article className="product-card" key={product.id}>
+          <article
+            className="product-card cursor-pointer group"
+            key={product.id}
+            onClick={() => openProduct(product)}
+            role="button"
+            tabIndex={0}
+            onKeyDown={(event) => {
+              if (event.key === "Enter" || event.key === " ") {
+                event.preventDefault();
+                openProduct(product);
+              }
+            }}
+            aria-label={`Customize ${product.name}`}
+          >
             <div className="product-card__surface">
-              {product.badge && (
-                <span className="product-badge">{product.badge}</span>
-              )}
               <ProductVisual product={product} />
-              <button
-                className="quick-add"
-                type="button"
-                // The accessible name must contain the visible label ("Customize"),
-                // otherwise voice-control users can't activate what they can read.
-                aria-label={`Customize ${product.name}`}
-                onClick={() => openProduct(product)}
-              >
-                <IconBox icon={SlidersHorizontal} /> Customize
-              </button>
             </div>
             <div className="product-card__info">
               <div>
                 <h3>{product.name}</h3>
                 <p>{product.size}</p>
               </div>
-              <span>Custom quote</span>
+              <span className="text-[#f40b68] font-extrabold text-xs uppercase tracking-wider flex items-center gap-1 group-hover:translate-x-0.5 transition-all">
+                Customize →
+              </span>
             </div>
             {/* Claims we can actually stand behind. Star ratings and review
                 counts belong here only once they come from verified reviews —

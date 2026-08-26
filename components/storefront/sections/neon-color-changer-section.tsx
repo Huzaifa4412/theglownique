@@ -257,6 +257,8 @@ export function NeonColorChangerSection({
 
   const mainCanvasRef = useRef<HTMLCanvasElement | null>(null);
   const overCanvasRef = useRef<HTMLCanvasElement | null>(null);
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const [isSectionVisible, setIsSectionVisible] = useState<boolean>(false);
   const originalPixelsRef = useRef<Uint8ClampedArray | null>(null);
   const animFrameRef = useRef<number | null>(null);
   const partyIntervalRef = useRef<NodeJS.Timeout | null>(null);
@@ -360,8 +362,32 @@ export function NeonColorChangerSection({
     [buildColoredFrame]
   );
 
-  // Load image & initialize canvas
+  // Observe section visibility to defer heavy canvas computation on mobile
   useEffect(() => {
+    const el = sectionRef.current;
+    if (!el || typeof IntersectionObserver === "undefined") {
+      setIsSectionVisible(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsSectionVisible(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "350px 0px" }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  // Load image & initialize canvas once section is visible
+  useEffect(() => {
+    if (!isSectionVisible) return;
+
     const cnv = mainCanvasRef.current;
     const cnvOver = overCanvasRef.current;
     if (!cnv || !cnvOver) return;
@@ -398,7 +424,7 @@ export function NeonColorChangerSection({
       }
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [isSectionVisible]);
 
   // Handle color selection
   const handleSelectColor = (color: NeonColor) => {
@@ -488,6 +514,7 @@ export function NeonColorChangerSection({
 
   return (
     <section
+      ref={sectionRef}
       className="neon-studio-section relative py-20 bg-[#09090b] text-white overflow-hidden"
       id="color-studio"
     >

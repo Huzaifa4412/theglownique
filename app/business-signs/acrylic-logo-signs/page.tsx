@@ -22,14 +22,14 @@ export const metadata: Metadata = {
     description:
       "Custom acrylic signs for business walls, corporate offices, reception desks and retail spaces with UV print & LED neon.",
     url: "/business-signs/acrylic-logo-signs",
-    images: [{ url: "/hero/workspace-sign.png", alt: "3D Acrylic Logo Signs for Business" }],
+    images: [{ url: "/3d-arcylic/3235dc09-6dac-4056-88b6-55fc26e28571.webp", alt: "3D Acrylic Logo Signs for Business" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Custom Acrylic Business Signs & 3D Logos | The Glownique",
     description:
       "Custom acrylic signs for business walls, corporate offices and reception desks with free mockup.",
-    images: ["/hero/workspace-sign.png"],
+    images: ["/3d-arcylic/3235dc09-6dac-4056-88b6-55fc26e28571.webp"],
   },
 };
 
@@ -64,7 +64,7 @@ export default function AcrylicLogoSignsPage() {
         name: "3D UV-Print Acrylic Logo Signs",
         description:
           "High-precision full-color UV printed artwork on clear or tinted acrylic backings integrated with custom LED neon lighting for corporate branding.",
-        image: `${SITE_URL}/hero/workspace-sign.png`,
+        image: `${SITE_URL}/3d-arcylic/3235dc09-6dac-4056-88b6-55fc26e28571.webp`,
         category: "Corporate & Interior Signage",
         brand: { "@type": "Brand", name: "The Glownique" },
         url: pageUrl,
@@ -141,7 +141,7 @@ export default function AcrylicLogoSignsPage() {
             <div className="grid gap-12 md:grid-cols-2 md:items-center">
               <div className="relative aspect-square overflow-hidden rounded-3xl bg-black/5 shadow-lg">
                 <Image
-                  src="/hero/workspace-sign.png"
+                  src="/3d-arcylic/3235dc09-6dac-4056-88b6-55fc26e28571.webp"
                   alt="3D UV-Print Acrylic Logo Sign in office reception"
                   fill
                   className="object-cover"

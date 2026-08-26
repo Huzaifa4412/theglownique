@@ -3711,16 +3711,16 @@ button:active {
   }
 
   .hero__copy {
-    padding: 54px 20px 58px;
+    padding: 32px 18px 36px;
   }
 
   .hero h1 {
-    font-size: clamp(3.25rem, 15.2vw, 5rem);
-    line-height: 0.84;
+    font-size: clamp(3rem, 14vw, 4.5rem);
+    line-height: 0.86;
   }
 
   .hero__intro {
-    line-height: 1.6;
+    line-height: 1.55;
   }
 
   .trust-row {
@@ -3729,7 +3729,7 @@ button:active {
   }
 
   .hero-showcase {
-    min-height: 560px;
+    min-height: clamp(380px, 60vh, 500px);
   }
 
   .hero-curve--desktop {

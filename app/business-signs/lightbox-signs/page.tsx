@@ -22,14 +22,14 @@ export const metadata: Metadata = {
     description:
       "Commercial edge-lit lightboxes for retail storefronts, restaurant menu boards and promotional backlit displays.",
     url: "/business-signs/lightbox-signs",
-    images: [{ url: "/before-after/after-osee-beauty.png", alt: "Ultra-Thin Lightbox Sign" }],
+    images: [{ url: "/ultra-thin-slim-lightbox/main-hero.webp", alt: "Ultra-Thin Lightbox Sign" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Custom Ultra-Thin Lightbox & LED Signs | The Glownique",
     description:
       "Commercial edge-lit lightboxes for retail displays, menu boards and promotional signage.",
-    images: ["/before-after/after-osee-beauty.png"],
+    images: ["/ultra-thin-slim-lightbox/main-hero.webp"],
   },
 };
 
@@ -64,7 +64,7 @@ export default function LightboxSignsPage() {
         name: "Ultra-Thin Lightbox Signs",
         description:
           "Ultra-thin anodized aluminum lightbox signs featuring edge-lit LED illumination for vibrant, shadow-free commercial display graphics.",
-        image: `${SITE_URL}/before-after/after-osee-beauty.png`,
+        image: `${SITE_URL}/ultra-thin-slim-lightbox/main-hero.webp`,
         category: "Commercial Display Signage",
         brand: { "@type": "Brand", name: "The Glownique" },
         url: pageUrl,
@@ -141,7 +141,7 @@ export default function LightboxSignsPage() {
             <div className="grid gap-12 md:grid-cols-2 md:items-center">
               <div className="relative aspect-square overflow-hidden rounded-3xl bg-black/5 shadow-lg">
                 <Image
-                  src="/before-after/after-osee-beauty.png"
+                  src="/ultra-thin-slim-lightbox/main-hero.webp"
                   alt="Ultra-thin lightbox sign in beauty reception"
                   fill
                   className="object-cover"

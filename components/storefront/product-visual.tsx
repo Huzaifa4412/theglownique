@@ -29,13 +29,6 @@ export function ProductVisual({ product }: { product: Product }) {
             background: `radial-gradient(circle at center, ${product.color} 0%, transparent 70%)`,
           }}
         />
-
-        {/* Sign Type Badge Overlay */}
-        {product.signType && (
-          <span className="absolute bottom-2 left-2 z-10 px-2 py-0.5 rounded-full bg-black/60 backdrop-blur-md border border-white/10 text-[10px] font-mono text-gray-300 uppercase tracking-wider">
-            {product.signType}
-          </span>
-        )}
       </div>
     );
   }

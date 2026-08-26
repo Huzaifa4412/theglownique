@@ -370,27 +370,49 @@ export function HeroSection() {
               aria-hidden={index !== activeSlide}
             >
               {index === 1 ? (
-                <video
-                  src="/3d-metallic-neon-sign/videos/2.mp4"
-                  poster="/3d-metallic-neon-sign/corporte/056b3189-6a8c-482a-8334-53ded7aff3e1.webp"
-                  preload={activeSlide === 1 ? "auto" : "none"}
-                  autoPlay={activeSlide === 1}
-                  loop
-                  muted
-                  playsInline
-                  className="w-full h-full object-cover rounded-none"
-                />
+                activeSlide === 1 ? (
+                  <video
+                    src="/3d-metallic-neon-sign/videos/2.mp4"
+                    poster="/3d-metallic-neon-sign/corporte/056b3189-6a8c-482a-8334-53ded7aff3e1.webp"
+                    preload="auto"
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="w-full h-full object-cover rounded-none"
+                  />
+                ) : (
+                  <Image
+                    src="/3d-metallic-neon-sign/corporte/056b3189-6a8c-482a-8334-53ded7aff3e1.webp"
+                    alt="3D Metallic Neon Sign"
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 75vw, 58vw"
+                    loading="lazy"
+                    className="w-full h-full object-cover rounded-none"
+                  />
+                )
               ) : index === 2 ? (
-                <video
-                  src="/3d-arcylic/videos/25763cbb2ca6866a574a4dde5853343c.mp4"
-                  poster="/3d-arcylic/3235dc09-6dac-4056-88b6-55fc26e28571.webp"
-                  preload={activeSlide === 2 ? "auto" : "none"}
-                  autoPlay={activeSlide === 2}
-                  loop
-                  muted
-                  playsInline
-                  className="w-full h-full object-cover rounded-none"
-                />
+                activeSlide === 2 ? (
+                  <video
+                    src="/3d-arcylic/videos/25763cbb2ca6866a574a4dde5853343c.mp4"
+                    poster="/3d-arcylic/3235dc09-6dac-4056-88b6-55fc26e28571.webp"
+                    preload="auto"
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="w-full h-full object-cover rounded-none"
+                  />
+                ) : (
+                  <Image
+                    src="/3d-arcylic/3235dc09-6dac-4056-88b6-55fc26e28571.webp"
+                    alt="3D Acrylic Neon Sign"
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 75vw, 58vw"
+                    loading="lazy"
+                    className="w-full h-full object-cover rounded-none"
+                  />
+                )
               ) : (
                 <Image
                   src={
@@ -408,7 +430,7 @@ export function HeroSection() {
                       : slide.alt
                   }
                   fill
-                  sizes="(max-width: 800px) 100vw, 58vw"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 75vw, 58vw"
                   // Slide 1 is the LCP element, so it must load eagerly and be
                   // preloaded. fetchPriority alone left it loading="lazy",
                   // which delayed LCP discovery by ~900ms. `priority` sets
@@ -416,6 +438,7 @@ export function HeroSection() {
                   // Every other slide stays lazy — preloading off-screen
                   // images is what put 3.44MB of PNG on the critical path.
                   priority={index === 0}
+                  loading={index === 0 ? "eager" : "lazy"}
                   placeholder={index === 0 || index === 3 ? undefined : "blur"}
                 />
               )}

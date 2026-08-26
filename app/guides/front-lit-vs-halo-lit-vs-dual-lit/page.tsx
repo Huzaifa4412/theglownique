@@ -21,14 +21,14 @@ export const metadata: Metadata = {
     description:
       "Comparative guide for storefront channel letter lighting methods, wall reflection requirements, and aesthetic impact.",
     url: "/guides/front-lit-vs-halo-lit-vs-dual-lit",
-    images: [{ url: "/hero/business-coffee.png", alt: "Front-Lit vs Halo-Lit vs Dual-Lit Letters" }],
+    images: [{ url: "/3d-metallic-neon-sign/corporte/056b3189-6a8c-482a-8334-53ded7aff3e1.webp", alt: "Front-Lit vs Halo-Lit vs Dual-Lit Letters" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Front-Lit vs Halo-Lit vs Dual-Lit Letters | The Glownique",
     description:
       "Comparative guide for storefront channel letter lighting methods, wall reflection requirements, and aesthetic impact.",
-    images: ["/hero/business-coffee.png"],
+    images: ["/3d-metallic-neon-sign/corporte/056b3189-6a8c-482a-8334-53ded7aff3e1.webp"],
   },
 };
 

@@ -22,14 +22,14 @@ export const metadata: Metadata = {
     description:
       "Commercial 3D metal channel letters for exterior storefronts and corporate building façades. Frontlit, halo-lit & dual-lit options with IP67 waterproofing.",
     url: "/business-signs/channel-letter-signs",
-    images: [{ url: "/hero/business-coffee.png", alt: "3D Metal Channel Letter Signs" }],
+    images: [{ url: "/3d-metallic-neon-sign/corporte/056b3189-6a8c-482a-8334-53ded7aff3e1.webp", alt: "3D Metal Channel Letter Signs" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Custom Channel Letter & 3D Metal Signs | The Glownique",
     description:
       "Commercial 3D metal channel letters for exterior storefronts and corporate building façades.",
-    images: ["/hero/business-coffee.png"],
+    images: ["/3d-metallic-neon-sign/corporte/056b3189-6a8c-482a-8334-53ded7aff3e1.webp"],
   },
 };
 
@@ -64,7 +64,7 @@ export default function ChannelLetterSignsPage() {
         name: "Custom 3D Metal Channel Letter Signs",
         description:
           "Custom fabricated 3D stainless steel channel letters offering front-lit, halo backlit, or dual-lit LED illumination for architectural storefronts and building façades.",
-        image: `${SITE_URL}/hero/business-coffee.png`,
+        image: `${SITE_URL}/3d-metallic-neon-sign/corporte/056b3189-6a8c-482a-8334-53ded7aff3e1.webp`,
         category: "Exterior Commercial Signage",
         brand: { "@type": "Brand", name: "The Glownique" },
         url: pageUrl,
@@ -141,7 +141,7 @@ export default function ChannelLetterSignsPage() {
             <div className="grid gap-12 md:grid-cols-2 md:items-center">
               <div className="relative aspect-square overflow-hidden rounded-3xl bg-black/5 shadow-lg">
                 <Image
-                  src="/hero/business-coffee.png"
+                  src="/3d-metallic-neon-sign/corporte/056b3189-6a8c-482a-8334-53ded7aff3e1.webp"
                   alt="3D Metal Channel Letter Sign on commercial storefront"
                   fill
                   className="object-cover"

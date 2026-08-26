@@ -22,14 +22,14 @@ export const metadata: Metadata = {
     description:
       "Handcrafted custom illuminated business signs for storefronts, offices, restaurants, salons and events — LED neon, 3D channel letters, lightboxes & acrylic logo signs.",
     url: "/business-signs",
-    images: [{ url: "/hero/neon-sign-hero.png", alt: "The Glownique Custom Business Signage" }],
+    images: [{ url: "/hero/neon-sign-hero.webp", alt: "The Glownique Custom Business Signage" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Custom Business & Storefront Signs | The Glownique",
     description:
       "Handcrafted custom illuminated business signs — LED neon, 3D channel letters, lightboxes & acrylic logo signs.",
-    images: ["/hero/neon-sign-hero.png"],
+    images: ["/hero/neon-sign-hero.webp"],
   },
 };
 
@@ -40,7 +40,7 @@ const b2bProducts = [
     category: "Brand & Interior",
     tagline: "Flexible LED silicone neon tubing mapped precisely to your brand logo, corporate typography, and Pantone colors.",
     specs: ["12V Low Voltage", "Shatterproof Silicone", "Pantone & HEX Match", "Indoor & IP67 Outdoor"],
-    image: "/hero/neon-sign-hero.png",
+    image: "/hero/neon-sign-hero.webp",
     accent: "#f40b68",
   },
   {
@@ -49,7 +49,7 @@ const b2bProducts = [
     category: "Storefront & Exterior",
     tagline: "Fabricated stainless-steel 3D letters with frontlit, halo backlit or dual-lit LED illumination for outdoor building façades.",
     specs: ["Frontlit / Halo / Dual-lit", "316 Stainless Steel", "Architectural Finishes", "Commercial Grade"],
-    image: "/hero/business-coffee.png",
+    image: "/3d-metallic-neon-sign/corporte/056b3189-6a8c-482a-8334-53ded7aff3e1.webp",
     accent: "#d97706",
   },
   {
@@ -58,7 +58,7 @@ const b2bProducts = [
     category: "Retail & Display",
     tagline: "Slim anodized aluminum lightboxes with edge-lit matrix LEDs for uniform, shadow-free promotional and menu displays.",
     specs: ["Ultra-Slim Profile", "Edge-Lit Uniform LED", "Tool-Free Graphic Swap", "Wall / Window Mount"],
-    image: "/before-after/after-osee-beauty.png",
+    image: "/ultra-thin-slim-lightbox/main-hero.webp",
     accent: "#2563eb",
   },
   {
@@ -67,7 +67,7 @@ const b2bProducts = [
     category: "Office & Reception",
     tagline: "Full-color UV-printed artwork on crystal-clear acrylic paired with glowing LED neon contours for executive brand walls.",
     specs: ["High-Res UV Print", "Layered 3D Acrylic", "LED Contour Glow", "Precision Laser Cut"],
-    image: "/hero/workspace-sign.png",
+    image: "/3d-arcylic/3235dc09-6dac-4056-88b6-55fc26e28571.webp",
     accent: "#7c3aed",
   },
 ];
