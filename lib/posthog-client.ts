@@ -22,17 +22,20 @@ function loadPostHog(): Promise<PostHogClient | null> {
     .then(({ default: posthog }) => {
       posthog.init(token!, {
         api_host: "/ingest",
+        ui_host: "https://us.posthog.com",
         defaults: "2026-01-30",
         autocapture: false,
         capture_pageview: false,
         capture_pageleave: false,
         capture_exceptions: false,
         capture_performance: false,
+        capture_dead_clicks: false,
+        enable_heatmaps: false,
         disable_session_recording: true,
         disable_surveys: true,
-        disable_external_dependency_loading: true,
+        disable_external_dependency_loading: false,
         advanced_disable_flags: true,
-        debug: process.env.NODE_ENV === "development",
+        debug: false,
       });
 
       return posthog;
