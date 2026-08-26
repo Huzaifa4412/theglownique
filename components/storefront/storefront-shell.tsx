@@ -15,6 +15,8 @@ import {
   StorefrontContext,
   type StorefrontContextValue,
 } from "@/components/storefront/storefront-context";
+import posthog from "posthog-js";
+
 import {
   trackConfiguratorOpen,
   trackSearch,
@@ -67,7 +69,10 @@ export function StorefrontShell({ children }: { children: ReactNode }) {
       // "all" is the default and the reset — it says nothing about what the
       // visitor is shopping for, so it isn't worth an event. A real category is:
       // "weddings" and "business" are entirely different ad audiences.
-      if (category !== "all") trackViewCategory(categoryLabels[category]);
+      if (category !== "all") {
+        trackViewCategory(categoryLabels[category]);
+        posthog.capture("catalog_filtered", { category: categoryLabels[category] });
+      }
       if (shouldScroll) scrollToShop();
     },
     [scrollToShop],
@@ -80,10 +85,10 @@ export function StorefrontShell({ children }: { children: ReactNode }) {
       if (searchTrackTimerRef.current) clearTimeout(searchTrackTimerRef.current);
       const query = value.trim();
       if (query.length >= MIN_TRACKED_QUERY_LENGTH) {
-        searchTrackTimerRef.current = setTimeout(
-          () => trackSearch(query),
-          SEARCH_TRACK_DELAY_MS,
-        );
+        searchTrackTimerRef.current = setTimeout(() => {
+          trackSearch(query);
+          posthog.capture("catalog_searched", { query });
+        }, SEARCH_TRACK_DELAY_MS);
       }
 
       if (fromHeader && value.length > 1) scrollToShop();
@@ -102,6 +107,10 @@ export function StorefrontShell({ children }: { children: ReactNode }) {
     // Customize buttons and every CustomQuoteButton on the page — so this is the
     // one place the AddToCart-equivalent needs to fire.
     trackConfiguratorOpen(product.name, categoryLabels[product.category]);
+    posthog.capture("configurator_opened", {
+      product_name: product.name,
+      category: categoryLabels[product.category],
+    });
   }, []);
 
   const closeProduct = useCallback(() => {

@@ -4,6 +4,7 @@ import { NextResponse } from "next/server";
 
 import { LEAD_LIMITS, type LeadPayload } from "@/lib/leads";
 import { callerKey, createRateLimiter } from "@/lib/rate-limit";
+import { getPostHogClient } from "@/lib/posthog-server";
 import {
   HAS_SANITY_WRITE_ACCESS,
   writeClient,
@@ -152,6 +153,17 @@ export async function POST(request: Request) {
 
   try {
     await writeClient.create(document);
+
+    const posthog = getPostHogClient();
+    if (posthog) {
+      posthog.capture({
+        distinctId: email,
+        event: "lead_archived",
+        properties: { source, topic: clean(body.topic, LEAD_LIMITS.short) },
+      });
+      await posthog.flush();
+    }
+
     return NextResponse.json({ archived: true }, { status: 201 });
   } catch (error) {
     // Log for us, succeed for them. Losing the archive copy must not look like a

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import posthog from "posthog-js";
 
 import {
   trackGuideView,
@@ -76,6 +77,7 @@ export function MetaViewCategory({ category }: { category: string }) {
     if (fired.current) return;
     fired.current = true;
     trackViewCategory(category);
+    posthog.capture("sign_type_page_viewed", { category });
   }, [category]);
 
   return null;

@@ -4,6 +4,7 @@ import { NextResponse } from "next/server";
 
 import { callerKey, createRateLimiter } from "@/lib/rate-limit";
 import type { OutboundClickPayload } from "@/lib/outbound-click";
+import { getPostHogClient } from "@/lib/posthog-server";
 import { HAS_SANITY_WRITE_ACCESS, writeClient } from "@/sanity/lib/write-client";
 
 /**
@@ -169,6 +170,22 @@ export async function POST(request: Request) {
 
   try {
     await writeClient.create(document);
+
+    const posthog = getPostHogClient();
+    if (posthog) {
+      posthog.capture({
+        distinctId: `anonymous-${randomUUID()}`,
+        event: "outbound_click_tracked",
+        properties: {
+          channel,
+          source,
+          page_path: pagePath,
+          device: document.device,
+        },
+      });
+      await posthog.flush();
+    }
+
     return NextResponse.json({ recorded: true }, { status: 201 });
   } catch (error) {
     console.error("[outbound-click] Sanity write failed:", error);

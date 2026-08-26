@@ -6,6 +6,7 @@ import {
   DM_Sans,
   Manrope, Geist } from "next/font/google";
 import "./globals.css";
+import { GoogleAnalytics } from "@/components/analytics/google-analytics";
 import { MetaPixel } from "@/components/analytics/meta-pixel";
 import { MetaPixelEvents } from "@/components/analytics/meta-pixel-events";
 import { PreChatGate } from "@/components/chat/pre-chat-gate";
@@ -170,6 +171,7 @@ export default function RootLayout({
         />
         {children}
         <Analytics />
+        <GoogleAnalytics />
         {/* Base pixel + the event layer that fires PageView per route and picks
             up WhatsApp/Etsy outbound clicks. See lib/meta-pixel.ts for the full
             event map and for what is deliberately not tracked. */}

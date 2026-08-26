@@ -1,0 +1,52 @@
+[
+  {
+    "event_name": "quote_submitted",
+    "event_description": "User completed the contact/quote form and opened WhatsApp with their brief.",
+    "file": "components/contact/contact-form.tsx"
+  },
+  {
+    "event_name": "configurator_opened",
+    "event_description": "User clicked Customize on a product card and opened the quote configurator dialog.",
+    "file": "components/storefront/storefront-shell.tsx"
+  },
+  {
+    "event_name": "newsletter_signed_up",
+    "event_description": "User submitted their email to the newsletter for the 10% welcome discount.",
+    "file": "components/storefront/sections/newsletter-section.tsx"
+  },
+  {
+    "event_name": "chat_initiated",
+    "event_description": "User completed the pre-chat gate form and opened the live chat widget.",
+    "file": "components/chat/pre-chat-gate.tsx"
+  },
+  {
+    "event_name": "catalog_filtered",
+    "event_description": "User selected a sign category filter in the product catalog.",
+    "file": "components/storefront/storefront-shell.tsx"
+  },
+  {
+    "event_name": "catalog_searched",
+    "event_description": "User searched the product catalog with a keyword query.",
+    "file": "components/storefront/storefront-shell.tsx"
+  },
+  {
+    "event_name": "lead_archived",
+    "event_description": "Server confirmed a lead was successfully saved to Sanity (server-side).",
+    "file": "app/api/leads/route.ts"
+  },
+  {
+    "event_name": "outbound_click_tracked",
+    "event_description": "Server confirmed a WhatsApp or Etsy outbound click was recorded (server-side).",
+    "file": "app/api/outbound-click/route.ts"
+  },
+  {
+    "event_name": "sign_type_page_viewed",
+    "event_description": "User viewed a business sign type sub-page, the top of the commercial conversion funnel.",
+    "file": "app/business-signs/page.tsx"
+  },
+  {
+    "event_name": "custom_signage_page_viewed",
+    "event_description": "User viewed the custom signage overview page, top of the residential/event funnel.",
+    "file": "app/custom-signage/page.tsx"
+  }
+]

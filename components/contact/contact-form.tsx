@@ -2,6 +2,8 @@
 
 import { useMemo, useState, type FormEvent } from "react";
 
+import posthog from "posthog-js";
+
 import { WhatsappIcon } from "@/components/ui/whatsapp-icon";
 import { archiveLead } from "@/lib/leads";
 import { trackQuoteSubmitted, trackWhatsappContact } from "@/lib/meta-pixel";
@@ -225,6 +227,18 @@ export function ContactForm() {
       // Reporting it as a Lead would poison the metric campaigns optimise on.
       trackWhatsappContact("contact-page-form", "/contact");
     }
+
+    // Identify the visitor by email so server-side lead events correlate.
+    posthog.identify(email.trim(), { name: fullName.trim() });
+    posthog.capture("quote_submitted", {
+      topic,
+      sign_type: activeTopic.wantsSpec ? signType || undefined : undefined,
+      size: activeTopic.wantsSpec ? size || undefined : undefined,
+      usage_location: activeTopic.wantsSpec ? usageLocation || undefined : undefined,
+      budget: activeTopic.wantsSpec ? budget || undefined : undefined,
+      timeline: activeTopic.wantsSpec ? timeline || undefined : undefined,
+      delivery_country: country || undefined,
+    });
 
     setHandedOff(true);
     window.open(url, "_blank", "noopener,noreferrer");
