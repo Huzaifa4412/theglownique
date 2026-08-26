@@ -6,7 +6,6 @@ import {
   DM_Sans,
   Manrope, Geist } from "next/font/google";
 import "./globals.css";
-import { GoogleAnalytics } from "@/components/analytics/google-analytics";
 import { MetaPixel } from "@/components/analytics/meta-pixel";
 import { MetaPixelEvents } from "@/components/analytics/meta-pixel-events";
 import { PreChatGate } from "@/components/chat/pre-chat-gate";
@@ -164,6 +163,24 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={cn(dmSans.variable, manrope.variable, cormorant.variable, "font-sans", geist.variable)}>
+      <head>
+        {/* Google tag (gtag.js) */}
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-6PWLMLHEMK"
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+
+              gtag('config', 'G-6PWLMLHEMK');
+            `,
+          }}
+        />
+      </head>
       <body>
         <script
           type="application/ld+json"
@@ -171,7 +188,6 @@ export default function RootLayout({
         />
         {children}
         <Analytics />
-        <GoogleAnalytics />
         {/* Base pixel + the event layer that fires PageView per route and picks
             up WhatsApp/Etsy outbound clicks. See lib/meta-pixel.ts for the full
             event map and for what is deliberately not tracked. */}
