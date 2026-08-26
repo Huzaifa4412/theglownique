@@ -57,8 +57,7 @@ export const Card = React.memo(
           className="focus-card__image"
           fill
           sizes="(max-width: 800px) 100vw, 50vw"
-          // String paths to /public are optimizable — only the blur
-          // placeholder needs a static import to generate its own blurDataURL.
+          loading="lazy"
           placeholder={isStringImage ? undefined : "blur"}
         />
         <span className="focus-card__scrim" aria-hidden="true" />

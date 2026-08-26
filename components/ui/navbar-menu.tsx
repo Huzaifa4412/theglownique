@@ -123,7 +123,7 @@ export const ProductItem = ({
         height={65}
         alt={title}
         className="shrink-0 rounded-lg object-cover shadow-sm group-hover:scale-105 transition-transform"
-        unoptimized
+        loading="lazy"
       />
       <div>
         <h4 className="text-xs font-extrabold text-[#1e1a22] group-hover:text-[#ce0754] transition-colors mb-0.5">

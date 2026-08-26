@@ -13,7 +13,10 @@ if (!token || !host) {
   posthog.init(token, {
     api_host: "/ingest",
     defaults: "2026-01-30",
+    capture_pageview: false,
     capture_exceptions: true,
+    disable_session_recording: true,
+    disable_surveys: true,
     debug: process.env.NODE_ENV === "development",
   });
 }

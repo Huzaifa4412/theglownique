@@ -27,7 +27,7 @@ const RAIL_SOURCE: {
     slug: "custom-neon-signs",
     label: "For Home",
     actionText: "Shop now",
-    image: "/hero/neon-sign-hero.webp",
+    image: "/thumbnails/neon-sign-thumb.webp",
     imageAlt:
       "Someone holding a white script LED neon name sign reading Olivia, with small pink hearts",
   },
@@ -36,7 +36,7 @@ const RAIL_SOURCE: {
     slug: "3d-metal-neon-signs",
     label: "For Business",
     actionText: "Shop now",
-    image: "/3d-metallic-neon-sign/corporte/056b3189-6a8c-482a-8334-53ded7aff3e1.webp",
+    image: "/thumbnails/metal-sign-thumb.webp",
     imageAlt:
       "Halo-backlit 3D metal letters spelling Estudio Sur, glowing warm on a dark office reception wall",
   },
@@ -45,7 +45,7 @@ const RAIL_SOURCE: {
     slug: "uv-print-acrylic-signs",
     label: "Custom Art & Branding",
     actionText: "Shop now",
-    image: "/3d-arcylic/3235dc09-6dac-4056-88b6-55fc26e28571.webp",
+    image: "/thumbnails/acrylic-sign-thumb.webp",
     imageAlt:
       "Illuminated white 3D acrylic letters spelling Sabroso! across a restaurant feature wall",
   },
@@ -54,7 +54,7 @@ const RAIL_SOURCE: {
     slug: "ultra-thin-lightbox",
     label: "Create Your Own",
     actionText: "Start designing",
-    image: "/ultra-thin-slim-lightbox/main-hero.webp",
+    image: "/thumbnails/lightbox-thumb.webp",
     imageAlt:
       "A Pop's Shop crest logo lightbox shown side by side, unlit and lit with a warm halo glow",
   },
@@ -92,8 +92,7 @@ export function CategoryRail() {
               alt={item.imageAlt}
               fill
               sizes="(max-width: 800px) 50vw, 25vw"
-              loading="eager"
-              unoptimized
+              loading="lazy"
               className="object-cover transition-transform duration-400 ease-out group-hover:scale-105"
             />
           </div>

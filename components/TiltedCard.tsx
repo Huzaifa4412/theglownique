@@ -85,7 +85,7 @@ export default function TiltedCard({
           fill
           sizes={sizes}
           placeholder={isStatic ? "blur" : undefined}
-          unoptimized={!isStatic}
+          loading="lazy"
         />
         {overlayContent ? (
           <div className="tilted-card-overlay">{overlayContent}</div>

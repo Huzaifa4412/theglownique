@@ -159,7 +159,6 @@ export function ProductDetail({ slug }: { slug: string }) {
                   fill
                   priority
                   sizes="(max-width: 1024px) 100vw, 50vw"
-                  unoptimized
                   className="object-cover"
                 />
               )}
@@ -244,7 +243,7 @@ export function ProductDetail({ slug }: { slug: string }) {
                 alt={product.craft.imageAlt}
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
-                unoptimized
+                loading="lazy"
                 className="object-cover"
               />
             </div>
@@ -373,7 +372,7 @@ export function ProductDetail({ slug }: { slug: string }) {
                         alt={style.imageAlt}
                         fill
                         sizes="(max-width: 768px) 100vw, 33vw"
-                        unoptimized
+                        loading="lazy"
                         className="object-cover transition-transform duration-500 group-hover:scale-105"
                       />
                     </div>
@@ -458,7 +457,7 @@ export function ProductDetail({ slug }: { slug: string }) {
                       alt={useCase.alt}
                       fill
                       sizes="(max-width: 640px) 100vw, 25vw"
-                      unoptimized
+                      loading="lazy"
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
                     />
                   </div>
@@ -492,7 +491,7 @@ export function ProductDetail({ slug }: { slug: string }) {
                 alt={activeImage.alt}
                 fill
                 sizes="(max-width: 1024px) 100vw, 60vw"
-                unoptimized
+                loading="lazy"
                 className="object-cover"
               />
             </div>
@@ -512,7 +511,7 @@ export function ProductDetail({ slug }: { slug: string }) {
                     alt={item.alt}
                     fill
                     sizes="25vw"
-                    unoptimized
+                    loading="lazy"
                     className="object-cover"
                   />
                 </button>
@@ -619,7 +618,7 @@ export function ProductDetail({ slug }: { slug: string }) {
                       alt={item.name}
                       fill
                       sizes="(max-width: 640px) 100vw, 33vw"
-                      unoptimized
+                      loading="lazy"
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
                     />
                   </div>

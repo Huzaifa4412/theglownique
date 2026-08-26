@@ -55,7 +55,7 @@ export function ProductVisual({ product }: { product: Product }) {
             alt={product.name}
             fill
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 40vw"
-            unoptimized
+            loading="lazy"
             className="object-contain w-full h-full p-2 transition-transform duration-700 ease-out group-hover:scale-105 filter drop-shadow-[0_15px_30px_rgba(0,0,0,0.6)]"
           />
         </div>
