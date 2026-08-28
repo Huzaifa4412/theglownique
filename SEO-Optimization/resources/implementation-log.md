@@ -507,3 +507,173 @@ a distributed attacker. Anything more needs a WAF rule or a shared store, and
   closest thing to a conversion rate this site can honestly produce.
 - Nothing links a click to the lead it may have produced, and nothing should
   without an identifier — which is the thing the privacy stance rules out.
+
+---
+
+## Release 2026-08-28 — the eight /business-signs industry landing pages
+
+The B2B industry cluster from Section 6C of
+[13-news-editorial-and-new-pages-blueprint.md](../13-news-editorial-and-new-pages-blueprint.md),
+built and live. The consumer `/custom-signage/*` collection pages in the same
+blueprint were **not** built: that hub is a positioning decision, not a slug
+decision, and it is still open.
+
+### The slug rename that came first
+
+The three planning documents disagreed with each other before any code was
+written, and doc 13 disagreed with itself — its Section 4A table used
+`offices-reception` and `restaurants-bars` while its own Section 6C had already
+replaced them. Reconciled across all three, on the rule that a slug matches the
+head term it is meant to rank for rather than an internal category label:
+
+| Was | Now | Why |
+|---|---|---|
+| `restaurants-bars` | `bar-signs` **+** `restaurant-signs` | Two head terms (4,400 and 2,900), two intents, and the competitor ranks two separate pages. |
+| `offices-reception` | `office-signs` | `office signs` is 2,900/mo at $9.82 CPC. "offices-reception" matches no query. |
+| `gyms-fitness-studios` | `gym-fitness-signs` | `gym neon sign`, 590/mo at SD 23 — the lowest difficulty on the map. |
+| `salons-spas` | `salon-spa-signs` | Matches `salon neon sign`. |
+| `events-trade-shows` | `trade-show-signs` | Renamed, and deliberately kept in the B2B cluster. |
+| — | `open-signs` | New. `neon open sign`, 3,600/mo; the competitor's equivalent earns 3,342 visits/mo. |
+| `retail-storefronts` | unchanged | No head-term data yet, so not renamed on guesswork. |
+
+Section 6C had folded trade shows into a consumer `/custom-signage/event-signs`
+page alongside birthdays and parties. Exhibitor intent is commercial and buys
+differently; one page serving both ranks for neither, so trade shows stayed in
+`/business-signs` and the consumer event page was left to the unbuilt hub.
+
+### Shipped
+
+| ID | Change | Evidence |
+|---|---|---|
+| — | `lib/industry-pages.ts` — all eight pages as data: metadata, copy, materials, considerations, applications and five FAQs each. One source for the slugs, which lib/routes.ts and the audit both read. | `lib/industry-pages.ts` |
+| — | `components/business-signs/industry-page.tsx` — the single renderer behind all eight, so they cannot drift in structure or schema the way the four hand-copied sign-type pages already have. | 8 route files, 12 lines each |
+| TECH-05 | Eight routes registered in `lib/routes.ts`, spread from `INDUSTRY_PAGES` rather than hand-listed, at `lastModified: 2026-08-28`. All eight prerender static and appear in the sitemap. | `/sitemap.xml` |
+| TECH-20 | `scripts/seo-audit.mjs` manifest parser generalised. It special-cased the `PRODUCT_PAGES` spread by reading that one catalog; a second spread would have been silently skipped by every check. Both catalogs now expand through one loop. | audit covers 50 routes, was 42 |
+| TECH-04 | Eight titles, all under the 60-char ceiling once the ` | The Glownique` template is applied — 45 to 55 rendered. | `npm run seo:audit` |
+| — | Schema per page: `CollectionPage` + `ItemList` of the sign types that suit the industry + `BreadcrumbList` + `FAQPage`. Not `Product` — these sell a category to an industry, not one purchasable item. No `AggregateRating` anywhere: the brand cannot mark up its own reviews. | JSON-LD parsed on every page |
+| — | Internal linking closed both ways. The hub's industry cards were static text; they now render from `INDUSTRY_PAGES` as links, and each industry page links back to all four sign-type pages. | hub → 12 children, each child → 4 |
+
+### Claims
+
+Copy on these pages restates only claims already carrying evidence in
+[claims-and-proof-register.csv](claims-and-proof-register.csv): the 5-year
+warranty (CLM-004), the free design mockup (CLM-003), IP67 outdoor
+construction (CLM-008), 12V shatterproof silicone (CLM-009) and Pantone/HEX
+matching (CLM-010).
+
+No page states a price, a lead time, a delivery cost, a customer count or a
+rating. CLM-002 (lead time) is still an open conflict and CLM-001 (free
+delivery) is retired, which the audit enforces. Where a page would naturally
+have reached for proof we do not have — customer photos, template galleries
+with prices, testimonials — it says nothing instead.
+
+Each page also states plainly that we do not install: national supply,
+customer-arranged local contractor for mounting, electrical connection, permits
+and landlord consent.
+
+### Still open
+
+- **The consumer hub is undecided.** `wedding signs` is 14,800/mo at SD 39 —
+  the largest volume on the whole map — but it is consumer intent at $1.88 CPC
+  against `office signs` at $9.82, and `/custom-signage` currently exists as
+  the broad product catalog, not an occasion hub. Building it changes what that
+  page means. The rows are mapped and marked `POSITIONING DECISION PENDING`.
+- **Two pages have no volume data.** `retail-storefronts` and
+  `trade-show-signs` shipped on the strength of the cluster rather than their
+  own numbers. Validate before investing further in them.
+- **No first-party proof on any of the eight.** Every page would convert better
+  with real project photography from that industry. `/projects` does not exist
+  yet, and these pages are its most obvious consumer.
+- **IndexNow not submitted.** `npm run indexnow` should be run against the
+  eight new paths once this is deployed to production.
+
+---
+
+## Release 2026-08-28b — the /custom-signage collection pages, and one shared renderer
+
+The three consumer collection pages the previous release deliberately held
+back. The positioning question it left open — whether a B2B commercial supplier
+should also chase consumer occasion search — was answered: build it.
+
+### The refactor that came first
+
+The previous release shipped eight pages through one renderer that had
+`/business-signs` and "Business Signs" hardcoded in its breadcrumb, its schema
+trail and both CTAs. Three more pages under a different hub would have meant
+either a second 250-line copy of it or a hub-shaped hole in the first one.
+
+So the shape moved out ahead of the content:
+
+| File | Holds |
+|---|---|
+| `lib/landing-pages.ts` | The `LandingPage` shape, the claims policy, `landingMetadata()`, `landingPath()`, `requireLandingPage()`, and `SIGN_TYPE_HREF` — the four sign-type destinations every landing page routes toward. |
+| `lib/industry-pages.ts` | The eight B2B entries. Content only now. |
+| `lib/collection-pages.ts` | The three consumer entries. |
+| `components/landing/landing-page.tsx` | The renderer, moved from `components/business-signs/` and made parent-aware. |
+
+Each catalog attaches its own hub once for the whole family rather than
+repeating it on every entry:
+
+```ts
+export const COLLECTION_PAGES: readonly LandingPage[] = COLLECTION_CONTENT.map((page) => ({
+  ...page,
+  parent: { href: "/custom-signage", label: "Custom Signage" },
+  footerLink: { href: "/custom-signage", label: "Browse All Sign Types" },
+}));
+```
+
+Verified after the move that the eight B2B pages still render "Business Signs"
+in the breadcrumb and the schema trail — the refactor was meant to be invisible
+to them and is.
+
+### Shipped
+
+| ID | Change | Evidence |
+|---|---|---|
+| — | `/custom-signage/wedding-signs` — `wedding signs`, 14,800/mo at SD 39, the largest volume on the keyword map. `wedding neon sign` (2,900) is a supporting term on the same page, not a second page. | route renders, in sitemap |
+| — | `/custom-signage/home-decor-signs` and `/custom-signage/event-signs`. Both ship on competitor traffic proof rather than their own head-term data, and are marked P2 accordingly. | keyword map SIG-EVENT, SIG-HOMEDECOR |
+| TECH-05 | Three routes spread from `COLLECTION_PAGES` into `lib/routes.ts` at `lastModified: 2026-08-28`. `/custom-signage` itself moved to that date and to priority 0.85: its content materially changed when it gained an occasion section. | `/sitemap.xml` |
+| TECH-20 | `scripts/seo-audit.mjs` gained a third catalog line. Audit now covers 53 routes, up from 50. | `npm run seo:audit` |
+| — | `/custom-signage` is now a hub as well as a catalog: a "Shop by Occasion" section links the three collections, and an `ItemList` in its schema names them. It previously had no route into any child. | hub → 3 children |
+| — | Same schema per page as the B2B set: `CollectionPage` + `ItemList` + `BreadcrumbList` + `FAQPage`, no `AggregateRating`. | JSON-LD parsed on all three |
+
+### Two content decisions worth recording
+
+**No channel letters in the consumer catalog.** `SIGN_TYPE_HREF.channel` is
+deliberately unused in `lib/collection-pages.ts` — fabricated exterior metal
+lettering is a storefront product and none of these three audiences buys one.
+Listing all four everywhere would have padded the choice rather than helped it.
+
+**`event-signs` is consumer only.** Section 6C of the blueprint originally
+folded trade-show signage in with birthdays and parties. Exhibitor intent is
+commercial and buys differently, so trade shows stayed at
+`/business-signs/trade-show-signs` and this page covers parties and
+celebrations. Two pages, two intents, no cannibalisation.
+
+### Claims
+
+Unchanged from the previous release, and the consumer pages are the ones where
+this bites hardest. Wedding and party buyers ask about price and delivery
+timing first, and both are things we cannot state: CLM-002 (lead time) is an
+open conflict and CLM-001 (delivery) is retired. Every page answers what it can
+— battery versus plug, mounting, colour temperature, how it photographs — and
+says nothing where the evidence does not exist.
+
+The blueprint's Section 6D anatomy asks for a "curated template showcase with
+starting prices". That section is not built, because there are no approved
+prices and no template catalog. It is the largest remaining gap on these three
+pages.
+
+### Still open
+
+- **Prices are the conversion blocker here, not the copy.** A consumer buying a
+  wedding sign compares on price and lead time before anything else. Until
+  CLM-002 is resolved and a price basis is approved, these pages send everyone
+  to a WhatsApp quote for a question the competition answers on the page.
+- **No real customer photography.** Every image on these three is a product
+  shot. Wedding and party collections convert on real customer photos more than
+  any other category, and the competitor pages that outrank us lead with them.
+- **`home-decor-signs` and `event-signs` have no validated head terms.**
+  Validate before investing further; `wedding-signs` is the one with evidence.
+- **IndexNow still not submitted.** `npm run indexnow` covers all eleven new
+  paths from both releases once this is deployed.

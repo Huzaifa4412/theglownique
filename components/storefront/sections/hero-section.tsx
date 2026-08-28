@@ -1,6 +1,5 @@
 "use client";
 
-import { Sparkles, Zap } from "lucide-react";
 import {
   ArrowLeft,
   ArrowRight,
@@ -22,6 +21,10 @@ import TextType from "@/components/TextType";
 import { categoryLabels, heroSlides } from "@/lib/store-data";
 
 const CAROUSEL_DURATION = 5500;
+
+/** Shared by both crops of slide 4, which are the same picture. */
+const LIGHTBOX_SLIDE_ALT =
+  "Client concept sketch beside a finished ultra-thin slim LED lightbox by The Glownique";
 
 export function HeroSection() {
   const heroRef = useRef<HTMLElement>(null);
@@ -274,7 +277,7 @@ export function HeroSection() {
           {heroSlides.map((slide, index) => (
             <article
               key={slide.id}
-              className={`hero-slide${index === activeSlide ? " is-active" : ""}${index === 0 ? " hero-slide--neon" : ""}`}
+              className={`hero-slide${index === activeSlide ? " is-active" : ""}${index === 0 ? " hero-slide--neon" : ""}${index === 3 ? " hero-slide--lightbox" : ""}`}
               aria-hidden={index !== activeSlide}
             >
               {index === 1 ? (
@@ -321,20 +324,47 @@ export function HeroSection() {
                     className="w-full h-full object-cover rounded-none"
                   />
                 )
+              ) : index === 3 ? (
+                /*
+                 * Two crops of the same scene, one picked by CSS.
+                 *
+                 * The stage is wide on a desktop and taller than it is wide on
+                 * a phone, and `object-fit: cover` resolves that difference by
+                 * throwing away the sides — which on this slide meant losing
+                 * the sketch half of the sketch-to-sign transformation the
+                 * slide exists to show. So the phone gets a frame composed for
+                 * a narrow stage rather than a centre-crop of a wide one.
+                 *
+                 * Both are lazy and one is always `display: none`, and a
+                 * display:none image never intersects the viewport, so the
+                 * browser only ever fetches the crop it is going to paint.
+                 * Same alt on both for the same reason — display:none is out
+                 * of the accessibility tree, so only one is ever announced.
+                 */
+                <div className="hero-slide__lightbox-frame">
+                  <Image
+                    src="/ultra-thin-slim-lightbox/main-hero.webp"
+                    alt={LIGHTBOX_SLIDE_ALT}
+                    fill
+                    sizes="(max-width: 1024px) 75vw, 58vw"
+                    loading="lazy"
+                    className="hero-slide__art--wide"
+                  />
+                  <Image
+                    src="/ultra-thin-slim-lightbox/main-hero-small-screen.webp"
+                    alt={LIGHTBOX_SLIDE_ALT}
+                    fill
+                    sizes="100vw"
+                    loading="lazy"
+                    className="hero-slide__art--tall"
+                  />
+                </div>
               ) : (
                 <Image
-                  src={
-                    index === 0
-                      ? "/hero/neon-sign-hero.webp"
-                      : index === 3
-                      ? "/ultra-thin-slim-lightbox/main-hero.webp"
-                      : slide.image
-                  }
+                  src={index === 0 ? "/hero/neon-sign-hero.webp" : slide.image}
                   alt={
                     index === 0
                       ? "Pink custom LED neon sign glowing on a dark bedroom wall"
-                      : index === 3
-                      ? "Client concept sketch beside a finished ultra-thin slim LED lightbox by The Glownique"
                       : slide.alt
                   }
                   fill
@@ -347,43 +377,29 @@ export function HeroSection() {
                   // images is what put 3.44MB of PNG on the critical path.
                   loading={index === 0 ? "eager" : "lazy"}
                   fetchPriority={index === 0 ? "high" : undefined}
-                  placeholder={index === 0 || index === 3 ? undefined : "blur"}
+                  placeholder={index === 0 ? undefined : "blur"}
                 />
-              )}
-              {index === 3 && (
-                <div className="absolute inset-0 pointer-events-none z-20 flex flex-col justify-between p-4 sm:p-6">
-                  <div className="flex items-center justify-between gap-2">
-                    <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/80 border border-white/20 text-amber-300 text-[11px] sm:text-xs font-black backdrop-blur-md shadow-xl">
-                      <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
-                      <span>CLIENT DESIGN IDEA</span>
-                    </div>
-                    <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-gradient-to-r from-pink-600 to-purple-600 border border-pink-400/50 text-white text-[11px] sm:text-xs font-black backdrop-blur-md shadow-[0_0_20px_rgba(244,11,104,0.6)]">
-                      <Sparkles className="w-3.5 h-3.5 text-pink-200" />
-                      <span>THEGLOWNIQUE REAL LIGHTBOX</span>
-                    </div>
-                  </div>
-                  <div className="self-center mb-2 px-4 py-2 rounded-2xl bg-black/85 border border-white/20 text-white text-xs sm:text-sm font-bold backdrop-blur-xl shadow-2xl flex items-center gap-2">
-                    <Zap className="w-4 h-4 text-pink-400 shrink-0" />
-                    <span>Transformation: Client Sketch → Ultra Thin Slim Lightbox</span>
-                  </div>
-                </div>
               )}
             </article>
           ))}
-          <div className="hero-scrim" aria-hidden="true" />
-          <div className="slide-meta" aria-live="polite">
-            {/* <p className="slide-meta__eyebrow">{activeHero.eyebrow}</p>  */}
-            {/* <h2>{activeHero.title}</h2>  */}
-            {/* <p className="slide-meta__copy">{activeHero.copy}</p> */}
-            <button
-              className="slide-meta__link"
-              type="button"
-              onClick={() => chooseCategory(activeHero.id, true)}
-            >
-              Explore {categoryLabels[activeHero.id]}{" "}
-              <IconBox icon={ArrowUpRight} />
-            </button>
-          </div>
+          {activeSlide !== 3 && (
+            <div className="hero-scrim" aria-hidden="true" />
+          )}
+          {activeSlide !== 3 && (
+            <div className="slide-meta" aria-live="polite">
+              {/* <p className="slide-meta__eyebrow">{activeHero.eyebrow}</p>  */}
+              {/* <h2>{activeHero.title}</h2>  */}
+              {/* <p className="slide-meta__copy">{activeHero.copy}</p> */}
+              <button
+                className="slide-meta__link"
+                type="button"
+                onClick={() => chooseCategory(activeHero.id, true)}
+              >
+                Explore {categoryLabels[activeHero.id]}{" "}
+                <IconBox icon={ArrowUpRight} />
+              </button>
+            </div>
+          )}
         </div>
 
         <div className="hero-controls">

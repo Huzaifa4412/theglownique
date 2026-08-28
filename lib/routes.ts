@@ -1,3 +1,5 @@
+import { COLLECTION_PAGES } from "@/lib/collection-pages";
+import { INDUSTRY_PAGES } from "@/lib/industry-pages";
 import { PRODUCT_PAGES } from "@/lib/product-catalog";
 
 /**
@@ -54,6 +56,12 @@ const BLOG_RELEASE = "2026-08-22";
 /** Comprehensive site-wide SEO keyword optimization across B2B hubs, products, guides & home. */
 const CURRENT_SEO_RELEASE = "2026-08-25";
 
+/**
+ * The eight /business-signs industry pages and the three /custom-signage
+ * collection pages launch.
+ */
+const INDUSTRY_RELEASE = "2026-08-28";
+
 export const ROUTES: readonly RouteEntry[] = [
   // Home — primary H1 keywords, FAQ schemas and entity grounded content.
   { path: "/", lastModified: CURRENT_SEO_RELEASE, changeFrequency: "weekly", priority: 1.0, indexable: true },
@@ -65,6 +73,18 @@ export const ROUTES: readonly RouteEntry[] = [
   { path: "/business-signs/lightbox-signs", lastModified: CURRENT_SEO_RELEASE, changeFrequency: "monthly", priority: 0.9, indexable: true },
   { path: "/business-signs/acrylic-logo-signs", lastModified: CURRENT_SEO_RELEASE, changeFrequency: "monthly", priority: 0.9, indexable: true },
 
+  // The eight industry landing pages, generated from the same list that renders
+  // them so a slug cannot exist in one place and not the other. They sit below
+  // the four sign-type pages above: those describe what we make, these route an
+  // industry to the right one.
+  ...INDUSTRY_PAGES.map((industry) => ({
+    path: `/business-signs/${industry.slug}`,
+    lastModified: INDUSTRY_RELEASE,
+    changeFrequency: "monthly" as const,
+    priority: 0.85,
+    indexable: true,
+  })),
+
   // Journal hub.
   { path: "/blog", lastModified: BLOG_RELEASE, changeFrequency: "weekly", priority: 0.7, indexable: true },
 
@@ -73,8 +93,16 @@ export const ROUTES: readonly RouteEntry[] = [
   { path: "/guides/custom-business-sign-cost", lastModified: CURRENT_SEO_RELEASE, changeFrequency: "monthly", priority: 0.8, indexable: true },
   { path: "/guides/front-lit-vs-halo-lit-vs-dual-lit", lastModified: CURRENT_SEO_RELEASE, changeFrequency: "monthly", priority: 0.8, indexable: true },
 
-  // Broad product catalog — meta descriptions revised with target keywords.
-  { path: "/custom-signage", lastModified: CURRENT_SEO_RELEASE, changeFrequency: "weekly", priority: 0.8, indexable: true },
+  // Consumer hub. It began as the broad product catalog and now also parents
+  // the occasion collections below, which is why its priority sits above them.
+  { path: "/custom-signage", lastModified: INDUSTRY_RELEASE, changeFrequency: "weekly", priority: 0.85, indexable: true },
+  ...COLLECTION_PAGES.map((collection) => ({
+    path: `/custom-signage/${collection.slug}`,
+    lastModified: INDUSTRY_RELEASE,
+    changeFrequency: "monthly" as const,
+    priority: 0.8,
+    indexable: true,
+  })),
   ...PRODUCT_PAGES.map((product) => ({
     path: `/products/${product.slug}`,
     lastModified: CURRENT_SEO_RELEASE,

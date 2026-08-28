@@ -85,10 +85,21 @@ async function readRouteManifest() {
   while ((match = entryRe.exec(source)) !== null) {
     entries.push({ path: match[1], indexable: match[2] === "true" });
   }
-  // The four product detail routes are generated from PRODUCT_PAGES.
-  const catalog = await readFile(new URL("../lib/product-catalog.ts", import.meta.url), "utf8");
-  for (const slug of catalog.matchAll(/^\s*slug:\s*"([^"]+)"/gm)) {
-    entries.push({ path: `/products/${slug[1]}`, indexable: true });
+  // Two blocks of routes are spread into the manifest from a `.map()` over a
+  // catalog, so the literal above never contains their paths and the regex
+  // cannot see them. Each catalog is read here and expanded under its own
+  // prefix. A new catalog spread into lib/routes.ts needs a line here too,
+  // otherwise its pages are silently skipped by every check below.
+  const generated = [
+    { file: "../lib/product-catalog.ts", prefix: "/products" },
+    { file: "../lib/industry-pages.ts", prefix: "/business-signs" },
+    { file: "../lib/collection-pages.ts", prefix: "/custom-signage" },
+  ];
+  for (const { file, prefix } of generated) {
+    const catalog = await readFile(new URL(file, import.meta.url), "utf8");
+    for (const slug of catalog.matchAll(/^\s*slug:\s*"([^"]+)"/gm)) {
+      entries.push({ path: `${prefix}/${slug[1]}`, indexable: true });
+    }
   }
   return entries;
 }

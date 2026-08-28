@@ -6,6 +6,7 @@ import { MetaViewCategory } from "@/components/analytics/meta-view-trackers";
 import { ProductTopBar } from "@/components/product/product-top-bar";
 import { AnnouncementBar } from "@/components/storefront/sections/announcement-bar";
 import { SiteFooter } from "@/components/storefront/sections/site-footer";
+import { COLLECTION_PAGES } from "@/lib/collection-pages";
 import { PRODUCT_PAGES } from "@/lib/product-catalog";
 import { SITE_URL } from "@/lib/site";
 import { serializeJsonLd } from "@/lib/utils";
@@ -47,6 +48,17 @@ export default function CustomSignagePage() {
         description:
           "Explore custom LED neon signs, 3D metal channel letters, ultra-thin lightboxes and UV-print acrylic signage.",
         publisher: { "@id": `${SITE_URL}/#organization` },
+      },
+      {
+        "@type": "ItemList",
+        "@id": `${pageUrl}#collections`,
+        name: "Signs by occasion",
+        itemListElement: COLLECTION_PAGES.map((collection, index) => ({
+          "@type": "ListItem",
+          position: index + 1,
+          name: collection.name,
+          url: `${SITE_URL}/custom-signage/${collection.slug}`,
+        })),
       },
       {
         "@type": "BreadcrumbList",
@@ -129,8 +141,57 @@ export default function CustomSignagePage() {
           </div>
         </section>
 
+        {/*
+          Shop by occasion. The four cards above answer "which sign type"; these
+          answer "what is it for", which is the question consumer search
+          actually asks — and they are this hub's only route into the collection
+          pages, so they are links rather than decoration.
+        */}
+        <section className="border-t border-[#eadfe4] bg-[#faf7f8] py-14 sm:py-20">
+          <div className="mx-auto max-w-[1320px] px-4 sm:px-6">
+            <div className="mb-10 text-center">
+              <p className="text-xs font-extrabold uppercase tracking-widest text-[#ce0754]">
+                Shop by Occasion
+              </p>
+              <h2 className="mt-2 text-3xl font-extrabold text-[#1e1a22] sm:text-4xl">
+                Signs for Weddings, Homes &amp; Celebrations
+              </h2>
+              <p className="mx-auto mt-3 max-w-xl text-base text-[#5e5862]">
+                What the sign is for changes how it should be built. These cover the decisions worth
+                making before we fabricate.
+              </p>
+            </div>
+
+            <div className="grid gap-6 md:grid-cols-3">
+              {COLLECTION_PAGES.map((collection) => (
+                <Link
+                  key={collection.slug}
+                  href={`/custom-signage/${collection.slug}`}
+                  className="group block overflow-hidden rounded-3xl border border-[#eadfe4] bg-white shadow-sm transition-transform duration-300 hover:-translate-y-1"
+                >
+                  <div className="relative aspect-[16/10] w-full overflow-hidden bg-black/5">
+                    <Image
+                      src={collection.heroImage}
+                      alt={collection.heroAlt}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-xl font-extrabold tracking-tight text-[#1e1a22] group-hover:text-[#ce0754]">
+                      {collection.name} →
+                    </h3>
+                    <p className="mt-2 text-sm leading-6 text-[#5e5862]">{collection.intro}</p>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* Commercial Hub Link Callout */}
-        <section className="border-t border-[#eadfe4] bg-[#faf7f8] py-14 sm:py-16">
+        <section className="border-t border-[#eadfe4] bg-white py-14 sm:py-16">
           <div className="mx-auto max-w-4xl px-4 text-center sm:px-6">
             <h2 className="text-2xl font-extrabold text-[#1e1a22]">
               Looking for Commercial &amp; Exterior Storefront Signage?

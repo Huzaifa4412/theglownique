@@ -796,6 +796,40 @@ button:active {
   object-position: center;
 }
 
+.hero-slide--lightbox {
+  background: #100d0f;
+}
+
+.hero-slide__lightbox-frame {
+  position: absolute;
+  inset: clamp(26px, 3vw, 48px) clamp(26px, 3vw, 48px)
+    clamp(88px, 8vw, 112px) clamp(88px, 8vw, 128px);
+}
+
+.hero-slide img.hero-slide__art--wide,
+.hero-slide img.hero-slide__art--tall {
+  object-fit: contain;
+  object-position: center;
+}
+
+.hero-slide img.hero-slide__art--tall {
+  display: none;
+}
+
+@media (max-width: 800px) {
+  .hero-slide__lightbox-frame {
+    inset: 78px 18px 82px;
+  }
+
+  .hero-slide img.hero-slide__art--wide {
+    display: none;
+  }
+
+  .hero-slide img.hero-slide__art--tall {
+    display: block;
+  }
+}
+
 .hero-slide--neon {
   background: #150b1e;
 }

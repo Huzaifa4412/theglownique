@@ -7,6 +7,7 @@ import { AnnouncementBar } from "@/components/storefront/sections/announcement-b
 import { SiteFooter } from "@/components/storefront/sections/site-footer";
 import { ProductTopBar } from "@/components/product/product-top-bar";
 import { CustomQuoteButton } from "@/components/storefront/custom-quote-button";
+import { INDUSTRY_PAGES } from "@/lib/industry-pages";
 import { SITE_URL } from "@/lib/site";
 import { serializeJsonLd } from "@/lib/utils";
 
@@ -69,33 +70,6 @@ const b2bProducts = [
     specs: ["High-Res UV Print", "Layered 3D Acrylic", "LED Contour Glow", "Precision Laser Cut"],
     image: "/3d-arcylic/3235dc09-6dac-4056-88b6-55fc26e28571.webp",
     accent: "#7c3aed",
-  },
-];
-
-const industries = [
-  {
-    name: "Retail & Storefronts",
-    desc: "Outdoor channel letters, storefront signs, window LED neon and promotional lightboxes engineered to boost foot traffic and street-level road visibility.",
-  },
-  {
-    name: "Corporate Offices & Lobby Walls",
-    desc: "Custom office signs for walls with logo, acrylic logo signs with stainless standoffs, and halo-lit 3D metal letters that establish brand authority.",
-  },
-  {
-    name: "Restaurants, Bars & Cafés",
-    desc: "Custom bar neon signs, neon restaurant signs, cafe menu lightboxes, and warm ambient glowing wall art that elevates dining hospitality.",
-  },
-  {
-    name: "Salons, Spas & Barbershops",
-    desc: "Custom salon neon signs, hair salon logos, barbershop signage, and glamorous mirror plaques that clients love to photograph and share on social media.",
-  },
-  {
-    name: "Gyms & Fitness Studios",
-    desc: "High-impact gym neon signs, motivational wall lights, and durable sweat-resistant illuminated workout area branding.",
-  },
-  {
-    name: "Event Spaces & Photo Booths",
-    desc: "Personalized neon event backdrops, happy birthday neon signs, wedding neon signs, and photo-ready branded focal points.",
   },
 ];
 
@@ -265,14 +239,17 @@ export default function BusinessSignsHubPage() {
             </div>
 
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-              {industries.map((ind) => (
-                <div
-                  key={ind.name}
-                  className="rounded-2xl border border-[#eadfe4] bg-[#fdfafb] p-6 shadow-sm transition-all hover:border-[#f40b68]"
+              {INDUSTRY_PAGES.map((ind) => (
+                <Link
+                  key={ind.slug}
+                  href={`/business-signs/${ind.slug}`}
+                  className="group rounded-2xl border border-[#eadfe4] bg-[#fdfafb] p-6 shadow-sm transition-all hover:border-[#f40b68]"
                 >
-                  <h3 className="text-lg font-extrabold text-[#1e1a22]">{ind.name}</h3>
-                  <p className="mt-2 text-xs leading-relaxed text-[#5e5862]">{ind.desc}</p>
-                </div>
+                  <h3 className="text-lg font-extrabold text-[#1e1a22] group-hover:text-[#ce0754]">
+                    {ind.name} →
+                  </h3>
+                  <p className="mt-2 text-xs leading-relaxed text-[#5e5862]">{ind.intro}</p>
+                </Link>
               ))}
             </div>
           </div>

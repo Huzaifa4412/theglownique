@@ -16,12 +16,18 @@ Keep the current `/products` catalog as the broad product reference. Add `/busin
 │   ├── channel-letter-signs
 │   ├── lightbox-signs
 │   ├── acrylic-logo-signs
-│   ├── restaurants-bars
+│   ├── bar-signs
+│   ├── restaurant-signs
+│   ├── open-signs
 │   ├── retail-storefronts
-│   ├── salons-spas
-│   ├── offices-reception
-│   ├── gyms-fitness-studios
-│   └── events-trade-shows
+│   ├── salon-spa-signs
+│   ├── office-signs
+│   ├── gym-fitness-signs
+│   └── trade-show-signs
+├── custom-signage/                   future consumer collection hub
+│   ├── wedding-signs
+│   ├── event-signs
+│   └── home-decor-signs
 ├── guides/
 │   ├── custom-business-sign-cost
 │   ├── channel-letter-sign-cost

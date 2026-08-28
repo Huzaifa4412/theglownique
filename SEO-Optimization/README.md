@@ -34,8 +34,9 @@ External evidence is registered in [resources/primary-source-register.md](resour
 9. [09-entity-authority-and-digital-pr.md](09-entity-authority-and-digital-pr.md) — brand, proof and earned authority.
 10. [10-90-day-roadmap.md](10-90-day-roadmap.md), then [11-six-and-twelve-month-roadmap.md](11-six-and-twelve-month-roadmap.md).
 11. [12-measurement-framework.md](12-measurement-framework.md) — events, dashboards and decision rules.
+12. [13-news-editorial-and-new-pages-blueprint.md](13-news-editorial-and-new-pages-blueprint.md) — competitor analysis & high-ranking news/new pages blueprint.
 
-The `resources/` files contain evidence and inventories. The `templates/` files are repeatable operating documents. Documents 06–12 are implementation instructions; they are not evidence that the work has already shipped.
+The `resources/` files contain evidence and inventories. The `templates/` files are repeatable operating documents. Documents 06–13 are implementation instructions; they are not evidence that the work has already shipped.
 
 ## Owners and review cadence
 
