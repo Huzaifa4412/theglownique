@@ -710,3 +710,58 @@ No prices, no shipping cost, no lead time; VALIDATION_REQUIRED component claims
   the 8 live posts have different slugs. Body links now target live slugs only.
 - Latent bug in `seed-blog.mjs`: body images were spread with `_type: "image"`,
   which the renderer skips as unknown. Fixed to keep `_type: "blogImage"`.
+
+## 2026-09-14 — Consumer collections rebuilt: six image-led pages under /custom-signage
+
+The three hand-routed collection pages (wedding, home decor, event) became one
+dynamic route, `app/custom-signage/[slug]/page.tsx`, rendered by a new template
+`components/landing/collection-page.tsx` that is deliberately separate from the
+B2B landing template: dark hero the sign glows against, a gallery of real
+listing photographs, wording ideas, then the buying guidance. Each page carries
+its own accent colour (the glow its signs tend to be) as `--accent` /
+`--accent-ink` on the content, not in the stylesheet.
+
+### Pages
+
+| Slug | Head term (Ubersuggest, US/mo) | Gallery |
+|---|---|---|
+| `/custom-signage/wedding-signs` (kept) | wedding signs 14,800 · wedding neon signs 3,600 | hero + 5 |
+| `/custom-signage/kids-room-neon-signs` (new) | neon name sign 2,900 (no kids-specific volume) | hero + 9 |
+| `/custom-signage/gaming-neon-signs` (new) | gaming neon signs 590 · game room signage 480 | hero + 5 |
+| `/custom-signage/home-decor-signs` (kept, refocused on bedroom) | neon lights for bedroom 2,400 · bedroom neon signs 1,600 | hero + 5 |
+| `/custom-signage/bar-neon-signs` (new) | personalized neon bar signs 33,100 · custom bar signs 1,600 · man cave 480 | hero + 5 |
+| `/custom-signage/event-signs` (kept) | happy birthday neon sign 1,000 · party neon signs 170 | hero + 5 |
+
+### Image selection
+
+Five parallel review passes covered all 130 files in `public/neon-sign`
+(600 × 600 shop listing photographs). Excluded: identifiable faces as subject,
+signs still in packaging, third-party trademarks (49ers, Galatasaray), profanity,
+cut-off text, two byte-identical duplicates. Findings that changed the plan:
+
+- `boys room/` contains no boys' bedroom — fifteen adult family-name, bar and
+  workshop photos. The only real boys' room ("CRUZ") is in `girls room/`. So
+  girls', boys' and kids' merged into one kids page; three of the "boys room"
+  photos (You Betcha!, Public Phone, Rust Up Buttercup) went to the home-bar page.
+- The best bar image ("Tequila") and best wedding barn image ("The McKenneys")
+  were loose in the folder root.
+- `couples/` has one usable photo → folded into wedding wording. `Custom name/`
+  has one hand-held photo → no page. Gym stays B2B.
+
+### Also
+
+- `lib/routes.ts`: `COLLECTION_RELEASE = 2026-09-14` on the hub and all six.
+- Keyword map: bar/event/gaming/wedding rows moved from `planned_90_day` to
+  `live_page` on the live slugs; `cafe signs` / `coffee shop signs` (commercial
+  intent) repointed to `/business-signs/restaurant-signs`; `man cave neon signs`
+  moved from gaming to the bar page.
+- `SIGN_TYPE_HREF` (B2B pages) is no longer used by the consumer catalog; the
+  collections link to `/products/*`.
+
+### Still open
+
+- Images are 600 px squares. The hero frame is capped at 560 px so nothing
+  upscales, but a real photo shoot at 1600 px+ would let the hero go larger.
+- Reuse rights: every gallery photo shows a customer's name. Confirm the
+  listing-photo licence before this ships.
+- No kids-specific keyword has volume data yet; validate before investing more.

@@ -62,6 +62,13 @@ const CURRENT_SEO_RELEASE = "2026-08-25";
  */
 const INDUSTRY_RELEASE = "2026-08-28";
 
+/**
+ * The consumer collections are rebuilt: one dynamic route, an image-led
+ * template, three new occasions (kids' rooms, gaming, home bars) and new
+ * galleries on the three that already existed.
+ */
+const COLLECTION_RELEASE = "2026-09-14";
+
 export const ROUTES: readonly RouteEntry[] = [
   // Home — primary H1 keywords, FAQ schemas and entity grounded content.
   { path: "/", lastModified: CURRENT_SEO_RELEASE, changeFrequency: "weekly", priority: 1.0, indexable: true },
@@ -95,10 +102,10 @@ export const ROUTES: readonly RouteEntry[] = [
 
   // Consumer hub. It began as the broad product catalog and now also parents
   // the occasion collections below, which is why its priority sits above them.
-  { path: "/custom-signage", lastModified: INDUSTRY_RELEASE, changeFrequency: "weekly", priority: 0.85, indexable: true },
+  { path: "/custom-signage", lastModified: COLLECTION_RELEASE, changeFrequency: "weekly", priority: 0.85, indexable: true },
   ...COLLECTION_PAGES.map((collection) => ({
     path: `/custom-signage/${collection.slug}`,
-    lastModified: INDUSTRY_RELEASE,
+    lastModified: COLLECTION_RELEASE,
     changeFrequency: "monthly" as const,
     priority: 0.8,
     indexable: true,

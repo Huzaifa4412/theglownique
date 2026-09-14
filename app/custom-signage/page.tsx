@@ -154,11 +154,12 @@ export default function CustomSignagePage() {
                 Shop by Occasion
               </p>
               <h2 className="mt-2 text-3xl font-extrabold text-[#1e1a22] sm:text-4xl">
-                Signs for Weddings, Homes &amp; Celebrations
+                Signs for Weddings, Kids’ Rooms, Game Rooms &amp; Home Bars
               </h2>
               <p className="mx-auto mt-3 max-w-xl text-base text-[#5e5862]">
-                What the sign is for changes how it should be built. These cover the decisions worth
-                making before we fabricate.
+                What the sign is for changes how it should be built. Each collection shows real
+                signs people ordered for that room or day, and the decisions worth making before we
+                fabricate.
               </p>
             </div>
 

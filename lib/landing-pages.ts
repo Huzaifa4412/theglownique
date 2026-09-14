@@ -98,6 +98,40 @@ export type LandingPage = LandingContent & {
   footerLink: { href: string; label: string };
 };
 
+/** One photograph in a collection gallery. Alt text is content, so it is required. */
+export type GalleryImage = {
+  src: string;
+  alt: string;
+  /** What the sign says, or what the photo proves. Rendered under the tile. */
+  caption?: string;
+};
+
+/**
+ * What a consumer collection carries beyond the shared landing anatomy.
+ *
+ * The consumer pages are image-led where the B2B pages are specification-led:
+ * a bride or a parent decides from photographs of rooms like theirs, so each
+ * collection ships a gallery and a colour pulled from its own imagery. The
+ * accent is the glow colour the category's signs actually tend to be — warm
+ * white for weddings, violet for gaming — not a brand token, which is why it
+ * lives on the content rather than in the stylesheet.
+ */
+export type CollectionExtras = {
+  /** Glow colour used on the dark bands and image halos. Never used for text on white. */
+  accent: string;
+  /** The same hue at a contrast that passes AA as text on white (≥ 4.5:1). */
+  accentInk: string;
+  /** One line under the H1, in the accent. */
+  tagline: string;
+  gallery: GalleryImage[];
+  /** Wording people actually order for this occasion; rendered as examples, not a fixed list. */
+  phrases: string[];
+  /** Renders as "Lights on:" caption beside the hero image. */
+  heroCaption: string;
+};
+
+export type CollectionPage = LandingPage & CollectionExtras;
+
 /** The four sign types every landing page routes its audience toward. */
 export const SIGN_TYPE_HREF = {
   neon: "/business-signs/custom-logo-neon-signs",
@@ -116,10 +150,10 @@ export function landingPath(page: LandingPage): string {
  * because each route passes a literal slug: a miss is a typo that should stop
  * the build, not a 404 to discover in production.
  */
-export function requireLandingPage(
-  pages: readonly LandingPage[],
+export function requireLandingPage<T extends LandingPage>(
+  pages: readonly T[],
   slug: string,
-): LandingPage {
+): T {
   const page = pages.find((candidate) => candidate.slug === slug);
   if (!page) {
     throw new Error(`No landing page defined for slug "${slug}".`);
