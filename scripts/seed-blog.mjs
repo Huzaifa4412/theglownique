@@ -212,7 +212,9 @@ async function main() {
     body.map((node) => {
       if (node._type !== "blogImage") return node;
       const { __image, ...rest } = node;
-      return { ...rest, ...imageRef(__image) };
+      // Keep the array member type: `imageRef` carries `_type: "image"`, and a
+      // body image that arrives as `image` is an unknown block to the renderer.
+      return { ...rest, ...imageRef(__image), _type: "blogImage" };
     });
 
   // Drafts live under a `drafts.` id prefix; that is the whole mechanism.

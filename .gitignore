@@ -54,3 +54,6 @@ desktop.ini
 
 # posthog wizard cache
 .posthog-wizard-cache/
+
+# local scratch (NDJSON exports, preview renders)
+tmp/

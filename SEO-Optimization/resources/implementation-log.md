@@ -677,3 +677,33 @@ pages.
   Validate before investing further; `wedding-signs` is the one with evidence.
 - **IndexNow still not submitted.** `npm run indexnow` covers all eleven new
   paths from both releases once this is deployed.
+
+## 2026-09-14 — Pillar post prepared: backlit signs vs ultra-thin light boxes (NOT YET LIVE)
+
+Written and validated, not published. `scripts/blog-posts/backlit-neon-signs-vs-ultra-thin-light-boxes.mjs`
+holds the post (3,600 words, 8 sections, 3 tables, 7 FAQs, 5 sources, Sign Basics),
+and `scripts/publish-blog-post.mjs` is a new single-post runner that validates the
+schema rules offline and writes through the API or exports NDJSON.
+
+Angle: halo BACKLIT signs specifically, interior/covered spaces, the wall as an
+optical component, edge-lit light-guide mechanics, driver placement, the ADA
+§307.2 4-inch protrusion rule, and hybrid placement. Deliberately distinct from
+the reserved storefront guide `/guides/lightbox-vs-channel-letters` (GUIDE-LIGHTBOX-VS-CHANNEL).
+No prices, no shipping cost, no lead time; VALIDATION_REQUIRED component claims
+(100k hours, 80 % power, blanket IP67, cool-to-touch) are not repeated.
+
+### Blocked
+
+- `SANITY_API_WRITE_TOKEN` is a **viewer** robot token (`/users/me` → role read);
+  every mutation and asset upload fails with `permission "create" required`.
+- The Sanity CLI is logged in to a different account (only project `ebwfqvlr`).
+- Once either is fixed: `node scripts/publish-blog-post.mjs scripts/blog-posts/backlit-neon-signs-vs-ultra-thin-light-boxes.mjs --write --publish`
+  or export with `--ndjson tmp/<slug>.ndjson` and `npx sanity dataset import tmp/<slug>.ndjson production --replace`,
+  then `npm run indexnow`.
+
+### Also found
+
+- The 7 seeded launch posts in `scripts/blog-seed/content.mjs` were never written;
+  the 8 live posts have different slugs. Body links now target live slugs only.
+- Latent bug in `seed-blog.mjs`: body images were spread with `_type: "image"`,
+  which the renderer skips as unknown. Fixed to keep `_type: "blogImage"`.
