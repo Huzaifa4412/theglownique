@@ -8,7 +8,6 @@ import {
 import "./globals.css";
 import { MetaPixel } from "@/components/analytics/meta-pixel";
 import { MetaPixelEvents } from "@/components/analytics/meta-pixel-events";
-import { PreChatGate } from "@/components/chat/pre-chat-gate";
 import { cn, serializeJsonLd } from "@/lib/utils";
 import { sameAsUrls } from "@/lib/site";
 
@@ -188,27 +187,13 @@ export default function RootLayout({
             event map and for what is deliberately not tracked. */}
         <MetaPixel />
         <MetaPixelEvents />
-        {/* Collects name/email/phone before the chat can start, then hands them
-            to Tawk so an abandoned conversation is still followable. */}
-        <PreChatGate />
+        {/* Tawk.to live chat. The widget's own bubble shows as soon as it loads;
+            the custom pre-chat gate that used to hide it was removed on
+            2026-09-14 at the owner's request. lazyOnload keeps it off the
+            critical path. */}
         <Script id="tawk-to" strategy="lazyOnload">
           {`
             var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-
-            // Keep Tawk's own bubble hidden until our pre-chat form has been
-            // completed (components/chat/pre-chat-gate.tsx). Set BEFORE the embed
-            // script loads, because onLoad fires as soon as the widget is ready
-            // and a React effect cannot reliably beat it.
-            //
-            // A returning visitor already has details stored, so the widget is
-            // revealed immediately rather than gating them a second time. Reading
-            // localStorage here rather than in the component avoids a flash of
-            // the bubble followed by it disappearing.
-            Tawk_API.onLoad = function(){
-              var known = false;
-              try { known = !!localStorage.getItem('glownique:chat-visitor'); } catch (e) {}
-              if (!known && typeof Tawk_API.hideWidget === 'function') Tawk_API.hideWidget();
-            };
 
             (function(){
             var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];

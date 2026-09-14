@@ -3038,29 +3038,6 @@ button:active {
   gap: 22px;
 }
 
-/* Pre-chat gate. Uses a native <dialog> for the same reason .product-dialog
-   does: showModal() gives focus trapping, Escape-to-close and inert background
-   content for free, none of which is worth hand-rolling. */
-.pre-chat-dialog {
-  position: fixed;
-  inset: 0;
-  margin: auto;
-  width: min(420px, calc(100vw - 32px));
-  max-height: calc(100dvh - 32px);
-  padding: 0;
-  overflow-y: auto;
-  border: 0;
-  border-radius: var(--radius-lg);
-  background: #fff;
-  box-shadow: 0 30px 100px rgba(32, 10, 21, 0.35);
-  z-index: 1000;
-}
-
-.pre-chat-dialog::backdrop {
-  background: rgba(25, 11, 18, 0.56);
-  backdrop-filter: blur(5px);
-}
-
 .product-dialog {
   position: fixed;
   inset: 0;

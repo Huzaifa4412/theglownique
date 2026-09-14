@@ -121,10 +121,13 @@ export const TRACKING_TOOLS: readonly TrackingTool[] = [
   },
   {
     name: "Tawk.to live chat",
+    // The custom pre-chat form (name, email, phone, kept in localStorage) was
+    // removed on 2026-09-14; the widget now opens directly. The disclosure
+    // below describes only what Tawk itself does.
     purpose:
-      "runs the optional chat widget. Before a conversation starts we ask for your name, email address and phone number on our own form and pass them to the chat, so a question does not go unanswered if you close the tab",
+      "runs the optional live chat widget in the corner of every page, so you can ask a question without leaving the site",
     storage:
-      "your name, email and phone kept in your browser's local storage so you are not asked again on a later visit; the same details plus the chat transcript held by Tawk.to on our behalf; and session cookies set once you interact with the widget so a conversation survives a page change",
+      "session cookies set once you interact with the widget so a conversation survives a page change; and whatever you type into the chat, including any name or email you choose to give, held by Tawk.to on our behalf as the chat transcript",
     advertising: false,
   },
 ];

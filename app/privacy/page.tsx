@@ -148,24 +148,18 @@ export default function PrivacyPage() {
 
       <h2>Live chat</h2>
       <p>
-        Before the chat opens we ask for your <strong>name, email address and phone number</strong>
-        on a short form of our own. That is so a question does not go unanswered if you close the tab
-        before we reply — not so we can add you to a marketing list.
-      </p>
-      <p>
-        Those answers are also saved in your browser&apos;s local storage, purely so you are not
-        asked the same three questions again on a later visit. Clearing your browser data removes
-        them.
-      </p>
-      <p>
-        Those details and the message history are stored by Tawk.to, who run the chat service on
-        our behalf. See the{" "}
+        The chat bubble in the corner opens straight away — there is no form to fill in first.
+        Whatever you type, and any <strong>name or email</strong> you choose to give in the
+        conversation, is stored by Tawk.to, who run the chat service on our behalf. See the{" "}
         <a href="https://www.tawk.to/privacy-policy/" rel="nofollow noopener" target="_blank">
           Tawk.to Privacy Policy
         </a>
-        . We also keep a copy in our own enquiry records so a chat that ends without a reply can
-        still be followed up. We use them to answer you and to follow up on that enquiry. If you
-        would rather not give them, don&apos;t use the chat — WhatsApp and our{" "}
+        . Tawk.to sets session cookies once you interact with the widget so the conversation
+        survives a page change.
+      </p>
+      <p>
+        We use what you tell us in the chat to answer you and to follow up on that enquiry, and
+        for nothing else. If you would rather not use the chat, WhatsApp and our{" "}
         <Link href="/contact">contact page</Link> reach the same people.
       </p>
 

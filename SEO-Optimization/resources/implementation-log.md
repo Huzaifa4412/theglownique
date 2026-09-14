@@ -792,3 +792,16 @@ Same six pages, same template, written to be quoted:
 
 Verified on a local dev render: all eleven H2s present in server HTML, FAQPage
 with six questions, blog links resolving to live slugs, six entries in llms.txt.
+
+### 2026-09-14 — Pre-chat gate removed; Tawk.to widget opens directly
+
+Owner decision. The custom pre-chat form (name, email, phone, stored in
+localStorage and archived to Sanity as a `pre-chat` lead) is gone:
+`components/chat/pre-chat-gate.tsx` and `lib/tawk.ts` deleted, the
+`Tawk_API.onLoad` hide hook and the `.pre-chat-dialog` CSS removed, and the
+Tawk bubble now shows as soon as the embed loads. CLM-015/016 discipline kept:
+the `TRACKING_TOOLS` entry for Tawk.to in `lib/claims.ts` and the "Live chat"
+section of `/privacy` now describe only what Tawk itself stores (transcript,
+session cookies) — no more localStorage or our-own-form language. The
+`pre-chat` lead source stays accepted by `/api/leads` so historic records
+remain valid; nothing writes it any more.
