@@ -547,7 +547,7 @@ const COLLECTION_CONTENT: readonly CollectionContent[] = [
     tagline: "A phrase you chose, in light, on the wall you look at most.",
     metaTitle: "Bedroom Neon Signs & Neon Wall Art",
     metaDescription:
-      "Bedroom neon signs and neon lights for bedrooms, living rooms and hallways — quotes, names and neon wall art in your colour. Dimmable 12V, free mockup, 5-year warranty.",
+      "Bedroom neon signs and neon lights for bedrooms, living rooms and hallways — quotes, names and neon wall art in your colour. Dimmable, free mockup, 5-year warranty.",
     intro:
       "A bedroom neon sign is lived with, not visited. The wording has to still feel like yours in five years, the colour has to sit with the paint, and neon lights for a bedroom have to dim to something you can sleep beside on a Tuesday night.",
     heroImage: "/neon-sign/room/iap_600x600.8069307682_6sin2ngi.webp",
