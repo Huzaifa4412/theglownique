@@ -116,7 +116,33 @@ export type GalleryImage = {
  * white for weddings, violet for gaming — not a brand token, which is why it
  * lives on the content rather than in the stylesheet.
  */
+/** A guide or article this collection hands people on to. Internal paths only. */
+export type RelatedReading = {
+  label: string;
+  href: string;
+  description: string;
+};
+
 export type CollectionExtras = {
+  /**
+   * The head term this page is written to answer, singular and plural, e.g.
+   * "wedding neon sign" / "wedding neon signs". The template composes every
+   * H2 from these so headings read the way people actually search, and so a
+   * page cannot carry a heading about the wrong occasion.
+   */
+  keyword: string;
+  keywordPlural: string;
+  /**
+   * The direct answer to the page's central question, 40–60 words, written to
+   * stand alone if quoted: what the thing is, what it is made of, and the one
+   * or two facts a buyer needs first. Rendered under the H1 and carried into
+   * llms.txt, so it must contain nothing that could go out of date.
+   */
+  answer: string;
+  /** ISO date of the last change a reader would notice. Rendered, so keep it honest. */
+  updatedOn: string;
+  /** Where to go next: the cost guide plus the journal article that covers this occasion. */
+  related: RelatedReading[];
   /** Glow colour used on the dark bands and image halos. Never used for text on white. */
   accent: string;
   /** The same hue at a contrast that passes AA as text on white (≥ 4.5:1). */

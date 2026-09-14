@@ -81,7 +81,7 @@ const COLLECTION_CONTENT: readonly CollectionContent[] = [
     metaDescription:
       "Custom wedding neon signs — surnames, first names, Mr & Mrs and vows — in warm white or your palette. Battery or plug, free design mockup, 5-year warranty.",
     intro:
-      "A wedding sign is in every photograph from the first dance to the last. These are built around the two things that decide whether it works: how it mounts on the day, and how it reads through a camera.",
+      "A custom wedding neon sign is in every photograph from the first dance to the last. Ours are built around the two things that decide whether it works: how it mounts on the day, and how it reads through a camera.",
     heroImage: "/neon-sign/wedding/iap_600x600.7378705048_ipwhq76b.webp",
     heroAlt:
       "White 'Chloé Adelina' neon sign hanging on a blush pink draped backdrop between two peach floral arrangements",
@@ -90,6 +90,28 @@ const COLLECTION_CONTENT: readonly CollectionContent[] = [
     accentInk: "#8a5514",
     quoteProductName: "custom wedding neon sign",
     quoteLabel: "Get a wedding sign mockup",
+    keyword: "wedding neon sign",
+    keywordPlural: "wedding neon signs",
+    answer:
+      "A custom wedding neon sign is your names, surname or a phrase hand-bent in flexible LED neon on a clear acrylic backboard. It runs at 12V from a plug or a battery pack, hangs on an arch, drape or flower wall in minutes, photographs without glare, and moves to a wall at home after the day.",
+    updatedOn: "2026-09-14",
+    related: [
+      {
+        label: "Wedding neon signs: sizing, backdrop hanging and photography",
+        href: "/blog/custom-wedding-neon-signs-backdrop-guide",
+        description: "How wide, how high and how to light it so the photographer gets the shot.",
+      },
+      {
+        label: "How to choose the right neon colour",
+        href: "/blog/how-to-choose-the-right-neon-color-for-your-sign",
+        description: "Why warm white photographs best, and when a palette colour is worth it.",
+      },
+      {
+        label: "What a custom sign costs",
+        href: "/guides/custom-business-sign-cost",
+        description: "The drivers behind every quote, and why two signs the same size can price differently.",
+      },
+    ],
     gallery: [
       img(
         "/neon-sign/wedding/iap_600x600.8065378054_3jboie8s.webp",
@@ -172,6 +194,10 @@ const COLLECTION_CONTENT: readonly CollectionContent[] = [
     ],
     faqs: [
       {
+        q: "How much does a custom wedding neon sign cost?",
+        a: "It depends on the width, the number of letters, the number of colours and whether it needs a battery pack, which is why every sign is quoted individually rather than priced from a list. Send the wording and a rough width and you get a free mockup and an all-in quote before anything is made. The cost guide linked below explains what moves the price.",
+      },
+      {
         q: "Can a wedding neon sign run on battery?",
         a: "Yes. A battery pack suits arches, lawns and marquees where there is no socket nearby. It affects the weight and how long the sign stays lit, so tell us the venue when you ask for the mockup and we will size the pack to the day.",
       },
@@ -201,11 +227,11 @@ const COLLECTION_CONTENT: readonly CollectionContent[] = [
     kicker: "Nurseries, kids’ rooms & teen bedrooms",
     h1: "Kids’ Room Neon Signs & Nursery Name Signs",
     tagline: "Their name on the wall, in a glow soft enough to sleep under.",
-    metaTitle: "Kids’ Room Neon Name Signs",
+    metaTitle: "Kids’ Room Neon Signs & Name Signs",
     metaDescription:
-      "Custom neon name signs for nurseries, kids’ bedrooms and teen rooms. Flexible 12V silicone, no glass, dimmable, in any colour. Free mockup and 5-year warranty.",
+      "Kids’ room neon signs and neon name signs for nurseries, bedrooms and teen rooms. 12V silicone, no glass, dimmable, any colour. Free mockup, 5-year warranty.",
     intro:
-      "A name sign is the one piece of a child’s room that is theirs alone, and it has to survive being lived under every night. These are built for that: low-voltage silicone with no glass, a glow that dims to a nightlight, and colours that still look right when they are twelve.",
+      "A kids’ room neon sign is the one piece of a child’s room that is theirs alone, and it has to survive being lived under every night. These are built for that: low-voltage silicone with no glass, a glow that dims to a nightlight, and colours that still look right when they are twelve.",
     heroImage: "/neon-sign/kid room/iap_600x600.7831937493_bsa69vky.webp",
     heroAlt: "Blue 'TOBY' LED neon sign with a yellow star, mounted on a dark blue bedroom wall",
     heroCaption: "“TOBY” in blue with a yellow star, on a navy bedroom wall.",
@@ -213,6 +239,28 @@ const COLLECTION_CONTENT: readonly CollectionContent[] = [
     accentInk: "#b0186f",
     quoteProductName: "custom kids room neon name sign",
     quoteLabel: "Mock up their name for free",
+    keyword: "kids’ room neon sign",
+    keywordPlural: "kids’ room neon signs",
+    answer:
+      "A kids’ room neon sign is a child’s name or a short phrase in flexible LED neon on an acrylic backboard, with an optional star, heart or crown. It runs at 12V with no glass, stays cool to the touch, dims to a nightlight with the remote, and mounts high on the wall above a cot or bed.",
+    updatedOn: "2026-09-14",
+    related: [
+      {
+        label: "Neon signs for bedrooms: sizing, warmth and dimming",
+        href: "/blog/custom-neon-signs-for-bedroom-and-home-decor",
+        description: "How to size a sign to a bed, pick a warmth that sleeps well and set a dimmer.",
+      },
+      {
+        label: "How to choose the right neon colour",
+        href: "/blog/how-to-choose-the-right-neon-color-for-your-sign",
+        description: "Which colours age well in a child’s room, and how lit colour differs from a screen.",
+      },
+      {
+        label: "What a custom sign costs",
+        href: "/guides/custom-business-sign-cost",
+        description: "The drivers behind every quote — letters, size, colours, extras.",
+      },
+    ],
     gallery: [
       img(
         "/neon-sign/kid room/iap_600x600.7610949369_glo5mwm8.webp",
@@ -315,6 +363,10 @@ const COLLECTION_CONTENT: readonly CollectionContent[] = [
     ],
     faqs: [
       {
+        q: "How much does a kids’ neon name sign cost?",
+        a: "The name length, the width, the number of colours and any added shape or dimmer decide it, so each sign is quoted individually rather than priced from a list. Send the name and the wall width and you get a free mockup and an all-in quote before anything is made. The cost guide below explains what moves the price.",
+      },
+      {
         q: "Are neon name signs safe in a child’s bedroom?",
         a: "Our LED neon is flexible silicone on an acrylic backboard, running at 12V from a plug-in adapter. There is no glass, no gas and no mains voltage at the sign, and it stays cool to the touch. Mount it out of reach and keep the cable tidy and it is as safe as a bedside lamp.",
       },
@@ -346,9 +398,9 @@ const COLLECTION_CONTENT: readonly CollectionContent[] = [
     tagline: "The glow behind the monitors that makes the room yours.",
     metaTitle: "Gaming Neon Signs for Game Rooms",
     metaDescription:
-      "Custom gaming neon signs for game rooms, streaming setups and arcades — gamertags, Game On, Game Room, controllers. Dimmable 12V LED neon, free mockup, 5-year warranty.",
+      "Custom gaming neon signs for game rooms, streaming setups and arcades — gamertags, Game On, controller outlines. Dimmable 12V LED, free mockup, 5-year warranty.",
     intro:
-      "Gaming rooms already glow. The sign has to win against RGB strips, monitor light and a camera pointed at your face — which changes the colour you pick, where it hangs and how bright it runs.",
+      "Gaming rooms already glow. A gaming neon sign has to win against RGB strips, monitor light and a camera pointed at your face — which changes the colour you pick, where it hangs and how bright it runs.",
     heroImage: "/neon-sign/Game Room/iap_600x600.6072503848_qdloxd4q.webp",
     heroAlt: "Green 'Game On' LED neon sign above two kids playing on dual monitors in a framed-art gaming den",
     heroCaption: "“GAME ON” in green over a two-screen den.",
@@ -356,6 +408,28 @@ const COLLECTION_CONTENT: readonly CollectionContent[] = [
     accentInk: "#5b21b6",
     quoteProductName: "custom gaming neon sign",
     quoteLabel: "Mock up your gamertag for free",
+    keyword: "gaming neon sign",
+    keywordPlural: "gaming neon signs",
+    answer:
+      "A gaming neon sign is a gamertag, phrase or controller outline in flexible LED neon, made to hang behind a desk, TV or arcade wall. It runs at 12V from a socket on your power strip, dims with a remote so it reads cleanly on a webcam, and comes in one fixed colour that RGB strips cannot wash out.",
+    updatedOn: "2026-09-14",
+    related: [
+      {
+        label: "Gaming neon signs: streaming setup, camera glare and sizing",
+        href: "/blog/custom-gaming-neon-signs-streaming-setup-guide",
+        description: "Where the sign sits in the webcam frame, how bright to run it and how big to go.",
+      },
+      {
+        label: "How to choose the right neon colour",
+        href: "/blog/how-to-choose-the-right-neon-color-for-your-sign",
+        description: "Picking one colour that holds up against RGB lighting and a dark wall.",
+      },
+      {
+        label: "What a custom sign costs",
+        href: "/guides/custom-business-sign-cost",
+        description: "The drivers behind every quote, from letter count to a logo outline.",
+      },
+    ],
     gallery: [
       img(
         "/neon-sign/Game Room/iap_600x600.6774958613_qsmg2a6o.webp",
@@ -438,6 +512,10 @@ const COLLECTION_CONTENT: readonly CollectionContent[] = [
     ],
     faqs: [
       {
+        q: "How much does a gaming neon sign cost?",
+        a: "The letter count, the width, the number of colours and whether it is text or a logo outline decide it, so every sign is quoted individually rather than priced from a list. Send the gamertag or file and a rough width and you get a free mockup and an all-in quote before anything is made. The cost guide below explains what moves the price.",
+      },
+      {
         q: "Can you make my gamertag or channel logo as a neon sign?",
         a: "Yes. A gamertag or phrase becomes LED neon in any font and colour. A full-colour logo or mascot is better as a UV-print acrylic sign with a neon outline, so the detail stays sharp. Send the file and we will show it both ways in a free mockup.",
       },
@@ -469,9 +547,9 @@ const COLLECTION_CONTENT: readonly CollectionContent[] = [
     tagline: "A phrase you chose, in light, on the wall you look at most.",
     metaTitle: "Bedroom Neon Signs & Neon Wall Art",
     metaDescription:
-      "Custom neon signs for bedrooms and living rooms — quotes, family names and neon wall art in your colour. Dimmable 12V LED neon, free design mockup, 5-year warranty.",
+      "Bedroom neon signs and neon lights for bedrooms, living rooms and hallways — quotes, names and neon wall art in your colour. Dimmable 12V, free mockup, 5-year warranty.",
     intro:
-      "A home sign is lived with, not visited. The wording has to still feel like yours in five years, the colour has to sit with the paint, and the glow has to be one you can turn down on a Tuesday night.",
+      "A bedroom neon sign is lived with, not visited. The wording has to still feel like yours in five years, the colour has to sit with the paint, and neon lights for a bedroom have to dim to something you can sleep beside on a Tuesday night.",
     heroImage: "/neon-sign/room/iap_600x600.8069307682_6sin2ngi.webp",
     heroAlt: "Warm white 'The Dohertys' neon script on a charcoal wall above a taupe sofa with olive cushions",
     heroCaption: "“The Dohertys” in warm white, over the sofa on a charcoal wall.",
@@ -479,6 +557,28 @@ const COLLECTION_CONTENT: readonly CollectionContent[] = [
     accentInk: "#0369a1",
     quoteProductName: "custom home decor neon sign",
     quoteLabel: "Get a home sign mockup",
+    keyword: "bedroom neon sign",
+    keywordPlural: "bedroom neon signs",
+    answer:
+      "A bedroom neon sign is a name, quote or shape in flexible LED neon on an acrylic backboard, made to hang above a bed, a sofa or a hallway wall. It runs at 12V, stays cool, dims with a remote for night, and is colour-matched to your paint from a Pantone, HEX or CMYK reference before it is built.",
+    updatedOn: "2026-09-14",
+    related: [
+      {
+        label: "Neon signs for bedrooms and home decor: sizing, warmth and dimming",
+        href: "/blog/custom-neon-signs-for-bedroom-and-home-decor",
+        description: "How to size a sign to the bed, choose a warmth you can sleep beside and set the dimmer.",
+      },
+      {
+        label: "How to choose the right neon colour",
+        href: "/blog/how-to-choose-the-right-neon-color-for-your-sign",
+        description: "Why lit colour on a wall differs from a screen, and how wall colour changes the glow.",
+      },
+      {
+        label: "What a custom sign costs",
+        href: "/guides/custom-business-sign-cost",
+        description: "The drivers behind every quote, and why two signs the same size can price differently.",
+      },
+    ],
     gallery: [
       img(
         "/neon-sign/room/iap_600x600.5808904777_nqlt9tbx.webp",
@@ -561,6 +661,10 @@ const COLLECTION_CONTENT: readonly CollectionContent[] = [
     ],
     faqs: [
       {
+        q: "How much does a bedroom neon sign cost?",
+        a: "The width, the number of letters, the number of colours and extras like a dimmer or a coloured backboard decide it, so every sign is quoted individually rather than priced from a list. Send the wording and the wall width and you get a free mockup and an all-in quote before anything is made. The cost guide below explains what moves the price.",
+      },
+      {
         q: "What size neon sign for a bedroom wall?",
         a: "Wider than the pillows if it goes above the bed; about two-thirds of the width of the furniture beneath it anywhere else. Send a photo of the wall and a rough width and we will place the sign at scale in a free mockup.",
       },
@@ -588,13 +692,15 @@ const COLLECTION_CONTENT: readonly CollectionContent[] = [
     slug: "bar-neon-signs",
     name: "Home Bar Signs",
     kicker: "Home bars, man caves, kitchens & garages",
-    h1: "Personalised Neon Bar Signs for Home Bars & Man Caves",
+    // US spelling on the head term: "personalized neon bar signs" carries the
+    // volume (33,100/mo); the British "personalised" barely registers.
+    h1: "Personalized Neon Bar Signs for Home Bars & Man Caves",
     tagline: "Name the bar, and the corner becomes a place.",
-    metaTitle: "Personalised Neon Bar Signs",
+    metaTitle: "Personalized Neon Bar Signs",
     metaDescription:
-      "Personalised neon bar signs for home bars, man caves, kitchens and garages — your bar’s name, a drink, a line. Dimmable 12V LED neon, free mockup, 5-year warranty.",
+      "Personalized neon bar signs for home bars, man caves, kitchens and garages — your bar’s name, a drink, a line. Dimmable 12V LED neon, free mockup, 5-year warranty.",
     intro:
-      "A home bar becomes a bar the moment it has a name in light above it. These are built for the rooms they actually go in — dark corners, garages, kitchens — where the glow does the work the decor cannot.",
+      "A home bar becomes a bar the moment its name is lit above it. A personalized neon bar sign is built for the rooms it actually goes in — dark corners, garages, kitchens — where the glow does the work the decor cannot.",
     heroImage: "/neon-sign/iap_600x600.7488149925_lgq4qo2u.webp",
     heroAlt: "Yellow 'Tequila' neon script on red backing casting a red glow across a plain wall",
     heroCaption: "“Tequila” in yellow on a red backboard, and the red wash it leaves on the wall.",
@@ -602,6 +708,28 @@ const COLLECTION_CONTENT: readonly CollectionContent[] = [
     accentInk: "#9a4f00",
     quoteProductName: "personalised neon bar sign",
     quoteLabel: "Mock up your bar sign for free",
+    keyword: "personalized neon bar sign",
+    keywordPlural: "personalized neon bar signs",
+    answer:
+      "A personalized neon bar sign is your bar’s name, a drink or a line in flexible LED neon on a clear or coloured acrylic backboard, made to hang above a home bar, kitchen counter, man cave or garage wall. It runs at 12V, dims for late nights, and can be built for damp or unheated spaces.",
+    updatedOn: "2026-09-14",
+    related: [
+      {
+        label: "Neon signs for bars and cafés: sizing, lighting and durability",
+        href: "/blog/custom-neon-signs-for-bars-and-cafes",
+        description: "What holds up behind a bar — height, colour temperature and what to do about splashes.",
+      },
+      {
+        label: "How to choose the right neon colour",
+        href: "/blog/how-to-choose-the-right-neon-color-for-your-sign",
+        description: "Warm tones for wood and glass, one strong colour for a den — and why.",
+      },
+      {
+        label: "What a custom sign costs",
+        href: "/guides/custom-business-sign-cost",
+        description: "The drivers behind every quote, including coloured backboards and outdoor builds.",
+      },
+    ],
     gallery: [
       img(
         "/neon-sign/Bar/iap_600x600.5588358323_i7bgtidf.webp",
@@ -684,6 +812,10 @@ const COLLECTION_CONTENT: readonly CollectionContent[] = [
     ],
     faqs: [
       {
+        q: "How much does a personalized neon bar sign cost?",
+        a: "The width, the number of letters, the number of colours, a coloured backboard and an outdoor-rated build all move it, so every sign is quoted individually rather than priced from a list. Send the bar name and a photo of the wall and you get a free mockup and an all-in quote before anything is made. The cost guide below explains what moves the price.",
+      },
+      {
         q: "Can I put my own bar name on a neon sign?",
         a: "Yes — a first name, a surname, a pub-style name or a joke. Send the wording and a font you like, or a sketch, and the free mockup shows it at scale on a photo of your bar before anything is built.",
       },
@@ -715,9 +847,9 @@ const COLLECTION_CONTENT: readonly CollectionContent[] = [
     tagline: "One night in light, and a wall at home afterwards.",
     metaTitle: "Party & Happy Birthday Neon Signs",
     metaDescription:
-      "Custom party neon signs — Happy Birthday, names, ages, proposals and baby showers. Battery or plug, hangs in minutes, reusable, with a free mockup and 5-year warranty.",
+      "Party neon signs and happy birthday neon signs — names, ages, proposals and baby showers. Battery or plug, hangs in minutes, reusable. Free mockup, 5-year warranty.",
     intro:
-      "A party sign has one job on the night — be in every photograph — and one job afterwards: go on a wall and keep working. Choosing wording that does both is most of the decision.",
+      "A party neon sign has one job on the night — be in every photograph — and one job afterwards: go on a wall and keep working. Choosing wording that does both is most of the decision.",
     heroImage: "/neon-sign/event/iap_600x600.6103087465_ikaxjhp9.webp",
     heroAlt: "Yellow neon 'paletas' sign on a vintage white ice-cream cart under a ruffled parasol on a lawn",
     heroCaption: "“paletas” in yellow on an ice-cream cart, under a parasol on the lawn.",
@@ -725,6 +857,28 @@ const COLLECTION_CONTENT: readonly CollectionContent[] = [
     accentInk: "#b4106a",
     quoteProductName: "custom party neon sign",
     quoteLabel: "Get a party sign mockup",
+    keyword: "party neon sign",
+    keywordPlural: "party and birthday neon signs",
+    answer:
+      "A party neon sign is Happy Birthday, a name, an age or a phrase in flexible LED neon on an acrylic backboard, made to hang above a balloon arch, dessert table or photo backdrop. It runs from a plug or a battery pack, hangs in minutes, reads in every photo, and goes on a wall at home afterwards.",
+    updatedOn: "2026-09-14",
+    related: [
+      {
+        label: "Hanging a neon sign on a backdrop: sizing, height and photography",
+        href: "/blog/custom-wedding-neon-signs-backdrop-guide",
+        description: "Written for weddings, and every rule about arches, height and cameras applies to a party.",
+      },
+      {
+        label: "How to choose the right neon colour",
+        href: "/blog/how-to-choose-the-right-neon-color-for-your-sign",
+        description: "Picking a colour that contrasts with the balloons instead of vanishing into them.",
+      },
+      {
+        label: "What a custom sign costs",
+        href: "/guides/custom-business-sign-cost",
+        description: "The drivers behind every quote, including a battery pack.",
+      },
+    ],
     gallery: [
       img(
         "/neon-sign/event/iap_600x600.6125652432_j15ml24x.webp",
@@ -806,6 +960,10 @@ const COLLECTION_CONTENT: readonly CollectionContent[] = [
       { name: "Bar or dessert table", text: "A short line above the drinks or the cake, where every phone points." },
     ],
     faqs: [
+      {
+        q: "How much does a happy birthday neon sign cost?",
+        a: "The wording length, the width, the number of colours and whether it needs a battery pack decide it, so every sign is quoted individually rather than priced from a list. Send the wording and where it will hang and you get a free mockup and an all-in quote before anything is made. The cost guide below explains what moves the price.",
+      },
       {
         q: "Can a party sign run without a socket?",
         a: "Yes, with a battery pack — useful in a marquee or a garden where the nearest socket is nowhere near the backdrop. It changes the practical size and how long it stays lit, so tell us where it is going when you ask for the mockup.",

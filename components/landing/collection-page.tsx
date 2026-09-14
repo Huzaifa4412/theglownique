@@ -24,6 +24,15 @@ import { serializeJsonLd } from "@/lib/utils";
  * its own signs tend to be, so a wedding page reads warm and a gaming page
  * reads violet without either touching the brand pink.
  *
+ * ── Written to be quoted ────────────────────────────────────────────────────
+ *
+ * Search and answer engines lift passages, not pages. So the page opens with
+ * a direct answer under the H1 that stands alone if extracted, every H2 is
+ * composed from the page's own head term the way people phrase the query, the
+ * FAQs are real questions with complete answers, and a visible "updated" date
+ * sits next to the breadcrumb. None of that is written for machines; it is
+ * the order a person wants the information in, which is why it works.
+ *
  * Every photograph is a 600 × 600 shop listing image. That fixes two layout
  * choices: tiles stay square, and the hero frame is capped so the image is
  * never upscaled past about 1.1×.
@@ -32,6 +41,17 @@ import { serializeJsonLd } from "@/lib/utils";
  * mockup, 12V silicone construction, Pantone/HEX matching. No prices, lead
  * times, delivery costs or ratings.
  */
+
+const capitalise = (text: string) => text.charAt(0).toUpperCase() + text.slice(1);
+
+const formatDate = (iso: string) =>
+  new Date(`${iso}T00:00:00Z`).toLocaleDateString("en-GB", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+    timeZone: "UTC",
+  });
+
 export function CollectionPageView({
   page,
   siblings,
@@ -43,6 +63,7 @@ export function CollectionPageView({
   const accentStyle = { "--accent": page.accent, "--accent-ink": page.accentInk } as CSSProperties;
   const [featured, ...tiles] = page.gallery;
   const others = siblings.filter((sibling) => sibling.slug !== page.slug);
+  const Plural = capitalise(page.keywordPlural);
 
   const structuredData = {
     "@context": "https://schema.org",
@@ -52,8 +73,14 @@ export function CollectionPageView({
         "@id": `${pageUrl}#webpage`,
         url: pageUrl,
         name: page.h1,
-        description: page.metaDescription,
+        headline: page.h1,
+        description: page.answer,
+        dateModified: page.updatedOn,
+        inLanguage: "en",
+        isPartOf: { "@id": `${SITE_URL}/#website` },
         publisher: { "@id": `${SITE_URL}/#organization` },
+        about: { "@type": "Thing", name: capitalise(page.keyword) },
+        keywords: [page.keyword, page.keywordPlural, page.name.toLowerCase()],
         primaryImageOfPage: `${SITE_URL}${page.heroImage}`,
         image: page.gallery.map((item) => ({
           "@type": "ImageObject",
@@ -64,7 +91,7 @@ export function CollectionPageView({
       {
         "@type": "ItemList",
         "@id": `${pageUrl}#signtypes`,
-        name: `Sign types for ${page.name.toLowerCase()}`,
+        name: `Sign types for ${page.keywordPlural}`,
         itemListElement: page.materials.map((material, index) => ({
           "@type": "ListItem",
           position: index + 1,
@@ -109,13 +136,18 @@ export function CollectionPageView({
 
           <div className="collection-hero__inner">
             <div className="collection-hero__copy">
-              <nav className="collection-crumbs" aria-label="Breadcrumb">
-                <Link href="/">Home</Link>
-                <span aria-hidden="true">/</span>
-                <Link href={page.parent.href}>{page.parent.label}</Link>
-                <span aria-hidden="true">/</span>
-                <span aria-current="page">{page.name}</span>
-              </nav>
+              <div className="collection-hero__meta">
+                <nav className="collection-crumbs" aria-label="Breadcrumb">
+                  <Link href="/">Home</Link>
+                  <span aria-hidden="true">/</span>
+                  <Link href={page.parent.href}>{page.parent.label}</Link>
+                  <span aria-hidden="true">/</span>
+                  <span aria-current="page">{page.name}</span>
+                </nav>
+                <p className="collection-updated">
+                  Updated <time dateTime={page.updatedOn}>{formatDate(page.updatedOn)}</time>
+                </p>
+              </div>
 
               <p className="collection-kicker">
                 <span className="collection-kicker__dot" aria-hidden="true" />
@@ -123,6 +155,7 @@ export function CollectionPageView({
               </p>
               <h1 className="collection-h1">{page.h1}</h1>
               <p className="collection-tagline">{page.tagline}</p>
+              <p className="collection-answer">{page.answer}</p>
               <p className="collection-intro">{page.intro}</p>
 
               <ul className="collection-trust" aria-label="What every sign includes">
@@ -167,10 +200,11 @@ export function CollectionPageView({
             <Reveal>
               <header className="collection-section-head collection-section-head--dark">
                 <p className="collection-eyebrow">From the shop</p>
-                <h2 id="gallery-heading">{page.name} people have ordered</h2>
+                <h2 id="gallery-heading">{Plural} people have ordered</h2>
                 <p>
-                  Real listing photographs, not renders. Every one started as a name, a phrase or a
-                  sketch sent to us — send yours and it goes on the same wall in a free mockup.
+                  Real listing photographs of {page.keywordPlural} we made, not renders. Every one
+                  started as a name, a phrase or a sketch sent to us — send yours and it goes on
+                  your own wall in a free mockup.
                 </p>
               </header>
             </Reveal>
@@ -219,7 +253,7 @@ export function CollectionPageView({
             <Reveal>
               <header className="collection-section-head">
                 <p className="collection-eyebrow">Wording ideas</p>
-                <h2 id="phrases-heading">What to put on it</h2>
+                <h2 id="phrases-heading">What to write on a {page.keyword}</h2>
                 <p>
                   The wording is the decision people stall on. These are the lines this occasion
                   actually gets ordered with — use one, change one, or send your own.
@@ -251,9 +285,9 @@ export function CollectionPageView({
             <Reveal>
               <header className="collection-section-head">
                 <p className="collection-eyebrow">Which sign type fits</p>
-                <h2 id="materials-heading">Three ways to build it</h2>
+                <h2 id="materials-heading">Which type of {page.keyword} to choose</h2>
                 <p>
-                  We make four sign types and they are not interchangeable. These are the ones that
+                  We make four sign types and they are not interchangeable. These are the three that
                   suit this occasion, and why.
                 </p>
               </header>
@@ -282,7 +316,7 @@ export function CollectionPageView({
             <Reveal>
               <header className="collection-section-head">
                 <p className="collection-eyebrow">Before we fabricate</p>
-                <h2 id="considerations-heading">Decide these first</h2>
+                <h2 id="considerations-heading">Before you order a {page.keyword}</h2>
                 <p>
                   Each of these is cheap to settle at the mockup stage and expensive or impossible to
                   change once the sign is built.
@@ -308,7 +342,7 @@ export function CollectionPageView({
             <Reveal>
               <header className="collection-section-head">
                 <p className="collection-eyebrow">Placement</p>
-                <h2 id="applications-heading">Where these signs go</h2>
+                <h2 id="applications-heading">Where to hang a {page.keyword}</h2>
               </header>
             </Reveal>
             <ul className="collection-application-list">
@@ -332,7 +366,7 @@ export function CollectionPageView({
             <Reveal>
               <header className="collection-section-head">
                 <p className="collection-eyebrow">Questions</p>
-                <h2 id="faq-heading">{page.name}, answered</h2>
+                <h2 id="faq-heading">{Plural}: your questions answered</h2>
               </header>
             </Reveal>
             <dl className="collection-faq-list">
@@ -348,6 +382,28 @@ export function CollectionPageView({
           </div>
         </section>
 
+        {/* ── Keep reading: the cluster this page belongs to ── */}
+        <section className="collection-reading" aria-labelledby="reading-heading">
+          <div className="collection-shell">
+            <Reveal>
+              <header className="collection-section-head collection-section-head--tight">
+                <p className="collection-eyebrow">Keep reading</p>
+                <h2 id="reading-heading">Guides that go deeper on {page.keywordPlural}</h2>
+              </header>
+            </Reveal>
+            <ul className="collection-reading-list">
+              {page.related.map((item) => (
+                <li key={item.href}>
+                  <Link href={item.href} className="collection-reading-card">
+                    <span className="collection-reading-card__label">{item.label}</span>
+                    <span className="collection-reading-card__text">{item.description}</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+
         {/* ── Closing CTA on the dark wall ── */}
         <section className="collection-cta">
           <div className="collection-cta__line" aria-hidden="true" />
@@ -355,7 +411,7 @@ export function CollectionPageView({
           <div className="collection-shell collection-cta__inner">
             <Reveal>
               <p className="collection-eyebrow collection-eyebrow--light">Free mockup</p>
-              <h2>Send us the wall</h2>
+              <h2>Get a free {page.keyword} mockup</h2>
               <p>
                 A photo of the space, the wording and a rough size is enough. We come back with your
                 sign placed on your own wall, in your colours, before anything is built — and every
@@ -381,7 +437,7 @@ export function CollectionPageView({
             <div className="collection-shell">
               <header className="collection-section-head collection-section-head--tight">
                 <p className="collection-eyebrow">More occasions</p>
-                <h2 id="more-heading">Signs for other rooms and days</h2>
+                <h2 id="more-heading">Custom neon signs for other rooms and days</h2>
               </header>
               <ul className="collection-more-list">
                 {others.map((sibling) => (

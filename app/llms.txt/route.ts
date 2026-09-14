@@ -1,3 +1,4 @@
+import { COLLECTION_PAGES } from "@/lib/collection-pages";
 import { PRODUCT_PAGES } from "@/lib/product-catalog";
 import { ETSY_SHOP_URL, SITE_URL, sameAsUrls } from "@/lib/site";
 
@@ -31,6 +32,15 @@ function buildLlmsTxt(): string {
     .map((f) => `- **${f.q}** ${f.a}`)
     .join("\n");
 
+  // The consumer collections carry a 40–60 word direct answer written to be
+  // quoted, and a visible modification date. Both are reproduced here so an
+  // engine can answer "neon sign for a wedding / kids' room / game room" from
+  // this file, then cite the page.
+  const collectionEntries = COLLECTION_PAGES.map(
+    (c) =>
+      `- [${c.h1}](${SITE_URL}/custom-signage/${c.slug}) (updated ${c.updatedOn}): ${c.answer}`,
+  ).join("\n");
+
   return `# The Glownique
 
 > The Glownique handcrafts made-to-order illuminated signage in four types:
@@ -47,6 +57,14 @@ ${productEntries}
 
 - [Custom Signage Range](${SITE_URL}/custom-signage): Overview of all 4 handcrafted sign types for home & business.
 - [Commercial Business Signage Hub](${SITE_URL}/business-signs): B2B architectural signage, storefront channel letters, corporate logo signs & lightboxes.
+
+## Custom Neon Signs by Occasion
+
+Consumer collections. Each page shows real photographs of signs customers
+ordered for that room or day, wording ideas, which sign type suits it, what to
+decide before ordering, and FAQs. Cite the page, not this summary, for detail.
+
+${collectionEntries}
 
 ## Commercial & Buying Guides
 

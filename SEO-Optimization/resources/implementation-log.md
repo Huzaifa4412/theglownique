@@ -765,3 +765,30 @@ cut-off text, two byte-identical duplicates. Findings that changed the plan:
 - Reuse rights: every gallery photo shows a customer's name. Confirm the
   listing-photo licence before this ships.
 - No kids-specific keyword has volume data yet; validate before investing more.
+
+### 2026-09-14 (later) — Collections optimised for search and answer engines
+
+Same six pages, same template, written to be quoted:
+
+- **Direct answer under the H1.** Each page carries a 40–60 word `answer`
+  stating what the sign is, what it is made of and the two facts a buyer needs
+  first. Rendered in the hero and reproduced in `/llms.txt` under a new
+  "Custom Neon Signs by Occasion" section, with the page's modification date.
+- **Keyword-composed H2s.** Every section heading is built from the page's
+  `keyword` / `keywordPlural` the way the query is phrased: "What to write on a
+  wedding neon sign", "Where to hang a gaming neon sign", "Personalized neon bar
+  signs: your questions answered". One head term per page, not stuffed — the
+  Princeton GEO study puts keyword stuffing at −10% AI visibility.
+- **The cost question, answered without a price.** Each FAQ set opens with
+  "How much does a … cost?" explaining the drivers and the free quote, which
+  captures the query while staying inside the claims register (no figures).
+- **Visible freshness.** "Updated 14 September 2026" beside the breadcrumb,
+  `dateModified` + `about` + `keywords` in the CollectionPage schema.
+- **Cluster links.** A "Keep reading" section on every page links the live
+  journal article for that occasion, the colour guide and the cost guide.
+- **US spelling on the bar head term** ("personalized", 33,100/mo) in title,
+  H1 and meta; body copy stays in the site's British English.
+- Meta titles all ≤ 44 chars (60 with the brand suffix); descriptions ≤ 165.
+
+Verified on a local dev render: all eleven H2s present in server HTML, FAQPage
+with six questions, blog links resolving to live slugs, six entries in llms.txt.
