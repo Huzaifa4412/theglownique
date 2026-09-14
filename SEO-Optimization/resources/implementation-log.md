@@ -680,8 +680,11 @@ pages.
 
 ## 2026-09-14 — Pillar post prepared: backlit signs vs ultra-thin light boxes (NOT YET LIVE)
 
-Written and validated, not published. `scripts/blog-posts/backlit-neon-signs-vs-ultra-thin-light-boxes.mjs`
-holds the post (3,600 words, 8 sections, 3 tables, 7 FAQs, 5 sources, Sign Basics),
+Written and validated, not published. `scripts/blog-posts/backlit-signage-vs-light-box-signs.mjs`
+holds the post (3,700 words, 8 sections, 3 tables, 8 FAQs, 5 sources, Sign Basics). Slug and
+keywords realigned 2026-09-14 to Ubersuggest volume: `backlit signage` (1,900/mo, SD 28,
+unowned) and `light box sign` (1,300/mo, SD 26) lead; secondary terms are recorded in the
+new planning-only `secondaryKeywords` field on the post schema,
 and `scripts/publish-blog-post.mjs` is a new single-post runner that validates the
 schema rules offline and writes through the API or exports NDJSON.
 
@@ -697,7 +700,7 @@ No prices, no shipping cost, no lead time; VALIDATION_REQUIRED component claims
 - `SANITY_API_WRITE_TOKEN` is a **viewer** robot token (`/users/me` → role read);
   every mutation and asset upload fails with `permission "create" required`.
 - The Sanity CLI is logged in to a different account (only project `ebwfqvlr`).
-- Once either is fixed: `node scripts/publish-blog-post.mjs scripts/blog-posts/backlit-neon-signs-vs-ultra-thin-light-boxes.mjs --write --publish`
+- Once either is fixed: `node scripts/publish-blog-post.mjs scripts/blog-posts/backlit-signage-vs-light-box-signs.mjs --write --publish`
   or export with `--ndjson tmp/<slug>.ndjson` and `npx sanity dataset import tmp/<slug>.ndjson production --replace`,
   then `npm run indexnow`.
 

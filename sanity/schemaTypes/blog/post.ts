@@ -200,6 +200,16 @@ export const post = defineType({
         "Planning label only — never rendered. Before you fill this in, check it against SEO-Optimization/05-keyword-and-intent-map.csv: if an existing /guides or /business-signs page already owns this intent, this post needs a different angle, not a second try at the same query.",
     }),
     defineField({
+      name: "secondaryKeywords",
+      title: "Secondary keywords",
+      type: "array",
+      group: "seo",
+      of: [defineArrayMember({ type: "string" })],
+      description:
+        "Planning labels only — never rendered and never emitted as a meta keywords tag (Google ignores that tag; see primary-source register G-META-01). Each one should already appear naturally in a heading, an FAQ question, alt text or body copy; if it does not, the fix is the copy, not this list.",
+      validation: (rule) => rule.max(12),
+    }),
+    defineField({
       name: "indexable",
       title: "Allow in search results",
       type: "boolean",

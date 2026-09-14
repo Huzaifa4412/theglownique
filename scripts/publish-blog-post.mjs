@@ -176,6 +176,7 @@ function buildDocument({ post, body, docId, authorId, categoryId, coverImage }) 
     seoTitle: post.seoTitle,
     seoDescription: post.seoDescription,
     primaryKeyword: post.primaryKeyword,
+    ...(post.secondaryKeywords?.length ? { secondaryKeywords: post.secondaryKeywords } : {}),
     indexable: post.indexable ?? true,
     relatedLinks: (post.relatedLinks ?? []).map((link, index) => ({ _type: "relatedLink", _key: `link${index}`, ...link })),
     ...(post.relatedPosts?.length

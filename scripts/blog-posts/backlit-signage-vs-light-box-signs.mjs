@@ -46,30 +46,62 @@ export const imageFiles = {
   "lightbox-menu": "public/ultra-thin-slim-lightbox/Menu boards.jpg",
 };
 
-const slug = "backlit-neon-signs-vs-ultra-thin-light-boxes";
+/**
+ * Slug and keywords come from the Ubersuggest export in
+ * SEO-Optimization/resources/ubersuggest-keywords-before-cleanup-2026-08-21.csv:
+ *
+ *   backlit signage          1,900/mo  SD 28   (dropped in cleanup: no page owned it — this post does)
+ *   light box sign(age)      1,300/mo  SD 26   (two words out-searches "lightbox signs", 720 at SD 49)
+ *   custom backlit sign        590/mo  SD 35
+ *   led backlit signage        480/mo  SD 34
+ *   backlit letters            260/mo  SD 13
+ *   halo lit letters           210/mo  SD 31
+ *   edge lit signs             210/mo  SD 23
+ *   led light box sign         170/mo  SD 19
+ *   reverse channel letter signs 140/mo SD 11
+ *
+ * "backlit neon sign" and "ultra thin light box" have no volume data, so they
+ * stay in the copy as descriptive phrases but no longer carry the slug or H1.
+ * Product pages keep the commercial variants (custom lightbox signs, led light
+ * box sign); this post owns the informational comparison.
+ */
+const slug = "backlit-signage-vs-light-box-signs";
 
 export const post = {
   _id: `post-${slug}`,
   slug,
-  title: "Backlit Neon Signs vs Ultra-Thin Light Boxes: An Architectural Signage Guide for Modern Businesses",
+  title: "Backlit Signage vs Light Box Signs: Which Illuminated Sign Belongs on Which Wall",
   categorySlug: "sign-basics",
   cover: "halo-salon",
   coverAlt:
-    "Halo backlit brushed-gold metal salon wordmark on a matte plaster reception wall, with a soft ring of warm light spilling onto the wall behind each letter",
+    "Backlit signage in a salon reception: halo lit brushed-gold metal letters on a matte plaster wall, with a soft ring of warm light spilling onto the wall behind each letter",
   coverCaption:
-    "A halo backlit sign never shows you its light source. The face stays solid, and the wall behind it does the glowing — which is why the wall is part of the specification.",
+    "Backlit signage never shows you its light source. The face stays solid, and the wall behind it does the glowing — which is why the wall is part of the specification.",
   readingMinutes: 15,
   publishedAt: "2026-09-14T09:00:00Z",
   featured: true,
-  primaryKeyword: "backlit neon signs vs ultra thin light boxes",
-  seoTitle: "Backlit Neon Signs vs Ultra-Thin Light Boxes",
+  primaryKeyword: "backlit signage vs light box signs",
+  secondaryKeywords: [
+    "backlit signage",
+    "light box sign",
+    "led light box sign",
+    "custom backlit sign",
+    "led backlit signage",
+    "backlit letters",
+    "halo lit letters",
+    "reverse channel letter signs",
+    "edge lit signs",
+    "ultra thin light box",
+    "backlit lobby signs",
+  ],
+  seoTitle: "Backlit Signage vs Light Box Signs: Which to Choose",
   seoDescription:
-    "Halo backlit signs make the wall glow; ultra-thin light boxes carry their own light and a swappable graphic. How each works, and which belongs on which wall.",
+    "Backlit signage or an LED light box sign? How halo lit letters and ultra-thin edge-lit light boxes work, which wall suits each, and when a business needs both.",
   summary:
-    "A halo backlit sign borrows the wall to make its glow, so it is permanent, sculptural and only as good as the surface behind it. An ultra-thin light box carries its own light and its own message, and the message can change next week. Here is how to tell which one your space needs — and why most well-planned fit-outs end up with both.",
+    "Backlit signage borrows the wall to make its glow, so it is permanent, sculptural and only as good as the surface behind it. A light box sign carries its own light and its own message, and the message can change next week. Here is how to tell which one your space needs — and why most well-planned fit-outs end up with both.",
   keyTakeaways: [
-    "A halo backlit sign is indirect light. The face is solid, the LEDs fire backwards, and the wall does the glowing — so the wall's colour, finish and texture are part of the design, not a backdrop to it.",
-    "An ultra-thin light box is a sealed optical system around 25 mm deep. The wall behind it is irrelevant, and the graphic inside it swaps in under a minute without tools.",
+    "Backlit signage is indirect light. The face of each letter is solid, the LEDs fire backwards, and the wall does the glowing — so the wall's colour, finish and texture are part of the design, not a backdrop to it.",
+    "An ultra-thin LED light box sign is a sealed optical system around 25 mm deep. The wall behind it is irrelevant, and the graphic inside it swaps in under a minute without tools.",
     "Choose halo for the thing that will not change: the name on the reception wall. Choose the light box for anything that will: menus, prices, campaigns, seasonal offers.",
     "Standoff distance, wall finish and where the driver lives decide whether a halo sign looks expensive or looks like a row of dots. All three are decided before anything is built.",
     "Most good venues do not pick one. They put a single halo sign where the brand lives and light boxes where the messages change, and the two formats stop competing.",
@@ -77,31 +109,31 @@ export const post = {
 
   body: [
     p(
-      "Almost every business that searches for a “backlit neon sign” is not, in the end, buying anything with neon in it. They are buying one of two LED products that behave completely differently in a room: a ",
-      b("halo backlit sign"),
+      "Almost every business that searches for backlit signage — or for a “backlit neon sign” — is not, in the end, buying anything with neon in it. They are buying one of two LED products that behave completely differently in a room: ",
+      b("halo backlit letters"),
       ", where the letters are solid and the wall glows behind them, or an ",
-      b("ultra-thin light box"),
+      b("LED light box sign"),
       ", where a slim aluminium frame lights a printed graphic from edge to edge. Both are low-voltage LED. Both photograph well. That is roughly where the similarities end.",
     ),
     p(
       "Most comparison articles online are still fighting the last war — glass neon against LED, or a fat fluorescent cabinet against channel letters on a storefront. If you are fitting out a reception, a salon, a clinic, a café or a shop interior, that is not the choice in front of you. This guide is about the choice that is: sculptural indirect light versus a flat, changeable illuminated panel, and how the two share a space.",
     ),
 
-    h2("First, the words"),
+    h2("What is backlit signage, and what is a light box sign?"),
     p(
-      "Signage vocabulary is a mess, and buying the wrong thing usually starts with the wrong word. Three definitions, so we are talking about the same objects:",
+      "Backlit signage is any sign lit from behind rather than through its face. In practice, for a business interior, it means one of two things — and buying the wrong one usually starts with the wrong word. Three definitions, so we are talking about the same objects:",
     ),
     ul([
       [
-        b("Halo backlit sign (also “reverse-lit” or “halo-lit”). "),
-        "Each letter or logo element is a shallow metal or acrylic channel with an opaque face and a translucent or open back. LEDs inside fire backwards onto the wall. The letters sit on short standoffs, so the light escapes around them as a soft ring — the halo. The face itself is never lit. Our version is fabricated in stainless steel; see ",
-        a("3D metal signs", "/products/3d-metal-neon-signs"),
+        b("Halo backlit letters (also “reverse channel letters”, “halo lit letters”, “reverse-lit”). "),
+        "Each letter or logo element is a shallow metal or acrylic channel with an opaque face and a translucent or open back. LEDs inside fire backwards onto the wall. The letters sit on short standoffs, so the light escapes around them as a soft ring — the halo. The face itself is never lit. This is what most people mean by a custom backlit sign for a lobby or reception. Our version is fabricated in stainless steel; see ",
+        a("3D metal backlit letters", "/products/3d-metal-neon-signs"),
         ".",
       ],
       [
-        b("Ultra-thin light box (also “slim light box”, “edge-lit light box”). "),
+        b("Ultra-thin LED light box sign (also “slim light box”, “edge lit sign”). "),
         "A rigid aluminium frame under about an inch deep, with LEDs along the edges firing sideways into a clear acrylic light guide plate. The plate turns edge light into an even glow across the whole face, which illuminates a printed film held under a snap frame or magnetic cover. Ours is described on the ",
-        a("ultra-thin light box page", "/products/ultra-thin-lightbox"),
+        a("ultra-thin lightbox page", "/products/ultra-thin-lightbox"),
         ".",
       ],
       [
@@ -115,9 +147,9 @@ export const post = {
       "“Neon” now describes a look rather than a gas. LED neon flex — the bendable glowing tube on an acrylic backboard — is a third product again, and it is the right answer for a script word or a phrase, not for a solid logo or a menu. This article stays with halo signs and light boxes; the custom neon sign page covers the tube.",
     ),
 
-    h2("How a halo backlit sign makes its light"),
+    h2("How halo lit backlit letters make their light"),
     p(
-      "The whole character of a halo sign comes from one decision: the light never travels towards you. It leaves the back of the letter, hits the wall, and only reaches your eye after bouncing off plaster, paint, timber or stone. Three things follow from that, and each one is a specification you have to make before we cut any metal.",
+      "The whole character of backlit letters comes from one decision: the light never travels towards you. It leaves the back of the letter, hits the wall, and only reaches your eye after bouncing off plaster, paint, timber or stone. Three things follow from that, and each one is a specification you have to make before we cut any metal.",
     ),
 
     h3("The wall is part of the sign"),
@@ -163,9 +195,9 @@ export const post = {
       "A phone camera struggles with any bare light source in frame: the sensor exposes for the bright point and the rest of the picture goes dark. A halo sign has no bare light source facing the lens. What the camera sees is a lit wall and a solid metal letter in silhouette, both within a range it can handle, so the brand name reads cleanly in customer photos and reels without the blown-out glare of a front-lit face. For any business that expects to be photographed — salons, cafés, boutique hotels, clinics with a reception selfie wall — this is a real commercial argument, not an aesthetic footnote.",
     ),
 
-    h2("How an ultra-thin light box makes its light"),
+    h2("How an ultra-thin LED light box sign makes its light"),
     p(
-      "A slim light box solves the opposite problem: how to light a large flat area evenly from a frame with almost no depth. Instead of putting the light source behind the face, it puts it beside the face.",
+      "An edge lit sign solves the opposite problem: how to light a large flat area evenly from a frame with almost no depth. Instead of putting the light source behind the face, it puts it beside the face.",
     ),
     h3("Edge light, turned forwards"),
     p(
@@ -175,7 +207,7 @@ export const post = {
     ),
     image(
       "lightbox-round",
-      "Round ultra-thin edge-lit light box for a coffee house mounted on a warm-toned interior wall, with the printed graphic evenly lit from edge to edge and a slim rim of light visible around the frame",
+      "Round ultra-thin LED light box sign for a coffee house mounted on a warm-toned interior wall, with the printed graphic evenly edge-lit from edge to edge and a slim rim of light visible around the frame",
       "Edge-lit and around an inch deep: the graphic is uniformly bright across the whole face, and the wall behind has no effect on the result.",
     ),
     h3("Independent of the wall"),
@@ -190,7 +222,7 @@ export const post = {
     ),
     image(
       "lightbox-menu",
-      "Two slim edge-lit light boxes mounted side by side on a restaurant wall as illuminated menu boards, with printed menu graphics, prices and food photography evenly backlit inside thin dark aluminium frames",
+      "Two slim LED light box signs mounted side by side on a restaurant wall as illuminated menu boards, with printed menu graphics, prices and food photography evenly backlit inside thin dark aluminium frames",
       "Menu boards are the light box's natural job: small type, prices and food photography, all of which change — and none of which a halo sign can carry.",
     ),
     callout(
@@ -199,9 +231,9 @@ export const post = {
       "It is flat. However good the print, a light box has no depth, no shadow and no material presence in daylight. Walk into a reception with the lights off and a halo sign is still a piece of brushed metal on the wall; a light box is a white rectangle. That difference is the whole reason the two formats coexist.",
     ),
 
-    h2("Side by side"),
+    h2("Backlit signage vs light box signs, side by side"),
     table(
-      "Halo backlit signs and ultra-thin light boxes compared",
+      "Halo backlit letters and ultra-thin LED light box signs compared",
       ["", "Halo backlit sign", "Ultra-thin light box"],
       [
         ["Light path", "Indirect — bounces off the wall", "Direct — edge-lit through a light guide plate"],
@@ -221,7 +253,7 @@ export const post = {
       "The last row is the useful one. A halo sign is a piece of the building. A light box is a piece of the conversation the business is having with its customers this month. Once you frame it that way, most placement decisions make themselves.",
     ),
 
-    h2("Which one, for which wall"),
+    h2("Which illuminated sign for which wall"),
     table(
       "A decision shortcut",
       ["If this is true", "Choose"],
@@ -248,11 +280,11 @@ export const post = {
 
     h2("The hybrid framework: most good spaces use both"),
     p(
-      "Walk through a well-designed café, clinic or boutique and you will usually find the two formats already working together, whether or not anyone planned it. The pattern is consistent enough to write down.",
+      "Walk through a well-designed café, clinic or boutique and you will usually find backlit lobby signs and light box signs already working together, whether or not anyone planned it. The pattern is consistent enough to write down.",
     ),
     ul([
       [
-        b("One halo sign where the brand lives. "),
+        b("One backlit sign where the brand lives. "),
         "The reception wall, the back bar, the wall behind the till — wherever a customer's eye settles first and where photographs get taken. One sign, the name or the mark, and nothing else on that wall competing with it.",
       ],
       [
@@ -371,11 +403,15 @@ export const post = {
 
   faqs: [
     {
-      q: "Is a backlit neon sign actually neon?",
-      a: "Almost never. What businesses call a backlit neon sign is usually a halo backlit sign: solid metal or acrylic letters with LEDs inside that fire backwards onto the wall, producing a soft ring of light around each letter. There is no gas and no glass tube. LED neon flex — the bendable glowing tube — is a separate product suited to script words and phrases rather than solid logos.",
+      q: "What is backlit signage?",
+      a: "Backlit signage is any sign lit from behind rather than through its face. For business interiors it usually means halo lit letters — solid metal or acrylic letters with LEDs inside that fire backwards onto the wall, producing a soft ring of light around each letter — or an LED light box sign, where a printed graphic is lit evenly from behind by a slim edge-lit panel. Both run on low-voltage LED.",
     },
     {
-      q: "How far should a halo backlit sign sit off the wall?",
+      q: "Is a backlit neon sign actually neon?",
+      a: "Almost never. What businesses call a backlit neon sign is usually a set of halo backlit letters: solid metal or acrylic letters with LEDs inside that fire backwards onto the wall. There is no gas and no glass tube. LED neon flex — the bendable glowing tube — is a separate product suited to script words and phrases rather than solid logos.",
+    },
+    {
+      q: "How far should halo lit letters sit off the wall?",
       a: "Trade guidance puts standoffs between roughly 20 and 40 mm (0.75 to 1.5 in). Shorter standoffs give a tighter, brighter ring; longer ones give a broader, softer wash that eventually loses definition. With modern wide-angle LED modules, 20 to 25 mm is a common starting point, adjusted for letter size and wall colour. The mockup on your own wall photo is the quickest way to settle it.",
     },
     {
@@ -383,16 +419,16 @@ export const post = {
       a: "Dark matte walls work but change the effect: the wall absorbs most of the light, so you get a tight, dramatic outline rather than a broad glow. Glossy, tiled or mirror-finish walls do not work without help, because the individual LED modules reflect in the surface. The fix in both cases is a thin matte backer panel behind the letters, which gives the light a controlled surface to bounce off.",
     },
     {
-      q: "How thin is an ultra-thin light box?",
-      a: "Our slim light boxes are under an inch deep — around 25 mm — including the frame. That is possible because the LEDs sit along the edges and fire sideways into an acrylic light guide plate, rather than sitting behind the face as they do in a traditional cabinet light box that is typically 100 mm or more deep.",
+      q: "How thin is an ultra-thin LED light box sign?",
+      a: "Our slim light box signs are under an inch deep — around 25 mm — including the frame. That is possible because the LEDs sit along the edges and fire sideways into an acrylic light guide plate, rather than sitting behind the face as they do in a traditional cabinet light box that is typically 100 mm or more deep.",
     },
     {
       q: "Can an ultra-thin light box be used outdoors or in a shop window?",
       a: "In a window, yes — including double-sided ceiling-hung versions read from both inside and out. For covered exterior or damp locations, both light boxes and halo signs can be built with appropriately rated components, but ask what is rated and how the cable entry is sealed rather than accepting the word 'waterproof'. Tell us the exposure and we will specify the build for it, or recommend a different format if that location does not suit.",
     },
     {
-      q: "Should a business choose a halo sign or a light box?",
-      a: "Usually both, in different places. A halo sign for the permanent brand identity — the name on the reception wall or behind the counter — because it has material presence in daylight and photographs without glare. Light boxes for anything that changes: menus, prices, campaigns, seasonal offers, wayfinding. A single lit box carrying both the logo and the offers tends to do neither job well.",
+      q: "Should a business choose backlit signage or a light box sign?",
+      a: "Usually both, in different places. Backlit letters for the permanent brand identity — the name on the reception wall or behind the counter — because it has material presence in daylight and photographs without glare. Light boxes for anything that changes: menus, prices, campaigns, seasonal offers, wayfinding. A single lit box carrying both the logo and the offers tends to do neither job well.",
     },
     {
       q: "Where does the power supply for a backlit sign go?",
@@ -403,14 +439,14 @@ export const post = {
   relatedLinks: [
     {
       kind: "commercial",
-      label: "3D metal halo backlit signs",
-      description: "Fabricated stainless-steel letters and logos — halo, front-lit or dual-lit — with finishes and mounting options.",
+      label: "3D metal backlit letters",
+      description: "Fabricated stainless-steel letters and logos — halo lit, front-lit or dual-lit — with finishes and mounting options.",
       href: "/products/3d-metal-neon-signs",
     },
     {
       kind: "commercial",
-      label: "Ultra-thin light boxes",
-      description: "Edge-lit slim aluminium light boxes with snap-frame or magnetic faces for menus, displays and windows.",
+      label: "Ultra-thin LED light box signs",
+      description: "Edge-lit slim aluminium lightboxes with snap-frame or magnetic faces for menus, displays and windows.",
       href: "/products/ultra-thin-lightbox",
     },
     {
@@ -427,8 +463,8 @@ export const post = {
     },
     {
       kind: "commercial",
-      label: "Light box signs for business",
-      description: "Single-sided wall units and double-sided window-hung light boxes for retail, hospitality and clinics.",
+      label: "Custom lightbox signs for business",
+      description: "Single-sided wall units and double-sided window-hung light box signs for retail, hospitality and clinics.",
       href: "/business-signs/lightbox-signs",
     },
   ],
