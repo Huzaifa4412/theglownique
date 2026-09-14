@@ -121,13 +121,19 @@ a {
   -webkit-tap-highlight-color: transparent;
 }
 
-button {
-  color: inherit;
-}
+/* Keep these resets inside @layer base. Unlayered rules outrank every Tailwind
+   utility (utilities live in @layer utilities), so an unlayered `a { color:
+   inherit }` silently cancelled `text-white` on <Link> buttons — e.g. the
+   "Explore Business Signage Hub" CTA rendered dark text on a dark background. */
+@layer base {
+  button {
+    color: inherit;
+  }
 
-a {
-  color: inherit;
-  text-decoration: none;
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
 }
 
 img {
