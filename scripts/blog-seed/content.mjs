@@ -758,7 +758,7 @@ export const posts = [
     primaryKeyword: "led neon vs glass neon",
     seoTitle: "LED Neon vs Glass Neon: The Real Differences",
     seoDescription:
-      "Voltage, weight, repairability, colour behaviour and outdoor use — an honest comparison of LED neon flex and traditional glass neon, including where glass still wins.",
+      "Voltage, weight, repairability and outdoor use — an honest comparison of LED neon flex and traditional glass neon, including where glass still wins.",
     summary:
       "Both get called neon, and only one of them contains any. The differences that matter are not really about looks — they are voltage, weight, what happens when something breaks, and whether you can move the sign afterwards. Here is the comparison, including the cases where glass is still the right answer.",
     keyTakeaways: [

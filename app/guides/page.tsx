@@ -45,6 +45,13 @@ const guidesList = [
     desc: "Comparative visual and technical guide for storefront channel letter lighting methods, wall reflection requirements, and legibility.",
     updated: "2026-08-11",
   },
+  {
+    slug: "backlit-sign-wall-surfaces-and-standoffs",
+    title: "Backlit Sign Wall Surfaces & Standoff Guide",
+    category: "Mounting & Architectural Integration",
+    desc: "How wall finishes (plaster, wood slats, brick, tile) and standoff distance change halo illumination on backlit signs.",
+    updated: "2026-09-15",
+  },
 ];
 
 export default function GuidesHubPage() {
@@ -60,6 +67,17 @@ export default function GuidesHubPage() {
         name: "Business Signage Guides & Comparisons",
         description: "Expert technical and buying guides for commercial illuminated signage.",
         publisher: { "@id": `${SITE_URL}/#organization` },
+      },
+      {
+        "@type": "ItemList",
+        "@id": `${pageUrl}#guides`,
+        name: "Signage guides",
+        itemListElement: guidesList.map((guide, index) => ({
+          "@type": "ListItem",
+          position: index + 1,
+          name: guide.title,
+          url: `${SITE_URL}/guides/${guide.slug}`,
+        })),
       },
       {
         "@type": "BreadcrumbList",

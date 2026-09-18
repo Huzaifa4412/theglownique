@@ -57,10 +57,16 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const url = `/blog/${post.slug}`;
   const title = post.seoTitle || post.title;
   const image = post.coverImage?.url ?? "/hero/neon-sign-hero.png";
+  const description =
+    post.slug === "turn-business-logo-into-custom-neon-sign"
+      ? "Learn how to turn your business logo into a custom LED neon sign: essential workshop rules for stroke width, letter height, Pantone colors & backboard styles."
+      : post.slug === "led-neon-vs-glass-neon"
+        ? "Voltage, weight, repairability and outdoor use — an honest comparison of LED neon flex and traditional glass neon, including where glass still wins."
+        : post.seoDescription;
 
   return {
     title,
-    description: post.seoDescription,
+    description,
     alternates: { canonical: url },
     // `indexable: false` is how a post is pulled from search without being
     // deleted — see the field's description in the schema. The sitemap honours
@@ -70,7 +76,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
       type: "article",
       siteName: "The Glownique",
       title: `${title} | The Glownique`,
-      description: post.seoDescription,
+      description,
       url,
       publishedTime: isoDate(post.publishedAt),
       modifiedTime: isoDate(post.updatedAt ?? post.publishedAt),
@@ -80,7 +86,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
     twitter: {
       card: "summary_large_image",
       title: `${title} | The Glownique`,
-      description: post.seoDescription,
+      description,
       images: [image],
     },
   };

@@ -14,14 +14,14 @@ import { serializeJsonLd } from "@/lib/utils";
 export const metadata: Metadata = {
   title: "Custom Business & Storefront Signs",
   description:
-    "National supplier of custom illuminated business signage — 3D metal channel letters, outdoor storefront signs, custom logo neon signs, ultra-thin lightboxes & acrylic signs. Free mockup & 5-year warranty.",
+    "Custom illuminated business signage — 3D metal channel letters, storefront signs, LED neon logos & lightboxes. Free design mockup & 5-year warranty.",
   alternates: { canonical: "/business-signs" },
   openGraph: {
     type: "website",
     siteName: "The Glownique",
     title: "Custom Business & Storefront Signs | The Glownique",
     description:
-      "Handcrafted custom illuminated business signs for storefronts, offices, restaurants, salons and events — LED neon, 3D channel letters, lightboxes & acrylic logo signs.",
+      "Handcrafted illuminated business signs for storefronts, offices, and restaurants — LED neon, 3D channel letters, lightboxes & acrylic logo signs.",
     url: "/business-signs",
     images: [{ url: "/hero/neon-sign-hero.webp", alt: "The Glownique Custom Business Signage" }],
   },
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Custom Business & Storefront Signs | The Glownique",
     description:
-      "Handcrafted custom illuminated business signs — LED neon, 3D channel letters, lightboxes & acrylic logo signs.",
+      "Handcrafted illuminated business signs — LED neon, 3D channel letters, lightboxes & acrylic logo signs.",
     images: ["/hero/neon-sign-hero.webp"],
   },
 };
@@ -71,6 +71,24 @@ const b2bProducts = [
     image: "/3d-arcylic/3235dc09-6dac-4056-88b6-55fc26e28571.webp",
     accent: "#7c3aed",
   },
+  {
+    slug: "backlit-signs",
+    name: "Custom 3D Metal Backlit Signs",
+    category: "Storefront & Lobby",
+    tagline: "Fabricated stainless steel letters with rear halo illumination projecting a soft glow onto the wall surface.",
+    specs: ["Halo Backlit / Reverse Lit", "304/316 Stainless Steel", "Matte & Titanium Finishes", "Indoor & IP67 Outdoor"],
+    image: "/3d-metallic-neon-sign/corporte/056b3189-6a8c-482a-8334-53ded7aff3e1.webp",
+    accent: "#e0a23c",
+  },
+  {
+    slug: "backlit-lobby-signs",
+    name: "Backlit Lobby Signs & Reception Logos",
+    category: "Corporate & Office",
+    tagline: "Commercial 3D halo-lit metal letters and illuminated reception wall logos engineered for executive lobbies and corporate office spaces.",
+    specs: ["Silent Solid-State Drivers", "Lease-Friendly Mounting", "ADA Compliant Depth", "Wireless Dimming"],
+    image: "/3d-metallic-neon-sign/corporte/14d4b621-c697-428a-b727-1c91b78e9e08.webp",
+    accent: "#0ea5e9",
+  },
 ];
 
 const b2bGuides = [
@@ -83,6 +101,11 @@ const b2bGuides = [
     slug: "front-lit-vs-halo-lit-vs-dual-lit",
     title: "Front-Lit vs Halo-Lit vs Dual-Lit Channel Letters",
     desc: "Compare visibility, wall reflection physics, and daytime vs nighttime legibility for exterior storefront channel letters.",
+  },
+  {
+    slug: "backlit-sign-wall-surfaces-and-standoffs",
+    title: "Backlit Sign Wall Surfaces & Standoff Guide",
+    desc: "How wall finishes (plaster, wood slats, brick, tile) and standoff distance change halo illumination on backlit signs.",
   },
 ];
 
@@ -100,6 +123,17 @@ export default function BusinessSignsHubPage() {
         description:
           "National supplier of custom illuminated business signs including logo neon signs, 3D metal channel letters, lightboxes and acrylic logo signs.",
         publisher: { "@id": `${SITE_URL}/#organization` },
+      },
+      {
+        "@type": "ItemList",
+        "@id": `${pageUrl}#products`,
+        name: "Business signage types",
+        itemListElement: b2bProducts.map((product, index) => ({
+          "@type": "ListItem",
+          position: index + 1,
+          name: product.name,
+          url: `${SITE_URL}/business-signs/${product.slug}`,
+        })),
       },
       {
         "@type": "BreadcrumbList",
@@ -155,7 +189,7 @@ export default function BusinessSignsHubPage() {
           <div className="mx-auto max-w-[1320px] px-4 sm:px-6">
             <div className="mb-12 text-center">
               <h2 className="text-3xl font-extrabold text-[#1e1a22] sm:text-4xl">
-                Four Custom Illuminated Sign Categories
+                Five Custom Illuminated Sign Technologies
               </h2>
               <p className="mt-3 text-base text-[#5e5862]">
                 Choose the right illuminated technology for your brand environment.

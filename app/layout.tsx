@@ -8,6 +8,7 @@ import {
 import "./globals.css";
 import { MetaPixel } from "@/components/analytics/meta-pixel";
 import { MetaPixelEvents } from "@/components/analytics/meta-pixel-events";
+import { PostHogProvider } from "@/components/analytics/posthog-provider";
 import { cn, serializeJsonLd } from "@/lib/utils";
 import { sameAsUrls } from "@/lib/site";
 
@@ -44,7 +45,7 @@ export const metadata: Metadata = {
     template: "%s | The Glownique",
   },
   description:
-    "Custom LED neon signs, 3D metal channel letters, ultra-thin lightboxes and UV-print acrylic signs — free design preview, tracked worldwide delivery and a 5-year warranty.",
+    "Turn blank walls into signs that sell. Handcrafted custom LED neon & 3D business signs with free 2D/3D design proofs, 5-yr warranty & tracked delivery.",
   applicationName: "The Glownique",
   authors: [{ name: "The Glownique" }],
   creator: "The Glownique",
@@ -58,7 +59,7 @@ export const metadata: Metadata = {
     siteName: "The Glownique",
     title: "Custom LED Neon Signs & Business Signage | The Glownique",
     description:
-      "Handcrafted custom LED neon signs, 3D metal channel letters, ultra-thin lightboxes and UV-print acrylic signs — previewed free, delivered worldwide with tracking and backed by a 5-year warranty.",
+      "Handcrafted custom neon signs, 3D channel letters & slim lightboxes. Free 1-on-1 design preview in ~2 hrs, 5-year warranty & timber-crated delivery.",
     url: "/",
     locale: "en_US",
     images: [
@@ -74,7 +75,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Custom LED Neon Signs & Business Signage | The Glownique",
     description:
-      "Handcrafted custom LED neon signs, 3D metal channel letters, ultra-thin lightboxes and UV-print acrylic signs — previewed free, delivered worldwide with tracking and a 5-year warranty.",
+      "Handcrafted custom neon signs, 3D channel letters & slim lightboxes. Free 1-on-1 design preview in ~2 hrs, 5-year warranty & timber-crated delivery.",
     images: ["/hero/neon-sign-hero.png"],
   },
   robots: {
@@ -167,7 +168,9 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: serializeJsonLd(structuredData) }}
         />
-        {children}
+        <PostHogProvider>
+          {children}
+        </PostHogProvider>
         <Analytics />
         <Script
           id="google-analytics-loader"

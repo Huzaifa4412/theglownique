@@ -69,14 +69,22 @@ const INDUSTRY_RELEASE = "2026-08-28";
  */
 const COLLECTION_RELEASE = "2026-09-14";
 
+/** Backlit signage cluster launches: commercial hub, lobby use-case, and wall mounting guide. */
+const BACKLIT_RELEASE = "2026-09-15";
+
+/** Ubersuggest keyword optimization & internal linking expansion. */
+const UBERSUGGEST_SEO_RELEASE = "2026-09-18";
+
 export const ROUTES: readonly RouteEntry[] = [
   // Home — primary H1 keywords, FAQ schemas and entity grounded content.
-  { path: "/", lastModified: CURRENT_SEO_RELEASE, changeFrequency: "weekly", priority: 1.0, indexable: true },
+  { path: "/", lastModified: UBERSUGGEST_SEO_RELEASE, changeFrequency: "weekly", priority: 1.0, indexable: true },
 
   // B2B hub and destinations.
-  { path: "/business-signs", lastModified: CURRENT_SEO_RELEASE, changeFrequency: "weekly", priority: 0.95, indexable: true },
+  { path: "/business-signs", lastModified: UBERSUGGEST_SEO_RELEASE, changeFrequency: "weekly", priority: 0.95, indexable: true },
   { path: "/business-signs/custom-logo-neon-signs", lastModified: CURRENT_SEO_RELEASE, changeFrequency: "monthly", priority: 0.9, indexable: true },
   { path: "/business-signs/channel-letter-signs", lastModified: CURRENT_SEO_RELEASE, changeFrequency: "monthly", priority: 0.9, indexable: true },
+  { path: "/business-signs/backlit-signs", lastModified: BACKLIT_RELEASE, changeFrequency: "monthly", priority: 0.9, indexable: true },
+  { path: "/business-signs/backlit-lobby-signs", lastModified: UBERSUGGEST_SEO_RELEASE, changeFrequency: "monthly", priority: 0.9, indexable: true },
   { path: "/business-signs/lightbox-signs", lastModified: CURRENT_SEO_RELEASE, changeFrequency: "monthly", priority: 0.9, indexable: true },
   { path: "/business-signs/acrylic-logo-signs", lastModified: CURRENT_SEO_RELEASE, changeFrequency: "monthly", priority: 0.9, indexable: true },
 
@@ -96,9 +104,10 @@ export const ROUTES: readonly RouteEntry[] = [
   { path: "/blog", lastModified: BLOG_RELEASE, changeFrequency: "weekly", priority: 0.7, indexable: true },
 
   // Decision guides.
-  { path: "/guides", lastModified: CURRENT_SEO_RELEASE, changeFrequency: "weekly", priority: 0.85, indexable: true },
+  { path: "/guides", lastModified: UBERSUGGEST_SEO_RELEASE, changeFrequency: "weekly", priority: 0.85, indexable: true },
   { path: "/guides/custom-business-sign-cost", lastModified: CURRENT_SEO_RELEASE, changeFrequency: "monthly", priority: 0.8, indexable: true },
   { path: "/guides/front-lit-vs-halo-lit-vs-dual-lit", lastModified: CURRENT_SEO_RELEASE, changeFrequency: "monthly", priority: 0.8, indexable: true },
+  { path: "/guides/backlit-sign-wall-surfaces-and-standoffs", lastModified: UBERSUGGEST_SEO_RELEASE, changeFrequency: "monthly", priority: 0.8, indexable: true },
 
   // Consumer hub. It began as the broad product catalog and now also parents
   // the occasion collections below, which is why its priority sits above them.

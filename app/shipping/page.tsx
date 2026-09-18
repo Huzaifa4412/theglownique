@@ -6,7 +6,7 @@ import { LegalPage } from "@/components/legal/legal-page";
 export const metadata: Metadata = {
   title: "Shipping & Delivery",
   description:
-    "How Glownique orders are made and shipped: handcrafted in around 10–15 days, then sent worldwide with tracked delivery. Shipping cost is confirmed with your quote. How customs and duties work.",
+    "How The Glownique signs are built and shipped: handcrafted in 10–15 days, timber-crated, and sent worldwide with tracked delivery and full transit insurance.",
   alternates: { canonical: "/shipping" },
   openGraph: {
     type: "website",

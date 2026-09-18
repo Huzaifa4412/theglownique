@@ -13,7 +13,7 @@ import { serializeJsonLd } from "@/lib/utils";
 export const metadata: Metadata = {
   title: "Custom Ultra-Thin Lightbox & LED Signs",
   description:
-    "Custom edge-lit LED lightbox signs, acrylic light box signs and slim backlit displays for retail storefronts, restaurant menus and trade shows. 5-year warranty.",
+    "Custom edge-lit LED lightbox signs & slim backlit displays for retail storefronts, restaurant menus and events. Free mockup & 5-year warranty.",
   alternates: { canonical: "/business-signs/lightbox-signs" },
   openGraph: {
     type: "website",

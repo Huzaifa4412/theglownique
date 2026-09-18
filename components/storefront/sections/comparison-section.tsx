@@ -4,17 +4,19 @@ import { PremiumAccentText } from "@/components/ui/premium-accent-text";
 import { DELIVERY } from "@/lib/claims";
 
 const comparisonRows = [
-  ["Free digital mockup", "1–2 hours", "Days"],
-  ["Handcrafted delivery", "10–15 days", "Weeks"],
-  ["Customer support", "7 days a week", "Limited"],
+  ["1-on-1 Design Mockup", "Human designer proof in 1–2 hrs", "Automated bot or days of waiting"],
+  ["Handcrafted Build Time", "10–15 days honest dispatch", "Vague estimates or drop-shipped weeks"],
+  ["Direct Artisan Support", "7 days/week via WhatsApp & Etsy", "Slow automated ticket queues"],
 ] as const;
 
 const includedBenefits = [
-  "Made to your exact spec",
-  "All four sign types",
-  "Free design preview",
-  DELIVERY.short,
-  "5-year warranty",
+  "Commercial-grade silicone (no brittle PVC or glass)",
+  "Clean concealed wiring with soldered micro-joints",
+  "Free dimmer remote & standoff mounting kit",
+  "24-hour burn-in luminance check before dispatch",
+  "Shockproof timber-crated packaging",
+  "5-year warranty & 100% glow guarantee",
+  "Etsy Purchase Protection & milestone pay",
 ] as const;
 
 export function ComparisonSection() {
@@ -36,14 +38,14 @@ export function ComparisonSection() {
             Why choose <PremiumAccentText>The Glownique?</PremiumAccentText>
           </h2>
           <p className="mt-5 max-w-sm text-sm leading-6 text-white/75">
-            Handcrafted custom neon signs, 3D channel letters and commercial lightboxes with free digital mockups, honest timelines and 5-year warranty protection — that&apos;s the difference.
+            Too many online signs are cheap drop-shipped plastic with noisy power bricks, messy exposed wiring, and zero warranty. We hand-build commercial-grade signage with 12V solid silicone, laser-cut acrylic, 304 stainless steel, and rigorous 24-hour testing.
           </p>
           <CustomQuoteButton
             className="comparison-cta button button--whatsapp mt-7 inline-flex items-center gap-3 rounded-full px-6 py-3.5 text-xs font-extrabold uppercase tracking-[0.13em]"
             label="Get a custom quote"
           />
           <p className="mt-4 flex items-center gap-2 text-xs font-bold text-white/80">
-            <StoreIcon name="ShieldCheck" /> Quality checked before dispatch
+            <StoreIcon name="ShieldCheck" /> 24-hour burn-in tested before dispatch
           </p>
         </div>
 

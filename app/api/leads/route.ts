@@ -156,7 +156,13 @@ export async function POST(request: Request) {
 
     const posthog = getPostHogClient();
     if (posthog) {
+      const distinctId =
+        (body.email as string) ||
+        (body.phone as string) ||
+        (document._id as string) ||
+        "anonymous_lead";
       posthog.capture({
+        distinctId,
         event: "lead_archived",
         properties: { source, topic: clean(body.topic, LEAD_LIMITS.short) },
       });

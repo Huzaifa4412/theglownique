@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   // survive SERP truncation.
   title: "Contact Us — Custom Sign Quotes & Support",
   description:
-    "Contact The Glownique about a custom LED neon or business sign quote, an existing Etsy order, or a 5-year warranty claim. Free mockups, replies within one working day, 7 days a week.",
+    "Contact The Glownique for custom sign quotes, order help, or 5-year warranty claims. Free design mockups with replies within one working day, 7 days a week.",
   alternates: { canonical: "/contact" },
   openGraph: {
     type: "website",

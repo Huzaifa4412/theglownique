@@ -4,6 +4,9 @@ import {
   ArrowLeft,
   ArrowRight,
   ArrowUpRight,
+  LockSimple,
+  PencilLine,
+  ShieldCheck,
 } from "@phosphor-icons/react";
 import Image from "next/image";
 import {
@@ -22,12 +25,27 @@ import { categoryLabels, heroSlides } from "@/lib/store-data";
 
 const CAROUSEL_DURATION = 5500;
 
+/**
+ * The rotating second line of the headline. The first entry is what
+ * reduced-motion users see, and the longest entry is measured invisibly so
+ * the line never changes width while it types.
+ */
+const HEADLINE_ENDINGS = [
+  "get noticed.",
+  "sell more.",
+  "turn heads.",
+  "glow for years.",
+];
+
+const LONGEST_HEADLINE_ENDING = HEADLINE_ENDINGS.reduce((longest, entry) =>
+  entry.length > longest.length ? entry : longest,
+);
+
 /** Shared by both crops of slide 4, which are the same picture. */
 const LIGHTBOX_SLIDE_ALT =
   "Client concept sketch beside a finished ultra-thin slim LED lightbox by The Glownique";
 
 export function HeroSection() {
-  const heroRef = useRef<HTMLElement>(null);
   const pointerStartRef = useRef(0);
   const [activeSlide, setActiveSlide] = useState(0);
   const [carouselPaused, setCarouselPaused] = useState(false);
@@ -75,19 +93,15 @@ export function HeroSection() {
   };
 
   return (
-    <section
-      ref={heroRef}
-      className="hero"
-      aria-labelledby="hero-heading"
-    >
+    <section className="hero" aria-labelledby="hero-heading">
       <div className="hero__copy shell-edge">
-        <p className="eyebrow hero__eyebrow">
-          <span aria-hidden="true" /> Handcrafted Custom Neon &amp; Business Signage
-        </p>
         <h1 id="hero-heading" className="hero-title">
-          <span className="sr-only">Custom LED Neon Signs &amp; Business Signage Handcrafted to Glow</span>
+          <span className="sr-only">
+            Custom LED Neon Signs &amp; 3D Business Signage, Handcrafted
+            Commercial &amp; Custom Illuminated Signs
+          </span>
           <span className="hero-title__line" aria-hidden="true">
-            <span>Light up</span>
+            Signs built to
           </span>
           <span
             className="hero-title__line hero-title__line--accent"
@@ -95,36 +109,34 @@ export function HeroSection() {
           >
             <span className="hero-title__accent-reserve">
               <span className="hero-title__accent-measure premium-accent-text">
-                what glows
+                {LONGEST_HEADLINE_ENDING}
               </span>
               {reducedMotion ? (
                 <span className="premium-accent-text hero-title__accent-static">
-                  what feels
+                  {HEADLINE_ENDINGS[0]}
                 </span>
               ) : (
                 <TextType
                   as="span"
-                  text={["what feels", "what looks", "what glows"]}
+                  text={HEADLINE_ENDINGS}
                   className="premium-accent-text hero-title__accent-type"
                   cursorCharacter="▌"
                   cursorClassName="hero-title__accent-cursor"
-                  typingSpeed={72}
-                  deletingSpeed={40}
-                  pauseDuration={1450}
-                  initialDelay={850}
+                  typingSpeed={68}
+                  variableSpeed={{ min: 45, max: 110 }}
+                  deletingSpeed={32}
+                  pauseDuration={2200}
+                  initialDelay={650}
                   loop
-                  aria-hidden="true"
                 />
               )}
             </span>
           </span>
-          <span className="hero-title__line" aria-hidden="true">
-            <span>like you.</span>
-          </span>
         </h1>
         <p className="hero__intro">
-          Transform your brand logo, favourite words or business storefront into a handcrafted custom
-          neon sign, 3D metal channel letters, or edge-lit lightbox — previewed free, made to order, and ready to glow.
+          Handcrafted LED neon, 3D letters and slim lightboxes for
+          storefronts, studios and homes. Approve a free true-to-scale mockup
+          before you pay.
         </p>
         <div className="hero__actions">
           <a className="button button--primary" href="#custom">
@@ -134,32 +146,20 @@ export function HeroSection() {
             Explore sign types
           </a>
         </div>
-          {/* <div className="trust-row" aria-label="Store guarantees">
-            <div>
-              <IconBox icon={Truck} />
-              <span>
-                <strong>Tracked delivery</strong>Worldwide
-              </span>
-            </div>
-            <div>
-              <IconBox icon={ShieldCheck} />
-              <span>
-                <strong>5-year</strong>Warranty
-              </span>
-            </div>
-            <div>
-              <IconBox icon={SealCheck} />
-              <span>
-                <strong>5,000+</strong>Happy customers
-              </span>
-            </div>
-            <div>
-              <IconBox icon={ImageSquare} />
-              <span>
-                <strong>Free</strong>Design preview
-              </span>
-            </div>
-          </div> */}
+        <ul className="hero-facts" aria-label="Order guarantees">
+          <li>
+            <IconBox icon={PencilLine} />
+            <span>Free mockup in about 2 hours</span>
+          </li>
+          <li>
+            <IconBox icon={ShieldCheck} />
+            <span>5-year warranty</span>
+          </li>
+          <li>
+            <IconBox icon={LockSimple} />
+            <span>Secure Etsy checkout</span>
+          </li>
+        </ul>
       </div>
 
       <div
@@ -290,16 +290,15 @@ export function HeroSection() {
                     loop
                     muted
                     playsInline
-                    className="w-full h-full object-cover rounded-none"
+                    className="hero-slide__video"
                   />
                 ) : (
                   <Image
                     src="/3d-metallic-neon-sign/corporte/056b3189-6a8c-482a-8334-53ded7aff3e1.webp"
-                    alt="3D Metallic Neon Sign"
+                    alt="Corporate 3D metal channel-letter sign with illuminated lettering"
                     fill
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 75vw, 58vw"
                     loading="lazy"
-                    className="w-full h-full object-cover rounded-none"
                   />
                 )
               ) : index === 2 ? (
@@ -312,16 +311,15 @@ export function HeroSection() {
                     loop
                     muted
                     playsInline
-                    className="w-full h-full object-cover rounded-none"
+                    className="hero-slide__video"
                   />
                 ) : (
                   <Image
                     src="/3d-arcylic/3235dc09-6dac-4056-88b6-55fc26e28571.webp"
-                    alt="3D Acrylic Neon Sign"
+                    alt="3D acrylic UV-print neon sign with a glowing contour outline"
                     fill
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 75vw, 58vw"
                     loading="lazy"
-                    className="w-full h-full object-cover rounded-none"
                   />
                 )
               ) : index === 3 ? (
@@ -330,7 +328,7 @@ export function HeroSection() {
                  *
                  * The stage is wide on a desktop and taller than it is wide on
                  * a phone, and `object-fit: cover` resolves that difference by
-                 * throwing away the sides — which on this slide meant losing
+                 * throwing away the sides, which on this slide meant losing
                  * the sketch half of the sketch-to-sign transformation the
                  * slide exists to show. So the phone gets a frame composed for
                  * a narrow stage rather than a centre-crop of a wide one.
@@ -338,7 +336,7 @@ export function HeroSection() {
                  * Both are lazy and one is always `display: none`, and a
                  * display:none image never intersects the viewport, so the
                  * browser only ever fetches the crop it is going to paint.
-                 * Same alt on both for the same reason — display:none is out
+                 * Same alt on both for the same reason: display:none is out
                  * of the accessibility tree, so only one is ever announced.
                  */
                 <div className="hero-slide__lightbox-frame">
@@ -361,23 +359,16 @@ export function HeroSection() {
                 </div>
               ) : (
                 <Image
-                  src={index === 0 ? "/hero/neon-sign-hero.webp" : slide.image}
-                  alt={
-                    index === 0
-                      ? "Pink custom LED neon sign glowing on a dark bedroom wall"
-                      : slide.alt
-                  }
+                  src="/hero/neon-sign-hero.webp"
+                  alt="Pink custom LED neon sign glowing on a dark bedroom wall"
                   fill
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 75vw, 58vw"
                   // Slide 1 is the LCP element. Next.js 16 deprecates `priority`;
                   // eager loading plus explicit high fetch priority keeps it
                   // discoverable immediately without combining conflicting
-                  // preload/loading props.
-                  // Every other slide stays lazy — preloading off-screen
-                  // images is what put 3.44MB of PNG on the critical path.
-                  loading={index === 0 ? "eager" : "lazy"}
-                  fetchPriority={index === 0 ? "high" : undefined}
-                  placeholder={index === 0 ? undefined : "blur"}
+                  // preload/loading props. Every other slide stays lazy.
+                  loading="eager"
+                  fetchPriority="high"
                 />
               )}
             </article>
@@ -386,10 +377,7 @@ export function HeroSection() {
             <div className="hero-scrim" aria-hidden="true" />
           )}
           {activeSlide !== 3 && (
-            <div className="slide-meta" aria-live="polite">
-              {/* <p className="slide-meta__eyebrow">{activeHero.eyebrow}</p>  */}
-              {/* <h2>{activeHero.title}</h2>  */}
-              {/* <p className="slide-meta__copy">{activeHero.copy}</p> */}
+            <div className="slide-meta">
               <button
                 className="slide-meta__link"
                 type="button"

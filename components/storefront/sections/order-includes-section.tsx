@@ -24,33 +24,33 @@ const inclusions: ReadonlyArray<{
 }> = [
   {
     icon: "ImageSquare",
-    title: "A free design mockup",
-    body: "Send your words, logo or a rough sketch and we return a colour-matched digital preview. You see the sign before you spend anything, and there is no obligation to go ahead.",
+    title: "Free 1-on-1 Design Mockup",
+    body: "Send your logo, typography, or sketch. We return a true-to-scale digital preview showing exact sizing, Pantone color match, and backing cuts before you spend anything.",
   },
   {
     icon: "Cube",
-    title: "Made to order, not off a shelf",
-    body: "Every sign is built to your text, size and colour, then handcrafted and light-tested before it is packed. Most orders take around 10–15 days to make.",
-  },
-  {
-    icon: "Truck",
-    title: DELIVERY.short,
-    body: "We ship to almost every country, fully tracked to your door. Your shipping cost is confirmed with your quote and shown again at checkout, so the number you agree to is the number you pay.",
-  },
-  {
-    icon: "ShieldCheck",
-    title: "5-year warranty",
-    body: "Backed by our 100% glow guarantee. If a sign arrives faulty or fails within the warranty, send a photo and we put it right.",
-  },
-  {
-    icon: "SealCheck",
-    title: "Payment through Etsy",
-    body: "Checkout runs on our verified Etsy shop, so your payment is handled by Etsy's encrypted checkout and your order and tracking live in your Etsy account.",
+    title: "Made to Order in Our Workshop",
+    body: "Every piece is custom cut, hand-assembled, and electrically tested with a 24-hour burn-in inspection before packing. Handcrafted in ~10–15 business days.",
   },
   {
     icon: "Sparkle",
-    title: "Design help included",
-    body: "Colour, sizing, mounting and whether a wall can take it — ask before you order. We would rather talk you into the right sign than sell you the wrong one.",
+    title: "Power Supply & Dimmer Included",
+    body: "Every sign arrives complete with a plug-and-play 12V power adapter for your country, wireless remote dimmer with brightness control, and pre-drilled mounting standoffs.",
+  },
+  {
+    icon: "ShieldCheck",
+    title: "5-Year Full Glow Warranty",
+    body: "Commercial-grade LEDs rated for up to 100,000 hours. If any electrical component fails or a sign arrives damaged, just send a quick photo and we replace it immediately.",
+  },
+  {
+    icon: "SealCheck",
+    title: "Protected Checkout via Etsy",
+    body: "Orders are secured through our verified 5-star Etsy shop, giving you full buyer protection, encrypted checkout, and the flexibility to split payments 50/50.",
+  },
+  {
+    icon: "Truck",
+    title: "Tracked Crated Delivery",
+    body: "Packed in custom shockproof wooden crates to ensure 100% damage-free transit. Delivered right to your doorstep with full tracking from dispatch to delivery.",
   },
 ];
 

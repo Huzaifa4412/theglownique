@@ -12,7 +12,7 @@ import { serializeJsonLd } from "@/lib/utils";
 export const metadata: Metadata = {
   title: "Custom Business Sign Cost: 2026 Guide",
   description:
-    "Comprehensive pricing guide for custom business signs — LED neon signs, 3D channel letters, lightboxes & acrylic logo signs. Learn cost drivers, sizing factors and installation variables.",
+    "Pricing guide for custom business signs: LED neon signs, 3D channel letters, lightboxes & acrylic logos. Compare cost drivers, sizing and mounting specs.",
   alternates: { canonical: "/guides/custom-business-sign-cost" },
   openGraph: {
     type: "article",

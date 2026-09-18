@@ -6,7 +6,7 @@ import { LegalPage } from "@/components/legal/legal-page";
 export const metadata: Metadata = {
   title: "Accessibility Statement",
   description:
-    "The Glownique aims for WCAG 2.2 Level AA. Our latest homepage Lighthouse accessibility score, the specific checks currently failing, keyboard and reduced-motion support, and known limitations.",
+    "The Glownique accessibility commitment: WCAG 2.2 AA standards, Lighthouse scores, keyboard navigation, reduced-motion features, and feedback contacts.",
   alternates: { canonical: "/accessibility" },
   openGraph: {
     type: "website",

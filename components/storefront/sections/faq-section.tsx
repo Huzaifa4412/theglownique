@@ -36,12 +36,16 @@ const faqs = [
     a: "Popular ready-to-order designs have transparent fixed prices in our verified Etsy shop. For bespoke signs, pricing depends on the sign type, dimensions, lighting style, materials and design complexity. Contact us for a free, itemised project quote.",
   },
   {
-    q: "How is payment handled and is my order protected?",
-    a: "All orders are securely processed through our verified Etsy shop, providing full encrypted checkout and Etsy Purchase Protection. We offer flexible payment options including paying in full or splitting 50/50 upon project milestones.",
+    q: "Can I install my sign myself or do I need an electrician?",
+    a: "Most interior neon signs and lightboxes are plug-and-play and take about 15 minutes to hang. We include pre-drilled mounting holes, stainless steel standoff spacers, wall anchors, and hanging wire. Simply mount the standoffs and plug the 12V power adapter into any standard wall outlet. For large exterior commercial channel letters that require hardwiring, we supply full mounting templates and wiring schematics so your local electrician can wire them cleanly in minutes.",
+  },
+  {
+    q: "Does my sign come with a dimmer remote and power adapter?",
+    a: "Yes. Every sign arrives complete with a regional 12V power supply (US, UK, EU, or AU plug) and a wireless remote dimmer. You can easily adjust the brightness from a soft ambient mood to maximum punch, toggle dynamic pulse/flash modes, and power it on/off with one touch.",
   },
   {
     q: "Is my sign backed by a warranty and quality guarantee?",
-    a: "Yes. Every sign undergoes rigorous multi-point electrical and luminance quality checks before packaging and is backed by a 5-year warranty and our 100% glow guarantee.",
+    a: "Yes. Every sign undergoes rigorous multi-point electrical and luminance quality checks with a 24-hour continuous burn-in test before packaging. All signs are backed by our 5-year warranty and 100% glow guarantee.",
   },
 ];
 

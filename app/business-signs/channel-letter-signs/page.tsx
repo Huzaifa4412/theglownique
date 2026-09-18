@@ -13,7 +13,7 @@ import { serializeJsonLd } from "@/lib/utils";
 export const metadata: Metadata = {
   title: "Custom Channel Letter & 3D Metal Signs",
   description:
-    "Custom 3D metal channel letter signs for commercial storefronts. Front-lit, reverse halo backlit & dual-lit fabricated stainless steel letters with 5-year warranty.",
+    "Custom 3D metal channel letter signs for commercial storefronts. Front-lit, halo backlit & dual-lit stainless steel letters with 5-year warranty.",
   alternates: { canonical: "/business-signs/channel-letter-signs" },
   openGraph: {
     type: "website",

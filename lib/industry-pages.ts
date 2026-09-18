@@ -37,7 +37,7 @@ const INDUSTRY_CONTENT: readonly LandingContent[] = [
     h1: "Custom Gym Neon Signs & Fitness Studio Signage",
     metaTitle: "Custom Gym Neon Signs & Fitness Signage",
     metaDescription:
-      "Custom gym neon signs, motivational LED wall signs and fitness studio logo signage built for high-traffic training floors. Free design mockup and 5-year warranty.",
+      "Custom gym neon signs & motivational fitness studio logo signage built for high-traffic training floors. Free design mockup & 5-year warranty.",
     intro:
       "Motivational wall signs, studio logos and class-room branding built to survive chalk dust, dropped plates and the vibration of a busy training floor.",
     heroImage: "/neon-sign/Gym/iap_600x600.7178660214_6320z3ec.webp",
@@ -115,7 +115,7 @@ const INDUSTRY_CONTENT: readonly LandingContent[] = [
     h1: "Custom Neon Bar Signs for Commercial Venues",
     metaTitle: "Custom Neon Bar Signs for Venues",
     metaDescription:
-      "Custom neon bar signs, back-bar logo signage and cocktail lounge lighting for commercial venues. Dimmable, moisture-tolerant builds with free mockup and 5-year warranty.",
+      "Custom neon bar signs & back-bar logo lighting for commercial venues. Dimmable, moisture-tolerant builds with free design mockup & 5-year warranty.",
     intro:
       "Back-bar logos, cocktail-list lighting and venue branding specified for the one environment that is warm, damp, greasy and deliberately dark.",
     heroImage: "/neon-sign/Bar/iap_600x600.5588358323_i7bgtidf.webp",
@@ -198,7 +198,7 @@ const INDUSTRY_CONTENT: readonly LandingContent[] = [
     h1: "Custom Neon Open Signs for Storefronts",
     metaTitle: "Custom Neon Open Signs for Storefronts",
     metaDescription:
-      "Custom LED neon open signs and illuminated trading signage for retail and hospitality storefronts. Daylight-readable window builds with free mockup and 5-year warranty.",
+      "Custom LED neon open signs & illuminated trading signage for storefronts. Daylight-readable window builds with free design mockup & 5-year warranty.",
     intro:
       "The one sign whose entire job is answering a question from across the street — and the reason a stock open sign in a bright window so often fails to.",
     heroImage: "/ultra-thin-slim-lightbox/Storefront windows.webp",
@@ -276,7 +276,7 @@ const INDUSTRY_CONTENT: readonly LandingContent[] = [
     h1: "Custom Restaurant Signs & Café Signage",
     metaTitle: "Custom Restaurant Signs & Cafe Signage",
     metaDescription:
-      "Custom restaurant signs, illuminated café branding and backlit menu displays for hospitality venues. Grease-tolerant, dimmable builds with free mockup and 5-year warranty.",
+      "Custom restaurant signs, illuminated café branding & backlit menu displays for dining venues. Dimmable builds with free design mockup & 5-year warranty.",
     intro:
       "Storefront identity, interior branding and menu display for venues where the same wall has to look right in daylight service and at candlelit covers.",
     heroImage: "/3d-metallic-neon-sign/Resturants/generated/026ad950-fafb-4407-8420-c83be7f49365.webp",
@@ -359,7 +359,7 @@ const INDUSTRY_CONTENT: readonly LandingContent[] = [
     h1: "Custom Office Signs & Reception Logo Signage",
     metaTitle: "Custom Office Signs & Lobby Signage",
     metaDescription:
-      "Custom office signs, reception logo signage and illuminated lobby branding in brushed metal and acrylic. Halo-lit builds with free design mockup and 5-year warranty.",
+      "Custom office signs, reception logo signage & illuminated lobby branding in metal and acrylic. Halo-lit builds with free design mockup & 5-year warranty.",
     intro:
       "Reception walls, lobby logos and meeting-room identity, in the finishes that read as considered rather than loud.",
     heroImage: "/3d-metallic-neon-sign/corporte/056b3189-6a8c-482a-8334-53ded7aff3e1.webp",
@@ -442,7 +442,7 @@ const INDUSTRY_CONTENT: readonly LandingContent[] = [
     h1: "Custom Salon & Spa Neon Signs",
     metaTitle: "Custom Salon & Spa Neon Signs",
     metaDescription:
-      "Custom salon neon signs, spa logo signage and lash and nail studio branding. Camera-ready lighting in your brand colours, with free mockup and 5-year warranty.",
+      "Custom salon neon signs, spa logo signage and beauty studio branding. Camera-ready lighting in your brand colours, with free mockup & 5-year warranty.",
     intro:
       "Reception marks, mirror walls and treatment-room branding for spaces where the sign ends up in every client's photo whether you planned for it or not.",
     heroImage: "/3d-metallic-neon-sign/Salon/generated/235762e8-14ec-4167-b534-2dad36c826ba.webp",
@@ -520,7 +520,7 @@ const INDUSTRY_CONTENT: readonly LandingContent[] = [
     h1: "Custom Retail Storefront Signs",
     metaTitle: "Custom Retail Storefront Signs",
     metaDescription:
-      "Custom retail storefront signs, illuminated facade lettering and window signage for shops and commercial units. IP67 outdoor builds with free mockup and 5-year warranty.",
+      "Custom retail storefront signs, illuminated facade lettering & window signs for shops. IP67 outdoor builds with free design mockup & 5-year warranty.",
     intro:
       "Façade lettering and window signage specified for the two problems every retail unit shares: reading in daylight, and looking deliberate after dark.",
     heroImage: "/3d-metallic-neon-sign/frontlit/image.webp",
@@ -603,7 +603,7 @@ const INDUSTRY_CONTENT: readonly LandingContent[] = [
     h1: "Trade Show Booth Signs & Portable Displays",
     metaTitle: "Trade Show Booth Signs & Displays",
     metaDescription:
-      "Custom trade show booth signs, portable illuminated displays and exhibition branding. Lightweight builds that travel and reassemble, with free mockup and 5-year warranty.",
+      "Custom trade show booth signs, portable illuminated displays & exhibition branding. Lightweight, road-ready builds with free mockup & 5-year warranty.",
     intro:
       "Booth branding specified around the constraint that defines exhibition signage: it has to go up in an hour, come down in twenty minutes, and survive the trip to the next show.",
     heroImage: "/ultra-thin-slim-lightbox/main-hero.webp",

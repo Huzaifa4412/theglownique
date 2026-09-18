@@ -255,7 +255,7 @@ export const BLOG_SETTINGS_FALLBACK: BlogSettings = {
   heading: "Ideas, colour and care for illuminated signs",
   intro:
     "Notes from the workshop on designing, choosing and looking after custom signage — what actually holds up on a wall, how colour behaves once it is lit, and the details worth deciding before a sign is built.",
-  seoTitle: "Neon & Signage Journal",
+  seoTitle: "Neon Sign Ideas & Signage Guides",
   seoDescription:
     "Ideas, colour theory, care advice and signage trends from the workshop behind The Glownique's custom LED neon, channel letter and lightbox signs.",
   newsletterHeading: "New sign ideas, once a month",

@@ -13,7 +13,7 @@ import { HAS_ADDRESS, HAS_EMAIL, LEGAL } from "@/lib/legal";
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description:
-    "How The Glownique handles your personal data: exactly which third-party tools run on this site, what each one stores — including the advertising cookies the Meta Pixel sets — and what we keep when you send an enquiry.",
+    "How The Glownique handles personal data: tracking tools, analytics, Meta advertising cookies, customer privacy rights and enquiry data retention.",
   alternates: { canonical: "/privacy" },
   openGraph: {
     type: "website",

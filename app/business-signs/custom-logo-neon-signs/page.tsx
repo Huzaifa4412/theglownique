@@ -13,7 +13,7 @@ import { serializeJsonLd } from "@/lib/utils";
 export const metadata: Metadata = {
   title: "Custom Business Logo LED Neon Signs",
   description:
-    "Custom LED logo neon signs for business brand walls, cocktail bars, restaurants, hair salons, gyms & office lobbies. Exact Pantone match, safe 12V voltage & 5-year warranty.",
+    "Custom LED logo neon signs for business brand walls, bars, salons & offices. Exact Pantone match, shatterproof 12V silicone & 5-year warranty.",
   alternates: { canonical: "/business-signs/custom-logo-neon-signs" },
   openGraph: {
     type: "website",

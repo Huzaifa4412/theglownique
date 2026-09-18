@@ -13,7 +13,7 @@ import { serializeJsonLd } from "@/lib/utils";
 export const metadata: Metadata = {
   title: "Custom Acrylic Business Signs & 3D Logos",
   description:
-    "Custom acrylic signs for business walls with logo, 3D UV-printed letters, stainless standoff mounting and glowing LED neon contours. Free design mockup & 5-year warranty.",
+    "Custom acrylic business signs with 3D UV-printed logos, standoff mounting & glowing LED neon contours. Free design mockup & 5-year warranty.",
   alternates: { canonical: "/business-signs/acrylic-logo-signs" },
   openGraph: {
     type: "website",

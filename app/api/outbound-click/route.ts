@@ -174,6 +174,7 @@ export async function POST(request: Request) {
     const posthog = getPostHogClient();
     if (posthog) {
       posthog.capture({
+        distinctId: (document._id as string) || "anonymous_outbound",
         event: "outbound_click_tracked",
         properties: {
           channel,

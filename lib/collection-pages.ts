@@ -77,7 +77,7 @@ const COLLECTION_CONTENT: readonly CollectionContent[] = [
     kicker: "Weddings, proposals & receptions",
     h1: "Custom Wedding Neon Signs",
     tagline: "Your names, lit the way the room will remember them.",
-    metaTitle: "Custom Wedding Neon Signs",
+    metaTitle: "Custom Wedding Neon Signs & Wall Decor",
     metaDescription:
       "Custom wedding neon signs — surnames, first names, Mr & Mrs and vows — in warm white or your palette. Battery or plug, free design mockup, 5-year warranty.",
     intro:
@@ -398,7 +398,7 @@ const COLLECTION_CONTENT: readonly CollectionContent[] = [
     tagline: "The glow behind the monitors that makes the room yours.",
     metaTitle: "Gaming Neon Signs for Game Rooms",
     metaDescription:
-      "Custom gaming neon signs for game rooms, streaming setups and arcades — gamertags, Game On, controller outlines. Dimmable 12V LED, free mockup, 5-year warranty.",
+      "Custom gaming neon signs for game rooms, stream setups & arcades — gamertags & logos. Dimmable 12V LED silicone with free mockup & 5-year warranty.",
     intro:
       "Gaming rooms already glow. A gaming neon sign has to win against RGB strips, monitor light and a camera pointed at your face — which changes the colour you pick, where it hangs and how bright it runs.",
     heroImage: "/neon-sign/Game Room/iap_600x600.6072503848_qdloxd4q.webp",
@@ -547,7 +547,7 @@ const COLLECTION_CONTENT: readonly CollectionContent[] = [
     tagline: "A phrase you chose, in light, on the wall you look at most.",
     metaTitle: "Bedroom Neon Signs & Neon Wall Art",
     metaDescription:
-      "Bedroom neon signs and neon lights for bedrooms, living rooms and hallways — quotes, names and neon wall art in your colour. Dimmable, free mockup, 5-year warranty.",
+      "Bedroom neon signs & neon lights for bedrooms, living rooms and hallways — quotes, names & wall art. Dimmable 12V LED with free mockup & 5-year warranty.",
     intro:
       "A bedroom neon sign is lived with, not visited. The wording has to still feel like yours in five years, the colour has to sit with the paint, and neon lights for a bedroom have to dim to something you can sleep beside on a Tuesday night.",
     heroImage: "/neon-sign/room/iap_600x600.8069307682_6sin2ngi.webp",
@@ -696,9 +696,9 @@ const COLLECTION_CONTENT: readonly CollectionContent[] = [
     // volume (33,100/mo); the British "personalised" barely registers.
     h1: "Personalized Neon Bar Signs for Home Bars & Man Caves",
     tagline: "Name the bar, and the corner becomes a place.",
-    metaTitle: "Personalized Neon Bar Signs",
+    metaTitle: "Personalized Neon Bar Signs & Pub Signs",
     metaDescription:
-      "Personalized neon bar signs for home bars, man caves, kitchens and garages — your bar’s name, a drink, a line. Dimmable 12V LED neon, free mockup, 5-year warranty.",
+      "Personalized neon bar signs for home bars, man caves, kitchens and garages — your bar name or quote. Dimmable 12V LED neon, free mockup & 5-year warranty.",
     intro:
       "A home bar becomes a bar the moment its name is lit above it. A personalized neon bar sign is built for the rooms it actually goes in — dark corners, garages, kitchens — where the glow does the work the decor cannot.",
     heroImage: "/neon-sign/iap_600x600.7488149925_lgq4qo2u.webp",
@@ -847,7 +847,7 @@ const COLLECTION_CONTENT: readonly CollectionContent[] = [
     tagline: "One night in light, and a wall at home afterwards.",
     metaTitle: "Party & Happy Birthday Neon Signs",
     metaDescription:
-      "Party neon signs and happy birthday neon signs — names, ages, proposals and baby showers. Battery or plug, hangs in minutes, reusable. Free mockup, 5-year warranty.",
+      "Custom party neon signs & happy birthday neon signs for birthdays, showers and events. Battery or plug-in, reusable, with free mockup & 5-year warranty.",
     intro:
       "A party neon sign has one job on the night — be in every photograph — and one job afterwards: go on a wall and keep working. Choosing wording that does both is most of the decision.",
     heroImage: "/neon-sign/event/iap_600x600.6103087465_ikaxjhp9.webp",

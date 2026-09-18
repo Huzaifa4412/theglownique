@@ -289,7 +289,7 @@ export const PRODUCT_PAGES: ProductPage[] = [
     ],
     metaTitle: "Custom LED Neon Signs — Made to Order",
     metaDescription:
-      "Handcrafted custom LED neon signs made to order with free digital preview. 13 colours plus RGB, up to 100,000-hour glow, safe 12V voltage, 5-year warranty and tracked worldwide delivery.",
+      "Handcrafted custom LED neon signs made to order. 13 colours + RGB, shatterproof 12V silicone, free design mockup, 5-year warranty & tracked delivery.",
   },
   {
     slug: "3d-metal-neon-signs",
@@ -452,7 +452,7 @@ export const PRODUCT_PAGES: ProductPage[] = [
     ],
     metaTitle: "3D Metal Signs & LED Channel Letters",
     metaDescription:
-      "Custom 3D metal channel-letter signs — frontlit, halo backlit and dual-lit stainless steel lettering. IP67 weatherproof with 5-year warranty & free design mockup.",
+      "Custom 3D metal channel-letter signs: frontlit, halo backlit & dual-lit stainless steel letters. IP67 weatherproof with free mockup & 5-year warranty.",
   },
   {
     slug: "ultra-thin-lightbox",
@@ -578,7 +578,7 @@ export const PRODUCT_PAGES: ProductPage[] = [
     ],
     metaTitle: "Ultra-Thin LED Lightboxes — Edge-Lit Signs",
     metaDescription:
-      "Ultra-thin edge-lit LED lightboxes in slim anodized aluminum frames with 100% even, shadow-free light and tool-free graphic swaps. 5-year warranty & free mockup.",
+      "Ultra-thin edge-lit LED lightboxes with even, shadow-free light and tool-free graphic swaps in slim aluminum frames. Free mockup & 5-year warranty.",
   },
   {
     slug: "uv-print-acrylic-signs",
@@ -712,7 +712,7 @@ export const PRODUCT_PAGES: ProductPage[] = [
     ],
     metaTitle: "3D Acrylic Signs with UV-Print Logos",
     metaDescription:
-      "Custom 3D acrylic signs pairing full-colour UV print with glowing LED neon contours. Exact Pantone matching, multi-layer depth, 5-year warranty & free mockup.",
+      "Custom 3D acrylic signs pairing full-colour UV print with glowing LED neon contours. Exact Pantone match, multi-layer depth, free mockup & 5-year warranty.",
   },
 ];
 

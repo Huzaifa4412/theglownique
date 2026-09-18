@@ -14,7 +14,7 @@ import { serializeJsonLd } from "@/lib/utils";
 export const metadata: Metadata = {
   title: "Custom Signage & Light Up Signs",
   description:
-    "Handcrafted custom LED neon signs, personalized light up signs, 3D metal letters, ultra-thin lightboxes & UV-print acrylic signs. Free design mockup & 5-year warranty.",
+    "Handcrafted custom LED neon signs, 3D metal letters & ultra-thin lightboxes built to stand out. Free 1-on-1 design mockup & 5-year warranty.",
   alternates: { canonical: "/custom-signage" },
   openGraph: {
     type: "website",

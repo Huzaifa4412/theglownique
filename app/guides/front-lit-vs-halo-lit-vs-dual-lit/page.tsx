@@ -12,7 +12,7 @@ import { serializeJsonLd } from "@/lib/utils";
 export const metadata: Metadata = {
   title: "Front-Lit vs Halo-Lit vs Dual-Lit Letters",
   description:
-    "Compare 3D metal channel letter illumination styles — front-lit, halo backlit and dual-lit. Learn about day & night legibility, wall reflection requirements, and storefront aesthetics.",
+    "Compare 3D metal channel letter illumination: front-lit, halo backlit & dual-lit. Learn about day & night legibility, wall reflection needs, and aesthetics.",
   alternates: { canonical: "/guides/front-lit-vs-halo-lit-vs-dual-lit" },
   openGraph: {
     type: "article",
@@ -168,7 +168,7 @@ export default function LightingComparisonGuidePage() {
                 <div>
                   <h3 className="text-xl font-bold text-[#1e1a22]">2. Halo-Lit (Backlit) Channel Letters</h3>
                   <p className="mt-2">
-                    Halo-lit letters have solid stainless-steel metal faces and open or clear backs. Mounted on short standoffs away from the wall, internal LEDs reflect light backward onto the facade. This casts a soft, elegant halo outline around each letter. It is widely specified for luxury boutiques, corporate headquarters, and high-end restaurants.
+                    Halo-lit letters have solid stainless-steel metal faces and open or clear backs. Mounted on short standoffs away from the wall, internal LEDs reflect light backward onto the facade. This casts a soft, elegant halo outline around each letter. It is widely specified for luxury boutiques, corporate headquarters, and high-end restaurants. Learn more on our <Link href="/business-signs/backlit-signs" className="font-bold text-[#ce0754] hover:underline">custom backlit signs</Link> page, or read our <Link href="/guides/backlit-sign-wall-surfaces-and-standoffs" className="font-bold text-[#ce0754] hover:underline">wall surfaces &amp; standoffs guide</Link>.
                   </p>
                 </div>
 

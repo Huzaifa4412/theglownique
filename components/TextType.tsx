@@ -89,7 +89,7 @@ const TextType = ({
 
     gsap.set(cursorRef.current, { opacity: 1 });
     const tween = gsap.to(cursorRef.current, {
-      opacity: 0,
+      opacity: 0.15,
       duration: cursorBlinkDuration,
       repeat: -1,
       yoyo: true,
@@ -123,7 +123,6 @@ const TextType = ({
 
           setCurrentTextIndex(prev => (prev + 1) % textArray.length);
           setCurrentCharIndex(0);
-          timeout = setTimeout(() => {}, pauseDuration);
         } else {
           timeout = setTimeout(() => {
             setDisplayedText(prev => prev.slice(0, -1));
@@ -131,12 +130,18 @@ const TextType = ({
         }
       } else {
         if (currentCharIndex < processedText.length) {
+          const nextChar = processedText[currentCharIndex];
+          const isSpace = nextChar === ' ';
+          const charDelay = variableSpeed
+            ? getRandomSpeed() + (isSpace ? 85 : 0)
+            : typingSpeed + (isSpace ? 55 : 0);
+
           timeout = setTimeout(
             () => {
-              setDisplayedText(prev => prev + processedText[currentCharIndex]);
+              setDisplayedText(prev => prev + nextChar);
               setCurrentCharIndex(prev => prev + 1);
             },
-            variableSpeed ? getRandomSpeed() : typingSpeed
+            charDelay
           );
         } else if (textArray.length >= 1) {
           if (!loop && currentTextIndex === textArray.length - 1) return;
@@ -148,7 +153,8 @@ const TextType = ({
     };
 
     if (currentCharIndex === 0 && !isDeleting && displayedText === '') {
-      timeout = setTimeout(executeTypingAnimation, initialDelay);
+      const waitTime = currentTextIndex === 0 ? initialDelay : Math.max(initialDelay, 420);
+      timeout = setTimeout(executeTypingAnimation, waitTime);
     } else {
       executeTypingAnimation();
     }

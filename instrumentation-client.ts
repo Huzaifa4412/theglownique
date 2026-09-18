@@ -1,3 +1,2 @@
-import { schedulePostHogInitialization } from "@/lib/posthog-client";
-
-schedulePostHogInitialization();
+// PostHog client initialization is handled via <PostHogProvider> in app/layout.tsx
+export {};

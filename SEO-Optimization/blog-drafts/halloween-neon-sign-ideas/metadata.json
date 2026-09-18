@@ -1,0 +1,30 @@
+{
+  "status": "implementation-ready",
+  "researchDate": "2026-09-15",
+  "title": "9 Halloween Neon Sign Ideas for Parties, Cafes and Cozy Corners",
+  "slug": "halloween-neon-sign-ideas",
+  "categorySlug": "ideas-and-inspiration",
+  "cover": "pumpkin-coffee-corner",
+  "coverAlt": "Orange pumpkin-shaped neon sign on a clear acrylic backplate above a coffee counter with cream mugs",
+  "coverCaption": "AI-generated styling concept: an orange pumpkin glow anchors a cozy coffee corner. This is not a completed customer installation.",
+  "seoTitle": "Halloween Neon Sign Ideas: 9 Creative Displays",
+  "seoDescription": "Explore nine Halloween neon sign ideas for parties, cafes and cozy corners, with color combinations, photo tips and displays you can reuse after October.",
+  "summary": "Make one corner feel ready for Halloween. Explore nine neon sign ideas, from pumpkin coffee stations to party photo walls, with practical styling choices and ways to reuse the design after October.",
+  "primaryKeyword": "halloween neon sign ideas",
+  "secondaryKeywords": ["halloween neon sign", "happy halloween neon sign", "ghost neon sign", "Halloween coffee bar decor"],
+  "intendedCanonical": "https://www.theglownique.com/blog/halloween-neon-sign-ideas",
+  "keyTakeaways": [
+    "Start with one focal point, one main color and a clear purpose for the display.",
+    "Use a pumpkin, ghost, short phrase or existing business sign to suit the room.",
+    "Test the dimensions with a paper outline and photograph the complete setup before the event.",
+    "Plan power, mounting and reuse before requesting a custom design."
+  ],
+  "relatedLinks": [
+    {"kind": "commercial", "label": "Custom LED neon signs", "description": "Explore design options and request a mockup for your space.", "href": "/products/custom-neon-signs"},
+    {"kind": "guide", "label": "Business signage guides", "description": "Read more about budgeting and permanent sign-type decisions.", "href": "/guides"}
+  ],
+  "sources": [
+    {"label": "Early Halloween shopping in 2026", "publisher": "National Retail Federation", "url": "https://nrf.com/blog/why-halloween-seems-to-come-to-stores-earlier-every-year", "accessed": "2026-09-15"}
+  ],
+  "publicationNotes": "Consumed by scripts/blog-posts/halloween-neon-sign-ideas.mjs. The module converts the article to Portable Text and separates FAQs for the existing renderer. Both images are AI-generated concepts."
+}

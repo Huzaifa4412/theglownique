@@ -1,0 +1,10 @@
+keyword,role,market,language,average_monthly_searches,seo_difficulty,cpc_usd,metrics_updated_unix,retrieved_date,status,notes
+halloween neon sign ideas,editorial_primary,United States,en,0,4,0,,2026-09-15,NO_MEASURED_VOLUME,"Overview returned zero volume; no monthly history or intent. Not proof of no searches or easy rankings."
+halloween neon sign,broader_demand_anchor,United States,en,880,30,0.87,1765073888,2026-09-15,MEASURED_ESTIMATE,"Commercial intent; available monthly history covers August-November 2025 only."
+happy halloween neon sign,secondary,United States,en,70,21,0.59,1784592738,2026-09-15,MEASURED_ESTIMATE,"Suggestions endpoint."
+coffee bar sign,alternative_topic,United States,en,2400,25,0.58,1785943068,2026-09-15,MEASURED_ESTIMATE,"Broad alternative; overlap with existing bars and cafes article."
+coffee bar sign ideas,alternative_topic,United States,en,260,36,0.4,1789241606,2026-09-15,MEASURED_ESTIMATE,"Informational alternative; home coffee corner would narrow scope."
+wedding neon sign ideas,alternative_topic,United States,en,140,20,0.88,1783776268,2026-09-15,MEASURED_ESTIMATE,"Existing related wedding coverage; refresh first."
+ghost neon sign,semantic_support,United States,en,,,,,2026-09-15,UNMEASURED,"Used descriptively; further suggestions were blocked by daily quota."
+pumpkin neon sign,semantic_support,United States,en,,,,,2026-09-15,UNMEASURED,"No metrics obtained; article uses pumpkin outline naturally."
+halloween coffee bar decor,semantic_support,United States,en,,,,,2026-09-15,UNMEASURED,"Editorial phrase, not a measured trend."
