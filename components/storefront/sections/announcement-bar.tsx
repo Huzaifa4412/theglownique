@@ -1,5 +1,5 @@
-import { StoreIcon } from "@/components/storefront/store-icon";
-import { DELIVERY } from "@/lib/claims";
+import Link from "next/link";
+import styles from "../studio-chrome.module.css";
 
 export function AnnouncementBar() {
   return (
@@ -7,49 +7,9 @@ export function AnnouncementBar() {
       <a className="skip-link" href="#main-content">
         Skip to content
       </a>
-      <div className="announcement" aria-label="Store benefits">
-        <div className="announcement__viewport">
-          <div className="announcement__track">
-            <div className="announcement__group">
-              <span><StoreIcon name="Sparkle" /> {DELIVERY.short}</span>
-              <span aria-hidden="true">|</span>
-              <span>5-year warranty</span>
-              <span aria-hidden="true">|</span>
-              <span>100% glow guarantee</span>
-              <span aria-hidden="true">|</span>
-              <span>Free design preview</span>
-              <span aria-hidden="true">|</span>
-              <span>Made to order</span>
-              <span aria-hidden="true">|</span>
-              <span>Ready to hang</span>
-              <span aria-hidden="true">|</span>
-              <span>Custom colours</span>
-              <span aria-hidden="true">|</span>
-              <span>Hand-finished</span>
-              <span aria-hidden="true">|</span>
-              <span>Design support included</span>
-            </div>
-            <div className="announcement__group" aria-hidden="true">
-              <span><StoreIcon name="Sparkle" /> {DELIVERY.short}</span>
-              <span aria-hidden="true">|</span>
-              <span>5-year warranty</span>
-              <span aria-hidden="true">|</span>
-              <span>100% glow guarantee</span>
-              <span aria-hidden="true">|</span>
-              <span>Free design preview</span>
-              <span aria-hidden="true">|</span>
-              <span>Made to order</span>
-              <span aria-hidden="true">|</span>
-              <span>Ready to hang</span>
-              <span aria-hidden="true">|</span>
-              <span>Custom colours</span>
-              <span aria-hidden="true">|</span>
-              <span>Hand-finished</span>
-              <span aria-hidden="true">|</span>
-              <span>Design support included</span>
-            </div>
-          </div>
-        </div>
+      <div className={styles.announcement}>
+        <span>Made to order. Made to mean something.</span>
+        <Link href="/#custom">Your first design preview is on us ↗</Link>
       </div>
     </>
   );

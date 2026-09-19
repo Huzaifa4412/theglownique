@@ -1,0 +1,361 @@
+.announcement {
+  min-height: 32px;
+  padding: 8px 24px;
+  background: #eae3db;
+  color: #574b43;
+  display: flex;
+  justify-content: center;
+  gap: 35px;
+  font-size: 10px;
+  letter-spacing: 0.02em;
+}
+.announcement a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  background: #f7f5ef;
+  color: #282421;
+  border-bottom: 1px solid #ded8cf;
+}
+.headerInner {
+  max-width: 1424px;
+  margin: 0 auto;
+  min-height: 87px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  padding: 15px 24px;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  flex-shrink: 0;
+}
+.brand img {
+  width: 55px;
+  height: 35px;
+  object-fit: contain;
+}
+.brand > span {
+  font-family: var(--font-manrope), sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: -0.045em;
+}
+.brand small {
+  display: block;
+  font-family: var(--font-dm-sans), sans-serif;
+  margin-top: 5px;
+  font-size: 7px;
+  letter-spacing: 0.19em;
+  font-weight: 500;
+}
+.desktopNav {
+  display: flex;
+  gap: 28px;
+}
+.desktopNav a {
+  font-size: 12px;
+  padding: 10px 0;
+  position: relative;
+}
+.desktopNav a:hover,
+.desktopNav a[aria-current="page"] {
+  color: #a62f57;
+}
+.desktopNav a[aria-current="page"]::after {
+  content: "";
+  height: 1px;
+  background: currentColor;
+  position: absolute;
+  bottom: 3px;
+  left: 0;
+  right: 0;
+}
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.quote {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 17px;
+  min-height: 44px;
+  border: 1px solid #a92d56;
+  border-radius: 3px;
+  padding: 12px 19px;
+  background: #a92d56;
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    transform 0.2s;
+  text-decoration: none;
+}
+.quote:hover {
+  background: #892145;
+  transform: translateY(-1px);
+}
+.quote:active {
+  transform: translateY(1px);
+}
+.menuButton {
+  display: none;
+  place-items: center;
+  height: 44px;
+  width: 44px;
+  border: 1px solid #ccc3b8;
+  background: transparent;
+  cursor: pointer;
+  border-radius: 3px;
+  font-size: 22px;
+}
+.mobileNav {
+  padding: 6px 24px 22px;
+  border-top: 1px solid #ded8cf;
+  background: #f7f5ef;
+  max-height: calc(100dvh - 115px);
+  overflow: auto;
+}
+.mobileNav[hidden] {
+  display: none;
+}
+.mobileNav a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 0;
+  border-bottom: 1px solid #ded8cf;
+  font-size: 16px;
+}
+.mobileNav a[aria-current="page"] {
+  color: #a62f57;
+}
+.header :is(a, button):focus-visible,
+.footer :is(a, button):focus-visible,
+.announcement a:focus-visible {
+  outline: 3px solid #b90c52;
+  outline-offset: 5px;
+}
+.footer {
+  background: #eae3db;
+  color: #282421;
+}
+.footerInner {
+  max-width: 1424px;
+  margin: 0 auto;
+  padding: 65px 24px 22px;
+}
+.footerTop {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 40px;
+  padding-bottom: 55px;
+  border-bottom: 1px solid #cfc5b9;
+}
+.kicker {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+.footer h2 {
+  font-family: var(--font-manrope), sans-serif;
+  font-size: clamp(42px, 5.4vw, 78px);
+  font-weight: 500;
+  letter-spacing: -0.065em;
+  line-height: 1;
+}
+.footer h2 em {
+  font-family: var(--font-cormorant), Georgia, serif;
+  color: #a62f57;
+  font-size: 1.12em;
+  font-weight: 600;
+}
+.footerCta {
+  margin-right: 5%;
+}
+.footerCta p {
+  font-size: 13px;
+  line-height: 1.7;
+  color: #6b625c;
+  margin-bottom: 22px;
+}
+.footerLinks {
+  display: grid;
+  grid-template-columns: 1.7fr 1fr 1fr;
+  gap: 60px;
+  padding: 45px 0;
+}
+.footerWordmark {
+  font-family: var(--font-manrope), sans-serif;
+  font-size: 23px;
+  font-weight: 700;
+  letter-spacing: -0.055em;
+}
+.footerAbout > p {
+  font-size: 12px;
+  line-height: 1.8;
+  color: #6b625c;
+  max-width: 37ch;
+  margin: 16px 0;
+}
+.socials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  font-size: 10px;
+}
+.footerLinks nav h3 {
+  font-size: 12px;
+  font-weight: 600;
+  margin: 0 0 18px;
+}
+.footerLinks nav > a {
+  display: block;
+  width: fit-content;
+  padding: 7px 0;
+  font-size: 12px;
+  color: #5a514b;
+}
+.footer a:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.footerBottom {
+  padding-top: 20px;
+  border-top: 1px solid #cfc5b9;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  color: #6b625c;
+  font-size: 10px;
+}
+.footerBottom nav {
+  display: flex;
+  gap: 20px;
+}
+@media (max-width: 1080px) {
+  .desktopNav {
+    gap: 18px;
+  }
+  .headerInner {
+    gap: 20px;
+  }
+  .brand > span {
+    font-size: 13px;
+  }
+  .brand img {
+    width: 44px;
+  }
+}
+@media (max-width: 940px) {
+  .desktopNav {
+    display: none;
+  }
+  .menuButton {
+    display: grid;
+  }
+  .headerInner {
+    min-height: 75px;
+  }
+}
+@media (min-width: 941px) {
+  .mobileNav {
+    display: none;
+  }
+}
+@media (max-width: 700px) {
+  .footerTop {
+    flex-direction: column;
+    align-items: start;
+    gap: 30px;
+    padding-bottom: 35px;
+  }
+  .footerLinks {
+    grid-template-columns: 1fr 1fr;
+    gap: 35px 22px;
+  }
+  .footerAbout {
+    grid-column: span 2;
+  }
+  .footerBottom {
+    align-items: start;
+    flex-direction: column;
+    gap: 15px;
+  }
+  .footerBottom > span:nth-child(2) {
+    display: none;
+  }
+  .announcement > span {
+    display: none;
+  }
+}
+@media (max-width: 450px) {
+  .headerInner {
+    padding: 12px 16px;
+    gap: 8px;
+    min-height: 72px;
+  }
+  .brand {
+    gap: 5px;
+  }
+  .brand img {
+    width: 35px;
+    height: 28px;
+  }
+  .brand > span {
+    font-size: 11px;
+  }
+  .brand small {
+    font-size: 5px;
+    letter-spacing: 0.16em;
+  }
+  .headerActions {
+    gap: 7px;
+  }
+  .headerActions .quote {
+    font-size: 10px;
+    padding: 10px;
+    min-height: 40px;
+    gap: 8px;
+  }
+  .headerActions .quote svg {
+    display: none;
+  }
+  .menuButton {
+    width: 38px;
+    height: 40px;
+    font-size: 20px;
+  }
+  .footerInner {
+    padding: 45px 16px 24px;
+  }
+  .footerLinks {
+    gap: 30px 16px;
+  }
+  .footerLinks nav > a {
+    font-size: 11px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .quote {
+    transition: none;
+  }
+  .quote:hover {
+    transform: none;
+  }
+}

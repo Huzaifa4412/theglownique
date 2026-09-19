@@ -1,157 +1,93 @@
-import Image from "next/image";
 import Link from "next/link";
-
-import { StoreIcon } from "@/components/storefront/store-icon";
 import { CustomQuoteButton } from "@/components/storefront/custom-quote-button";
-import { WhatsappIcon } from "@/components/ui/whatsapp-icon";
-import { DELIVERY } from "@/lib/claims";
-import {
-  HAS_WHATSAPP,
-  SOCIAL_LINKS,
-  formatWhatsappDisplayNumber,
-  whatsappQuoteUrl,
-} from "@/lib/site";
-
-const footerColumns = [
-  {
-    title: "Sign types",
-    links: [
-      ["Custom neon signs", "/products/custom-neon-signs"],
-      ["3D metal signs", "/products/3d-metal-neon-signs"],
-      ["Ultra thin lightbox", "/products/ultra-thin-lightbox"],
-      ["UV-print acrylic", "/products/uv-print-acrylic-signs"],
-    ],
-  },
-  {
-    title: "Custom",
-    links: [
-      ["Create your own", "/#custom"],
-      ["How it works", "/#custom"],
-      ["Design ideas", "/#categories"],
-      ["FAQ", "/#faq"],
-    ],
-  },
-  {
-    title: "Company",
-    links: [
-      ["About us", "/#about"],
-      // "Our process" removed: it pointed at /#about too, so two labels
-      // resolved to one destination. "How it works" (above) covers the process.
-      ["Case studies", "/#inspiration"],
-      ["Journal", "/blog"],
-      ["Contact", "/contact"],
-    ],
-  },
-  {
-    title: "Support",
-    links: [
-      // "Help centre" removed — it duplicated the FAQ link above.
-      // "Track your order" removed — tracking is handled by Etsy, and we have
-      // no Etsy shop URL configured yet. Re-add it pointing at the Etsy shop
-      // once ETSY_SHOP_URL is set rather than shipping a dead link.
-      ["Shipping & delivery", "/shipping"],
-      ["Returns & warranty", "/returns"],
-      ["Accessibility", "/accessibility"],
-      ["Privacy", "/privacy"],
-    ],
-  },
-] as const;
+import { SOCIAL_LINKS, HAS_WHATSAPP, whatsappQuoteUrl } from "@/lib/site";
+import styles from "../studio-chrome.module.css";
 
 export function SiteFooter() {
   return (
-    <footer className="site-footer" id="about">
-      <div className="shell footer__lead">
-        <div>
-          <p className="eyebrow">Your wall is waiting</p>
-          <h2>Make something <span>impossible to ignore.</span></h2>
-        </div>
-        <CustomQuoteButton
-          className="button button--whatsapp footer__cta text-base py-3.5 px-6 font-bold"
-          label="Start your design"
-        />
-      </div>
-      <div className="shell footer__grid">
-        <div className="footer-brand">
-          <Link className="brand" href="/">
-            <Image
-              className="brand__logo"
-              src="/brand/logo-mark.png"
-              alt=""
-              aria-hidden="true"
-              width={100}
-              height={60}
+    <footer className={styles.footer} id="about">
+      <div className={styles.footerInner}>
+        <div className={styles.footerTop}>
+          <div>
+            <p className={styles.kicker}>Your idea. Our next creation.</p>
+            <h2>
+              Let’s make
+              <br />
+              <em>something glow.</em>
+            </h2>
+          </div>
+          <div className={styles.footerCta}>
+            <p>
+              A name, a logo, a few words.
+              <br />
+              Every good sign starts somewhere.
+            </p>
+            <CustomQuoteButton
+              className={styles.quote}
+              label="Start with a free preview"
             />
-            THE GLOWNIQUE
-          </Link>
-          <p>Custom LED neon signs, 3D metal channel letters, ultra-thin lightboxes and UV-print acrylic signs — handcrafted to turn your ideas into something unforgettable.</p>
-          <span className="footer-brand__note">Designed with feeling. Built to glow.</span>
-          {HAS_WHATSAPP && (
-            <div className="mt-4 pt-1">
-              <a
-                href={whatsappQuoteUrl("custom sign")}
-                target="_blank"
-                rel="noopener noreferrer"
-                data-meta-source="footer-whatsapp"
-                className="inline-flex items-center gap-2.5 rounded-full bg-[#25D366] px-4 py-2.5 text-xs font-extrabold text-[#1e1a22] shadow-md transition-all hover:bg-[#20bd5a] hover:scale-[1.03] active:scale-95"
-              >
-                <WhatsappIcon className="h-4.5 w-4.5 text-[#1e1a22] shrink-0" />
-                <span>WhatsApp: {formatWhatsappDisplayNumber()}</span>
-              </a>
-            </div>
-          )}
-          {SOCIAL_LINKS.length > 0 && (
-            <div className="socials mt-3">
+          </div>
+        </div>
+        <div className={styles.footerLinks}>
+          <div className={styles.footerAbout}>
+            <Link href="/" className={styles.footerWordmark}>
+              THE GLOWNIQUE
+            </Link>
+            <p>
+              Custom LED neon, metal lettering, acrylic signs and lightboxes.
+              Made to order for businesses, celebrations and homes.
+            </p>
+            <div className={styles.socials}>
               {SOCIAL_LINKS.map((social) => (
                 <a
                   key={social.label}
                   href={social.url}
-                  aria-label={social.label}
-                  rel="noopener"
                   target="_blank"
+                  rel="noopener noreferrer"
                 >
-                  <StoreIcon name={social.icon} />
+                  {social.label} ↗
                 </a>
               ))}
             </div>
-          )}
-        </div>
-        {footerColumns.map((column) => (
-          <div key={column.title}>
-            <h3>{column.title}</h3>
-            {column.links.map(([label, href]) => (
-              <Link href={href} key={label}>
-                {label}
-              </Link>
-            ))}
           </div>
-        ))}
-        <div className="footer-guarantees" aria-label="Shopping guarantees">
-          <p>
-            <StoreIcon name="Truck" />
-            <span>
-              <strong>{DELIVERY.short}</strong>{DELIVERY.supporting}
-            </span>
-          </p>
-          <p>
-            <StoreIcon name="ShieldCheck" />
-            <span>
-              <strong>5-year warranty</strong>Quality you can trust
-            </span>
-          </p>
-          <p>
-            <StoreIcon name="ImageSquare" />
-            <span>
-              <strong>Free design preview</strong>Approve it before we craft
-            </span>
-          </p>
+          <nav aria-label="Footer sign collections">
+            <h3>Find your sign</h3>
+            <Link href="/products/custom-neon-signs">
+              Custom LED neon signs
+            </Link>
+            <Link href="/products/3d-metal-neon-signs">3D metal letters</Link>
+            <Link href="/products/uv-print-acrylic-signs">
+              Acrylic logo signs
+            </Link>
+            <Link href="/products/ultra-thin-lightbox">Slim lightboxes</Link>
+            <Link href="/custom-signage">Shop by occasion</Link>
+          </nav>
+          <nav aria-label="Footer help">
+            <h3>A little guidance</h3>
+            <Link href="/guides">Sign buying guides</Link>
+            <Link href="/#custom">How it works</Link>
+            <Link href="/shipping">Shipping & delivery</Link>
+            <Link href="/returns">Returns & warranty</Link>
+            <Link href="/contact">Contact us</Link>
+            {HAS_WHATSAPP && (
+              <a
+                href={whatsappQuoteUrl("custom sign")}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Chat on WhatsApp ↗
+              </a>
+            )}
+          </nav>
         </div>
-      </div>
-      <div className="shell footer-bottom">
-        <span>© {new Date().getFullYear()} The Glownique</span>
-        <div>
-          <Link href="/privacy">Privacy</Link>
-          <Link href="/terms">Terms</Link>
-          <Link href="/accessibility">Accessibility</Link>
+        <div className={styles.footerBottom}>
+          <span>© {new Date().getFullYear()} The Glownique</span>
+          <span>Designed with feeling. Built to glow.</span>
+          <nav aria-label="Legal">
+            <Link href="/privacy">Privacy</Link>
+            <Link href="/terms">Terms</Link>
+            <Link href="/accessibility">Accessibility</Link>
+          </nav>
         </div>
       </div>
     </footer>

@@ -77,7 +77,7 @@ const UBERSUGGEST_SEO_RELEASE = "2026-09-18";
 
 export const ROUTES: readonly RouteEntry[] = [
   // Home — primary H1 keywords, FAQ schemas and entity grounded content.
-  { path: "/", lastModified: UBERSUGGEST_SEO_RELEASE, changeFrequency: "weekly", priority: 1.0, indexable: true },
+  { path: "/", lastModified: "2026-09-19", changeFrequency: "weekly", priority: 1.0, indexable: true },
 
   // B2B hub and destinations.
   { path: "/business-signs", lastModified: UBERSUGGEST_SEO_RELEASE, changeFrequency: "weekly", priority: 0.95, indexable: true },

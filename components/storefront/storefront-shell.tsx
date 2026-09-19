@@ -21,7 +21,11 @@ import {
   trackViewCategory,
 } from "@/lib/meta-pixel";
 import { capturePostHog } from "@/lib/posthog-client";
-import { categoryLabels, type CategoryId, type Product } from "@/lib/store-data";
+import {
+  categoryLabels,
+  type CategoryId,
+  type Product,
+} from "@/lib/store-data";
 
 /**
  * How long the search box has to be idle before the query is reported.
@@ -35,13 +39,21 @@ const SEARCH_TRACK_DELAY_MS = 900;
 /** Below this, a query is a typo or a single letter rather than an intent. */
 const MIN_TRACKED_QUERY_LENGTH = 3;
 
-export function StorefrontShell({ children }: { children: ReactNode }) {
+export function StorefrontShell({
+  children,
+  enableMotion = true,
+}: {
+  children: ReactNode;
+  enableMotion?: boolean;
+}) {
   const rootRef = useRef<HTMLDivElement>(null);
   const toastTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const searchTrackTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const [activeCategory, setActiveCategory] = useState<
-    "all" | CategoryId
-  >("all");
+  const searchTrackTimerRef = useRef<ReturnType<typeof setTimeout> | null>(
+    null,
+  );
+  const [activeCategory, setActiveCategory] = useState<"all" | CategoryId>(
+    "all",
+  );
   const [search, setSearch] = useState("");
   const [reducedMotion, setReducedMotion] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
@@ -70,7 +82,9 @@ export function StorefrontShell({ children }: { children: ReactNode }) {
       // "weddings" and "business" are entirely different ad audiences.
       if (category !== "all") {
         trackViewCategory(categoryLabels[category]);
-        capturePostHog("catalog_filtered", { category: categoryLabels[category] });
+        capturePostHog("catalog_filtered", {
+          category: categoryLabels[category],
+        });
       }
       if (shouldScroll) scrollToShop();
     },
@@ -81,7 +95,8 @@ export function StorefrontShell({ children }: { children: ReactNode }) {
     (value: string, fromHeader = false) => {
       setSearch(value);
 
-      if (searchTrackTimerRef.current) clearTimeout(searchTrackTimerRef.current);
+      if (searchTrackTimerRef.current)
+        clearTimeout(searchTrackTimerRef.current);
       const query = value.trim();
       if (query.length >= MIN_TRACKED_QUERY_LENGTH) {
         searchTrackTimerRef.current = setTimeout(() => {
@@ -127,7 +142,8 @@ export function StorefrontShell({ children }: { children: ReactNode }) {
   useEffect(
     () => () => {
       if (toastTimerRef.current) clearTimeout(toastTimerRef.current);
-      if (searchTrackTimerRef.current) clearTimeout(searchTrackTimerRef.current);
+      if (searchTrackTimerRef.current)
+        clearTimeout(searchTrackTimerRef.current);
       document.body.classList.remove("dialog-open");
     },
     [],
@@ -159,10 +175,12 @@ export function StorefrontShell({ children }: { children: ReactNode }) {
   return (
     <StorefrontContext.Provider value={contextValue}>
       <div ref={rootRef}>
-        <StorefrontMotionLoader
-          rootRef={rootRef}
-          reducedMotion={reducedMotion}
-        />
+        {enableMotion && (
+          <StorefrontMotionLoader
+            rootRef={rootRef}
+            reducedMotion={reducedMotion}
+          />
+        )}
         <div className="scroll-progress" aria-hidden="true">
           <span className="scroll-progress__bar" />
         </div>
