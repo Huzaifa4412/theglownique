@@ -53,7 +53,7 @@ export function OrderTimeline() {
 
       <div className="shell relative z-10">
         <header className="timeline-heading mx-auto max-w-3xl text-center">
-          <p className="mb-2 text-[0.68rem] font-extrabold uppercase tracking-[0.17em] text-[#ce0754]">
+          <p className="mb-2 text-[0.68rem] font-extrabold uppercase tracking-[0.17em] text-[#8f2347]">
             Clear from the start
           </p>
           <h2
@@ -66,7 +66,7 @@ export function OrderTimeline() {
             From first message to final delivery — here’s exactly what happens.
           </p>
           <span
-            className="timeline-heading__line mt-3 inline-block h-0.5 w-20 rounded-full bg-gradient-to-r from-[#3510c7] to-[#f40b68]"
+            className="timeline-heading__line mt-3 inline-block h-0.5 w-20 rounded-full bg-gradient-to-r from-[#3510c7] to-[#a92d56]"
             aria-hidden="true"
           />
         </header>
@@ -102,7 +102,7 @@ export function OrderTimeline() {
                 orient="auto"
                 markerUnits="strokeWidth"
               >
-                <path d="M 0 0 L 10 5 L 0 10 z" fill="#f40b68" />
+                <path d="M 0 0 L 10 5 L 0 10 z" fill="#a92d56" />
               </marker>
             </defs>
             <path

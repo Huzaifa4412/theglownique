@@ -205,8 +205,8 @@ export function HeroSection() {
               y2="1"
             >
               <stop offset="0" stopColor="#ff2b84" />
-              <stop offset="0.48" stopColor="#f40b68" />
-              <stop offset="1" stopColor="#6d26ff" />
+              <stop offset="0.48" stopColor="#a92d56" />
+              <stop offset="1" stopColor="#6b4664" />
             </linearGradient>
             <filter
               id="hero-curve-glow"
@@ -253,8 +253,8 @@ export function HeroSection() {
               y2="0"
             >
               <stop offset="0" stopColor="#ff2b84" />
-              <stop offset="0.52" stopColor="#f40b68" />
-              <stop offset="1" stopColor="#6d26ff" />
+              <stop offset="0.52" stopColor="#a92d56" />
+              <stop offset="1" stopColor="#6b4664" />
             </linearGradient>
           </defs>
           <path

@@ -42,7 +42,7 @@ const b2bProducts = [
     tagline: "Flexible LED silicone neon tubing mapped precisely to your brand logo, corporate typography, and Pantone colors.",
     specs: ["12V Low Voltage", "Shatterproof Silicone", "Pantone & HEX Match", "Indoor & IP67 Outdoor"],
     image: "/hero/neon-sign-hero.webp",
-    accent: "#f40b68",
+    accent: "#a92d56",
   },
   {
     slug: "channel-letter-signs",
@@ -156,12 +156,12 @@ export default function BusinessSignsHubPage() {
       <ProductTopBar productName="business sign" />
       <main id="main-content" className="bg-white">
         {/* Header Hero */}
-        <section className="border-b border-[#eadfe4] bg-gradient-to-b from-[#fff0f5] to-white py-16 sm:py-24">
+        <section className="border-b border-[#dcd6ce] bg-gradient-to-b from-[#efe9e0] to-white py-16 sm:py-24">
           <div className="mx-auto max-w-4xl px-4 text-center sm:px-6">
-            <p className="text-xs font-extrabold uppercase tracking-widest text-[#ce0754]">
+            <p className="text-xs font-extrabold uppercase tracking-widest text-[#8f2347]">
               Commercial Signage Hub
             </p>
-            <h1 className="mt-3 text-4xl font-extrabold tracking-tight text-[#1e1a22] sm:text-5xl lg:text-6xl">
+            <h1 className="mt-3 text-4xl font-extrabold tracking-tight text-[#282421] sm:text-5xl lg:text-6xl">
               Custom Business Signs &amp; Storefront Signage
             </h1>
             <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-[#5e5862]">
@@ -176,7 +176,7 @@ export default function BusinessSignsHubPage() {
               />
               <Link
                 href="/guides/custom-business-sign-cost"
-                className="inline-flex items-center gap-2 rounded-xl border border-[#eadfe4] bg-white px-6 py-3.5 text-sm font-bold text-[#1e1a22] transition-colors hover:border-[#f40b68] hover:text-[#ce0754]"
+                className="inline-flex items-center gap-2 rounded-xl border border-[#dcd6ce] bg-white px-6 py-3.5 text-sm font-bold text-[#282421] transition-colors hover:border-[#a92d56] hover:text-[#8f2347]"
               >
                 View Business Sign Cost Guide →
               </Link>
@@ -188,7 +188,7 @@ export default function BusinessSignsHubPage() {
         <section className="py-16 sm:py-24">
           <div className="mx-auto max-w-[1320px] px-4 sm:px-6">
             <div className="mb-12 text-center">
-              <h2 className="text-3xl font-extrabold text-[#1e1a22] sm:text-4xl">
+              <h2 className="text-3xl font-extrabold text-[#282421] sm:text-4xl">
                 Five Custom Illuminated Sign Technologies
               </h2>
               <p className="mt-3 text-base text-[#5e5862]">
@@ -200,7 +200,7 @@ export default function BusinessSignsHubPage() {
               {b2bProducts.map((p) => (
                 <div
                   key={p.slug}
-                  className="group flex flex-col overflow-hidden rounded-3xl border border-[#eadfe4] bg-white shadow-[0_14px_40px_rgba(107,38,67,0.08)] transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+                  className="group flex flex-col overflow-hidden rounded-3xl border border-[#dcd6ce] bg-white shadow-[0_14px_40px_rgba(107,38,67,0.08)] transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
                 >
                   <div className="relative aspect-[16/9] w-full overflow-hidden bg-black/5">
                     <Image
@@ -219,7 +219,7 @@ export default function BusinessSignsHubPage() {
                   </div>
 
                   <div className="flex flex-1 flex-col p-6 sm:p-8">
-                    <h3 className="text-2xl font-extrabold text-[#1e1a22]">
+                    <h3 className="text-2xl font-extrabold text-[#282421]">
                       <Link href={`/business-signs/${p.slug}`} className="hover:underline">
                         {p.name}
                       </Link>
@@ -230,22 +230,22 @@ export default function BusinessSignsHubPage() {
                       {p.specs.map((s) => (
                         <span
                           key={s}
-                          className="rounded-lg bg-[#f8f5f7] px-2.5 py-1 text-xs font-semibold text-[#1e1a22]"
+                          className="rounded-lg bg-[#f8f5f7] px-2.5 py-1 text-xs font-semibold text-[#282421]"
                         >
                           {s}
                         </span>
                       ))}
                     </div>
 
-                    <div className="mt-6 flex items-center justify-between border-t border-[#eadfe4] pt-6">
+                    <div className="mt-6 flex items-center justify-between border-t border-[#dcd6ce] pt-6">
                       <Link
                         href={`/business-signs/${p.slug}`}
-                        className="text-sm font-extrabold text-[#ce0754] hover:underline"
+                        className="text-sm font-extrabold text-[#8f2347] hover:underline"
                       >
                         Explore B2B Specs & Uses →
                       </Link>
                       <CustomQuoteButton
-                        className="text-xs font-bold text-[#1e1a22] hover:text-[#ce0754]"
+                        className="text-xs font-bold text-[#282421] hover:text-[#8f2347]"
                         label="Get Quote"
                         productName={p.name}
                       />
@@ -258,13 +258,13 @@ export default function BusinessSignsHubPage() {
         </section>
 
         {/* Industry Solutions Grid */}
-        <section className="border-t border-[#eadfe4] bg-white py-16 sm:py-24">
+        <section className="border-t border-[#dcd6ce] bg-white py-16 sm:py-24">
           <div className="mx-auto max-w-6xl px-4 sm:px-6">
             <div className="mb-12 text-center">
-              <p className="text-xs font-extrabold uppercase tracking-widest text-[#ce0754]">
+              <p className="text-xs font-extrabold uppercase tracking-widest text-[#8f2347]">
                 Industry Applications
               </p>
-              <h2 className="mt-2 text-3xl font-extrabold text-[#1e1a22] sm:text-4xl">
+              <h2 className="mt-2 text-3xl font-extrabold text-[#282421] sm:text-4xl">
                 Commercial Signage Tailored by Industry
               </h2>
               <p className="mx-auto mt-3 max-w-xl text-base text-[#5e5862]">
@@ -277,9 +277,9 @@ export default function BusinessSignsHubPage() {
                 <Link
                   key={ind.slug}
                   href={`/business-signs/${ind.slug}`}
-                  className="group rounded-2xl border border-[#eadfe4] bg-[#fdfafb] p-6 shadow-sm transition-all hover:border-[#f40b68]"
+                  className="group rounded-2xl border border-[#dcd6ce] bg-[#fdfafb] p-6 shadow-sm transition-all hover:border-[#a92d56]"
                 >
-                  <h3 className="text-lg font-extrabold text-[#1e1a22] group-hover:text-[#ce0754]">
+                  <h3 className="text-lg font-extrabold text-[#282421] group-hover:text-[#8f2347]">
                     {ind.name} →
                   </h3>
                   <p className="mt-2 text-xs leading-relaxed text-[#5e5862]">{ind.intro}</p>
@@ -290,10 +290,10 @@ export default function BusinessSignsHubPage() {
         </section>
 
         {/* Buying & Decision Support Section */}
-        <section className="border-t border-[#eadfe4] bg-[#faf7f8] py-16 sm:py-24">
+        <section className="border-t border-[#dcd6ce] bg-[#faf7f8] py-16 sm:py-24">
           <div className="mx-auto max-w-5xl px-4 sm:px-6">
             <div className="mb-10 text-center">
-              <h2 className="text-3xl font-extrabold text-[#1e1a22] sm:text-4xl">
+              <h2 className="text-3xl font-extrabold text-[#282421] sm:text-4xl">
                 B2B Signage Decision Guides
               </h2>
               <p className="mt-3 text-base text-[#5e5862]">
@@ -306,13 +306,13 @@ export default function BusinessSignsHubPage() {
                 <Link
                   key={g.slug}
                   href={`/guides/${g.slug}`}
-                  className="group rounded-2xl border border-[#eadfe4] bg-white p-6 shadow-sm transition-all hover:border-[#f40b68] hover:shadow-md"
+                  className="group rounded-2xl border border-[#dcd6ce] bg-white p-6 shadow-sm transition-all hover:border-[#a92d56] hover:shadow-md"
                 >
-                  <h3 className="text-xl font-bold text-[#1e1a22] group-hover:text-[#f40b68]">
+                  <h3 className="text-xl font-bold text-[#282421] group-hover:text-[#a92d56]">
                     {g.title}
                   </h3>
                   <p className="mt-2 text-sm text-[#5e5862]">{g.desc}</p>
-                  <span className="mt-4 inline-block text-xs font-extrabold uppercase text-[#ce0754]">
+                  <span className="mt-4 inline-block text-xs font-extrabold uppercase text-[#8f2347]">
                     Read Guide →
                   </span>
                 </Link>

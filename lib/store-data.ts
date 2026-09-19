@@ -101,6 +101,13 @@ export type Testimonial = {
   stars?: number
   /** True only for reviews traceable to a real order (e.g. an Etsy purchase). */
   verified?: boolean
+  /**
+   * OUR OWN product photography, shown beside the quote for visual context.
+   * Never a buyer upload and never captioned as one — the alt text describes
+   * the photo itself, not the reviewer's order.
+   */
+  image?: string
+  imageAlt?: string
 }
 
 export const categoryLabels: Record<CategoryId, string> = {
@@ -360,6 +367,8 @@ export const testimonials: Testimonial[] = [
     initials: 'L',
     stars: 5,
     verified: true,
+    image: '/neon-sign/girls room/iap_600x600.5331151538_61m43otq.webp',
+    imageAlt: 'Pink Good Vibes Only LED neon sign glowing on a bedroom wall',
   },
   {
     quote:
@@ -369,6 +378,8 @@ export const testimonials: Testimonial[] = [
     initials: 'S',
     stars: 5,
     verified: true,
+    image: '/hero/neon-sign-hero.webp',
+    imageAlt: 'White Olivia custom name LED neon sign with pink hearts on a dark wall',
   },
   {
     quote:
@@ -378,6 +389,8 @@ export const testimonials: Testimonial[] = [
     initials: 'M',
     stars: 5,
     verified: true,
+    image: '/images/neon-sign-changer.webp',
+    imageAlt: 'Custom LED neon sign glowing softly on a dark studio wall',
   },
   {
     quote:
@@ -387,6 +400,8 @@ export const testimonials: Testimonial[] = [
     initials: 'K',
     stars: 5,
     verified: true,
+    image: '/before-after/after.webp',
+    imageAlt: 'Warm halo-lit Osée Beauty sign above a salon reception desk',
   },
   {
     quote:
@@ -396,5 +411,7 @@ export const testimonials: Testimonial[] = [
     initials: 'K',
     stars: 5,
     verified: true,
+    image: '/neon-sign/Marriage/iap_600x600.6280886797_59j146av.webp',
+    imageAlt: 'Warm white Better Together neon sign framed by wedding flowers',
   },
 ]

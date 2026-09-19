@@ -102,18 +102,18 @@ export default function ChannelLetterSignsPage() {
       <AnnouncementBar />
       <ProductTopBar productName="3D channel letter sign" />
       <main id="main-content" className="bg-white">
-        <section className="border-b border-[#eadfe4] bg-gradient-to-b from-[#fff0f5] to-white py-16 sm:py-24">
+        <section className="border-b border-[#dcd6ce] bg-gradient-to-b from-[#efe9e0] to-white py-16 sm:py-24">
           <div className="mx-auto max-w-4xl px-4 text-center sm:px-6">
             <nav className="mb-4 text-xs font-semibold text-[#5e5862]" aria-label="Breadcrumb">
               <Link href="/" className="hover:underline">Home</Link> &gt;{" "}
               <Link href="/business-signs" className="hover:underline">Business Signs</Link> &gt;{" "}
-              <span className="text-[#ce0754]">Channel Letter Signs</span>
+              <span className="text-[#8f2347]">Channel Letter Signs</span>
             </nav>
 
-            <p className="text-xs font-extrabold uppercase tracking-widest text-[#ce0754]">
+            <p className="text-xs font-extrabold uppercase tracking-widest text-[#8f2347]">
               Architectural Storefront Signage
             </p>
-            <h1 className="mt-2 text-4xl font-extrabold tracking-tight text-[#1e1a22] sm:text-5xl">
+            <h1 className="mt-2 text-4xl font-extrabold tracking-tight text-[#282421] sm:text-5xl">
               Custom 3D Metal Channel Letter Signs
             </h1>
             <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-[#5e5862] sm:text-lg">
@@ -128,7 +128,7 @@ export default function ChannelLetterSignsPage() {
               />
               <Link
                 href="/guides/front-lit-vs-halo-lit-vs-dual-lit"
-                className="inline-flex items-center gap-2 rounded-xl border border-[#eadfe4] bg-white px-6 py-3.5 text-sm font-bold text-[#1e1a22] hover:border-[#f40b68]"
+                className="inline-flex items-center gap-2 rounded-xl border border-[#dcd6ce] bg-white px-6 py-3.5 text-sm font-bold text-[#282421] hover:border-[#a92d56]"
               >
                 Front-Lit vs Halo-Lit Comparison →
               </Link>
@@ -149,24 +149,24 @@ export default function ChannelLetterSignsPage() {
               </div>
 
               <div className="space-y-6">
-                <h2 className="text-3xl font-extrabold text-[#1e1a22]">
+                <h2 className="text-3xl font-extrabold text-[#282421]">
                   Three Distinct Illumination Methods
                 </h2>
                 <p className="text-sm leading-relaxed text-[#5e5862]">
                   Every building facade presents unique architectural lighting requirements. Choose from three precision LED configurations:
                 </p>
 
-                <ul className="space-y-4 text-sm text-[#1e1a22]">
-                  <li className="rounded-xl border border-[#eadfe4] bg-[#faf7f8] p-4">
-                    <strong className="block text-base font-extrabold text-[#1e1a22]">1. Front-Lit Channel Letters</strong>
+                <ul className="space-y-4 text-sm text-[#282421]">
+                  <li className="rounded-xl border border-[#dcd6ce] bg-[#faf7f8] p-4">
+                    <strong className="block text-base font-extrabold text-[#282421]">1. Front-Lit Channel Letters</strong>
                     <span className="text-[#5e5862]">Bright acrylic faces throw clear, crisp illumination forward for maximum day and night readability from roadways.</span>
                   </li>
-                  <li className="rounded-xl border border-[#eadfe4] bg-[#faf7f8] p-4">
-                    <strong className="block text-base font-extrabold text-[#1e1a22]">2. Halo Backlit (Reverse) Channel Letters</strong>
+                  <li className="rounded-xl border border-[#dcd6ce] bg-[#faf7f8] p-4">
+                    <strong className="block text-base font-extrabold text-[#282421]">2. Halo Backlit (Reverse) Channel Letters</strong>
                     <span className="text-[#5e5862]">Solid metal faces project light backward onto the mounting wall, creating a sophisticated floating halo silhouette.</span>
                   </li>
-                  <li className="rounded-xl border border-[#eadfe4] bg-[#faf7f8] p-4">
-                    <strong className="block text-base font-extrabold text-[#1e1a22]">3. Dual-Lit Channel Letters</strong>
+                  <li className="rounded-xl border border-[#dcd6ce] bg-[#faf7f8] p-4">
+                    <strong className="block text-base font-extrabold text-[#282421]">3. Dual-Lit Channel Letters</strong>
                     <span className="text-[#5e5862]">Combines bright front face illumination with soft rear halo glow for ultimate architectural depth.</span>
                   </li>
                 </ul>
@@ -176,26 +176,26 @@ export default function ChannelLetterSignsPage() {
         </section>
 
         {/* Specifications & Mounting Section */}
-        <section className="border-t border-[#eadfe4] bg-[#faf7f8] py-16 sm:py-20">
+        <section className="border-t border-[#dcd6ce] bg-[#faf7f8] py-16 sm:py-20">
           <div className="mx-auto max-w-5xl px-4 sm:px-6">
-            <h2 className="text-3xl font-extrabold text-center text-[#1e1a22] mb-10">
+            <h2 className="text-3xl font-extrabold text-center text-[#282421] mb-10">
               Commercial Engineering &amp; Specifications
             </h2>
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-              <div className="rounded-2xl border border-[#eadfe4] bg-white p-6 shadow-sm">
-                <h3 className="font-extrabold text-[#1e1a22]">Metal Construction</h3>
+              <div className="rounded-2xl border border-[#dcd6ce] bg-white p-6 shadow-sm">
+                <h3 className="font-extrabold text-[#282421]">Metal Construction</h3>
                 <p className="mt-2 text-xs text-[#5e5862]">Marine-grade 304/316 stainless steel with brushed, mirror, gold, brass or matte powder-coat finish.</p>
               </div>
-              <div className="rounded-2xl border border-[#eadfe4] bg-white p-6 shadow-sm">
-                <h3 className="font-extrabold text-[#1e1a22]">IP67 Waterproofing</h3>
+              <div className="rounded-2xl border border-[#dcd6ce] bg-white p-6 shadow-sm">
+                <h3 className="font-extrabold text-[#282421]">IP67 Waterproofing</h3>
                 <p className="mt-2 text-xs text-[#5e5862]">Fully sealed LED modules and drainage weep holes engineered for extreme rain, snow, and UV exposure.</p>
               </div>
-              <div className="rounded-2xl border border-[#eadfe4] bg-white p-6 shadow-sm">
-                <h3 className="font-extrabold text-[#1e1a22]">Mounting Options</h3>
+              <div className="rounded-2xl border border-[#dcd6ce] bg-white p-6 shadow-sm">
+                <h3 className="font-extrabold text-[#282421]">Mounting Options</h3>
                 <p className="mt-2 text-xs text-[#5e5862]">Direct flush wall mounting, standoffs for halo dispersion, or structural raceway bars for easy installation.</p>
               </div>
-              <div className="rounded-2xl border border-[#eadfe4] bg-white p-6 shadow-sm">
-                <h3 className="font-extrabold text-[#1e1a22]">Power &amp; Lifespan</h3>
+              <div className="rounded-2xl border border-[#dcd6ce] bg-white p-6 shadow-sm">
+                <h3 className="font-extrabold text-[#282421]">Power &amp; Lifespan</h3>
                 <p className="mt-2 text-xs text-[#5e5862]">12V/24V low-voltage UL drivers rated for 100,000 hours of continuous commercial operation.</p>
               </div>
             </div>
@@ -203,15 +203,15 @@ export default function ChannelLetterSignsPage() {
         </section>
 
         {/* FAQ Accordion Section */}
-        <section className="border-t border-[#eadfe4] bg-white py-16 sm:py-20">
+        <section className="border-t border-[#dcd6ce] bg-white py-16 sm:py-20">
           <div className="mx-auto max-w-4xl px-4 sm:px-6">
-            <h2 className="text-3xl font-extrabold text-center text-[#1e1a22] mb-8">
+            <h2 className="text-3xl font-extrabold text-center text-[#282421] mb-8">
               Channel Letter Sign FAQs
             </h2>
             <div className="space-y-4">
               {channelLetterFaqs.map((faq) => (
-                <div key={faq.q} className="rounded-2xl border border-[#eadfe4] bg-[#fdfafb] p-6">
-                  <h3 className="text-base font-extrabold text-[#1e1a22]">{faq.q}</h3>
+                <div key={faq.q} className="rounded-2xl border border-[#dcd6ce] bg-[#fdfafb] p-6">
+                  <h3 className="text-base font-extrabold text-[#282421]">{faq.q}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-[#5e5862]">{faq.a}</p>
                 </div>
               ))}

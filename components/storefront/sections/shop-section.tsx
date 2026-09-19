@@ -113,7 +113,7 @@ export function ShopSection() {
               </div>
               <button
                 type="button"
-                className="text-[#ce0754] group-hover:text-[#f40b68] font-extrabold text-xs uppercase tracking-wider flex items-center gap-1 transition-colors after:absolute after:inset-0 after:content-[''] after:cursor-pointer"
+                className="text-[#8f2347] group-hover:text-[#a92d56] font-extrabold text-xs uppercase tracking-wider flex items-center gap-1 transition-colors after:absolute after:inset-0 after:content-[''] after:cursor-pointer"
                 onClick={() => openProduct(product)}
                 aria-label={`Customize ${product.name}`}
               >

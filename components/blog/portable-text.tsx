@@ -23,13 +23,13 @@ import { whatsappQuoteUrl } from "@/lib/site";
 const CALLOUT_STYLES = {
   note: {
     icon: Info,
-    wrap: "border-[#eadfe4] bg-[#faf7f8]",
+    wrap: "border-[#dcd6ce] bg-[#faf7f8]",
     accent: "text-[#5e5862]",
   },
   tip: {
     icon: Lightbulb,
-    wrap: "border-[#fde2ec] bg-[#fff0f5]",
-    accent: "text-[#ce0754]",
+    wrap: "border-[#e9e2d4] bg-[#efe9e0]",
+    accent: "text-[#8f2347]",
   },
   warning: {
     icon: TriangleAlert,
@@ -112,7 +112,7 @@ function createComponents(): PortableTextComponents {
             <SanityImage
               image={image}
               sizes="(min-width: 1024px) 760px, 100vw"
-              className="w-full rounded-2xl border border-[#eadfe4]"
+              className="w-full rounded-2xl border border-[#dcd6ce]"
             />
             {image.caption ? (
               <figcaption className="blog-prose__caption">{image.caption}</figcaption>

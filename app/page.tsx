@@ -4,7 +4,7 @@ import { SiteFooter } from "@/components/storefront/sections/site-footer";
 import { SiteHeader } from "@/components/storefront/sections/site-header";
 import { StorefrontShell } from "@/components/storefront/storefront-shell";
 import { StudioHome } from "@/components/storefront/studio-home";
-import { homeSignTypes } from "@/lib/home-content";
+import { homeAnswer, homeSignTypes } from "@/lib/home-content";
 import { SITE_URL } from "@/lib/site";
 import { serializeJsonLd } from "@/lib/utils";
 
@@ -44,9 +44,17 @@ const homeJsonLd = {
   "@id": `${SITE_URL}/#webpage`,
   url: `${SITE_URL}/`,
   name: title,
-  description,
+  // The same one-line answer the page renders (AEO/GEO): the machine-readable
+  // description and the visible copy can never drift apart.
+  description: homeAnswer,
   isPartOf: { "@id": `${SITE_URL}/#website` },
   about: { "@id": `${SITE_URL}/#organization` },
+  primaryImageOfPage: {
+    "@type": "ImageObject",
+    url: `${SITE_URL}/brand/studio-social.jpg`,
+    width: 1200,
+    height: 630,
+  },
   inLanguage: "en-US",
   mainEntity: {
     "@type": "ItemList",

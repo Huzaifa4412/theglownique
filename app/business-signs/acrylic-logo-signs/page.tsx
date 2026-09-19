@@ -102,18 +102,18 @@ export default function AcrylicLogoSignsPage() {
       <AnnouncementBar />
       <ProductTopBar productName="3D acrylic logo sign" />
       <main id="main-content" className="bg-white">
-        <section className="border-b border-[#eadfe4] bg-gradient-to-b from-[#fff0f5] to-white py-16 sm:py-24">
+        <section className="border-b border-[#dcd6ce] bg-gradient-to-b from-[#efe9e0] to-white py-16 sm:py-24">
           <div className="mx-auto max-w-4xl px-4 text-center sm:px-6">
             <nav className="mb-4 text-xs font-semibold text-[#5e5862]" aria-label="Breadcrumb">
               <Link href="/" className="hover:underline">Home</Link> &gt;{" "}
               <Link href="/business-signs" className="hover:underline">Business Signs</Link> &gt;{" "}
-              <span className="text-[#ce0754]">3D Acrylic Logo Signs</span>
+              <span className="text-[#8f2347]">3D Acrylic Logo Signs</span>
             </nav>
 
-            <p className="text-xs font-extrabold uppercase tracking-widest text-[#ce0754]">
+            <p className="text-xs font-extrabold uppercase tracking-widest text-[#8f2347]">
               Corporate &amp; Reception Signage
             </p>
-            <h1 className="mt-2 text-4xl font-extrabold tracking-tight text-[#1e1a22] sm:text-5xl">
+            <h1 className="mt-2 text-4xl font-extrabold tracking-tight text-[#282421] sm:text-5xl">
               Custom Acrylic Logo Signs &amp; 3D Wall Plaques
             </h1>
             <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-[#5e5862] sm:text-lg">
@@ -128,7 +128,7 @@ export default function AcrylicLogoSignsPage() {
               />
               <Link
                 href="/products/uv-print-acrylic-signs"
-                className="inline-flex items-center gap-2 rounded-xl border border-[#eadfe4] bg-white px-6 py-3.5 text-sm font-bold text-[#1e1a22] hover:border-[#f40b68]"
+                className="inline-flex items-center gap-2 rounded-xl border border-[#dcd6ce] bg-white px-6 py-3.5 text-sm font-bold text-[#282421] hover:border-[#a92d56]"
               >
                 View General Acrylic Specs →
               </Link>
@@ -149,14 +149,14 @@ export default function AcrylicLogoSignsPage() {
               </div>
 
               <div className="space-y-6">
-                <h2 className="text-3xl font-extrabold text-[#1e1a22]">
+                <h2 className="text-3xl font-extrabold text-[#282421]">
                   High-Precision Full Color + Neon Contours
                 </h2>
                 <p className="text-sm leading-relaxed text-[#5e5862]">
                   When your brand logo includes fine tagline text, complex gradients or multi-colored emblems that pure neon cannot represent alone, our hybrid UV-print acrylic signage delivers 100% fidelity.
                 </p>
 
-                <ul className="space-y-3 text-sm font-medium text-[#1e1a22]">
+                <ul className="space-y-3 text-sm font-medium text-[#282421]">
                   <li className="flex items-start gap-2">
                     <span className="font-bold text-[#7c3aed]">✓</span>
                     <span><strong>Industrial High-Res UV Printing:</strong> Scratch-resistant cured ink printed directly onto premium cast acrylic.</span>
@@ -176,26 +176,26 @@ export default function AcrylicLogoSignsPage() {
         </section>
 
         {/* Applications */}
-        <section className="border-t border-[#eadfe4] bg-[#faf7f8] py-16 sm:py-20">
+        <section className="border-t border-[#dcd6ce] bg-[#faf7f8] py-16 sm:py-20">
           <div className="mx-auto max-w-5xl px-4 sm:px-6">
-            <h2 className="text-3xl font-extrabold text-center text-[#1e1a22] mb-10">
+            <h2 className="text-3xl font-extrabold text-center text-[#282421] mb-10">
               Popular Acrylic Logo Sign Applications
             </h2>
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-              <div className="rounded-2xl border border-[#eadfe4] bg-white p-6 shadow-sm">
-                <h3 className="font-extrabold text-[#1e1a22]">Corporate Lobbies</h3>
+              <div className="rounded-2xl border border-[#dcd6ce] bg-white p-6 shadow-sm">
+                <h3 className="font-extrabold text-[#282421]">Corporate Lobbies</h3>
                 <p className="mt-2 text-xs text-[#5e5862]">Main reception desk backdrops that welcome clients with sleek modern elegance.</p>
               </div>
-              <div className="rounded-2xl border border-[#eadfe4] bg-white p-6 shadow-sm">
-                <h3 className="font-extrabold text-[#1e1a22]">Medical &amp; Dental</h3>
+              <div className="rounded-2xl border border-[#dcd6ce] bg-white p-6 shadow-sm">
+                <h3 className="font-extrabold text-[#282421]">Medical &amp; Dental</h3>
                 <p className="mt-2 text-xs text-[#5e5862]">Clean, sterile aesthetic with polished acrylic edges and subtle halo lighting.</p>
               </div>
-              <div className="rounded-2xl border border-[#eadfe4] bg-white p-6 shadow-sm">
-                <h3 className="font-extrabold text-[#1e1a22]">Beauty &amp; Hair Salons</h3>
+              <div className="rounded-2xl border border-[#dcd6ce] bg-white p-6 shadow-sm">
+                <h3 className="font-extrabold text-[#282421]">Beauty &amp; Hair Salons</h3>
                 <p className="mt-2 text-xs text-[#5e5862]">Multi-layered gold mirror backing with full-color brand logos and neon highlights.</p>
               </div>
-              <div className="rounded-2xl border border-[#eadfe4] bg-white p-6 shadow-sm">
-                <h3 className="font-extrabold text-[#1e1a22]">Conference Rooms</h3>
+              <div className="rounded-2xl border border-[#dcd6ce] bg-white p-6 shadow-sm">
+                <h3 className="font-extrabold text-[#282421]">Conference Rooms</h3>
                 <p className="mt-2 text-xs text-[#5e5862]">Executive boardroom wall art emphasizing company mission statements and brand crests.</p>
               </div>
             </div>
@@ -203,15 +203,15 @@ export default function AcrylicLogoSignsPage() {
         </section>
 
         {/* FAQs */}
-        <section className="border-t border-[#eadfe4] bg-white py-16 sm:py-20">
+        <section className="border-t border-[#dcd6ce] bg-white py-16 sm:py-20">
           <div className="mx-auto max-w-4xl px-4 sm:px-6">
-            <h2 className="text-3xl font-extrabold text-center text-[#1e1a22] mb-8">
+            <h2 className="text-3xl font-extrabold text-center text-[#282421] mb-8">
               Acrylic Logo Sign FAQs
             </h2>
             <div className="space-y-4">
               {acrylicLogoFaqs.map((faq) => (
-                <div key={faq.q} className="rounded-2xl border border-[#eadfe4] bg-[#fdfafb] p-6">
-                  <h3 className="text-base font-extrabold text-[#1e1a22]">{faq.q}</h3>
+                <div key={faq.q} className="rounded-2xl border border-[#dcd6ce] bg-[#fdfafb] p-6">
+                  <h3 className="text-base font-extrabold text-[#282421]">{faq.q}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-[#5e5862]">{faq.a}</p>
                 </div>
               ))}

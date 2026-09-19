@@ -65,7 +65,7 @@ const faqJsonLd = {
 export function FaqSection() {
   return (
     <section
-      className="faq-section relative bg-white py-20 sm:py-28 border-t border-[#eadfe4]"
+      className="faq-section relative bg-white py-20 sm:py-28 border-t border-[#dcd6ce]"
       id="faq"
       aria-labelledby="faq-heading"
       data-reveal
@@ -80,7 +80,7 @@ export function FaqSection() {
           <p className="eyebrow">Questions, answered</p>
           <h2
             id="faq-heading"
-            className="text-3xl sm:text-5xl font-extrabold tracking-tight text-[#1e1a22] leading-tight mt-2"
+            className="text-3xl sm:text-5xl font-extrabold tracking-tight text-[#282421] leading-tight mt-2"
           >
             Neon sign <PremiumAccentText>FAQs</PremiumAccentText>
           </h2>
@@ -94,12 +94,12 @@ export function FaqSection() {
           {faqs.map((item) => (
             <details
               key={item.q}
-              className="group rounded-2xl border border-[#eadfe4] bg-white/90 shadow-[0_10px_30px_rgba(107,38,67,0.06)] transition-colors hover:border-[#f8c6da] open:border-[#f8c6da]"
+              className="group rounded-2xl border border-[#dcd6ce] bg-white/90 shadow-[0_10px_30px_rgba(107,38,67,0.06)] transition-colors hover:border-[#f8c6da] open:border-[#f8c6da]"
             >
-              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 text-left text-base font-bold text-[#1e1a22] sm:px-6 sm:py-5 [&::-webkit-details-marker]:hidden">
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 text-left text-base font-bold text-[#282421] sm:px-6 sm:py-5 [&::-webkit-details-marker]:hidden">
                 <span>{item.q}</span>
                 <svg
-                  className="h-5 w-5 shrink-0 text-[#f40b68] transition-transform duration-300 group-open:rotate-180"
+                  className="h-5 w-5 shrink-0 text-[#a92d56] transition-transform duration-300 group-open:rotate-180"
                   viewBox="0 0 20 20"
                   fill="none"
                   aria-hidden="true"

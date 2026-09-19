@@ -195,7 +195,7 @@ export default function ContactPage() {
 
       <main id="main-content" className="bg-white">
         {/* Hero */}
-        <section className="border-b border-[#eadfe4] bg-gradient-to-b from-[#fff0f5] to-white py-14 sm:py-20">
+        <section className="border-b border-[#dcd6ce] bg-gradient-to-b from-[#efe9e0] to-white py-14 sm:py-20">
           <div className="mx-auto max-w-5xl px-4 sm:px-6">
             <nav
               className="mb-4 text-xs font-semibold text-[#5e5862]"
@@ -204,13 +204,13 @@ export default function ContactPage() {
               <Link href="/" className="hover:underline">
                 Home
               </Link>{" "}
-              &gt; <span className="text-[#ce0754]">Contact</span>
+              &gt; <span className="text-[#8f2347]">Contact</span>
             </nav>
 
-            <p className="text-xs font-extrabold uppercase tracking-widest text-[#ce0754]">
+            <p className="text-xs font-extrabold uppercase tracking-widest text-[#8f2347]">
               Talk to a human
             </p>
-            <h1 className="mt-2 max-w-3xl text-4xl font-extrabold tracking-tight text-[#1e1a22] sm:text-5xl">
+            <h1 className="mt-2 max-w-3xl text-4xl font-extrabold tracking-tight text-[#282421] sm:text-5xl">
               Contact The Glownique
             </h1>
             <p className="mt-4 max-w-2xl text-base leading-relaxed text-[#5e5862] sm:text-lg">
@@ -228,12 +228,12 @@ export default function ContactPage() {
               ].map(([term, value]) => (
                 <div
                   key={term}
-                  className="rounded-2xl border border-[#eadfe4] bg-white px-4 py-3"
+                  className="rounded-2xl border border-[#dcd6ce] bg-white px-4 py-3"
                 >
-                  <dt className="text-[11px] font-extrabold uppercase tracking-widest text-[#6b6570]">
+                  <dt className="text-[11px] font-extrabold uppercase tracking-widest text-[#6b625c]">
                     {term}
                   </dt>
-                  <dd className="mt-1 text-sm font-bold text-[#1e1a22]">
+                  <dd className="mt-1 text-sm font-bold text-[#282421]">
                     {value}
                   </dd>
                 </div>
@@ -243,11 +243,11 @@ export default function ContactPage() {
             <div className="mt-8 flex flex-wrap gap-4">
               <a
                 href="#contact-form"
-                className="inline-flex items-center gap-2 rounded-xl bg-[#1e1a22] px-6 py-3.5 text-sm font-bold text-white! transition-colors hover:bg-[#000]"
+                className="inline-flex items-center gap-2 rounded-xl bg-[#282421] px-6 py-3.5 text-sm font-bold text-white! transition-colors hover:bg-[#000]"
                 // text-white needs the important modifier here. globals.css sets
                 // `a { color: inherit }` OUTSIDE any cascade layer, and unlayered CSS
                 // beats layered CSS whatever the specificity — so a plain `text-white`
-                // utility loses and this button renders #1e1a22 on #1e1a22, invisible.
+                // utility loses and this button renders #282421 on #282421, invisible.
               >
                 Start an enquiry ↓
               </a>
@@ -270,7 +270,7 @@ export default function ContactPage() {
         {/* Channels */}
         <section className="border-b border-[#f2e7ec] py-14 sm:py-16">
           <div className="mx-auto max-w-5xl px-4 sm:px-6">
-            <h2 className="text-2xl font-extrabold tracking-tight text-[#1e1a22] sm:text-3xl">
+            <h2 className="text-2xl font-extrabold tracking-tight text-[#282421] sm:text-3xl">
               How to reach us
             </h2>
             <p className="mt-2 max-w-2xl text-sm leading-relaxed text-[#5e5862]">
@@ -280,8 +280,8 @@ export default function ContactPage() {
 
             <div className="mt-8 grid gap-5 md:grid-cols-2">
               {HAS_WHATSAPP && (
-                <div className="rounded-2xl border border-[#eadfe4] bg-white p-6">
-                  <h3 className="text-lg font-extrabold text-[#1e1a22]">
+                <div className="rounded-2xl border border-[#dcd6ce] bg-white p-6">
+                  <h3 className="text-lg font-extrabold text-[#282421]">
                     WhatsApp — fastest
                   </h3>
                   <p className="mt-2 text-sm leading-relaxed text-[#5e5862]">
@@ -289,7 +289,7 @@ export default function ContactPage() {
                     is enough to start, and the mockup comes back in the same
                     chat.
                   </p>
-                  <p className="mt-3 text-sm font-bold text-[#1e1a22]">
+                  <p className="mt-3 text-sm font-bold text-[#282421]">
                     {formatWhatsappDisplayNumber()}
                   </p>
                   <a
@@ -297,7 +297,7 @@ export default function ContactPage() {
                     target="_blank"
                     rel="noopener noreferrer"
                     data-meta-source="contact-page-channel-whatsapp"
-                    className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-[#ce0754] hover:underline"
+                    className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-[#8f2347] hover:underline"
                   >
                     Open a chat →
                   </a>
@@ -305,8 +305,8 @@ export default function ContactPage() {
               )}
 
               {ETSY_SHOP_URL && (
-                <div className="rounded-2xl border border-[#eadfe4] bg-white p-6">
-                  <h3 className="text-lg font-extrabold text-[#1e1a22]">
+                <div className="rounded-2xl border border-[#dcd6ce] bg-white p-6">
+                  <h3 className="text-lg font-extrabold text-[#282421]">
                     Etsy — orders, tracking & reviews
                   </h3>
                   <p className="mt-2 text-sm leading-relaxed text-[#5e5862]">
@@ -319,7 +319,7 @@ export default function ContactPage() {
                     target="_blank"
                     rel="noopener"
                     data-meta-source="contact-page-channel-etsy"
-                    className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-[#ce0754] hover:underline"
+                    className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-[#8f2347] hover:underline"
                   >
                     Visit The Glownique on Etsy →
                   </a>
@@ -327,8 +327,8 @@ export default function ContactPage() {
               )}
 
               {HAS_EMAIL && (
-                <div className="rounded-2xl border border-[#eadfe4] bg-white p-6">
-                  <h3 className="text-lg font-extrabold text-[#1e1a22]">
+                <div className="rounded-2xl border border-[#dcd6ce] bg-white p-6">
+                  <h3 className="text-lg font-extrabold text-[#282421]">
                     Email
                   </h3>
                   <p className="mt-2 text-sm leading-relaxed text-[#5e5862]">
@@ -337,7 +337,7 @@ export default function ContactPage() {
                   </p>
                   <a
                     href={`mailto:${LEGAL.email}`}
-                    className="mt-4 inline-flex text-sm font-bold text-[#ce0754] hover:underline"
+                    className="mt-4 inline-flex text-sm font-bold text-[#8f2347] hover:underline"
                   >
                     {LEGAL.email}
                   </a>
@@ -345,8 +345,8 @@ export default function ContactPage() {
               )}
 
               {HAS_PHONE && (
-                <div className="rounded-2xl border border-[#eadfe4] bg-white p-6">
-                  <h3 className="text-lg font-extrabold text-[#1e1a22]">
+                <div className="rounded-2xl border border-[#dcd6ce] bg-white p-6">
+                  <h3 className="text-lg font-extrabold text-[#282421]">
                     Phone
                   </h3>
                   <p className="mt-2 text-sm leading-relaxed text-[#5e5862]">
@@ -354,7 +354,7 @@ export default function ContactPage() {
                   </p>
                   <a
                     href={`tel:${LEGAL.phone.replace(/\s+/g, "")}`}
-                    className="mt-4 inline-flex text-sm font-bold text-[#ce0754] hover:underline"
+                    className="mt-4 inline-flex text-sm font-bold text-[#8f2347] hover:underline"
                   >
                     {LEGAL.phone}
                   </a>
@@ -362,8 +362,8 @@ export default function ContactPage() {
               )}
 
               {HAS_ADDRESS && (
-                <div className="rounded-2xl border border-[#eadfe4] bg-white p-6">
-                  <h3 className="text-lg font-extrabold text-[#1e1a22]">
+                <div className="rounded-2xl border border-[#dcd6ce] bg-white p-6">
+                  <h3 className="text-lg font-extrabold text-[#282421]">
                     Address
                   </h3>
                   <address
@@ -383,14 +383,14 @@ export default function ContactPage() {
                   Which contact route to use for each kind of enquiry
                 </caption>
                 <thead>
-                  <tr className="border-b border-[#eadfe4]">
-                    <th scope="col" className="py-3 pr-4 font-extrabold text-[#1e1a22]">
+                  <tr className="border-b border-[#dcd6ce]">
+                    <th scope="col" className="py-3 pr-4 font-extrabold text-[#282421]">
                       What you need
                     </th>
-                    <th scope="col" className="py-3 pr-4 font-extrabold text-[#1e1a22]">
+                    <th scope="col" className="py-3 pr-4 font-extrabold text-[#282421]">
                       Best route
                     </th>
-                    <th scope="col" className="py-3 font-extrabold text-[#1e1a22]">
+                    <th scope="col" className="py-3 font-extrabold text-[#282421]">
                       What to send
                     </th>
                   </tr>
@@ -400,7 +400,7 @@ export default function ContactPage() {
                     <tr key={row.need} className="border-b border-[#f2e7ec]">
                       <th
                         scope="row"
-                        className="py-3 pr-4 font-bold text-[#1e1a22]"
+                        className="py-3 pr-4 font-bold text-[#282421]"
                       >
                         {row.need}
                       </th>
@@ -420,8 +420,8 @@ export default function ContactPage() {
             <ContactForm />
 
             <aside className="space-y-6 lg:sticky lg:top-24">
-              <div className="rounded-2xl border border-[#eadfe4] bg-white p-6">
-                <h2 className="text-lg font-extrabold text-[#1e1a22]">
+              <div className="rounded-2xl border border-[#dcd6ce] bg-white p-6">
+                <h2 className="text-lg font-extrabold text-[#282421]">
                   What to include
                 </h2>
                 <p className="mt-2 text-sm leading-relaxed text-[#5e5862]">
@@ -438,7 +438,7 @@ export default function ContactPage() {
                     "A photo of the space, if you have one handy",
                   ].map((item) => (
                     <li key={item} className="flex gap-2.5">
-                      <span aria-hidden="true" className="font-bold text-[#ce0754]">
+                      <span aria-hidden="true" className="font-bold text-[#8f2347]">
                         ✓
                       </span>
                       <span>{item}</span>
@@ -447,8 +447,8 @@ export default function ContactPage() {
                 </ul>
               </div>
 
-              <div className="rounded-2xl border border-[#eadfe4] bg-white p-6">
-                <h2 className="text-lg font-extrabold text-[#1e1a22]">
+              <div className="rounded-2xl border border-[#dcd6ce] bg-white p-6">
+                <h2 className="text-lg font-extrabold text-[#282421]">
                   What happens next
                 </h2>
                 <ol className="mt-4 space-y-4 text-sm text-[#5e5862]">
@@ -473,12 +473,12 @@ export default function ContactPage() {
                     <li key={title} className="flex gap-3">
                       <span
                         aria-hidden="true"
-                        className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#fff0f5] text-xs font-extrabold text-[#ce0754]"
+                        className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#efe9e0] text-xs font-extrabold text-[#8f2347]"
                       >
                         {index + 1}
                       </span>
                       <span>
-                        <strong className="block font-bold text-[#1e1a22]">
+                        <strong className="block font-bold text-[#282421]">
                           {title}
                         </strong>
                         {detail}
@@ -488,15 +488,15 @@ export default function ContactPage() {
                 </ol>
               </div>
 
-              <div className="rounded-2xl border border-[#eadfe4] bg-white p-6">
-                <h2 className="text-lg font-extrabold text-[#1e1a22]">
+              <div className="rounded-2xl border border-[#dcd6ce] bg-white p-6">
+                <h2 className="text-lg font-extrabold text-[#282421]">
                   Before you write
                 </h2>
                 <ul className="mt-4 space-y-2 text-sm text-[#5e5862]">
                   <li>
                     <Link
                       href="/guides/custom-business-sign-cost"
-                      className="font-semibold text-[#ce0754] hover:underline"
+                      className="font-semibold text-[#8f2347] hover:underline"
                     >
                       What a custom business sign costs
                     </Link>
@@ -504,7 +504,7 @@ export default function ContactPage() {
                   <li>
                     <Link
                       href="/shipping"
-                      className="font-semibold text-[#ce0754] hover:underline"
+                      className="font-semibold text-[#8f2347] hover:underline"
                     >
                       Delivery times and shipping
                     </Link>
@@ -512,7 +512,7 @@ export default function ContactPage() {
                   <li>
                     <Link
                       href="/returns"
-                      className="font-semibold text-[#ce0754] hover:underline"
+                      className="font-semibold text-[#8f2347] hover:underline"
                     >
                       Returns and the 5-year warranty
                     </Link>
@@ -520,7 +520,7 @@ export default function ContactPage() {
                   <li>
                     <Link
                       href="/custom-signage"
-                      className="font-semibold text-[#ce0754] hover:underline"
+                      className="font-semibold text-[#8f2347] hover:underline"
                     >
                       Browse sign types and specs
                     </Link>
@@ -534,13 +534,13 @@ export default function ContactPage() {
         {/* FAQs — the visible copy behind the FAQPage markup above */}
         <section className="py-14 sm:py-20">
           <div className="mx-auto max-w-3xl px-4 sm:px-6">
-            <h2 className="text-2xl font-extrabold tracking-tight text-[#1e1a22] sm:text-3xl">
+            <h2 className="text-2xl font-extrabold tracking-tight text-[#282421] sm:text-3xl">
               Contact questions, answered
             </h2>
             <div className="mt-8 divide-y divide-[#f2e7ec] border-y border-[#f2e7ec]">
               {contactFaqs.map((item) => (
                 <details key={item.q} className="group py-5">
-                  <summary className="cursor-pointer list-none text-base font-bold text-[#1e1a22]">
+                  <summary className="cursor-pointer list-none text-base font-bold text-[#282421]">
                     <h3 className="inline">{item.q}</h3>
                   </summary>
                   <p className="mt-3 text-sm leading-relaxed text-[#5e5862]">

@@ -57,17 +57,17 @@ const inclusions: ReadonlyArray<{
 export function OrderIncludesSection() {
   return (
     <section
-      className="border-t border-[#eadfe4] bg-gradient-to-b from-white via-[#fdf7f9] to-white px-4 py-16 md:px-6 md:py-24"
+      className="border-t border-[#dcd6ce] bg-gradient-to-b from-white via-[#f3f0e9] to-white px-4 py-16 md:px-6 md:py-24"
       aria-labelledby="order-includes-heading"
     >
       <div className="mx-auto max-w-[1180px]">
         <div className="mx-auto max-w-2xl text-center">
-          <p className="text-xs font-extrabold uppercase tracking-widest text-[#ce0754]">
+          <p className="text-xs font-extrabold uppercase tracking-widest text-[#8f2347]">
             No surprises
           </p>
           <h2
             id="order-includes-heading"
-            className="mt-2 text-3xl font-extrabold tracking-tight text-[#1e1a22] sm:text-4xl"
+            className="mt-2 text-3xl font-extrabold tracking-tight text-[#282421] sm:text-4xl"
           >
             What every order <PremiumAccentText>includes.</PremiumAccentText>
           </h2>
@@ -81,12 +81,12 @@ export function OrderIncludesSection() {
           {inclusions.map((item) => (
             <li
               key={item.title}
-              className="h-full rounded-2xl border border-[#eadfe4] bg-white p-6 shadow-[0_10px_30px_rgba(107,38,67,0.06)] transition-transform duration-300 hover:-translate-y-1"
+              className="h-full rounded-2xl border border-[#dcd6ce] bg-white p-6 shadow-[0_10px_30px_rgba(107,38,67,0.06)] transition-transform duration-300 hover:-translate-y-1"
             >
-              <span className="inline-flex text-[#ce0754]">
+              <span className="inline-flex text-[#8f2347]">
                 <StoreIcon name={item.icon} />
               </span>
-              <h3 className="mt-4 text-lg font-extrabold text-[#1e1a22]">
+              <h3 className="mt-4 text-lg font-extrabold text-[#282421]">
                 {item.title}
               </h3>
               <p className="mt-2 text-sm leading-relaxed text-[#5e5862]">
@@ -101,7 +101,7 @@ export function OrderIncludesSection() {
             className="button button--whatsapp px-7 py-3.5 text-base font-bold"
             label="Get your free mockup"
           />
-          <p className="text-xs text-[#6b6570]">
+          <p className="text-xs text-[#6b625c]">
             Takes a minute. No payment details, no commitment.
           </p>
         </div>

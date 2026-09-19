@@ -14,10 +14,10 @@
 .collection {
   --night: #0b0910;
   --night-2: #120e18;
-  --ink: #1e1a22;
+  --ink: #282421;
   --muted: #5e5862;
-  --line: #eadfe4;
-  --blush-surface: #fdf7f9;
+  --line: #dcd6ce;
+  --blush-surface: #f3f0e9;
   --radius-tile: 18px;
   --radius-card: 22px;
   background: #fff;
@@ -130,7 +130,7 @@
   left: -160px;
   width: 520px;
   height: 520px;
-  background: #6d26ff;
+  background: #6b4664;
   opacity: 0.22;
 }
 
@@ -795,7 +795,7 @@
   inset-inline: 0;
   top: 0;
   height: 3px;
-  background: linear-gradient(90deg, var(--accent), #6d26ff);
+  background: linear-gradient(90deg, var(--accent), #6b4664);
 }
 
 .collection-cta__glow {

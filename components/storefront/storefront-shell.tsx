@@ -11,6 +11,7 @@ import {
 
 import { ProductDialog } from "@/components/storefront/product-dialog";
 import { StorefrontMotionLoader } from "@/components/storefront/storefront-motion-loader";
+import { smoothScrollTo } from "@/components/storefront/smooth-scroll";
 import {
   StorefrontContext,
   type StorefrontContextValue,
@@ -67,10 +68,9 @@ export function StorefrontShell({
 
   const scrollToShop = useCallback(() => {
     requestAnimationFrame(() => {
-      document.querySelector("#shop")?.scrollIntoView({
-        behavior: reducedMotion ? "auto" : "smooth",
-        block: "start",
-      });
+      // Routed through the Lenis-aware helper: a native scrollIntoView is
+      // overridden by an active Lenis instance on the homepage.
+      smoothScrollTo("#shop", { immediate: reducedMotion });
     });
   }, [reducedMotion]);
 

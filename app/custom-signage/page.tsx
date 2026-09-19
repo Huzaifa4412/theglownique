@@ -80,12 +80,12 @@ export default function CustomSignagePage() {
       <AnnouncementBar />
       <ProductTopBar productName="custom sign" />
       <main id="main-content" className="bg-white">
-        <section className="border-b border-[#eadfe4] bg-gradient-to-b from-[#fff0f5] to-white py-16 sm:py-20">
+        <section className="border-b border-[#dcd6ce] bg-gradient-to-b from-[#efe9e0] to-white py-16 sm:py-20">
           <div className="mx-auto max-w-3xl px-4 text-center sm:px-6">
-            <p className="text-xs font-extrabold uppercase tracking-widest text-[#ce0754]">
+            <p className="text-xs font-extrabold uppercase tracking-widest text-[#8f2347]">
               Handcrafted Custom Signage
             </p>
-            <h1 className="mt-2 text-4xl font-extrabold tracking-tight text-[#1e1a22] sm:text-5xl">
+            <h1 className="mt-2 text-4xl font-extrabold tracking-tight text-[#282421] sm:text-5xl">
               Custom Signage &amp; Light Up Signs
             </h1>
             <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-[#5e5862]">
@@ -101,7 +101,7 @@ export default function CustomSignagePage() {
               <Link
                 key={product.slug}
                 href={`/products/${product.slug}`}
-                className="group block overflow-hidden rounded-3xl border border-[#eadfe4] bg-white shadow-[0_14px_40px_rgba(107,38,67,0.08)] transition-transform duration-300 hover:-translate-y-1"
+                className="group block overflow-hidden rounded-3xl border border-[#dcd6ce] bg-white shadow-[0_14px_40px_rgba(107,38,67,0.08)] transition-transform duration-300 hover:-translate-y-1"
               >
                 <div className="relative aspect-[16/9] w-full overflow-hidden bg-black/5">
                   <Image
@@ -119,7 +119,7 @@ export default function CustomSignagePage() {
                   </span>
                 </div>
                 <div className="p-6">
-                  <h2 className="text-2xl font-extrabold tracking-tight text-[#1e1a22]">
+                  <h2 className="text-2xl font-extrabold tracking-tight text-[#282421]">
                     {product.name}
                   </h2>
                   <p className="mt-2 text-sm leading-6 text-[#5e5862]">{product.tagline}</p>
@@ -147,13 +147,13 @@ export default function CustomSignagePage() {
           actually asks — and they are this hub's only route into the collection
           pages, so they are links rather than decoration.
         */}
-        <section className="border-t border-[#eadfe4] bg-[#faf7f8] py-14 sm:py-20">
+        <section className="border-t border-[#dcd6ce] bg-[#faf7f8] py-14 sm:py-20">
           <div className="mx-auto max-w-[1320px] px-4 sm:px-6">
             <div className="mb-10 text-center">
-              <p className="text-xs font-extrabold uppercase tracking-widest text-[#ce0754]">
+              <p className="text-xs font-extrabold uppercase tracking-widest text-[#8f2347]">
                 Shop by Occasion
               </p>
-              <h2 className="mt-2 text-3xl font-extrabold text-[#1e1a22] sm:text-4xl">
+              <h2 className="mt-2 text-3xl font-extrabold text-[#282421] sm:text-4xl">
                 Signs for Weddings, Kids’ Rooms, Game Rooms &amp; Home Bars
               </h2>
               <p className="mx-auto mt-3 max-w-xl text-base text-[#5e5862]">
@@ -168,7 +168,7 @@ export default function CustomSignagePage() {
                 <Link
                   key={collection.slug}
                   href={`/custom-signage/${collection.slug}`}
-                  className="group block overflow-hidden rounded-3xl border border-[#eadfe4] bg-white shadow-sm transition-transform duration-300 hover:-translate-y-1"
+                  className="group block overflow-hidden rounded-3xl border border-[#dcd6ce] bg-white shadow-sm transition-transform duration-300 hover:-translate-y-1"
                 >
                   <div className="relative aspect-[16/10] w-full overflow-hidden bg-black/5">
                     <Image
@@ -180,7 +180,7 @@ export default function CustomSignagePage() {
                     />
                   </div>
                   <div className="p-6">
-                    <h3 className="text-xl font-extrabold tracking-tight text-[#1e1a22] group-hover:text-[#ce0754]">
+                    <h3 className="text-xl font-extrabold tracking-tight text-[#282421] group-hover:text-[#8f2347]">
                       {collection.name} →
                     </h3>
                     <p className="mt-2 text-sm leading-6 text-[#5e5862]">{collection.intro}</p>
@@ -192,9 +192,9 @@ export default function CustomSignagePage() {
         </section>
 
         {/* Commercial Hub Link Callout */}
-        <section className="border-t border-[#eadfe4] bg-white py-14 sm:py-16">
+        <section className="border-t border-[#dcd6ce] bg-white py-14 sm:py-16">
           <div className="mx-auto max-w-4xl px-4 text-center sm:px-6">
-            <h2 className="text-2xl font-extrabold text-[#1e1a22]">
+            <h2 className="text-2xl font-extrabold text-[#282421]">
               Looking for Commercial &amp; Exterior Storefront Signage?
             </h2>
             <p className="mt-2 text-sm text-[#5e5862]">
@@ -203,7 +203,7 @@ export default function CustomSignagePage() {
             <div className="mt-6">
               <Link
                 href="/business-signs"
-                className="inline-flex items-center gap-2 rounded-xl bg-[#1e1a22] px-6 py-3.5 text-xs font-extrabold uppercase tracking-widest text-white hover:bg-[#ce0754]"
+                className="inline-flex items-center gap-2 rounded-xl bg-[#282421] px-6 py-3.5 text-xs font-extrabold uppercase tracking-widest text-white hover:bg-[#8f2347]"
               >
                 Explore Business Signage Hub →
               </Link>

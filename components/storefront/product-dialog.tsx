@@ -246,6 +246,9 @@ export function ProductDialog({
     <dialog
       ref={dialogRef}
       className="product-dialog"
+      // Lenis (homepage smooth scrolling) must not intercept wheel events
+      // inside the dialog; the form column scrolls natively.
+      data-lenis-prevent
       onClose={onClose}
       onClick={(event) => {
         if (event.target === event.currentTarget) closeDialog();

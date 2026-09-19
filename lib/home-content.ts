@@ -1,3 +1,5 @@
+import { DELIVERY } from "@/lib/claims";
+
 /** Homepage copy and structured data share the same public facts. */
 export const homeSignTypes = [
   {
@@ -35,6 +37,41 @@ export const homeSignTypes = [
   },
 ] as const;
 
+/**
+ * The answer-engine paragraph (AEO/GEO). One self-contained, quotable
+ * statement of what The Glownique is and does, rendered high on the page so
+ * assistants and answer boxes can lift it whole. Every claim in it resolves
+ * to lib/claims.ts or to standing copy elsewhere on the site — do not add a
+ * figure here that the claims register does not hold.
+ */
+export const homeAnswer =
+  "The Glownique is a custom sign studio. We design and handcraft custom LED neon signs, 3D metal channel letters, UV-printed acrylic signs and ultra-thin lightboxes — made to order for businesses, weddings and homes. Every project starts with a free design preview, and every sign ships with tracked worldwide delivery.";
+
+/**
+ * Phrases the hero headline types through. The first one is also rendered
+ * statically (server-side and for screen readers), so search engines always
+ * see the complete headline whatever the animation is doing.
+ */
+export const heroTypePhrases = [
+  "Unmistakably yours.",
+  "Built to glow.",
+  "For your business.",
+  "For your big day.",
+] as const;
+
+/**
+ * The hero marquee. Short, claims-safe promises only: DELIVERY.short is the
+ * approved shipping wording, and nothing here states a price, a lead time or
+ * the warranty (validation_required — do not amplify).
+ */
+export const homeMarqueeItems = [
+  "Made to order, made for you",
+  "Free design preview",
+  DELIVERY.short,
+  "LED neon · 3D letters · acrylic · lightboxes",
+  "Designed with feeling. Built to glow.",
+] as const;
+
 export const homeFaqs = [
   {
     question: "How much does a custom neon sign cost?",
@@ -58,11 +95,25 @@ export const homeFaqs = [
     link: "Compare lighting styles",
   },
   {
+    question: "Can I choose the colour and font of my sign?",
+    answer:
+      "Yes. Colour, font, size and backing are all set during your free design preview, so you approve exactly what will be made. You can also explore colour moods in the interactive colour studio before you enquire.",
+    href: "/products/custom-neon-signs#color-studio",
+    link: "Open the colour studio",
+  },
+  {
     question: "Can I order a sign for outdoor use?",
     answer:
       "Tell us that the sign will be outdoors when requesting your quote. We will confirm the suitable materials, electrical specification and mounting requirements for your location; an indoor sign should not be assumed suitable for outdoor use.",
     href: "/business-signs",
     link: "Explore business signage",
+  },
+  {
+    question: "Do you make signs for events and occasions?",
+    answer:
+      "Yes. Alongside business signage, we make custom LED neon for weddings, parties, home decor and game rooms — each designed around your wording, colours and space, with a free preview before production.",
+    href: "/custom-signage",
+    link: "Browse signs by occasion",
   },
   {
     question: "Do you ship internationally?",

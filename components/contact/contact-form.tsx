@@ -115,9 +115,9 @@ const COUNTRIES = [
 const NOT_SPECIFIED = "Not specified";
 
 const labelClass =
-  "block text-xs font-extrabold uppercase tracking-widest text-[#1e1a22]";
+  "block text-xs font-extrabold uppercase tracking-widest text-[#282421]";
 const fieldClass =
-  "mt-2 w-full rounded-xl border border-[#eadfe4] bg-white px-4 py-3 text-sm text-[#1e1a22] shadow-sm outline-none transition-colors placeholder:text-[#a8a2ae] focus:border-[#f40b68] focus:ring-2 focus:ring-[#f40b68]/20";
+  "mt-2 w-full rounded-xl border border-[#dcd6ce] bg-white px-4 py-3 text-sm text-[#282421] shadow-sm outline-none transition-colors placeholder:text-[#a8a2ae] focus:border-[#a92d56] focus:ring-2 focus:ring-[#a92d56]/20";
 
 export function ContactForm() {
   const [topic, setTopic] = useState<EnquiryTopic>(TOPICS[0].value);
@@ -245,9 +245,9 @@ export function ContactForm() {
     return (
       <div
         id="contact-form"
-        className="scroll-mt-24 rounded-3xl border border-[#eadfe4] bg-[#fff7fa] p-6 sm:p-8"
+        className="scroll-mt-24 rounded-3xl border border-[#dcd6ce] bg-[#fff7fa] p-6 sm:p-8"
       >
-        <h2 className="text-2xl font-extrabold text-[#1e1a22]">
+        <h2 className="text-2xl font-extrabold text-[#282421]">
           The enquiry form is temporarily unavailable
         </h2>
         <p className="mt-3 text-sm leading-relaxed text-[#5e5862]">
@@ -264,10 +264,10 @@ export function ContactForm() {
     <form
       id="contact-form"
       onSubmit={handleSubmit}
-      className="scroll-mt-24 rounded-3xl border border-[#eadfe4] bg-white p-6 shadow-[0_18px_50px_-30px_rgba(30,26,34,0.5)] sm:p-8"
+      className="scroll-mt-24 rounded-3xl border border-[#dcd6ce] bg-white p-6 shadow-[0_18px_50px_-30px_rgba(30,26,34,0.5)] sm:p-8"
     >
       <div className="border-b border-[#f2e7ec] pb-6">
-        <h2 className="text-2xl font-extrabold tracking-tight text-[#1e1a22] sm:text-3xl">
+        <h2 className="text-2xl font-extrabold tracking-tight text-[#282421] sm:text-3xl">
           Send us the details
         </h2>
         <p className="mt-2 text-sm leading-relaxed text-[#5e5862]">
@@ -287,8 +287,8 @@ export function ContactForm() {
                 key={option.value}
                 className={`flex cursor-pointer gap-3 rounded-2xl border p-4 transition-colors ${
                   selected
-                    ? "border-[#f40b68] bg-[#fff0f5]"
-                    : "border-[#eadfe4] bg-white hover:border-[#f6b7ce]"
+                    ? "border-[#a92d56] bg-[#efe9e0]"
+                    : "border-[#dcd6ce] bg-white hover:border-[#f6b7ce]"
                 }`}
               >
                 <input
@@ -297,10 +297,10 @@ export function ContactForm() {
                   value={option.value}
                   checked={selected}
                   onChange={() => setTopic(option.value)}
-                  className="mt-1 h-4 w-4 shrink-0 accent-[#f40b68]"
+                  className="mt-1 h-4 w-4 shrink-0 accent-[#a92d56]"
                 />
                 <span>
-                  <span className="block text-sm font-bold text-[#1e1a22]">
+                  <span className="block text-sm font-bold text-[#282421]">
                     {option.value}
                   </span>
                   <span className="mt-1 block text-xs leading-relaxed text-[#5e5862]">
@@ -372,8 +372,8 @@ export function ContactForm() {
 
       {/* Sign specification — quote and trade enquiries only */}
       {activeTopic.wantsSpec && (
-        <div className="mt-8 rounded-2xl border border-[#eadfe4] bg-[#fffafc] p-5 sm:p-6">
-          <h3 className="text-base font-extrabold text-[#1e1a22]">
+        <div className="mt-8 rounded-2xl border border-[#dcd6ce] bg-[#fffafc] p-5 sm:p-6">
+          <h3 className="text-base font-extrabold text-[#282421]">
             Help us quote accurately
           </h3>
           <p className="mt-1 text-xs leading-relaxed text-[#5e5862]">
@@ -519,16 +519,16 @@ export function ContactForm() {
         />
       </label>
 
-      <p className="mt-3 rounded-xl bg-[#fff0f5] px-4 py-3 text-xs leading-relaxed text-[#5e5862]">
-        <strong className="font-bold text-[#1e1a22]">Got artwork?</strong> A
+      <p className="mt-3 rounded-xl bg-[#efe9e0] px-4 py-3 text-xs leading-relaxed text-[#5e5862]">
+        <strong className="font-bold text-[#282421]">Got artwork?</strong> A
         browser can&apos;t attach files to a WhatsApp message for you — send your
         logo, sketch or fault photos straight into the chat once it opens. Any
         format works, even a phone photo of a napkin.
       </p>
 
       {/* Preview — the visitor reads exactly what they're about to send */}
-      <details className="mt-6 rounded-2xl border border-[#eadfe4] bg-[#fbf8f9] p-4 sm:p-5">
-        <summary className="cursor-pointer text-sm font-bold text-[#1e1a22]">
+      <details className="mt-6 rounded-2xl border border-[#dcd6ce] bg-[#fbf8f9] p-4 sm:p-5">
+        <summary className="cursor-pointer text-sm font-bold text-[#282421]">
           Preview the message you&apos;ll send
         </summary>
         <pre className="mt-4 max-h-72 overflow-auto whitespace-pre-wrap break-words text-xs leading-relaxed text-[#5e5862]">
@@ -543,14 +543,14 @@ export function ContactForm() {
           required
           checked={consent}
           onChange={(e) => setConsent(e.target.checked)}
-          className="mt-0.5 h-4 w-4 shrink-0 accent-[#f40b68]"
+          className="mt-0.5 h-4 w-4 shrink-0 accent-[#a92d56]"
         />
         <span>
           I&apos;m happy for The Glownique to use these details to answer my
           enquiry and follow up about it. See our{" "}
           <a
             href="/privacy"
-            className="font-semibold text-[#ce0754] underline underline-offset-2"
+            className="font-semibold text-[#8f2347] underline underline-offset-2"
           >
             privacy policy
           </a>
@@ -577,7 +577,7 @@ export function ContactForm() {
           : "Opens WhatsApp with everything above filled in, and saves a copy so we can reply either way."}
       </p>
 
-      <p className="mt-4 text-center text-xs text-[#6b6570]">
+      <p className="mt-4 text-center text-xs text-[#6b625c]">
         Never send card details, bank details or identity documents over chat. We
         will never ask for them — payment is taken through Etsy&apos;s encrypted
         checkout.

@@ -102,18 +102,18 @@ export default function LightboxSignsPage() {
       <AnnouncementBar />
       <ProductTopBar productName="ultra-thin lightbox sign" />
       <main id="main-content" className="bg-white">
-        <section className="border-b border-[#eadfe4] bg-gradient-to-b from-[#fff0f5] to-white py-16 sm:py-24">
+        <section className="border-b border-[#dcd6ce] bg-gradient-to-b from-[#efe9e0] to-white py-16 sm:py-24">
           <div className="mx-auto max-w-4xl px-4 text-center sm:px-6">
             <nav className="mb-4 text-xs font-semibold text-[#5e5862]" aria-label="Breadcrumb">
               <Link href="/" className="hover:underline">Home</Link> &gt;{" "}
               <Link href="/business-signs" className="hover:underline">Business Signs</Link> &gt;{" "}
-              <span className="text-[#ce0754]">Lightbox Signs</span>
+              <span className="text-[#8f2347]">Lightbox Signs</span>
             </nav>
 
-            <p className="text-xs font-extrabold uppercase tracking-widest text-[#ce0754]">
+            <p className="text-xs font-extrabold uppercase tracking-widest text-[#8f2347]">
               Retail &amp; Menu Display Signage
             </p>
-            <h1 className="mt-2 text-4xl font-extrabold tracking-tight text-[#1e1a22] sm:text-5xl">
+            <h1 className="mt-2 text-4xl font-extrabold tracking-tight text-[#282421] sm:text-5xl">
               Custom Lightbox Signs &amp; Ultra-Thin Displays
             </h1>
             <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-[#5e5862] sm:text-lg">
@@ -128,7 +128,7 @@ export default function LightboxSignsPage() {
               />
               <Link
                 href="/products/ultra-thin-lightbox"
-                className="inline-flex items-center gap-2 rounded-xl border border-[#eadfe4] bg-white px-6 py-3.5 text-sm font-bold text-[#1e1a22] hover:border-[#f40b68]"
+                className="inline-flex items-center gap-2 rounded-xl border border-[#dcd6ce] bg-white px-6 py-3.5 text-sm font-bold text-[#282421] hover:border-[#a92d56]"
               >
                 View Lightbox Catalog Specs →
               </Link>
@@ -149,14 +149,14 @@ export default function LightboxSignsPage() {
               </div>
 
               <div className="space-y-6">
-                <h2 className="text-3xl font-extrabold text-[#1e1a22]">
+                <h2 className="text-3xl font-extrabold text-[#282421]">
                   Sleek Profile &amp; Easy Graphic Swaps
                 </h2>
                 <p className="text-sm leading-relaxed text-[#5e5862]">
                   Traditional heavy cabinet lightboxes are bulky and cumbersome to update. Our slim edge-lit aluminum lightboxes combine architectural elegance with effortless maintenance.
                 </p>
 
-                <ul className="space-y-3 text-sm font-medium text-[#1e1a22]">
+                <ul className="space-y-3 text-sm font-medium text-[#282421]">
                   <li className="flex items-start gap-2">
                     <span className="font-bold text-[#2563eb]">✓</span>
                     <span><strong>Slim Anodized Aluminum Frame:</strong> Ultra-thin depth sits flush on walls or hangs in window displays.</span>
@@ -176,26 +176,26 @@ export default function LightboxSignsPage() {
         </section>
 
         {/* Applications */}
-        <section className="border-t border-[#eadfe4] bg-[#faf7f8] py-16 sm:py-20">
+        <section className="border-t border-[#dcd6ce] bg-[#faf7f8] py-16 sm:py-20">
           <div className="mx-auto max-w-5xl px-4 sm:px-6">
-            <h2 className="text-3xl font-extrabold text-center text-[#1e1a22] mb-10">
+            <h2 className="text-3xl font-extrabold text-center text-[#282421] mb-10">
               Commercial Lightbox Sign Applications
             </h2>
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-              <div className="rounded-2xl border border-[#eadfe4] bg-white p-6 shadow-sm">
-                <h3 className="font-extrabold text-[#1e1a22]">Retail Windows</h3>
+              <div className="rounded-2xl border border-[#dcd6ce] bg-white p-6 shadow-sm">
+                <h3 className="font-extrabold text-[#282421]">Retail Windows</h3>
                 <p className="mt-2 text-xs text-[#5e5862]">High-contrast window-hung backlit displays that capture pedestrian attention 24/7.</p>
               </div>
-              <div className="rounded-2xl border border-[#eadfe4] bg-white p-6 shadow-sm">
-                <h3 className="font-extrabold text-[#1e1a22]">Menu Boards</h3>
+              <div className="rounded-2xl border border-[#dcd6ce] bg-white p-6 shadow-sm">
+                <h3 className="font-extrabold text-[#282421]">Menu Boards</h3>
                 <p className="mt-2 text-xs text-[#5e5862]">Evenly lit, easy-to-read overhead food and beverage menus with quick seasonal swaps.</p>
               </div>
-              <div className="rounded-2xl border border-[#eadfe4] bg-white p-6 shadow-sm">
-                <h3 className="font-extrabold text-[#1e1a22]">Trade Shows</h3>
+              <div className="rounded-2xl border border-[#dcd6ce] bg-white p-6 shadow-sm">
+                <h3 className="font-extrabold text-[#282421]">Trade Shows</h3>
                 <p className="mt-2 text-xs text-[#5e5862]">Lightweight, ultra-portable illuminated graphic booths and modular display stands.</p>
               </div>
-              <div className="rounded-2xl border border-[#eadfe4] bg-white p-6 shadow-sm">
-                <h3 className="font-extrabold text-[#1e1a22]">Lobby Displays</h3>
+              <div className="rounded-2xl border border-[#dcd6ce] bg-white p-6 shadow-sm">
+                <h3 className="font-extrabold text-[#282421]">Lobby Displays</h3>
                 <p className="mt-2 text-xs text-[#5e5862]">Wayfinding directories, corporate partner walls and premium art feature frames.</p>
               </div>
             </div>
@@ -203,15 +203,15 @@ export default function LightboxSignsPage() {
         </section>
 
         {/* FAQs */}
-        <section className="border-t border-[#eadfe4] bg-white py-16 sm:py-20">
+        <section className="border-t border-[#dcd6ce] bg-white py-16 sm:py-20">
           <div className="mx-auto max-w-4xl px-4 sm:px-6">
-            <h2 className="text-3xl font-extrabold text-center text-[#1e1a22] mb-8">
+            <h2 className="text-3xl font-extrabold text-center text-[#282421] mb-8">
               Commercial Lightbox FAQs
             </h2>
             <div className="space-y-4">
               {lightboxFaqs.map((faq) => (
-                <div key={faq.q} className="rounded-2xl border border-[#eadfe4] bg-[#fdfafb] p-6">
-                  <h3 className="text-base font-extrabold text-[#1e1a22]">{faq.q}</h3>
+                <div key={faq.q} className="rounded-2xl border border-[#dcd6ce] bg-[#fdfafb] p-6">
+                  <h3 className="text-base font-extrabold text-[#282421]">{faq.q}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-[#5e5862]">{faq.a}</p>
                 </div>
               ))}

@@ -102,18 +102,18 @@ export default function CustomLogoNeonSignsPage() {
       <AnnouncementBar />
       <ProductTopBar productName="custom logo neon sign" />
       <main id="main-content" className="bg-white">
-        <section className="border-b border-[#eadfe4] bg-gradient-to-b from-[#fff0f5] to-white py-16 sm:py-24">
+        <section className="border-b border-[#dcd6ce] bg-gradient-to-b from-[#efe9e0] to-white py-16 sm:py-24">
           <div className="mx-auto max-w-4xl px-4 text-center sm:px-6">
             <nav className="mb-4 text-xs font-semibold text-[#5e5862]" aria-label="Breadcrumb">
               <Link href="/" className="hover:underline">Home</Link> &gt;{" "}
               <Link href="/business-signs" className="hover:underline">Business Signs</Link> &gt;{" "}
-              <span className="text-[#ce0754]">Custom Logo Neon Signs</span>
+              <span className="text-[#8f2347]">Custom Logo Neon Signs</span>
             </nav>
 
-            <p className="text-xs font-extrabold uppercase tracking-widest text-[#ce0754]">
+            <p className="text-xs font-extrabold uppercase tracking-widest text-[#8f2347]">
               Commercial Brand Signage
             </p>
-            <h1 className="mt-2 text-4xl font-extrabold tracking-tight text-[#1e1a22] sm:text-5xl">
+            <h1 className="mt-2 text-4xl font-extrabold tracking-tight text-[#282421] sm:text-5xl">
               Custom Logo Neon Signs for Business
             </h1>
             <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-[#5e5862] sm:text-lg">
@@ -129,7 +129,7 @@ export default function CustomLogoNeonSignsPage() {
               />
               <Link
                 href="/products/custom-neon-signs"
-                className="inline-flex items-center gap-2 rounded-xl border border-[#eadfe4] bg-white px-6 py-3.5 text-sm font-bold text-[#1e1a22] hover:border-[#f40b68]"
+                className="inline-flex items-center gap-2 rounded-xl border border-[#dcd6ce] bg-white px-6 py-3.5 text-sm font-bold text-[#282421] hover:border-[#a92d56]"
               >
                 View General Product Specs →
               </Link>
@@ -150,7 +150,7 @@ export default function CustomLogoNeonSignsPage() {
               </div>
 
               <div className="space-y-6">
-                <h2 className="text-3xl font-extrabold text-[#1e1a22]">
+                <h2 className="text-3xl font-extrabold text-[#282421]">
                   Built for Maximum Commercial Visibility &amp; Longevity
                 </h2>
                 <p className="text-sm leading-relaxed text-[#5e5862]">
@@ -158,21 +158,21 @@ export default function CustomLogoNeonSignsPage() {
                   our commercial LED logo signs deliver eye-catching visibility without high energy bills.
                 </p>
 
-                <ul className="space-y-3 text-sm font-medium text-[#1e1a22]">
+                <ul className="space-y-3 text-sm font-medium text-[#282421]">
                   <li className="flex items-start gap-2">
-                    <span className="font-bold text-[#ce0754]">✓</span>
+                    <span className="font-bold text-[#8f2347]">✓</span>
                     <span><strong>Pantone &amp; HEX Color Matching:</strong> Exact brand color alignment for contours and backings.</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="font-bold text-[#ce0754]">✓</span>
+                    <span className="font-bold text-[#8f2347]">✓</span>
                     <span><strong>Safe 12V Low Voltage:</strong> Cool to touch, shatterproof silicone tubing with 100,000-hour LED lifespan.</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="font-bold text-[#ce0754]">✓</span>
+                    <span className="font-bold text-[#8f2347]">✓</span>
                     <span><strong>IP67 Outdoor Option:</strong> Full waterproofing available for exterior storefront entryways.</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="font-bold text-[#ce0754]">✓</span>
+                    <span className="font-bold text-[#8f2347]">✓</span>
                     <span><strong>5-Year Warranty:</strong> Complete coverage on LEDs, power transformers, and craftsmanship.</span>
                   </li>
                 </ul>
@@ -180,7 +180,7 @@ export default function CustomLogoNeonSignsPage() {
                 <div className="pt-4">
                   <Link
                     href="/guides/custom-business-sign-cost"
-                    className="text-sm font-bold text-[#ce0754] underline"
+                    className="text-sm font-bold text-[#8f2347] underline"
                   >
                     Compare custom logo sign cost factors in our business guide →
                   </Link>
@@ -191,34 +191,34 @@ export default function CustomLogoNeonSignsPage() {
         </section>
 
         {/* Commercial Logo Applications */}
-        <section className="border-t border-[#eadfe4] bg-[#faf7f8] py-16 sm:py-20">
+        <section className="border-t border-[#dcd6ce] bg-[#faf7f8] py-16 sm:py-20">
           <div className="mx-auto max-w-5xl px-4 sm:px-6">
-            <h2 className="text-3xl font-extrabold text-center text-[#1e1a22] mb-10">
+            <h2 className="text-3xl font-extrabold text-center text-[#282421] mb-10">
               Popular Business Logo Neon Sign Applications
             </h2>
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              <div className="rounded-2xl border border-[#eadfe4] bg-white p-6 shadow-sm">
-                <h3 className="font-extrabold text-[#1e1a22]">Corporate Offices &amp; Lobbies</h3>
+              <div className="rounded-2xl border border-[#dcd6ce] bg-white p-6 shadow-sm">
+                <h3 className="font-extrabold text-[#282421]">Corporate Offices &amp; Lobbies</h3>
                 <p className="mt-2 text-xs text-[#5e5862]">Reception brand walls and executive conference rooms that project contemporary prestige.</p>
               </div>
-              <div className="rounded-2xl border border-[#eadfe4] bg-white p-6 shadow-sm">
-                <h3 className="font-extrabold text-[#1e1a22]">Bars, Cafés &amp; Restaurants</h3>
+              <div className="rounded-2xl border border-[#dcd6ce] bg-white p-6 shadow-sm">
+                <h3 className="font-extrabold text-[#282421]">Bars, Cafés &amp; Restaurants</h3>
                 <p className="mt-2 text-xs text-[#5e5862]">Custom bar neon signs, dining wall emblems, and Instagram photo backdrop moments.</p>
               </div>
-              <div className="rounded-2xl border border-[#eadfe4] bg-white p-6 shadow-sm">
-                <h3 className="font-extrabold text-[#1e1a22]">Salons, Spas &amp; Barbershops</h3>
+              <div className="rounded-2xl border border-[#dcd6ce] bg-white p-6 shadow-sm">
+                <h3 className="font-extrabold text-[#282421]">Salons, Spas &amp; Barbershops</h3>
                 <p className="mt-2 text-xs text-[#5e5862]">Chic salon neon signs and mirror plaques that turn clients into organic social media advocates.</p>
               </div>
-              <div className="rounded-2xl border border-[#eadfe4] bg-white p-6 shadow-sm">
-                <h3 className="font-extrabold text-[#1e1a22]">Gyms &amp; Fitness Studios</h3>
+              <div className="rounded-2xl border border-[#dcd6ce] bg-white p-6 shadow-sm">
+                <h3 className="font-extrabold text-[#282421]">Gyms &amp; Fitness Studios</h3>
                 <p className="mt-2 text-xs text-[#5e5862]">High-energy motivational gym neon signs that boost workout intensity and community branding.</p>
               </div>
-              <div className="rounded-2xl border border-[#eadfe4] bg-white p-6 shadow-sm">
-                <h3 className="font-extrabold text-[#1e1a22]">Retail Storefronts &amp; Windows</h3>
+              <div className="rounded-2xl border border-[#dcd6ce] bg-white p-6 shadow-sm">
+                <h3 className="font-extrabold text-[#282421]">Retail Storefronts &amp; Windows</h3>
                 <p className="mt-2 text-xs text-[#5e5862]">Window hanging and in-store visual merchandising displays that drive street foot traffic.</p>
               </div>
-              <div className="rounded-2xl border border-[#eadfe4] bg-white p-6 shadow-sm">
-                <h3 className="font-extrabold text-[#1e1a22]">Events &amp; Photo Backdrops</h3>
+              <div className="rounded-2xl border border-[#dcd6ce] bg-white p-6 shadow-sm">
+                <h3 className="font-extrabold text-[#282421]">Events &amp; Photo Backdrops</h3>
                 <p className="mt-2 text-xs text-[#5e5862]">Pop-up trade shows, wedding backdrops, and product launch statement signs.</p>
               </div>
             </div>
@@ -226,15 +226,15 @@ export default function CustomLogoNeonSignsPage() {
         </section>
 
         {/* FAQ Section */}
-        <section className="border-t border-[#eadfe4] bg-white py-16 sm:py-20">
+        <section className="border-t border-[#dcd6ce] bg-white py-16 sm:py-20">
           <div className="mx-auto max-w-4xl px-4 sm:px-6">
-            <h2 className="text-3xl font-extrabold text-center text-[#1e1a22] mb-8">
+            <h2 className="text-3xl font-extrabold text-center text-[#282421] mb-8">
               Business Logo Neon Sign FAQs
             </h2>
             <div className="space-y-4">
               {logoNeonFaqs.map((faq) => (
-                <div key={faq.q} className="rounded-2xl border border-[#eadfe4] bg-[#fdfafb] p-6">
-                  <h3 className="text-base font-extrabold text-[#1e1a22]">{faq.q}</h3>
+                <div key={faq.q} className="rounded-2xl border border-[#dcd6ce] bg-[#fdfafb] p-6">
+                  <h3 className="text-base font-extrabold text-[#282421]">{faq.q}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-[#5e5862]">{faq.a}</p>
                 </div>
               ))}

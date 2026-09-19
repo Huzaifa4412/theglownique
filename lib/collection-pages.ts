@@ -97,14 +97,14 @@ const COLLECTION_CONTENT: readonly CollectionContent[] = [
     updatedOn: "2026-09-14",
     related: [
       {
-        label: "Wedding neon signs: sizing, backdrop hanging and photography",
-        href: "/blog/custom-wedding-neon-signs-backdrop-guide",
-        description: "How wide, how high and how to light it so the photographer gets the shot.",
+        label: "Custom LED Neon Signs Range",
+        href: "/products/custom-neon-signs",
+        description: "Explore all sizes, backing options, and silicone LED colors.",
       },
       {
-        label: "How to choose the right neon colour",
-        href: "/blog/how-to-choose-the-right-neon-color-for-your-sign",
-        description: "Why warm white photographs best, and when a palette colour is worth it.",
+        label: "All Signage Guides & Comparisons",
+        href: "/guides",
+        description: "Sizing guides, installation steps, and material choice comparisons.",
       },
       {
         label: "What a custom sign costs",
@@ -246,14 +246,14 @@ const COLLECTION_CONTENT: readonly CollectionContent[] = [
     updatedOn: "2026-09-14",
     related: [
       {
-        label: "Neon signs for bedrooms: sizing, warmth and dimming",
-        href: "/blog/custom-neon-signs-for-bedroom-and-home-decor",
-        description: "How to size a sign to a bed, pick a warmth that sleeps well and set a dimmer.",
+        label: "Custom LED Neon Signs Range",
+        href: "/products/custom-neon-signs",
+        description: "Safe 12V low-voltage silicone LED signs for interior spaces.",
       },
       {
-        label: "How to choose the right neon colour",
-        href: "/blog/how-to-choose-the-right-neon-color-for-your-sign",
-        description: "Which colours age well in a child’s room, and how lit colour differs from a screen.",
+        label: "All Signage Guides & Comparisons",
+        href: "/guides",
+        description: "Sizing guides, installation steps, and material choice comparisons.",
       },
       {
         label: "What a custom sign costs",
@@ -415,14 +415,14 @@ const COLLECTION_CONTENT: readonly CollectionContent[] = [
     updatedOn: "2026-09-14",
     related: [
       {
-        label: "Gaming neon signs: streaming setup, camera glare and sizing",
-        href: "/blog/custom-gaming-neon-signs-streaming-setup-guide",
-        description: "Where the sign sits in the webcam frame, how bright to run it and how big to go.",
+        label: "Custom LED Neon Signs Range",
+        href: "/products/custom-neon-signs",
+        description: "Custom gamer tags, stream logos, and neon lights for setup backdrops.",
       },
       {
-        label: "How to choose the right neon colour",
-        href: "/blog/how-to-choose-the-right-neon-color-for-your-sign",
-        description: "Picking one colour that holds up against RGB lighting and a dark wall.",
+        label: "All Signage Guides & Comparisons",
+        href: "/guides",
+        description: "Sizing guides, installation steps, and material choice comparisons.",
       },
       {
         label: "What a custom sign costs",
@@ -564,14 +564,14 @@ const COLLECTION_CONTENT: readonly CollectionContent[] = [
     updatedOn: "2026-09-14",
     related: [
       {
-        label: "Neon signs for bedrooms and home decor: sizing, warmth and dimming",
-        href: "/blog/custom-neon-signs-for-bedroom-and-home-decor",
-        description: "How to size a sign to the bed, choose a warmth you can sleep beside and set the dimmer.",
+        label: "Custom LED Neon Signs Range",
+        href: "/products/custom-neon-signs",
+        description: "Warm white, pastel, and vibrant LED neon signs for home interiors.",
       },
       {
-        label: "How to choose the right neon colour",
-        href: "/blog/how-to-choose-the-right-neon-color-for-your-sign",
-        description: "Why lit colour on a wall differs from a screen, and how wall colour changes the glow.",
+        label: "All Signage Guides & Comparisons",
+        href: "/guides",
+        description: "Sizing guides, installation steps, and material choice comparisons.",
       },
       {
         label: "What a custom sign costs",
@@ -715,14 +715,14 @@ const COLLECTION_CONTENT: readonly CollectionContent[] = [
     updatedOn: "2026-09-14",
     related: [
       {
-        label: "Neon signs for bars and cafés: sizing, lighting and durability",
-        href: "/blog/custom-neon-signs-for-bars-and-cafes",
-        description: "What holds up behind a bar — height, colour temperature and what to do about splashes.",
+        label: "Commercial Signage for Bars & Restaurants",
+        href: "/business-signs/restaurant-signs",
+        description: "Architectural illuminated signs, outdoor IP67 bar logos, and neon accents.",
       },
       {
-        label: "How to choose the right neon colour",
-        href: "/blog/how-to-choose-the-right-neon-color-for-your-sign",
-        description: "Warm tones for wood and glass, one strong colour for a den — and why.",
+        label: "All Signage Guides & Comparisons",
+        href: "/guides",
+        description: "Sizing guides, installation steps, and material choice comparisons.",
       },
       {
         label: "What a custom sign costs",
@@ -864,14 +864,14 @@ const COLLECTION_CONTENT: readonly CollectionContent[] = [
     updatedOn: "2026-09-14",
     related: [
       {
-        label: "Hanging a neon sign on a backdrop: sizing, height and photography",
-        href: "/blog/custom-wedding-neon-signs-backdrop-guide",
-        description: "Written for weddings, and every rule about arches, height and cameras applies to a party.",
+        label: "Custom LED Neon Signs Range",
+        href: "/products/custom-neon-signs",
+        description: "Lightweight, portable LED neon signs for birthdays, trade shows & events.",
       },
       {
-        label: "How to choose the right neon colour",
-        href: "/blog/how-to-choose-the-right-neon-color-for-your-sign",
-        description: "Picking a colour that contrasts with the balloons instead of vanishing into them.",
+        label: "All Signage Guides & Comparisons",
+        href: "/guides",
+        description: "Sizing guides, installation steps, and material choice comparisons.",
       },
       {
         label: "What a custom sign costs",

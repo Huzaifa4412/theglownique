@@ -254,7 +254,7 @@ export default async function BlogPostPage({ params }: Params) {
                 image={post.coverImage}
                 sizes="(min-width: 1200px) 1100px, 100vw"
                 priority
-                className="w-full rounded-3xl border border-[#eadfe4]"
+                className="w-full rounded-3xl border border-[#dcd6ce]"
               />
               {post.coverImage.caption ? (
                 <figcaption className="blog-prose__caption">{post.coverImage.caption}</figcaption>

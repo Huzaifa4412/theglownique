@@ -83,18 +83,18 @@ export function LandingPageView({ page }: { page: LandingPage }) {
       <AnnouncementBar />
       <ProductTopBar productName={page.quoteProductName} />
       <main id="main-content" className="bg-white">
-        <section className="border-b border-[#eadfe4] bg-gradient-to-b from-[#fff0f5] to-white py-16 sm:py-24">
+        <section className="border-b border-[#dcd6ce] bg-gradient-to-b from-[#efe9e0] to-white py-16 sm:py-24">
           <div className="mx-auto max-w-4xl px-4 text-center sm:px-6">
             <nav className="mb-4 text-xs font-semibold text-[#5e5862]" aria-label="Breadcrumb">
               <Link href="/" className="hover:underline">Home</Link> &gt;{" "}
               <Link href={page.parent.href} className="hover:underline">{page.parent.label}</Link> &gt;{" "}
-              <span className="text-[#ce0754]">{page.name}</span>
+              <span className="text-[#8f2347]">{page.name}</span>
             </nav>
 
-            <p className="text-xs font-extrabold uppercase tracking-widest text-[#ce0754]">
+            <p className="text-xs font-extrabold uppercase tracking-widest text-[#8f2347]">
               {page.kicker}
             </p>
-            <h1 className="mt-2 text-4xl font-extrabold tracking-tight text-[#1e1a22] sm:text-5xl">
+            <h1 className="mt-2 text-4xl font-extrabold tracking-tight text-[#282421] sm:text-5xl">
               {page.h1}
             </h1>
             <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-[#5e5862] sm:text-lg">
@@ -109,7 +109,7 @@ export function LandingPageView({ page }: { page: LandingPage }) {
               />
               <Link
                 href={page.parent.href}
-                className="inline-flex items-center gap-2 rounded-xl border border-[#eadfe4] bg-white px-6 py-3.5 text-sm font-bold text-[#1e1a22] hover:border-[#f40b68]"
+                className="inline-flex items-center gap-2 rounded-xl border border-[#dcd6ce] bg-white px-6 py-3.5 text-sm font-bold text-[#282421] hover:border-[#a92d56]"
               >
                 All {page.parent.label} →
               </Link>
@@ -132,7 +132,7 @@ export function LandingPageView({ page }: { page: LandingPage }) {
               </div>
 
               <div className="space-y-6">
-                <h2 className="text-3xl font-extrabold text-[#1e1a22]">
+                <h2 className="text-3xl font-extrabold text-[#282421]">
                   Which Sign Type Fits
                 </h2>
                 <p className="text-sm leading-relaxed text-[#5e5862]">
@@ -145,9 +145,9 @@ export function LandingPageView({ page }: { page: LandingPage }) {
                     <li key={material.href}>
                       <Link
                         href={material.href}
-                        className="group block rounded-2xl border border-[#eadfe4] bg-[#fdfafb] p-4 transition-colors hover:border-[#f40b68]"
+                        className="group block rounded-2xl border border-[#dcd6ce] bg-[#fdfafb] p-4 transition-colors hover:border-[#a92d56]"
                       >
-                        <span className="text-sm font-extrabold text-[#1e1a22] group-hover:text-[#ce0754]">
+                        <span className="text-sm font-extrabold text-[#282421] group-hover:text-[#8f2347]">
                           {material.name} →
                         </span>
                         <span className="mt-1 block text-xs leading-relaxed text-[#5e5862]">
@@ -163,9 +163,9 @@ export function LandingPageView({ page }: { page: LandingPage }) {
         </section>
 
         {/* The environment-specific guidance that separates this page from the hub. */}
-        <section className="border-t border-[#eadfe4] bg-[#faf7f8] py-16 sm:py-20">
+        <section className="border-t border-[#dcd6ce] bg-[#faf7f8] py-16 sm:py-20">
           <div className="mx-auto max-w-5xl px-4 sm:px-6">
-            <h2 className="mb-3 text-center text-3xl font-extrabold text-[#1e1a22]">
+            <h2 className="mb-3 text-center text-3xl font-extrabold text-[#282421]">
               What Changes in This Environment
             </h2>
             <p className="mx-auto mb-10 max-w-2xl text-center text-sm leading-relaxed text-[#5e5862]">
@@ -176,9 +176,9 @@ export function LandingPageView({ page }: { page: LandingPage }) {
               {page.considerations.map((item) => (
                 <div
                   key={item.title}
-                  className="rounded-2xl border border-[#eadfe4] bg-white p-6 shadow-sm"
+                  className="rounded-2xl border border-[#dcd6ce] bg-white p-6 shadow-sm"
                 >
-                  <h3 className="text-base font-extrabold text-[#1e1a22]">{item.title}</h3>
+                  <h3 className="text-base font-extrabold text-[#282421]">{item.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-[#5e5862]">{item.text}</p>
                 </div>
               ))}
@@ -188,16 +188,16 @@ export function LandingPageView({ page }: { page: LandingPage }) {
 
         <section className="py-16 sm:py-20">
           <div className="mx-auto max-w-5xl px-4 sm:px-6">
-            <h2 className="mb-10 text-center text-3xl font-extrabold text-[#1e1a22]">
+            <h2 className="mb-10 text-center text-3xl font-extrabold text-[#282421]">
               Where These Signs Go
             </h2>
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
               {page.applications.map((application) => (
                 <div
                   key={application.name}
-                  className="rounded-2xl border border-[#eadfe4] bg-white p-6 shadow-sm"
+                  className="rounded-2xl border border-[#dcd6ce] bg-white p-6 shadow-sm"
                 >
-                  <h3 className="font-extrabold text-[#1e1a22]">{application.name}</h3>
+                  <h3 className="font-extrabold text-[#282421]">{application.name}</h3>
                   <p className="mt-2 text-xs leading-relaxed text-[#5e5862]">{application.text}</p>
                 </div>
               ))}
@@ -205,15 +205,15 @@ export function LandingPageView({ page }: { page: LandingPage }) {
           </div>
         </section>
 
-        <section className="border-t border-[#eadfe4] bg-white py-16 sm:py-20">
+        <section className="border-t border-[#dcd6ce] bg-white py-16 sm:py-20">
           <div className="mx-auto max-w-4xl px-4 sm:px-6">
-            <h2 className="mb-8 text-center text-3xl font-extrabold text-[#1e1a22]">
+            <h2 className="mb-8 text-center text-3xl font-extrabold text-[#282421]">
               {page.name} FAQs
             </h2>
             <div className="space-y-4">
               {page.faqs.map((faq) => (
-                <div key={faq.q} className="rounded-2xl border border-[#eadfe4] bg-[#fdfafb] p-6">
-                  <h3 className="text-base font-extrabold text-[#1e1a22]">{faq.q}</h3>
+                <div key={faq.q} className="rounded-2xl border border-[#dcd6ce] bg-[#fdfafb] p-6">
+                  <h3 className="text-base font-extrabold text-[#282421]">{faq.q}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-[#5e5862]">{faq.a}</p>
                 </div>
               ))}
@@ -221,9 +221,9 @@ export function LandingPageView({ page }: { page: LandingPage }) {
           </div>
         </section>
 
-        <section className="border-t border-[#eadfe4] bg-gradient-to-b from-white to-[#fff0f5] py-16 sm:py-20">
+        <section className="border-t border-[#dcd6ce] bg-gradient-to-b from-white to-[#efe9e0] py-16 sm:py-20">
           <div className="mx-auto max-w-3xl px-4 text-center sm:px-6">
-            <h2 className="text-3xl font-extrabold text-[#1e1a22]">
+            <h2 className="text-3xl font-extrabold text-[#282421]">
               Send Us the Wall
             </h2>
             <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-[#5e5862]">
@@ -238,7 +238,7 @@ export function LandingPageView({ page }: { page: LandingPage }) {
               />
               <Link
                 href={page.footerLink.href}
-                className="inline-flex items-center gap-2 rounded-xl border border-[#eadfe4] bg-white px-6 py-3.5 text-sm font-bold text-[#1e1a22] hover:border-[#f40b68]"
+                className="inline-flex items-center gap-2 rounded-xl border border-[#dcd6ce] bg-white px-6 py-3.5 text-sm font-bold text-[#282421] hover:border-[#a92d56]"
               >
                 {page.footerLink.label} →
               </Link>

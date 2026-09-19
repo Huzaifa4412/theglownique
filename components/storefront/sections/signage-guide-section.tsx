@@ -6,7 +6,7 @@ import { PremiumAccentText } from "@/components/ui/premium-accent-text";
 export function SignageGuideSection() {
   return (
     <section
-      className="signage-guide-section border-t border-[#eadfe4] bg-white py-20 sm:py-28"
+      className="signage-guide-section border-t border-[#dcd6ce] bg-white py-20 sm:py-28"
       id="signage-guide"
       aria-labelledby="signage-guide-heading"
     >
@@ -15,7 +15,7 @@ export function SignageGuideSection() {
           <p className="eyebrow">Expert Signmaking Guidance</p>
           <h2
             id="signage-guide-heading"
-            className="text-3xl sm:text-5xl font-extrabold tracking-tight text-[#1e1a22] leading-tight mt-2"
+            className="text-3xl sm:text-5xl font-extrabold tracking-tight text-[#282421] leading-tight mt-2"
           >
             How to choose the <PremiumAccentText>right sign</PremiumAccentText> for your space
           </h2>
@@ -27,15 +27,15 @@ export function SignageGuideSection() {
         {/* 4 Sign Types Grid Comparison */}
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4 mb-16">
           {/* Sign Type 1 */}
-          <div className="flex flex-col justify-between rounded-2xl border border-[#eadfe4] bg-[#fffafd] p-6 shadow-sm transition-all hover:shadow-md hover:border-[#f8c6da]">
+          <div className="flex flex-col justify-between rounded-2xl border border-[#dcd6ce] bg-[#fffafd] p-6 shadow-sm transition-all hover:shadow-md hover:border-[#f8c6da]">
             <div>
               <div className="flex items-center justify-between gap-2 mb-3">
-                <span className="text-xs font-black uppercase tracking-wider text-[#ce0754] bg-[#ffeef4] px-2.5 py-1 rounded-full">
+                <span className="text-xs font-black uppercase tracking-wider text-[#8f2347] bg-[#ffeef4] px-2.5 py-1 rounded-full">
                   Type 01
                 </span>
                 <span className="text-xs font-bold text-[#71636c]">Most Versatile</span>
               </div>
-              <h3 className="text-xl font-black text-[#1e1a22] tracking-tight">
+              <h3 className="text-xl font-black text-[#282421] tracking-tight">
                 Flexible LED Neon
               </h3>
               <p className="text-xs font-semibold text-[#8a7a85] mt-0.5 mb-3">
@@ -46,22 +46,22 @@ export function SignageGuideSection() {
               </p>
               <ul className="space-y-2 text-xs font-medium text-[#4a424d] mb-6">
                 <li className="flex items-start gap-2">
-                  <CheckCircle2 className="h-4 w-4 shrink-0 text-[#ce0754] mt-0.5" />
+                  <CheckCircle2 className="h-4 w-4 shrink-0 text-[#8f2347] mt-0.5" />
                   <span><strong>Best for:</strong> Feature quotes, logos, weddings &amp; photo backdrops</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle2 className="h-4 w-4 shrink-0 text-[#ce0754] mt-0.5" />
+                  <CheckCircle2 className="h-4 w-4 shrink-0 text-[#8f2347] mt-0.5" />
                   <span><strong>Power:</strong> 12V low-voltage, cool-to-touch, zero buzzing</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle2 className="h-4 w-4 shrink-0 text-[#ce0754] mt-0.5" />
+                  <CheckCircle2 className="h-4 w-4 shrink-0 text-[#8f2347] mt-0.5" />
                   <span><strong>Mounting:</strong> Standoff screws or suspended hanging wire</span>
                 </li>
               </ul>
             </div>
             <Link
               href="/products/custom-neon-signs"
-              className="inline-flex items-center justify-between text-xs font-bold uppercase tracking-wider text-[#ce0754] pt-4 border-t border-[#eadfe4] hover:text-[#9d0540]"
+              className="inline-flex items-center justify-between text-xs font-bold uppercase tracking-wider text-[#8f2347] pt-4 border-t border-[#dcd6ce] hover:text-[#9d0540]"
             >
               <span>Explore Custom Neon</span>
               <ArrowRight className="h-3.5 w-3.5" />
@@ -69,7 +69,7 @@ export function SignageGuideSection() {
           </div>
 
           {/* Sign Type 2 */}
-          <div className="flex flex-col justify-between rounded-2xl border border-[#eadfe4] bg-[#fffafd] p-6 shadow-sm transition-all hover:shadow-md hover:border-[#ffd699]">
+          <div className="flex flex-col justify-between rounded-2xl border border-[#dcd6ce] bg-[#fffafd] p-6 shadow-sm transition-all hover:shadow-md hover:border-[#ffd699]">
             <div>
               <div className="flex items-center justify-between gap-2 mb-3">
                 <span className="text-xs font-black uppercase tracking-wider text-[#b45309] bg-[#fef3c7] px-2.5 py-1 rounded-full">
@@ -77,7 +77,7 @@ export function SignageGuideSection() {
                 </span>
                 <span className="text-xs font-bold text-[#71636c]">Commercial Grade</span>
               </div>
-              <h3 className="text-xl font-black text-[#1e1a22] tracking-tight">
+              <h3 className="text-xl font-black text-[#282421] tracking-tight">
                 3D Metal Channel Letters
               </h3>
               <p className="text-xs font-semibold text-[#8a7a85] mt-0.5 mb-3">
@@ -103,7 +103,7 @@ export function SignageGuideSection() {
             </div>
             <Link
               href="/products/3d-metal-neon-signs"
-              className="inline-flex items-center justify-between text-xs font-bold uppercase tracking-wider text-[#b45309] pt-4 border-t border-[#eadfe4] hover:text-[#78350f]"
+              className="inline-flex items-center justify-between text-xs font-bold uppercase tracking-wider text-[#b45309] pt-4 border-t border-[#dcd6ce] hover:text-[#78350f]"
             >
               <span>Explore 3D Channel Letters</span>
               <ArrowRight className="h-3.5 w-3.5" />
@@ -111,7 +111,7 @@ export function SignageGuideSection() {
           </div>
 
           {/* Sign Type 3 */}
-          <div className="flex flex-col justify-between rounded-2xl border border-[#eadfe4] bg-[#fffafd] p-6 shadow-sm transition-all hover:shadow-md hover:border-[#bfdbfe]">
+          <div className="flex flex-col justify-between rounded-2xl border border-[#dcd6ce] bg-[#fffafd] p-6 shadow-sm transition-all hover:shadow-md hover:border-[#bfdbfe]">
             <div>
               <div className="flex items-center justify-between gap-2 mb-3">
                 <span className="text-xs font-black uppercase tracking-wider text-[#0369a1] bg-[#e0f2fe] px-2.5 py-1 rounded-full">
@@ -119,7 +119,7 @@ export function SignageGuideSection() {
                 </span>
                 <span className="text-xs font-bold text-[#71636c]">Retail Display</span>
               </div>
-              <h3 className="text-xl font-black text-[#1e1a22] tracking-tight">
+              <h3 className="text-xl font-black text-[#282421] tracking-tight">
                 Ultra-Thin Lightbox
               </h3>
               <p className="text-xs font-semibold text-[#8a7a85] mt-0.5 mb-3">
@@ -145,7 +145,7 @@ export function SignageGuideSection() {
             </div>
             <Link
               href="/products/ultra-thin-lightbox"
-              className="inline-flex items-center justify-between text-xs font-bold uppercase tracking-wider text-[#0369a1] pt-4 border-t border-[#eadfe4] hover:text-[#0c4a6e]"
+              className="inline-flex items-center justify-between text-xs font-bold uppercase tracking-wider text-[#0369a1] pt-4 border-t border-[#dcd6ce] hover:text-[#0c4a6e]"
             >
               <span>Explore Slim Lightboxes</span>
               <ArrowRight className="h-3.5 w-3.5" />
@@ -153,7 +153,7 @@ export function SignageGuideSection() {
           </div>
 
           {/* Sign Type 4 */}
-          <div className="flex flex-col justify-between rounded-2xl border border-[#eadfe4] bg-[#fffafd] p-6 shadow-sm transition-all hover:shadow-md hover:border-[#ddd6fe]">
+          <div className="flex flex-col justify-between rounded-2xl border border-[#dcd6ce] bg-[#fffafd] p-6 shadow-sm transition-all hover:shadow-md hover:border-[#ddd6fe]">
             <div>
               <div className="flex items-center justify-between gap-2 mb-3">
                 <span className="text-xs font-black uppercase tracking-wider text-[#6d28d9] bg-[#ede9fe] px-2.5 py-1 rounded-full">
@@ -161,7 +161,7 @@ export function SignageGuideSection() {
                 </span>
                 <span className="text-xs font-bold text-[#71636c]">Brand Art</span>
               </div>
-              <h3 className="text-xl font-black text-[#1e1a22] tracking-tight">
+              <h3 className="text-xl font-black text-[#282421] tracking-tight">
                 3D Acrylic UV Print Neon
               </h3>
               <p className="text-xs font-semibold text-[#8a7a85] mt-0.5 mb-3">
@@ -187,7 +187,7 @@ export function SignageGuideSection() {
             </div>
             <Link
               href="/products/uv-print-acrylic-signs"
-              className="inline-flex items-center justify-between text-xs font-bold uppercase tracking-wider text-[#6d28d9] pt-4 border-t border-[#eadfe4] hover:text-[#4c1d95]"
+              className="inline-flex items-center justify-between text-xs font-bold uppercase tracking-wider text-[#6d28d9] pt-4 border-t border-[#dcd6ce] hover:text-[#4c1d95]"
             >
               <span>Explore UV Acrylic Signs</span>
               <ArrowRight className="h-3.5 w-3.5" />
@@ -196,14 +196,14 @@ export function SignageGuideSection() {
         </div>
 
         {/* Practical Buyer Decision Resources */}
-        <div className="rounded-3xl border border-[#eadfe4] bg-gradient-to-br from-[#fff7fa] via-white to-[#fdf2f8] p-8 sm:p-10 shadow-sm">
+        <div className="rounded-3xl border border-[#dcd6ce] bg-gradient-to-br from-[#fff7fa] via-white to-[#fdf2f8] p-8 sm:p-10 shadow-sm">
           <div className="grid gap-8 md:grid-cols-[1.4fr_1fr] items-center">
             <div className="space-y-4">
-              <span className="inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-widest text-[#ce0754]">
+              <span className="inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-widest text-[#8f2347]">
                 <HelpCircle className="h-4 w-4" />
                 <span>Buyer Decision Guides</span>
               </span>
-              <h3 className="text-2xl sm:text-3xl font-extrabold text-[#1e1a22] tracking-tight">
+              <h3 className="text-2xl sm:text-3xl font-extrabold text-[#282421] tracking-tight">
                 Read our in-depth guides before spending a dollar.
               </h3>
               <p className="text-sm text-[#5e5862] leading-relaxed">
@@ -212,21 +212,21 @@ export function SignageGuideSection() {
               <div className="flex flex-wrap gap-4 pt-2">
                 <Link
                   href="/guides/custom-business-sign-cost"
-                  className="inline-flex items-center gap-2 text-xs font-bold text-[#1e1a22] underline underline-offset-4 decoration-[#f40b68] hover:text-[#ce0754]"
+                  className="inline-flex items-center gap-2 text-xs font-bold text-[#282421] underline underline-offset-4 decoration-[#a92d56] hover:text-[#8f2347]"
                 >
                   <span>Custom Business Sign Cost Breakdown</span>
                   <ArrowRight className="h-3.5 w-3.5" />
                 </Link>
                 <Link
                   href="/guides/front-lit-vs-halo-lit-vs-dual-lit"
-                  className="inline-flex items-center gap-2 text-xs font-bold text-[#1e1a22] underline underline-offset-4 decoration-[#f40b68] hover:text-[#ce0754]"
+                  className="inline-flex items-center gap-2 text-xs font-bold text-[#282421] underline underline-offset-4 decoration-[#a92d56] hover:text-[#8f2347]"
                 >
                   <span>Front-Lit vs Halo-Lit vs Dual-Lit Explained</span>
                   <ArrowRight className="h-3.5 w-3.5" />
                 </Link>
                 <Link
                   href="/guides/backlit-sign-wall-surfaces-and-standoffs"
-                  className="inline-flex items-center gap-2 text-xs font-bold text-[#1e1a22] underline underline-offset-4 decoration-[#f40b68] hover:text-[#ce0754]"
+                  className="inline-flex items-center gap-2 text-xs font-bold text-[#282421] underline underline-offset-4 decoration-[#a92d56] hover:text-[#8f2347]"
                 >
                   <span>Wall Surfaces &amp; Standoff Mounting Guide</span>
                   <ArrowRight className="h-3.5 w-3.5" />
@@ -234,9 +234,9 @@ export function SignageGuideSection() {
               </div>
             </div>
 
-            <div className="flex flex-col sm:flex-row md:flex-col items-center justify-center gap-4 bg-white rounded-2xl border border-[#eadfe4] p-6 text-center">
+            <div className="flex flex-col sm:flex-row md:flex-col items-center justify-center gap-4 bg-white rounded-2xl border border-[#dcd6ce] p-6 text-center">
               <div className="space-y-1">
-                <p className="text-base font-extrabold text-[#1e1a22]">
+                <p className="text-base font-extrabold text-[#282421]">
                   Need expert recommendation?
                 </p>
                 <p className="text-xs text-[#5e5862]">

@@ -98,12 +98,12 @@ export default function GuidesHubPage() {
       <AnnouncementBar />
       <ProductTopBar productName="signage guide" />
       <main id="main-content" className="bg-white">
-        <section className="border-b border-[#eadfe4] bg-gradient-to-b from-[#fff0f5] to-white py-16 sm:py-24">
+        <section className="border-b border-[#dcd6ce] bg-gradient-to-b from-[#efe9e0] to-white py-16 sm:py-24">
           <div className="mx-auto max-w-4xl px-4 text-center sm:px-6">
-            <p className="text-xs font-extrabold uppercase tracking-widest text-[#ce0754]">
+            <p className="text-xs font-extrabold uppercase tracking-widest text-[#8f2347]">
               Expert Signage Knowledge
             </p>
-            <h1 className="mt-2 text-4xl font-extrabold tracking-tight text-[#1e1a22] sm:text-5xl">
+            <h1 className="mt-2 text-4xl font-extrabold tracking-tight text-[#282421] sm:text-5xl">
               Business Signage Guides & Technical Comparisons
             </h1>
             <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-[#5e5862] sm:text-lg">
@@ -118,13 +118,13 @@ export default function GuidesHubPage() {
               {guidesList.map((g) => (
                 <article
                   key={g.slug}
-                  className="flex flex-col justify-between rounded-3xl border border-[#eadfe4] bg-white p-8 shadow-[0_10px_30px_rgba(107,38,67,0.05)] transition-all hover:border-[#f40b68] hover:shadow-lg"
+                  className="flex flex-col justify-between rounded-3xl border border-[#dcd6ce] bg-white p-8 shadow-[0_10px_30px_rgba(107,38,67,0.05)] transition-all hover:border-[#a92d56] hover:shadow-lg"
                 >
                   <div>
-                    <span className="inline-block rounded-full bg-[#f8f5f7] px-3 py-1 text-xs font-extrabold text-[#ce0754]">
+                    <span className="inline-block rounded-full bg-[#f8f5f7] px-3 py-1 text-xs font-extrabold text-[#8f2347]">
                       {g.category}
                     </span>
-                    <h2 className="mt-4 text-2xl font-extrabold text-[#1e1a22]">
+                    <h2 className="mt-4 text-2xl font-extrabold text-[#282421]">
                       <Link href={`/guides/${g.slug}`} className="hover:underline">
                         {g.title}
                       </Link>
@@ -132,11 +132,11 @@ export default function GuidesHubPage() {
                     <p className="mt-3 text-sm leading-relaxed text-[#5e5862]">{g.desc}</p>
                   </div>
 
-                  <div className="mt-6 flex items-center justify-between border-t border-[#eadfe4] pt-6 text-xs text-[#5e5862]">
+                  <div className="mt-6 flex items-center justify-between border-t border-[#dcd6ce] pt-6 text-xs text-[#5e5862]">
                     <span>Updated {g.updated}</span>
                     <Link
                       href={`/guides/${g.slug}`}
-                      className="font-extrabold text-[#ce0754] hover:underline"
+                      className="font-extrabold text-[#8f2347] hover:underline"
                     >
                       Read Full Guide →
                     </Link>

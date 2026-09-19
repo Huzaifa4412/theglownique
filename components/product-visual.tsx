@@ -6,7 +6,7 @@ import { Star } from "@phosphor-icons/react";
 import type { Product } from "@/lib/store-data";
 
 export function ProductVisual({ product }: { product: Product }) {
-  const neonColor = product.color || "#f40b68";
+  const neonColor = product.color || "#a92d56";
 
   if (product.image) {
     return (
@@ -35,7 +35,7 @@ export function ProductVisual({ product }: { product: Product }) {
         <div
           className="absolute inset-0 opacity-40 pointer-events-none transition-all duration-700 ease-out group-hover:opacity-70 group-hover:scale-110"
           style={{
-            background: `radial-gradient(circle at 50% 48%, ${neonColor} 0%, rgba(244, 11, 104, 0.15) 45%, transparent 70%)`,
+            background: `radial-gradient(circle at 50% 48%, ${neonColor} 0%, rgba(169, 45, 86, 0.15) 45%, transparent 70%)`,
             filter: "blur(30px)",
           }}
         />

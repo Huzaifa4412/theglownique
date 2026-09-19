@@ -63,8 +63,8 @@ export function CurvedInput({
           className={cn(
             "relative flex items-center bg-white rounded-full p-2 border transition-all duration-500 shadow-xl",
             isFocused
-              ? "border-[#f40b68] shadow-[0_12px_40px_rgba(244,11,104,0.22)] scale-[1.01]"
-              : "border-[#eadfe4] shadow-[0_10px_30px_rgba(107,38,67,0.08)] hover:border-[#fde2ec]"
+              ? "border-[#a92d56] shadow-[0_12px_40px_rgba(169,45,86,0.22)] scale-[1.01]"
+              : "border-[#dcd6ce] shadow-[0_10px_30px_rgba(107,38,67,0.08)] hover:border-[#e9e2d4]"
           )}
         >
           {/* Animated SVG Curved Border Baseline */}
@@ -77,9 +77,9 @@ export function CurvedInput({
           >
             <defs>
               <linearGradient id="curved-line-grad" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="#f40b68" />
-                <stop offset="50%" stopColor="#ff3f95" />
-                <stop offset="100%" stopColor="#6d26ff" />
+                <stop offset="0%" stopColor="#a92d56" />
+                <stop offset="50%" stopColor="#c25e83" />
+                <stop offset="100%" stopColor="#6b4664" />
               </linearGradient>
             </defs>
 
@@ -107,7 +107,7 @@ export function CurvedInput({
               onBlur={() => setIsFocused(false)}
               placeholder={placeholder}
               required
-              className="w-full bg-transparent text-[#1e1a22] placeholder-[#a098a5] text-sm sm:text-base font-medium outline-none border-none focus:outline-none focus:ring-0"
+              className="w-full bg-transparent text-[#282421] placeholder-[#a098a5] text-sm sm:text-base font-medium outline-none border-none focus:outline-none focus:ring-0"
             />
           </div>
 
@@ -119,7 +119,7 @@ export function CurvedInput({
               "button button--primary shrink-0 min-h-[48px] px-6 sm:px-8 rounded-full font-extrabold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 flex items-center gap-2 shadow-lg",
               isSubmitted
                 ? "bg-emerald-600 hover:bg-emerald-600 text-white"
-                : "bg-[#ce0754] hover:bg-[#a30542] text-white hover:scale-105 active:scale-95"
+                : "bg-[#8f2347] hover:bg-[#6d1b36] text-white hover:scale-105 active:scale-95"
             )}
           >
             {isSubmitted ? (
@@ -142,9 +142,9 @@ export function CurvedInput({
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="mt-4 p-4 rounded-2xl bg-[#fff0f5] border border-[#fde2ec] text-center text-xs sm:text-sm text-[#ce0754] font-bold flex items-center justify-center gap-2"
+          className="mt-4 p-4 rounded-2xl bg-[#efe9e0] border border-[#e9e2d4] text-center text-xs sm:text-sm text-[#8f2347] font-bold flex items-center justify-center gap-2"
         >
-          <Sparkles className="w-4 h-4 text-[#f40b68]" />
+          <Sparkles className="w-4 h-4 text-[#a92d56]" />
           <span>Success! Your 10% discount code is on its way to {email}.</span>
         </motion.div>
       )}

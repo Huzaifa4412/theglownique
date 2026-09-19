@@ -50,7 +50,10 @@ export function SiteHeader() {
         <nav className={styles.desktopNav} aria-label="Primary navigation">
           {links.map(([label, href]) => (
             <Link
-              key={href}
+              // Keyed by label: two entries may deliberately share a
+              // destination (e.g. both pointing at /custom-signage), and a
+              // duplicated href key makes React drop one of them.
+              key={label}
               href={href}
               aria-current={
                 pathname === href || pathname.startsWith(`${href}/`)
@@ -88,7 +91,7 @@ export function SiteHeader() {
       >
         {links.map(([label, href]) => (
           <Link
-            key={href}
+            key={label}
             href={href}
             onClick={() => setMenuOpen(false)}
             aria-current={

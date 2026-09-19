@@ -97,18 +97,18 @@ export default function LightingComparisonGuidePage() {
       <AnnouncementBar />
       <ProductTopBar productName="channel letter guide" />
       <main id="main-content" className="bg-white">
-        <section className="border-b border-[#eadfe4] bg-gradient-to-b from-[#fff0f5] to-white py-16 sm:py-24">
+        <section className="border-b border-[#dcd6ce] bg-gradient-to-b from-[#efe9e0] to-white py-16 sm:py-24">
           <div className="mx-auto max-w-4xl px-4 text-center sm:px-6">
             <nav className="mb-4 text-xs font-semibold text-[#5e5862]" aria-label="Breadcrumb">
               <Link href="/" className="hover:underline">Home</Link> &gt;{" "}
               <Link href="/guides" className="hover:underline">Guides</Link> &gt;{" "}
-              <span className="text-[#ce0754]">Channel Letter Lighting Comparison</span>
+              <span className="text-[#8f2347]">Channel Letter Lighting Comparison</span>
             </nav>
 
-            <p className="text-xs font-extrabold uppercase tracking-widest text-[#ce0754]">
+            <p className="text-xs font-extrabold uppercase tracking-widest text-[#8f2347]">
               Illumination &amp; Technology Guide
             </p>
-            <h1 className="mt-2 text-4xl font-extrabold tracking-tight text-[#1e1a22] sm:text-5xl">
+            <h1 className="mt-2 text-4xl font-extrabold tracking-tight text-[#282421] sm:text-5xl">
               Front-Lit vs. Halo-Lit vs. Dual-Lit Channel Letters
             </h1>
             <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-[#5e5862] sm:text-lg">
@@ -119,22 +119,22 @@ export default function LightingComparisonGuidePage() {
 
         <section className="py-16 sm:py-24">
           <div className="mx-auto max-w-4xl px-4 sm:px-6">
-            <article className="prose prose-pink max-w-none text-[#1e1a22]">
-              <h2 className="text-3xl font-extrabold text-[#1e1a22]">
+            <article className="prose prose-pink max-w-none text-[#282421]">
+              <h2 className="text-3xl font-extrabold text-[#282421]">
                 Illumination Styles Compared
               </h2>
 
-              <div className="my-10 overflow-hidden rounded-2xl border border-[#eadfe4] bg-white shadow-sm">
-                <table className="w-full text-left text-sm text-[#1e1a22]">
-                  <thead className="bg-[#faf7f8] text-xs font-extrabold uppercase text-[#1e1a22]">
+              <div className="my-10 overflow-hidden rounded-2xl border border-[#dcd6ce] bg-white shadow-sm">
+                <table className="w-full text-left text-sm text-[#282421]">
+                  <thead className="bg-[#faf7f8] text-xs font-extrabold uppercase text-[#282421]">
                     <tr>
-                      <th className="p-4 border-b border-[#eadfe4]">Lighting Style</th>
-                      <th className="p-4 border-b border-[#eadfe4]">Light Direction</th>
-                      <th className="p-4 border-b border-[#eadfe4]">Best Wall Type</th>
-                      <th className="p-4 border-b border-[#eadfe4]">Primary Aesthetic</th>
+                      <th className="p-4 border-b border-[#dcd6ce]">Lighting Style</th>
+                      <th className="p-4 border-b border-[#dcd6ce]">Light Direction</th>
+                      <th className="p-4 border-b border-[#dcd6ce]">Best Wall Type</th>
+                      <th className="p-4 border-b border-[#dcd6ce]">Primary Aesthetic</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-[#eadfe4]">
+                  <tbody className="divide-y divide-[#dcd6ce]">
                     <tr>
                       <td className="p-4 font-bold">Front-Lit</td>
                       <td className="p-4 text-[#5e5862]">Forward through translucent acrylic face</td>
@@ -159,21 +159,21 @@ export default function LightingComparisonGuidePage() {
 
               <div className="mt-8 space-y-8 text-sm text-[#5e5862] leading-relaxed">
                 <div>
-                  <h3 className="text-xl font-bold text-[#1e1a22]">1. Front-Lit Channel Letters</h3>
+                  <h3 className="text-xl font-bold text-[#282421]">1. Front-Lit Channel Letters</h3>
                   <p className="mt-2">
                     Front-lit channel letters feature fabricated stainless-steel side returns and a translucent acrylic front face. Internal LEDs illuminate the face of each letter directly toward viewing traffic. This option provides the highest night legibility over long distances, making it ideal for retail shopping centers and roadside storefronts.
                   </p>
                 </div>
 
                 <div>
-                  <h3 className="text-xl font-bold text-[#1e1a22]">2. Halo-Lit (Backlit) Channel Letters</h3>
+                  <h3 className="text-xl font-bold text-[#282421]">2. Halo-Lit (Backlit) Channel Letters</h3>
                   <p className="mt-2">
-                    Halo-lit letters have solid stainless-steel metal faces and open or clear backs. Mounted on short standoffs away from the wall, internal LEDs reflect light backward onto the facade. This casts a soft, elegant halo outline around each letter. It is widely specified for luxury boutiques, corporate headquarters, and high-end restaurants. Learn more on our <Link href="/business-signs/backlit-signs" className="font-bold text-[#ce0754] hover:underline">custom backlit signs</Link> page, or read our <Link href="/guides/backlit-sign-wall-surfaces-and-standoffs" className="font-bold text-[#ce0754] hover:underline">wall surfaces &amp; standoffs guide</Link>.
+                    Halo-lit letters have solid stainless-steel metal faces and open or clear backs. Mounted on short standoffs away from the wall, internal LEDs reflect light backward onto the facade. This casts a soft, elegant halo outline around each letter. It is widely specified for luxury boutiques, corporate headquarters, and high-end restaurants. Learn more on our <Link href="/business-signs/backlit-signs" className="font-bold text-[#8f2347] hover:underline">custom backlit signs</Link> page, or read our <Link href="/guides/backlit-sign-wall-surfaces-and-standoffs" className="font-bold text-[#8f2347] hover:underline">wall surfaces &amp; standoffs guide</Link>.
                   </p>
                 </div>
 
                 <div>
-                  <h3 className="text-xl font-bold text-[#1e1a22]">3. Dual-Lit Channel Letters</h3>
+                  <h3 className="text-xl font-bold text-[#282421]">3. Dual-Lit Channel Letters</h3>
                   <p className="mt-2">
                     Dual-lit channel letters feature both translucent front acrylic faces and clear rear backs with standoff mounts. They combine intense front readability with a surrounding halo aura, ensuring your storefront commands attention from every angle.
                   </p>
@@ -182,21 +182,21 @@ export default function LightingComparisonGuidePage() {
 
               {/* Lighting FAQs */}
               <div className="mt-12">
-                <h3 className="text-2xl font-extrabold text-[#1e1a22] mb-6">
+                <h3 className="text-2xl font-extrabold text-[#282421] mb-6">
                   Frequently Asked Channel Letter Lighting Questions
                 </h3>
                 <div className="space-y-4">
                   {lightingFaqs.map((faq) => (
-                    <div key={faq.q} className="rounded-2xl border border-[#eadfe4] bg-[#fdfafb] p-6">
-                      <h4 className="text-base font-extrabold text-[#1e1a22]">{faq.q}</h4>
+                    <div key={faq.q} className="rounded-2xl border border-[#dcd6ce] bg-[#fdfafb] p-6">
+                      <h4 className="text-base font-extrabold text-[#282421]">{faq.q}</h4>
                       <p className="mt-2 text-sm leading-relaxed text-[#5e5862]">{faq.a}</p>
                     </div>
                   ))}
                 </div>
               </div>
 
-              <div className="mt-12 rounded-3xl border border-[#eadfe4] bg-[#fff0f5] p-8 text-center">
-                <h3 className="text-2xl font-extrabold text-[#1e1a22]">
+              <div className="mt-12 rounded-3xl border border-[#dcd6ce] bg-[#efe9e0] p-8 text-center">
+                <h3 className="text-2xl font-extrabold text-[#282421]">
                   Need Help Deciding Which Lighting Style Fits Your Storefront?
                 </h3>
                 <p className="mt-2 text-sm text-[#5e5862]">
@@ -210,7 +210,7 @@ export default function LightingComparisonGuidePage() {
                   />
                   <Link
                     href="/business-signs/channel-letter-signs"
-                    className="inline-flex items-center gap-2 rounded-xl border border-[#eadfe4] bg-white px-6 py-3 text-sm font-bold text-[#1e1a22] hover:border-[#f40b68]"
+                    className="inline-flex items-center gap-2 rounded-xl border border-[#dcd6ce] bg-white px-6 py-3 text-sm font-bold text-[#282421] hover:border-[#a92d56]"
                   >
                     View Channel Letter Sign Product Page →
                   </Link>

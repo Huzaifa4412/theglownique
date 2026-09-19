@@ -97,15 +97,15 @@ export default function BacklitWallSurfacesGuidePage() {
       <AnnouncementBar />
       <ProductTopBar productName="backlit signs guide" />
 
-      <main id="main-content" className="bg-white text-[#1e1a22]">
+      <main id="main-content" className="bg-white text-[#282421]">
         {/* Header Section */}
-        <section className="border-b border-[#eadfe4] bg-gradient-to-b from-[#fbf8fa] to-white py-16 sm:py-24">
+        <section className="border-b border-[#dcd6ce] bg-gradient-to-b from-[#fbf8fa] to-white py-16 sm:py-24">
           <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
             <div className="text-center">
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#d97706]">
                 Architectural Signage Specification Guide
               </p>
-              <h1 className="mt-3 text-3xl font-bold tracking-tight text-[#1e1a22] sm:text-4xl lg:text-5xl">
+              <h1 className="mt-3 text-3xl font-bold tracking-tight text-[#282421] sm:text-4xl lg:text-5xl">
                 How Wall Surfaces & Standoff Distance Change Backlit Signs
               </h1>
               <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-[#5a5462]">
@@ -119,7 +119,7 @@ export default function BacklitWallSurfacesGuidePage() {
         <article className="mx-auto max-w-4xl px-4 py-12 sm:px-6 lg:px-8">
           {/* Section 1: Optical Physics */}
           <section className="mb-14">
-            <h2 className="text-2xl font-bold text-[#1e1a22]">
+            <h2 className="text-2xl font-bold text-[#282421]">
               The Optical Rule: Diffuse vs. Specular Reflection
             </h2>
             <p className="mt-4 leading-relaxed text-[#4a4452]">
@@ -127,13 +127,13 @@ export default function BacklitWallSurfacesGuidePage() {
             </p>
             <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2">
               <div className="rounded-xl border border-[#e5dce2] bg-[#fbf8fa] p-5">
-                <h3 className="font-semibold text-[#1e1a22]">Diffuse Reflection (Matte Walls)</h3>
+                <h3 className="font-semibold text-[#282421]">Diffuse Reflection (Matte Walls)</h3>
                 <p className="mt-2 text-sm leading-relaxed text-[#5a5462]">
                   Light rays bounce off in all directions at microscopic angles, blending into a smooth, seamless cloud of illumination (the halo). This is the intended optical behavior for reverse channel letters.
                 </p>
               </div>
               <div className="rounded-xl border border-[#e5dce2] bg-[#fbf8fa] p-5">
-                <h3 className="font-semibold text-[#1e1a22]">Specular Reflection (Gloss Walls)</h3>
+                <h3 className="font-semibold text-[#282421]">Specular Reflection (Gloss Walls)</h3>
                 <p className="mt-2 text-sm leading-relaxed text-[#5a5462]">
                   Light rays bounce off at a uniform angle like a mirror. The viewer sees the individual LED diodes, wire splices, and mounting brackets reflected in the wall rather than a diffused glow.
                 </p>
@@ -143,41 +143,41 @@ export default function BacklitWallSurfacesGuidePage() {
 
           {/* Section 2: Detailed Wall Types */}
           <section className="mb-14">
-            <h2 className="text-2xl font-bold text-[#1e1a22]">
+            <h2 className="text-2xl font-bold text-[#282421]">
               How 5 Common Wall Finishes Behave Behind Backlit Letters
             </h2>
 
             <div className="mt-8 space-y-8">
               <div className="border-l-4 border-[#d97706] pl-5">
-                <h3 className="text-lg font-bold text-[#1e1a22]">1. Matte White & Off-White Drywall</h3>
+                <h3 className="text-lg font-bold text-[#282421]">1. Matte White & Off-White Drywall</h3>
                 <p className="mt-2 text-sm leading-relaxed text-[#5a5462]">
                   <strong>The baseline standard:</strong> Light-colored flat or eggshell latex paint reflects approximately 75% to 85% of visible light with total diffusion. The halo spreads broadly and evenly around each letter. A 25mm standoff produces a smooth 2 to 3-inch halo gradient that frames corporate typography perfectly.
                 </p>
               </div>
 
               <div className="border-l-4 border-[#d97706] pl-5">
-                <h3 className="text-lg font-bold text-[#1e1a22]">2. Wood Slat & Acoustic Felt Panelling</h3>
+                <h3 className="text-lg font-bold text-[#282421]">2. Wood Slat & Acoustic Felt Panelling</h3>
                 <p className="mt-2 text-sm leading-relaxed text-[#5a5462]">
                   <strong>Contemporary trend:</strong> Natural oak, walnut, or ash slats absorb cool light but amplify 2700K–3000K warm white LEDs into an inviting, Scandinavian glow. Because the vertical slats create subtle drop shadows across the gaps, we recommend mounting on solid backing rails or aligning standoffs directly into the slat centers.
                 </p>
               </div>
 
               <div className="border-l-4 border-[#d97706] pl-5">
-                <h3 className="text-lg font-bold text-[#1e1a22]">3. Dark Matte Paint (Charcoal, Navy & Black)</h3>
+                <h3 className="text-lg font-bold text-[#282421]">3. Dark Matte Paint (Charcoal, Navy & Black)</h3>
                 <p className="mt-2 text-sm leading-relaxed text-[#5a5462]">
                   <strong>The moody silhouette:</strong> Dark paint absorbs 80%+ of the reflected light. Instead of a wide glow, the light hugs the perimeter of each letter, creating a crisp, architectural rim outline. This look is popular in speakeasies, private executive lounges, and modern retail. Use slightly shorter standoffs (15–20mm) to keep the rim sharp.
                 </p>
               </div>
 
               <div className="border-l-4 border-[#d97706] pl-5">
-                <h3 className="text-lg font-bold text-[#1e1a22]">4. Exposed Brick & Rough Masonry</h3>
+                <h3 className="text-lg font-bold text-[#282421]">4. Exposed Brick & Rough Masonry</h3>
                 <p className="mt-2 text-sm leading-relaxed text-[#5a5462]">
                   <strong>Textured industrial character:</strong> Brick surfaces scatter light unevenly, and deep mortar joints cast horizontal shadow bands through the halo. For authentic loft interiors, this adds organic character. To prevent heavy distortion, increase the standoff depth to 35mm–40mm so the light washes over the surface rather than bunching inside the crevices.
                 </p>
               </div>
 
               <div className="border-l-4 border-[#d97706] pl-5">
-                <h3 className="text-lg font-bold text-[#1e1a22]">5. Polished Stone, Marble, Tile & High Gloss</h3>
+                <h3 className="text-lg font-bold text-[#282421]">5. Polished Stone, Marble, Tile & High Gloss</h3>
                 <p className="mt-2 text-sm leading-relaxed text-[#5a5462]">
                   <strong>The critical failure mode:</strong> High-gloss tile, polished porcelain, and glass will expose diode hotspots. The solution is simple: never mount backlit letters directly to high-gloss walls. Instead, mount the letters to a floating matte acrylic or satin metal backer panel, which is then hung on the tile. The backer panel provides the required matte optical surface.
                 </p>
@@ -187,7 +187,7 @@ export default function BacklitWallSurfacesGuidePage() {
 
           {/* Section 3: Standoff Distance Engineering */}
           <section className="mb-14">
-            <h2 className="text-2xl font-bold text-[#1e1a22]">
+            <h2 className="text-2xl font-bold text-[#282421]">
               Standoff Distance Guide: 15mm vs. 25mm vs. 40mm
             </h2>
             <p className="mt-4 leading-relaxed text-[#5a5462]">
@@ -197,7 +197,7 @@ export default function BacklitWallSurfacesGuidePage() {
             <div className="mt-6 overflow-x-auto">
               <table className="w-full min-w-[540px] border-collapse border border-[#e5dce2] text-left text-sm">
                 <thead>
-                  <tr className="bg-[#fbf8fa] text-[#1e1a22]">
+                  <tr className="bg-[#fbf8fa] text-[#282421]">
                     <th className="border border-[#e5dce2] py-3 px-4 font-semibold">Standoff Depth</th>
                     <th className="border border-[#e5dce2] py-3 px-4 font-semibold">Halo Character</th>
                     <th className="border border-[#e5dce2] py-3 px-4 font-semibold">Best Letter Sizes</th>
@@ -229,14 +229,14 @@ export default function BacklitWallSurfacesGuidePage() {
           </section>
 
           {/* Section 4: FAQs */}
-          <section className="mb-14 border-t border-[#eadfe4] pt-12">
-            <h2 className="text-2xl font-bold text-[#1e1a22]">
+          <section className="mb-14 border-t border-[#dcd6ce] pt-12">
+            <h2 className="text-2xl font-bold text-[#282421]">
               Frequently Asked Technical Questions
             </h2>
             <div className="mt-6 divide-y divide-[#e5dce2]">
               {wallGuideFaqs.map((faq, index) => (
                 <div key={index} className="py-5">
-                  <h3 className="font-semibold text-[#1e1a22]">{faq.q}</h3>
+                  <h3 className="font-semibold text-[#282421]">{faq.q}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-[#5a5462]">{faq.a}</p>
                 </div>
               ))}
@@ -244,8 +244,8 @@ export default function BacklitWallSurfacesGuidePage() {
           </section>
 
           {/* Related Links & Next Steps */}
-          <section className="rounded-xl border border-[#eadfe4] bg-[#fbf8fa] p-8 text-center">
-            <h2 className="text-xl font-bold text-[#1e1a22]">
+          <section className="rounded-xl border border-[#dcd6ce] bg-[#fbf8fa] p-8 text-center">
+            <h2 className="text-xl font-bold text-[#282421]">
               Ready to Specify Your Backlit Business Sign?
             </h2>
             <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-[#5a5462]">
@@ -254,13 +254,13 @@ export default function BacklitWallSurfacesGuidePage() {
             <div className="mt-6 flex flex-wrap justify-center gap-4">
               <Link
                 href="/business-signs/backlit-signs"
-                className="rounded-lg bg-[#1e1a22] px-5 py-2.5 text-sm font-semibold text-white hover:bg-black"
+                className="rounded-lg bg-[#282421] px-5 py-2.5 text-sm font-semibold text-white hover:bg-black"
               >
                 Explore Custom Backlit Signs
               </Link>
               <Link
                 href="/business-signs/backlit-lobby-signs"
-                className="rounded-lg border border-[#d5cbd0] bg-white px-5 py-2.5 text-sm font-semibold text-[#1e1a22] hover:bg-[#f2ecef]"
+                className="rounded-lg border border-[#d5cbd0] bg-white px-5 py-2.5 text-sm font-semibold text-[#282421] hover:bg-[#f2ecef]"
               >
                 Backlit Lobby Signs Guide
               </Link>

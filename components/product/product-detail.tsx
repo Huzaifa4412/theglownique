@@ -64,7 +64,7 @@ export function ProductDetail({ slug }: { slug: string }) {
           aria-hidden="true"
         />
         <div
-          className="pointer-events-none absolute -bottom-40 -left-24 h-[480px] w-[480px] rounded-full bg-[#6d26ff]/30 blur-[150px]"
+          className="pointer-events-none absolute -bottom-40 -left-24 h-[480px] w-[480px] rounded-full bg-[#6b4664]/30 blur-[150px]"
           aria-hidden="true"
         />
 
@@ -168,7 +168,7 @@ export function ProductDetail({ slug }: { slug: string }) {
       </section>
 
       {/* ─────────────────────── TRUST BAR ─────────────────────── */}
-      <section className="border-b border-[#eadfe4] bg-white">
+      <section className="border-b border-[#dcd6ce] bg-white">
         <div className="mx-auto flex max-w-[1320px] flex-wrap items-center justify-center gap-x-8 gap-y-3 px-4 py-5 text-xs font-semibold text-[#5e5862] sm:text-sm">
           {[DELIVERY.short, "5-year warranty", "Free design mockup", "Secure Etsy payment"].map((item) => (
             <span key={item} className="inline-flex items-center gap-2">
@@ -188,7 +188,7 @@ export function ProductDetail({ slug }: { slug: string }) {
             <p className="text-xs font-extrabold uppercase tracking-widest" style={{ color: accent }}>
               Why you&apos;ll love it
             </p>
-            <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-[#1e1a22] sm:text-4xl">
+            <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-[#282421] sm:text-4xl">
               Built to impress, made to last
             </h2>
           </Reveal>
@@ -197,14 +197,14 @@ export function ProductDetail({ slug }: { slug: string }) {
               const Icon = feature.icon;
               return (
                 <Reveal key={feature.title} delay={i * 0.08}>
-                  <div className="group h-full rounded-2xl border border-[#eadfe4] bg-white p-6 shadow-[0_10px_30px_rgba(107,38,67,0.06)] transition-transform duration-300 hover:-translate-y-1">
+                  <div className="group h-full rounded-2xl border border-[#dcd6ce] bg-white p-6 shadow-[0_10px_30px_rgba(107,38,67,0.06)] transition-transform duration-300 hover:-translate-y-1">
                     <div
                       className="flex h-12 w-12 items-center justify-center rounded-xl text-white shadow-lg transition-transform duration-300 group-hover:scale-110"
                       style={{ backgroundColor: accent }}
                     >
                       <Icon className="h-6 w-6" aria-hidden="true" />
                     </div>
-                    <h3 className="mt-4 text-lg font-bold text-[#1e1a22]">{feature.title}</h3>
+                    <h3 className="mt-4 text-lg font-bold text-[#282421]">{feature.title}</h3>
                     <p className="mt-2 text-sm leading-6 text-[#5e5862]">{feature.text}</p>
                   </div>
                 </Reveal>
@@ -215,19 +215,19 @@ export function ProductDetail({ slug }: { slug: string }) {
       </section>
 
       {/* ─────────────────── CRAFT / HOW IT'S MADE ─────────────────── */}
-      <section className="border-t border-[#eadfe4] bg-[#fdf7f9] py-16 sm:py-20">
+      <section className="border-t border-[#dcd6ce] bg-[#f3f0e9] py-16 sm:py-20">
         <div className="mx-auto grid max-w-[1320px] items-center gap-10 px-4 sm:px-6 lg:grid-cols-2">
           <Reveal className="order-2 lg:order-1">
             <p className="text-xs font-extrabold uppercase tracking-widest" style={{ color: accent }}>
               The craft
             </p>
-            <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-[#1e1a22] sm:text-4xl">
+            <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-[#282421] sm:text-4xl">
               {product.craft.heading}
             </h2>
             <p className="mt-4 text-base leading-relaxed text-[#5e5862]">{product.craft.body}</p>
             <ul className="mt-6 space-y-3">
               {product.craft.points.map((point) => (
-                <li key={point} className="flex items-start gap-3 text-sm font-medium text-[#1e1a22]">
+                <li key={point} className="flex items-start gap-3 text-sm font-medium text-[#282421]">
                   <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full" style={{ backgroundColor: accent }}>
                     <Check className="h-3 w-3 text-white" aria-hidden="true" />
                   </span>
@@ -237,7 +237,7 @@ export function ProductDetail({ slug }: { slug: string }) {
             </ul>
           </Reveal>
           <Reveal className="order-1 lg:order-2" delay={0.1}>
-            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl border border-[#eadfe4] shadow-xl">
+            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl border border-[#dcd6ce] shadow-xl">
               <Image
                 src={product.craft.image}
                 alt={product.craft.imageAlt}
@@ -258,20 +258,20 @@ export function ProductDetail({ slug }: { slug: string }) {
             <p className="text-xs font-extrabold uppercase tracking-widest" style={{ color: accent }}>
               The details
             </p>
-            <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-[#1e1a22] sm:text-4xl">
+            <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-[#282421] sm:text-4xl">
               Specifications
             </h2>
           </Reveal>
           <Reveal>
-            <dl className="overflow-hidden rounded-2xl border border-[#eadfe4]">
+            <dl className="overflow-hidden rounded-2xl border border-[#dcd6ce]">
               {product.specs.map((spec, i) => (
                 <div
                   key={spec.label}
                   className={`grid grid-cols-1 gap-1 px-5 py-4 sm:grid-cols-[220px_1fr] sm:gap-4 ${
-                    i % 2 === 0 ? "bg-[#fdf7f9]" : "bg-white"
+                    i % 2 === 0 ? "bg-[#f3f0e9]" : "bg-white"
                   }`}
                 >
-                  <dt className="text-sm font-bold text-[#1e1a22]">{spec.label}</dt>
+                  <dt className="text-sm font-bold text-[#282421]">{spec.label}</dt>
                   <dd className="text-sm leading-6 text-[#5e5862]">{spec.value}</dd>
                 </div>
               ))}
@@ -284,13 +284,13 @@ export function ProductDetail({ slug }: { slug: string }) {
           Only the LED neon page defines `backings`; the other sign types have
           no backboard choice, so this drops out entirely for them. */}
       {product.backings && (
-        <section className="border-t border-[#eadfe4] bg-[#fdf7f9] py-16 sm:py-20">
+        <section className="border-t border-[#dcd6ce] bg-[#f3f0e9] py-16 sm:py-20">
           <div className="mx-auto max-w-[1320px] px-4 sm:px-6">
             <Reveal className="mx-auto mb-12 max-w-2xl text-center">
               <p className="text-xs font-extrabold uppercase tracking-widest" style={{ color: accent }}>
                 Choose your backboard
               </p>
-              <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-[#1e1a22] sm:text-4xl">
+              <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-[#282421] sm:text-4xl">
                 {product.backings.heading}
               </h2>
               <p className="mt-4 text-base leading-relaxed text-[#5e5862]">
@@ -302,7 +302,7 @@ export function ProductDetail({ slug }: { slug: string }) {
                 Below ~640px it would shrink past legibility, so it stays at a
                 readable width there and the strip pans instead. */}
             <Reveal className="mb-8">
-              <div className="overflow-x-auto rounded-3xl border border-[#eadfe4] bg-[#0b0910] shadow-xl">
+              <div className="overflow-x-auto rounded-3xl border border-[#dcd6ce] bg-[#0b0910] shadow-xl">
                 <Image
                   src={product.backings.image}
                   alt={product.backings.imageAlt}
@@ -319,16 +319,16 @@ export function ProductDetail({ slug }: { slug: string }) {
             <div className="grid gap-5 md:grid-cols-3">
               {product.backings.items.map((backing, i) => (
                 <Reveal key={backing.name} delay={i * 0.08}>
-                  <div className="flex h-full flex-col rounded-2xl border border-[#eadfe4] bg-white p-6 shadow-[0_10px_30px_rgba(107,38,67,0.06)] transition-transform duration-300 hover:-translate-y-1">
+                  <div className="flex h-full flex-col rounded-2xl border border-[#dcd6ce] bg-white p-6 shadow-[0_10px_30px_rgba(107,38,67,0.06)] transition-transform duration-300 hover:-translate-y-1">
                     <p
                       className="text-xs font-extrabold uppercase tracking-widest"
                       style={{ color: accent }}
                     >
                       {backing.summary}
                     </p>
-                    <h3 className="mt-1.5 text-lg font-bold text-[#1e1a22]">{backing.name}</h3>
+                    <h3 className="mt-1.5 text-lg font-bold text-[#282421]">{backing.name}</h3>
                     <p className="mt-2 flex-1 text-sm leading-6 text-[#5e5862]">{backing.text}</p>
-                    <p className="mt-4 border-t border-[#eadfe4] pt-3 text-xs font-semibold text-[#1e1a22]">
+                    <p className="mt-4 border-t border-[#dcd6ce] pt-3 text-xs font-semibold text-[#282421]">
                       Best for:{" "}
                       <span className="font-medium text-[#5e5862]">{backing.bestFor}</span>
                     </p>
@@ -345,13 +345,13 @@ export function ProductDetail({ slug }: { slug: string }) {
           lit one way only, so this drops out entirely for them. It shares the
           backboard section's slot — neither product defines both. */}
       {product.lighting && (
-        <section className="border-t border-[#eadfe4] bg-[#fdf7f9] py-16 sm:py-20">
+        <section className="border-t border-[#dcd6ce] bg-[#f3f0e9] py-16 sm:py-20">
           <div className="mx-auto max-w-[1320px] px-4 sm:px-6">
             <Reveal className="mx-auto mb-12 max-w-2xl text-center">
               <p className="text-xs font-extrabold uppercase tracking-widest" style={{ color: accent }}>
                 Choose your glow
               </p>
-              <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-[#1e1a22] sm:text-4xl">
+              <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-[#282421] sm:text-4xl">
                 {product.lighting.heading}
               </h2>
               <p className="mt-4 text-base leading-relaxed text-[#5e5862]">
@@ -365,7 +365,7 @@ export function ProductDetail({ slug }: { slug: string }) {
             <div className="grid gap-5 md:grid-cols-3">
               {product.lighting.items.map((style, i) => (
                 <Reveal key={style.name} delay={i * 0.08}>
-                  <div className="group flex h-full flex-col overflow-hidden rounded-2xl border border-[#eadfe4] bg-white shadow-[0_10px_30px_rgba(107,38,67,0.06)] transition-transform duration-300 hover:-translate-y-1">
+                  <div className="group flex h-full flex-col overflow-hidden rounded-2xl border border-[#dcd6ce] bg-white shadow-[0_10px_30px_rgba(107,38,67,0.06)] transition-transform duration-300 hover:-translate-y-1">
                     <div className="relative aspect-square w-full overflow-hidden bg-[#0b0910]">
                       <Image
                         src={style.image}
@@ -383,9 +383,9 @@ export function ProductDetail({ slug }: { slug: string }) {
                       >
                         {style.summary}
                       </p>
-                      <h3 className="mt-1.5 text-lg font-bold text-[#1e1a22]">{style.name}</h3>
+                      <h3 className="mt-1.5 text-lg font-bold text-[#282421]">{style.name}</h3>
                       <p className="mt-2 flex-1 text-sm leading-6 text-[#5e5862]">{style.text}</p>
-                      <p className="mt-4 border-t border-[#eadfe4] pt-3 text-xs font-semibold text-[#1e1a22]">
+                      <p className="mt-4 border-t border-[#dcd6ce] pt-3 text-xs font-semibold text-[#282421]">
                         Best for:{" "}
                         <span className="font-medium text-[#5e5862]">{style.bestFor}</span>
                       </p>
@@ -399,7 +399,7 @@ export function ProductDetail({ slug }: { slug: string }) {
       )}
 
       {/* ─────────────────────── OPTIONS ─────────────────────── */}
-      <section className="border-t border-[#eadfe4] bg-[#0b0910] py-16 text-white sm:py-20">
+      <section className="border-t border-[#dcd6ce] bg-[#0b0910] py-16 text-white sm:py-20">
         <div className="relative mx-auto max-w-3xl px-4 text-center sm:px-6">
           <div
             className="pointer-events-none absolute left-1/2 top-1/2 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full blur-[120px] opacity-40"
@@ -443,14 +443,14 @@ export function ProductDetail({ slug }: { slug: string }) {
             <p className="text-xs font-extrabold uppercase tracking-widest" style={{ color: accent }}>
               Where it shines
             </p>
-            <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-[#1e1a22] sm:text-4xl">
+            <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-[#282421] sm:text-4xl">
               Perfect for
             </h2>
           </Reveal>
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {product.useCases.map((useCase, i) => (
               <Reveal key={useCase.title} delay={i * 0.08}>
-                <div className="group h-full overflow-hidden rounded-2xl border border-[#eadfe4] bg-white shadow-[0_10px_30px_rgba(107,38,67,0.06)]">
+                <div className="group h-full overflow-hidden rounded-2xl border border-[#dcd6ce] bg-white shadow-[0_10px_30px_rgba(107,38,67,0.06)]">
                   <div className="relative aspect-[4/3] w-full overflow-hidden bg-black/5">
                     <Image
                       src={useCase.image}
@@ -462,7 +462,7 @@ export function ProductDetail({ slug }: { slug: string }) {
                     />
                   </div>
                   <div className="p-5">
-                    <h3 className="text-base font-bold text-[#1e1a22]">{useCase.title}</h3>
+                    <h3 className="text-base font-bold text-[#282421]">{useCase.title}</h3>
                     <p className="mt-1.5 text-sm leading-6 text-[#5e5862]">{useCase.text}</p>
                   </div>
                 </div>
@@ -473,18 +473,18 @@ export function ProductDetail({ slug }: { slug: string }) {
       </section>
 
       {/* ─────────────────────── GALLERY ─────────────────────── */}
-      <section className="border-t border-[#eadfe4] bg-[#fdf7f9] py-16 sm:py-20">
+      <section className="border-t border-[#dcd6ce] bg-[#f3f0e9] py-16 sm:py-20">
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <Reveal className="mb-10 text-center">
             <p className="text-xs font-extrabold uppercase tracking-widest" style={{ color: accent }}>
               Gallery
             </p>
-            <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-[#1e1a22] sm:text-4xl">
+            <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-[#282421] sm:text-4xl">
               See it in the wild
             </h2>
           </Reveal>
           <Reveal>
-            <div className="relative aspect-[16/10] w-full overflow-hidden rounded-3xl border border-[#eadfe4] bg-black/5 shadow-xl">
+            <div className="relative aspect-[16/10] w-full overflow-hidden rounded-3xl border border-[#dcd6ce] bg-black/5 shadow-xl">
               <Image
                 key={activeImage.src}
                 src={activeImage.src}
@@ -528,7 +528,7 @@ export function ProductDetail({ slug }: { slug: string }) {
             <p className="text-xs font-extrabold uppercase tracking-widest" style={{ color: accent }}>
               Questions, answered
             </p>
-            <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-[#1e1a22] sm:text-4xl">
+            <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-[#282421] sm:text-4xl">
               {product.name} FAQs
             </h2>
           </Reveal>
@@ -536,9 +536,9 @@ export function ProductDetail({ slug }: { slug: string }) {
             {product.faqs.map((faq) => (
               <details
                 key={faq.q}
-                className="group rounded-2xl border border-[#eadfe4] bg-white shadow-[0_10px_30px_rgba(107,38,67,0.05)] transition-colors open:border-[#f8c6da]"
+                className="group rounded-2xl border border-[#dcd6ce] bg-white shadow-[0_10px_30px_rgba(107,38,67,0.05)] transition-colors open:border-[#f8c6da]"
               >
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 text-left text-base font-bold text-[#1e1a22] [&::-webkit-details-marker]:hidden">
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 text-left text-base font-bold text-[#282421] [&::-webkit-details-marker]:hidden">
                   {faq.q}
                   <ChevronDown
                     className="h-5 w-5 shrink-0 transition-transform duration-300 group-open:rotate-180"
@@ -557,7 +557,7 @@ export function ProductDetail({ slug }: { slug: string }) {
       <section className="relative overflow-hidden bg-[#0b0910] py-16 text-white sm:py-20">
         <div
           className="pointer-events-none absolute inset-x-0 top-0 h-1.5"
-          style={{ background: `linear-gradient(90deg, ${accent}, #6d26ff)` }}
+          style={{ background: `linear-gradient(90deg, ${accent}, #6b4664)` }}
           aria-hidden="true"
         />
         <div
@@ -595,13 +595,13 @@ export function ProductDetail({ slug }: { slug: string }) {
       </section>
 
       {/* ─────────────────────── RELATED ─────────────────────── */}
-      <section className="border-t border-[#eadfe4] bg-white py-16 sm:py-20">
+      <section className="border-t border-[#dcd6ce] bg-white py-16 sm:py-20">
         <div className="mx-auto max-w-[1320px] px-4 sm:px-6">
           <Reveal className="mb-10 text-center">
             <p className="text-xs font-extrabold uppercase tracking-widest" style={{ color: accent }}>
               Explore more
             </p>
-            <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-[#1e1a22] sm:text-4xl">
+            <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-[#282421] sm:text-4xl">
               Other sign types
             </h2>
           </Reveal>
@@ -610,7 +610,7 @@ export function ProductDetail({ slug }: { slug: string }) {
               <Reveal key={item.slug} delay={i * 0.08}>
                 <Link
                   href={`/products/${item.slug}`}
-                  className="group block h-full overflow-hidden rounded-2xl border border-[#eadfe4] bg-white shadow-[0_10px_30px_rgba(107,38,67,0.06)] transition-transform duration-300 hover:-translate-y-1"
+                  className="group block h-full overflow-hidden rounded-2xl border border-[#dcd6ce] bg-white shadow-[0_10px_30px_rgba(107,38,67,0.06)] transition-transform duration-300 hover:-translate-y-1"
                 >
                   <div className="relative aspect-[16/10] w-full overflow-hidden bg-black/5">
                     <Image
@@ -627,7 +627,7 @@ export function ProductDetail({ slug }: { slug: string }) {
                       <p className="text-xs font-bold uppercase tracking-widest" style={{ color: item.accent }}>
                         {item.category}
                       </p>
-                      <h3 className="mt-1 text-base font-bold text-[#1e1a22]">{item.name}</h3>
+                      <h3 className="mt-1 text-base font-bold text-[#282421]">{item.name}</h3>
                     </div>
                     <ArrowRight
                       className="h-5 w-5 shrink-0 text-[#5e5862] transition-transform duration-300 group-hover:translate-x-1"

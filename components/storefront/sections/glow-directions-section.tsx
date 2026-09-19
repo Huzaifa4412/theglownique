@@ -38,7 +38,7 @@ export const CATEGORY_CARDS: FocusCardItem[] = [
     description: "Vibrant custom neon and dual-lit channel lettering that set the mood for nightlife and event venues.",
     image: "/neon-sign/Bar/iap_600x600.5588358323_i7bgtidf.webp",
     alt: "Vibrant cocktails and lounge custom neon sign glowing in a bar setting",
-    accent: "#6d26ff",
+    accent: "#6b4664",
   },
   {
     id: "salons",
@@ -108,7 +108,7 @@ export function GlowDirectionsSection() {
         <div className="mt-10 text-center">
           <Link
             href="/business-signs"
-            className="inline-flex items-center gap-2 text-sm font-extrabold uppercase tracking-wider text-[#1e1a22] transition-colors hover:text-[#ce0754]"
+            className="inline-flex items-center gap-2 text-sm font-extrabold uppercase tracking-wider text-[#282421] transition-colors hover:text-[#8f2347]"
           >
             <span>Explore all commercial sign collections</span>
             <ArrowRight className="h-4 w-4" />

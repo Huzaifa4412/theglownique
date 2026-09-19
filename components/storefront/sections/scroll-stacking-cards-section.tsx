@@ -34,11 +34,11 @@ const STACK_CARDS: StackCardItem[] = [
     description:
       "Send us whatever you have — your business logo file, a typography idea, brand colors, or a rough sketch on paper. Tell us about your wall space and we will advise on the ideal sign type and dimensions.",
     icon: Upload,
-    accentHex: "#f40b68",
-    accentText: "#ce0754",
-    glowShadow: "rgba(244, 11, 104, 0.16)",
-    accentBg: "rgba(244, 11, 104, 0.08)",
-    badgeBg: "#fff0f5",
+    accentHex: "#a92d56",
+    accentText: "#8f2347",
+    glowShadow: "rgba(169, 45, 86, 0.16)",
+    accentBg: "rgba(169, 45, 86, 0.08)",
+    badgeBg: "#efe9e0",
     stats: "Any file works — AI, SVG, PDF, PNG or photo",
     previewText: "Your Idea",
   },
@@ -51,11 +51,11 @@ const STACK_CARDS: StackCardItem[] = [
     description:
       "Our designers create a true-to-scale digital proof showing exact dimensions, Pantone color matching, backing cutlines, and illuminated glow effect. You get unlimited free revisions until it is 100% right.",
     icon: Palette,
-    accentHex: "#6d26ff",
-    accentText: "#5b16d6",
-    glowShadow: "rgba(109, 38, 255, 0.16)",
-    accentBg: "rgba(109, 38, 255, 0.08)",
-    badgeBg: "#f3eefd",
+    accentHex: "#6b4664",
+    accentText: "#553a4f",
+    glowShadow: "rgba(107, 70, 100, 0.16)",
+    accentBg: "rgba(107, 70, 100, 0.08)",
+    badgeBg: "#eee9e0",
     stats: "Free 1-on-1 proof in ~2 hours · Zero obligation",
     previewText: "Free Mockup",
   },
@@ -135,7 +135,7 @@ export function ScrollStackingCardsSection() {
   return (
     <section
       ref={containerRef}
-      className="scroll-stacking-section relative bg-gradient-to-b from-white via-[#fdf7f9] to-[#fff0f5] text-[#1e1a22] py-20 md:py-28 border-t border-[#eadfe4]"
+      className="scroll-stacking-section relative bg-gradient-to-b from-[#f7f5ef] via-[#f3f0e9] to-[#efe9e0] text-[#282421] py-20 md:py-28 border-t border-[#dcd6ce]"
       id="stacking-craft"
       aria-labelledby="stacking-craft-heading"
     >
@@ -143,14 +143,14 @@ export function ScrollStackingCardsSection() {
         {/* Section Header matching The Glownique aesthetic */}
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
           <p className="eyebrow flex items-center justify-center gap-2">
-            <span className="w-6 h-[2px] rounded-full bg-gradient-to-r from-[#f40b68] to-[#6d26ff]" />
+            <span className="w-6 h-[2px] rounded-full bg-gradient-to-r from-[#a92d56] to-[#6b4664]" />
             <span>How to order</span>
-            <span className="w-6 h-[2px] rounded-full bg-gradient-to-r from-[#6d26ff] to-[#f40b68]" />
+            <span className="w-6 h-[2px] rounded-full bg-gradient-to-r from-[#6b4664] to-[#a92d56]" />
           </p>
 
           <h2
             id="stacking-craft-heading"
-            className="text-3xl sm:text-5xl font-extrabold tracking-tight text-[#1e1a22] leading-tight"
+            className="text-3xl sm:text-5xl font-extrabold tracking-tight text-[#282421] leading-tight"
           >
             From idea to your wall in <PremiumAccentText>six simple steps.</PremiumAccentText>
           </h2>
@@ -174,7 +174,7 @@ export function ScrollStackingCardsSection() {
                 }}
               >
                 <div
-                  className="rounded-[24px] p-6 sm:p-10 border border-[#eadfe4] bg-white/95 backdrop-blur-xl shadow-[0_22px_60px_rgba(107,38,67,0.12)] transition-all duration-500 relative overflow-hidden"
+                  className="rounded-[24px] p-6 sm:p-10 border border-[#dcd6ce] bg-white/95 backdrop-blur-xl shadow-[0_22px_60px_rgba(107,38,67,0.12)] transition-all duration-500 relative overflow-hidden"
                   style={{
                     boxShadow: `0 24px 60px -10px ${card.glowShadow}`,
                     transform: `scale(${1 - (STACK_CARDS.length - index - 1) * 0.02})`,
@@ -184,7 +184,7 @@ export function ScrollStackingCardsSection() {
                   <div
                     className="absolute top-0 left-0 right-0 h-1.5 rounded-t-[24px]"
                     style={{
-                      background: `linear-gradient(90deg, ${card.accentHex}, #f40b68)`,
+                      background: `linear-gradient(90deg, ${card.accentHex}, #a92d56)`,
                     }}
                     aria-hidden="true"
                   />
@@ -200,7 +200,7 @@ export function ScrollStackingCardsSection() {
                           {card.number}
                         </span>
                         <span
-                          className="px-3 py-1 text-xs font-bold rounded-full border border-[#eadfe4]"
+                          className="px-3 py-1 text-xs font-bold rounded-full border border-[#dcd6ce]"
                           style={{
                             backgroundColor: card.badgeBg,
                             color: card.accentText,
@@ -211,7 +211,7 @@ export function ScrollStackingCardsSection() {
                       </div>
 
                       <div className="space-y-1">
-                        <h3 className="text-2xl sm:text-3xl font-extrabold text-[#1e1a22] tracking-tight">
+                        <h3 className="text-2xl sm:text-3xl font-extrabold text-[#282421] tracking-tight">
                           {card.title}
                         </h3>
                         <p
@@ -226,7 +226,7 @@ export function ScrollStackingCardsSection() {
                         {card.description}
                       </p>
 
-                      <div className="pt-2 flex items-center gap-2 text-xs font-semibold text-[#1e1a22]">
+                      <div className="pt-2 flex items-center gap-2 text-xs font-semibold text-[#282421]">
                         <span
                           className="w-5 h-5 rounded-full flex items-center justify-center text-white text-[10px]"
                           style={{ backgroundColor: card.accentHex }}
@@ -267,7 +267,7 @@ export function ScrollStackingCardsSection() {
                         >
                           {card.previewText}
                         </span>
-                        <span className="text-[10px] text-[#fde2ec] font-extrabold uppercase tracking-widest block">
+                        <span className="text-[10px] text-[#e9e2d4] font-extrabold uppercase tracking-widest block">
                           The Glownique Way
                         </span>
                       </div>

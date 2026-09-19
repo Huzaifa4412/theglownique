@@ -4,29 +4,58 @@ import homeImage from "@/app/assets/hero/home.webp";
 import weddingImage from "@/app/assets/hero/wedding.webp";
 import businessImage from "@/app/assets/hero/business.webp";
 import { CustomQuoteButton } from "@/components/storefront/custom-quote-button";
-import { StudioCatalog, StudioWallPreview } from "./studio-interactions";
-import { homeFaqs, homeSignTypes } from "@/lib/home-content";
+import { SmoothScroll } from "@/components/storefront/smooth-scroll";
+import { StudioMotionLoader } from "@/components/storefront/studio-motion-loader";
+import {
+  HeroTypewriter,
+  StudioCatalog,
+  StudioReviews,
+  StudioWallPreview,
+} from "./studio-interactions";
+import { StudioColorStudio } from "@/components/storefront/studio-color-studio";
+import {
+  heroTypePhrases,
+  homeAnswer,
+  homeFaqs,
+  homeMarqueeItems,
+  homeSignTypes,
+} from "@/lib/home-content";
 import { serializeJsonLd } from "@/lib/utils";
 import { ETSY_SHOP_URL, HAS_VERIFIED_REVIEWS } from "@/lib/site";
-import { testimonials } from "@/lib/store-data";
 import styles from "./studio-home.module.css";
 
 export function StudioHome() {
-  const review = HAS_VERIFIED_REVIEWS
-    ? testimonials.find((item) => item.verified)
-    : undefined;
   return (
-    <main className={styles.home} id="main-content">
-      <section className={styles.hero} aria-labelledby="hero-heading">
+    <main className={styles.home} id="main-content" data-studio-home>
+      <SmoothScroll />
+      <StudioMotionLoader />
+
+      {/* ── Hero ──────────────────────────────────────────────────────── */}
+      <section
+        className={styles.hero}
+        aria-labelledby="hero-heading"
+        data-hero
+      >
         <div className={styles.heroHeading}>
           <div>
             <p className={styles.kicker}>
               <span className={styles.dot} /> The custom sign studio
             </p>
             <h1 id="hero-heading">
-              Custom neon signs.
-              <br />
-              <em>Unmistakably yours.</em>
+              <span className={styles.heroLine}>
+                <span>Custom neon signs.</span>
+              </span>
+              <span className={styles.heroLine}>
+                <span>
+                  {/* The complete phrase, statically rendered for search
+                      engines and screen readers; the typed copy is
+                      aria-hidden. */}
+                  <span className="sr-only">{heroTypePhrases[0]}</span>
+                  <em className={styles.heroTypeLine}>
+                    <HeroTypewriter phrases={heroTypePhrases} />
+                  </em>
+                </span>
+              </span>
             </h1>
           </div>
           <div className={styles.heroAside}>
@@ -36,10 +65,12 @@ export function StudioHome() {
               LED neon, dimensional letters and illuminated signs, made to
               order.
             </p>
-            <CustomQuoteButton
-              className={styles.primary}
-              label="Create my sign"
-            />
+            <span className={styles.magnetic} data-magnetic>
+              <CustomQuoteButton
+                className={styles.primary}
+                label="Create my sign"
+              />
+            </span>
             <a className={styles.textLink} href="#categories">
               Find your kind of glow <span>↘</span>
             </a>
@@ -49,6 +80,7 @@ export function StudioHome() {
           <Link
             className={styles.heroMain}
             href="/custom-signage/home-decor-signs"
+            data-parallax="0.5"
           >
             <Image
               src={homeImage}
@@ -68,6 +100,7 @@ export function StudioHome() {
           <Link
             className={styles.heroSmall}
             href="/custom-signage/wedding-signs"
+            data-parallax="1"
           >
             <Image
               src={weddingImage}
@@ -83,7 +116,11 @@ export function StudioHome() {
               <span className={styles.roundArrow}>↗</span>
             </div>
           </Link>
-          <Link className={styles.heroSmall} href="/business-signs">
+          <Link
+            className={styles.heroSmall}
+            href="/business-signs"
+            data-parallax="1.4"
+          >
             <Image
               src="/3d-metallic-neon-sign/corporte/056b3189-6a8c-482a-8334-53ded7aff3e1.webp"
               alt="Estudio Sur logo in warm illuminated metal letters"
@@ -97,23 +134,64 @@ export function StudioHome() {
               <span className={styles.roundArrow}>↗</span>
             </div>
           </Link>
-        </div>
-        <div className={styles.serviceStrip}>
-          <span>Made to order, made for you</span>
-          <span>Free design preview</span>
-          <span>Tracked worldwide delivery</span>
-          <a href={ETSY_SHOP_URL} target="_blank" rel="noopener noreferrer">
-            Shop on Etsy ↗
-          </a>
+          {HAS_VERIFIED_REVIEWS && (
+            <a
+              className={styles.heroBadge}
+              href={ETSY_SHOP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span aria-hidden="true">★</span> Verified Etsy reviews ↗
+            </a>
+          )}
         </div>
       </section>
 
+      {/* ── Marquee ───────────────────────────────────────────────────── */}
+      <div className={styles.marquee} aria-label="What every order includes">
+        <div className={styles.marqueeTrack}>
+          <div className={styles.marqueeGroup}>
+            {homeMarqueeItems.map((item) => (
+              <span key={item}>{item}</span>
+            ))}
+            <a href={ETSY_SHOP_URL} target="_blank" rel="noopener noreferrer">
+              Shop on Etsy ↗
+            </a>
+          </div>
+          <div className={styles.marqueeGroup} aria-hidden="true">
+            {homeMarqueeItems.map((item) => (
+              <span key={item}>{item}</span>
+            ))}
+            <a
+              href={ETSY_SHOP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              tabIndex={-1}
+            >
+              Shop on Etsy ↗
+            </a>
+          </div>
+        </div>
+      </div>
+
+      {/* ── The one-line answer (AEO/GEO) ─────────────────────────────── */}
+      <section className={styles.definition} aria-label="About The Glownique">
+        <p className={styles.kicker}>In one line</p>
+        <p className={styles.definitionText} data-words>
+          {homeAnswer.split(" ").map((word, index) => (
+            <span key={`${word}-${index}`}>{word} </span>
+          ))}
+        </p>
+      </section>
+
+      {/* ── Sign types: the rail ──────────────────────────────────────── */}
       <section
-        className={styles.section}
+        className={`${styles.section} ${styles.rail}`}
         id="categories"
         aria-labelledby="sign-types-heading"
+        data-rail
       >
-        <div className={styles.sectionHeading}>
+        <div className={styles.sectionHeading} data-reveal>
           <div>
             <p className={styles.kicker}>Four ways to glow</p>
             <h2 id="sign-types-heading">
@@ -122,39 +200,58 @@ export function StudioHome() {
               <em>A finish that feels like you.</em>
             </h2>
           </div>
-          <Link className={styles.textLink} href="/products">
+          <Link className={styles.textLink} href="/custom-signage">
             Compare all sign types ↗
           </Link>
         </div>
-        <div className={styles.materialGrid}>
-          {homeSignTypes.map((type, index) => (
-            <Link className={styles.material} key={type.href} href={type.href}>
-              <div className={styles.materialImage}>
-                <Image
-                  src={type.image}
-                  alt={type.alt}
-                  fill
-                  sizes="(max-width: 700px) 46vw, 23vw"
-                />
-                <span className={styles.materialNumber}>0{index + 1}</span>
-              </div>
-              <p>{type.descriptor}</p>
-              <h3>
-                {type.name}
-                <span>↗</span>
-              </h3>
-              <p className={styles.materialDetail}>{type.detail}</p>
+        <div className={styles.railViewport} data-rail-viewport>
+          <div className={styles.railTrack} data-rail-track>
+            {homeSignTypes.map((type, index) => (
+              <Link
+                className={styles.railCard}
+                key={type.href}
+                href={type.href}
+              >
+                <div className={styles.railImage}>
+                  <Image
+                    src={type.image}
+                    alt={type.alt}
+                    fill
+                    sizes="(max-width: 700px) 78vw, (max-width: 1000px) 44vw, 30vw"
+                  />
+                  <span className={styles.materialNumber}>0{index + 1}</span>
+                </div>
+                <p className={styles.railDescriptor}>{type.descriptor}</p>
+                <h3>
+                  {type.name}
+                  <span>↗</span>
+                </h3>
+                <p className={styles.railDetail}>{type.detail}</p>
+              </Link>
+            ))}
+            <Link className={styles.railEnd} href="/products">
+              <p className={styles.kicker}>Still deciding?</p>
+              <p className={styles.railEndTitle}>
+                Compare all four,
+                <br />
+                <em>side by side.</em>
+              </p>
+              <span className={styles.roundArrowDark}>↗</span>
             </Link>
-          ))}
+          </div>
+        </div>
+        <div className={styles.railProgressTrack} aria-hidden="true">
+          <span className={styles.railProgress} data-rail-progress />
         </div>
       </section>
 
+      {/* ── Spaces ────────────────────────────────────────────────────── */}
       <section
         className={`${styles.section} ${styles.spaces}`}
         id="inspiration"
         aria-labelledby="spaces-heading"
       >
-        <div className={styles.spacesPhoto}>
+        <div className={styles.spacesPhoto} data-drift>
           <Image
             src={businessImage}
             alt="Coffee First LED neon sign lighting a terracotta café wall above the counter"
@@ -164,7 +261,7 @@ export function StudioHome() {
           />
           <span className={styles.photoTag}>The space sets the story.</span>
         </div>
-        <div className={styles.spacesCopy}>
+        <div className={styles.spacesCopy} data-reveal>
           <p className={styles.kicker}>A sign for every setting</p>
           <h2 id="spaces-heading">
             Good spaces
@@ -197,12 +294,39 @@ export function StudioHome() {
 
       <StudioCatalog />
 
+      {/* ── Interactive colour studio ─────────────────────────────────── */}
+      <section
+        className={styles.glowLab}
+        id="color-studio"
+        aria-labelledby="glow-lab-heading"
+        data-glow-lab
+      >
+        <div className={styles.glowLabCopy} data-reveal>
+          <p className={`${styles.kicker} ${styles.kickerLight}`}>
+            Interactive colour studio
+          </p>
+          <h2 id="glow-lab-heading">
+            See your neon sign
+            <br />
+            in <em>every shade.</em>
+          </h2>
+          <p>
+            Preview our handcrafted LED neon colours on a real custom sign.
+            Click any swatch — or hit{" "}
+            <strong className={styles.glowStrong}>RGBA Party</strong> to watch
+            it morph through every shade in real time.
+          </p>
+        </div>
+        <StudioColorStudio />
+      </section>
+
+      {/* ── Process ───────────────────────────────────────────────────── */}
       <section
         className={`${styles.section} ${styles.process}`}
         id="custom"
         aria-labelledby="process-heading"
       >
-        <div className={styles.processCopy}>
+        <div className={styles.processCopy} data-reveal>
           <p className={styles.kicker}>From your idea to your wall</p>
           <h2 id="process-heading">
             Picture it.
@@ -214,21 +338,26 @@ export function StudioHome() {
             your space is a good place to start.
           </p>
           <ol className={styles.steps}>
-            <li>
+            <span
+              className={styles.processLine}
+              data-process-line
+              aria-hidden="true"
+            />
+            <li data-step>
               <span>01</span>
               <div>
                 <h3>Send us your idea</h3>
                 <p>Share your wording, style and approximate size.</p>
               </div>
             </li>
-            <li>
+            <li data-step>
               <span>02</span>
               <div>
                 <h3>See it before it’s made</h3>
                 <p>Review your free design preview and project quote.</p>
               </div>
             </li>
-            <li>
+            <li data-step>
               <span>03</span>
               <div>
                 <h3>Made for your space</h3>
@@ -236,39 +365,23 @@ export function StudioHome() {
               </div>
             </li>
           </ol>
-          <CustomQuoteButton
-            className={styles.primary}
-            label="Get my free design preview"
-          />
-          <Link
-            className={styles.textLink}
-            id="color-studio"
-            href="/products/custom-neon-signs#color-studio"
-          >
+          <span className={styles.magnetic} data-magnetic>
+            <CustomQuoteButton
+              className={styles.primary}
+              label="Get my free design preview"
+            />
+          </span>
+          <a className={styles.textLink} href="#color-studio">
             Try the interactive colour studio ↗
-          </Link>
+          </a>
         </div>
         <StudioWallPreview />
       </section>
 
-      {review && (
-        <aside className={styles.review} aria-label="Customer review">
-          <p className={styles.kicker}>A note from an Etsy customer</p>
-          <blockquote>“{review.quote}”</blockquote>
-          <p>
-            {review.name} <span>— {review.role}</span>
-          </p>
-          <a
-            className={styles.textLink}
-            href={ETSY_SHOP_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read customer reviews on Etsy ↗
-          </a>
-        </aside>
-      )}
+      {/* ── Reviews ───────────────────────────────────────────────────── */}
+      {HAS_VERIFIED_REVIEWS && <StudioReviews />}
 
+      {/* ── FAQ ───────────────────────────────────────────────────────── */}
       <section
         className={`${styles.section} ${styles.answers}`}
         id="faq"
@@ -288,7 +401,7 @@ export function StudioHome() {
             }),
           }}
         />
-        <div className={styles.answerIntro}>
+        <div className={styles.answerIntro} data-reveal>
           <p className={styles.kicker}>A little clarity</p>
           <h2 id="faq-heading">
             Before you

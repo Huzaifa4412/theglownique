@@ -9,7 +9,7 @@ import { whatsappQuoteUrl } from "@/lib/site";
 
 export function ProductTopBar({ productName }: { productName: string }) {
   return (
-    <header className="sticky top-0 z-50 border-b border-[#eadfe4] bg-white/85 backdrop-blur-md">
+    <header className="sticky top-0 z-50 border-b border-[#dcd6ce] bg-white/85 backdrop-blur-md">
       <div className="mx-auto flex max-w-[1320px] items-center justify-between gap-4 px-4 py-3 sm:px-6">
         <Link href="/" className="brand" aria-label="The Glownique home">
           <Image
@@ -28,22 +28,22 @@ export function ProductTopBar({ productName }: { productName: string }) {
           className="hidden items-center gap-5 text-xs font-bold uppercase tracking-wide text-[#5e5862] lg:flex"
           aria-label="Primary navigation"
         >
-          <Link href="/" className="transition-colors hover:text-[#ce0754]">
+          <Link href="/" className="transition-colors hover:text-[#8f2347]">
             Home
           </Link>
           {PRODUCT_PAGES.map((p) => (
             <Link
               key={p.slug}
               href={`/products/${p.slug}`}
-              className="transition-colors hover:text-[#ce0754]"
+              className="transition-colors hover:text-[#8f2347]"
             >
               {p.category}
             </Link>
           ))}
-          <Link href="/blog" className="transition-colors hover:text-[#ce0754]">
+          <Link href="/blog" className="transition-colors hover:text-[#8f2347]">
             Journal
           </Link>
-          <Link href="/contact" className="transition-colors hover:text-[#ce0754]">
+          <Link href="/contact" className="transition-colors hover:text-[#8f2347]">
             Contact
           </Link>
         </nav>

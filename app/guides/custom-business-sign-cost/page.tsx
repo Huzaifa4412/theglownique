@@ -97,18 +97,18 @@ export default function CustomBusinessSignCostGuidePage() {
       <AnnouncementBar />
       <ProductTopBar productName="cost guide" />
       <main id="main-content" className="bg-white">
-        <section className="border-b border-[#eadfe4] bg-gradient-to-b from-[#fff0f5] to-white py-16 sm:py-24">
+        <section className="border-b border-[#dcd6ce] bg-gradient-to-b from-[#efe9e0] to-white py-16 sm:py-24">
           <div className="mx-auto max-w-4xl px-4 text-center sm:px-6">
             <nav className="mb-4 text-xs font-semibold text-[#5e5862]" aria-label="Breadcrumb">
               <Link href="/" className="hover:underline">Home</Link> &gt;{" "}
               <Link href="/guides" className="hover:underline">Guides</Link> &gt;{" "}
-              <span className="text-[#ce0754]">Custom Business Sign Cost</span>
+              <span className="text-[#8f2347]">Custom Business Sign Cost</span>
             </nav>
 
-            <p className="text-xs font-extrabold uppercase tracking-widest text-[#ce0754]">
+            <p className="text-xs font-extrabold uppercase tracking-widest text-[#8f2347]">
               Pricing &amp; Procurement Guide
             </p>
-            <h1 className="mt-2 text-4xl font-extrabold tracking-tight text-[#1e1a22] sm:text-5xl">
+            <h1 className="mt-2 text-4xl font-extrabold tracking-tight text-[#282421] sm:text-5xl">
               Custom Business Sign Cost Guide
             </h1>
             <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-[#5e5862] sm:text-lg">
@@ -119,24 +119,24 @@ export default function CustomBusinessSignCostGuidePage() {
 
         <section className="py-16 sm:py-24">
           <div className="mx-auto max-w-4xl px-4 sm:px-6">
-            <article className="prose prose-pink max-w-none text-[#1e1a22]">
-              <h2 className="text-3xl font-extrabold text-[#1e1a22]">
+            <article className="prose prose-pink max-w-none text-[#282421]">
+              <h2 className="text-3xl font-extrabold text-[#282421]">
                 What Determines the Price of a Custom Business Sign?
               </h2>
               <p className="mt-4 text-base leading-relaxed text-[#5e5862]">
                 Because custom business signs are engineered to order based on your brand logo, physical wall dimensions, and illumination specifications, pricing varies across projects. Knowing the key cost drivers helps you optimize your signage budget while achieving maximum brand impact.
               </p>
 
-              <div className="my-10 overflow-hidden rounded-2xl border border-[#eadfe4] bg-white shadow-sm">
-                <table className="w-full text-left text-sm text-[#1e1a22]">
-                  <thead className="bg-[#faf7f8] text-xs font-extrabold uppercase text-[#1e1a22]">
+              <div className="my-10 overflow-hidden rounded-2xl border border-[#dcd6ce] bg-white shadow-sm">
+                <table className="w-full text-left text-sm text-[#282421]">
+                  <thead className="bg-[#faf7f8] text-xs font-extrabold uppercase text-[#282421]">
                     <tr>
-                      <th className="p-4 border-b border-[#eadfe4]">Sign Category</th>
-                      <th className="p-4 border-b border-[#eadfe4]">Primary Application</th>
-                      <th className="p-4 border-b border-[#eadfe4]">Key Cost Drivers</th>
+                      <th className="p-4 border-b border-[#dcd6ce]">Sign Category</th>
+                      <th className="p-4 border-b border-[#dcd6ce]">Primary Application</th>
+                      <th className="p-4 border-b border-[#dcd6ce]">Key Cost Drivers</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-[#eadfe4]">
+                  <tbody className="divide-y divide-[#dcd6ce]">
                     <tr>
                       <td className="p-4 font-bold">Custom LED Neon Signs</td>
                       <td className="p-4 text-[#5e5862]">Brand Walls, Reception, Bar/Lounge</td>
@@ -161,27 +161,27 @@ export default function CustomBusinessSignCostGuidePage() {
                 </table>
               </div>
 
-              <h3 className="text-2xl font-extrabold text-[#1e1a22] mt-8">
+              <h3 className="text-2xl font-extrabold text-[#282421] mt-8">
                 Key Cost Factors Explained
               </h3>
 
               <div className="mt-6 space-y-6 text-sm text-[#5e5862] leading-relaxed">
                 <div>
-                  <h4 className="text-lg font-bold text-[#1e1a22]">1. Physical Dimensions &amp; Scale</h4>
+                  <h4 className="text-lg font-bold text-[#282421]">1. Physical Dimensions &amp; Scale</h4>
                   <p className="mt-1">
                     Larger signs require wider acrylic backers, additional structural bracing, and a higher density of LED modules and power transformers.
                   </p>
                 </div>
 
                 <div>
-                  <h4 className="text-lg font-bold text-[#1e1a22]">2. Illumination Method &amp; LEDs</h4>
+                  <h4 className="text-lg font-bold text-[#282421]">2. Illumination Method &amp; LEDs</h4>
                   <p className="mt-1">
                     Single-color LED neon is cost-effective, while RGB color-changing LEDs or dual-lit (front-lit + rear halo) 3D metal letters require dual wiring runs and advanced controllers.
                   </p>
                 </div>
 
                 <div>
-                  <h4 className="text-lg font-bold text-[#1e1a22]">3. Indoor vs. Outdoor Weatherproofing (IP67)</h4>
+                  <h4 className="text-lg font-bold text-[#282421]">3. Indoor vs. Outdoor Weatherproofing (IP67)</h4>
                   <p className="mt-1">
                     Exterior storefront signs require IP67 sealed silicone tubing, waterproof transformers, and weather-resistant backing materials to withstand rain, wind, and UV exposure.
                   </p>
@@ -190,21 +190,21 @@ export default function CustomBusinessSignCostGuidePage() {
 
               {/* Pricing FAQs Section */}
               <div className="mt-12">
-                <h3 className="text-2xl font-extrabold text-[#1e1a22] mb-6">
+                <h3 className="text-2xl font-extrabold text-[#282421] mb-6">
                   Frequently Asked Pricing Questions
                 </h3>
                 <div className="space-y-4">
                   {costFaqs.map((faq) => (
-                    <div key={faq.q} className="rounded-2xl border border-[#eadfe4] bg-[#fdfafb] p-6">
-                      <h4 className="text-base font-extrabold text-[#1e1a22]">{faq.q}</h4>
+                    <div key={faq.q} className="rounded-2xl border border-[#dcd6ce] bg-[#fdfafb] p-6">
+                      <h4 className="text-base font-extrabold text-[#282421]">{faq.q}</h4>
                       <p className="mt-2 text-sm leading-relaxed text-[#5e5862]">{faq.a}</p>
                     </div>
                   ))}
                 </div>
               </div>
 
-              <div className="mt-12 rounded-3xl border border-[#eadfe4] bg-[#fff0f5] p-8 text-center">
-                <h3 className="text-2xl font-extrabold text-[#1e1a22]">
+              <div className="mt-12 rounded-3xl border border-[#dcd6ce] bg-[#efe9e0] p-8 text-center">
+                <h3 className="text-2xl font-extrabold text-[#282421]">
                   Get an Itemized Quote for Your Business Sign
                 </h3>
                 <p className="mt-2 text-sm text-[#5e5862]">

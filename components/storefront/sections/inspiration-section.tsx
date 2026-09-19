@@ -214,7 +214,7 @@ export function InspirationSection() {
                   <span
                     className={`block h-1.5 rounded-full transition-all duration-300 ${
                       idx === currentIndex
-                        ? "w-4 bg-pink-500 shadow-[0_0_8px_rgba(244,11,104,0.6)]"
+                        ? "w-4 bg-pink-500 shadow-[0_0_8px_rgba(169,45,86,0.6)]"
                         : "w-1.5 bg-white/20 hover:bg-white/40"
                     }`}
                   />
