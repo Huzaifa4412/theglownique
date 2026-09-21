@@ -113,7 +113,7 @@ export default function ChannelLetterSignsPage() {
             <p className="text-xs font-extrabold uppercase tracking-widest text-[#8f2347]">
               Architectural Storefront Signage
             </p>
-            <h1 className="mt-2 text-4xl font-extrabold tracking-tight text-[#282421] sm:text-5xl">
+            <h1 className="mt-2 text-4xl font-semibold tracking-tight text-[#282421] sm:text-5xl">
               Custom 3D Metal Channel Letter Signs
             </h1>
             <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-[#5e5862] sm:text-lg">
@@ -149,7 +149,7 @@ export default function ChannelLetterSignsPage() {
               </div>
 
               <div className="space-y-6">
-                <h2 className="text-3xl font-extrabold text-[#282421]">
+                <h2 className="text-3xl font-semibold text-[#282421]">
                   Three Distinct Illumination Methods
                 </h2>
                 <p className="text-sm leading-relaxed text-[#5e5862]">
@@ -178,7 +178,7 @@ export default function ChannelLetterSignsPage() {
         {/* Specifications & Mounting Section */}
         <section className="border-t border-[#dcd6ce] bg-[#faf7f8] py-16 sm:py-20">
           <div className="mx-auto max-w-5xl px-4 sm:px-6">
-            <h2 className="text-3xl font-extrabold text-center text-[#282421] mb-10">
+            <h2 className="text-3xl font-semibold text-center text-[#282421] mb-10">
               Commercial Engineering &amp; Specifications
             </h2>
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -205,7 +205,7 @@ export default function ChannelLetterSignsPage() {
         {/* FAQ Accordion Section */}
         <section className="border-t border-[#dcd6ce] bg-white py-16 sm:py-20">
           <div className="mx-auto max-w-4xl px-4 sm:px-6">
-            <h2 className="text-3xl font-extrabold text-center text-[#282421] mb-8">
+            <h2 className="text-3xl font-semibold text-center text-[#282421] mb-8">
               Channel Letter Sign FAQs
             </h2>
             <div className="space-y-4">

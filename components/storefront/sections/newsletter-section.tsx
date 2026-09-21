@@ -62,7 +62,7 @@ export function NewsletterSection() {
           {/* Heading */}
           <h2
             id="newsletter-heading"
-            className="text-3xl sm:text-5xl font-extrabold tracking-tight text-[#282421] leading-tight mb-4"
+            className="text-3xl sm:text-5xl font-semibold tracking-tight text-[#282421] leading-tight mb-4"
           >
             Get 10% off <PremiumAccentText>your first order</PremiumAccentText>
           </h2>

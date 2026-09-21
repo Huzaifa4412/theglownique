@@ -50,8 +50,8 @@ const CLAIMS_RELEASE = "2026-08-19";
 /** Ubersuggest issue fixes: title lengths and the canonical signage hub URL. */
 const SEO_ISSUES_RELEASE = "2026-08-21";
 
-/** The journal launches: /blog hub, category archives and the first posts. */
-const BLOG_RELEASE = "2026-08-22";
+/** The journal launches & new ordering & installation guide release. */
+const BLOG_RELEASE = "2026-09-21";
 
 /** Comprehensive site-wide SEO keyword optimization across B2B hubs, products, guides & home. */
 const CURRENT_SEO_RELEASE = "2026-08-25";
@@ -119,6 +119,10 @@ export const ROUTES: readonly RouteEntry[] = [
     priority: 0.8,
     indexable: true,
   })),
+  // Sign-type (material) hub. Was a redirect to /custom-signage until the
+  // catalogue page was built; it owns comparison intent, while
+  // /custom-signage owns occasion intent.
+  { path: "/products", lastModified: CURRENT_SEO_RELEASE, changeFrequency: "monthly", priority: 0.8, indexable: true },
   ...PRODUCT_PAGES.map((product) => ({
     path: `/products/${product.slug}`,
     lastModified: CURRENT_SEO_RELEASE,

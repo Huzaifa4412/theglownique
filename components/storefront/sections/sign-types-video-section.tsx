@@ -223,7 +223,7 @@ export function SignTypesVideoSection() {
 
           <h2
             id="sign-types-heading"
-            className="text-3xl sm:text-5xl font-extrabold tracking-tight mb-4 leading-tight"
+            className="text-3xl sm:text-5xl font-semibold tracking-tight mb-4 leading-tight"
           >
             Four Custom Sign Types. <br className="hidden sm:inline" />
             <PremiumAccentText>Engineered to Glow.</PremiumAccentText>
@@ -395,7 +395,7 @@ export function SignTypesVideoSection() {
                 <span>{currentType.badge}</span>
               </div>
 
-              <h3 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mb-2">
+              <h3 className="text-2xl sm:text-3xl font-semibold text-white tracking-tight mb-2">
                 {currentType.title}
               </h3>
 

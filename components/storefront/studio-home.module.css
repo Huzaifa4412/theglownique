@@ -11,6 +11,7 @@
 
 .home {
   --studio-ink: #282421;
+  position: relative;
   --studio-paper: #f7f5ef;
   --studio-muted: #6b625c;
   --studio-line: #dcd6ce;
@@ -43,12 +44,48 @@
   outline: 3px solid #b90c52;
   outline-offset: 5px;
 }
+.home ::selection {
+  background: #a92d56;
+  color: #f7f5ef;
+}
+/* A whisper of print grain over the whole page — the paper feels like paper.
+   Sits under the sticky header (z-40) and every interactive layer. */
+.home::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 39;
+  pointer-events: none;
+  opacity: 0.05;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
 
 /* ── Hero ───────────────────────────────────────────────────────────────── */
 .hero {
+  position: relative;
   padding-top: 58px;
 }
+/* The outline ghost word behind the headline; the motion runtime drifts it
+   with the hero parallax. */
+.heroGhost {
+  position: absolute;
+  z-index: 0;
+  top: -14px;
+  right: -1%;
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-style: italic;
+  font-weight: 700;
+  font-size: clamp(120px, 17vw, 250px);
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(169, 45, 86, 0.16);
+  pointer-events: none;
+  user-select: none;
+}
 .heroHeading {
+  position: relative;
+  z-index: 1;
   display: grid;
   grid-template-columns: 1.8fr 1fr;
   gap: 50px;
@@ -263,6 +300,32 @@
   display: flex;
   margin-top: 5px;
 }
+.annotation {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  margin-top: 18px;
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-style: italic;
+  font-size: 16px;
+  color: #a62f57;
+  transform: rotate(-2deg);
+  transform-origin: left center;
+}
+.annotation svg {
+  flex-shrink: 0;
+  margin-top: -14px;
+}
+.annotationPath {
+  stroke-dasharray: 90;
+  stroke-dashoffset: 90;
+  animation: annotation-draw 0.9s ease-out 1.6s forwards;
+}
+@keyframes annotation-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
 .heroGallery {
   position: relative;
   display: grid;
@@ -290,12 +353,28 @@
 }
 .heroMain {
   grid-row: span 2;
+  /* The boutique arch: one bold shape in an otherwise rectilinear page. */
+  border-radius: clamp(120px, 16vw, 290px) clamp(120px, 16vw, 290px) 3px 3px;
+}
+/* The hero photo breathes — a very slow drift instead of a static print.
+   This animation owns the transform, so the generic hover zoom skips it. */
+.heroMain img {
+  animation: ken-burns 26s ease-in-out infinite alternate;
+}
+@keyframes ken-burns {
+  from {
+    transform: scale(1) translateY(0);
+  }
+  to {
+    transform: scale(1.07) translateY(-1.5%);
+  }
 }
 .heroBadge {
   position: absolute;
   z-index: 2;
-  top: 16px;
-  left: 16px;
+  top: 14px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-4deg);
   display: inline-flex;
   align-items: center;
   gap: 7px;
@@ -311,7 +390,7 @@
   transition: transform 0.25s cubic-bezier(0.2, 0.65, 0.2, 1);
 }
 .heroBadge:hover {
-  transform: translateY(-2px);
+  transform: translateX(-50%) rotate(-4deg) translateY(-2px);
 }
 .heroBadge > span {
   color: #a62f57;
@@ -418,10 +497,31 @@
 .marqueeGroup a:hover {
   color: #a62f57;
 }
+/* Every other promise flips into the serif italic — a two-voice ticker. */
+.marqueeGroup > span:nth-child(even) {
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-style: italic;
+  text-transform: none;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0;
+}
 
 /* ── The one-line answer ────────────────────────────────────────────────── */
 .definition {
   padding-block: clamp(70px, 8vw, 110px) 0;
+}
+/* An h2 set in the kicker's clothes: the question is real page structure for
+   answer engines, styled as the quiet eyebrow the layout expects. */
+.definitionQuestion {
+  font-family: var(--font-body, inherit);
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.17em;
+  line-height: 1.4;
+  margin: 0 0 20px;
+  color: var(--studio-ink);
 }
 .definitionText {
   font-family: var(--font-manrope), sans-serif;
@@ -441,11 +541,37 @@
   scroll-margin-top: 90px;
 }
 .sectionHeading {
+  position: relative;
   display: flex;
   align-items: end;
   justify-content: space-between;
   gap: 24px;
   margin-bottom: 32px;
+}
+/* Oversized outline numerals marking the page's chapters. */
+.sectionIndex {
+  position: absolute;
+  right: 0;
+  bottom: -10px;
+  z-index: -1;
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-style: italic;
+  font-weight: 700;
+  font-size: clamp(90px, 9vw, 140px);
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1px #d3cabb;
+  font-variant-numeric: tabular-nums;
+  pointer-events: none;
+  user-select: none;
+}
+.spacesCopy .sectionIndex,
+.processCopy .sectionIndex,
+.answerIntro .sectionIndex {
+  right: auto;
+  left: 55%;
+  top: 30px;
+  bottom: auto;
 }
 .home h2 {
   font-size: clamp(32px, 3.5vw, 52px);
@@ -493,10 +619,18 @@
   scroll-snap-align: start;
   display: flex;
   flex-direction: column;
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.railCard:hover {
+  transform: translateY(-6px) rotate(-0.5deg);
 }
 .railImage {
   position: relative;
-  aspect-ratio: 4 / 4.9;
+  /* The four sign-type photographs are genuinely mixed: 4:3, 3:2, 1:1 and
+     one 3:4 portrait. A square frame is the balanced compromise (max 33%
+     trim, centred so the lettering survives); the old 4/4.9 portrait frame
+     threw away 39-46% of the landscape ones and cut the signs out of shot. */
+  aspect-ratio: 1;
   background: #d9d1c5;
   overflow: hidden;
   border-radius: 3px;
@@ -599,6 +733,33 @@
   background: var(--studio-line);
   overflow: hidden;
 }
+.railFootnote {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px 22px;
+  margin-top: 20px;
+  font-size: 11px;
+}
+.railFootnote > span {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  font-size: 9px;
+  color: var(--studio-muted);
+}
+.railFootnote a {
+  font-weight: 600;
+  color: var(--studio-ink);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-color: #cec5b9;
+  transition: color 0.2s, text-decoration-color 0.2s;
+}
+.railFootnote a:hover {
+  color: var(--studio-accent);
+  text-decoration-color: var(--studio-accent);
+}
 .railProgress {
   display: block;
   height: 100%;
@@ -632,6 +793,7 @@
   font-size: 11px;
 }
 .spacesCopy {
+  position: relative;
   padding: 65px 60px 40px;
   background: #eee9e0;
   border-radius: 0 3px 3px 0;
@@ -1205,6 +1367,7 @@
   align-items: center;
 }
 .processCopy {
+  position: relative;
   padding: 24px 0;
 }
 .steps {
@@ -1573,6 +1736,9 @@
   gap: 75px;
   padding-bottom: 100px;
 }
+.answerIntro {
+  position: relative;
+}
 .answerIntro .textLink {
   display: flex;
 }
@@ -1779,10 +1945,17 @@
     grid-row: auto;
   }
   .heroBadge {
-    top: 12px;
-    left: 12px;
+    top: 10px;
     font-size: 9px;
     padding: 8px 10px;
+  }
+  .heroGhost,
+  .sectionIndex,
+  .annotation {
+    display: none;
+  }
+  .heroMain {
+    border-radius: clamp(90px, 22vw, 160px) clamp(90px, 22vw, 160px) 3px 3px;
   }
   .heroSmall .imageCaption {
     padding: 40px 12px 14px;
@@ -1950,8 +2123,16 @@
   .reviewSlide,
   .reviewMedia,
   .reviewMedia img,
-  .reviewsProgressBar {
+  .reviewsProgressBar,
+  .heroMain img,
+  .annotationPath {
     animation: none !important;
+  }
+  .annotationPath {
+    stroke-dashoffset: 0;
+  }
+  .railCard:hover {
+    transform: none;
   }
   .reviewsProgress {
     display: none;

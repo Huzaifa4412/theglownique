@@ -16,6 +16,7 @@ import { StudioColorStudio } from "@/components/storefront/studio-color-studio";
 import {
   heroTypePhrases,
   homeAnswer,
+  homeBusinessLinks,
   homeFaqs,
   homeMarqueeItems,
   homeSignTypes,
@@ -36,6 +37,10 @@ export function StudioHome() {
         aria-labelledby="hero-heading"
         data-hero
       >
+        {/* Ghost word drifting behind the headline on scroll. */}
+        <span className={styles.heroGhost} aria-hidden="true" data-parallax="0.8">
+          glow.
+        </span>
         <div className={styles.heroHeading}>
           <div>
             <p className={styles.kicker}>
@@ -62,7 +67,7 @@ export function StudioHome() {
             <p>
               For the space you call yours.
               <br />
-              LED neon, dimensional letters and illuminated signs, made to
+              LED neon, channel letters and illuminated signage, made to
               order.
             </p>
             <span className={styles.magnetic} data-magnetic>
@@ -74,6 +79,22 @@ export function StudioHome() {
             <a className={styles.textLink} href="#categories">
               Find your kind of glow <span>↘</span>
             </a>
+            {/* A hand-set margin note, like a pencil annotation on a proof. */}
+            <span className={styles.annotation} aria-hidden="true">
+              <svg
+                viewBox="0 0 60 34"
+                width="52"
+                height="30"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.6"
+                strokeLinecap="round"
+              >
+                <path className={styles.annotationPath} d="M56 4 C 40 26, 20 30, 5 18" />
+                <path className={styles.annotationPath} d="M11 10 L 5 18 L 14 20" />
+              </svg>
+              free mockup, always ✳
+            </span>
           </div>
         </div>
         <div className={styles.heroGallery}>
@@ -175,8 +196,16 @@ export function StudioHome() {
       </div>
 
       {/* ── The one-line answer (AEO/GEO) ─────────────────────────────── */}
-      <section className={styles.definition} aria-label="About The Glownique">
-        <p className={styles.kicker}>In one line</p>
+      {/* A real question heading over a direct, self-contained answer — the
+          extractable pattern answer engines lift whole. The wording tracks
+          the entity statement in the SEO research. */}
+      <section
+        className={styles.definition}
+        aria-labelledby="what-we-make-heading"
+      >
+        <h2 className={styles.definitionQuestion} id="what-we-make-heading">
+          What does The Glownique make?
+        </h2>
         <p className={styles.definitionText} data-words>
           {homeAnswer.split(" ").map((word, index) => (
             <span key={`${word}-${index}`}>{word} </span>
@@ -192,6 +221,7 @@ export function StudioHome() {
         data-rail
       >
         <div className={styles.sectionHeading} data-reveal>
+          <span className={styles.sectionIndex} aria-hidden="true">01</span>
           <div>
             <p className={styles.kicker}>Four ways to glow</p>
             <h2 id="sign-types-heading">
@@ -243,6 +273,16 @@ export function StudioHome() {
         <div className={styles.railProgressTrack} aria-hidden="true">
           <span className={styles.railProgress} data-rail-progress />
         </div>
+        {/* Routes commercial intent down to the industry pages (keyword map:
+            the homepage never competes with its own cluster pages). */}
+        <nav className={styles.railFootnote} aria-label="Popular business signs">
+          <span>Businesses start here:</span>
+          {homeBusinessLinks.map((item) => (
+            <Link key={item.href} href={item.href}>
+              {item.label}
+            </Link>
+          ))}
+        </nav>
       </section>
 
       {/* ── Spaces ────────────────────────────────────────────────────── */}
@@ -262,6 +302,7 @@ export function StudioHome() {
           <span className={styles.photoTag}>The space sets the story.</span>
         </div>
         <div className={styles.spacesCopy} data-reveal>
+          <span className={styles.sectionIndex} aria-hidden="true">02</span>
           <p className={styles.kicker}>A sign for every setting</p>
           <h2 id="spaces-heading">
             Good spaces
@@ -327,6 +368,7 @@ export function StudioHome() {
         aria-labelledby="process-heading"
       >
         <div className={styles.processCopy} data-reveal>
+          <span className={styles.sectionIndex} aria-hidden="true">04</span>
           <p className={styles.kicker}>From your idea to your wall</p>
           <h2 id="process-heading">
             Picture it.
@@ -402,6 +444,7 @@ export function StudioHome() {
           }}
         />
         <div className={styles.answerIntro} data-reveal>
+          <span className={styles.sectionIndex} aria-hidden="true">05</span>
           <p className={styles.kicker}>A little clarity</p>
           <h2 id="faq-heading">
             Before you

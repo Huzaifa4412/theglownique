@@ -90,7 +90,7 @@ export function ProductDetail({ slug }: { slug: string }) {
               {product.category}
             </span>
 
-            <h1 className="mt-5 text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
+            <h1 className="mt-5 text-4xl font-semibold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
               {product.name}
             </h1>
             <p className="mt-4 text-lg font-semibold" style={{ color: accent }}>
@@ -188,7 +188,7 @@ export function ProductDetail({ slug }: { slug: string }) {
             <p className="text-xs font-extrabold uppercase tracking-widest" style={{ color: accent }}>
               Why you&apos;ll love it
             </p>
-            <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-[#282421] sm:text-4xl">
+            <h2 className="mt-2 text-3xl font-semibold tracking-tight text-[#282421] sm:text-4xl">
               Built to impress, made to last
             </h2>
           </Reveal>
@@ -221,7 +221,7 @@ export function ProductDetail({ slug }: { slug: string }) {
             <p className="text-xs font-extrabold uppercase tracking-widest" style={{ color: accent }}>
               The craft
             </p>
-            <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-[#282421] sm:text-4xl">
+            <h2 className="mt-2 text-3xl font-semibold tracking-tight text-[#282421] sm:text-4xl">
               {product.craft.heading}
             </h2>
             <p className="mt-4 text-base leading-relaxed text-[#5e5862]">{product.craft.body}</p>
@@ -258,7 +258,7 @@ export function ProductDetail({ slug }: { slug: string }) {
             <p className="text-xs font-extrabold uppercase tracking-widest" style={{ color: accent }}>
               The details
             </p>
-            <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-[#282421] sm:text-4xl">
+            <h2 className="mt-2 text-3xl font-semibold tracking-tight text-[#282421] sm:text-4xl">
               Specifications
             </h2>
           </Reveal>
@@ -290,7 +290,7 @@ export function ProductDetail({ slug }: { slug: string }) {
               <p className="text-xs font-extrabold uppercase tracking-widest" style={{ color: accent }}>
                 Choose your backboard
               </p>
-              <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-[#282421] sm:text-4xl">
+              <h2 className="mt-2 text-3xl font-semibold tracking-tight text-[#282421] sm:text-4xl">
                 {product.backings.heading}
               </h2>
               <p className="mt-4 text-base leading-relaxed text-[#5e5862]">
@@ -351,7 +351,7 @@ export function ProductDetail({ slug }: { slug: string }) {
               <p className="text-xs font-extrabold uppercase tracking-widest" style={{ color: accent }}>
                 Choose your glow
               </p>
-              <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-[#282421] sm:text-4xl">
+              <h2 className="mt-2 text-3xl font-semibold tracking-tight text-[#282421] sm:text-4xl">
                 {product.lighting.heading}
               </h2>
               <p className="mt-4 text-base leading-relaxed text-[#5e5862]">
@@ -410,7 +410,7 @@ export function ProductDetail({ slug }: { slug: string }) {
             <p className="text-xs font-extrabold uppercase tracking-widest" style={{ color: accent }}>
               Make it yours
             </p>
-            <h2 className="mt-2 text-3xl font-extrabold tracking-tight sm:text-4xl">
+            <h2 className="mt-2 text-3xl font-semibold tracking-tight sm:text-4xl">
               {product.options.heading}
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-gray-300">
@@ -443,7 +443,7 @@ export function ProductDetail({ slug }: { slug: string }) {
             <p className="text-xs font-extrabold uppercase tracking-widest" style={{ color: accent }}>
               Where it shines
             </p>
-            <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-[#282421] sm:text-4xl">
+            <h2 className="mt-2 text-3xl font-semibold tracking-tight text-[#282421] sm:text-4xl">
               Perfect for
             </h2>
           </Reveal>
@@ -479,7 +479,7 @@ export function ProductDetail({ slug }: { slug: string }) {
             <p className="text-xs font-extrabold uppercase tracking-widest" style={{ color: accent }}>
               Gallery
             </p>
-            <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-[#282421] sm:text-4xl">
+            <h2 className="mt-2 text-3xl font-semibold tracking-tight text-[#282421] sm:text-4xl">
               See it in the wild
             </h2>
           </Reveal>
@@ -528,7 +528,7 @@ export function ProductDetail({ slug }: { slug: string }) {
             <p className="text-xs font-extrabold uppercase tracking-widest" style={{ color: accent }}>
               Questions, answered
             </p>
-            <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-[#282421] sm:text-4xl">
+            <h2 className="mt-2 text-3xl font-semibold tracking-tight text-[#282421] sm:text-4xl">
               {product.name} FAQs
             </h2>
           </Reveal>
@@ -566,7 +566,7 @@ export function ProductDetail({ slug }: { slug: string }) {
           aria-hidden="true"
         />
         <Reveal className="relative z-10 mx-auto max-w-2xl px-4 text-center sm:px-6">
-          <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl">
+          <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
             Ready to design your {product.name.replace(/s$/, "").toLowerCase()}?
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-gray-300">
@@ -601,7 +601,7 @@ export function ProductDetail({ slug }: { slug: string }) {
             <p className="text-xs font-extrabold uppercase tracking-widest" style={{ color: accent }}>
               Explore more
             </p>
-            <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-[#282421] sm:text-4xl">
+            <h2 className="mt-2 text-3xl font-semibold tracking-tight text-[#282421] sm:text-4xl">
               Other sign types
             </h2>
           </Reveal>

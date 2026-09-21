@@ -103,7 +103,7 @@ export default function GuidesHubPage() {
             <p className="text-xs font-extrabold uppercase tracking-widest text-[#8f2347]">
               Expert Signage Knowledge
             </p>
-            <h1 className="mt-2 text-4xl font-extrabold tracking-tight text-[#282421] sm:text-5xl">
+            <h1 className="mt-2 text-4xl font-semibold tracking-tight text-[#282421] sm:text-5xl">
               Business Signage Guides & Technical Comparisons
             </h1>
             <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-[#5e5862] sm:text-lg">
@@ -124,7 +124,7 @@ export default function GuidesHubPage() {
                     <span className="inline-block rounded-full bg-[#f8f5f7] px-3 py-1 text-xs font-extrabold text-[#8f2347]">
                       {g.category}
                     </span>
-                    <h2 className="mt-4 text-2xl font-extrabold text-[#282421]">
+                    <h2 className="mt-4 text-2xl font-semibold text-[#282421]">
                       <Link href={`/guides/${g.slug}`} className="hover:underline">
                         {g.title}
                       </Link>

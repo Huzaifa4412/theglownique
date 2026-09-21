@@ -374,7 +374,7 @@ export function NeonColorChangerSection({
             <span>Interactive Color Studio</span>
           </div>
 
-          <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight mb-4 leading-tight">
+          <h2 className="text-3xl md:text-5xl font-semibold tracking-tight mb-4 leading-tight">
             See Your Neon Sign in <PremiumAccentText>Every Shade</PremiumAccentText>
           </h2>
 

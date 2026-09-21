@@ -42,7 +42,7 @@
   margin: 0 0 16px;
   font-family: var(--font-display);
   font-size: clamp(2.2rem, 4.6vw, 3.4rem);
-  font-weight: 800;
+  font-weight: 600;
   line-height: 1.04;
   letter-spacing: -0.04em;
   color: var(--ink);
@@ -138,7 +138,7 @@
   margin: 0 0 24px;
   font-family: var(--font-display);
   font-size: 1.5rem;
-  font-weight: 800;
+  font-weight: 600;
   letter-spacing: -0.025em;
   color: var(--ink);
 }
@@ -418,7 +418,7 @@
   margin: 0 0 8px;
   font-family: var(--font-display);
   font-size: 1.35rem;
-  font-weight: 800;
+  font-weight: 600;
   letter-spacing: -0.025em;
   color: var(--ink);
 }
@@ -486,7 +486,7 @@
   margin: 0 0 18px;
   font-family: var(--font-display);
   font-size: clamp(2rem, 4.4vw, 3.1rem);
-  font-weight: 800;
+  font-weight: 600;
   line-height: 1.06;
   letter-spacing: -0.04em;
   color: var(--ink);
@@ -660,7 +660,7 @@
   margin: 44px 0 14px;
   font-family: var(--font-display);
   font-size: clamp(1.45rem, 2.6vw, 1.8rem);
-  font-weight: 800;
+  font-weight: 600;
   line-height: 1.2;
   letter-spacing: -0.03em;
   color: var(--ink);

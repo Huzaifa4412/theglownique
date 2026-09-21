@@ -171,6 +171,7 @@ h3,
 
 h2 {
   font-size: clamp(2rem, 3.3vw, 3.7rem);
+  font-weight: 500;
   line-height: 1.03;
   letter-spacing: -0.045em;
   margin-bottom: 0;
@@ -318,7 +319,7 @@ h2 {
   gap: 9px;
   color: var(--pink-dark);
   font-size: clamp(1.05rem, 1.5vw, 1.42rem);
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: -0.045em;
   white-space: nowrap;
 }
@@ -470,7 +471,7 @@ h2 {
   margin-bottom: 22px;
   font-family: var(--font-display);
   font-size: clamp(2.75rem, 4.6vw, 4.9rem);
-  font-weight: 800;
+  font-weight: 600;
   line-height: 0.98;
   letter-spacing: -0.05em;
   display: flex;
@@ -1128,7 +1129,7 @@ button:active {
   color: var(--pink-dark);
   font-family: var(--font-display);
   font-size: clamp(0.9rem, 1.15vw, 1.08rem);
-  font-weight: 800;
+  font-weight: 600;
   letter-spacing: -0.025em;
   transition:
     color 250ms ease,
@@ -2329,7 +2330,7 @@ button:active {
   color: transparent;
   font-family: var(--font-display);
   font-size: clamp(8rem, 19vw, 20rem);
-  font-weight: 800;
+  font-weight: 600;
   letter-spacing: -0.075em;
   line-height: 0.72;
   opacity: 0.1;
@@ -3090,8 +3091,8 @@ button:active {
   overflow: hidden;
   border: 0;
   border-radius: var(--radius-lg);
-  background: #fff;
-  box-shadow: 0 30px 100px rgba(32, 10, 21, 0.35);
+  background: #f7f5ef;
+  box-shadow: 0 30px 100px rgba(32, 22, 16, 0.4);
   z-index: 1000;
 }
 
@@ -3099,11 +3100,62 @@ button:active {
   display: grid;
   grid-template-columns: 360px 1fr;
   align-items: stretch;
+  animation: dialog-in 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes dialog-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 .product-dialog::backdrop {
-  background: rgba(25, 11, 18, 0.56);
-  backdrop-filter: blur(5px);
+  background: rgba(26, 20, 16, 0.58);
+  backdrop-filter: blur(6px);
+}
+
+.product-dialog[open]::backdrop {
+  animation: backdrop-in 0.4s ease;
+}
+
+@keyframes backdrop-in {
+  from {
+    opacity: 0;
+  }
+}
+
+/* Each open plays a soft stagger down the form; the global reduced-motion
+   block collapses all of it to an instant appearance. */
+.product-dialog[open] .product-form > * {
+  animation: dialog-rise 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.product-dialog[open] .product-form > *:nth-child(2) { animation-delay: 60ms; }
+.product-dialog[open] .product-form > *:nth-child(3) { animation-delay: 110ms; }
+.product-dialog[open] .product-form > *:nth-child(4) { animation-delay: 150ms; }
+.product-dialog[open] .product-form > *:nth-child(5) { animation-delay: 185ms; }
+.product-dialog[open] .product-form > *:nth-child(6) { animation-delay: 215ms; }
+.product-dialog[open] .product-form > *:nth-child(7) { animation-delay: 240ms; }
+.product-dialog[open] .product-form > *:nth-child(n + 8) { animation-delay: 260ms; }
+
+@keyframes dialog-rise {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.product-dialog[open] .sign-type-preview {
+  animation: dialog-rise 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
 }
 
 .dialog-close {
@@ -3124,7 +3176,7 @@ button:active {
   min-height: 100%;
   padding: 26px 20px;
   overflow: hidden;
-  background: radial-gradient(circle at 50% 34%, rgba(169, 45, 86, 0.22) 0%, transparent 64%), #120d18;
+  background: radial-gradient(circle at 50% 34%, rgba(169, 45, 86, 0.24) 0%, transparent 64%), #171310;
   border-radius: var(--radius-lg) 0 0 var(--radius-lg);
 }
 
@@ -3146,7 +3198,7 @@ button:active {
   aspect-ratio: 4 / 3;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 14px;
+  border-radius: 4px;
   background: rgba(0, 0, 0, 0.42);
   box-shadow: 0 20px 44px rgba(0, 0, 0, 0.38);
 }
@@ -3164,7 +3216,7 @@ button:active {
 
 .sign-type-preview__eyebrow {
   margin: 0;
-  color: rgba(255, 168, 203, 0.92);
+  color: #e6a5bd;
   font-size: 0.62rem;
   font-weight: 800;
   letter-spacing: 0.16em;
@@ -3173,15 +3225,17 @@ button:active {
 
 .sign-type-preview__name {
   margin: 0;
-  color: #fff;
-  font-size: 1.05rem;
-  font-weight: 800;
+  color: #f4efe8;
+  font-family: var(--font-display);
+  font-size: 1.08rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
   line-height: 1.25;
 }
 
 .sign-type-preview__desc {
   margin: 0;
-  color: rgba(255, 255, 255, 0.62);
+  color: #b9aea4;
   font-size: 0.78rem;
   line-height: 1.55;
 }
@@ -3200,13 +3254,15 @@ button:active {
 }
 
 .product-form h2 {
-  font-size: 2rem;
-  line-height: 1.2;
+  font-size: 1.9rem;
+  line-height: 1.08;
+  font-weight: 600;
+  letter-spacing: -0.05em;
 }
 
 .dialog-product-note {
   margin-top: 4px;
-  color: #374151;
+  color: var(--text-muted);
   font-size: 0.86rem;
   font-weight: 500;
   line-height: 1.5;
@@ -3217,7 +3273,7 @@ button:active {
   flex-direction: column;
   gap: 12px;
   padding-bottom: 18px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  border-bottom: 1px solid var(--line);
 }
 
 .form-section:last-of-type {
@@ -3231,26 +3287,30 @@ button:active {
 }
 
 .form-section-title {
-  font-size: 1.08rem;
-  font-weight: 700;
-  color: #111827;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--ink);
   margin: 0;
 }
 
 .form-section-desc {
   font-size: 0.82rem;
-  color: #374151;
-  font-weight: 500;
+  color: var(--text-muted);
+  font-weight: 400;
   margin: 0;
 }
 
 .form-label {
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  color: #1f2937;
-  font-size: 0.8rem;
+  gap: 7px;
+  color: var(--text-muted);
+  font-size: 0.64rem;
   font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
 }
 
 .form-col-full {
@@ -3266,12 +3326,12 @@ button:active {
   min-height: 44px;
   display: block;
   padding-inline: 13px;
-  border: 1px solid var(--line);
-  border-radius: 9px;
+  border: 1px solid #cfc6b9;
+  border-radius: 3px;
   background: #fff;
   font-family: inherit;
   font-size: 0.85rem;
-  color: #111827;
+  color: var(--ink);
   font-weight: 500;
   transition: border-color 0.2s, box-shadow 0.2s;
 }
@@ -3280,12 +3340,12 @@ button:active {
   width: 100%;
   min-height: 76px;
   padding: 10px 13px;
-  border: 1px solid var(--line);
-  border-radius: 9px;
+  border: 1px solid #cfc6b9;
+  border-radius: 3px;
   background: #fff;
   font-family: inherit;
   font-size: 0.85rem;
-  color: #111827;
+  color: var(--ink);
   font-weight: 500;
   resize: vertical;
   transition: border-color 0.2s, box-shadow 0.2s;
@@ -3293,7 +3353,7 @@ button:active {
 
 .form-textarea::placeholder,
 .product-form input::placeholder {
-  color: #6b7280;
+  color: #8b8178;
   font-weight: 400;
 }
 
@@ -3313,10 +3373,12 @@ button:active {
 }
 
 .form-legend {
-  color: #1f2937;
-  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-size: 0.64rem;
   font-weight: 700;
-  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  margin-bottom: 7px;
 }
 
 .color-options {
@@ -3331,18 +3393,19 @@ button:active {
   align-items: center;
   gap: 8px;
   padding-inline: 10px;
-  border: 1px solid var(--line);
-  border-radius: 9px;
+  border: 1px solid #d8d0c3;
+  border-radius: 3px;
   font-size: 0.76rem;
   font-weight: 600;
-  color: #1f2937;
+  color: var(--ink);
   cursor: pointer;
   background: #fff;
-  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s, transform 0.2s;
 }
 
 .color-options label:hover {
-  border-color: #cbd5e1;
+  border-color: #b5aaa0;
+  transform: translateY(-1px);
 }
 
 .color-options label:has(input:checked) {
@@ -3362,7 +3425,7 @@ button:active {
   flex-shrink: 0;
   border: 2px solid #fff;
   border-radius: 50%;
-  box-shadow: 0 0 0 1px #cfc4c9;
+  box-shadow: 0 0 0 1px #c9bfb2;
 }
 
 /* File Upload Dropzone */
@@ -3371,9 +3434,9 @@ button:active {
   flex-direction: column;
   gap: 8px;
   padding: 14px;
-  border: 1.5px dashed var(--line);
-  border-radius: 12px;
-  background: rgba(250, 248, 249, 0.7);
+  border: 1.5px dashed #cfc6b9;
+  border-radius: 4px;
+  background: #fdfcf8;
   transition: border-color 0.2s, background 0.2s;
 }
 
@@ -3391,15 +3454,17 @@ button:active {
 }
 
 .form-label-text {
-  font-size: 0.8rem;
+  font-size: 0.64rem;
   font-weight: 700;
-  color: #1f2937;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--text-muted);
 }
 
 .file-upload-subtext {
-  font-size: 0.74rem;
-  color: #4b5563;
-  font-weight: 600;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  font-weight: 500;
 }
 
 .file-upload-dropzone {
@@ -3422,9 +3487,9 @@ button:active {
   align-items: center;
   gap: 12px;
   padding: 10px 14px;
-  border-radius: 8px;
+  border-radius: 3px;
   background: #fff;
-  border: 1px solid var(--line);
+  border: 1px solid #d8d0c3;
 }
 
 .file-upload-icon {
@@ -3434,7 +3499,7 @@ button:active {
 
 .file-placeholder-text {
   font-size: 0.84rem;
-  color: #4b5563;
+  color: var(--text-muted);
   font-weight: 500;
   flex: 1;
 }
@@ -3449,7 +3514,7 @@ button:active {
 .file-name {
   font-size: 0.82rem;
   font-weight: 600;
-  color: #111827;
+  color: var(--ink);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -3457,7 +3522,7 @@ button:active {
 
 .file-size {
   font-size: 0.74rem;
-  color: #4b5563;
+  color: #8b8178;
   font-weight: 500;
 }
 
@@ -3466,7 +3531,7 @@ button:active {
   font-weight: 700;
   color: var(--pink-dark);
   padding: 5px 10px;
-  border-radius: 6px;
+  border-radius: 2px;
   background: rgba(169, 45, 86, 0.08);
 }
 
@@ -3510,8 +3575,8 @@ button:active {
   display: flex;
   gap: 6px;
   padding: 4px;
-  background: rgba(0, 0, 0, 0.04);
-  border-radius: 9px;
+  background: #ece7dc;
+  border-radius: 3px;
 }
 
 .size-tab {
@@ -3519,18 +3584,18 @@ button:active {
   padding: 7px 12px;
   border: none;
   background: transparent;
-  border-radius: 7px;
+  border-radius: 2px;
   font-size: 0.78rem;
   font-weight: 700;
-  color: #374151;
+  color: var(--text-muted);
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
 .size-tab.is-active {
   background: #fff;
-  color: #111827;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  color: var(--ink);
+  box-shadow: 0 2px 6px rgba(40, 36, 33, 0.1);
 }
 
 .custom-size-grid {
@@ -3552,8 +3617,8 @@ button:active {
   align-items: flex-start;
   gap: 10px;
   padding: 12px;
-  border: 1px solid var(--line);
-  border-radius: 10px;
+  border: 1px solid #d8d0c3;
+  border-radius: 3px;
   background: #fff;
   text-align: left;
   cursor: pointer;
@@ -3561,7 +3626,8 @@ button:active {
 }
 
 .usage-card:hover {
-  border-color: #cbd5e1;
+  border-color: #b5aaa0;
+  transform: translateY(-1px);
 }
 
 .usage-card.is-selected {
@@ -3572,9 +3638,9 @@ button:active {
 
 .usage-card-icon {
   padding: 6px;
-  border-radius: 8px;
-  background: rgba(0, 0, 0, 0.04);
-  color: #111827;
+  border-radius: 3px;
+  background: #efe9e0;
+  color: var(--ink);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -3595,12 +3661,12 @@ button:active {
 .usage-card-title {
   font-size: 0.84rem;
   font-weight: 700;
-  color: #111827;
+  color: var(--ink);
 }
 
 .usage-card-desc {
   font-size: 0.74rem;
-  color: #4b5563;
+  color: var(--text-muted);
   font-weight: 500;
   line-height: 1.35;
 }
@@ -3629,7 +3695,7 @@ button:active {
   align-items: flex-start;
   gap: 10px;
   font-size: 0.8rem;
-  color: #1f2937;
+  color: var(--ink);
   font-weight: 500;
   line-height: 1.45;
   cursor: pointer;
@@ -3661,7 +3727,7 @@ button:active {
   left: 50%;
   bottom: 24px;
   padding: 12px 17px;
-  border-radius: 9px;
+  border-radius: 3px;
   background: var(--ink);
   color: #fff;
   font-size: 0.78rem;
@@ -3960,14 +4026,14 @@ button:active {
     display: block;
     overflow-y: auto;
     max-height: calc(100dvh - 24px);
-    border-radius: 18px;
+    border-radius: 6px;
   }
 
   .dialog-product-visual {
     height: auto;
     min-height: 0;
     padding: 16px 16px 18px;
-    border-radius: 18px 18px 0 0;
+    border-radius: 6px 6px 0 0;
   }
 
   .sign-type-preview {
@@ -3978,7 +4044,7 @@ button:active {
      above the form instead of pushing it off screen. */
   .sign-type-preview__frame {
     aspect-ratio: 16 / 10;
-    border-radius: 12px;
+    border-radius: 4px;
   }
 
   .sign-type-preview__desc {
@@ -4387,7 +4453,7 @@ button:active {
   color: var(--ink);
   font-family: var(--font-display);
   font-size: 1.4rem;
-  font-weight: 800;
+  font-weight: 600;
   letter-spacing: -0.02em;
   line-height: 1.25;
 }

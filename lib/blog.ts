@@ -215,36 +215,129 @@ async function fetchBlog<T>(
   }
 }
 
-export function getPosts(): Promise<BlogPostCard[]> {
-  return fetchBlog<BlogPostCard[]>("posts", postsQuery, {}, []);
+// ── Static Fallback Data Layer ───────────────────────────────────────────────
+// When Sanity CMS is unconfigured or offline, fallback to local static posts.
+
+import {
+  AUTHOR_PLACEHOLDER,
+  categories as staticCategories,
+  preparePosts,
+} from "@/scripts/blog-seed/content.mjs";
+
+const STATIC_POSTS_RAW = preparePosts();
+
+const STATIC_AUTHOR: BlogAuthor = {
+  name: "The Glownique Workshop Team",
+  slug: AUTHOR_PLACEHOLDER.slug,
+  role: "Illuminated Signage Specialists",
+  expertise:
+    "Handcrafting custom LED neon signs, 3D channel letters & architectural lightboxes with over 10 years of workshop experience.",
+  image: null,
+  links: null,
+};
+
+const STATIC_POSTS: BlogPost[] = STATIC_POSTS_RAW.map((post: any) => {
+  const catObj = staticCategories.find((c: any) => c._id === post.category);
+  const categoryRef: BlogCategoryRef | null = catObj
+    ? { title: catObj.title, slug: catObj.slug, description: catObj.description }
+    : null;
+
+  let coverUrl = "/hero/neon-sign-hero.png";
+  if (post.slug === "custom-neon-sign-ordering-installation") {
+    coverUrl = "/blog/custom-neon-sign-ordering-installation/cafe-sign.jpg";
+  }
+
+  return {
+    _id: post._id,
+    title: post.title,
+    slug: post.slug,
+    summary: post.summary,
+    publishedAt: post.publishedAt,
+    updatedAt: post.updatedAt ?? null,
+    readingMinutes: post.readingMinutes,
+    featured: post.featured ?? false,
+    indexable: post.indexable ?? true,
+    coverImage: {
+      url: coverUrl,
+      lqip: null,
+      width: 1200,
+      height: 675,
+      alt: post.coverAlt ?? post.title,
+      caption: post.coverCaption ?? null,
+    },
+    category: categoryRef,
+    author: STATIC_AUTHOR,
+    reviewer: null,
+    body: post.body,
+    keyTakeaways: post.keyTakeaways ?? null,
+    faqs: post.faqs ?? null,
+    seoTitle: post.seoTitle ?? null,
+    seoDescription: post.seoDescription ?? post.summary,
+    primaryKeyword: post.primaryKeyword ?? null,
+    relatedLinks: post.relatedLinks ?? null,
+    sources: post.sources ?? null,
+    related: null,
+  };
+});
+
+export async function getPosts(): Promise<BlogPostCard[]> {
+  const res = await fetchBlog<BlogPostCard[]>("posts", postsQuery, {}, []);
+  if (res && res.length > 0) return res;
+  return STATIC_POSTS;
 }
 
-export function getPostsByCategory(category: string): Promise<BlogPostCard[]> {
-  return fetchBlog<BlogPostCard[]>("postsByCategory", postsByCategoryQuery, { category }, []);
+export async function getPostsByCategory(category: string): Promise<BlogPostCard[]> {
+  const res = await fetchBlog<BlogPostCard[]>("postsByCategory", postsByCategoryQuery, { category }, []);
+  if (res && res.length > 0) return res;
+  return STATIC_POSTS.filter((p) => p.category?.slug === category);
 }
 
-export function getPost(slug: string): Promise<BlogPost | null> {
-  return fetchBlog<BlogPost | null>("post", postBySlugQuery, { slug }, null);
+export async function getPost(slug: string): Promise<BlogPost | null> {
+  const res = await fetchBlog<BlogPost | null>("post", postBySlugQuery, { slug }, null);
+  if (res) return res;
+  return STATIC_POSTS.find((p) => p.slug === slug) ?? null;
 }
 
-export function getCategories(): Promise<BlogCategory[]> {
-  return fetchBlog<BlogCategory[]>("categories", categoriesQuery, {}, []);
+export async function getCategories(): Promise<BlogCategory[]> {
+  const res = await fetchBlog<BlogCategory[]>("categories", categoriesQuery, {}, []);
+  if (res && res.length > 0) return res;
+  return staticCategories.map((c: any) => ({
+    title: c.title,
+    slug: c.slug,
+    description: c.description,
+    intro: c.intro,
+    count: STATIC_POSTS.filter((p) => p.category?.slug === c.slug).length,
+  }));
 }
 
-export function getCategory(slug: string): Promise<BlogCategoryRef | null> {
-  return fetchBlog<BlogCategoryRef | null>("category", categoryBySlugQuery, { slug }, null);
+export async function getCategory(slug: string): Promise<BlogCategoryRef | null> {
+  const res = await fetchBlog<BlogCategoryRef | null>("category", categoryBySlugQuery, { slug }, null);
+  if (res) return res;
+  const cat = staticCategories.find((c: any) => c.slug === slug);
+  return cat ? { title: cat.title, slug: cat.slug, description: cat.description } : null;
 }
 
-export function getBlogSettings(): Promise<BlogSettings | null> {
-  return fetchBlog<BlogSettings | null>("blogSettings", blogSettingsQuery, {}, null);
+export async function getBlogSettings(): Promise<BlogSettings | null> {
+  const res = await fetchBlog<BlogSettings | null>("blogSettings", blogSettingsQuery, {}, null);
+  if (res) return res;
+  return BLOG_SETTINGS_FALLBACK;
 }
 
-export function getPostRoutes(): Promise<BlogPostRoute[]> {
-  return fetchBlog<BlogPostRoute[]>("postRoutes", postRoutesQuery, {}, []);
+export async function getPostRoutes(): Promise<BlogPostRoute[]> {
+  const res = await fetchBlog<BlogPostRoute[]>("postRoutes", postRoutesQuery, {}, []);
+  if (res && res.length > 0) return res;
+  return STATIC_POSTS.map((p) => ({
+    slug: p.slug,
+    publishedAt: p.publishedAt,
+    updatedAt: p.updatedAt,
+    indexable: p.indexable,
+  }));
 }
 
-export function getCategoryRoutes(): Promise<{ slug: string }[]> {
-  return fetchBlog<{ slug: string }[]>("categoryRoutes", categoryRoutesQuery, {}, []);
+export async function getCategoryRoutes(): Promise<{ slug: string }[]> {
+  const res = await fetchBlog<{ slug: string }[]>("categoryRoutes", categoryRoutesQuery, {}, []);
+  if (res && res.length > 0) return res;
+  return staticCategories.map((c: any) => ({ slug: c.slug }));
 }
 
 // ── Presentation helpers ────────────────────────────────────────────────────

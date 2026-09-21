@@ -42,6 +42,7 @@ export function StudioCatalog() {
       aria-labelledby="catalog-heading"
     >
       <div className={styles.sectionHeading} data-reveal>
+        <span className={styles.sectionIndex} aria-hidden="true">03</span>
         <div>
           <p className={styles.kicker}>The design edit</p>
           <h2 id="catalog-heading">Find your starting point.</h2>

@@ -150,7 +150,7 @@ export function ScrollStackingCardsSection() {
 
           <h2
             id="stacking-craft-heading"
-            className="text-3xl sm:text-5xl font-extrabold tracking-tight text-[#282421] leading-tight"
+            className="text-3xl sm:text-5xl font-semibold tracking-tight text-[#282421] leading-tight"
           >
             From idea to your wall in <PremiumAccentText>six simple steps.</PremiumAccentText>
           </h2>
@@ -194,7 +194,7 @@ export function ScrollStackingCardsSection() {
                     <div className="space-y-4 max-w-xl">
                       <div className="flex items-center gap-3">
                         <span
-                          className="font-mono font-extrabold text-3xl sm:text-4xl tracking-tight"
+                          className="font-mono font-semibold text-3xl sm:text-4xl tracking-tight"
                           style={{ color: card.accentText }}
                         >
                           {card.number}
@@ -211,7 +211,7 @@ export function ScrollStackingCardsSection() {
                       </div>
 
                       <div className="space-y-1">
-                        <h3 className="text-2xl sm:text-3xl font-extrabold text-[#282421] tracking-tight">
+                        <h3 className="text-2xl sm:text-3xl font-semibold text-[#282421] tracking-tight">
                           {card.title}
                         </h3>
                         <p

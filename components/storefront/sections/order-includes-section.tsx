@@ -67,7 +67,7 @@ export function OrderIncludesSection() {
           </p>
           <h2
             id="order-includes-heading"
-            className="mt-2 text-3xl font-extrabold tracking-tight text-[#282421] sm:text-4xl"
+            className="mt-2 text-3xl font-semibold tracking-tight text-[#282421] sm:text-4xl"
           >
             What every order <PremiumAccentText>includes.</PremiumAccentText>
           </h2>

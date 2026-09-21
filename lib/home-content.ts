@@ -17,7 +17,7 @@ export const homeSignTypes = [
     image:
       "/3d-metallic-neon-sign/corporte/056b3189-6a8c-482a-8334-53ded7aff3e1.webp",
     alt: "Warm halo-lit Estudio Sur metal lettering on a dark reception wall",
-    detail: "Dimensional lettering with front, halo or dual illumination.",
+    detail: "Channel letter signs with front, halo or dual illumination.",
   },
   {
     name: "Acrylic signs",
@@ -25,7 +25,7 @@ export const homeSignTypes = [
     href: "/products/uv-print-acrylic-signs",
     image: "/3d-arcylic/3235dc09-6dac-4056-88b6-55fc26e28571.webp",
     alt: "Illuminated Sabroso acrylic lettering above a restaurant counter",
-    detail: "Printed artwork and illuminated details for colourful branding.",
+    detail: "UV-printed acrylic logo signs with illuminated detailing.",
   },
   {
     name: "Slim lightboxes",
@@ -33,19 +33,35 @@ export const homeSignTypes = [
     href: "/products/ultra-thin-lightbox",
     image: "/ultra-thin-slim-lightbox/IMG-20260803-WA0010.webp",
     alt: "Custom illuminated lightbox sign with printed logo artwork",
-    detail: "An illuminated display for logos, menus and retail graphics.",
+    detail: "Edge-lit LED lightboxes for logos, menus and retail graphics.",
   },
 ] as const;
 
 /**
  * The answer-engine paragraph (AEO/GEO). One self-contained, quotable
  * statement of what The Glownique is and does, rendered high on the page so
- * assistants and answer boxes can lift it whole. Every claim in it resolves
- * to lib/claims.ts or to standing copy elsewhere on the site — do not add a
+ * assistants and answer boxes can lift it whole. Wording follows the entity
+ * statement in SEO-Optimization/04-us-market-and-competitors.md, adapted for
+ * the full (business + consumer) audience. Every claim in it resolves to
+ * lib/claims.ts or to standing copy elsewhere on the site — do not add a
  * figure here that the claims register does not hold.
  */
 export const homeAnswer =
-  "The Glownique is a custom sign studio. We design and handcraft custom LED neon signs, 3D metal channel letters, UV-printed acrylic signs and ultra-thin lightboxes — made to order for businesses, weddings and homes. Every project starts with a free design preview, and every sign ships with tracked worldwide delivery.";
+  "The Glownique is a custom sign studio that designs and handcrafts made-to-order illuminated signage: custom LED neon signs, metal channel letters, ultra-thin LED lightboxes and UV-printed acrylic logo signs for businesses, weddings and homes. Every project starts with a free design mockup, and every sign ships with tracked worldwide delivery.";
+
+/**
+ * The homepage's B2B routing row (SEO-Optimization/05 keyword map): the
+ * homepage owns brand + category and passes commercial intent DOWN to the
+ * industry pages instead of competing with them. All five are verified
+ * head terms with live routes.
+ */
+export const homeBusinessLinks = [
+  { label: "Channel letter signs", href: "/business-signs/channel-letter-signs" },
+  { label: "Open signs", href: "/business-signs/open-signs" },
+  { label: "Bar signs", href: "/business-signs/bar-signs" },
+  { label: "Restaurant signs", href: "/business-signs/restaurant-signs" },
+  { label: "Office signs", href: "/business-signs/office-signs" },
+] as const;
 
 /**
  * Phrases the hero headline types through. The first one is also rendered
@@ -68,7 +84,7 @@ export const homeMarqueeItems = [
   "Made to order, made for you",
   "Free design preview",
   DELIVERY.short,
-  "LED neon · 3D letters · acrylic · lightboxes",
+  "LED neon · channel letters · acrylic · lightboxes",
   "Designed with feeling. Built to glow.",
 ] as const;
 
@@ -79,6 +95,13 @@ export const homeFaqs = [
       "The price depends on the size, sign type and complexity of your design. Share your idea and approximate dimensions for an itemised quote, including shipping, before you order.",
     href: "/guides/custom-business-sign-cost",
     link: "What affects the price",
+  },
+  {
+    question: "How do I get a free design mockup and quote?",
+    answer:
+      "Send your wording or logo, an approximate size and a note about where the sign will hang — through WhatsApp or the contact form. You'll receive a free digital design mockup and an itemised quote to review, and production only begins once you approve both.",
+    href: "/contact",
+    link: "Start your free mockup",
   },
   {
     question: "Can I see my design before ordering?",
@@ -129,4 +152,19 @@ export const homeFaqs = [
     href: "/guides/backlit-sign-wall-surfaces-and-standoffs",
     link: "Wall and mounting guide",
   },
+] as const;
+
+/**
+ * Phrases the /custom-signage hero types through. Each names one of the six
+ * occasion collections in the visitor's own words, so the typed line doubles
+ * as a plain-language index of what the page covers. The first entry is also
+ * rendered statically for crawlers and screen readers.
+ */
+export const occasionTypePhrases = [
+  "days like these.",
+  "the big day.",
+  "their first room.",
+  "game nights.",
+  "last orders.",
+  "the whole party.",
 ] as const;

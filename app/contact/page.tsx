@@ -210,7 +210,7 @@ export default function ContactPage() {
             <p className="text-xs font-extrabold uppercase tracking-widest text-[#8f2347]">
               Talk to a human
             </p>
-            <h1 className="mt-2 max-w-3xl text-4xl font-extrabold tracking-tight text-[#282421] sm:text-5xl">
+            <h1 className="mt-2 max-w-3xl text-4xl font-semibold tracking-tight text-[#282421] sm:text-5xl">
               Contact The Glownique
             </h1>
             <p className="mt-4 max-w-2xl text-base leading-relaxed text-[#5e5862] sm:text-lg">
@@ -270,7 +270,7 @@ export default function ContactPage() {
         {/* Channels */}
         <section className="border-b border-[#f2e7ec] py-14 sm:py-16">
           <div className="mx-auto max-w-5xl px-4 sm:px-6">
-            <h2 className="text-2xl font-extrabold tracking-tight text-[#282421] sm:text-3xl">
+            <h2 className="text-2xl font-semibold tracking-tight text-[#282421] sm:text-3xl">
               How to reach us
             </h2>
             <p className="mt-2 max-w-2xl text-sm leading-relaxed text-[#5e5862]">
@@ -534,7 +534,7 @@ export default function ContactPage() {
         {/* FAQs — the visible copy behind the FAQPage markup above */}
         <section className="py-14 sm:py-20">
           <div className="mx-auto max-w-3xl px-4 sm:px-6">
-            <h2 className="text-2xl font-extrabold tracking-tight text-[#282421] sm:text-3xl">
+            <h2 className="text-2xl font-semibold tracking-tight text-[#282421] sm:text-3xl">
               Contact questions, answered
             </h2>
             <div className="mt-8 divide-y divide-[#f2e7ec] border-y border-[#f2e7ec]">

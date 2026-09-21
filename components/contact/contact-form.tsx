@@ -247,7 +247,7 @@ export function ContactForm() {
         id="contact-form"
         className="scroll-mt-24 rounded-3xl border border-[#dcd6ce] bg-[#fff7fa] p-6 sm:p-8"
       >
-        <h2 className="text-2xl font-extrabold text-[#282421]">
+        <h2 className="text-2xl font-semibold text-[#282421]">
           The enquiry form is temporarily unavailable
         </h2>
         <p className="mt-3 text-sm leading-relaxed text-[#5e5862]">
@@ -267,7 +267,7 @@ export function ContactForm() {
       className="scroll-mt-24 rounded-3xl border border-[#dcd6ce] bg-white p-6 shadow-[0_18px_50px_-30px_rgba(30,26,34,0.5)] sm:p-8"
     >
       <div className="border-b border-[#f2e7ec] pb-6">
-        <h2 className="text-2xl font-extrabold tracking-tight text-[#282421] sm:text-3xl">
+        <h2 className="text-2xl font-semibold tracking-tight text-[#282421] sm:text-3xl">
           Send us the details
         </h2>
         <p className="mt-2 text-sm leading-relaxed text-[#5e5862]">

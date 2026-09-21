@@ -15,7 +15,7 @@ export function SignageGuideSection() {
           <p className="eyebrow">Expert Signmaking Guidance</p>
           <h2
             id="signage-guide-heading"
-            className="text-3xl sm:text-5xl font-extrabold tracking-tight text-[#282421] leading-tight mt-2"
+            className="text-3xl sm:text-5xl font-semibold tracking-tight text-[#282421] leading-tight mt-2"
           >
             How to choose the <PremiumAccentText>right sign</PremiumAccentText> for your space
           </h2>
@@ -203,7 +203,7 @@ export function SignageGuideSection() {
                 <HelpCircle className="h-4 w-4" />
                 <span>Buyer Decision Guides</span>
               </span>
-              <h3 className="text-2xl sm:text-3xl font-extrabold text-[#282421] tracking-tight">
+              <h3 className="text-2xl sm:text-3xl font-semibold text-[#282421] tracking-tight">
                 Read our in-depth guides before spending a dollar.
               </h3>
               <p className="text-sm text-[#5e5862] leading-relaxed">

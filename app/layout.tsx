@@ -4,15 +4,14 @@ import { Analytics } from "@vercel/analytics/next";
 import {
   Cormorant_Garamond,
   DM_Sans,
-  Manrope, Geist } from "next/font/google";
+  Manrope,
+} from "next/font/google";
 import "./globals.css";
 import { MetaPixel } from "@/components/analytics/meta-pixel";
 import { MetaPixelEvents } from "@/components/analytics/meta-pixel-events";
 import { PostHogProvider } from "@/components/analytics/posthog-provider";
 import { cn, serializeJsonLd } from "@/lib/utils";
 import { sameAsUrls } from "@/lib/site";
-
-const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 const dmSans = DM_Sans({
   variable: "--font-dm-sans",
@@ -162,7 +161,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={cn(dmSans.variable, manrope.variable, cormorant.variable, "font-sans", geist.variable)}>
+    <html
+      lang="en"
+      className={cn(dmSans.variable, manrope.variable, cormorant.variable)}
+    >
       <body>
         <script
           type="application/ld+json"

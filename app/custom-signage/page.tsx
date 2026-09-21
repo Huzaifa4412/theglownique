@@ -3,39 +3,70 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { MetaViewCategory } from "@/components/analytics/meta-view-trackers";
-import { ProductTopBar } from "@/components/product/product-top-bar";
+import { Reveal } from "@/components/landing/reveal";
+import { CustomQuoteButton } from "@/components/storefront/custom-quote-button";
 import { AnnouncementBar } from "@/components/storefront/sections/announcement-bar";
 import { SiteFooter } from "@/components/storefront/sections/site-footer";
+import { SiteHeader } from "@/components/storefront/sections/site-header";
+import { HeroTypewriter } from "@/components/storefront/studio-interactions";
 import { COLLECTION_PAGES } from "@/lib/collection-pages";
+import { occasionTypePhrases } from "@/lib/home-content";
 import { PRODUCT_PAGES } from "@/lib/product-catalog";
 import { SITE_URL } from "@/lib/site";
 import { serializeJsonLd } from "@/lib/utils";
+import businessImage from "@/app/assets/hero/business.webp";
+import styles from "./hub.module.css";
+
+/*
+ * The consumer occasions hub — image-first. Per the keyword map (SIG-HUB)
+ * this page owns the "custom neon signs" head term and routes occasion
+ * intent down to the six collections.
+ *
+ * IMAGE SHAPE CONTRACT: every collection photograph is a 600×600 Etsy
+ * product square. Tiles are therefore square (or 2×2 square for the featured
+ * one) — a 2:1 tile threw away 72% of the picture and cut the sign out of
+ * frame. Only the four product hero images are landscape, so the material
+ * tiles are 4:3. Do not give a square photo a wide tile.
+ */
+
+// The layout's title template appends "| The Glownique".
+const title = "Custom Neon Signs by Occasion";
+const description =
+  "Custom neon signs for weddings, kids' rooms, game rooms, home bars, parties and home decor — handcrafted to order with a free design mockup and tracked worldwide delivery.";
+
+// The same quotable answer the page renders, reused in the structured data so
+// visible copy and machine-readable copy never drift (AEO pattern).
+const hubAnswer =
+  "The Glownique makes custom LED neon signs for six kinds of occasion: weddings, kids' rooms, game rooms, home decor, home bars, and parties or events. Every sign is handcrafted to order in your wording and colours, starts with a free design mockup, and ships with tracked worldwide delivery.";
 
 export const metadata: Metadata = {
-  title: "Custom Signage & Light Up Signs",
-  description:
-    "Handcrafted custom LED neon signs, 3D metal letters & ultra-thin lightboxes built to stand out. Free 1-on-1 design mockup & 5-year warranty.",
+  title,
+  description,
   alternates: { canonical: "/custom-signage" },
   openGraph: {
     type: "website",
     siteName: "The Glownique",
-    title: "Custom Signage & Light Up Signs | The Glownique",
-    description:
-      "Explore custom LED neon signs, 3D metal channel letters, ultra-thin lightboxes and UV-print acrylic signage with free mockup.",
+    title: `${title} | The Glownique`,
+    description,
     url: "/custom-signage",
-    images: [{ url: "/hero/neon-sign-hero.png", alt: "The Glownique custom signage" }],
+    images: [
+      {
+        url: "/hero/neon-sign-hero.png",
+        alt: "Custom white LED neon name sign glowing on a dark wall",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Custom Signage & Light Up Signs | The Glownique",
-    description:
-      "Explore custom LED neon signs, 3D metal channel letters, ultra-thin lightboxes and UV-print acrylic signage.",
+    title: `${title} | The Glownique`,
+    description,
     images: ["/hero/neon-sign-hero.png"],
   },
 };
 
 export default function CustomSignagePage() {
   const pageUrl = `${SITE_URL}/custom-signage`;
+  const [wedding, kids, gaming, home, bar, events] = COLLECTION_PAGES;
 
   const structuredData = {
     "@context": "https://schema.org",
@@ -44,15 +75,15 @@ export default function CustomSignagePage() {
         "@type": "CollectionPage",
         "@id": `${pageUrl}#webpage`,
         url: pageUrl,
-        name: "Custom Signage & Light Up Signs",
-        description:
-          "Explore custom LED neon signs, 3D metal channel letters, ultra-thin lightboxes and UV-print acrylic signage.",
+        name: title,
+        description: hubAnswer,
+        isPartOf: { "@id": `${SITE_URL}/#website` },
         publisher: { "@id": `${SITE_URL}/#organization` },
       },
       {
         "@type": "ItemList",
         "@id": `${pageUrl}#collections`,
-        name: "Signs by occasion",
+        name: "Custom neon signs by occasion",
         itemListElement: COLLECTION_PAGES.map((collection, index) => ({
           "@type": "ListItem",
           position: index + 1,
@@ -64,11 +95,44 @@ export default function CustomSignagePage() {
         "@type": "BreadcrumbList",
         itemListElement: [
           { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
-          { "@type": "ListItem", position: 2, name: "Custom Signage", item: pageUrl },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Custom Signage",
+            item: pageUrl,
+          },
         ],
       },
     ],
   };
+
+  // Mosaic: wedding leads as a 2×2 square (largest search volume), the rest
+  // are 1×1 squares, and the CTA banner fills the final row completely.
+  const mosaic = [
+    { collection: wedding, featured: true },
+    { collection: kids, featured: false },
+    { collection: gaming, featured: false },
+    { collection: home, featured: false },
+    { collection: bar, featured: false },
+    { collection: events, featured: false },
+  ];
+
+  // The ribbon: a continuous strip of real signs drawn from deeper in each
+  // collection's gallery, so it never repeats a photo used in a tile above.
+  const ribbon = [
+    wedding.gallery[2],
+    kids.gallery[3],
+    gaming.gallery[2],
+    home.gallery[2],
+    bar.gallery[2],
+    events.gallery[2],
+    wedding.gallery[3],
+    kids.gallery[4],
+    gaming.gallery[3],
+    home.gallery[3],
+    bar.gallery[3],
+    kids.gallery[5],
+  ].filter(Boolean);
 
   return (
     <>
@@ -78,138 +142,274 @@ export default function CustomSignagePage() {
       />
       <MetaViewCategory category="All sign types" />
       <AnnouncementBar />
-      <ProductTopBar productName="custom sign" />
-      <main id="main-content" className="bg-white">
-        <section className="border-b border-[#dcd6ce] bg-gradient-to-b from-[#efe9e0] to-white py-16 sm:py-20">
-          <div className="mx-auto max-w-3xl px-4 text-center sm:px-6">
-            <p className="text-xs font-extrabold uppercase tracking-widest text-[#8f2347]">
-              Handcrafted Custom Signage
-            </p>
-            <h1 className="mt-2 text-4xl font-extrabold tracking-tight text-[#282421] sm:text-5xl">
-              Custom Signage &amp; Light Up Signs
+      <SiteHeader />
+      <main id="main-content" className={styles.hub}>
+        {/* ── Hero: typed statement + square photo collage ────────────── */}
+        <section className={styles.hero} aria-labelledby="hub-heading">
+          <div className={styles.heroCopy}>
+            <p className={styles.kicker}>Signs by occasion</p>
+            <h1 id="hub-heading">
+              <span className={styles.heroLine}>
+                <span>Custom neon signs,</span>
+              </span>
+              <span className={styles.heroLine}>
+                <span>
+                  for{" "}
+                  {/* The full phrase is rendered statically for crawlers and
+                      screen readers; the typed copy is aria-hidden. */}
+                  <span className="sr-only">{occasionTypePhrases[0]}</span>
+                  <em className={styles.heroTypeLine}>
+                    <HeroTypewriter
+                      phrases={occasionTypePhrases}
+                      startDelayMs={2200}
+                    />
+                  </em>
+                </span>
+              </span>
             </h1>
-            <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-[#5e5862]">
-              Every sign is handcrafted and made to order, with a free digital design mockup, a 5-year
-              warranty and tracked worldwide delivery. Choose a sign type below to see full specs and custom options.
-            </p>
-          </div>
-        </section>
-
-        <section className="py-14 sm:py-20">
-          <div className="mx-auto grid max-w-[1320px] gap-6 px-4 sm:px-6 md:grid-cols-2">
-            {PRODUCT_PAGES.map((product) => (
-              <Link
-                key={product.slug}
-                href={`/products/${product.slug}`}
-                className="group block overflow-hidden rounded-3xl border border-[#dcd6ce] bg-white shadow-[0_14px_40px_rgba(107,38,67,0.08)] transition-transform duration-300 hover:-translate-y-1"
-              >
-                <div className="relative aspect-[16/9] w-full overflow-hidden bg-black/5">
-                  <Image
-                    src={product.heroImage}
-                    alt={`${product.name} — ${product.tagline}`}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                  <span
-                    className="absolute left-4 top-4 rounded-full px-3 py-1 text-xs font-extrabold uppercase tracking-widest text-white shadow-lg"
-                    style={{ backgroundColor: product.accent }}
-                  >
-                    {product.category}
-                  </span>
-                </div>
-                <div className="p-6">
-                  <h2 className="text-2xl font-extrabold tracking-tight text-[#282421]">
-                    {product.name}
-                  </h2>
-                  <p className="mt-2 text-sm leading-6 text-[#5e5862]">{product.tagline}</p>
-                  <span
-                    className="mt-4 inline-flex items-center gap-1.5 text-sm font-bold transition-colors"
-                    style={{ color: product.accent }}
-                  >
-                    Explore in detail
-                    <span
-                      aria-hidden="true"
-                      className="transition-transform duration-300 group-hover:translate-x-1"
-                    >
-                      →
-                    </span>
-                  </span>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </section>
-
-        {/*
-          Shop by occasion. The four cards above answer "which sign type"; these
-          answer "what is it for", which is the question consumer search
-          actually asks — and they are this hub's only route into the collection
-          pages, so they are links rather than decoration.
-        */}
-        <section className="border-t border-[#dcd6ce] bg-[#faf7f8] py-14 sm:py-20">
-          <div className="mx-auto max-w-[1320px] px-4 sm:px-6">
-            <div className="mb-10 text-center">
-              <p className="text-xs font-extrabold uppercase tracking-widest text-[#8f2347]">
-                Shop by Occasion
-              </p>
-              <h2 className="mt-2 text-3xl font-extrabold text-[#282421] sm:text-4xl">
-                Signs for Weddings, Kids’ Rooms, Game Rooms &amp; Home Bars
-              </h2>
-              <p className="mx-auto mt-3 max-w-xl text-base text-[#5e5862]">
-                What the sign is for changes how it should be built. Each collection shows real
-                signs people ordered for that room or day, and the decisions worth making before we
-                fabricate.
-              </p>
+            <p>Six collections of made-to-order signs. Pick your reason.</p>
+            <div className={styles.heroActions}>
+              <CustomQuoteButton
+                className={styles.primary}
+                label="Start my free mockup"
+              />
+              <a className={styles.textLink} href="#occasions">
+                Browse ↘
+              </a>
             </div>
+          </div>
+          <div className={styles.heroCollage}>
+            <Link
+              className={`${styles.heroTile} ${styles.heroTileTall}`}
+              href={`/custom-signage/${wedding.slug}`}
+            >
+              <Image
+                src={wedding.gallery[0].src}
+                alt={wedding.gallery[0].alt}
+                fill
+                priority
+                sizes="(max-width: 900px) 62vw, 30vw"
+              />
+              <span className={styles.tileTag}>Weddings ↗</span>
+            </Link>
+            <Link
+              className={styles.heroTile}
+              href={`/custom-signage/${gaming.slug}`}
+            >
+              <Image
+                src={gaming.gallery[0].src}
+                alt={gaming.gallery[0].alt}
+                fill
+                sizes="(max-width: 900px) 34vw, 16vw"
+              />
+              <span className={styles.tileTag}>Game rooms ↗</span>
+            </Link>
+            <Link
+              className={styles.heroTile}
+              href={`/custom-signage/${bar.slug}`}
+            >
+              <Image
+                src={bar.gallery[0].src}
+                alt={bar.gallery[0].alt}
+                fill
+                sizes="(max-width: 900px) 34vw, 16vw"
+              />
+              <span className={styles.tileTag}>Home bars ↗</span>
+            </Link>
+          </div>
+        </section>
 
-            <div className="grid gap-6 md:grid-cols-3">
-              {COLLECTION_PAGES.map((collection) => (
+        {/* ── The one-line answer (AEO), visually quiet ───────────────── */}
+        <section className={styles.answer} aria-labelledby="hub-answer-heading">
+          <h2 className={styles.answerQuestion} id="hub-answer-heading">
+            Which custom neon sign suits your occasion?
+          </h2>
+          <p className={styles.answerText}>{hubAnswer}</p>
+        </section>
+
+        {/* ── The occasions mosaic ────────────────────────────────────── */}
+        <section
+          className={styles.section}
+          id="occasions"
+          aria-labelledby="occasions-heading"
+        >
+          <Reveal>
+            <div className={styles.sectionHeading}>
+              <div>
+                <p className={styles.kicker}>The occasions index</p>
+                <h2 id="occasions-heading">
+                  Six collections. One is <em>your reason.</em>
+                </h2>
+              </div>
+              <Link className={styles.textLink} href="/products">
+                Compare sign materials ↗
+              </Link>
+            </div>
+          </Reveal>
+          <div className={styles.mosaic}>
+            {mosaic.map(({ collection, featured }, index) => {
+              const front = collection.gallery[0];
+              // A second real photo from the same collection, revealed on
+              // hover — two signs per tile instead of one.
+              const back = collection.gallery[1] ?? front;
+              return (
                 <Link
                   key={collection.slug}
+                  className={`${styles.tile}${
+                    featured ? ` ${styles.tileFeatured}` : ""
+                  }`}
                   href={`/custom-signage/${collection.slug}`}
-                  className="group block overflow-hidden rounded-3xl border border-[#dcd6ce] bg-white shadow-sm transition-transform duration-300 hover:-translate-y-1"
                 >
-                  <div className="relative aspect-[16/10] w-full overflow-hidden bg-black/5">
-                    <Image
-                      src={collection.heroImage}
-                      alt={collection.heroAlt}
-                      fill
-                      sizes="(max-width: 768px) 100vw, 33vw"
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                  </div>
-                  <div className="p-6">
-                    <h3 className="text-xl font-extrabold tracking-tight text-[#282421] group-hover:text-[#8f2347]">
-                      {collection.name} →
-                    </h3>
-                    <p className="mt-2 text-sm leading-6 text-[#5e5862]">{collection.intro}</p>
-                  </div>
+                  <Image
+                    className={styles.tileFront}
+                    src={front.src}
+                    alt={front.alt}
+                    fill
+                    sizes={
+                      featured
+                        ? "(max-width: 700px) 100vw, 46vw"
+                        : "(max-width: 700px) 46vw, 23vw"
+                    }
+                  />
+                  <Image
+                    className={styles.tileBack}
+                    src={back.src}
+                    alt=""
+                    aria-hidden="true"
+                    fill
+                    loading="lazy"
+                    sizes={
+                      featured
+                        ? "(max-width: 700px) 100vw, 46vw"
+                        : "(max-width: 700px) 46vw, 23vw"
+                    }
+                  />
+                  <span className={styles.tileIndex} aria-hidden="true">
+                    0{index + 1}
+                  </span>
+                  {featured && (
+                    <span className={styles.tileSticker} aria-hidden="true">
+                      Most loved
+                    </span>
+                  )}
+                  <span className={styles.tileCaption}>
+                    <span>
+                      {collection.name}
+                      <small>{collection.kicker}</small>
+                    </span>
+                    <span className={styles.tileArrow} aria-hidden="true">
+                      ↗
+                    </span>
+                  </span>
                 </Link>
+              );
+            })}
+            <CustomQuoteButton
+              className={styles.tileCta}
+              label="Something else entirely? Start a free mockup"
+            />
+          </div>
+        </section>
+
+        {/* ── The ribbon: signs we've actually made, scrolling past ───── */}
+        <section className={styles.ribbonSection} aria-label="Recent signs">
+          <p className={styles.ribbonLabel}>
+            <span className={styles.ribbonDot} aria-hidden="true" />
+            Made in the studio
+          </p>
+          <div className={styles.ribbon}>
+            <div className={styles.ribbonTrack}>
+              {[0, 1].map((pass) => (
+                <div className={styles.ribbonGroup} key={pass} aria-hidden={pass === 1}>
+                  {ribbon.map((photo, i) => (
+                    <span className={styles.ribbonItem} key={`${pass}-${i}`}>
+                      <Image
+                        src={photo.src}
+                        alt={pass === 0 ? photo.alt : ""}
+                        fill
+                        loading="lazy"
+                        sizes="180px"
+                      />
+                    </span>
+                  ))}
+                </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Commercial Hub Link Callout */}
-        <section className="border-t border-[#dcd6ce] bg-white py-14 sm:py-16">
-          <div className="mx-auto max-w-4xl px-4 text-center sm:px-6">
-            <h2 className="text-2xl font-extrabold text-[#282421]">
-              Looking for Commercial &amp; Exterior Storefront Signage?
-            </h2>
-            <p className="mt-2 text-sm text-[#5e5862]">
-              Visit our dedicated Business Signage Hub for architectural channel letters, office logo plaques, and commercial retail displays.
-            </p>
-            <div className="mt-6">
-              <Link
-                href="/business-signs"
-                className="inline-flex items-center gap-2 rounded-xl bg-[#282421] px-6 py-3.5 text-xs font-extrabold uppercase tracking-widest text-white hover:bg-[#8f2347]"
-              >
-                Explore Business Signage Hub →
-              </Link>
+        {/* ── Materials as landscape image tiles ─────────────────────── */}
+        <section className={styles.section} aria-labelledby="materials-heading">
+          <Reveal>
+            <div className={styles.sectionHeading}>
+              <div>
+                <p className={styles.kicker}>Four ways to build it</p>
+                <h2 id="materials-heading">
+                  Any occasion. <em>Any material.</em>
+                </h2>
+              </div>
             </div>
+          </Reveal>
+          <div className={styles.materialGrid}>
+            {PRODUCT_PAGES.map((product) => (
+              <Reveal key={product.slug}>
+                <Link
+                  className={styles.materialTile}
+                  href={`/products/${product.slug}`}
+                >
+                  <Image
+                    src={product.heroImage}
+                    alt={`${product.name} — ${product.tagline}`}
+                    fill
+                    sizes="(max-width: 700px) 46vw, 25vw"
+                  />
+                  <span className={styles.tileCaption}>
+                    <span>
+                      {product.name}
+                      <small>{product.tagline}</small>
+                    </span>
+                    <span className={styles.tileArrow} aria-hidden="true">
+                      ↗
+                    </span>
+                  </span>
+                </Link>
+              </Reveal>
+            ))}
           </div>
         </section>
+
+        {/* ── Business hand-off over a real install photo ─────────────── */}
+        <Reveal>
+          <section className={styles.businessBand} aria-labelledby="biz-heading">
+            <Image
+              src={businessImage}
+              alt=""
+              fill
+              placeholder="blur"
+              sizes="100vw"
+              className={styles.businessPhoto}
+            />
+            <div className={styles.businessInner}>
+              <div>
+                <p className={styles.kicker}>For your business</p>
+                <h2 id="biz-heading">
+                  Signing a storefront, not <em>a story?</em>
+                </h2>
+              </div>
+              <div className={styles.businessLinks}>
+                <Link className={styles.businessGhost} href="/business-signs">
+                  Explore business signage <span aria-hidden="true">→</span>
+                </Link>
+                <Link
+                  className={styles.textLink}
+                  href="/business-signs/channel-letter-signs"
+                >
+                  Channel letter signs ↗
+                </Link>
+              </div>
+            </div>
+          </section>
+        </Reveal>
       </main>
       <SiteFooter />
     </>

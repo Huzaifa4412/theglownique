@@ -80,7 +80,7 @@ export function FaqSection() {
           <p className="eyebrow">Questions, answered</p>
           <h2
             id="faq-heading"
-            className="text-3xl sm:text-5xl font-extrabold tracking-tight text-[#282421] leading-tight mt-2"
+            className="text-3xl sm:text-5xl font-semibold tracking-tight text-[#282421] leading-tight mt-2"
           >
             Neon sign <PremiumAccentText>FAQs</PremiumAccentText>
           </h2>

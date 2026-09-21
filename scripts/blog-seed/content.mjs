@@ -147,6 +147,9 @@ export const imageFiles = {
   "channel-duallit": "public/3d-metallic-neon-sign/duallit/1.png",
   "channel-frontlit": "public/3d-metallic-neon-sign/frontlit/2.png",
   "lightbox-storefront": "public/ultra-thin-slim-lightbox/Storefront windows.jpg",
+  "neon-cafe-sign": "public/blog/custom-neon-sign-ordering-installation/cafe-sign.jpg",
+  "neon-vs-glass": "public/blog/custom-neon-sign-ordering-installation/neon-vs-glass.jpg",
+  "neon-hardware-kit": "public/blog/custom-neon-sign-ordering-installation/hardware-kit.jpg",
 };
 
 /** Links every post carries, so no post is ever a dead end. */
@@ -179,6 +182,241 @@ const LINK_BUSINESS_HUB = {
 };
 
 export const posts = [
+  // ────────────────────────────────────────────────────────────────────────
+  {
+    _id: "post-custom-neon-sign-ordering-installation",
+    slug: "custom-neon-sign-ordering-installation",
+    title: "Step-by-Step Ordering and Installation of a Custom Neon Sign",
+    category: "category-care-and-setup",
+    cover: "neon-cafe-sign",
+    coverAlt: "Custom warm-white LED neon cafe sign mounted on a dark feature wall",
+    coverCaption:
+      "A custom LED neon sign should do more than look good in a preview — it needs to fit your wall, reach an outlet, and arrive in time.",
+    readingMinutes: 8,
+    publishedAt: "2026-09-21T10:00:00Z",
+    featured: true,
+    primaryKeyword: "custom neon sign",
+    seoTitle: "Custom Neon Sign Ordering & Install Guide",
+    seoDescription:
+      "Learn how to order and install a custom neon sign, compare LED and glass, plan your budget, and get a free design mockup from The Glownique.",
+    summary:
+      "From your first design idea to the final wall mounting, learn how to choose, order and install a custom neon sign for a business, event or home.",
+    keyTakeaways: [
+      "Start with a clear brief: choose your wording or logo, measure the usable space, and plan electrical access before approving your mockup.",
+      "Choose LED neon for durability, low-voltage safety, and flexible design, or traditional glass neon when authentic vintage glass character is essential.",
+      "Account for all cost drivers — size, letter count, complex curves, outdoor waterproofing (IP67), and power controls — when setting your budget.",
+      "Always unpack and test illumination before mounting, leaving slack in the power cable so soldered joints never take strain.",
+      "Use proper wall anchors (plasterboard, masonry, or standoffs) for DIY installation, or hire a professional for large, exterior, or hardwired commercial signs.",
+    ],
+    body: [
+      p(
+        "A custom neon sign should do more than look good in a preview. It needs to fit your wall, communicate the right message, reach a suitable power outlet and arrive in time for your plans.",
+      ),
+      p(
+        "The process starts with a clear brief: choose your wording or logo, measure the space, confirm the materials and electrical requirements, approve a digital mockup, and arrange installation. A small indoor LED sign may be suitable for straightforward wall mounting; a large exterior sign needs a more detailed installation plan.",
+      ),
+      p(
+        "This guide takes you from your first idea to the finished display, with practical advice for shops, hospitality venues, events and home decor.",
+      ),
+
+      h2("Why neon style lighting is finding new audiences"),
+      p(
+        "Neon has a strong connection with cinema signs, late-night diners and distinctive shopping streets. Contemporary interest continues to grow as commercial designers and artists incorporate illuminated lettering into modern interiors.",
+      ),
+      p(
+        "Today, LED neon offers another way to create illuminated lettering and line art. Flexible tubing gives designers a neon-like glow without requiring a traditional glass-tube sign. That makes the style accessible for a cafe wall, wedding backdrop or personal workspace, as well as commercial branding.",
+      ),
+
+      h2("Step 1: Decide what your sign needs to do"),
+      p("Start with the location and the person who will see it. Here is how the brief changes by setting:"),
+      ul([
+        [
+          b("Retail storefront: "),
+          "Picture a short boutique name in clear, bold lettering inside a window. Test the view from the pavement in daylight as well as after dark. Reflections and scale affect readability.",
+        ],
+        [
+          b("Hospitality venue: "),
+          "Imagine a warm-white cafe logo on a charcoal wall behind the counter. Plan the composition around shelves and equipment, and consider dimming so the sign works with evening lighting.",
+        ],
+        [
+          b("Wedding or event: "),
+          "A surname or short phrase can sit above a photo backdrop. Agree on the supporting frame, power access, transport and venue setup time before finalizing the design.",
+        ],
+        [
+          b("Home decor: "),
+          "A name or simple line-art motif can personalize a reading corner or gaming room. Think about comfortable brightness, screen reflections and keeping cables out of reach of children and pets.",
+        ],
+      ]),
+
+      h2("Step 2: Choose LED neon, glass neon or dimensional lettering"),
+      p(
+        'The word "neon" is often used for two different technologies. Traditional neon creates light inside shaped, gas-filled glass tubes. LED neon uses light-emitting diodes within a flexible diffuser to create a continuous-looking line.',
+      ),
+      table(
+        "Comparison of LED Neon vs Traditional Glass Neon",
+        ["Consideration", "LED Neon", "Traditional Glass Neon"],
+        [
+          ["Construction", "LEDs inside flexible tubing on acrylic backing", "Shaped glass tubes with electrodes & gas fill"],
+          ["Appearance", "Diffused continuous line for lettering & outlines", "Distinctive raw glow of illuminated glass tubing"],
+          ["Electrical Setup", "Low-voltage 12V DC system with plug-in adapter", "Dedicated high-voltage neon transformer"],
+          ["Handling & Safety", "Flexible tubing resistant to impact", "Fragile glass requiring careful transport"],
+          ["Installation", "Small indoor plug-in designs suit DIY mounting", "Specialist professional installation recommended"],
+        ],
+      ),
+      image(
+        "neon-vs-glass",
+        "LED neon tubing on acrylic beside a traditional glass neon tube",
+        "Comparing flexible silicone LED neon flex with traditional hand-blown glass tubing.",
+      ),
+
+      h2("Step 3: Measure your space and refine the design"),
+      p(
+        "Measure the usable width and height of the display area, including the space around furniture, doors and shelving. Then use paper or removable masking tape to mark the proposed sign outline. Step back to the distance from which people will actually see it.",
+      ),
+      ul([
+        [
+          b("Text and font: "),
+          "Check every word at the intended viewing distance. Intricate scripts and small gaps may need a larger sign or a simplified layout.",
+        ],
+        [
+          b("Color and background: "),
+          "Consider the wall color and surrounding light. Request an illuminated color reference when matching brand palettes.",
+        ],
+        [
+          b("Logo detail: "),
+          "Provide vector artwork if available. Fine lines or small gradients can be printed on UV acrylic with neon outline accents.",
+        ],
+        [
+          b("Brightness & Controls: "),
+          "Decide whether fixed single-color lighting suits the project or if an RGB option with remote dimmer is preferred.",
+        ],
+      ]),
+
+      h2("Step 4: Confirm materials, power and outdoor suitability"),
+      p(
+        "Our LED neon range operates at 12V on the sign side of the system; the power adapter connects to a standard mains outlet. Confirm adapter input ratings, cable lengths, cable exit positions, and compatible dimmers before ordering.",
+      ),
+      p(
+        "Plan a ventilated, accessible position for the adapter. Measure the actual cable route along the wall rather than straight-line distance to the outlet.",
+      ),
+      callout(
+        "note",
+        "Specify outdoor use from the beginning",
+        "If your sign will face rain, condensation, or direct sun, specify our IP67 outdoor option. Ingress protection requires appropriate sealing for adapters, controllers, and cable connections.",
+      ),
+
+      h2("Step 5: Build a realistic budget"),
+      p(
+        "Custom neon sign pricing depends on overall width, letter count, tubing length, intricate curves, multiple colors, backboard construction, controls, and outdoor protection.",
+      ),
+      table(
+        "Published Benchmark Sign Examples (US Market)",
+        ["Example Design", "Published Dimensions", "Price Range (USD)"],
+        [
+          ["Simple illustrated icon (Taco design)", "10 x 9 to 26 x 24 inches", "$157 - $415"],
+          ["Short text design (XOXO)", "24 x 8 to 41 x 14 inches", "$220 - $379"],
+          ["Detailed multicolor artwork (Voodoo Skull)", "16 x 26 to 25 x 39 inches", "$568 - $864"],
+        ],
+        "Third-party published benchmarks showing how scale and complexity affect costs. Itemized quotes from The Glownique cover your exact specification.",
+      ),
+
+      h2("Step 6: Request and approve your free digital mockup"),
+      p(
+        "Send us your exact wording or logo, approximate dimensions, preferred colors, location photograph, and required date. We will prepare a free 2D/3D digital mockup and itemized quote.",
+      ),
+      ul([
+        "Verify spelling, capitalization, punctuation, and logo proportions.",
+        "Check overall dimensions and the acrylic backboard cut shape (contour vs rectangle).",
+        "Confirm illuminated color, font spacing, and simplified vector elements.",
+        "Verify mounting points, cable exit location, and power accessories.",
+      ]),
+
+      h2("Step 7: Place the order and agree on delivery timing"),
+      p(
+        "We process payments through The Glownique's Etsy shop. You can pay in full or make a 50% initial payment followed by the balance when the sign is ready for dispatch under Etsy transaction protection terms.",
+      ),
+      p(
+        "We offer tracked international delivery. Build in extra lead time for custom production, shipping, inspection, and installation before critical event dates.",
+      ),
+
+      h2("Step 8: Inspect and test the sign before mounting"),
+      p(
+        "Unpack on a clean, padded surface and support the backing with both hands. Compare the delivered sign with the approved mockup, inspect cables and hardware, and perform a brief power test before mounting.",
+      ),
+      image(
+        "neon-hardware-kit",
+        "Custom LED neon sign with power adapter and wall-mounting hardware",
+        "The complete unboxing kit including LED sign, power adapter, controller, and standoff hardware.",
+      ),
+
+      h2("Step 9: Install your custom LED neon sign"),
+      ol([
+        "Choose fixing points. Confirm the wall can support the complete weight and locate structural studs or heavy-duty anchors.",
+        "Mark and level layout. Use the template or backboard mounting holes, checking alignment with a spirit level.",
+        "Install fixings. Fit anchors, screws, and standoff bases according to hardware instructions.",
+        "Secure backboard. Align the sign with protective washers/spacers and tighten gently without stressing the acrylic.",
+        "Support cable and adapter. Use clear cable clips or surface covers, keeping cables free from sharp edges.",
+        "Connect with power off. Follow the connection sequence for sign, dimmer controller, and power supply.",
+        "Test finished display. Restore power, check illumination, and adjust brightness from main viewing angle.",
+      ]),
+      callout(
+        "tip",
+        "When to book a professional installer",
+        "Arrange professional installation for large or heavy commercial signs, high exterior mountings, glass neon, or hardwired electrical setups requiring building permits.",
+      ),
+
+      h2("Step 10: Care for the sign and keep your warranty details"),
+      p(
+        "Unplug before cleaning. Use gentle dusting with a dry microfibre cloth and avoid spraying liquids directly on electrical parts or acrylic.",
+      ),
+      p(
+        "Our 5-year warranty covers manufacturing defects, LED components, power supplies, wiring, and workmanship faults under published terms.",
+      ),
+
+      cta(
+        "Ready to start your custom sign project?",
+        "Send us your text, logo, or idea for a free 1-on-1 design preview and itemized quote within 2 hours.",
+        "Request your free mockup",
+      ),
+    ],
+    faqs: [
+      {
+        q: "Can I install a custom neon sign myself?",
+        a: "A small to medium indoor LED neon sign with a plug-in adapter is designed for straightforward DIY wall mounting using standard anchors or standoffs. Large commercial, high exterior, or hardwired installations should be handled by a qualified installer.",
+      },
+      {
+        q: "Can LED neon reproduce every detail of my logo?",
+        a: "Very fine lines or tiny text may require simplification for neon tubing. Alternatively, we offer UV-printed acrylic signs with illuminated neon outline accents to preserve intricate logo details perfectly.",
+      },
+      {
+        q: "Can I return a custom sign if I change my mind?",
+        a: "Because custom signs are made to order according to your approved mockup, change-of-mind returns are excluded once production starts. Damaged, faulty, or incorrect items are covered under our 5-year warranty and consumer protection policies.",
+      },
+      {
+        q: "How early should I order a custom sign for an event?",
+        a: "We recommend placing your order at least 2 to 3 weeks before your event to allow time for design revisions, handcrafting, tracked shipping, and pre-event installation.",
+      },
+    ],
+    relatedLinks: [
+      LINK_NEON_PRODUCT,
+      LINK_COST_GUIDE,
+      LINK_LIGHTING_GUIDE,
+      LINK_BUSINESS_HUB,
+    ],
+    sources: [
+      {
+        label: "Museum of Neon Art (MONA) - Preservation and Modern Signage Design",
+        publisher: "Museum of Neon Art",
+        accessed: "2026-09-21",
+      },
+      {
+        label: "LED Ingress Protection Standards (IP67 Outdoor Specifications)",
+        publisher: "International Electrotechnical Commission (IEC)",
+        accessed: "2026-09-21",
+      },
+    ],
+  },
+
   // ────────────────────────────────────────────────────────────────────────
   {
     _id: "post-how-to-clean-led-neon-signs",

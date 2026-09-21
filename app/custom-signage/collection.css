@@ -50,7 +50,7 @@
 .collection-cta h2 {
   margin: 0;
   font-family: var(--font-display);
-  font-weight: 800;
+  font-weight: 600;
   font-size: clamp(1.75rem, 3.2vw, 2.5rem);
   line-height: 1.08;
   letter-spacing: -0.02em;
@@ -235,7 +235,7 @@
 .collection-h1 {
   margin: 22px 0 0;
   font-family: var(--font-display);
-  font-weight: 800;
+  font-weight: 600;
   font-size: clamp(2.25rem, 5vw, 3.75rem);
   line-height: 1.04;
   letter-spacing: -0.025em;

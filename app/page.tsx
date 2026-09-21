@@ -8,9 +8,11 @@ import { homeAnswer, homeSignTypes } from "@/lib/home-content";
 import { SITE_URL } from "@/lib/site";
 import { serializeJsonLd } from "@/lib/utils";
 
-const title = "Custom Neon Signs & Business Signage | The Glownique";
+// Brand + illuminated-signage category (SEO-Optimization/05, HOME row): the
+// homepage owns the entity; product and cluster pages own their head terms.
+const title = "Custom Neon Signs & Illuminated Signage | The Glownique";
 const description =
-  "Custom LED neon signs, 3D metal letters, acrylic signs and slim lightboxes for your business, wedding or home. Start with a free design preview and quote.";
+  "Custom LED neon signs, channel letters, lightboxes & acrylic logo signs, made to order for business, weddings & home. Free design mockup with every quote.";
 export const metadata: Metadata = {
   title: { absolute: title },
   description,

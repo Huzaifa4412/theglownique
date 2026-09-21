@@ -108,7 +108,7 @@ export default function LightingComparisonGuidePage() {
             <p className="text-xs font-extrabold uppercase tracking-widest text-[#8f2347]">
               Illumination &amp; Technology Guide
             </p>
-            <h1 className="mt-2 text-4xl font-extrabold tracking-tight text-[#282421] sm:text-5xl">
+            <h1 className="mt-2 text-4xl font-semibold tracking-tight text-[#282421] sm:text-5xl">
               Front-Lit vs. Halo-Lit vs. Dual-Lit Channel Letters
             </h1>
             <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-[#5e5862] sm:text-lg">
@@ -120,7 +120,7 @@ export default function LightingComparisonGuidePage() {
         <section className="py-16 sm:py-24">
           <div className="mx-auto max-w-4xl px-4 sm:px-6">
             <article className="prose prose-pink max-w-none text-[#282421]">
-              <h2 className="text-3xl font-extrabold text-[#282421]">
+              <h2 className="text-3xl font-semibold text-[#282421]">
                 Illumination Styles Compared
               </h2>
 
@@ -182,7 +182,7 @@ export default function LightingComparisonGuidePage() {
 
               {/* Lighting FAQs */}
               <div className="mt-12">
-                <h3 className="text-2xl font-extrabold text-[#282421] mb-6">
+                <h3 className="text-2xl font-semibold text-[#282421] mb-6">
                   Frequently Asked Channel Letter Lighting Questions
                 </h3>
                 <div className="space-y-4">
@@ -196,7 +196,7 @@ export default function LightingComparisonGuidePage() {
               </div>
 
               <div className="mt-12 rounded-3xl border border-[#dcd6ce] bg-[#efe9e0] p-8 text-center">
-                <h3 className="text-2xl font-extrabold text-[#282421]">
+                <h3 className="text-2xl font-semibold text-[#282421]">
                   Need Help Deciding Which Lighting Style Fits Your Storefront?
                 </h3>
                 <p className="mt-2 text-sm text-[#5e5862]">

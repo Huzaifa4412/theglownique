@@ -161,7 +161,7 @@ export default function BusinessSignsHubPage() {
             <p className="text-xs font-extrabold uppercase tracking-widest text-[#8f2347]">
               Commercial Signage Hub
             </p>
-            <h1 className="mt-3 text-4xl font-extrabold tracking-tight text-[#282421] sm:text-5xl lg:text-6xl">
+            <h1 className="mt-3 text-4xl font-semibold tracking-tight text-[#282421] sm:text-5xl lg:text-6xl">
               Custom Business Signs &amp; Storefront Signage
             </h1>
             <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-[#5e5862]">
@@ -188,7 +188,7 @@ export default function BusinessSignsHubPage() {
         <section className="py-16 sm:py-24">
           <div className="mx-auto max-w-[1320px] px-4 sm:px-6">
             <div className="mb-12 text-center">
-              <h2 className="text-3xl font-extrabold text-[#282421] sm:text-4xl">
+              <h2 className="text-3xl font-semibold text-[#282421] sm:text-4xl">
                 Five Custom Illuminated Sign Technologies
               </h2>
               <p className="mt-3 text-base text-[#5e5862]">
@@ -219,7 +219,7 @@ export default function BusinessSignsHubPage() {
                   </div>
 
                   <div className="flex flex-1 flex-col p-6 sm:p-8">
-                    <h3 className="text-2xl font-extrabold text-[#282421]">
+                    <h3 className="text-2xl font-semibold text-[#282421]">
                       <Link href={`/business-signs/${p.slug}`} className="hover:underline">
                         {p.name}
                       </Link>
@@ -264,7 +264,7 @@ export default function BusinessSignsHubPage() {
               <p className="text-xs font-extrabold uppercase tracking-widest text-[#8f2347]">
                 Industry Applications
               </p>
-              <h2 className="mt-2 text-3xl font-extrabold text-[#282421] sm:text-4xl">
+              <h2 className="mt-2 text-3xl font-semibold text-[#282421] sm:text-4xl">
                 Commercial Signage Tailored by Industry
               </h2>
               <p className="mx-auto mt-3 max-w-xl text-base text-[#5e5862]">
@@ -293,7 +293,7 @@ export default function BusinessSignsHubPage() {
         <section className="border-t border-[#dcd6ce] bg-[#faf7f8] py-16 sm:py-24">
           <div className="mx-auto max-w-5xl px-4 sm:px-6">
             <div className="mb-10 text-center">
-              <h2 className="text-3xl font-extrabold text-[#282421] sm:text-4xl">
+              <h2 className="text-3xl font-semibold text-[#282421] sm:text-4xl">
                 B2B Signage Decision Guides
               </h2>
               <p className="mt-3 text-base text-[#5e5862]">
