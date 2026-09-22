@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { AnnouncementBar } from "@/components/storefront/sections/announcement-bar";
+import { BannerSliderSection } from "@/components/storefront/sections/banner-slider-section";
 import { CategoryRail } from "@/components/storefront/sections/category-rail";
 import { ComparisonSection } from "@/components/storefront/sections/comparison-section";
 import { ConceptToGlowSection } from "@/components/storefront/sections/concept-to-glow-section";
@@ -119,6 +120,7 @@ export default function Home() {
       <AnnouncementBar />
       <SiteHeader />
       <main id="main-content">
+        <BannerSliderSection />
         <HeroSection />
         <CategoryRail />
         <NeonColorChangerSection />

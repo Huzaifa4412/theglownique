@@ -127,7 +127,7 @@ export const PRODUCT_PAGES: ProductPage[] = [
     heroImage: "/hero/neon-sign-hero.webp",
     heroVideo: "/neon-sign/Videos/en-GB_1fa05acfc3a2cdf80c7787c5f585c30a.mp4",
     intro:
-      "Turn a phrase, a name or a logo into a glowing centrepiece. Our custom LED neon signs are handcrafted from flexible, shatterproof silicone tubing mounted on clear, laser-cut acrylic — the safe, modern successor to fragile glass neon. Running cool on low 12V power, they're made for bedrooms, weddings, cafés, studios and storefronts alike.",
+      "The Glownique designs premium, handcrafted custom LED neon signs for businesses, weddings, and home decor. Our commercial-grade 12V silicone neon signs feature a 5-year warranty, include a free true-to-scale design mockup in 2 hours, and ship globally in secure timber crates.",
     chips: ["Up to 100,000 hrs", "Safe 12V", "13 colours + RGB", "Indoor & IP67 outdoor"],
     features: [
       {
@@ -300,7 +300,7 @@ export const PRODUCT_PAGES: ProductPage[] = [
     heroImage: "/3d-metallic-neon-sign/corporte/056b3189-6a8c-482a-8334-53ded7aff3e1.webp",
     heroVideo: "/3d-metallic-neon-sign/videos/2.mp4",
     intro:
-      "Give your brand a premium, architectural presence with 3D metal channel letters. Each letter is fabricated from stainless steel and lit from within by energy-efficient LED — choose bold frontlit faces, a soft halo backlit glow, or dual-lit for both. Engineered for commercial use, they command attention on storefronts, lobbies and façades, day and night.",
+      "The Glownique manufactures premium 3D metal channel letters for outdoor commercial business signage and corporate lobbies. Fabricated from 304 stainless steel, available in front-lit, halo back-lit, and dual-lit options, these architectural signs include a 5-year warranty and a free design mockup.",
     chips: ["Frontlit / Backlit / Dual-lit", "Stainless steel", "IP67 outdoor", "Metallic finishes"],
     features: [
       {
@@ -462,7 +462,7 @@ export const PRODUCT_PAGES: ProductPage[] = [
     accent: "#0e9f6e",
     heroImage: "/ultra-thin-slim-lightbox/main-hero.webp",
     intro:
-      "A modern illuminated display that's under an inch deep. Our ultra-thin slim lightboxes use edge-lit LED technology inside a sleek anodized-aluminium frame to deliver 100% even, shadow-free light across the entire face. Graphics slide out and swap in seconds — perfect for retail displays, menu boards, lobbies and modern storefronts.",
+      "The Glownique produces ultra-thin slim LED lightboxes for restaurant menus and retail displays. Under an inch deep, these edge-lit aluminum displays feature a tool-free magnetic graphic swap system for 100% even, shadow-free illumination.",
     chips: ["Under 1-inch slim", "Edge-lit, shadow-free", "Tool-free graphic swap", "Retail & commercial"],
     features: [
       {
