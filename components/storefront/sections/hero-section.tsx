@@ -3,10 +3,11 @@
 import {
   ArrowLeft,
   ArrowRight,
-  ArrowUpRight,
-  LockSimple,
   PencilLine,
   ShieldCheck,
+  Sparkle,
+  Star,
+  Truck,
 } from "@phosphor-icons/react";
 import Image from "next/image";
 import {
@@ -18,9 +19,11 @@ import {
   type PointerEvent as ReactPointerEvent,
 } from "react";
 
+import homeImage from "@/app/assets/hero/home.webp";
 import { IconBox } from "@/components/icon-box";
 import { useStorefront } from "@/components/storefront/storefront-context";
 import TextType from "@/components/TextType";
+import { Badge } from "@/components/ui/badge";
 import { categoryLabels, heroSlides } from "@/lib/store-data";
 
 const CAROUSEL_DURATION = 5500;
@@ -31,10 +34,11 @@ const CAROUSEL_DURATION = 5500;
  * the line never changes width while it types.
  */
 const HEADLINE_ENDINGS = [
-  "get noticed.",
-  "sell more.",
+  "light up everything.",
   "turn heads.",
-  "glow for years.",
+  "stand out.",
+  "define brands.",
+  "glow bright.",
 ];
 
 const LONGEST_HEADLINE_ENDING = HEADLINE_ENDINGS.reduce((longest, entry) =>
@@ -50,7 +54,7 @@ export function HeroSection() {
   const [activeSlide, setActiveSlide] = useState(0);
   const [carouselPaused, setCarouselPaused] = useState(false);
   const [pageVisible, setPageVisible] = useState(true);
-  const { chooseCategory, reducedMotion } = useStorefront();
+  const { reducedMotion } = useStorefront();
   const activeHero = heroSlides[activeSlide];
 
   const goToSlide = useCallback(
@@ -95,13 +99,20 @@ export function HeroSection() {
   return (
     <section className="hero" aria-labelledby="hero-heading">
       <div className="hero__copy shell-edge">
+        <div className="hero__eyebrow-wrap">
+          <Badge variant="accent" className="hero__badge">
+            <Sparkle className="w-3.5 h-3.5" weight="fill" />
+            <span>Made For You · Made To Glow</span>
+          </Badge>
+        </div>
+
         <h1 id="hero-heading" className="hero-title">
           <span className="sr-only">
             Custom LED Neon Signs &amp; 3D Business Signage, Handcrafted
-            Commercial &amp; Custom Illuminated Signs
+            Commercial &amp; Custom Illuminated Signs That Light Up Everything
           </span>
           <span className="hero-title__line" aria-hidden="true">
-            Signs built to
+            Custom signs built to
           </span>
           <span
             className="hero-title__line hero-title__line--accent"
@@ -133,31 +144,61 @@ export function HeroSection() {
             </span>
           </span>
         </h1>
+
         <p className="hero__intro">
-          Handcrafted LED neon, 3D letters and slim lightboxes for
-          storefronts, studios and homes. Approve a free true-to-scale mockup
-          before you pay.
+          Design your bespoke neon sign for your home, business, wedding, or
+          event. Handcrafted with commercial-grade silicone &amp; stainless
+          steel. Approve your free true-to-scale mockup before you pay.
         </p>
+
         <div className="hero__actions">
-          <a className="button button--primary" href="#custom">
-            Create your sign <IconBox icon={ArrowRight} />
+          <a className="button button--primary hero-btn--primary" href="#custom">
+            <span>Design Your Sign</span>
+            <span className="hero-btn__icon-circle" aria-hidden="true">
+              <ArrowRight weight="bold" />
+            </span>
           </a>
-          <a className="button button--secondary" href="#categories">
-            Explore sign types
+          <a className="button button--secondary hero-btn--secondary" href="#categories">
+            <span>Explore Sign Crafts</span>
           </a>
         </div>
+
         <ul className="hero-facts" aria-label="Order guarantees">
-          <li>
-            <IconBox icon={PencilLine} />
-            <span>Free mockup in about 2 hours</span>
+          <li className="hero-fact-item">
+            <span className="hero-fact__icon-wrap">
+              <PencilLine weight="bold" />
+            </span>
+            <div className="hero-fact__text">
+              <strong>Free 1:1 Scale Mockup</strong>
+              <span>Ready in ~2 hours</span>
+            </div>
           </li>
-          <li>
-            <IconBox icon={ShieldCheck} />
-            <span>5-year warranty</span>
+          <li className="hero-fact-item">
+            <span className="hero-fact__icon-wrap">
+              <ShieldCheck weight="bold" />
+            </span>
+            <div className="hero-fact__text">
+              <strong>5-Year Studio Warranty</strong>
+              <span>Commercial 12V build</span>
+            </div>
           </li>
-          <li>
-            <IconBox icon={LockSimple} />
-            <span>Secure Etsy checkout</span>
+          <li className="hero-fact-item">
+            <span className="hero-fact__icon-wrap">
+              <Star weight="fill" />
+            </span>
+            <div className="hero-fact__text">
+              <strong>5,000+ Happy Clients</strong>
+              <span>Etsy Star Seller</span>
+            </div>
+          </li>
+          <li className="hero-fact-item">
+            <span className="hero-fact__icon-wrap">
+              <Truck weight="bold" />
+            </span>
+            <div className="hero-fact__text">
+              <strong>Tracked Shipping</strong>
+              <span>Global insured delivery</span>
+            </div>
           </li>
         </ul>
       </div>
@@ -166,7 +207,7 @@ export function HeroSection() {
         className={`hero-showcase${carouselPaused ? " is-paused" : ""}`}
         role="region"
         aria-roledescription="carousel"
-        aria-label="Featured neon collections"
+        aria-label="Featured illuminated craft collections"
         style={{ "--slide-accent": activeHero.accent } as CSSProperties}
         tabIndex={0}
         onMouseEnter={() => setCarouselPaused(true)}
@@ -323,22 +364,6 @@ export function HeroSection() {
                   />
                 )
               ) : index === 3 ? (
-                /*
-                 * Two crops of the same scene, one picked by CSS.
-                 *
-                 * The stage is wide on a desktop and taller than it is wide on
-                 * a phone, and `object-fit: cover` resolves that difference by
-                 * throwing away the sides, which on this slide meant losing
-                 * the sketch half of the sketch-to-sign transformation the
-                 * slide exists to show. So the phone gets a frame composed for
-                 * a narrow stage rather than a centre-crop of a wide one.
-                 *
-                 * Both are lazy and one is always `display: none`, and a
-                 * display:none image never intersects the viewport, so the
-                 * browser only ever fetches the crop it is going to paint.
-                 * Same alt on both for the same reason: display:none is out
-                 * of the accessibility tree, so only one is ever announced.
-                 */
                 <div className="hero-slide__lightbox-frame">
                   <Image
                     src="/ultra-thin-slim-lightbox/main-hero.webp"
@@ -359,35 +384,17 @@ export function HeroSection() {
                 </div>
               ) : (
                 <Image
-                  src="/hero/neon-sign-hero.webp"
-                  alt="Pink custom LED neon sign glowing on a dark bedroom wall"
+                  src={homeImage}
+                  alt="Aesthetic sun-drenched room with Good Vibes Good Life LED neon sign"
                   fill
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 75vw, 58vw"
-                  // Slide 1 is the LCP element. Next.js 16 deprecates `priority`;
-                  // eager loading plus explicit high fetch priority keeps it
-                  // discoverable immediately without combining conflicting
-                  // preload/loading props. Every other slide stays lazy.
                   loading="eager"
                   fetchPriority="high"
+                  className="hero-slide__img"
                 />
               )}
             </article>
           ))}
-          {activeSlide !== 3 && (
-            <div className="hero-scrim" aria-hidden="true" />
-          )}
-          {activeSlide !== 3 && (
-            <div className="slide-meta">
-              <button
-                className="slide-meta__link"
-                type="button"
-                onClick={() => chooseCategory(activeHero.id, true)}
-              >
-                Explore {categoryLabels[activeHero.id]}{" "}
-                <IconBox icon={ArrowUpRight} />
-              </button>
-            </div>
-          )}
         </div>
 
         <div className="hero-controls">
