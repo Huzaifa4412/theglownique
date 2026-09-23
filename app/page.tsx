@@ -6,7 +6,9 @@ import { ComparisonSection } from "@/components/storefront/sections/comparison-s
 import { ConceptToGlowSection } from "@/components/storefront/sections/concept-to-glow-section";
 import { FaqSection } from "@/components/storefront/sections/faq-section";
 import { GlowDirectionsSection } from "@/components/storefront/sections/glow-directions-section";
+import { LampCtaSection } from "@/components/storefront/sections/lamp-cta-section";
 import { HeroSection } from "@/components/storefront/sections/hero-section";
+import { IlluminationStylesSection } from "@/components/storefront/sections/illumination-styles-section";
 import { InspirationSection } from "@/components/storefront/sections/inspiration-section";
 import { NeonColorChangerSection } from "@/components/storefront/sections/neon-color-changer-section";
 import { SignTypesVideoSection } from "@/components/storefront/sections/sign-types-video-section";
@@ -123,6 +125,7 @@ export default function Home() {
         <BannerSliderSection />
         <HeroSection />
         <CategoryRail />
+        <IlluminationStylesSection />
         <NeonColorChangerSection />
         <ConceptToGlowSection />
         <SignTypesVideoSection />
@@ -135,6 +138,7 @@ export default function Home() {
         <ScrollStackingCardsSection />
         <OrderIncludesSection />
         <ComparisonSection />
+        <LampCtaSection />
         <FaqSection />
         <NewsletterSection />
       </main>

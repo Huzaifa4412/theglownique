@@ -15,14 +15,12 @@ export function ConceptToGlowSection() {
     >
       <div className="shell concept-to-glow__inner">
         <div className="concept-to-glow__copy">
-          <p className="eyebrow">See it on the wall first</p>
+          <p className="eyebrow">The Elegant Alternative</p>
           <h2 id="concept-to-glow-heading">
-            From bare wall <span>to backlit.</span>
+            What is a <span>Backlit Sign?</span>
           </h2>
           <p className="concept-to-glow__intro">
-            Drag across the preview to see the same reception wall before and after a backlit logo
-            sign. The letters stay solid — the LEDs face the wall behind them, so what you see is
-            the halo, never the light source.
+            While custom neon signs glow forward, a <strong>backlit sign</strong> is all about the halo. The letters stay solid and the LEDs are mounted behind them, shining light backward against your wall. This creates a sophisticated, floating silhouette effect—perfect for reception areas and professional branding. Drag the slider to see how it transforms a bare wall.
           </p>
           <div className="concept-to-glow__proof" aria-label="Design guarantees">
             <span>Free preview</span>

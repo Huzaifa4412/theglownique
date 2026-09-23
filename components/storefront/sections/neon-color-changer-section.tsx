@@ -515,7 +515,7 @@ export function NeonColorChangerSection({
   return (
     <section
       ref={sectionRef}
-      className="neon-studio-section relative py-20 bg-[#09090b] text-white overflow-hidden"
+      className="neon-studio-section relative pb-20 pt-4 bg-[#09090b] text-white overflow-hidden"
       id="color-studio"
     >
       {/* Dynamic Ambient Background Glow */}
@@ -535,17 +535,16 @@ export function NeonColorChangerSection({
         <div className="text-center max-w-3xl mx-auto mb-14">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-pink-400 text-xs font-semibold uppercase tracking-widest mb-4 backdrop-blur-md">
             <Sparkles className="w-3.5 h-3.5" />
-            <span>Interactive Color Studio</span>
+            <span>The Classic: Custom Neon</span>
           </div>
 
           <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight mb-4 leading-tight">
-            See Your Neon Sign in <PremiumAccentText>Every Shade</PremiumAccentText>
+            Bold, Forward-Facing <PremiumAccentText>Glow</PremiumAccentText>
           </h2>
 
           <p className="text-gray-300 text-base md:text-lg">
-            Preview our handcrafted LED neon colours on a real custom sign. Click any swatch — or hit{" "}
-            <strong className="text-pink-400">RGBA Party</strong> to watch it
-            morph through every shade in real time.
+            Unlike backlit signs, a traditional <strong>custom neon sign</strong> has its vibrant LEDs facing directly out into the room. It’s bold, energetic, and completely customizable. Explore our hand-mixed shades on a real sign, or hit{" "}
+            <strong className="text-pink-400">RGBA Party</strong> to watch it morph through every color in real time.
           </p>
         </div>
 

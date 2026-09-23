@@ -138,7 +138,7 @@ export function SignTypesVideoSection() {
     const el = sectionRef.current;
     if (!el) return;
     if (!("IntersectionObserver" in window)) {
-      setIsInView(true);
+      setTimeout(() => setIsInView(true), 0);
       return;
     }
     const observer = new IntersectionObserver(
