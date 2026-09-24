@@ -113,9 +113,9 @@ const INDUSTRY_CONTENT: readonly LandingContent[] = [
     name: "Bar Signs",
     kicker: "Bar, Pub & Cocktail Lounge Signage",
     h1: "Custom Neon Bar Signs for Commercial Venues",
-    metaTitle: "Custom Neon Bar Signs for Venues",
+    metaTitle: "Custom Neon Bar Signs & Customizable Bar Signs for Venues",
     metaDescription:
-      "Custom neon bar signs & back-bar logo lighting for commercial venues. Dimmable, moisture-tolerant builds with free design mockup & 5-year warranty.",
+      "Neon personalized signs, customizable bar signs & back-bar logo lighting for commercial venues. Dimmable, moisture-tolerant builds with free design mockup & 5-year warranty.",
     intro:
       "Back-bar logos, cocktail-list lighting and venue branding specified for the one environment that is warm, damp, greasy and deliberately dark.",
     heroImage: "/neon-sign/Bar/iap_600x600.5588358323_i7bgtidf.webp",
@@ -198,7 +198,7 @@ const INDUSTRY_CONTENT: readonly LandingContent[] = [
     h1: "Custom Neon Open Signs for Storefronts",
     metaTitle: "Custom Neon Open Signs for Storefronts",
     metaDescription:
-      "Custom LED neon open signs & illuminated trading signage for storefronts. Daylight-readable window builds with free design mockup & 5-year warranty.",
+      "Looking for a custom led lights open sign? We build custom LED neon open signs & illuminated trading signage for storefronts. Daylight-readable window builds with free design mockup & 5-year warranty.",
     intro:
       "The one sign whose entire job is answering a question from across the street — and the reason a stock open sign in a bright window so often fails to.",
     heroImage: "/ultra-thin-slim-lightbox/Storefront windows.webp",

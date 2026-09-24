@@ -147,7 +147,7 @@ export function HeroSection() {
 
         <p className="hero__intro">
           Design your bespoke neon sign for your home, business, wedding, or
-          event. Handcrafted with commercial-grade silicone &amp; stainless
+          event. When looking for the best custom neon signs online, our studio crafts pieces with commercial-grade silicone &amp; stainless
           steel. Approve your free true-to-scale mockup before you pay.
         </p>
 

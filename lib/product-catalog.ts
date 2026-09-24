@@ -122,12 +122,12 @@ export const PRODUCT_PAGES: ProductPage[] = [
     slug: "custom-neon-signs",
     name: "Custom LED Neon Signs",
     category: "Neon Sign",
-    tagline: "Flexible silicone LED neon, handcrafted to your words",
+    tagline: "Custom made neon signs in flexible silicone LED, handcrafted to your words",
     accent: "#f40b68",
     heroImage: "/hero/neon-sign-hero.webp",
     heroVideo: "/neon-sign/Videos/en-GB_1fa05acfc3a2cdf80c7787c5f585c30a.mp4",
     intro:
-      "The Glownique designs premium, handcrafted custom LED neon signs for businesses, weddings, and home decor. Our commercial-grade 12V silicone neon signs feature a 5-year warranty, include a free true-to-scale design mockup in 2 hours, and ship globally in secure timber crates.",
+      "The Glownique designs premium, handcrafted custom LED neon signs for businesses, weddings, and home decor. Whether you need an indoor personalized neon light sign, a customizable neon sign, or outdoor custom neon signs, our commercial-grade 12V silicone LED light signage feature a 5-year warranty, include a free true-to-scale design mockup in 2 hours, and ship globally in secure timber crates.",
     chips: ["Up to 100,000 hrs", "Safe 12V", "13 colours + RGB", "Indoor & IP67 outdoor"],
     features: [
       {
@@ -152,7 +152,7 @@ export const PRODUCT_PAGES: ProductPage[] = [
       },
     ],
     craft: {
-      heading: "How your neon sign is made",
+      heading: "How we make custom neon signs",
       body: "We start with your artwork, map the tubing path, and hand-bend flexible LED silicone to trace every letter and curve. It's mounted on an optical-grade, laser-cut acrylic backboard, wired with concealed cabling, then bench-tested for an even, flicker-free glow before it's carefully packed.",
       points: [
         "Optical-grade, laser-cut clear acrylic backboard",
@@ -450,9 +450,9 @@ export const PRODUCT_PAGES: ProductPage[] = [
         a: "Yes. Send your logo and we'll fabricate letters and shapes to match, then send a free mockup showing sizing, finish and lighting before production.",
       },
     ],
-    metaTitle: "3D Metal Signs & LED Channel Letters",
+    metaTitle: "3D Metal Signs & Custom LED Light Signs",
     metaDescription:
-      "Custom 3D metal channel-letter signs: frontlit, halo backlit & dual-lit stainless steel letters. IP67 weatherproof with free mockup & 5-year warranty.",
+      "Custom LED light signs & 3D metal channel-letters: frontlit, halo backlit & dual-lit stainless steel custom light sign pieces. IP67 weatherproof with free mockup & 5-year warranty.",
   },
   {
     slug: "ultra-thin-lightbox",
@@ -710,9 +710,9 @@ export const PRODUCT_PAGES: ProductPage[] = [
         a: "Choose our IP67 waterproof option and your UV-print neon sign is ready for covered outdoor and event use.",
       },
     ],
-    metaTitle: "3D Acrylic Signs with UV-Print Logos",
+    metaTitle: "3D Acrylic LED Wall Signs & Artistic Neon Signs",
     metaDescription:
-      "Custom 3D acrylic signs pairing full-colour UV print with glowing LED neon contours. Exact Pantone match, multi-layer depth, free mockup & 5-year warranty.",
+      "Artistic neon signs & custom 3D acrylic LED wall signs pairing full-colour UV print with glowing LED contours. Exact Pantone match, multi-layer depth, free mockup & 5-year warranty.",
   },
 ];
 

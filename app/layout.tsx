@@ -51,9 +51,6 @@ export const metadata: Metadata = {
   creator: "The Glownique",
   publisher: "The Glownique",
   category: "shopping",
-  alternates: {
-    canonical: "/",
-  },
   openGraph: {
     type: "website",
     siteName: "The Glownique",
