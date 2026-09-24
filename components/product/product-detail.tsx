@@ -469,6 +469,18 @@ export function ProductDetail({ slug }: { slug: string }) {
                   <div className="p-5">
                     <h3 className="text-base font-bold text-[#1e1a22]">{useCase.title}</h3>
                     <p className="mt-1.5 text-sm leading-6 text-[#5e5862]">{useCase.text}</p>
+                    {/* The industry and occasion pages were reachable almost
+                        only from their hub; these are the product pages'
+                        contextual links into them. */}
+                    {useCase.href ? (
+                      <Link
+                        href={useCase.href}
+                        className="mt-3 inline-flex items-center gap-1 text-sm font-bold text-[#ce0754] underline-offset-4 hover:underline"
+                      >
+                        {useCase.linkLabel ?? `${useCase.title} signs`}
+                        <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
+                      </Link>
+                    ) : null}
                   </div>
                 </div>
               </Reveal>

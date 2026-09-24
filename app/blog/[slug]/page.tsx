@@ -64,8 +64,17 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
         ? "Voltage, weight, repairability and outdoor use — an honest comparison of LED neon flex and traditional glass neon, including where glass still wins."
         : post.seoDescription;
 
+  // The root layout appends " | The Glownique" (16 characters). A CMS title
+  // longer than 44 characters would render past the 60-character ceiling and
+  // be cut off in results — three live posts were — so a long title goes out
+  // on its own rather than losing its end to the brand suffix. The editor's
+  // title is never rewritten, only the suffix dropped.
+  const BRAND_SUFFIX_LENGTH = " | The Glownique".length;
+  const titleMetadata: Metadata["title"] =
+    title.length + BRAND_SUFFIX_LENGTH > 60 ? { absolute: title } : title;
+
   return {
-    title,
+    title: titleMetadata,
     description,
     alternates: { canonical: url },
     // `indexable: false` is how a post is pulled from search without being

@@ -41,10 +41,13 @@ export const HAS_WHATSAPP = isValidWhatsappNumber(WHATSAPP_NUMBER);
  * cheapest external authority available. Set it and the footer/contact page
  * pick it up. "" hides the link rather than shipping a dead one.
  */
-// Canonical shop URL — the tracking params from a copied browser URL
-// (?ref=shop_profile&listing_id=…) are deliberately stripped so the link and
-// the Organization.sameAs entry stay stable and canonical.
-export const ETSY_SHOP_URL = "https://www.etsy.com/listing/1878290703/custom-neon-sign-led-light-for-wedding";
+// The canonical SHOP URL (verified 2026-09-24: shop "TheGlownique", United
+// States). This previously pointed at a single wedding-sign listing, so every
+// Etsy button — including the one a business buyer taps in the header — and
+// the Organization.sameAs entry named one product instead of the shop, and the
+// "read our reviews on Etsy" link led to one item's reviews rather than the
+// shop's. Keep tracking params (?ref=…) off it so it stays canonical.
+export const ETSY_SHOP_URL = "https://www.etsy.com/shop/TheGlownique";
 
 /**
  * Public social profiles. ONLY add profiles that actually exist — each entry

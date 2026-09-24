@@ -130,7 +130,7 @@ export const ROUTES: readonly RouteEntry[] = [
   // /business-signs entries above; their old /products addresses are 301s.
   ...PRODUCT_PAGES.filter((product) => product.path.startsWith("/products/")).map((product) => ({
     path: product.path,
-    lastModified: CURRENT_SEO_RELEASE,
+    lastModified: GROWTH_AUDIT_RELEASE,
     changeFrequency: "monthly" as const,
     priority: 0.75,
     indexable: true,

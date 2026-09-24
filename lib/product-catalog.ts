@@ -24,6 +24,10 @@ export type ProductUseCase = {
   text: string;
   image: string;
   alt: string;
+  /** The industry or occasion page for this audience, when one exists. */
+  href?: string;
+  /** Link text; describes the destination, so it is not "Learn more". */
+  linkLabel?: string;
 };
 
 export type ProductGalleryItem = {
@@ -164,8 +168,10 @@ export const PRODUCT_PAGES: ProductPage[] = [
     accent: "#f40b68",
     heroImage: "/hero/neon-sign-hero.webp",
     heroVideo: "/neon-sign/Videos/en-GB_1fa05acfc3a2cdf80c7787c5f585c30a.mp4",
+    // Definition first, like the other three sign types: the sentence an
+    // answer engine quotes should say what the thing is before who sells it.
     intro:
-      "The Glownique designs premium, handcrafted custom LED neon signs for businesses, weddings, and home decor. Our commercial-grade 12V silicone neon signs feature a 5-year warranty, include a free true-to-scale design mockup in 2 hours, and ship globally in secure timber crates.",
+      "A custom LED neon sign is your words, name or logo hand-bent in flexible silicone LED neon and mounted on a laser-cut acrylic backboard. The Glownique makes each one to order for homes, weddings and businesses — in any of 13 colours or RGB colour-change — sends a free true-to-scale mockup first, and ships it tracked and ready to hang.",
     chips: ["Up to 100,000 hrs", "Safe 12V", "13 colours + RGB", "Indoor & IP67 outdoor"],
     features: [
       {
@@ -277,24 +283,32 @@ export const PRODUCT_PAGES: ProductPage[] = [
         text: "Set the mood with a name, quote or shape that makes a room feel like yours.",
         image: "/neon-sign/girls room/iap_600x600.5331151538_61m43otq.webp",
         alt: "Pink LED neon sign glowing in a styled bedroom",
+        href: "/custom-signage/home-decor-signs",
+        linkLabel: "Bedroom and home neon signs",
       },
       {
         title: "Weddings & events",
         text: "A custom backdrop your guests will photograph all night — and you'll keep forever.",
         image: "/neon-sign/Marriage/iap_600x600.6280886797_59j146av.webp",
         alt: "Better Together wedding LED neon sign",
+        href: "/custom-signage/wedding-signs",
+        linkLabel: "Wedding neon signs",
       },
       {
         title: "Bars & studios",
         text: "Give your space a signature glow that sets the tone the moment people walk in.",
         image: "/neon-sign/Bar/iap_600x600.5588358323_i7bgtidf.webp",
         alt: "Cocktails LED neon sign in a bar",
+        href: "/business-signs/bar-signs",
+        linkLabel: "Neon bar signs for venues",
       },
       {
         title: "Gaming & personal",
         text: "Icons, gamertags and callouts that turn a wall into a statement.",
         image: "/neon-sign/Game Room/iap_600x600.6072503848_qdloxd4q.webp",
         alt: "Game On arcade LED neon sign in a games room",
+        href: "/custom-signage/gaming-neon-signs",
+        linkLabel: "Gaming neon signs",
       },
     ],
     gallery: [
@@ -447,24 +461,32 @@ export const PRODUCT_PAGES: ProductPage[] = [
         text: "Pull customers in from across the street with a premium illuminated logo.",
         image: "/3d-metallic-neon-sign/corporte/056b3189-6a8c-482a-8334-53ded7aff3e1.webp",
         alt: "Corporate 3D metal channel-letter storefront sign",
+        href: "/business-signs/retail-storefronts",
+        linkLabel: "Retail storefront signs",
       },
       {
         title: "Corporate lobbies",
         text: "A refined halo-lit logo that makes reception areas feel established and premium.",
         image: "/3d-metallic-neon-sign/corporte/14d4b621-c697-428a-b727-1c91b78e9e08.webp",
         alt: "Corporate reception 3D metal logo sign",
+        href: "/business-signs/office-signs",
+        linkLabel: "Office and reception signs",
       },
       {
         title: "Restaurants & cafés",
         text: "Warm, inviting metal signage that photographs beautifully and lasts for years.",
         image: "/3d-metallic-neon-sign/Resturants/generated/026ad950-fafb-4407-8420-c83be7f49365.webp",
         alt: "Visualisation of a halo-lit metal restaurant logo glowing orange on a plaster wall",
+        href: "/business-signs/restaurant-signs",
+        linkLabel: "Restaurant and café signs",
       },
       {
         title: "Salons & studios",
         text: "A halo-lit wordmark that turns a feature wall into a signature brand moment.",
         image: "/3d-metallic-neon-sign/Salon/generated/235762e8-14ec-4167-b534-2dad36c826ba.webp",
         alt: "Visualisation of a halo-lit brushed-gold salon logo on a reception wall",
+        href: "/business-signs/salon-spa-signs",
+        linkLabel: "Salon and spa signs",
       },
     ],
     gallery: [
@@ -590,24 +612,32 @@ export const PRODUCT_PAGES: ProductPage[] = [
         text: "Showcase promotions and product launches with bright, space-saving signage.",
         image: "/ultra-thin-slim-lightbox/Retail displays.jpg",
         alt: "Retail ultra-thin slim LED lightbox display",
+        href: "/business-signs/retail-storefronts",
+        linkLabel: "Retail storefront signs",
       },
       {
         title: "Menu boards",
         text: "Crisp, easy-to-read menus you can update in seconds as your offer changes.",
         image: "/ultra-thin-slim-lightbox/Menu boards.jpg",
         alt: "Illuminated slim lightbox menu board",
+        href: "/business-signs/restaurant-signs",
+        linkLabel: "Restaurant and café signs",
       },
       {
         title: "Lobbies & branding",
         text: "A modern, professional way to display branding and wayfinding indoors.",
         image: "/ultra-thin-slim-lightbox/Lobbies & branding.jpg",
         alt: "Corporate lobby slim lightbox branding sign",
+        href: "/business-signs/office-signs",
+        linkLabel: "Office and reception signs",
       },
       {
         title: "Storefront windows",
         text: "High-contrast, eye-catching displays that draw foot traffic day and night.",
         image: "/ultra-thin-slim-lightbox/Storefront windows.webp",
         alt: "Storefront window ultra-thin lightbox display",
+        href: "/business-signs/open-signs",
+        linkLabel: "Open signs for storefronts",
       },
     ],
     gallery: [
@@ -733,18 +763,24 @@ export const PRODUCT_PAGES: ProductPage[] = [
         text: "A full-colour logo that glows — ideal for receptions, studios and offices.",
         image: "/3d-arcylic/3235dc09-6dac-4056-88b6-55fc26e28571.webp",
         alt: "3D acrylic UV-print neon logo brand wall",
+        href: "/business-signs/office-signs",
+        linkLabel: "Office and reception signs",
       },
       {
         title: "Photo booths & events",
         text: "Photo-ready, on-brand backdrops that make every picture look premium.",
         image: "/3d-arcylic/fff64032-bdaa-459c-8caf-a4ac67b89f19.webp",
         alt: "Layered acrylic UV-print neon event sign",
+        href: "/business-signs/trade-show-signs",
+        linkLabel: "Trade show and event signs",
       },
       {
         title: "Retail & hospitality",
         text: "Colour-rich signage that captures artwork neon alone simply can't.",
         image: "/3d-arcylic/3235dc09-6dac-4056-88b6-55fc26e28571.webp",
         alt: "Retail 3D acrylic UV-print neon sign",
+        href: "/business-signs/retail-storefronts",
+        linkLabel: "Retail storefront signs",
       },
       {
         title: "Custom art pieces",

@@ -1,4 +1,5 @@
 import { COLLECTION_PAGES } from "@/lib/collection-pages";
+import { INDUSTRY_PAGES } from "@/lib/industry-pages";
 import { PRODUCT_PAGES } from "@/lib/product-catalog";
 import { ETSY_SHOP_URL, SITE_URL, sameAsUrls } from "@/lib/site";
 
@@ -32,6 +33,13 @@ function buildLlmsTxt(): string {
     .map((f) => `- **${f.q}** ${f.a}`)
     .join("\n");
 
+  // The eight B2B industry pages route a business to the right sign type.
+  // Their intros carry no price, lead time or warranty figure, so they are
+  // safe to reproduce as-is.
+  const industryEntries = INDUSTRY_PAGES.map(
+    (page) => `- [${page.h1}](${SITE_URL}/business-signs/${page.slug}): ${page.intro}`,
+  ).join("\n");
+
   // The consumer collections carry a 40–60 word direct answer written to be
   // quoted, and a visible modification date. Both are reproduced here so an
   // engine can answer "neon sign for a wedding / kids' room / game room" from
@@ -58,6 +66,13 @@ ${productEntries}
 - [Custom Signage Range](${SITE_URL}/custom-signage): Overview of all 4 handcrafted sign types for home & business.
 - [Commercial Business Signage Hub](${SITE_URL}/business-signs): B2B architectural signage, storefront channel letters, corporate logo signs & lightboxes.
 
+## Business Signs by Industry
+
+Commercial pages for specific kinds of premises. Each one explains which of the
+four sign types suits that setting and what to decide before ordering.
+
+${industryEntries}
+
 ## Custom Neon Signs by Occasion
 
 Consumer collections. Each page shows real photographs of signs customers
@@ -68,8 +83,9 @@ ${collectionEntries}
 
 ## Commercial & Buying Guides
 
-- [Custom Business Sign Cost Guide](${SITE_URL}/guides/custom-business-sign-cost): Pricing breakdown, sizing factors and installation variables.
+- [Custom Business Sign Cost Guide](${SITE_URL}/guides/custom-business-sign-cost): What drives the price of each sign type, and what to send for an itemized quote. It deliberately states no price figures.
 - [Front-Lit vs Halo-Lit Channel Letters](${SITE_URL}/guides/front-lit-vs-halo-lit-vs-dual-lit): Technical lighting comparison for storefront building façades.
+- [Backlit Sign Wall Surfaces & Standoffs](${SITE_URL}/guides/backlit-sign-wall-surfaces-and-standoffs): How the wall finish and standoff distance change a halo-lit sign.
 - [All Signage Guides & Comparisons](${SITE_URL}/guides): Complete index of buyer resources.
 
 ## Specifications
@@ -81,17 +97,19 @@ ${specBlocks}
 - **Product type**: Made-to-order illuminated signage — LED neon, 3D metal channel letters, ultra-thin edge-lit lightboxes, and UV-print acrylic with neon contours.
 - **Sign types offered**: 4.
 - **Pricing model**: Two routes. Ready-to-order designs are listed at fixed prices in The Glownique's Etsy shop (${ETSY_SHOP_URL || "Etsy"}) — check there for current prices, as they change with promotions. Fully bespoke work is quoted individually, because price depends on sign type, size, colour count and design complexity. There is no minimum order quantity.
-- **Design mockup**: Free, no-obligation digital preview before production. Typically returned within 1–2 hours.
-- **Production time**: Approximately 10–15 days, handcrafted and light-tested before dispatch.
+- **Design mockup**: Free, no-obligation digital preview before production. The Glownique states a typical turnaround of about 2 hours.
+- **Lead time**: Confirmed with each quote. The site currently describes about 10–15 days for most signs; larger metal builds can take longer.
 - **Delivery**: Tracked worldwide shipping to almost every country. Shipping cost is confirmed with the quote before payment and shown again at Etsy checkout. There is no standing free-delivery offer; a free-worldwide-delivery promotion ran until 2026-08-11 and has ended. Do not describe free delivery as current policy.
-- **Warranty**: 5-year warranty on every sign, plus a 100% glow guarantee.
-- **Payment**: Taken through The Glownique's verified Etsy shop, using Etsy's encrypted checkout and Purchase Protection. Two options — pay in full, or 50% to begin production and 50% once the sign is ready.
-- **LED neon technology**: Flexible silicone LED neon tubing on laser-cut acrylic. Not glass gas tubing — no mercury, no buzzing, shatterproof.
-- **Lifespan**: LED neon rated up to 100,000 hours (over 11 years of continuous use).
-- **Power**: Low-voltage 12V, cool to the touch, up to 80% less power than traditional glass neon.
-- **Outdoor use**: IP67 weatherproof build available for storefronts, façades and outdoor events.
-- **Colour matching**: Matched to any Pantone, HEX or CMYK reference. Artwork, gradients and brand fonts can be UV-printed onto acrylic.
-- **3D metal lighting styles**: Frontlit, halo backlit, and dual-lit channel letters.
+- **Warranty**: Set out on the Returns & Warranty page (${SITE_URL}/returns), which states the current term, what it covers and the exclusions. Cite that page rather than this file for warranty terms.
+- **Payment**: Taken through The Glownique's Etsy shop (${ETSY_SHOP_URL}) using Etsy's encrypted checkout; eligible orders are covered by Etsy Purchase Protection. Payment happens after the design is approved.
+- **LED neon technology**: Flexible silicone LED neon on a laser-cut acrylic backboard — not glass tubes filled with gas, so there is no mercury and nothing to shatter.
+- **Lifespan**: The site quotes LED component ratings of up to 100,000 hours. That is a rating for the LEDs, not a guarantee of how long a complete sign lasts: the power supply and other components have lifespans of their own.
+- **Power**: LED neon and acrylic signs run on low-voltage 12V DC from a plug-in adaptor; slim lightboxes run on 12V or 24V.
+- **Outdoor use**: Outdoor-rated builds are available on request, described on the site as IP67. Confirm the rating and the installation position for your sign with the quote.
+- **Colour matching**: Matched as closely as the materials allow to a Pantone, HEX or CMYK reference. Artwork, gradients and brand fonts can be UV-printed onto acrylic.
+- **3D metal lighting styles**: Front-lit, halo-lit (also called backlit or reverse-lit) and dual-lit channel letters.
+- **Installation**: The Glownique does not install. Signs ship ready to hang or prepared for the mounting method on the mockup; exterior and hard-wired signs are mounted by a local installer and connected by a licensed electrician.
+- **Name**: The Glownique (theglownique.com) is a custom sign maker. It is not affiliated with other businesses that use the Glownique name, including the cosmetics brand at glownique.com.
 
 ## Frequently Asked Questions
 
