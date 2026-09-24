@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { IconBox } from "@/components/icon-box";
-import { getProductPage } from "@/lib/product-catalog";
+import { getProductPage, productHref } from "@/lib/product-catalog";
 import type { CategoryId } from "@/lib/store-data";
 
 /**
@@ -84,7 +84,7 @@ export function CategoryRail() {
         <Link
           key={item.id}
           className="category-card group"
-          href={`/products/${item.slug}`}
+          href={productHref(item.slug)}
         >
           <div className="relative w-full aspect-[1.9/1] overflow-hidden bg-black/10">
             <Image

@@ -1,0 +1,325 @@
+{
+  "fetches": [
+    {
+      "url": "https://www.theglownique.com/sitemap.xml",
+      "status": 200,
+      "error": "",
+      "fetched_at": "2026-09-24T15:11:00.173783+00:00",
+      "sha256": "8d27e158f04e18c7f211a20345fb809f0ab3a2a6b5a9f65ca3401ccea00107c5",
+      "redirects": [],
+      "entries": 49,
+      "http_events": [
+        {
+          "url": "https://www.theglownique.com/sitemap.xml",
+          "status": 200,
+          "error": "",
+          "fetched_at": "2026-09-24T15:11:00.173936+00:00",
+          "retry_after": null,
+          "challenge_detected": false
+        }
+      ],
+      "access": {
+        "code": "response_received",
+        "confidence": "observed",
+        "evidence": "HTTP 200 received; no supported denial/challenge marker detected."
+      },
+      "kind": "urlset",
+      "xml_path": "sitemap-evidence/0e4b09f040a43f103de580c3d32643d51814df28fcc6230e8eeed645c18b56de.xml"
+    },
+    {
+      "url": "https://www.theglownique.com/sitemap_index.xml",
+      "status": 404,
+      "error": "",
+      "fetched_at": "2026-09-24T15:11:00.886506+00:00",
+      "sha256": "236e26691c2fd5c372fb64978c7a2405b36f5ac33e7438bd1a194294a65cd9d0",
+      "redirects": [],
+      "entries": 0,
+      "http_events": [
+        {
+          "url": "https://www.theglownique.com/sitemap_index.xml",
+          "status": 404,
+          "error": "",
+          "fetched_at": "2026-09-24T15:11:00.886581+00:00",
+          "retry_after": null,
+          "challenge_detected": false
+        }
+      ],
+      "access": {
+        "code": "http_error",
+        "confidence": "observed",
+        "evidence": "HTTP 404"
+      }
+    },
+    {
+      "url": "https://www.theglownique.com/wp-sitemap.xml",
+      "status": 404,
+      "error": "",
+      "fetched_at": "2026-09-24T15:11:01.132701+00:00",
+      "sha256": "236e26691c2fd5c372fb64978c7a2405b36f5ac33e7438bd1a194294a65cd9d0",
+      "redirects": [],
+      "entries": 0,
+      "http_events": [
+        {
+          "url": "https://www.theglownique.com/wp-sitemap.xml",
+          "status": 404,
+          "error": "",
+          "fetched_at": "2026-09-24T15:11:01.387093+00:00",
+          "retry_after": null,
+          "challenge_detected": false
+        }
+      ],
+      "access": {
+        "code": "http_error",
+        "confidence": "observed",
+        "evidence": "HTTP 404"
+      }
+    }
+  ],
+  "urls": [
+    {
+      "url": "https://www.theglownique.com/",
+      "sitemap": "https://www.theglownique.com/sitemap.xml",
+      "lastmod": "2026-09-18T00:00:00.000Z"
+    },
+    {
+      "url": "https://www.theglownique.com/business-signs",
+      "sitemap": "https://www.theglownique.com/sitemap.xml",
+      "lastmod": "2026-09-18T00:00:00.000Z"
+    },
+    {
+      "url": "https://www.theglownique.com/business-signs/custom-logo-neon-signs",
+      "sitemap": "https://www.theglownique.com/sitemap.xml",
+      "lastmod": "2026-08-25T00:00:00.000Z"
+    },
+    {
+      "url": "https://www.theglownique.com/business-signs/channel-letter-signs",
+      "sitemap": "https://www.theglownique.com/sitemap.xml",
+      "lastmod": "2026-08-25T00:00:00.000Z"
+    },
+    {
+      "url": "https://www.theglownique.com/business-signs/backlit-signs",
+      "sitemap": "https://www.theglownique.com/sitemap.xml",
+      "lastmod": "2026-09-15T00:00:00.000Z"
+    },
+    {
+      "url": "https://www.theglownique.com/business-signs/backlit-lobby-signs",
+      "sitemap": "https://www.theglownique.com/sitemap.xml",
+      "lastmod": "2026-09-18T00:00:00.000Z"
+    },
+    {
+      "url": "https://www.theglownique.com/business-signs/lightbox-signs",
+      "sitemap": "https://www.theglownique.com/sitemap.xml",
+      "lastmod": "2026-08-25T00:00:00.000Z"
+    },
+    {
+      "url": "https://www.theglownique.com/business-signs/acrylic-logo-signs",
+      "sitemap": "https://www.theglownique.com/sitemap.xml",
+      "lastmod": "2026-08-25T00:00:00.000Z"
+    },
+    {
+      "url": "https://www.theglownique.com/business-signs/gym-fitness-signs",
+      "sitemap": "https://www.theglownique.com/sitemap.xml",
+      "lastmod": "2026-08-28T00:00:00.000Z"
+    },
+    {
+      "url": "https://www.theglownique.com/business-signs/bar-signs",
+      "sitemap": "https://www.theglownique.com/sitemap.xml",
+      "lastmod": "2026-08-28T00:00:00.000Z"
+    },
+    {
+      "url": "https://www.theglownique.com/business-signs/open-signs",
+      "sitemap": "https://www.theglownique.com/sitemap.xml",
+      "lastmod": "2026-08-28T00:00:00.000Z"
+    },
+    {
+      "url": "https://www.theglownique.com/business-signs/restaurant-signs",
+      "sitemap": "https://www.theglownique.com/sitemap.xml",
+      "lastmod": "2026-08-28T00:00:00.000Z"
+    },
+    {
+      "url": "https://www.theglownique.com/business-signs/office-signs",
+      "sitemap": "https://www.theglownique.com/sitemap.xml",
+      "lastmod": "2026-08-28T00:00:00.000Z"
+    },
+    {
+      "url": "https://www.theglownique.com/business-signs/salon-spa-signs",
+      "sitemap": "https://www.theglownique.com/sitemap.xml",
+      "lastmod": "2026-08-28T00:00:00.000Z"
+    },
+    {
+      "url": "https://www.theglownique.com/business-signs/retail-storefronts",
+      "sitemap": "https://www.theglownique.com/sitemap.xml",
+      "lastmod": "2026-08-28T00:00:00.000Z"
+    },
+    {
+      "url": "https://www.theglownique.com/business-signs/trade-show-signs",
+      "sitemap": "https://www.theglownique.com/sitemap.xml",
+      "lastmod": "2026-08-28T00:00:00.000Z"
+    },
+    {
+      "url": "https://www.theglownique.com/blog",
+      "sitemap": "https://www.theglownique.com/sitemap.xml",
+      "lastmod": "2026-08-22T00:00:00.000Z"
+    },
+    {
+      "url": "https://www.theglownique.com/guides",
+      "sitemap": "https://www.theglownique.com/sitemap.xml",
+      "lastmod": "2026-09-18T00:00:00.000Z"
+    },
+    {
+      "url": "https://www.theglownique.com/guides/custom-business-sign-cost",
+      "sitemap": "https://www.theglownique.com/sitemap.xml",
+      "lastmod": "2026-08-25T00:00:00.000Z"
+    },
+    {
+      "url": "https://www.theglownique.com/guides/front-lit-vs-halo-lit-vs-dual-lit",
+      "sitemap": "https://www.theglownique.com/sitemap.xml",
+      "lastmod": "2026-08-25T00:00:00.000Z"
+    },
+    {
+      "url": "https://www.theglownique.com/guides/backlit-sign-wall-surfaces-and-standoffs",
+      "sitemap": "https://www.theglownique.com/sitemap.xml",
+      "lastmod": "2026-09-18T00:00:00.000Z"
+    },
+    {
+      "url": "https://www.theglownique.com/custom-signage",
+      "sitemap": "https://www.theglownique.com/sitemap.xml",
+      "lastmod": "2026-09-14T00:00:00.000Z"
+    },
+    {
+      "url": "https://www.theglownique.com/custom-signage/wedding-signs",
+      "sitemap": "https://www.theglownique.com/sitemap.xml",
+      "lastmod": "2026-09-14T00:00:00.000Z"
+    },
+    {
+      "url": "https://www.theglownique.com/custom-signage/kids-room-neon-signs",
+      "sitemap": "https://www.theglownique.com/sitemap.xml",
+      "lastmod": "2026-09-14T00:00:00.000Z"
+    },
+    {
+      "url": "https://www.theglownique.com/custom-signage/gaming-neon-signs",
+      "sitemap": "https://www.theglownique.com/sitemap.xml",
+      "lastmod": "2026-09-14T00:00:00.000Z"
+    },
+    {
+      "url": "https://www.theglownique.com/custom-signage/home-decor-signs",
+      "sitemap": "https://www.theglownique.com/sitemap.xml",
+      "lastmod": "2026-09-14T00:00:00.000Z"
+    },
+    {
+      "url": "https://www.theglownique.com/custom-signage/bar-neon-signs",
+      "sitemap": "https://www.theglownique.com/sitemap.xml",
+      "lastmod": "2026-09-14T00:00:00.000Z"
+    },
+    {
+      "url": "https://www.theglownique.com/custom-signage/event-signs",
+      "sitemap": "https://www.theglownique.com/sitemap.xml",
+      "lastmod": "2026-09-14T00:00:00.000Z"
+    },
+    {
+      "url": "https://www.theglownique.com/products/custom-neon-signs",
+      "sitemap": "https://www.theglownique.com/sitemap.xml",
+      "lastmod": "2026-08-25T00:00:00.000Z"
+    },
+    {
+      "url": "https://www.theglownique.com/products/3d-metal-neon-signs",
+      "sitemap": "https://www.theglownique.com/sitemap.xml",
+      "lastmod": "2026-08-25T00:00:00.000Z"
+    },
+    {
+      "url": "https://www.theglownique.com/products/ultra-thin-lightbox",
+      "sitemap": "https://www.theglownique.com/sitemap.xml",
+      "lastmod": "2026-08-25T00:00:00.000Z"
+    },
+    {
+      "url": "https://www.theglownique.com/products/uv-print-acrylic-signs",
+      "sitemap": "https://www.theglownique.com/sitemap.xml",
+      "lastmod": "2026-08-25T00:00:00.000Z"
+    },
+    {
+      "url": "https://www.theglownique.com/contact",
+      "sitemap": "https://www.theglownique.com/sitemap.xml",
+      "lastmod": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "url": "https://www.theglownique.com/shipping",
+      "sitemap": "https://www.theglownique.com/sitemap.xml",
+      "lastmod": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "url": "https://www.theglownique.com/privacy",
+      "sitemap": "https://www.theglownique.com/sitemap.xml",
+      "lastmod": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "url": "https://www.theglownique.com/returns",
+      "sitemap": "https://www.theglownique.com/sitemap.xml",
+      "lastmod": "2026-08-11T00:00:00.000Z"
+    },
+    {
+      "url": "https://www.theglownique.com/terms",
+      "sitemap": "https://www.theglownique.com/sitemap.xml",
+      "lastmod": "2026-08-21T00:00:00.000Z"
+    },
+    {
+      "url": "https://www.theglownique.com/accessibility",
+      "sitemap": "https://www.theglownique.com/sitemap.xml",
+      "lastmod": "2026-08-11T00:00:00.000Z"
+    },
+    {
+      "url": "https://www.theglownique.com/blog/christmas-neon-sign-ideas",
+      "sitemap": "https://www.theglownique.com/sitemap.xml",
+      "lastmod": "2026-09-17T10:00:00.000Z"
+    },
+    {
+      "url": "https://www.theglownique.com/blog/coffee-bar-neon-sign-ideas",
+      "sitemap": "https://www.theglownique.com/sitemap.xml",
+      "lastmod": "2026-09-16T10:00:00.000Z"
+    },
+    {
+      "url": "https://www.theglownique.com/blog/halloween-neon-sign-ideas",
+      "sitemap": "https://www.theglownique.com/sitemap.xml",
+      "lastmod": "2026-09-15T09:00:00.000Z"
+    },
+    {
+      "url": "https://www.theglownique.com/blog/how-to-choose-the-right-neon-color-for-your-sign",
+      "sitemap": "https://www.theglownique.com/sitemap.xml",
+      "lastmod": "2026-08-28T19:31:13.972Z"
+    },
+    {
+      "url": "https://www.theglownique.com/blog/custom-acrylic-signs-office-wall-guide",
+      "sitemap": "https://www.theglownique.com/sitemap.xml",
+      "lastmod": "2026-08-25T17:16:11.136Z"
+    },
+    {
+      "url": "https://www.theglownique.com/blog/storefront-signage-ideas-small-businesses",
+      "sitemap": "https://www.theglownique.com/sitemap.xml",
+      "lastmod": "2026-08-25T15:42:11.306Z"
+    },
+    {
+      "url": "https://www.theglownique.com/blog/custom-gaming-neon-signs-streaming-setup-guide",
+      "sitemap": "https://www.theglownique.com/sitemap.xml",
+      "lastmod": "2026-08-25T00:15:00.000Z"
+    },
+    {
+      "url": "https://www.theglownique.com/blog/custom-wedding-neon-signs-backdrop-guide",
+      "sitemap": "https://www.theglownique.com/sitemap.xml",
+      "lastmod": "2026-08-25T00:10:00.000Z"
+    },
+    {
+      "url": "https://www.theglownique.com/blog/custom-neon-signs-for-bedroom-and-home-decor",
+      "sitemap": "https://www.theglownique.com/sitemap.xml",
+      "lastmod": "2026-08-25T00:00:00.000Z"
+    },
+    {
+      "url": "https://www.theglownique.com/blog/turn-business-logo-into-custom-neon-sign",
+      "sitemap": "https://www.theglownique.com/sitemap.xml",
+      "lastmod": "2026-08-24T18:40:00.000Z"
+    },
+    {
+      "url": "https://www.theglownique.com/blog/custom-neon-signs-for-bars-and-cafes",
+      "sitemap": "https://www.theglownique.com/sitemap.xml",
+      "lastmod": "2026-08-24T18:30:00.000Z"
+    }
+  ]
+}

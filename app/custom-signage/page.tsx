@@ -100,7 +100,7 @@ export default function CustomSignagePage() {
             {PRODUCT_PAGES.map((product) => (
               <Link
                 key={product.slug}
-                href={`/products/${product.slug}`}
+                href={product.path}
                 className="group block overflow-hidden rounded-3xl border border-[#eadfe4] bg-white shadow-[0_14px_40px_rgba(107,38,67,0.08)] transition-transform duration-300 hover:-translate-y-1"
               >
                 <div className="relative aspect-[16/9] w-full overflow-hidden bg-black/5">

@@ -59,11 +59,23 @@ async function loadAllRoutes() {
   while ((match = entryRe.exec(source)) !== null) {
     if (match[2] === "true") routes.push(match[1]);
   }
+  // Sign types carry their own canonical `path`. Industry and occasion pages
+  // are spread into routes.ts from their catalogs, so their slugs are read
+  // here too — before 2026-09-24 `--all` silently skipped all fourteen.
   const catalog = await readFile(new URL("../lib/product-catalog.ts", import.meta.url), "utf8");
-  for (const slug of catalog.matchAll(/^\s*slug:\s*"([^"]+)"/gm)) {
-    routes.push(`/products/${slug[1]}`);
+  for (const path of catalog.matchAll(/^\s*path:\s*"([^"]+)"/gm)) {
+    routes.push(path[1]);
   }
-  return routes;
+  for (const [file, prefix] of [
+    ["../lib/industry-pages.ts", "/business-signs"],
+    ["../lib/collection-pages.ts", "/custom-signage"],
+  ]) {
+    const source = await readFile(new URL(file, import.meta.url), "utf8");
+    for (const slug of source.matchAll(/^\s*slug:\s*"([^"]+)"/gm)) {
+      routes.push(`${prefix}/${slug[1]}`);
+    }
+  }
+  return [...new Set(routes)];
 }
 
 async function main() {

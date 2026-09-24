@@ -1,7 +1,6 @@
 import { CustomQuoteButton } from "@/components/storefront/custom-quote-button";
 import { StoreIcon, type StoreIconName } from "@/components/storefront/store-icon";
 import { PremiumAccentText } from "@/components/ui/premium-accent-text";
-import { DELIVERY } from "@/lib/claims";
 
 /**
  * "What every order includes" — the homepage reassurance band.
@@ -40,17 +39,17 @@ const inclusions: ReadonlyArray<{
   {
     icon: "ShieldCheck",
     title: "5-Year Full Glow Warranty",
-    body: "Commercial-grade LEDs rated for up to 100,000 hours. If any electrical component fails or a sign arrives damaged, just send a quick photo and we replace it immediately.",
+    body: "Long-life, commercial-grade LEDs. If an electrical component fails or a sign arrives damaged, send us a photo and we will put it right under the warranty.",
   },
   {
     icon: "SealCheck",
     title: "Protected Checkout via Etsy",
-    body: "Orders are secured through our verified 5-star Etsy shop, giving you full buyer protection, encrypted checkout, and the flexibility to split payments 50/50.",
+    body: "Payment runs through Etsy's encrypted checkout, and eligible orders are covered by Etsy Purchase Protection. You only pay once you have approved your design.",
   },
   {
     icon: "Truck",
     title: "Tracked Crated Delivery",
-    body: "Packed in custom shockproof wooden crates to ensure 100% damage-free transit. Delivered right to your doorstep with full tracking from dispatch to delivery.",
+    body: "Packed in custom shockproof wooden crates built to protect it in transit, and delivered to your door with tracking from dispatch to delivery.",
   },
 ];
 

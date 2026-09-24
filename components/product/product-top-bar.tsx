@@ -28,18 +28,20 @@ export function ProductTopBar({ productName }: { productName: string }) {
           className="hidden items-center gap-5 text-xs font-bold uppercase tracking-wide text-[#5e5862] lg:flex"
           aria-label="Primary navigation"
         >
-          <Link href="/" className="transition-colors hover:text-[#ce0754]">
-            Home
-          </Link>
+          {/* The logo already links home; the slot goes to the buying guides,
+              which inner pages had no header route to. */}
           {PRODUCT_PAGES.map((p) => (
             <Link
               key={p.slug}
-              href={`/products/${p.slug}`}
+              href={p.path}
               className="transition-colors hover:text-[#ce0754]"
             >
               {p.category}
             </Link>
           ))}
+          <Link href="/guides" className="transition-colors hover:text-[#ce0754]">
+            Guides
+          </Link>
           <Link href="/blog" className="transition-colors hover:text-[#ce0754]">
             Journal
           </Link>

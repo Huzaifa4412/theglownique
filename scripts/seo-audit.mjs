@@ -15,7 +15,7 @@
  * Exit code is 1 if any check fails, so it can gate CI. Warnings do not fail.
  */
 
-import { readFile } from "node:fs/promises";
+import { access, readFile } from "node:fs/promises";
 import process from "node:process";
 
 const args = process.argv.slice(2);
@@ -75,6 +75,44 @@ const RETIRED_CLAIM_PATTERNS = [
 /** Pages allowed to discuss a retired claim in order to correct the record. */
 const RETIRED_CLAIM_EXEMPT = new Set(["/shipping", "/privacy"]);
 
+/**
+ * Claims with no evidence behind them (CLM-021 to CLM-025, added 2026-09-24).
+ * Each of these reached production through an automated copy pass, not an
+ * owner decision: a customer count against 23 recorded Etsy sales, a Star
+ * Seller badge nobody verified, a shop rating the register had withdrawn,
+ * "insured" delivery with no insurer, and starting prices in three different
+ * amounts on three different surfaces.
+ *
+ * They fail on code-managed routes. Journal posts live in Sanity and cannot be
+ * corrected by a code change, so a hit there is a warning naming the post for
+ * an editor to fix, rather than a failure that blocks every release until then.
+ */
+const UNVERIFIED_CLAIM_PATTERNS = [
+  { label: "customer count (CLM-021)", re: /\b\d[\d,]*\+?\s*(happy\s+)?(clients|customers)\b/i },
+  { label: "Etsy Star Seller badge (CLM-022)", re: /\bstar\s+seller\b/i },
+  { label: "shop star rating (CLM-012, withdrawn)", re: /\b(5|five)[- ]star\b[^.]{0,30}\bshop\b/i },
+  { label: "insured delivery (CLM-023)", re: /\binsured\s+(global\s+|worldwide\s+|courier\s+)?(delivery|shipping|courier)\b|\b(global|express|worldwide)\s+insured\b|\b(full|fully)\s+(transit\s+)?insur(ed|ance)\b|\btransit\s+insurance\b/i },
+  { label: "starting price (CLM-019, CLM-024)", price: true, re: /\b(starts?|starting|prices?)\s+(from|at)\s+\$\s?\d/i },
+  { label: "price range (CLM-019, CLM-024)", price: true, re: /\$\s?\d[\d,]*\+?\s*(to|–|-)\s*\$\s?\d/ },
+  { label: "UL certification (CLM-025)", re: /\bUL[- ](listed|certified|recognized|approved)\b|\bUL\s+drivers?\b/i },
+];
+
+/**
+ * The quote forms carry a budget selector ("$250 - $500") — the visitor's
+ * input, not a price we state. Price patterns are therefore tested against the
+ * page with every <select> removed, and with scripts removed too, because the
+ * React payload repeats the option labels as strings.
+ */
+function textForPriceClaims(html) {
+  return html
+    .replace(/<select[\s\S]*?<\/select>/gi, " ")
+    .replace(/<script[\s\S]*?<\/script>/gi, " ")
+    .replace(/<[^>]+>/g, " ");
+}
+
+/** Structured-data properties that would assert a price or a rating we cannot evidence. */
+const UNSUPPORTED_SCHEMA_KEYS = /"(price|lowPrice|highPrice|aggregateRating|ratingValue|reviewCount)"\s*:/;
+
 async function readRouteManifest() {
   // The manifest is TypeScript, so parse the literal rather than importing it —
   // this script must run without a build step.
@@ -91,7 +129,6 @@ async function readRouteManifest() {
   // prefix. A new catalog spread into lib/routes.ts needs a line here too,
   // otherwise its pages are silently skipped by every check below.
   const generated = [
-    { file: "../lib/product-catalog.ts", prefix: "/products" },
     { file: "../lib/industry-pages.ts", prefix: "/business-signs" },
     { file: "../lib/collection-pages.ts", prefix: "/custom-signage" },
   ];
@@ -101,7 +138,46 @@ async function readRouteManifest() {
       entries.push({ path: `${prefix}/${slug[1]}`, indexable: true });
     }
   }
-  return entries;
+  // Sign types carry their own canonical `path` (some live under /products,
+  // some under /business-signs), so read that rather than composing a prefix.
+  const products = await readFile(new URL("../lib/product-catalog.ts", import.meta.url), "utf8");
+  for (const path of products.matchAll(/^\s*path:\s*"([^"]+)"/gm)) {
+    entries.push({ path: path[1], indexable: true });
+  }
+  // Data-driven guides. Only the modules lib/guides/index.ts imports are
+  // served, so a drafted guide that has not been registered is not expected.
+  const guideIndex = await readFile(new URL("../lib/guides/index.ts", import.meta.url), "utf8");
+  for (const [, module] of guideIndex.matchAll(/from\s+"@\/lib\/guides\/([a-z0-9-]+)"/g)) {
+    if (module === "types") continue;
+    const guide = await readFile(new URL(`../lib/guides/${module}.ts`, import.meta.url), "utf8");
+    const slug = guide.match(/^\s*slug:\s*"([^"]+)"/m);
+    if (slug) entries.push({ path: `/guides/${slug[1]}`, indexable: true });
+  }
+  // A sign type under /business-signs is also a literal entry in routes.ts.
+  return [...new Map(entries.map((entry) => [entry.path, entry])).values()];
+}
+
+/**
+ * Retired URLs and where they must keep pointing. A 301 that silently turns
+ * into a 404 throws away whatever the old URL had earned, so each one is
+ * asserted on every run rather than trusted to next.config.ts.
+ */
+const LEGACY_REDIRECTS = [
+  ["/products/3d-metal-neon-signs", "/business-signs/channel-letter-signs"],
+  ["/products/ultra-thin-lightbox", "/business-signs/lightbox-signs"],
+  ["/products/uv-print-acrylic-signs", "/business-signs/acrylic-logo-signs"],
+  ["/business-signs/", "/business-signs"],
+];
+
+async function checkLegacyRedirects() {
+  for (const [from, to] of LEGACY_REDIRECTS) {
+    const response = await fetch(`${BASE}${from}`, { redirect: "manual" });
+    const location = response.headers.get("location") ?? "";
+    const target = location ? new URL(location, BASE).pathname : "";
+    if (response.status !== 301 || target !== to) {
+      fail(from, `expected 301 to ${to}, got ${response.status}${location ? ` to ${target}` : ""}`);
+    }
+  }
 }
 
 /** Entities must be decoded before anything is measured: a raw "&amp;" is five
@@ -214,6 +290,10 @@ function checkPage(route, html, status, headers) {
       fail(path, `JSON-LD does not parse: ${error.message}`);
     }
     if (body.includes("<")) fail(path, "JSON-LD contains a literal '<' — serializer not applied");
+    // No approved price basis (CLM-019) and no markable first-party reviews:
+    // a price or rating in structured data is a claim Google can act on.
+    const unsupported = body.match(UNSUPPORTED_SCHEMA_KEYS);
+    if (unsupported) fail(path, `JSON-LD asserts "${unsupported[1]}" with no approved evidence`);
   }
 
   // ── Retired claims (TECH-06) ──────────────────────────────────────────────
@@ -221,6 +301,18 @@ function checkPage(route, html, status, headers) {
     const text = html.replace(/<[^>]+>/g, " ");
     for (const claim of RETIRED_CLAIM_PATTERNS) {
       if (claim.re.test(text)) fail(path, `retired claim still visible: ${claim.label}`);
+    }
+  }
+
+  // ── Unverified claims (CLM-019, CLM-021 to CLM-025) ───────────────────────
+  {
+    const text = html.replace(/<[^>]+>/g, " ");
+    const priceText = textForPriceClaims(html);
+    const report = path.startsWith("/blog/") ? warn : fail;
+    for (const claim of UNVERIFIED_CLAIM_PATTERNS) {
+      if (claim.re.test(claim.price ? priceText : text)) {
+        report(path, `unverified claim visible: ${claim.label}`);
+      }
     }
   }
 }
@@ -255,6 +347,18 @@ async function checkSitemap(manifest) {
     if (!route.indexable && present) fail("/sitemap.xml", `contains non-indexable route ${route.path}`);
   }
 
+  // Image entries must name files that exist: an image sitemap full of 404s
+  // tells search engines the page's photographs are gone.
+  const images = [...xml.matchAll(/<image:loc>([^<]+)<\/image:loc>/g)].map((m) => m[1]);
+  for (const image of images) {
+    const path = decodeURI(new URL(image).pathname);
+    try {
+      await access(new URL(`../public${path}`, import.meta.url));
+    } catch {
+      fail("/sitemap.xml", `image entry has no file in public/: ${path}`);
+    }
+  }
+
   // A build-clock timestamp is the defect TECH-05 exists to prevent.
   const today = new Date().toISOString().slice(0, 10);
   const dates = [...xml.matchAll(/<lastmod>([^<]+)<\/lastmod>/gi)].map((m) => m[1].slice(0, 10));
@@ -270,6 +374,9 @@ async function checkLlmsTxt() {
     return;
   }
   const text = await response.text();
+  for (const claim of UNVERIFIED_CLAIM_PATTERNS) {
+    if (claim.re.test(text)) fail("/llms.txt", `unverified claim stated: ${claim.label}`);
+  }
   for (const claim of RETIRED_CLAIM_PATTERNS) {
     // llms.txt is allowed to name a retired claim only to say it has ended.
     const lines = text.split("\n").filter((line) => claim.re.test(line));
@@ -356,6 +463,7 @@ async function main() {
   await checkInternalLinks(known);
   await checkSitemap(manifest);
   await checkLlmsTxt();
+  await checkLegacyRedirects();
 
   for (const warning of warnings) console.log(`  warn  ${warning}`);
   for (const failure of failures) console.log(`  FAIL  ${failure}`);

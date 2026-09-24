@@ -24,6 +24,10 @@ export type ProductUseCase = {
   text: string;
   image: string;
   alt: string;
+  /** The industry or occasion page for this audience, when one exists. */
+  href?: string;
+  /** Link text; describes the destination, so it is not "Learn more". */
+  linkLabel?: string;
 };
 
 export type ProductGalleryItem = {
@@ -66,9 +70,36 @@ export type ProductLighting = {
   imageAlt: string;
 };
 
+/** The hub a sign type sits under, for the visible breadcrumb and its schema. */
+export type ProductParent = {
+  href: string;
+  label: string;
+};
+
 export type ProductPage = {
+  /**
+   * Internal id. Also the Meta catalog content_id, so it never changes even
+   * when the public URL does — use `path` for anything a visitor or crawler
+   * follows.
+   */
   slug: string;
+  /**
+   * The one public URL for this sign type (TECH-2026-09-24 consolidation).
+   * Three sign types used to have two pages each — /products/<slug> and a thin
+   * /business-signs/<term> twin targeting the same query — so the four pages
+   * that search engines saw competed with their own duplicates. Each now lives
+   * at a single URL, and the retired /products/<slug> addresses 301 to it
+   * (next.config.ts). Every internal link is built from this field.
+   */
+  path: string;
+  parent: ProductParent;
   name: string;
+  /**
+   * One sign of this type, in running text ("a slim LED lightbox"). Written
+   * out rather than derived from `name`: stripping a trailing "s" and
+   * lower-casing it produced "lightboxe" and "3d" in live headings.
+   */
+  singular: string;
   category: string;
   tagline: string;
   accent: string;
@@ -112,6 +143,14 @@ export type ProductPage = {
   colorStudio?: boolean;
   useCases: ProductUseCase[];
   gallery: ProductGalleryItem[];
+  /**
+   * Gallery heading. Defaults to "See it in the wild", which asserts that the
+   * photos show real signs in real places — true of the neon gallery (Etsy
+   * order photographs), not of galleries that include design visualisations.
+   */
+  galleryHeading?: string;
+  /** Visible note under the gallery heading, e.g. to disclose visualisations. */
+  galleryNote?: string;
   faqs: ProductFaq[];
   metaTitle: string;
   metaDescription: string;
@@ -120,25 +159,30 @@ export type ProductPage = {
 export const PRODUCT_PAGES: ProductPage[] = [
   {
     slug: "custom-neon-signs",
+    path: "/products/custom-neon-signs",
+    parent: { href: "/custom-signage", label: "Custom Signage" },
     name: "Custom LED Neon Signs",
+    singular: "custom LED neon sign",
     category: "Neon Sign",
     tagline: "Flexible silicone LED neon, handcrafted to your words",
     accent: "#f40b68",
     heroImage: "/hero/neon-sign-hero.webp",
     heroVideo: "/neon-sign/Videos/en-GB_1fa05acfc3a2cdf80c7787c5f585c30a.mp4",
+    // Definition first, like the other three sign types: the sentence an
+    // answer engine quotes should say what the thing is before who sells it.
     intro:
-      "The Glownique designs premium, handcrafted custom LED neon signs for businesses, weddings, and home decor. Our commercial-grade 12V silicone neon signs feature a 5-year warranty, include a free true-to-scale design mockup in 2 hours, and ship globally in secure timber crates.",
-    chips: ["Up to 100,000 hrs", "Safe 12V", "13 colours + RGB", "Indoor & IP67 outdoor"],
+      "A custom LED neon sign is your words, name or logo hand-bent in flexible silicone LED neon and mounted on a laser-cut acrylic backboard. The Glownique makes each one to order for homes, weddings and businesses — in any of 13 colours or RGB colour-change — sends a free true-to-scale mockup first, and ships it tracked and ready to hang.",
+    chips: ["Long-life LEDs", "Low-voltage 12V", "13 colours + RGB", "Indoor & outdoor builds"],
     features: [
       {
         icon: Zap,
-        title: "Ultra-efficient LED",
-        text: "Sips up to 80% less power than glass neon and stays cool to the touch, so it's safe to leave glowing all day.",
+        title: "Low-voltage LED",
+        text: "Runs on 12V from a plug-in power supply — no high-voltage transformer and no gas — so it is made to glow for hours at a stretch.",
       },
       {
         icon: ShieldCheck,
-        title: "Shatterproof & safe",
-        text: "Flexible silicone instead of breakable glass gas tubes — no mercury, no buzzing and nothing fragile to worry about.",
+        title: "No glass, no gas",
+        text: "Flexible silicone instead of breakable glass gas tubes — no mercury and no buzzing.",
       },
       {
         icon: Palette,
@@ -171,11 +215,11 @@ export const PRODUCT_PAGES: ProductPage[] = [
           "Clear, frosted or coloured cast acrylic — laser-cut to letter, to shape or to a square",
       },
       { label: "Power", value: "12V low-voltage plug-and-play adaptor" },
-      { label: "Lifespan", value: "Up to 100,000 hours of glow" },
+      { label: "LED life", value: "Long-life LEDs, covered by our warranty" },
       { label: "Colours", value: "13 solid colours, plus RGB colour-changing" },
       { label: "Dimming", value: "Optional wireless RF remote (1–100%)" },
       { label: "Mounting", value: "Wall standoffs or hanging kit — ready to hang" },
-      { label: "Use", value: "Indoor; IP67 waterproof option for outdoors" },
+      { label: "Use", value: "Indoor as standard; outdoor build available" },
       { label: "Sizes", value: "Fully custom, from ~30 cm to several metres" },
     ],
     options: {
@@ -239,24 +283,32 @@ export const PRODUCT_PAGES: ProductPage[] = [
         text: "Set the mood with a name, quote or shape that makes a room feel like yours.",
         image: "/neon-sign/girls room/iap_600x600.5331151538_61m43otq.webp",
         alt: "Pink LED neon sign glowing in a styled bedroom",
+        href: "/custom-signage/home-decor-signs",
+        linkLabel: "Bedroom and home neon signs",
       },
       {
         title: "Weddings & events",
         text: "A custom backdrop your guests will photograph all night — and you'll keep forever.",
         image: "/neon-sign/Marriage/iap_600x600.6280886797_59j146av.webp",
         alt: "Better Together wedding LED neon sign",
+        href: "/custom-signage/wedding-signs",
+        linkLabel: "Wedding neon signs",
       },
       {
         title: "Bars & studios",
         text: "Give your space a signature glow that sets the tone the moment people walk in.",
         image: "/neon-sign/Bar/iap_600x600.5588358323_i7bgtidf.webp",
         alt: "Cocktails LED neon sign in a bar",
+        href: "/business-signs/bar-signs",
+        linkLabel: "Neon bar signs for venues",
       },
       {
         title: "Gaming & personal",
         text: "Icons, gamertags and callouts that turn a wall into a statement.",
         image: "/neon-sign/Game Room/iap_600x600.6072503848_qdloxd4q.webp",
         alt: "Game On arcade LED neon sign in a games room",
+        href: "/custom-signage/gaming-neon-signs",
+        linkLabel: "Gaming neon signs",
       },
     ],
     gallery: [
@@ -268,11 +320,11 @@ export const PRODUCT_PAGES: ProductPage[] = [
     faqs: [
       {
         q: "How long do LED neon signs last?",
-        a: "Our LED neon is rated for up to 100,000 hours of glow — over 11 years even if left on 24/7 — while using up to 80% less power than traditional glass neon.",
+        a: "It is built on long-life LEDs, and a well-made sign gives years of everyday use. A rated LED life describes when the LEDs fade to 70% of their original brightness, not when the sign stops working, and the power supply is usually the first part to wear out — which is why every sign carries our warranty.",
       },
       {
-        q: "Are they safe to leave on and touch?",
-        a: "Yes. They run on low 12V power, stay cool to the touch and use shatterproof silicone instead of glass, so they're safe in bedrooms, kids' rooms and busy venues.",
+        q: "Are they safe to leave on?",
+        a: "They run on low-voltage 12V power from a plug-in supply and use flexible silicone instead of glass tubes, which suits them to bedrooms, kids' rooms and busy venues. Mount signs in children's rooms out of reach, and keep the power supply dry and ventilated.",
       },
       {
         q: "Can you make my logo or handwriting in neon?",
@@ -284,24 +336,31 @@ export const PRODUCT_PAGES: ProductPage[] = [
       },
       {
         q: "Can I use it outdoors?",
-        a: "Choose our IP67 weatherproof build and your sign is ready for storefronts, façades and outdoor events, rain or shine.",
+        a: "Yes, as an outdoor build, which is a different construction from an indoor sign. Tell us where it will hang and the quote specifies the outdoor build; an indoor sign should not be moved outside.",
       },
     ],
     metaTitle: "Custom LED Neon Signs — Made to Order",
     metaDescription:
-      "Handcrafted custom LED neon signs made to order. 13 colours + RGB, shatterproof 12V silicone, free design mockup, 5-year warranty & tracked delivery.",
+      "Handcrafted custom LED neon signs made to order. 13 colours + RGB, flexible 12V silicone neon, free design mockup, 5-year warranty & tracked delivery.",
   },
   {
     slug: "3d-metal-neon-signs",
-    name: "3D Metal Neon Signs",
-    category: "3D Metal Neon Sign",
-    tagline: "Fabricated stainless-steel channel letters — frontlit, halo backlit or dual-lit",
+    path: "/business-signs/channel-letter-signs",
+    parent: { href: "/business-signs", label: "Business Signs" },
+    // Named for how buyers search. "3D Metal Neon Signs" matched no query:
+    // these are channel letters, and none of them contain neon.
+    name: "3D Metal Channel Letter Signs",
+    singular: "channel letter sign",
+    category: "Channel Letters",
+    tagline: "Fabricated stainless-steel channel letters — front-lit, halo-lit or dual-lit",
     accent: "#e0a23c",
     heroImage: "/3d-metallic-neon-sign/corporte/056b3189-6a8c-482a-8334-53ded7aff3e1.webp",
     heroVideo: "/3d-metallic-neon-sign/videos/2.mp4",
+    // Definition first: the query's AI Overview opens by defining the term, so
+    // the sentence an engine can quote is the first one on the page.
     intro:
-      "The Glownique manufactures premium 3D metal channel letters for outdoor commercial business signage and corporate lobbies. Fabricated from 304 stainless steel, available in front-lit, halo back-lit, and dual-lit options, these architectural signs include a 5-year warranty and a free design mockup.",
-    chips: ["Frontlit / Backlit / Dual-lit", "Stainless steel", "IP67 outdoor", "Metallic finishes"],
+      "Channel letter signs are individual 3D letters and logo shapes, built as hollow metal channels and lit from inside with LEDs. The Glownique fabricates them in stainless steel — front-lit, halo-lit or dual-lit — to your artwork and wall width, sends a free design mockup first, and ships them ready for your local sign installer.",
+    chips: ["Front-lit / Halo-lit / Dual-lit", "Stainless steel", "Exterior & interior", "Metallic finishes"],
     features: [
       {
         icon: Sun,
@@ -321,15 +380,15 @@ export const PRODUCT_PAGES: ProductPage[] = [
       {
         icon: ShieldCheck,
         title: "Weatherproof & lasting",
-        text: "IP67-rated LEDs and durable metal stand up to rain, humidity and temperature swings outdoors.",
+        text: "IP67-rated LED modules inside stainless-steel channels, built for exterior walls through rain, humidity and temperature swings.",
       },
     ],
     craft: {
       heading: "How your metal letters are made",
-      body: "Every letter or logo element starts as sheet stainless steel, cut to your artwork and formed into a channel. We fit high-density LED inside, seal the housing to IP67, and finish the metal to your brand — brushed, mirrored or matte, anywhere from 0.8\" deep to 3.5\" and beyond. Each piece is then wired, bench-tested and prepared for the mount your wall needs.",
+      body: "Every letter or logo element starts as sheet stainless steel, cut to your artwork and formed into a channel. We fit IP67-rated LED modules inside, seal the channel, and finish the metal to your brand — brushed, mirrored or matte, anywhere from 0.8\" deep to 3.5\" and beyond. Each piece is then wired, bench-tested and prepared for the mount your wall needs.",
       points: [
         "Sheet stainless steel, cut and formed into channels",
-        "High-density LED sealed inside to IP67",
+        "IP67-rated LED modules sealed inside",
         "Brushed, mirrored or matte metal finishing",
         "Flush, standoff, raceway or backing-panel mounts",
       ],
@@ -342,7 +401,7 @@ export const PRODUCT_PAGES: ProductPage[] = [
       { label: "LED colours", value: "Cool, Daylight, Natural & Warm white, plus colours" },
       { label: "Finishes", value: "Brushed, mirrored or matte — gold, rose gold, brass, silver, black" },
       { label: "Depth", value: "0.8\" to 3.5\"+ (custom)" },
-      { label: "Rating", value: "IP67 weatherproof for indoor & outdoor use" },
+      { label: "Use", value: "Exterior façades or interiors; IP67-rated LED modules" },
       { label: "Colour match", value: "Custom RGB / HEX / CMYK or metallic finish" },
       { label: "Mounting", value: "Flush, standoff, raceway or backing panel" },
       { label: "Sizes", value: "Fully custom to your logo and wall" },
@@ -402,32 +461,45 @@ export const PRODUCT_PAGES: ProductPage[] = [
         text: "Pull customers in from across the street with a premium illuminated logo.",
         image: "/3d-metallic-neon-sign/corporte/056b3189-6a8c-482a-8334-53ded7aff3e1.webp",
         alt: "Corporate 3D metal channel-letter storefront sign",
+        href: "/business-signs/retail-storefronts",
+        linkLabel: "Retail storefront signs",
       },
       {
         title: "Corporate lobbies",
         text: "A refined halo-lit logo that makes reception areas feel established and premium.",
         image: "/3d-metallic-neon-sign/corporte/14d4b621-c697-428a-b727-1c91b78e9e08.webp",
         alt: "Corporate reception 3D metal logo sign",
+        href: "/business-signs/office-signs",
+        linkLabel: "Office and reception signs",
       },
       {
         title: "Restaurants & cafés",
         text: "Warm, inviting metal signage that photographs beautifully and lasts for years.",
         image: "/3d-metallic-neon-sign/Resturants/generated/026ad950-fafb-4407-8420-c83be7f49365.webp",
-        alt: "Restaurant 3D metal dual-lit sign",
+        alt: "Visualisation of a halo-lit metal restaurant logo glowing orange on a plaster wall",
+        href: "/business-signs/restaurant-signs",
+        linkLabel: "Restaurant and café signs",
       },
       {
         title: "Salons & studios",
         text: "A halo-lit wordmark that turns a feature wall into a signature brand moment.",
         image: "/3d-metallic-neon-sign/Salon/generated/235762e8-14ec-4167-b534-2dad36c826ba.webp",
-        alt: "Salon 3D metal halo backlit sign",
+        alt: "Visualisation of a halo-lit brushed-gold salon logo on a reception wall",
+        href: "/business-signs/salon-spa-signs",
+        linkLabel: "Salon and spa signs",
       },
     ],
     gallery: [
       { src: "/3d-metallic-neon-sign/corporte/056b3189-6a8c-482a-8334-53ded7aff3e1.webp", alt: "Corporate 3D metal channel-letter sign" },
       { src: "/3d-metallic-neon-sign/corporte/14d4b621-c697-428a-b727-1c91b78e9e08.webp", alt: "Illuminated 3D metal logo sign" },
-      { src: "/3d-metallic-neon-sign/Resturants/generated/026ad950-fafb-4407-8420-c83be7f49365.webp", alt: "Restaurant dual-lit metal sign" },
-      { src: "/3d-metallic-neon-sign/Salon/generated/235762e8-14ec-4167-b534-2dad36c826ba.webp", alt: "Salon halo backlit metal sign" },
+      { src: "/3d-metallic-neon-sign/Resturants/generated/026ad950-fafb-4407-8420-c83be7f49365.webp", alt: "Visualisation of a halo-lit metal restaurant logo on a plaster wall" },
+      { src: "/3d-metallic-neon-sign/Salon/generated/235762e8-14ec-4167-b534-2dad36c826ba.webp", alt: "Visualisation of a halo-lit brushed-gold salon logo on a reception wall" },
     ],
+    // Two of the four images sit in folders named "generated" and show
+    // fictional brands, so the default "See it in the wild" heading would
+    // present renders as installations. Replace with real project photos.
+    galleryHeading: "Finishes and lighting in context",
+    galleryNote: "Some images are design visualisations of finishes and lighting styles.",
     faqs: [
       {
         q: "What's the difference between frontlit, backlit and dual-lit?",
@@ -439,7 +511,7 @@ export const PRODUCT_PAGES: ProductPage[] = [
       },
       {
         q: "Are they suitable for outdoor storefronts?",
-        a: "Yes — our channel letters use IP67-rated LEDs and weather-resistant materials built for year-round indoor and outdoor use.",
+        a: "Yes. Exterior channel letters use IP67-rated LED modules inside stainless-steel channels, built for year-round outdoor use.",
       },
       {
         q: "How are they mounted?",
@@ -449,20 +521,33 @@ export const PRODUCT_PAGES: ProductPage[] = [
         q: "Do you make full logos, not just text?",
         a: "Yes. Send your logo and we'll fabricate letters and shapes to match, then send a free mockup showing sizing, finish and lighting before production.",
       },
+      // Who installs is the first thing channel-letter buyers ask in forums,
+      // and the answer decides whether a ship-only supplier is an option at all.
+      {
+        q: "Do you install channel letters?",
+        a: "No. We fabricate your letters and ship them prepared for the mounting method shown on your mockup — flush to the wall, on standoffs, on a raceway or on a backing panel. A local sign installer mounts them, and a licensed electrician makes the electrical connection.",
+      },
+      {
+        q: "Do exterior channel letters need a permit?",
+        a: "Often. Many US cities and most landlords require approval before a permanent exterior sign goes up, and an illuminated sign usually needs a licensed electrician to connect it. The rules are set locally, so check with your city's building or zoning office before you order. Your mockup shows the sign's dimensions, which an application will ask for.",
+      },
     ],
-    metaTitle: "3D Metal Signs & LED Channel Letters",
+    metaTitle: "Custom Channel Letter Signs in 3D Metal",
     metaDescription:
-      "Custom 3D metal channel-letter signs: frontlit, halo backlit & dual-lit stainless steel letters. IP67 weatherproof with free mockup & 5-year warranty.",
+      "Custom 3D metal channel letter signs, front-lit, halo-lit or dual-lit, fabricated in stainless steel to your logo. Free design mockup before you order.",
   },
   {
     slug: "ultra-thin-lightbox",
-    name: "Ultra Thin Slim Lightboxes",
-    category: "Ultra Thin Lightbox",
-    tagline: "Slim aluminium lightbox with 100% even, edge-lit LED glow",
+    path: "/business-signs/lightbox-signs",
+    parent: { href: "/business-signs", label: "Business Signs" },
+    name: "Ultra-Thin LED Lightbox Signs",
+    singular: "slim LED lightbox sign",
+    category: "Lightbox Signs",
+    tagline: "Slim aluminium lightbox with even, edge-lit LED glow",
     accent: "#0e9f6e",
     heroImage: "/ultra-thin-slim-lightbox/main-hero.webp",
     intro:
-      "The Glownique produces ultra-thin slim LED lightboxes for restaurant menus and retail displays. Under an inch deep, these edge-lit aluminum displays feature a tool-free magnetic graphic swap system for 100% even, shadow-free illumination.",
+      "An ultra-thin LED lightbox sign is an illuminated display frame under an inch deep: LEDs around its edge light a printed graphic evenly through a light-guide panel. The Glownique builds them in anodized aluminium to your size, with a magnetic or snap-frame face so menus, posters and promotions change in seconds, without tools.",
     chips: ["Under 1-inch slim", "Edge-lit, shadow-free", "Tool-free graphic swap", "Retail & commercial"],
     features: [
       {
@@ -527,24 +612,32 @@ export const PRODUCT_PAGES: ProductPage[] = [
         text: "Showcase promotions and product launches with bright, space-saving signage.",
         image: "/ultra-thin-slim-lightbox/Retail displays.jpg",
         alt: "Retail ultra-thin slim LED lightbox display",
+        href: "/business-signs/retail-storefronts",
+        linkLabel: "Retail storefront signs",
       },
       {
         title: "Menu boards",
         text: "Crisp, easy-to-read menus you can update in seconds as your offer changes.",
         image: "/ultra-thin-slim-lightbox/Menu boards.jpg",
         alt: "Illuminated slim lightbox menu board",
+        href: "/business-signs/restaurant-signs",
+        linkLabel: "Restaurant and café signs",
       },
       {
         title: "Lobbies & branding",
         text: "A modern, professional way to display branding and wayfinding indoors.",
         image: "/ultra-thin-slim-lightbox/Lobbies & branding.jpg",
         alt: "Corporate lobby slim lightbox branding sign",
+        href: "/business-signs/office-signs",
+        linkLabel: "Office and reception signs",
       },
       {
         title: "Storefront windows",
         text: "High-contrast, eye-catching displays that draw foot traffic day and night.",
         image: "/ultra-thin-slim-lightbox/Storefront windows.webp",
         alt: "Storefront window ultra-thin lightbox display",
+        href: "/business-signs/open-signs",
+        linkLabel: "Open signs for storefronts",
       },
     ],
     gallery: [
@@ -554,6 +647,9 @@ export const PRODUCT_PAGES: ProductPage[] = [
       { src: "/ultra-thin-slim-lightbox/Lobbies & branding.jpg", alt: "Corporate lobby slim lightbox branding sign" },
       { src: "/ultra-thin-slim-lightbox/Storefront windows.webp", alt: "Storefront window ultra-thin lightbox display" },
     ],
+    // Provenance of these images is unconfirmed (OWNER-QUESTIONS.md), so the
+    // heading describes settings rather than claiming finished installations.
+    galleryHeading: "Slim lightboxes in context",
     faqs: [
       {
         q: "How thin is an ultra-slim lightbox?",
@@ -575,21 +671,28 @@ export const PRODUCT_PAGES: ProductPage[] = [
         q: "Are they energy-efficient?",
         a: "Very. They run on low-voltage 12V/24V LEDs that use far less power than fluorescent lightboxes and last for years with minimal maintenance.",
       },
+      {
+        q: "Can a lightbox sign be used outdoors?",
+        a: "The standard slim lightbox is built for indoor use — shop windows, menu walls, lobbies and exhibition stands. Outdoor-rated builds are available for covered or exterior positions; tell us where the sign will hang and the mockup will specify the right build.",
+      },
     ],
-    metaTitle: "Ultra-Thin LED Lightboxes — Edge-Lit Signs",
+    metaTitle: "Ultra-Thin LED Lightbox Signs, Edge-Lit",
     metaDescription:
-      "Ultra-thin edge-lit LED lightboxes with even, shadow-free light and tool-free graphic swaps in slim aluminum frames. Free mockup & 5-year warranty.",
+      "Custom ultra-thin LED lightbox signs under an inch deep, edge-lit for even light, with tool-free graphic changes for menus, windows and retail displays.",
   },
   {
     slug: "uv-print-acrylic-signs",
-    name: "3D Acrylic Illuminated Neon Signs",
-    category: "3D Acrylic Neon Sign",
+    path: "/business-signs/acrylic-logo-signs",
+    parent: { href: "/business-signs", label: "Business Signs" },
+    name: "Custom Acrylic Logo Signs",
+    singular: "custom acrylic logo sign",
+    category: "Acrylic Logo Signs",
     tagline: "Full-colour UV artwork on acrylic, traced with glowing LED neon",
     accent: "#7c3aed",
     heroImage: "/3d-arcylic/3235dc09-6dac-4056-88b6-55fc26e28571.webp",
     heroVideo: "/3d-arcylic/videos/25763cbb2ca6866a574a4dde5853343c.mp4",
     intro:
-      "When a logo needs more than one colour, this is the sign. High-definition UV printing lays sharp, full-colour artwork, gradients and brand fonts directly onto premium acrylic, and we trace it with glowing LED neon contours. The result is rich, photo-quality detail combined with the glow of neon — colour-matched to your exact brand. It's also the most cost-effective way to light up a detailed design: the print handles the intricate work that would otherwise take metres of hand-bent tubing, so more of your budget goes into the artwork and less into labour.",
+      "A UV-printed acrylic logo sign is full-colour artwork printed directly onto acrylic and outlined with LED neon, so gradients, fine text and multi-colour logos keep every detail while the contours glow. The Glownique builds them on clear, white, mirrored or coloured acrylic, in a single layer or several for real 3D depth. Because the print carries the detail, a busy logo needs far less hand-bent neon than a neon-only sign.",
     chips: ["Cost-effective", "Full-colour UV print", "Neon contours", "Pantone / HEX / CMYK", "Logos & brand art"],
     features: [
       {
@@ -640,7 +743,7 @@ export const PRODUCT_PAGES: ProductPage[] = [
       },
       { label: "Power", value: "12V low-voltage plug-and-play" },
       { label: "Mounting", value: "Standoffs or hanging kit — ready to hang" },
-      { label: "Use", value: "Indoor; IP67 waterproof option available" },
+      { label: "Use", value: "Indoor as standard; outdoor build available" },
     ],
     options: {
       heading: "Print + neon combinations",
@@ -660,18 +763,24 @@ export const PRODUCT_PAGES: ProductPage[] = [
         text: "A full-colour logo that glows — ideal for receptions, studios and offices.",
         image: "/3d-arcylic/3235dc09-6dac-4056-88b6-55fc26e28571.webp",
         alt: "3D acrylic UV-print neon logo brand wall",
+        href: "/business-signs/office-signs",
+        linkLabel: "Office and reception signs",
       },
       {
         title: "Photo booths & events",
         text: "Photo-ready, on-brand backdrops that make every picture look premium.",
         image: "/3d-arcylic/fff64032-bdaa-459c-8caf-a4ac67b89f19.webp",
         alt: "Layered acrylic UV-print neon event sign",
+        href: "/business-signs/trade-show-signs",
+        linkLabel: "Trade show and event signs",
       },
       {
         title: "Retail & hospitality",
         text: "Colour-rich signage that captures artwork neon alone simply can't.",
         image: "/3d-arcylic/3235dc09-6dac-4056-88b6-55fc26e28571.webp",
         alt: "Retail 3D acrylic UV-print neon sign",
+        href: "/business-signs/retail-storefronts",
+        linkLabel: "Retail storefront signs",
       },
       {
         title: "Custom art pieces",
@@ -684,6 +793,7 @@ export const PRODUCT_PAGES: ProductPage[] = [
       { src: "/3d-arcylic/3235dc09-6dac-4056-88b6-55fc26e28571.webp", alt: "3D acrylic UV-print neon contour sign" },
       { src: "/3d-arcylic/fff64032-bdaa-459c-8caf-a4ac67b89f19.webp", alt: "Layered 3D acrylic UV-print neon sign" },
     ],
+    galleryHeading: "Acrylic logo signs in context",
     faqs: [
       {
         q: "What is a UV-print acrylic neon sign?",
@@ -707,17 +817,36 @@ export const PRODUCT_PAGES: ProductPage[] = [
       },
       {
         q: "Is it suitable for outdoors?",
-        a: "Choose our IP67 waterproof option and your UV-print neon sign is ready for covered outdoor and event use.",
+        a: "Yes, as an outdoor build for covered outdoor spaces and events — a different construction from the indoor sign. Tell us where it will be used and the quote specifies the build.",
+      },
+      {
+        q: "How are acrylic logo signs mounted on a wall?",
+        a: "On wall standoffs, which hold the acrylic slightly off the wall so it reads as floating, or on a hanging kit. Both arrive ready to hang.",
       },
     ],
-    metaTitle: "3D Acrylic Signs with UV-Print Logos",
+    metaTitle: "Custom Acrylic Logo Signs, UV-Printed & Lit",
     metaDescription:
-      "Custom 3D acrylic signs pairing full-colour UV print with glowing LED neon contours. Exact Pantone match, multi-layer depth, free mockup & 5-year warranty.",
+      "Custom acrylic logo signs: full-colour UV print traced with LED neon, on clear, white, mirrored or coloured acrylic. Brand colour matching and a free mockup.",
   },
 ];
 
 export function getProductPage(slug: string): ProductPage | undefined {
   return PRODUCT_PAGES.find((p) => p.slug === slug);
+}
+
+/**
+ * The lookup used by route files, which pass a literal slug: a miss is a typo
+ * that should stop the build, not a 404 discovered in production.
+ */
+export function requireProductPage(slug: string): ProductPage {
+  const product = getProductPage(slug);
+  if (!product) throw new Error(`No product page defined for slug "${slug}".`);
+  return product;
+}
+
+/** Canonical URL path for a sign type, from its internal slug. */
+export function productHref(slug: string): string {
+  return getProductPage(slug)?.path ?? "/custom-signage";
 }
 
 export function getRelatedProducts(slug: string): ProductPage[] {

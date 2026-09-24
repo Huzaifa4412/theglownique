@@ -338,9 +338,14 @@ h2 {
 .desktop-nav {
   display: flex;
   align-items: center;
-  gap: clamp(18px, 2.2vw, 36px);
+  gap: clamp(16px, 1.9vw, 36px);
   font-size: 0.88rem;
   font-weight: 600;
+}
+
+/* Two-word labels wrapped onto two lines just above the 1180px breakpoint. */
+.desktop-nav a {
+  white-space: nowrap;
 }
 
 .desktop-nav a,
@@ -460,6 +465,10 @@ h2 {
 }
 
 .hero__badge {
+  /* Rendered as the page's <h1>: keep the body face and zero margins it had
+     as a <div>, rather than picking up the global display-font heading rule. */
+  font-family: inherit;
+  margin: 0;
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -484,7 +493,7 @@ h2 {
   text-transform: uppercase;
 }
 
-.hero h1 {
+.hero .hero-title {
   max-width: 600px;
   margin-bottom: 20px;
   font-family: var(--font-display);
@@ -3868,7 +3877,7 @@ button:active {
     padding: 30px 18px 32px;
   }
 
-  .hero h1 {
+  .hero .hero-title {
     font-size: clamp(2.25rem, 11vw, 3.5rem);
     margin-bottom: 18px;
   }

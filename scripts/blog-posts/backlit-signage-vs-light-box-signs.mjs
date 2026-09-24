@@ -127,13 +127,13 @@ export const post = {
       [
         b("Halo backlit letters (also “reverse channel letters”, “halo lit letters”, “reverse-lit”). "),
         "Each letter or logo element is a shallow metal or acrylic channel with an opaque face and a translucent or open back. LEDs inside fire backwards onto the wall. The letters sit on short standoffs, so the light escapes around them as a soft ring — the halo. The face itself is never lit. This is what most people mean by a custom backlit sign for a lobby or reception. Our version is fabricated in stainless steel; see ",
-        a("3D metal backlit letters", "/products/3d-metal-neon-signs"),
+        a("3D metal backlit letters", "/business-signs/channel-letter-signs"),
         ".",
       ],
       [
         b("Ultra-thin LED light box sign (also “slim light box”, “edge lit sign”). "),
         "A rigid aluminium frame under about an inch deep, with LEDs along the edges firing sideways into a clear acrylic light guide plate. The plate turns edge light into an even glow across the whole face, which illuminates a printed film held under a snap frame or magnetic cover. Ours is described on the ",
-        a("ultra-thin lightbox page", "/products/ultra-thin-lightbox"),
+        a("ultra-thin lightbox page", "/business-signs/lightbox-signs"),
         ".",
       ],
       [
@@ -274,7 +274,7 @@ export const post = {
       "The last three rows matter. A halo sign is not the strongest storefront format: at distance and in daylight a lit face wins, which is what the ",
       a("front-lit vs halo-lit vs dual-lit guide", "/guides/front-lit-vs-halo-lit-vs-dual-lit"),
       " is for. A busy multicolour mark is better served by ",
-      a("UV print on acrylic with neon accents", "/products/uv-print-acrylic-signs"),
+      a("UV print on acrylic with neon accents", "/business-signs/acrylic-logo-signs"),
       " than by either format here. We make all of these, so there is no reason for us to steer you towards the wrong one — and a mockup in the wrong format is a cheap way to find out before production.",
     ),
 
@@ -441,13 +441,13 @@ export const post = {
       kind: "commercial",
       label: "3D metal backlit letters",
       description: "Fabricated stainless-steel letters and logos — halo lit, front-lit or dual-lit — with finishes and mounting options.",
-      href: "/products/3d-metal-neon-signs",
+      href: "/business-signs/channel-letter-signs",
     },
     {
       kind: "commercial",
       label: "Ultra-thin LED light box signs",
       description: "Edge-lit slim aluminium lightboxes with snap-frame or magnetic faces for menus, displays and windows.",
-      href: "/products/ultra-thin-lightbox",
+      href: "/business-signs/lightbox-signs",
     },
     {
       kind: "guide",

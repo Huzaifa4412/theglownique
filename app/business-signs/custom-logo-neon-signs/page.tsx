@@ -13,7 +13,7 @@ import { serializeJsonLd } from "@/lib/utils";
 export const metadata: Metadata = {
   title: "Custom Business Logo LED Neon Signs",
   description:
-    "Custom LED logo neon signs for business brand walls, bars, salons & offices. Exact Pantone match, shatterproof 12V silicone & 5-year warranty.",
+    "Custom LED logo neon signs for business brand walls, bars, salons & offices. Brand colour matching, flexible 12V LED neon & 5-year warranty.",
   alternates: { canonical: "/business-signs/custom-logo-neon-signs" },
   openGraph: {
     type: "website",
@@ -44,7 +44,7 @@ const logoNeonFaqs = [
   },
   {
     q: "Are LED neon logo signs safe for commercial office spaces and high-traffic areas?",
-    a: "Absolutely. Unlike fragile glass neon that operates at 3,000–15,000V, our commercial LED neon operates on safe 12V DC power. It produces zero heat, no buzzing noise, contains zero mercury, and uses flexible shatterproof silicone.",
+    a: "They are well suited to them. Glass neon runs on transformers of up to about 15,000 volts; our LED neon runs on low-voltage 12V DC from a plug-in power supply. There are no glass tubes, no gas and no mercury, and it does not buzz. In busy areas, mount the sign clear of reach and keep the power supply dry and ventilated.",
   },
   {
     q: "What acrylic backboard cuts are available for business logos?",
@@ -165,11 +165,11 @@ export default function CustomLogoNeonSignsPage() {
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="font-bold text-[#ce0754]">✓</span>
-                    <span><strong>Safe 12V Low Voltage:</strong> Cool to touch, shatterproof silicone tubing with 100,000-hour LED lifespan.</span>
+                    <span><strong>Low-voltage 12V:</strong> Flexible silicone LED neon with no glass tubes, built on long-life LEDs.</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="font-bold text-[#ce0754]">✓</span>
-                    <span><strong>IP67 Outdoor Option:</strong> Full waterproofing available for exterior storefront entryways.</span>
+                    <span><strong>Outdoor Option:</strong> An outdoor build for exterior entrances, specified for your location with the quote.</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="font-bold text-[#ce0754]">✓</span>

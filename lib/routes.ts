@@ -1,4 +1,5 @@
 import { COLLECTION_PAGES } from "@/lib/collection-pages";
+import { GUIDES } from "@/lib/guides";
 import { INDUSTRY_PAGES } from "@/lib/industry-pages";
 import { PRODUCT_PAGES } from "@/lib/product-catalog";
 
@@ -75,18 +76,25 @@ const BACKLIT_RELEASE = "2026-09-15";
 /** Ubersuggest keyword optimization & internal linking expansion. */
 const UBERSUGGEST_SEO_RELEASE = "2026-09-18";
 
+/**
+ * Growth-system audit: unverified claims removed (a customer count, a Star
+ * Seller badge, a withdrawn shop rating, "insured" delivery, unapproved price
+ * ranges), the homepage H1 made visible, and the sign-type duplicates merged.
+ */
+const GROWTH_AUDIT_RELEASE = "2026-09-24";
+
 export const ROUTES: readonly RouteEntry[] = [
   // Home — primary H1 keywords, FAQ schemas and entity grounded content.
-  { path: "/", lastModified: UBERSUGGEST_SEO_RELEASE, changeFrequency: "weekly", priority: 1.0, indexable: true },
+  { path: "/", lastModified: GROWTH_AUDIT_RELEASE, changeFrequency: "weekly", priority: 1.0, indexable: true },
 
   // B2B hub and destinations.
   { path: "/business-signs", lastModified: UBERSUGGEST_SEO_RELEASE, changeFrequency: "weekly", priority: 0.95, indexable: true },
   { path: "/business-signs/custom-logo-neon-signs", lastModified: CURRENT_SEO_RELEASE, changeFrequency: "monthly", priority: 0.9, indexable: true },
-  { path: "/business-signs/channel-letter-signs", lastModified: CURRENT_SEO_RELEASE, changeFrequency: "monthly", priority: 0.9, indexable: true },
+  { path: "/business-signs/channel-letter-signs", lastModified: GROWTH_AUDIT_RELEASE, changeFrequency: "monthly", priority: 0.9, indexable: true },
   { path: "/business-signs/backlit-signs", lastModified: BACKLIT_RELEASE, changeFrequency: "monthly", priority: 0.9, indexable: true },
   { path: "/business-signs/backlit-lobby-signs", lastModified: UBERSUGGEST_SEO_RELEASE, changeFrequency: "monthly", priority: 0.9, indexable: true },
-  { path: "/business-signs/lightbox-signs", lastModified: CURRENT_SEO_RELEASE, changeFrequency: "monthly", priority: 0.9, indexable: true },
-  { path: "/business-signs/acrylic-logo-signs", lastModified: CURRENT_SEO_RELEASE, changeFrequency: "monthly", priority: 0.9, indexable: true },
+  { path: "/business-signs/lightbox-signs", lastModified: GROWTH_AUDIT_RELEASE, changeFrequency: "monthly", priority: 0.9, indexable: true },
+  { path: "/business-signs/acrylic-logo-signs", lastModified: GROWTH_AUDIT_RELEASE, changeFrequency: "monthly", priority: 0.9, indexable: true },
 
   // The eight industry landing pages, generated from the same list that renders
   // them so a slug cannot exist in one place and not the other. They sit below
@@ -104,10 +112,19 @@ export const ROUTES: readonly RouteEntry[] = [
   { path: "/blog", lastModified: BLOG_RELEASE, changeFrequency: "weekly", priority: 0.7, indexable: true },
 
   // Decision guides.
-  { path: "/guides", lastModified: UBERSUGGEST_SEO_RELEASE, changeFrequency: "weekly", priority: 0.85, indexable: true },
-  { path: "/guides/custom-business-sign-cost", lastModified: CURRENT_SEO_RELEASE, changeFrequency: "monthly", priority: 0.8, indexable: true },
-  { path: "/guides/front-lit-vs-halo-lit-vs-dual-lit", lastModified: CURRENT_SEO_RELEASE, changeFrequency: "monthly", priority: 0.8, indexable: true },
+  { path: "/guides", lastModified: GROWTH_AUDIT_RELEASE, changeFrequency: "weekly", priority: 0.85, indexable: true },
+  { path: "/guides/custom-business-sign-cost", lastModified: GROWTH_AUDIT_RELEASE, changeFrequency: "monthly", priority: 0.8, indexable: true },
+  { path: "/guides/front-lit-vs-halo-lit-vs-dual-lit", lastModified: GROWTH_AUDIT_RELEASE, changeFrequency: "monthly", priority: 0.8, indexable: true },
   { path: "/guides/backlit-sign-wall-surfaces-and-standoffs", lastModified: UBERSUGGEST_SEO_RELEASE, changeFrequency: "monthly", priority: 0.8, indexable: true },
+  // Data-driven guides (lib/guides). Each carries its own reviewed date, so
+  // re-checking one guide's sources moves only that guide's lastModified.
+  ...GUIDES.map((guide) => ({
+    path: `/guides/${guide.slug}`,
+    lastModified: guide.updatedOn,
+    changeFrequency: "monthly" as const,
+    priority: 0.8,
+    indexable: true,
+  })),
 
   // Consumer hub. It began as the broad product catalog and now also parents
   // the occasion collections below, which is why its priority sits above them.
@@ -119,13 +136,18 @@ export const ROUTES: readonly RouteEntry[] = [
     priority: 0.8,
     indexable: true,
   })),
-  ...PRODUCT_PAGES.map((product) => ({
-    path: `/products/${product.slug}`,
-    lastModified: CURRENT_SEO_RELEASE,
+  // Only sign types whose one URL is under /products. The other three are the
+  // /business-signs entries above; their old /products addresses are 301s.
+  ...PRODUCT_PAGES.filter((product) => product.path.startsWith("/products/")).map((product) => ({
+    path: product.path,
+    lastModified: GROWTH_AUDIT_RELEASE,
     changeFrequency: "monthly" as const,
     priority: 0.75,
     indexable: true,
   })),
+
+  // Who makes the signs, how ordering works, and what is and is not offered.
+  { path: "/about", lastModified: GROWTH_AUDIT_RELEASE, changeFrequency: "monthly", priority: 0.6, indexable: true },
 
   // Contact is a conversion destination, not a policy page — hence the higher
   // priority than the policy block below.
@@ -152,3 +174,40 @@ export const ROUTES: readonly RouteEntry[] = [
 
 /** Routes that belong in the sitemap. */
 export const INDEXABLE_ROUTES = ROUTES.filter((route) => route.indexable);
+
+function distinct(sources: readonly (string | undefined)[]): string[] {
+  return [...new Set(sources.filter((src): src is string => Boolean(src)))];
+}
+
+/**
+ * The photographs each page renders, for the image sitemap (app/sitemap.ts).
+ * Site-relative paths, hero first. Only images that appear on the page itself
+ * belong here: a guide's social card is listed only when the guide shows it.
+ * scripts/seo-audit.mjs checks that every listed file exists in public/.
+ */
+export const ROUTE_IMAGES: ReadonlyMap<string, readonly string[]> = new Map([
+  ...PRODUCT_PAGES.map((product) => [
+    product.path,
+    distinct([
+      product.heroImage,
+      product.craft.image,
+      product.backings?.image,
+      ...product.useCases.map((useCase) => useCase.image),
+      ...product.gallery.map((item) => item.src),
+    ]),
+  ] as const),
+  ...INDUSTRY_PAGES.map((industry) => [`/business-signs/${industry.slug}`, distinct([industry.heroImage])] as const),
+  ...COLLECTION_PAGES.map((collection) => [
+    `/custom-signage/${collection.slug}`,
+    distinct([collection.heroImage, ...collection.gallery.map((item) => item.src)]),
+  ] as const),
+  ...GUIDES.map((guide) => [
+    `/guides/${guide.slug}`,
+    distinct([
+      guide.showHeroImage ? guide.image.src : undefined,
+      ...guide.sections.flatMap((section) =>
+        section.blocks.flatMap((block) => (block.type === "image" ? [block.image.src] : [])),
+      ),
+    ]),
+  ] as const),
+]);

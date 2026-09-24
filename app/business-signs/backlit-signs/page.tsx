@@ -48,7 +48,7 @@ const backlitFaqs = [
   },
   {
     q: "Can backlit signs be installed outdoors?",
-    a: "Yes. Our exterior backlit signs are fabricated from marine-grade 304 or 316 stainless steel with IP67-rated waterproof silicone-encapsulated LEDs. Drainage weep holes prevent internal moisture accumulation, and exterior-rated low-voltage drivers ensure reliable operation in rain, snow, and direct sunlight.",
+    a: "Yes, when they are built as exterior signs. Outdoor backlit letters are fabricated in stainless steel around sealed, IP67-rated LED modules, with an exterior-rated low-voltage power supply. An interior sign should not be moved outdoors, so tell us the sign is going outside and the quote will specify the outdoor build.",
   },
   {
     q: "What metal finishes and LED color temperatures are available?",
@@ -129,9 +129,9 @@ export default function BacklitSignsPage() {
                 <div className="mt-6 flex flex-wrap gap-2 text-xs text-[#a0a0b0]">
                   <span className="rounded-md border border-white/10 bg-white/5 px-3 py-1">5-Year Warranty</span>
                   <span className="rounded-md border border-white/10 bg-white/5 px-3 py-1">Free 2-Hour Mockup</span>
-                  <span className="rounded-md border border-white/10 bg-white/5 px-3 py-1">304/316 Stainless Steel</span>
+                  <span className="rounded-md border border-white/10 bg-white/5 px-3 py-1">Stainless Steel</span>
                   <span className="rounded-md border border-white/10 bg-white/5 px-3 py-1">12V Silent LED Drivers</span>
-                  <span className="rounded-md border border-white/10 bg-white/5 px-3 py-1">IP67 Waterproofing</span>
+                  <span className="rounded-md border border-white/10 bg-white/5 px-3 py-1">Outdoor Builds</span>
                 </div>
 
                 <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
@@ -290,7 +290,7 @@ export default function BacklitSignsPage() {
                 Precision Metal Finishes
               </h2>
               <p className="mt-4 text-base leading-relaxed text-[#a0a0b0]">
-                Every backlit sign is handcrafted from marine-grade 304 or 316 stainless steel, offering durability that never chips, peels, or fades.
+                Every backlit sign is fabricated in stainless steel, so the letters stay crisp on a façade or a reception wall alike.
               </p>
             </div>
 

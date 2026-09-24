@@ -43,7 +43,7 @@ export const SIGN_TYPES: SignTypeDetail[] = [
   },
   {
     id: '3D Metal Neon Sign',
-    label: '3D Metal Neon Sign',
+    label: '3D Metal Channel Letters',
     description: 'Stainless-steel channel letters — frontlit, halo backlit or dual-lit',
     image: '/3d-metallic-neon-sign/corporte/056b3189-6a8c-482a-8334-53ded7aff3e1.webp',
     imageAlt: 'Illuminated 3D metal channel-letter sign mounted on a corporate wall',
@@ -125,7 +125,7 @@ export const heroSlides: HeroSlide[] = [
   },
   {
     id: 'business',
-    eyebrow: '2. 3D Metal Neon Sign',
+    eyebrow: '2. 3D Metal Channel Letters',
     title: 'Architectural 3D channel lettering.',
     copy: 'Fabricated stainless-steel channel letters with frontlit, halo backlit and dual-lit LED.',
     image: businessImage,

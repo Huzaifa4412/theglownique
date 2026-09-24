@@ -51,9 +51,6 @@ export const metadata: Metadata = {
   creator: "The Glownique",
   publisher: "The Glownique",
   category: "shopping",
-  alternates: {
-    canonical: "/",
-  },
   openGraph: {
     type: "website",
     siteName: "The Glownique",
@@ -127,6 +124,17 @@ const structuredData = {
       image: `${siteUrl}/hero/neon-sign-hero.png`,
       description:
         "The Glownique handcrafts custom LED neon signs, 3D metal channel-letter signs, ultra-thin edge-lit lightboxes and UV-print acrylic signs, made to order with a free design preview.",
+      // Brand searches for "Glownique" are dominated by unrelated cosmetics,
+      // skincare and tanning businesses, and AI summaries have conflated them
+      // with this one. This property exists for exactly that job.
+      disambiguatingDescription:
+        "A custom illuminated-signage maker (LED neon, channel letters, lightboxes and acrylic logo signs) that sells through its website and its Etsy shop. Not a cosmetics, skincare or tanning brand.",
+      contactPoint: {
+        "@type": "ContactPoint",
+        contactType: "customer service",
+        url: `${siteUrl}/contact`,
+        availableLanguage: "en",
+      },
       slogan: "Designed with feeling. Built to glow.",
       knowsAbout: [
         "Custom LED neon signs",
@@ -148,6 +156,10 @@ const structuredData = {
       "@id": `${siteUrl}/#website`,
       url: siteUrl,
       name: "The Glownique",
+      // Google's site-name system falls back to these when it will not use
+      // `name`. "TheGlownique" is the Etsy shop's name; plain "Glownique" is
+      // left out because it is another company's brand (glownique.com).
+      alternateName: ["TheGlownique", "theglownique.com"],
       description:
         "Custom LED neon signs, 3D metal signage, ultra-thin lightboxes and UV-print acrylic signs, handcrafted and made to order.",
       publisher: { "@id": `${siteUrl}/#organization` },

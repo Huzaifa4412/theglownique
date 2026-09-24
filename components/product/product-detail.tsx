@@ -43,7 +43,10 @@ function Reveal({
   );
 }
 
-export function ProductDetail({ slug }: { slug: string }) {
+/** A buying guide, resolved on the server (lib/guides stays out of this bundle). */
+export type ProductReading = { href: string; title: string; summary: string };
+
+export function ProductDetail({ slug, reading = [] }: { slug: string; reading?: ProductReading[] }) {
   const product = getProductPage(slug);
   const [activeImg, setActiveImg] = useState(0);
 
@@ -77,9 +80,14 @@ export function ProductDetail({ slug }: { slug: string }) {
             <nav className="mb-6 flex items-center gap-2 text-xs font-medium text-white/50" aria-label="Breadcrumb">
               <Link href="/" className="transition-colors hover:text-white">Home</Link>
               <span aria-hidden="true">/</span>
-              <span className="text-white/80">Products</span>
+              {/* Same trail as the BreadcrumbList in lib/product-seo.ts. It used
+                  to read "Products" as plain text while the schema said
+                  "Custom Signage", and /products itself only redirects. */}
+              <Link href={product.parent.href} className="text-white/80 transition-colors hover:text-white">
+                {product.parent.label}
+              </Link>
               <span aria-hidden="true">/</span>
-              <span className="text-white">{product.name}</span>
+              <span className="text-white" aria-current="page">{product.name}</span>
             </nav>
 
             <span
@@ -464,6 +472,18 @@ export function ProductDetail({ slug }: { slug: string }) {
                   <div className="p-5">
                     <h3 className="text-base font-bold text-[#1e1a22]">{useCase.title}</h3>
                     <p className="mt-1.5 text-sm leading-6 text-[#5e5862]">{useCase.text}</p>
+                    {/* The industry and occasion pages were reachable almost
+                        only from their hub; these are the product pages'
+                        contextual links into them. */}
+                    {useCase.href ? (
+                      <Link
+                        href={useCase.href}
+                        className="mt-3 inline-flex items-center gap-1 text-sm font-bold text-[#ce0754] underline-offset-4 hover:underline"
+                      >
+                        {useCase.linkLabel ?? `${useCase.title} signs`}
+                        <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
+                      </Link>
+                    ) : null}
                   </div>
                 </div>
               </Reveal>
@@ -480,8 +500,11 @@ export function ProductDetail({ slug }: { slug: string }) {
               Gallery
             </p>
             <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-[#1e1a22] sm:text-4xl">
-              See it in the wild
+              {product.galleryHeading ?? "See it in the wild"}
             </h2>
+            {product.galleryNote ? (
+              <p className="mt-3 text-sm text-[#5e5862]">{product.galleryNote}</p>
+            ) : null}
           </Reveal>
           <Reveal>
             <div className="relative aspect-[16/10] w-full overflow-hidden rounded-3xl border border-[#eadfe4] bg-black/5 shadow-xl">
@@ -520,6 +543,41 @@ export function ProductDetail({ slug }: { slug: string }) {
           </Reveal>
         </div>
       </section>
+
+      {/* ─────────────────── BEFORE YOU ORDER ─────────────────── */}
+      {/* The guides answer the questions a buyer has before the FAQ's
+          ordering questions: which lighting, what size, indoor or outdoor. */}
+      {reading.length > 0 ? (
+        <section className="border-t border-[#eadfe4] bg-[#fdf7f9] py-16 sm:py-20" aria-labelledby="before-you-order">
+          <div className="mx-auto max-w-[1100px] px-4 sm:px-6">
+            <Reveal className="mb-10 text-center">
+              <p className="text-xs font-extrabold uppercase tracking-widest" style={{ color: accent }}>
+                Before you order
+              </p>
+              <h2 id="before-you-order" className="mt-2 text-3xl font-extrabold tracking-tight text-[#1e1a22] sm:text-4xl">
+                Guides for choosing your {product.singular}
+              </h2>
+            </Reveal>
+            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              {reading.map((guide, i) => (
+                <Reveal key={guide.href} delay={i * 0.06}>
+                  <Link
+                    href={guide.href}
+                    className="group flex h-full flex-col rounded-2xl border border-[#eadfe4] bg-white p-6 shadow-[0_10px_30px_rgba(107,38,67,0.05)] transition-colors hover:border-[#f8c6da]"
+                  >
+                    <h3 className="text-base font-bold text-[#1e1a22] group-hover:underline">{guide.title}</h3>
+                    <p className="mt-2 flex-1 text-sm leading-6 text-[#5e5862]">{guide.summary}</p>
+                    <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-bold" style={{ color: accent }}>
+                      Read the guide
+                      <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true" />
+                    </span>
+                  </Link>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+      ) : null}
 
       {/* ─────────────────────── FAQ ─────────────────────── */}
       <section className="bg-white py-16 sm:py-20">
@@ -567,7 +625,7 @@ export function ProductDetail({ slug }: { slug: string }) {
         />
         <Reveal className="relative z-10 mx-auto max-w-2xl px-4 text-center sm:px-6">
           <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl">
-            Ready to design your {product.name.replace(/s$/, "").toLowerCase()}?
+            Ready to design your {product.singular}?
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-gray-300">
             Send your idea and we&apos;ll send back a free mockup — with tracked worldwide delivery, a
@@ -609,7 +667,7 @@ export function ProductDetail({ slug }: { slug: string }) {
             {related.map((item, i) => (
               <Reveal key={item.slug} delay={i * 0.08}>
                 <Link
-                  href={`/products/${item.slug}`}
+                  href={item.path}
                   className="group block h-full overflow-hidden rounded-2xl border border-[#eadfe4] bg-white shadow-[0_10px_30px_rgba(107,38,67,0.06)] transition-transform duration-300 hover:-translate-y-1"
                 >
                   <div className="relative aspect-[16/10] w-full overflow-hidden bg-black/5">

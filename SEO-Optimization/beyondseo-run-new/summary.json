@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "engine_version": "2.7.1",
+  "seed": "https://www.theglownique.com/",
+  "started_at": "2026-09-24T15:10:59.563416+00:00",
+  "exported_at": "2026-09-24T15:11:16.702486+00:00",
+  "configuration": {
+    "url": "https://www.theglownique.com/",
+    "max_pages": 25,
+    "max_depth": 6,
+    "workers": 4,
+    "delay": 0.5,
+    "timeout": 20,
+    "retries": 2,
+    "max_bytes": 5000000,
+    "max_discovered": 10000,
+    "max_sitemaps": 25,
+    "max_query_variants": 20,
+    "allow_hosts": [
+      "theglownique.com"
+    ],
+    "exclude": [],
+    "allow_private": false,
+    "sitemaps": true,
+    "drop_tracking": true,
+    "save_html": true,
+    "render": false,
+    "render_wait_ms": 1000,
+    "render_max_requests": 100,
+    "render_allow_hosts": [],
+    "render_mode": "auto",
+    "robots_policy": "respect",
+    "render_asset_policy": "public",
+    "wait_for_selector": "",
+    "render_settle_ms": 1500,
+    "scroll_steps": 3,
+    "screenshot": false,
+    "headless": true,
+    "include_www": true
+  },
+  "attempted_urls": 25,
+  "html_documents": 25,
+  "failed_or_http_error_urls": 0,
+  "discovered_urls": 49,
+  "pending_urls": 24,
+  "sitemap_urls": 49,
+  "findings": 0,
+  "severity_counts": {},
+  "frontier_exhausted": false,
+  "coverage_limited": true,
+  "rendered_documents": 0,
+  "render_errors": 0,
+  "render_content_warnings": 0,
+  "render_javascript_error_pages": 0,
+  "render_readiness_warnings": 0,
+  "sitemap_fetch_failures": 0,
+  "discovery_skips": {
+    "out_of_scope": 194
+  },
+  "coverage_note": "This is the discovered, scoped sample. It cannot establish that all site URLs were found. Canonical/robots observations do not prove indexing.",
+  "unmeasured": [
+    "search rankings",
+    "search volume",
+    "organic traffic",
+    "conversions",
+    "complete inbound backlink profile",
+    "Google-selected canonical",
+    "actual indexing",
+    "Core Web Vitals",
+    "structured-data semantic validity"
+  ],
+  "access_diagnostics": {
+    "assessment": "No supported access-denial or challenge signal was observed in this sample. This does not predict larger or later crawls.",
+    "page_access_counts": {
+      "response_received": 25
+    },
+    "remote_denial_or_challenge_pages": 0,
+    "remote_denial_or_challenge_discovery_responses": 0,
+    "http_access_denied_attempts_recorded": 0,
+    "challenge_attempts_recorded": 0,
+    "http_429_attempts_recorded": 0,
+    "http_attempts_recorded": 29,
+    "stop_reasons": [
+      "configured_page_limit"
+    ],
+    "browser_restriction_counts": {},
+    "history_note": "Only instrumented HTTP attempts are counted, including recorded browser requests; legacy runs may lack attempt history."
+  }
+}
