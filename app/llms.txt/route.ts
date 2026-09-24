@@ -84,7 +84,7 @@ ${collectionEntries}
 ## Commercial & Buying Guides
 
 - [Custom Business Sign Cost Guide](${SITE_URL}/guides/custom-business-sign-cost): What drives the price of each sign type, and what to send for an itemized quote. It deliberately states no price figures.
-- [Front-Lit vs Halo-Lit Channel Letters](${SITE_URL}/guides/front-lit-vs-halo-lit-vs-dual-lit): Technical lighting comparison for storefront building façades.
+- [Front-Lit vs Halo-Lit vs Dual-Lit Channel Letters](${SITE_URL}/guides/front-lit-vs-halo-lit-vs-dual-lit): How the three lighting styles differ, what the wall needs, the US Sign Council letter-height rule (about 30 ft of viewing distance per inch of letter height), mounting methods and listing, with sources.
 - [Backlit Sign Wall Surfaces & Standoffs](${SITE_URL}/guides/backlit-sign-wall-surfaces-and-standoffs): How the wall finish and standoff distance change a halo-lit sign.
 - [All Signage Guides & Comparisons](${SITE_URL}/guides): Complete index of buyer resources.
 

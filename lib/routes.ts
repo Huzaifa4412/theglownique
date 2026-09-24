@@ -113,7 +113,7 @@ export const ROUTES: readonly RouteEntry[] = [
   // Decision guides.
   { path: "/guides", lastModified: UBERSUGGEST_SEO_RELEASE, changeFrequency: "weekly", priority: 0.85, indexable: true },
   { path: "/guides/custom-business-sign-cost", lastModified: GROWTH_AUDIT_RELEASE, changeFrequency: "monthly", priority: 0.8, indexable: true },
-  { path: "/guides/front-lit-vs-halo-lit-vs-dual-lit", lastModified: CURRENT_SEO_RELEASE, changeFrequency: "monthly", priority: 0.8, indexable: true },
+  { path: "/guides/front-lit-vs-halo-lit-vs-dual-lit", lastModified: GROWTH_AUDIT_RELEASE, changeFrequency: "monthly", priority: 0.8, indexable: true },
   { path: "/guides/backlit-sign-wall-surfaces-and-standoffs", lastModified: UBERSUGGEST_SEO_RELEASE, changeFrequency: "monthly", priority: 0.8, indexable: true },
 
   // Consumer hub. It began as the broad product catalog and now also parents
