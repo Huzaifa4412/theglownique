@@ -805,3 +805,32 @@ section of `/privacy` now describe only what Tawk itself stores (transcript,
 session cookies) — no more localStorage or our-own-form language. The
 `pre-chat` lead source stays accepted by `/api/leads` so historic records
 remain valid; nothing writes it any more.
+
+---
+
+## Release 2026-09-24 — growth-system audit (branch `seo/growth-system-2026-09`, not yet deployed)
+
+Full audit, research and plan: [../growth-system/README.md](../growth-system/README.md). The working tree
+held 11 uncommitted, keyword-stuffed edits and an unregistered guide when the audit began; they are
+committed unchanged as the branch's first commit so every correction below is reviewable.
+
+### Shipped (on the branch)
+
+| Area | Change | Evidence |
+|---|---|---|
+| Claims | Removed "5,000+ Happy Clients", "Etsy Star Seller", "5-star rated shop", "insured delivery", three sets of unapproved prices (`public/pricing.md` deleted), a fabricated `AggregateOffer`; qualified "100,000 hours", "80% less power", sign-level IP67, "cool to the touch", "shatterproof" (65 replacements, 16 files) | CLM-006…009, CLM-021…026; `growth-system/research/technical-fact-base.md` |
+| Homepage | Visible H1 replaces an `sr-only` keyword chain; banner through the image optimizer with art direction and per-source dimensions; `WebPage` + `ItemList` schema | Field LCP p75 3.3 s / CLS 0.20 baseline (PostHog) |
+| URLs | Three sign types consolidated onto their `/business-signs/*` head-term URLs; `/products/{3d-metal-neon-signs, ultra-thin-lightbox, uv-print-acrylic-signs}` 301; trailing slashes 301; `*.vercel.app` `noindex` | Audit asserts the 301s each run |
+| Entity | `ETSY_SHOP_URL` → the shop, not one listing; Organization `disambiguatingDescription` and `contactPoint` | `growth-system/research/brand-entity-baseline.md` |
+| llms.txt | Key facts attributed, qualified or pointed at policy pages; industry pages and a name-disambiguation line added | — |
+| Linking | Footer "Explore" column (B2B hub, occasions hub, guides); 15 product → industry/occasion links | 15 pages had ≤2 contextual inlinks |
+| Content | Front-lit vs halo-lit vs dual-lit guide rebuilt (462 → ~1,850 words, 11 sources, USSC letter-height data) | SERP study: most winnable cluster |
+| Tooling | `seo-audit.mjs`: unverified-claim patterns, JSON-LD price/rating guard, product `path` parsing, legacy-redirect assertions; `indexnow --all` now includes 14 industry/occasion pages it skipped | Audit: 5 failures → 0 |
+
+### Still open
+
+- Deploy; then GSC and Bing Webmaster Tools access, sitemap submission, `npm run indexnow` for changed URLs.
+- Owner decisions: warranty (site 5-year vs Etsy 3-year), lead time, dimmer included vs optional, steel grade, price bands, About-page facts ([OWNER-QUESTIONS.md](../growth-system/OWNER-QUESTIONS.md)).
+- Two banner slides added by another contributor during the audit link to 301 URLs and declare wrong image dimensions (`components/storefront/sections/banner-slider-section.tsx`, uncommitted).
+- Journal (Sanity): two posts still say "insured"; one links a retired URL. The Sanity token is viewer-only.
+- Homepage mobile INP (~1.1 s p75): JavaScript, not images — see TECHNICAL-ISSUES.md.

@@ -21,7 +21,11 @@ Every factual finding uses one of these labels:
 
 External evidence is registered in [resources/primary-source-register.md](resources/primary-source-register.md). SERP observations are snapshots, not permanent rankings. Search volume and keyword difficulty are never estimated; unavailable values are marked `VALIDATION_REQUIRED` in [05-keyword-and-intent-map.csv](05-keyword-and-intent-map.csv).
 
-## Reading order
+## Current working set (2026-09-24)
+
+Start with **[growth-system/README.md](growth-system/README.md)**: the September audit, with measured baselines, a prioritised P0–P3 queue, owner questions, a 90-day roadmap, the experiment log, a crawled URL inventory, a remapped keyword map and the cited research behind them. Where it conflicts with the August documents below, it supersedes them; the August documents stay as the historical baseline.
+
+## Reading order (August 2026 baseline)
 
 1. [01-executive-strategy.md](01-executive-strategy.md) — decisions, outcomes and guardrails.
 2. [02-current-state-audit.md](02-current-state-audit.md) — what exists and what is broken.
