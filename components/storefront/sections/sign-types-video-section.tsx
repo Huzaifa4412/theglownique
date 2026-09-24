@@ -77,8 +77,8 @@ export const SIGN_TYPES_DATA = [
     title: "LED Neon Sign",
     tagline: "Flexible Silicone LED Neon",
     description:
-      "Our custom LED neon signs are handcrafted from flexible, shatterproof silicone tubing on laser-cut clear acrylic — the safe, modern alternative to fragile glass neon. They run cool on low 12V power, so they're at home in bedrooms, weddings, cafés and storefronts alike.",
-    features: ["Up to 100,000 hours of glow", "Shatterproof silicone — no glass", "Safe 12V, cool to the touch"],
+      "Our custom LED neon signs are handcrafted from flexible silicone LED neon on laser-cut clear acrylic — a modern alternative to glass neon, with no glass tubes to break. They run on low-voltage 12V power, so they're at home in bedrooms, weddings, cafés and storefronts alike.",
+    features: ["Long-life LEDs", "Flexible silicone — no glass tubes", "Low-voltage 12V power"],
     badge: "Most Popular",
     video: "/neon-sign/Videos/en-GB_1fa05acfc3a2cdf80c7787c5f585c30a.mp4",
     poster: "/neon-sign/girls room/iap_600x600.5331151538_61m43otq.webp",
@@ -91,7 +91,7 @@ export const SIGN_TYPES_DATA = [
     tagline: "Frontlit, Halo Backlit & Dual-Lit Channel Letters",
     description:
       "Precision-fabricated stainless-steel channel letters lit from within by energy-efficient LED. Choose bold frontlit faces, a soft halo backlit glow, or dual-lit for both — built to make storefronts, lobbies and façades unmistakable day and night.",
-    features: ["Frontlit, halo backlit or dual-lit", "Brushed, mirrored & metallic finishes", "IP67 weatherproof for outdoors"],
+    features: ["Frontlit, halo backlit or dual-lit", "Brushed, mirrored & metallic finishes", "Outdoor builds for façades"],
     badge: "Architectural Grade",
     video: "/3d-metallic-neon-sign/videos/2.mp4",
     poster: "/3d-metallic-neon-sign/corporte/056b3189-6a8c-482a-8334-53ded7aff3e1.webp",

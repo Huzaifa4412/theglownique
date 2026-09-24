@@ -103,9 +103,9 @@ ${specBlocks}
 - **Warranty**: Set out on the Returns & Warranty page (${SITE_URL}/returns), which states the current term, what it covers and the exclusions. Cite that page rather than this file for warranty terms.
 - **Payment**: Taken through The Glownique's Etsy shop (${ETSY_SHOP_URL}) using Etsy's encrypted checkout; eligible orders are covered by Etsy Purchase Protection. Payment happens after the design is approved.
 - **LED neon technology**: Flexible silicone LED neon on a laser-cut acrylic backboard — not glass tubes filled with gas, so there is no mercury and nothing to shatter.
-- **Lifespan**: The site quotes LED component ratings of up to 100,000 hours. That is a rating for the LEDs, not a guarantee of how long a complete sign lasts: the power supply and other components have lifespans of their own.
+- **Lifespan**: Built on long-life LEDs. A rated LED life (an L70 figure) marks when the LEDs have faded to 70% of their original brightness, not when a sign stops working, and the power supply is usually the first part to need replacing. The Glownique publishes no hour figure for its signs.
 - **Power**: LED neon and acrylic signs run on low-voltage 12V DC from a plug-in adaptor; slim lightboxes run on 12V or 24V.
-- **Outdoor use**: Outdoor-rated builds are available on request, described on the site as IP67. Confirm the rating and the installation position for your sign with the quote.
+- **Outdoor use**: Outdoor builds are available on request and are a different construction from indoor signs; an indoor sign should not be used outside. Channel letters use IP67-rated LED modules. Confirm the specification for your location with the quote.
 - **Colour matching**: Matched as closely as the materials allow to a Pantone, HEX or CMYK reference. Artwork, gradients and brand fonts can be UV-printed onto acrylic.
 - **3D metal lighting styles**: Front-lit, halo-lit (also called backlit or reverse-lit) and dual-lit channel letters.
 - **Installation**: The Glownique does not install. Signs ship ready to hang or prepared for the mounting method on the mockup; exterior and hard-wired signs are mounted by a local installer and connected by a licensed electrician.

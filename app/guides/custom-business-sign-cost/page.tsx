@@ -186,9 +186,9 @@ export default function CustomBusinessSignCostGuidePage() {
                 </div>
 
                 <div>
-                  <h4 className="text-lg font-bold text-[#1e1a22]">3. Indoor vs. Outdoor Weatherproofing (IP67)</h4>
+                  <h4 className="text-lg font-bold text-[#1e1a22]">3. Indoor vs. Outdoor Construction</h4>
                   <p className="mt-1">
-                    Exterior storefront signs require IP67 sealed silicone tubing, waterproof transformers, and weather-resistant backing materials to withstand rain, wind, and UV exposure.
+                    An exterior sign is a different build from an interior one: sealed LED components, an outdoor-rated power supply and materials chosen for rain, wind and sun. It costs more than the same design built for indoors, so say where the sign will hang when you ask for a quote.
                   </p>
                 </div>
               </div>

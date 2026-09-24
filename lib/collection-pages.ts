@@ -215,7 +215,7 @@ const COLLECTION_CONTENT: readonly CollectionContent[] = [
       },
       {
         q: "Is it safe near guests, children and fabric drapes?",
-        a: "Our LED neon is flexible silicone running at 12V, not glass at mains voltage. It stays cool to the touch and there is nothing to shatter, which is why it can hang on an arch or against sheer drapes without a second thought.",
+        a: "Our LED neon is flexible silicone running at 12V, not glass tubes on a high-voltage transformer, and there is no glass to break. It can hang from an arch or a backdrop frame; keep the power supply and cable clear of drinks and foot traffic.",
       },
     ],
   },
@@ -242,7 +242,7 @@ const COLLECTION_CONTENT: readonly CollectionContent[] = [
     keyword: "kids’ room neon sign",
     keywordPlural: "kids’ room neon signs",
     answer:
-      "A kids’ room neon sign is a child’s name or a short phrase in flexible LED neon on an acrylic backboard, with an optional star, heart or crown. It runs at 12V with no glass, stays cool to the touch, dims to a nightlight with the remote, and mounts high on the wall above a cot or bed.",
+      "A kids’ room neon sign is a child’s name or a short phrase in flexible LED neon on an acrylic backboard, with an optional star, heart or crown. It runs at 12V with no glass tubes, dims to a nightlight with the remote, and mounts high on the wall, out of reach, above a cot or bed.",
     updatedOn: "2026-09-14",
     related: [
       {
@@ -324,7 +324,7 @@ const COLLECTION_CONTENT: readonly CollectionContent[] = [
       {
         name: "LED Neon Signs",
         href: NEON,
-        why: "The one for a child’s room. Flexible 12V silicone with no glass, cool to the touch, and dimmable to a nightlight with the optional remote.",
+        why: "The one for a child’s room. Flexible 12V silicone with no glass tubes, dimmable to a nightlight with the optional remote.",
       },
       {
         name: "UV-Print Acrylic Signs",
@@ -368,7 +368,7 @@ const COLLECTION_CONTENT: readonly CollectionContent[] = [
       },
       {
         q: "Are neon name signs safe in a child’s bedroom?",
-        a: "Our LED neon is flexible silicone on an acrylic backboard, running at 12V from a plug-in adapter. There is no glass, no gas and no mains voltage at the sign, and it stays cool to the touch. Mount it out of reach and keep the cable tidy and it is as safe as a bedside lamp.",
+        a: "Our LED neon is flexible silicone on an acrylic backboard, running at 12V from a plug-in adapter. There are no glass tubes, no gas and no mains voltage at the sign. Mount it out of reach, and keep the cable and power supply tidy and away from small hands, as you would with any plug-in light.",
       },
       {
         q: "Can it be dimmed for night time?",
@@ -560,7 +560,7 @@ const COLLECTION_CONTENT: readonly CollectionContent[] = [
     keyword: "bedroom neon sign",
     keywordPlural: "bedroom neon signs",
     answer:
-      "A bedroom neon sign is a name, quote or shape in flexible LED neon on an acrylic backboard, made to hang above a bed, a sofa or a hallway wall. It runs at 12V, stays cool, dims with a remote for night, and is colour-matched to your paint from a Pantone, HEX or CMYK reference before it is built.",
+      "A bedroom neon sign is a name, quote or shape in flexible LED neon on an acrylic backboard, made to hang above a bed, a sofa or a hallway wall. It runs at 12V, dims with a remote for night, and is colour-matched to your paint from a Pantone, HEX or CMYK reference before it is built.",
     updatedOn: "2026-09-14",
     related: [
       {
@@ -622,7 +622,7 @@ const COLLECTION_CONTENT: readonly CollectionContent[] = [
       {
         name: "LED Neon Signs",
         href: NEON,
-        why: "Quotes, names and outlines in a single glowing line. Dimmable with the remote, cool to the touch, and light enough to hang on standard fixings.",
+        why: "Quotes, names and outlines in a single glowing line. Dimmable with the remote and light enough to hang on standard fixings.",
       },
       {
         name: "UV-Print Acrylic Signs",
@@ -833,7 +833,7 @@ const COLLECTION_CONTENT: readonly CollectionContent[] = [
       },
       {
         q: "Is it safe near drinks and a crowded room?",
-        a: "Our LED neon is flexible 12V silicone with no glass, so a knock or a splash is not the end of it. It stays cool to the touch and carries a 5-year warranty.",
+        a: "Our LED neon is flexible 12V silicone with no glass tubes, so a knock is not the end of it. Keep the power supply away from spills, and it carries a 5-year warranty.",
       },
     ],
   },
@@ -978,7 +978,7 @@ const COLLECTION_CONTENT: readonly CollectionContent[] = [
       },
       {
         q: "Are they safe around children and a crowded room?",
-        a: "Our LED neon is flexible silicone running at 12V rather than glass at mains voltage. It stays cool to touch and there is nothing to shatter, which is exactly why it suits a room full of people who are not paying attention to the decor.",
+        a: "Our LED neon is flexible silicone running at 12V rather than glass tubes on a high-voltage transformer, with no glass to shatter, which is exactly why it suits a room full of people who are not paying attention to the decor.",
       },
       {
         q: "Can we have a name or a specific message?",

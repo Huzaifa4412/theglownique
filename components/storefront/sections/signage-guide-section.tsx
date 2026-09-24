@@ -39,10 +39,10 @@ export function SignageGuideSection() {
                 Flexible LED Neon
               </h3>
               <p className="text-xs font-semibold text-[#8a7a85] mt-0.5 mb-3">
-                Shatterproof Silicone on Cast Acrylic
+                Flexible Silicone on Cast Acrylic
               </p>
               <p className="text-xs sm:text-sm text-[#5e5862] leading-relaxed mb-4">
-                The modern, shatterproof evolution of vintage glass neon. Made with flexible 12V silicone tubing that stays cool to the touch and consumes 80% less power.
+                The modern evolution of vintage glass neon, with no glass tubes. Made with flexible silicone LED neon on a low-voltage 12V supply.
               </p>
               <ul className="space-y-2 text-xs font-medium text-[#4a424d] mb-6">
                 <li className="flex items-start gap-2">
@@ -84,7 +84,7 @@ export function SignageGuideSection() {
                 Frontlit, Halo Backlit &amp; Dual-Lit
               </p>
               <p className="text-xs sm:text-sm text-[#5e5862] leading-relaxed mb-4">
-                Architectural signage built from precision-fabricated 304 stainless steel. Available in front-lit, halo-backlit, or dual-lit styles with IP67 weather resistance.
+                Architectural signage built from precision-fabricated 304 stainless steel. Available in front-lit, halo-lit or dual-lit styles, built for exterior façades or interior walls.
               </p>
               <ul className="space-y-2 text-xs font-medium text-[#4a424d] mb-6">
                 <li className="flex items-start gap-2">
@@ -97,7 +97,7 @@ export function SignageGuideSection() {
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle2 className="h-4 w-4 shrink-0 text-[#b45309] mt-0.5" />
-                  <span><strong>Rating:</strong> IP67 outdoor waterproof or interior architectural</span>
+                  <span><strong>Use:</strong> Exterior façades or interior walls</span>
                 </li>
               </ul>
             </div>

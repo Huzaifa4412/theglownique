@@ -39,7 +39,7 @@ const inclusions: ReadonlyArray<{
   {
     icon: "ShieldCheck",
     title: "5-Year Full Glow Warranty",
-    body: "Commercial-grade LEDs rated for up to 100,000 hours. If any electrical component fails or a sign arrives damaged, just send a quick photo and we replace it immediately.",
+    body: "Long-life, commercial-grade LEDs. If an electrical component fails or a sign arrives damaged, send us a photo and we will put it right under the warranty.",
   },
   {
     icon: "SealCheck",
@@ -49,7 +49,7 @@ const inclusions: ReadonlyArray<{
   {
     icon: "Truck",
     title: "Tracked Crated Delivery",
-    body: "Packed in custom shockproof wooden crates to ensure 100% damage-free transit. Delivered right to your doorstep with full tracking from dispatch to delivery.",
+    body: "Packed in custom shockproof wooden crates built to protect it in transit, and delivered to your door with tracking from dispatch to delivery.",
   },
 ];
 

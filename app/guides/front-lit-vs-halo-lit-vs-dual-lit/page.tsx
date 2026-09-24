@@ -47,7 +47,7 @@ const lightingFaqs = [
   },
   {
     q: "Are channel letters energy efficient?",
-    a: "Yes. All our channel letter signs utilize commercial-grade 12V/24V low-voltage LEDs that consume up to 80% less power than traditional neon gas tubes while delivering 100,000 hours of continuous rated life.",
+    a: "Yes. Channel letters are lit by low-voltage LED modules on a 12V or 24V power supply rather than glass neon tubes on a high-voltage transformer. LEDs are long-life components; the power supply is usually the first part to need replacing, so mount it where an installer can reach it.",
   },
 ];
 

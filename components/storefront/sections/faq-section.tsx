@@ -9,11 +9,11 @@ const faqs = [
   },
   {
     q: "How long do custom LED neon signs last compared to traditional glass neon?",
-    a: "Our commercial-grade LED neon is rated for up to 100,000 hours of continuous glow — over 11 years even if illuminated 24/7. They consume up to 80% less energy than traditional glass neon, generate zero buzz, and remain completely cool to the touch.",
+    a: "LED neon is built on long-life LEDs, and a well-made sign gives years of everyday use. A rated LED life describes when the LEDs fade to 70% of their original brightness, not when the sign stops, and the power supply is usually the first part to wear out. Unlike glass neon, there are no gas-filled tubes to refill or re-bend, and it does not buzz.",
   },
   {
-    q: "Are custom LED neon signs safe and shatterproof?",
-    a: "Yes. Our signs operate on low 12V DC power, stay cool to the touch, and use flexible, shatterproof silicone tubing rather than fragile glass or hazardous gases. They are safe for bedrooms, homes, weddings, bars, restaurants and busy commercial storefronts.",
+    q: "Are custom LED neon signs safe?",
+    a: "They run on low-voltage 12V DC from a plug-in power supply — far below the high-voltage transformers glass neon needs — and use flexible silicone LED neon instead of glass tubes and gas. That makes them well suited to bedrooms, weddings, bars and shops. As with any plug-in light, use the supplied power supply, keep it dry and ventilated, and choose an outdoor build for use outside.",
   },
   {
     q: "Can I receive a free design preview and mockup before ordering?",
@@ -25,7 +25,7 @@ const faqs = [
   },
   {
     q: "Can your custom signs be used outdoors for storefronts and commercial façades?",
-    a: "Yes. We build IP67 weatherproof signs engineered specifically for exterior storefronts, building façades and outdoor commercial installations. Interior signs are optimised for office receptions, studios, gyms and home decor.",
+    a: "Yes, as an outdoor build — a different construction from an indoor sign, specified for storefronts, façades and other exterior walls. An indoor sign should not be moved outside. Tell us where the sign will hang and the quote specifies the right build.",
   },
   {
     q: "How long does custom sign fabrication and delivery take?",

@@ -109,7 +109,7 @@ export default function TermsPage() {
       <p>
         Our LED neon runs on low-voltage 12V and ships with a compatible power adapter and mounting
         hardware. Indoor signs are built for interior use; if you need a sign outdoors, order the
-        IP67 weatherproof build and tell us the intended location.
+        outdoor build and tell us the intended location.
       </p>
       <p>
         Installation is your responsibility. For large commercial signage, permanent outdoor

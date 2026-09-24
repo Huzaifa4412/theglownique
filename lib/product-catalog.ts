@@ -172,17 +172,17 @@ export const PRODUCT_PAGES: ProductPage[] = [
     // answer engine quotes should say what the thing is before who sells it.
     intro:
       "A custom LED neon sign is your words, name or logo hand-bent in flexible silicone LED neon and mounted on a laser-cut acrylic backboard. The Glownique makes each one to order for homes, weddings and businesses — in any of 13 colours or RGB colour-change — sends a free true-to-scale mockup first, and ships it tracked and ready to hang.",
-    chips: ["Up to 100,000 hrs", "Safe 12V", "13 colours + RGB", "Indoor & IP67 outdoor"],
+    chips: ["Long-life LEDs", "Low-voltage 12V", "13 colours + RGB", "Indoor & outdoor builds"],
     features: [
       {
         icon: Zap,
-        title: "Ultra-efficient LED",
-        text: "Sips up to 80% less power than glass neon and stays cool to the touch, so it's safe to leave glowing all day.",
+        title: "Low-voltage LED",
+        text: "Runs on 12V from a plug-in power supply — no high-voltage transformer and no gas — so it is made to glow for hours at a stretch.",
       },
       {
         icon: ShieldCheck,
-        title: "Shatterproof & safe",
-        text: "Flexible silicone instead of breakable glass gas tubes — no mercury, no buzzing and nothing fragile to worry about.",
+        title: "No glass, no gas",
+        text: "Flexible silicone instead of breakable glass gas tubes — no mercury and no buzzing.",
       },
       {
         icon: Palette,
@@ -215,11 +215,11 @@ export const PRODUCT_PAGES: ProductPage[] = [
           "Clear, frosted or coloured cast acrylic — laser-cut to letter, to shape or to a square",
       },
       { label: "Power", value: "12V low-voltage plug-and-play adaptor" },
-      { label: "Lifespan", value: "Up to 100,000 hours of glow" },
+      { label: "LED life", value: "Long-life LEDs, covered by our warranty" },
       { label: "Colours", value: "13 solid colours, plus RGB colour-changing" },
       { label: "Dimming", value: "Optional wireless RF remote (1–100%)" },
       { label: "Mounting", value: "Wall standoffs or hanging kit — ready to hang" },
-      { label: "Use", value: "Indoor; IP67 waterproof option for outdoors" },
+      { label: "Use", value: "Indoor as standard; outdoor build available" },
       { label: "Sizes", value: "Fully custom, from ~30 cm to several metres" },
     ],
     options: {
@@ -320,11 +320,11 @@ export const PRODUCT_PAGES: ProductPage[] = [
     faqs: [
       {
         q: "How long do LED neon signs last?",
-        a: "Our LED neon is rated for up to 100,000 hours of glow — over 11 years even if left on 24/7 — while using up to 80% less power than traditional glass neon.",
+        a: "It is built on long-life LEDs, and a well-made sign gives years of everyday use. A rated LED life describes when the LEDs fade to 70% of their original brightness, not when the sign stops working, and the power supply is usually the first part to wear out — which is why every sign carries our warranty.",
       },
       {
-        q: "Are they safe to leave on and touch?",
-        a: "Yes. They run on low 12V power, stay cool to the touch and use shatterproof silicone instead of glass, so they're safe in bedrooms, kids' rooms and busy venues.",
+        q: "Are they safe to leave on?",
+        a: "They run on low-voltage 12V power from a plug-in supply and use flexible silicone instead of glass tubes, which suits them to bedrooms, kids' rooms and busy venues. Mount signs in children's rooms out of reach, and keep the power supply dry and ventilated.",
       },
       {
         q: "Can you make my logo or handwriting in neon?",
@@ -336,12 +336,12 @@ export const PRODUCT_PAGES: ProductPage[] = [
       },
       {
         q: "Can I use it outdoors?",
-        a: "Choose our IP67 weatherproof build and your sign is ready for storefronts, façades and outdoor events, rain or shine.",
+        a: "Yes, as an outdoor build, which is a different construction from an indoor sign. Tell us where it will hang and the quote specifies the outdoor build; an indoor sign should not be moved outside.",
       },
     ],
     metaTitle: "Custom LED Neon Signs — Made to Order",
     metaDescription:
-      "Handcrafted custom LED neon signs made to order. 13 colours + RGB, shatterproof 12V silicone, free design mockup, 5-year warranty & tracked delivery.",
+      "Handcrafted custom LED neon signs made to order. 13 colours + RGB, flexible 12V silicone neon, free design mockup, 5-year warranty & tracked delivery.",
   },
   {
     slug: "3d-metal-neon-signs",
@@ -360,7 +360,7 @@ export const PRODUCT_PAGES: ProductPage[] = [
     // the sentence an engine can quote is the first one on the page.
     intro:
       "Channel letter signs are individual 3D letters and logo shapes, built as hollow metal channels and lit from inside with LEDs. The Glownique fabricates them in stainless steel — front-lit, halo-lit or dual-lit — to your artwork and wall width, sends a free design mockup first, and ships them ready for your local sign installer.",
-    chips: ["Front-lit / Halo-lit / Dual-lit", "Stainless steel", "IP67 outdoor", "Metallic finishes"],
+    chips: ["Front-lit / Halo-lit / Dual-lit", "Stainless steel", "Exterior & interior", "Metallic finishes"],
     features: [
       {
         icon: Sun,
@@ -380,15 +380,15 @@ export const PRODUCT_PAGES: ProductPage[] = [
       {
         icon: ShieldCheck,
         title: "Weatherproof & lasting",
-        text: "IP67-rated LEDs and durable metal stand up to rain, humidity and temperature swings outdoors.",
+        text: "IP67-rated LED modules inside stainless-steel channels, built for exterior walls through rain, humidity and temperature swings.",
       },
     ],
     craft: {
       heading: "How your metal letters are made",
-      body: "Every letter or logo element starts as sheet stainless steel, cut to your artwork and formed into a channel. We fit high-density LED inside, seal the housing to IP67, and finish the metal to your brand — brushed, mirrored or matte, anywhere from 0.8\" deep to 3.5\" and beyond. Each piece is then wired, bench-tested and prepared for the mount your wall needs.",
+      body: "Every letter or logo element starts as sheet stainless steel, cut to your artwork and formed into a channel. We fit IP67-rated LED modules inside, seal the channel, and finish the metal to your brand — brushed, mirrored or matte, anywhere from 0.8\" deep to 3.5\" and beyond. Each piece is then wired, bench-tested and prepared for the mount your wall needs.",
       points: [
         "Sheet stainless steel, cut and formed into channels",
-        "High-density LED sealed inside to IP67",
+        "IP67-rated LED modules sealed inside",
         "Brushed, mirrored or matte metal finishing",
         "Flush, standoff, raceway or backing-panel mounts",
       ],
@@ -401,7 +401,7 @@ export const PRODUCT_PAGES: ProductPage[] = [
       { label: "LED colours", value: "Cool, Daylight, Natural & Warm white, plus colours" },
       { label: "Finishes", value: "Brushed, mirrored or matte — gold, rose gold, brass, silver, black" },
       { label: "Depth", value: "0.8\" to 3.5\"+ (custom)" },
-      { label: "Rating", value: "IP67 weatherproof for indoor & outdoor use" },
+      { label: "Use", value: "Exterior façades or interiors; IP67-rated LED modules" },
       { label: "Colour match", value: "Custom RGB / HEX / CMYK or metallic finish" },
       { label: "Mounting", value: "Flush, standoff, raceway or backing panel" },
       { label: "Sizes", value: "Fully custom to your logo and wall" },
@@ -511,7 +511,7 @@ export const PRODUCT_PAGES: ProductPage[] = [
       },
       {
         q: "Are they suitable for outdoor storefronts?",
-        a: "Yes — our channel letters use IP67-rated LEDs and weather-resistant materials built for year-round indoor and outdoor use.",
+        a: "Yes. Exterior channel letters use IP67-rated LED modules inside stainless-steel channels, built for year-round outdoor use.",
       },
       {
         q: "How are they mounted?",
@@ -743,7 +743,7 @@ export const PRODUCT_PAGES: ProductPage[] = [
       },
       { label: "Power", value: "12V low-voltage plug-and-play" },
       { label: "Mounting", value: "Standoffs or hanging kit — ready to hang" },
-      { label: "Use", value: "Indoor; IP67 waterproof option available" },
+      { label: "Use", value: "Indoor as standard; outdoor build available" },
     ],
     options: {
       heading: "Print + neon combinations",
@@ -817,7 +817,7 @@ export const PRODUCT_PAGES: ProductPage[] = [
       },
       {
         q: "Is it suitable for outdoors?",
-        a: "Choose our IP67 waterproof option and your UV-print neon sign is ready for covered outdoor and event use.",
+        a: "Yes, as an outdoor build for covered outdoor spaces and events — a different construction from the indoor sign. Tell us where it will be used and the quote specifies the build.",
       },
       {
         q: "How are acrylic logo signs mounted on a wall?",

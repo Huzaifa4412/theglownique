@@ -48,7 +48,7 @@ const INDUSTRY_CONTENT: readonly LandingContent[] = [
       {
         name: "LED Neon Signs",
         href: NEON,
-        why: "Shatterproof 12V silicone tubing is the right answer above a squat rack — there is no glass to break and the run is cool to touch.",
+        why: "Flexible 12V silicone LED neon is the right answer above a squat rack — there are no glass tubes to break.",
       },
       {
         name: "3D Metal Channel Letters",
@@ -83,12 +83,12 @@ const INDUSTRY_CONTENT: readonly LandingContent[] = [
       { name: "Motivational Wall Signs", text: "Slogan and mantra pieces sized for the main training floor and the free-weight wall." },
       { name: "Studio Logo Walls", text: "Reception and entrance branding that photographs well for member social posts." },
       { name: "Class & Zone Markers", text: "Spin, yoga, HIIT and recovery-zone identifiers that hold up under strip lighting." },
-      { name: "Exterior Studio Signs", text: "IP67-rated façade and entrance signage for street-level visibility after dark." },
+      { name: "Exterior Studio Signs", text: "Outdoor-built façade and entrance signage for street-level visibility after dark." },
     ],
     faqs: [
       {
         q: "Are gym neon signs safe to mount above weights?",
-        a: "Our LED neon is flexible silicone tubing running at 12V, not glass at mains voltage — there is nothing to shatter onto a lifting platform and the tube stays cool to touch. We still recommend mounting clear of the loaded-bar path, and we will mark that height on the mockup if you send a photo of the wall.",
+        a: "Our LED neon is flexible silicone tubing running at 12V, not glass at mains voltage — there are no glass tubes to shatter onto a lifting platform. We still recommend mounting clear of the loaded-bar path, and we will mark that height on the mockup if you send a photo of the wall.",
       },
       {
         q: "Will a wall sign survive the vibration from dropped weights?",
@@ -141,7 +141,7 @@ const INDUSTRY_CONTENT: readonly LandingContent[] = [
       {
         name: "3D Metal Channel Letters",
         href: CHANNEL,
-        why: "Exterior venue name and street-facing façade signage, IP67-rated for outdoor mounting.",
+        why: "Exterior venue name and street-facing façade signage, built for outdoor mounting.",
       },
     ],
     considerations: [
@@ -179,7 +179,7 @@ const INDUSTRY_CONTENT: readonly LandingContent[] = [
       },
       {
         q: "Can we put a neon sign outside the venue?",
-        a: "Yes, with an IP67-rated outdoor build — that is a different specification from an interior sign, not the same sign mounted outdoors. Tell us it is going on an exterior wall and we will quote the outdoor construction.",
+        a: "Yes, with an outdoor build — that is a different specification from an interior sign, not the same sign mounted outdoors. Tell us it is going on an exterior wall and we will quote the outdoor construction.",
       },
       {
         q: "Can you match a brewery or brand logo exactly?",
@@ -287,7 +287,7 @@ const INDUSTRY_CONTENT: readonly LandingContent[] = [
       {
         name: "3D Metal Channel Letters",
         href: CHANNEL,
-        why: "The restaurant name on the façade. Fabricated metal in frontlit, halo or dual-lit, and IP67-rated for outdoor mounting.",
+        why: "The restaurant name on the façade. Fabricated metal in frontlit, halo or dual-lit, and built for outdoor mounting.",
       },
       {
         name: "Ultra-Thin Lightbox Signs",
@@ -463,7 +463,7 @@ const INDUSTRY_CONTENT: readonly LandingContent[] = [
       {
         name: "3D Metal Channel Letters",
         href: CHANNEL,
-        why: "Exterior studio name and street frontage, IP67-rated for outdoor mounting.",
+        why: "Exterior studio name and street frontage, built for outdoor mounting.",
       },
     ],
     considerations: [
@@ -505,7 +505,7 @@ const INDUSTRY_CONTENT: readonly LandingContent[] = [
       },
       {
         q: "Can we have the sign outside as well as inside?",
-        a: "Yes, but it is a different build. An exterior studio sign needs an IP67-rated construction rather than the interior sign mounted outdoors. Quote both together if you want them to match, since they will then be fabricated in the same batch.",
+        a: "Yes, but it is a different build. An exterior studio sign needs an outdoor construction rather than the interior sign mounted outdoors. Quote both together if you want them to match, since they will then be fabricated in the same batch.",
       },
       {
         q: "Can you match our salon's brand colours exactly?",
@@ -520,7 +520,7 @@ const INDUSTRY_CONTENT: readonly LandingContent[] = [
     h1: "Custom Retail Storefront Signs",
     metaTitle: "Custom Retail Storefront Signs",
     metaDescription:
-      "Custom retail storefront signs, illuminated facade lettering & window signs for shops. IP67 outdoor builds with free design mockup & 5-year warranty.",
+      "Custom retail storefront signs, illuminated facade lettering & window signs for shops. Outdoor builds with free design mockup & 5-year warranty.",
     intro:
       "Façade lettering and window signage specified for the two problems every retail unit shares: reading in daylight, and looking deliberate after dark.",
     heroImage: "/3d-metallic-neon-sign/frontlit/image.webp",
@@ -531,7 +531,7 @@ const INDUSTRY_CONTENT: readonly LandingContent[] = [
       {
         name: "3D Metal Channel Letters",
         href: CHANNEL,
-        why: "The façade standard. Frontlit, halo or dual-lit fabricated metal, IP67-rated for exterior mounting.",
+        why: "The façade standard. Frontlit, halo or dual-lit fabricated metal, built for exterior mounting.",
       },
       {
         name: "Ultra-Thin Lightbox Signs",
@@ -588,7 +588,7 @@ const INDUSTRY_CONTENT: readonly LandingContent[] = [
       },
       {
         q: "Are exterior signs weatherproof?",
-        a: "Exterior builds are IP67-rated, which is a different construction from an interior sign rather than the same sign mounted outside. Tell us at quote stage that it is going on an external fascia so it is specified and fabricated correctly.",
+        a: "Exterior builds are a different construction from an interior sign rather than the same sign mounted outside. Tell us at quote stage that it is going on an external fascia so it is specified and fabricated correctly.",
       },
       {
         q: "Do you install storefront signage?",

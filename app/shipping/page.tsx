@@ -85,7 +85,7 @@ export default function ShippingPage() {
 
       <h2>Packaging</h2>
       <p>
-        Signs are fragile in transit even though the LED neon itself is shatterproof silicone rather
+        Signs are fragile in transit even though the LED neon itself is flexible silicone rather
         than glass. Everything is packed with protective layers and braced against movement. Please
         keep the packaging until you&apos;ve unpacked and powered on your sign — if you do need to
         make a claim, the original packaging matters.

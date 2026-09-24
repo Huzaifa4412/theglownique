@@ -51,7 +51,7 @@ export default function ReturnsPage() {
       <ul>
         <li>Accidental damage, drops, or impact after delivery</li>
         <li>Damage from improper installation or hard-wiring by an unqualified installer</li>
-        <li>Using an indoor sign outdoors, or exposing a non-IP67 sign to weather</li>
+        <li>Using an indoor sign outdoors, or exposing a sign not built for outdoor use to the weather</li>
         <li>Using a power supply other than the one provided</li>
         <li>Normal, gradual dimming over many years of continuous use</li>
         <li>Unauthorised repairs or modifications</li>

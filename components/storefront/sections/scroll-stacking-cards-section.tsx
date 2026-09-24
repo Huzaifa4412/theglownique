@@ -115,9 +115,9 @@ const STACK_CARDS: StackCardItem[] = [
     number: "06",
     badge: "We deliver it",
     title: "Timber-Crated Tracked Delivery",
-    subtitle: "Damage-Free Arrival with Mounting Kit",
+    subtitle: "Crated Delivery with Mounting Kit",
     description:
-      "Cradled in custom high-density foam and packed in heavy-duty timber crates to guarantee 100% damage-free transit. Arrives ready to mount with pre-drilled holes, standoff spacers, dimmer remote, and regional power supply.",
+      "Cradled in custom high-density foam and packed in heavy-duty timber crates to protect it in transit. Arrives ready to mount with pre-drilled holes, standoff spacers, dimmer remote, and regional power supply.",
     icon: Truck,
     accentHex: "#0e9f6e",
     accentText: "#047857",
