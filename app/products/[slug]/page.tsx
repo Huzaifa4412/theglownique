@@ -65,15 +65,6 @@ export default async function ProductPage({ params }: Params) {
         category: product.category,
         brand: { "@type": "Brand", name: "The Glownique" },
         url: pageUrl,
-        offers: {
-          "@type": "AggregateOffer",
-          priceCurrency: "USD",
-          lowPrice: "150",
-          highPrice: "5000",
-          offerCount: 1,
-          availability: "https://schema.org/InStock",
-          url: pageUrl,
-        },
       },
       {
         "@type": "BreadcrumbList",
@@ -82,8 +73,8 @@ export default async function ProductPage({ params }: Params) {
           {
             "@type": "ListItem",
             position: 2,
-            name: "Products",
-            item: `${SITE_URL}/products`,
+            name: "Custom Signage",
+            item: `${SITE_URL}/custom-signage`,
           },
           { "@type": "ListItem", position: 3, name: product.name, item: pageUrl },
         ],

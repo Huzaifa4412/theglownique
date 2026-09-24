@@ -75,9 +75,16 @@ const BACKLIT_RELEASE = "2026-09-15";
 /** Ubersuggest keyword optimization & internal linking expansion. */
 const UBERSUGGEST_SEO_RELEASE = "2026-09-18";
 
+/**
+ * Growth-system audit: unverified claims removed (a customer count, a Star
+ * Seller badge, a withdrawn shop rating, "insured" delivery, unapproved price
+ * ranges), the homepage H1 made visible, and the sign-type duplicates merged.
+ */
+const GROWTH_AUDIT_RELEASE = "2026-09-24";
+
 export const ROUTES: readonly RouteEntry[] = [
   // Home — primary H1 keywords, FAQ schemas and entity grounded content.
-  { path: "/", lastModified: UBERSUGGEST_SEO_RELEASE, changeFrequency: "weekly", priority: 1.0, indexable: true },
+  { path: "/", lastModified: GROWTH_AUDIT_RELEASE, changeFrequency: "weekly", priority: 1.0, indexable: true },
 
   // B2B hub and destinations.
   { path: "/business-signs", lastModified: UBERSUGGEST_SEO_RELEASE, changeFrequency: "weekly", priority: 0.95, indexable: true },
@@ -105,7 +112,7 @@ export const ROUTES: readonly RouteEntry[] = [
 
   // Decision guides.
   { path: "/guides", lastModified: UBERSUGGEST_SEO_RELEASE, changeFrequency: "weekly", priority: 0.85, indexable: true },
-  { path: "/guides/custom-business-sign-cost", lastModified: CURRENT_SEO_RELEASE, changeFrequency: "monthly", priority: 0.8, indexable: true },
+  { path: "/guides/custom-business-sign-cost", lastModified: GROWTH_AUDIT_RELEASE, changeFrequency: "monthly", priority: 0.8, indexable: true },
   { path: "/guides/front-lit-vs-halo-lit-vs-dual-lit", lastModified: CURRENT_SEO_RELEASE, changeFrequency: "monthly", priority: 0.8, indexable: true },
   { path: "/guides/backlit-sign-wall-surfaces-and-standoffs", lastModified: UBERSUGGEST_SEO_RELEASE, changeFrequency: "monthly", priority: 0.8, indexable: true },
 

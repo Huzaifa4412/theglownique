@@ -543,13 +543,13 @@ const COLLECTION_CONTENT: readonly CollectionContent[] = [
     slug: "home-decor-signs",
     name: "Home Decor Signs",
     kicker: "Bedrooms, living rooms & neon wall art",
-    h1: "Custom Neon Signs for Home Decor, Aesthetic Neon Signs & Neon Signs for Bedroom",
+    h1: "Bedroom Neon Signs & Neon Wall Art for the Home",
     tagline: "A phrase you chose, in light, on the wall you look at most.",
-    metaTitle: "Custom Neon Signs for Home Decor & Bedroom Wall Art",
+    metaTitle: "Bedroom Neon Signs & Neon Wall Art",
     metaDescription:
-      "Cool neon signs, custom neon signs for home decor, bedrooms, living rooms and hallways — quotes, names & wall art. Dimmable 12V LED with free mockup & 5-year warranty.",
+      "Bedroom neon signs & neon lights for bedrooms, living rooms and hallways — quotes, names & wall art. Dimmable 12V LED with free mockup & 5-year warranty.",
     intro:
-      "A bedroom neon sign is lived with, not visited. The wording has to still feel like yours in five years, the colour has to sit with the paint, and custom neon signs for home decor have to dim to something you can sleep beside on a Tuesday night.",
+      "A bedroom neon sign is lived with, not visited. The wording has to still feel like yours in five years, the colour has to sit with the paint, and neon lights for a bedroom have to dim to something you can sleep beside on a Tuesday night.",
     heroImage: "/neon-sign/room/iap_600x600.8069307682_6sin2ngi.webp",
     heroAlt: "Warm white 'The Dohertys' neon script on a charcoal wall above a taupe sofa with olive cushions",
     heroCaption: "“The Dohertys” in warm white, over the sofa on a charcoal wall.",
@@ -557,7 +557,7 @@ const COLLECTION_CONTENT: readonly CollectionContent[] = [
     accentInk: "#0369a1",
     quoteProductName: "custom home decor neon sign",
     quoteLabel: "Get a home sign mockup",
-    keyword: "custom neon signs for home decor",
+    keyword: "bedroom neon sign",
     keywordPlural: "bedroom neon signs",
     answer:
       "A bedroom neon sign is a name, quote or shape in flexible LED neon on an acrylic backboard, made to hang above a bed, a sofa or a hallway wall. It runs at 12V, stays cool, dims with a remote for night, and is colour-matched to your paint from a Pantone, HEX or CMYK reference before it is built.",

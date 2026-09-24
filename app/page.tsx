@@ -25,14 +25,14 @@ import { StorefrontShell } from "@/components/storefront/storefront-shell";
 import { serializeJsonLd } from "@/lib/utils";
 
 export const metadata: Metadata = {
-  title: "Custom LED Neon & 3D Signs | The Glownique",
+  title: "Custom LED Neon Signs & 3D Business Signage | The Glownique",
   description:
     "Custom LED neon signs, 3D channel letters & slim lightboxes made to order. Free design mockup in ~2 hrs, 5-yr warranty, safe 12V & tracked crated delivery.",
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title: "Custom LED Neon & 3D Signs | The Glownique",
+    title: "Custom LED Neon Signs & 3D Business Signage | The Glownique",
     description:
       "Handcrafted custom LED neon signs, 3D metal channel letters & slim lightboxes. Free 1-on-1 design preview in ~2 hrs, 5-year warranty & timber-crated delivery.",
     url: "/",

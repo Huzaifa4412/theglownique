@@ -117,8 +117,8 @@ export default function CustomLogoNeonSignsPage() {
               Custom Logo Neon Signs for Business
             </h1>
             <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-[#5e5862] sm:text-lg">
-              Whether you need a custom logo sign for a reception wall or a vibrant, energy-efficient
-              illuminated centerpiece for your storefront. Handcrafted with safe 12V silicone LED neon on optical cast acrylic.
+              Transform your business logo, brand slogan or corporate mascot into a vibrant, energy-efficient
+              illuminated centerpiece. Handcrafted with safe 12V silicone LED neon on optical cast acrylic.
             </p>
 
             <div className="mt-8 flex flex-wrap justify-center gap-4">

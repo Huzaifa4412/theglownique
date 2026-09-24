@@ -3,10 +3,10 @@
 import {
   ArrowLeft,
   ArrowRight,
+  LockKey,
   PencilLine,
   ShieldCheck,
   Sparkle,
-  Star,
   Truck,
 } from "@phosphor-icons/react";
 import Image from "next/image";
@@ -24,6 +24,7 @@ import { IconBox } from "@/components/icon-box";
 import { useStorefront } from "@/components/storefront/storefront-context";
 import TextType from "@/components/TextType";
 import { Badge } from "@/components/ui/badge";
+import { DELIVERY } from "@/lib/claims";
 import { categoryLabels, heroSlides } from "@/lib/store-data";
 
 const CAROUSEL_DURATION = 5500;
@@ -147,7 +148,7 @@ export function HeroSection() {
 
         <p className="hero__intro">
           Design your bespoke neon sign for your home, business, wedding, or
-          event. When looking for the best custom neon signs online, our studio crafts pieces with commercial-grade silicone &amp; stainless
+          event. Handcrafted with commercial-grade silicone &amp; stainless
           steel. Approve your free true-to-scale mockup before you pay.
         </p>
 
@@ -184,11 +185,11 @@ export function HeroSection() {
           </li>
           <li className="hero-fact-item">
             <span className="hero-fact__icon-wrap">
-              <Star weight="fill" />
+              <LockKey weight="bold" />
             </span>
             <div className="hero-fact__text">
-              <strong>5,000+ Happy Clients</strong>
-              <span>Etsy Star Seller</span>
+              <strong>Secure Etsy Checkout</strong>
+              <span>Pay after you approve</span>
             </div>
           </li>
           <li className="hero-fact-item">
@@ -197,7 +198,7 @@ export function HeroSection() {
             </span>
             <div className="hero-fact__text">
               <strong>Tracked Shipping</strong>
-              <span>Global insured delivery</span>
+              <span>{DELIVERY.supporting}</span>
             </div>
           </li>
         </ul>

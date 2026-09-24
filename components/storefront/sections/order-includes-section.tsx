@@ -1,7 +1,6 @@
 import { CustomQuoteButton } from "@/components/storefront/custom-quote-button";
 import { StoreIcon, type StoreIconName } from "@/components/storefront/store-icon";
 import { PremiumAccentText } from "@/components/ui/premium-accent-text";
-import { DELIVERY } from "@/lib/claims";
 
 /**
  * "What every order includes" — the homepage reassurance band.
@@ -45,7 +44,7 @@ const inclusions: ReadonlyArray<{
   {
     icon: "SealCheck",
     title: "Protected Checkout via Etsy",
-    body: "Orders are secured through our verified 5-star Etsy shop, giving you full buyer protection, encrypted checkout, and the flexibility to split payments 50/50.",
+    body: "Payment runs through Etsy's encrypted checkout, and eligible orders are covered by Etsy Purchase Protection. You only pay once you have approved your design.",
   },
   {
     icon: "Truck",

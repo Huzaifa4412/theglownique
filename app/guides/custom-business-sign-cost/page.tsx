@@ -32,22 +32,27 @@ export const metadata: Metadata = {
   },
 };
 
+// No price figures on this page, deliberately. There is no owner-approved price
+// basis (CLM-019): the ranges that used to sit here, the "from $150" in the old
+// public/pricing.md and the Etsy listing price all disagreed with each other.
+// Answer the cost question with what actually moves the number, and add real
+// ranges only once they come from the order book (see OWNER-QUESTIONS.md).
 const costFaqs = [
   {
     q: "How much does a custom neon sign cost?",
-    a: "Small to medium custom LED neon signs (approx 20–36 inches) typically range from $120 to $350. Large commercial feature wall signs (40–80+ inches) range from $400 to $900+ depending on total tubing length, font complexity, and acrylic cut style.",
+    a: "The price of a custom LED neon sign is set mainly by how much neon the design needs — letter height, word count and how intricate the lettering is — plus the backboard cut (rectangle, cut-to-shape or cut-to-letter), the number of colours, and whether it is built for indoor or outdoor use. Every sign is made to order, so The Glownique quotes each design individually alongside a free mockup. Send the wording or logo, the width you want and where it will hang, and the quote comes back with the design.",
   },
   {
-    q: "What is the average price of 3D metal channel letter signs for storefronts?",
-    a: "Fabricated commercial channel letter signs typically range from $800 to $3,500+ depending on letter height, stainless steel grade (304 vs 316), illumination style (frontlit, halo backlit, or dual-lit), and raceway vs flush mounting.",
+    q: "What drives the price of 3D metal channel letter signs for storefronts?",
+    a: "Channel letter pricing depends on letter height and count, the illumination style (front-lit, halo-lit or dual-lit, which needs two lighting runs), the metal finish, and how the letters mount — flush to the wall, on standoffs, or on a raceway. Installation, electrical connection and any sign permit are arranged separately with a local contractor. A vector logo file and the width of the wall are enough for an itemized quote.",
   },
   {
     q: "Why is a 3D acrylic UV-print sign more economical for complex logos?",
-    a: "When a logo has multiple gradient colors, small tagline text, or intricate emblems, rendering it purely in hand-bent neon tubing requires dozens of manual solder joints and metres of silicone tube. With UV-print acrylic, the printer produces high-definition detail in one pass, allowing neon to be placed only along key glowing contours — cutting build time and cost by 30–50%.",
+    a: "When a logo has gradients, small tagline text or a detailed emblem, tracing all of it in hand-bent neon means more neon and more joints. A UV-printed acrylic sign prints that detail directly onto the acrylic and uses neon only along the key contours, so a detailed logo usually costs less this way than as a neon-only sign.",
   },
   {
     q: "Are design mockups and quote revisions free before ordering?",
-    a: "Yes. The Glownique provides 100% free digital design mockups and itemized quotes with zero upfront payment or purchase obligation.",
+    a: "Yes. The design mockup and the quote are free, and there is no obligation to order.",
   },
 ];
 
@@ -64,7 +69,7 @@ export default function CustomBusinessSignCostGuidePage() {
         description:
           "Detailed technical guide analyzing the cost drivers behind custom illuminated commercial signage.",
         datePublished: "2026-08-11",
-        dateModified: "2026-08-11",
+        dateModified: "2026-09-24",
         publisher: { "@id": `${SITE_URL}/#organization` },
         mainEntityOfPage: pageUrl,
       },

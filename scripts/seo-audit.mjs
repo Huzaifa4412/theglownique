@@ -75,6 +75,37 @@ const RETIRED_CLAIM_PATTERNS = [
 /** Pages allowed to discuss a retired claim in order to correct the record. */
 const RETIRED_CLAIM_EXEMPT = new Set(["/shipping", "/privacy"]);
 
+/**
+ * Claims with no evidence behind them (CLM-021 to CLM-025, added 2026-09-24).
+ * Each of these reached production through an automated copy pass, not an
+ * owner decision: a customer count against 23 recorded Etsy sales, a Star
+ * Seller badge nobody verified, a shop rating the register had withdrawn,
+ * "insured" delivery with no insurer, and starting prices in three different
+ * amounts on three different surfaces.
+ *
+ * They fail on code-managed routes. Journal posts live in Sanity and cannot be
+ * corrected by a code change, so a hit there is a warning naming the post for
+ * an editor to fix, rather than a failure that blocks every release until then.
+ */
+const UNVERIFIED_CLAIM_PATTERNS = [
+  { label: "customer count (CLM-021)", re: /\b\d[\d,]*\+?\s*(happy\s+)?(clients|customers)\b/i },
+  { label: "Etsy Star Seller badge (CLM-022)", re: /\bstar\s+seller\b/i },
+  { label: "shop star rating (CLM-012, withdrawn)", re: /\b(5|five)[- ]star\b[^.]{0,30}\bshop\b/i },
+  { label: "insured delivery (CLM-023)", re: /\binsured\s+(global\s+|worldwide\s+|courier\s+)?(delivery|shipping|courier)\b|\b(global|express|worldwide)\s+insured\b/i },
+  { label: "starting price (CLM-019, CLM-024)", price: true, re: /\b(starts?|starting|prices?)\s+(from|at)\s+\$\s?\d/i },
+  { label: "price range (CLM-019, CLM-024)", price: true, re: /\$\s?\d[\d,]*\+?\s*(to|–|-)\s*\$\s?\d/ },
+  { label: "UL certification (CLM-025)", re: /\bUL[- ](listed|certified|recognized|approved)\b|\bUL\s+drivers?\b/i },
+];
+
+/**
+ * /contact carries a budget selector ("$250 - $500") — the visitor's input, not
+ * a price we state — so the two price patterns do not apply there.
+ */
+const PRICE_PATTERN_EXEMPT = new Set(["/contact"]);
+
+/** Structured-data properties that would assert a price or a rating we cannot evidence. */
+const UNSUPPORTED_SCHEMA_KEYS = /"(price|lowPrice|highPrice|aggregateRating|ratingValue|reviewCount)"\s*:/;
+
 async function readRouteManifest() {
   // The manifest is TypeScript, so parse the literal rather than importing it —
   // this script must run without a build step.
@@ -214,6 +245,10 @@ function checkPage(route, html, status, headers) {
       fail(path, `JSON-LD does not parse: ${error.message}`);
     }
     if (body.includes("<")) fail(path, "JSON-LD contains a literal '<' — serializer not applied");
+    // No approved price basis (CLM-019) and no markable first-party reviews:
+    // a price or rating in structured data is a claim Google can act on.
+    const unsupported = body.match(UNSUPPORTED_SCHEMA_KEYS);
+    if (unsupported) fail(path, `JSON-LD asserts "${unsupported[1]}" with no approved evidence`);
   }
 
   // ── Retired claims (TECH-06) ──────────────────────────────────────────────
@@ -221,6 +256,16 @@ function checkPage(route, html, status, headers) {
     const text = html.replace(/<[^>]+>/g, " ");
     for (const claim of RETIRED_CLAIM_PATTERNS) {
       if (claim.re.test(text)) fail(path, `retired claim still visible: ${claim.label}`);
+    }
+  }
+
+  // ── Unverified claims (CLM-019, CLM-021 to CLM-025) ───────────────────────
+  {
+    const text = html.replace(/<[^>]+>/g, " ");
+    const report = path.startsWith("/blog/") ? warn : fail;
+    for (const claim of UNVERIFIED_CLAIM_PATTERNS) {
+      if (claim.price && PRICE_PATTERN_EXEMPT.has(path)) continue;
+      if (claim.re.test(text)) report(path, `unverified claim visible: ${claim.label}`);
     }
   }
 }
@@ -270,6 +315,9 @@ async function checkLlmsTxt() {
     return;
   }
   const text = await response.text();
+  for (const claim of UNVERIFIED_CLAIM_PATTERNS) {
+    if (claim.re.test(text)) fail("/llms.txt", `unverified claim stated: ${claim.label}`);
+  }
   for (const claim of RETIRED_CLAIM_PATTERNS) {
     // llms.txt is allowed to name a retired claim only to say it has ended.
     const lines = text.split("\n").filter((line) => claim.re.test(line));

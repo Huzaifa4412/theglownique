@@ -52,13 +52,6 @@ const guidesList = [
     desc: "How wall finishes (plaster, wood slats, brick, tile) and standoff distance change halo illumination on backlit signs.",
     updated: "2026-09-15",
   },
-  {
-    slug: "how-to-make-neon-signs",
-    title: "How to Make Neon Signs: Glass vs LED",
-    category: "Manufacturing & Technology",
-    desc: "Detailed guide explaining how traditional glass neon signs and modern LED silicone neon signs are manufactured.",
-    updated: "2026-09-24",
-  },
 ];
 
 export default function GuidesHubPage() {

@@ -96,26 +96,7 @@ export function ProductDetail({ slug }: { slug: string }) {
             <p className="mt-4 text-lg font-semibold" style={{ color: accent }}>
               {product.tagline}
             </p>
-            <div className="mt-6 grid grid-cols-2 gap-4 text-sm sm:grid-cols-4 border-y border-white/10 py-4">
-              <div>
-                <span className="block text-white/50 text-xs font-bold uppercase tracking-wider">Price</span>
-                <span className="mt-1 block text-gray-200 font-medium">Custom quote</span>
-              </div>
-              <div>
-                <span className="block text-white/50 text-xs font-bold uppercase tracking-wider">Sizes</span>
-                <span className="mt-1 block text-gray-200 font-medium">30cm to 3m+</span>
-              </div>
-              <div>
-                <span className="block text-white/50 text-xs font-bold uppercase tracking-wider">Colours</span>
-                <span className="mt-1 block text-gray-200 font-medium">13+ & RGB</span>
-              </div>
-              <div>
-                <span className="block text-white/50 text-xs font-bold uppercase tracking-wider">Delivery</span>
-                <span className="mt-1 block text-gray-200 font-medium">10-14 days</span>
-              </div>
-            </div>
-
-            <p className="mt-6 max-w-xl text-base leading-relaxed text-gray-300">
+            <p className="mt-5 max-w-xl text-base leading-relaxed text-gray-300">
               {product.intro}
             </p>
 
@@ -131,7 +112,7 @@ export function ProductDetail({ slug }: { slug: string }) {
               ))}
             </div>
 
-            <div className="mt-8 flex flex-wrap items-center gap-4">
+            <div className="mt-9 flex flex-wrap items-center gap-4">
               <a
                 href={quoteUrl}
                 target="_blank"
@@ -165,7 +146,6 @@ export function ProductDetail({ slug }: { slug: string }) {
                 <video
                   src={product.heroVideo}
                   poster={product.heroImage}
-                  preload="none"
                   autoPlay
                   loop
                   muted

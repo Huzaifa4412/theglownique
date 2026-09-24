@@ -14,14 +14,14 @@ import { serializeJsonLd } from "@/lib/utils";
 export const metadata: Metadata = {
   title: "Custom Business & Storefront Signs",
   description:
-    "Custom neon signs for business & illuminated storefront signage — 3D metal channel letters, LED neon logos & lightboxes. Free design mockup & 5-year warranty.",
+    "Custom illuminated business signage — 3D metal channel letters, storefront signs, LED neon logos & lightboxes. Free design mockup & 5-year warranty.",
   alternates: { canonical: "/business-signs" },
   openGraph: {
     type: "website",
     siteName: "The Glownique",
     title: "Custom Business & Storefront Signs | The Glownique",
     description:
-      "Handcrafted custom neon business signs for storefronts, offices, and restaurants — LED neon, 3D channel letters, lightboxes & acrylic logo signs.",
+      "Handcrafted illuminated business signs for storefronts, offices, and restaurants — LED neon, 3D channel letters, lightboxes & acrylic logo signs.",
     url: "/business-signs",
     images: [{ url: "/hero/neon-sign-hero.webp", alt: "The Glownique Custom Business Signage" }],
   },
@@ -165,7 +165,7 @@ export default function BusinessSignsHubPage() {
               Custom Business Signs &amp; Storefront Signage
             </h1>
             <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-[#5e5862]">
-              Handcrafted, made-to-order interior and exterior signs for business, including storefronts, corporate offices, restaurants,
+              Handcrafted, made-to-order commercial signage for storefronts, corporate offices, restaurants,
               salons and retail brands. Delivered nationwide with a free design preview, 5-year warranty,
               and direct factory support.
             </p>
