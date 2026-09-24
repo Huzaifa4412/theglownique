@@ -8,13 +8,26 @@ import { IconBox } from "@/components/icon-box";
 import { CustomQuoteButton } from "@/components/storefront/custom-quote-button";
 import { EtsyButton } from "@/components/storefront/etsy-button";
 
-// "Inspiration" used to point at #shop, the same anchor as "Shop" — two labels,
-// one destination. The journal is the page that label was always describing, so
-// it takes the slot rather than a seventh item being added beside a duplicate.
-const navigationLinks = [
+// The desktop bar has room for five items at its narrowest (1181px), so it
+// carries the destinations a first-time visitor is choosing between: a
+// business buyer had no header route to the business signs at all, and
+// "Products" led only to the consumer collections. Homepage anchors, the
+// journal and the occasion collections stay in the mobile menu and the footer.
+const desktopLinks = [
   ["Shop", "#shop"],
-  ["Custom Neon", "#color-studio"],
-  ["Products", "/custom-signage"],
+  ["Neon Signs", "/products/custom-neon-signs"],
+  ["Business Signs", "/business-signs"],
+  ["Guides", "/guides"],
+  ["Contact", "/contact"],
+] as const;
+
+const mobileLinks = [
+  ["Shop", "#shop"],
+  ["Neon Signs", "/products/custom-neon-signs"],
+  ["Business Signs", "/business-signs"],
+  ["Signs for Occasions", "/custom-signage"],
+  ["Design Your Neon", "#color-studio"],
+  ["Buying Guides", "/guides"],
   ["Journal", "/blog"],
   ["FAQs", "#faq"],
   ["Contact", "/contact"],
@@ -57,7 +70,7 @@ export function SiteHeader() {
         </Link>
 
         <nav className="desktop-nav" aria-label="Primary navigation">
-          {navigationLinks.map(([label, href]) =>
+          {desktopLinks.map(([label, href]) =>
             href.startsWith("/") ? (
               <Link href={href} key={href}>
                 {label}
@@ -94,7 +107,7 @@ export function SiteHeader() {
         inert={!menuOpen ? true : undefined}
       >
         <div className="flex flex-col space-y-2.5 text-sm font-bold text-[#1e1a22] pb-3">
-          {navigationLinks.map(([label, href]) =>
+          {mobileLinks.map(([label, href]) =>
             href.startsWith("/") ? (
               <Link key={href} href={href} onClick={() => setMenuOpen(false)}>
                 {label}

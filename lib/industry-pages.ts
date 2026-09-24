@@ -38,6 +38,8 @@ const INDUSTRY_CONTENT: readonly LandingContent[] = [
     metaTitle: "Custom Gym Neon Signs & Fitness Signage",
     metaDescription:
       "Custom gym neon signs & motivational fitness studio logo signage built for high-traffic training floors. Free design mockup & 5-year warranty.",
+    answer:
+      "For most gyms, flexible 12V LED neon suits motivational walls and studio logos inside, because there are no glass tubes to break near a lifting area. Use 3D metal channel letters for the studio name on a façade or tall entrance wall, and UV-printed acrylic for full-colour logos, timetables and zone markers. Each sign is made to order after a free design mockup.",
     intro:
       "Motivational wall signs, studio logos and class-room branding built to survive chalk dust, dropped plates and the vibration of a busy training floor.",
     heroImage: "/neon-sign/Gym/iap_600x600.7178660214_6320z3ec.webp",
@@ -88,7 +90,7 @@ const INDUSTRY_CONTENT: readonly LandingContent[] = [
     faqs: [
       {
         q: "Are gym neon signs safe to mount above weights?",
-        a: "Our LED neon is flexible silicone tubing running at 12V, not glass at mains voltage — there are no glass tubes to shatter onto a lifting platform. We still recommend mounting clear of the loaded-bar path, and we will mark that height on the mockup if you send a photo of the wall.",
+        a: "Our LED neon is flexible silicone tubing running at 12V, not glass tubes driven by a high-voltage transformer — there is no glass to shatter onto a lifting platform. We still recommend mounting clear of the loaded-bar path, and we will mark that height on the mockup if you send a photo of the wall.",
       },
       {
         q: "Will a wall sign survive the vibration from dropped weights?",
@@ -96,7 +98,7 @@ const INDUSTRY_CONTENT: readonly LandingContent[] = [
       },
       {
         q: "How large should a motivational sign be for a big training floor?",
-        a: "Work back from the furthest point you want it read from. As a working rule for illuminated lettering, allow roughly one inch of letter height for every 25 feet of viewing distance at night, and more in a brightly lit daytime gym. Send us the floor dimensions and we will size it on the mockup.",
+        a: "Work back from the furthest point you want it read from. The US Sign Council's average is about 30 feet of viewing distance per inch of capital-letter height, so a sign read from 60 feet across the floor needs capitals of at least 2 inches. Treat that as a minimum: it is an average for clear lettering. Send us the floor dimensions and we will size it on the mockup.",
       },
       {
         q: "Can you match our studio's brand colours?",
@@ -116,6 +118,8 @@ const INDUSTRY_CONTENT: readonly LandingContent[] = [
     metaTitle: "Custom Neon Bar Signs for Venues",
     metaDescription:
       "Custom neon bar signs & back-bar logo lighting for commercial venues. Dimmable, moisture-tolerant builds with free design mockup & 5-year warranty.",
+    answer:
+      "LED neon suits the back bar of most venues: it gives warm, saturated colour at low voltage in a deliberately dark room. Add a slim lightbox for menus and specials that change without replacing the sign, UV-printed acrylic for full-colour cocktail lists and logos, and 3D metal channel letters for the venue name outside. Every sign is made to order after a free design mockup.",
     intro:
       "Back-bar logos, cocktail-list lighting and venue branding specified for the one environment that is warm, damp, greasy and deliberately dark.",
     heroImage: "/neon-sign/Bar/iap_600x600.5588358323_i7bgtidf.webp",
@@ -199,6 +203,8 @@ const INDUSTRY_CONTENT: readonly LandingContent[] = [
     metaTitle: "Custom Neon Open Signs for Storefronts",
     metaDescription:
       "Custom LED neon open signs & illuminated trading signage for storefronts. Daylight-readable window builds with free design mockup & 5-year warranty.",
+    answer:
+      "A custom open sign is usually LED neon in your own typeface and colours, so it reads as your shop rather than a stock unit. In a bright, sun-facing window, an edge-lit slim lightbox stays readable and lets you change the message. UV-printed acrylic panels carry opening hours and service information beside it. Each sign is made to order after a free design mockup.",
     intro:
       "The one sign whose entire job is answering a question from across the street — and the reason a stock open sign in a bright window so often fails to.",
     heroImage: "/ultra-thin-slim-lightbox/Storefront windows.webp",
@@ -277,6 +283,8 @@ const INDUSTRY_CONTENT: readonly LandingContent[] = [
     metaTitle: "Custom Restaurant Signs & Cafe Signage",
     metaDescription:
       "Custom restaurant signs, illuminated café branding & backlit menu displays for dining venues. Dimmable builds with free design mockup & 5-year warranty.",
+    answer:
+      "A restaurant usually needs two kinds of sign. Outside, 3D metal channel letters carry the name on the façade, front-lit, halo-lit or dual-lit and built for outdoor mounting. Inside, slim lightboxes suit menu boards that change with the season, LED neon makes a feature wall guests photograph, and UV-printed acrylic carries full-colour menus and logos. All are made to order after a free mockup.",
     intro:
       "Storefront identity, interior branding and menu display for venues where the same wall has to look right in daylight service and at candlelit covers.",
     heroImage: "/3d-metallic-neon-sign/Resturants/generated/026ad950-fafb-4407-8420-c83be7f49365.webp",
@@ -360,6 +368,8 @@ const INDUSTRY_CONTENT: readonly LandingContent[] = [
     metaTitle: "Custom Office Signs & Lobby Signage",
     metaDescription:
       "Custom office signs, reception logo signage & illuminated lobby branding in metal and acrylic. Halo-lit builds with free design mockup & 5-year warranty.",
+    answer:
+      "For a reception wall, the usual choice is 3D metal channel letters, often halo-lit so the wall glows behind solid-looking lettering. If the logo is full-colour or cannot be reduced to letters, UV-printed acrylic on standoffs carries the artwork in print. Slim lightboxes suit directories and wayfinding that change with tenants, and LED neon suits breakout spaces. Each sign is made to order after a free mockup.",
     intro:
       "Reception walls, lobby logos and meeting-room identity, in the finishes that read as considered rather than loud.",
     heroImage: "/3d-metallic-neon-sign/corporte/056b3189-6a8c-482a-8334-53ded7aff3e1.webp",
@@ -443,6 +453,8 @@ const INDUSTRY_CONTENT: readonly LandingContent[] = [
     metaTitle: "Custom Salon & Spa Neon Signs",
     metaDescription:
       "Custom salon neon signs, spa logo signage and beauty studio branding. Camera-ready lighting in your brand colours, with free mockup & 5-year warranty.",
+    answer:
+      "LED neon suits most salons and spas: warm, saturated colour that sits well behind a mirror wall and shows up clearly in clients' photos. For a full-colour logo at reception or a price board, UV-printed layered acrylic carries the artwork, and 3D metal channel letters carry the studio name on the street frontage. Every sign is made to order after a free design mockup.",
     intro:
       "Reception marks, mirror walls and treatment-room branding for spaces where the sign ends up in every client's photo whether you planned for it or not.",
     heroImage: "/3d-metallic-neon-sign/Salon/generated/235762e8-14ec-4167-b534-2dad36c826ba.webp",
@@ -521,6 +533,8 @@ const INDUSTRY_CONTENT: readonly LandingContent[] = [
     metaTitle: "Custom Retail Storefront Signs",
     metaDescription:
       "Custom retail storefront signs, illuminated facade lettering & window signs for shops. Outdoor builds with free design mockup & 5-year warranty.",
+    answer:
+      "For a shopfront, 3D metal channel letters are the standard façade sign: front-lit, halo-lit or dual-lit, and built for exterior mounting. Slim lightboxes suit window and fascia panels whose promotions change, LED neon window pieces draw attention from the pavement after dark, and UV-printed acrylic carries full-colour logos and opening hours. Every sign is made to order after a free design mockup.",
     intro:
       "Façade lettering and window signage specified for the two problems every retail unit shares: reading in daylight, and looking deliberate after dark.",
     heroImage: "/3d-metallic-neon-sign/frontlit/image.webp",
@@ -604,6 +618,8 @@ const INDUSTRY_CONTENT: readonly LandingContent[] = [
     metaTitle: "Trade Show Booth Signs & Displays",
     metaDescription:
       "Custom trade show booth signs, portable illuminated displays & exhibition branding. Lightweight, road-ready builds with free mockup & 5-year warranty.",
+    answer:
+      "For a trade show booth, a slim LED lightbox is the workhorse: slim, light, and the printed graphic can change between shows without rebuilding the sign. LED neon adds a feature piece that draws people down the aisle, with flexible silicone and no glass to break in transit, and UV-printed acrylic carries full-colour logos and product panels. Each sign is made to order after a free mockup.",
     intro:
       "Booth branding specified around the constraint that defines exhibition signage: it has to go up in an hour, come down in twenty minutes, and survive the trip to the next show.",
     heroImage: "/ultra-thin-slim-lightbox/main-hero.webp",

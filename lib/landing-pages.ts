@@ -80,6 +80,12 @@ export type LandingContent = {
    */
   metaTitle: string;
   metaDescription: string;
+  /**
+   * Optional direct answer to the page's central question ("which sign suits
+   * a gym?"), 40–70 words, plain text, rendered as the lead under the H1 and
+   * reproduced in llms.txt. It must stand alone if an answer engine lifts it.
+   */
+  answer?: string;
   intro: string;
   heroImage: string;
   heroAlt: string;

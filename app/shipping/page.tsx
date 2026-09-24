@@ -6,14 +6,14 @@ import { LegalPage } from "@/components/legal/legal-page";
 export const metadata: Metadata = {
   title: "Shipping & Delivery",
   description:
-    "How The Glownique signs are built and shipped: handcrafted in 10–15 days, timber-crated, and sent worldwide with tracked delivery and full transit insurance.",
+    "How we ship custom signs: made to order after you approve the design, then sent worldwide with tracked delivery. Shipping cost is confirmed with your quote.",
   alternates: { canonical: "/shipping" },
   openGraph: {
     type: "website",
     siteName: "The Glownique",
     title: "Shipping & Delivery | The Glownique",
     description:
-      "Handcrafted in around 10–15 days, then sent worldwide with tracked delivery. Shipping is confirmed with your quote.",
+      "Made to order after you approve the design, then sent worldwide with tracked delivery. Shipping is confirmed with your quote.",
     url: "/shipping",
     images: [{ url: "/hero/neon-sign-hero.png", alt: "The Glownique Shipping and Delivery" }],
   },
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Shipping & Delivery | The Glownique",
     description:
-      "Handcrafted in around 10–15 days, then sent worldwide with tracked delivery. Shipping is confirmed with your quote.",
+      "Made to order after you approve the design, then sent worldwide with tracked delivery. Shipping is confirmed with your quote.",
     images: ["/hero/neon-sign-hero.png"],
   },
 };

@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 
 import { getCategoryRoutes, getPostRoutes } from "@/lib/blog";
-import { INDEXABLE_ROUTES } from "@/lib/routes";
+import { INDEXABLE_ROUTES, ROUTE_IMAGES } from "@/lib/routes";
 import { SITE_URL } from "@/lib/site";
 
 /**
@@ -30,12 +30,19 @@ import { SITE_URL } from "@/lib/site";
  * ignores both, so neither is worth spending attention on.
  */
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const staticEntries: MetadataRoute.Sitemap = INDEXABLE_ROUTES.map((route) => ({
-    url: route.path === "/" ? SITE_URL : `${SITE_URL}${route.path}`,
-    lastModified: new Date(route.lastModified),
-    changeFrequency: route.changeFrequency,
-    priority: route.priority,
-  }));
+  // Image entries: the photographs each page renders (lib/routes.ts
+  // ROUTE_IMAGES), so image search can find them — several filenames contain
+  // spaces, hence the encoding.
+  const staticEntries: MetadataRoute.Sitemap = INDEXABLE_ROUTES.map((route) => {
+    const images = ROUTE_IMAGES.get(route.path);
+    return {
+      url: route.path === "/" ? SITE_URL : `${SITE_URL}${route.path}`,
+      lastModified: new Date(route.lastModified),
+      changeFrequency: route.changeFrequency,
+      priority: route.priority,
+      ...(images && images.length > 0 ? { images: images.map((src) => encodeURI(`${SITE_URL}${src}`)) } : {}),
+    };
+  });
 
   const [posts, categories] = await Promise.all([getPostRoutes(), getCategoryRoutes()]);
 

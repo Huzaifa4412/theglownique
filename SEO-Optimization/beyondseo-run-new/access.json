@@ -1,0 +1,546 @@
+{
+  "summary": {
+    "assessment": "No supported access-denial or challenge signal was observed in this sample. This does not predict larger or later crawls.",
+    "page_access_counts": {
+      "response_received": 25
+    },
+    "remote_denial_or_challenge_pages": 0,
+    "remote_denial_or_challenge_discovery_responses": 0,
+    "http_access_denied_attempts_recorded": 0,
+    "challenge_attempts_recorded": 0,
+    "http_429_attempts_recorded": 0,
+    "http_attempts_recorded": 29,
+    "stop_reasons": [
+      "configured_page_limit"
+    ],
+    "browser_restriction_counts": {},
+    "history_note": "Only instrumented HTTP attempts are counted, including recorded browser requests; legacy runs may lack attempt history."
+  },
+  "pages": [
+    {
+      "url": "https://www.theglownique.com/",
+      "status": 200,
+      "access": {
+        "code": "response_received",
+        "confidence": "observed",
+        "evidence": "HTTP 200 received; no supported denial/challenge marker detected."
+      },
+      "robots_decision": null,
+      "withheld_url": "",
+      "http_events": [
+        {
+          "url": "https://www.theglownique.com/",
+          "status": 200,
+          "error": "",
+          "fetched_at": "2026-09-24T15:11:01.892969+00:00",
+          "retry_after": null,
+          "challenge_detected": false
+        }
+      ]
+    },
+    {
+      "url": "https://www.theglownique.com/business-signs",
+      "status": 200,
+      "access": {
+        "code": "response_received",
+        "confidence": "observed",
+        "evidence": "HTTP 200 received; no supported denial/challenge marker detected."
+      },
+      "robots_decision": null,
+      "withheld_url": "",
+      "http_events": [
+        {
+          "url": "https://www.theglownique.com/business-signs",
+          "status": 200,
+          "error": "",
+          "fetched_at": "2026-09-24T15:11:02.387130+00:00",
+          "retry_after": null,
+          "challenge_detected": false
+        }
+      ]
+    },
+    {
+      "url": "https://www.theglownique.com/business-signs/custom-logo-neon-signs",
+      "status": 200,
+      "access": {
+        "code": "response_received",
+        "confidence": "observed",
+        "evidence": "HTTP 200 received; no supported denial/challenge marker detected."
+      },
+      "robots_decision": null,
+      "withheld_url": "",
+      "http_events": [
+        {
+          "url": "https://www.theglownique.com/business-signs/custom-logo-neon-signs",
+          "status": 200,
+          "error": "",
+          "fetched_at": "2026-09-24T15:11:02.887014+00:00",
+          "retry_after": null,
+          "challenge_detected": false
+        }
+      ]
+    },
+    {
+      "url": "https://www.theglownique.com/business-signs/channel-letter-signs",
+      "status": 200,
+      "access": {
+        "code": "response_received",
+        "confidence": "observed",
+        "evidence": "HTTP 200 received; no supported denial/challenge marker detected."
+      },
+      "robots_decision": null,
+      "withheld_url": "",
+      "http_events": [
+        {
+          "url": "https://www.theglownique.com/business-signs/channel-letter-signs",
+          "status": 200,
+          "error": "",
+          "fetched_at": "2026-09-24T15:11:03.386956+00:00",
+          "retry_after": null,
+          "challenge_detected": false
+        }
+      ]
+    },
+    {
+      "url": "https://www.theglownique.com/business-signs/backlit-signs",
+      "status": 200,
+      "access": {
+        "code": "response_received",
+        "confidence": "observed",
+        "evidence": "HTTP 200 received; no supported denial/challenge marker detected."
+      },
+      "robots_decision": null,
+      "withheld_url": "",
+      "http_events": [
+        {
+          "url": "https://www.theglownique.com/business-signs/backlit-signs",
+          "status": 200,
+          "error": "",
+          "fetched_at": "2026-09-24T15:11:04.257788+00:00",
+          "retry_after": null,
+          "challenge_detected": false
+        }
+      ]
+    },
+    {
+      "url": "https://www.theglownique.com/business-signs/backlit-lobby-signs",
+      "status": 200,
+      "access": {
+        "code": "response_received",
+        "confidence": "observed",
+        "evidence": "HTTP 200 received; no supported denial/challenge marker detected."
+      },
+      "robots_decision": null,
+      "withheld_url": "",
+      "http_events": [
+        {
+          "url": "https://www.theglownique.com/business-signs/backlit-lobby-signs",
+          "status": 200,
+          "error": "",
+          "fetched_at": "2026-09-24T15:11:05.758181+00:00",
+          "retry_after": null,
+          "challenge_detected": false
+        }
+      ]
+    },
+    {
+      "url": "https://www.theglownique.com/business-signs/lightbox-signs",
+      "status": 200,
+      "access": {
+        "code": "response_received",
+        "confidence": "observed",
+        "evidence": "HTTP 200 received; no supported denial/challenge marker detected."
+      },
+      "robots_decision": null,
+      "withheld_url": "",
+      "http_events": [
+        {
+          "url": "https://www.theglownique.com/business-signs/lightbox-signs",
+          "status": 200,
+          "error": "",
+          "fetched_at": "2026-09-24T15:11:04.758011+00:00",
+          "retry_after": null,
+          "challenge_detected": false
+        }
+      ]
+    },
+    {
+      "url": "https://www.theglownique.com/business-signs/acrylic-logo-signs",
+      "status": 200,
+      "access": {
+        "code": "response_received",
+        "confidence": "observed",
+        "evidence": "HTTP 200 received; no supported denial/challenge marker detected."
+      },
+      "robots_decision": null,
+      "withheld_url": "",
+      "http_events": [
+        {
+          "url": "https://www.theglownique.com/business-signs/acrylic-logo-signs",
+          "status": 200,
+          "error": "",
+          "fetched_at": "2026-09-24T15:11:05.258350+00:00",
+          "retry_after": null,
+          "challenge_detected": false
+        }
+      ]
+    },
+    {
+      "url": "https://www.theglownique.com/business-signs/gym-fitness-signs",
+      "status": 200,
+      "access": {
+        "code": "response_received",
+        "confidence": "observed",
+        "evidence": "HTTP 200 received; no supported denial/challenge marker detected."
+      },
+      "robots_decision": null,
+      "withheld_url": "",
+      "http_events": [
+        {
+          "url": "https://www.theglownique.com/business-signs/gym-fitness-signs",
+          "status": 200,
+          "error": "",
+          "fetched_at": "2026-09-24T15:11:06.374112+00:00",
+          "retry_after": null,
+          "challenge_detected": false
+        }
+      ]
+    },
+    {
+      "url": "https://www.theglownique.com/business-signs/bar-signs",
+      "status": 200,
+      "access": {
+        "code": "response_received",
+        "confidence": "observed",
+        "evidence": "HTTP 200 received; no supported denial/challenge marker detected."
+      },
+      "robots_decision": null,
+      "withheld_url": "",
+      "http_events": [
+        {
+          "url": "https://www.theglownique.com/business-signs/bar-signs",
+          "status": 200,
+          "error": "",
+          "fetched_at": "2026-09-24T15:11:06.865296+00:00",
+          "retry_after": null,
+          "challenge_detected": false
+        }
+      ]
+    },
+    {
+      "url": "https://www.theglownique.com/business-signs/open-signs",
+      "status": 200,
+      "access": {
+        "code": "response_received",
+        "confidence": "observed",
+        "evidence": "HTTP 200 received; no supported denial/challenge marker detected."
+      },
+      "robots_decision": null,
+      "withheld_url": "",
+      "http_events": [
+        {
+          "url": "https://www.theglownique.com/business-signs/open-signs",
+          "status": 200,
+          "error": "",
+          "fetched_at": "2026-09-24T15:11:07.365380+00:00",
+          "retry_after": null,
+          "challenge_detected": false
+        }
+      ]
+    },
+    {
+      "url": "https://www.theglownique.com/business-signs/restaurant-signs",
+      "status": 200,
+      "access": {
+        "code": "response_received",
+        "confidence": "observed",
+        "evidence": "HTTP 200 received; no supported denial/challenge marker detected."
+      },
+      "robots_decision": null,
+      "withheld_url": "",
+      "http_events": [
+        {
+          "url": "https://www.theglownique.com/business-signs/restaurant-signs",
+          "status": 200,
+          "error": "",
+          "fetched_at": "2026-09-24T15:11:07.865300+00:00",
+          "retry_after": null,
+          "challenge_detected": false
+        }
+      ]
+    },
+    {
+      "url": "https://www.theglownique.com/business-signs/office-signs",
+      "status": 200,
+      "access": {
+        "code": "response_received",
+        "confidence": "observed",
+        "evidence": "HTTP 200 received; no supported denial/challenge marker detected."
+      },
+      "robots_decision": null,
+      "withheld_url": "",
+      "http_events": [
+        {
+          "url": "https://www.theglownique.com/business-signs/office-signs",
+          "status": 200,
+          "error": "",
+          "fetched_at": "2026-09-24T15:11:08.459797+00:00",
+          "retry_after": null,
+          "challenge_detected": false
+        }
+      ]
+    },
+    {
+      "url": "https://www.theglownique.com/business-signs/salon-spa-signs",
+      "status": 200,
+      "access": {
+        "code": "response_received",
+        "confidence": "observed",
+        "evidence": "HTTP 200 received; no supported denial/challenge marker detected."
+      },
+      "robots_decision": null,
+      "withheld_url": "",
+      "http_events": [
+        {
+          "url": "https://www.theglownique.com/business-signs/salon-spa-signs",
+          "status": 200,
+          "error": "",
+          "fetched_at": "2026-09-24T15:11:09.968574+00:00",
+          "retry_after": null,
+          "challenge_detected": false
+        }
+      ]
+    },
+    {
+      "url": "https://www.theglownique.com/business-signs/retail-storefronts",
+      "status": 200,
+      "access": {
+        "code": "response_received",
+        "confidence": "observed",
+        "evidence": "HTTP 200 received; no supported denial/challenge marker detected."
+      },
+      "robots_decision": null,
+      "withheld_url": "",
+      "http_events": [
+        {
+          "url": "https://www.theglownique.com/business-signs/retail-storefronts",
+          "status": 200,
+          "error": "",
+          "fetched_at": "2026-09-24T15:11:08.960045+00:00",
+          "retry_after": null,
+          "challenge_detected": false
+        }
+      ]
+    },
+    {
+      "url": "https://www.theglownique.com/business-signs/trade-show-signs",
+      "status": 200,
+      "access": {
+        "code": "response_received",
+        "confidence": "observed",
+        "evidence": "HTTP 200 received; no supported denial/challenge marker detected."
+      },
+      "robots_decision": null,
+      "withheld_url": "",
+      "http_events": [
+        {
+          "url": "https://www.theglownique.com/business-signs/trade-show-signs",
+          "status": 200,
+          "error": "",
+          "fetched_at": "2026-09-24T15:11:09.459912+00:00",
+          "retry_after": null,
+          "challenge_detected": false
+        }
+      ]
+    },
+    {
+      "url": "https://www.theglownique.com/blog",
+      "status": 200,
+      "access": {
+        "code": "response_received",
+        "confidence": "observed",
+        "evidence": "HTTP 200 received; no supported denial/challenge marker detected."
+      },
+      "robots_decision": null,
+      "withheld_url": "",
+      "http_events": [
+        {
+          "url": "https://www.theglownique.com/blog",
+          "status": 200,
+          "error": "",
+          "fetched_at": "2026-09-24T15:11:10.632131+00:00",
+          "retry_after": null,
+          "challenge_detected": false
+        }
+      ]
+    },
+    {
+      "url": "https://www.theglownique.com/guides",
+      "status": 200,
+      "access": {
+        "code": "response_received",
+        "confidence": "observed",
+        "evidence": "HTTP 200 received; no supported denial/challenge marker detected."
+      },
+      "robots_decision": null,
+      "withheld_url": "",
+      "http_events": [
+        {
+          "url": "https://www.theglownique.com/guides",
+          "status": 200,
+          "error": "",
+          "fetched_at": "2026-09-24T15:11:11.127004+00:00",
+          "retry_after": null,
+          "challenge_detected": false
+        }
+      ]
+    },
+    {
+      "url": "https://www.theglownique.com/guides/custom-business-sign-cost",
+      "status": 200,
+      "access": {
+        "code": "response_received",
+        "confidence": "observed",
+        "evidence": "HTTP 200 received; no supported denial/challenge marker detected."
+      },
+      "robots_decision": null,
+      "withheld_url": "",
+      "http_events": [
+        {
+          "url": "https://www.theglownique.com/guides/custom-business-sign-cost",
+          "status": 200,
+          "error": "",
+          "fetched_at": "2026-09-24T15:11:11.626758+00:00",
+          "retry_after": null,
+          "challenge_detected": false
+        }
+      ]
+    },
+    {
+      "url": "https://www.theglownique.com/guides/front-lit-vs-halo-lit-vs-dual-lit",
+      "status": 200,
+      "access": {
+        "code": "response_received",
+        "confidence": "observed",
+        "evidence": "HTTP 200 received; no supported denial/challenge marker detected."
+      },
+      "robots_decision": null,
+      "withheld_url": "",
+      "http_events": [
+        {
+          "url": "https://www.theglownique.com/guides/front-lit-vs-halo-lit-vs-dual-lit",
+          "status": 200,
+          "error": "",
+          "fetched_at": "2026-09-24T15:11:12.126702+00:00",
+          "retry_after": null,
+          "challenge_detected": false
+        }
+      ]
+    },
+    {
+      "url": "https://www.theglownique.com/guides/backlit-sign-wall-surfaces-and-standoffs",
+      "status": 200,
+      "access": {
+        "code": "response_received",
+        "confidence": "observed",
+        "evidence": "HTTP 200 received; no supported denial/challenge marker detected."
+      },
+      "robots_decision": null,
+      "withheld_url": "",
+      "http_events": [
+        {
+          "url": "https://www.theglownique.com/guides/backlit-sign-wall-surfaces-and-standoffs",
+          "status": 200,
+          "error": "",
+          "fetched_at": "2026-09-24T15:11:13.248783+00:00",
+          "retry_after": null,
+          "challenge_detected": false
+        }
+      ]
+    },
+    {
+      "url": "https://www.theglownique.com/custom-signage",
+      "status": 200,
+      "access": {
+        "code": "response_received",
+        "confidence": "observed",
+        "evidence": "HTTP 200 received; no supported denial/challenge marker detected."
+      },
+      "robots_decision": null,
+      "withheld_url": "",
+      "http_events": [
+        {
+          "url": "https://www.theglownique.com/custom-signage",
+          "status": 200,
+          "error": "",
+          "fetched_at": "2026-09-24T15:11:14.748888+00:00",
+          "retry_after": null,
+          "challenge_detected": false
+        }
+      ]
+    },
+    {
+      "url": "https://www.theglownique.com/custom-signage/wedding-signs",
+      "status": 200,
+      "access": {
+        "code": "response_received",
+        "confidence": "observed",
+        "evidence": "HTTP 200 received; no supported denial/challenge marker detected."
+      },
+      "robots_decision": null,
+      "withheld_url": "",
+      "http_events": [
+        {
+          "url": "https://www.theglownique.com/custom-signage/wedding-signs",
+          "status": 200,
+          "error": "",
+          "fetched_at": "2026-09-24T15:11:13.751457+00:00",
+          "retry_after": null,
+          "challenge_detected": false
+        }
+      ]
+    },
+    {
+      "url": "https://www.theglownique.com/custom-signage/kids-room-neon-signs",
+      "status": 200,
+      "access": {
+        "code": "response_received",
+        "confidence": "observed",
+        "evidence": "HTTP 200 received; no supported denial/challenge marker detected."
+      },
+      "robots_decision": null,
+      "withheld_url": "",
+      "http_events": [
+        {
+          "url": "https://www.theglownique.com/custom-signage/kids-room-neon-signs",
+          "status": 200,
+          "error": "",
+          "fetched_at": "2026-09-24T15:11:14.249247+00:00",
+          "retry_after": null,
+          "challenge_detected": false
+        }
+      ]
+    },
+    {
+      "url": "https://www.theglownique.com/custom-signage/gaming-neon-signs",
+      "status": 200,
+      "access": {
+        "code": "response_received",
+        "confidence": "observed",
+        "evidence": "HTTP 200 received; no supported denial/challenge marker detected."
+      },
+      "robots_decision": null,
+      "withheld_url": "",
+      "http_events": [
+        {
+          "url": "https://www.theglownique.com/custom-signage/gaming-neon-signs",
+          "status": 200,
+          "error": "",
+          "fetched_at": "2026-09-24T15:11:15.574943+00:00",
+          "retry_after": null,
+          "challenge_detected": false
+        }
+      ]
+    }
+  ]
+}

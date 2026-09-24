@@ -43,7 +43,10 @@ function Reveal({
   );
 }
 
-export function ProductDetail({ slug }: { slug: string }) {
+/** A buying guide, resolved on the server (lib/guides stays out of this bundle). */
+export type ProductReading = { href: string; title: string; summary: string };
+
+export function ProductDetail({ slug, reading = [] }: { slug: string; reading?: ProductReading[] }) {
   const product = getProductPage(slug);
   const [activeImg, setActiveImg] = useState(0);
 
@@ -540,6 +543,41 @@ export function ProductDetail({ slug }: { slug: string }) {
           </Reveal>
         </div>
       </section>
+
+      {/* ─────────────────── BEFORE YOU ORDER ─────────────────── */}
+      {/* The guides answer the questions a buyer has before the FAQ's
+          ordering questions: which lighting, what size, indoor or outdoor. */}
+      {reading.length > 0 ? (
+        <section className="border-t border-[#eadfe4] bg-[#fdf7f9] py-16 sm:py-20" aria-labelledby="before-you-order">
+          <div className="mx-auto max-w-[1100px] px-4 sm:px-6">
+            <Reveal className="mb-10 text-center">
+              <p className="text-xs font-extrabold uppercase tracking-widest" style={{ color: accent }}>
+                Before you order
+              </p>
+              <h2 id="before-you-order" className="mt-2 text-3xl font-extrabold tracking-tight text-[#1e1a22] sm:text-4xl">
+                Guides for choosing your {product.singular}
+              </h2>
+            </Reveal>
+            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              {reading.map((guide, i) => (
+                <Reveal key={guide.href} delay={i * 0.06}>
+                  <Link
+                    href={guide.href}
+                    className="group flex h-full flex-col rounded-2xl border border-[#eadfe4] bg-white p-6 shadow-[0_10px_30px_rgba(107,38,67,0.05)] transition-colors hover:border-[#f8c6da]"
+                  >
+                    <h3 className="text-base font-bold text-[#1e1a22] group-hover:underline">{guide.title}</h3>
+                    <p className="mt-2 flex-1 text-sm leading-6 text-[#5e5862]">{guide.summary}</p>
+                    <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-bold" style={{ color: accent }}>
+                      Read the guide
+                      <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true" />
+                    </span>
+                  </Link>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+      ) : null}
 
       {/* ─────────────────────── FAQ ─────────────────────── */}
       <section className="bg-white py-16 sm:py-20">

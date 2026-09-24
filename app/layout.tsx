@@ -156,6 +156,10 @@ const structuredData = {
       "@id": `${siteUrl}/#website`,
       url: siteUrl,
       name: "The Glownique",
+      // Google's site-name system falls back to these when it will not use
+      // `name`. "TheGlownique" is the Etsy shop's name; plain "Glownique" is
+      // left out because it is another company's brand (glownique.com).
+      alternateName: ["TheGlownique", "theglownique.com"],
       description:
         "Custom LED neon signs, 3D metal signage, ultra-thin lightboxes and UV-print acrylic signs, handcrafted and made to order.",
       publisher: { "@id": `${siteUrl}/#organization` },

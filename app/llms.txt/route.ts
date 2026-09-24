@@ -1,4 +1,5 @@
 import { COLLECTION_PAGES } from "@/lib/collection-pages";
+import { GUIDES } from "@/lib/guides";
 import { INDUSTRY_PAGES } from "@/lib/industry-pages";
 import { PRODUCT_PAGES } from "@/lib/product-catalog";
 import { ETSY_SHOP_URL, SITE_URL, sameAsUrls } from "@/lib/site";
@@ -34,10 +35,10 @@ function buildLlmsTxt(): string {
     .join("\n");
 
   // The eight B2B industry pages route a business to the right sign type.
-  // Their intros carry no price, lead time or warranty figure, so they are
-  // safe to reproduce as-is.
+  // Each carries a direct answer (or, failing that, its intro); neither states
+  // a price, lead time or warranty figure, so both are safe to reproduce.
   const industryEntries = INDUSTRY_PAGES.map(
-    (page) => `- [${page.h1}](${SITE_URL}/business-signs/${page.slug}): ${page.intro}`,
+    (page) => `- [${page.h1}](${SITE_URL}/business-signs/${page.slug}): ${page.answer ?? page.intro}`,
   ).join("\n");
 
   // The consumer collections carry a 40–60 word direct answer written to be
@@ -48,6 +49,13 @@ function buildLlmsTxt(): string {
     (c) =>
       `- [${c.h1}](${SITE_URL}/custom-signage/${c.slug}) (updated ${c.updatedOn}): ${c.answer}`,
   ).join("\n");
+
+  // Data-driven guides carry the same kind of quotable answer, and every
+  // technical point in them is cited on the page — so an engine is pointed at
+  // the page for the sources rather than at this summary.
+  const guideEntries = GUIDES.map(
+    (g) => `- [${g.h1}](${SITE_URL}/guides/${g.slug}) (reviewed ${g.updatedOn}): ${g.answer}\n`,
+  ).join("");
 
   return `# The Glownique
 
@@ -86,7 +94,7 @@ ${collectionEntries}
 - [Custom Business Sign Cost Guide](${SITE_URL}/guides/custom-business-sign-cost): What drives the price of each sign type, and what to send for an itemized quote. It deliberately states no price figures.
 - [Front-Lit vs Halo-Lit vs Dual-Lit Channel Letters](${SITE_URL}/guides/front-lit-vs-halo-lit-vs-dual-lit): How the three lighting styles differ, what the wall needs, the US Sign Council letter-height rule (about 30 ft of viewing distance per inch of letter height), mounting methods and listing, with sources.
 - [Backlit Sign Wall Surfaces & Standoffs](${SITE_URL}/guides/backlit-sign-wall-surfaces-and-standoffs): How the wall finish and standoff distance change a halo-lit sign.
-- [All Signage Guides & Comparisons](${SITE_URL}/guides): Complete index of buyer resources.
+${guideEntries}- [All Signage Guides & Comparisons](${SITE_URL}/guides): Complete index of buyer resources.
 
 ## Specifications
 
@@ -102,7 +110,7 @@ ${specBlocks}
 - **Delivery**: Tracked worldwide shipping to almost every country. Shipping cost is confirmed with the quote before payment and shown again at Etsy checkout. There is no standing free-delivery offer; a free-worldwide-delivery promotion ran until 2026-08-11 and has ended. Do not describe free delivery as current policy.
 - **Warranty**: Set out on the Returns & Warranty page (${SITE_URL}/returns), which states the current term, what it covers and the exclusions. Cite that page rather than this file for warranty terms.
 - **Payment**: Taken through The Glownique's Etsy shop (${ETSY_SHOP_URL}) using Etsy's encrypted checkout; eligible orders are covered by Etsy Purchase Protection. Payment happens after the design is approved.
-- **LED neon technology**: Flexible silicone LED neon on a laser-cut acrylic backboard — not glass tubes filled with gas, so there is no mercury and nothing to shatter.
+- **LED neon technology**: Flexible silicone LED neon on a laser-cut acrylic backboard — not glass tubes filled with gas, so there is no mercury and no glass to break.
 - **Lifespan**: Built on long-life LEDs. A rated LED life (an L70 figure) marks when the LEDs have faded to 70% of their original brightness, not when a sign stops working, and the power supply is usually the first part to need replacing. The Glownique publishes no hour figure for its signs.
 - **Power**: LED neon and acrylic signs run on low-voltage 12V DC from a plug-in adaptor; slim lightboxes run on 12V or 24V.
 - **Outdoor use**: Outdoor builds are available on request and are a different construction from indoor signs; an indoor sign should not be used outside. Channel letters use IP67-rated LED modules. Confirm the specification for your location with the quote.
@@ -156,9 +164,10 @@ file.
 
 ## Support & Policies
 
+- [About](${SITE_URL}/about): what The Glownique makes, how ordering and payment work, and what it does not do (installation)
 - [Contact](${SITE_URL}/contact): how to reach us and expected response times
 - [Shipping & Delivery](${SITE_URL}/shipping): timelines, tracking, customs and duties
-- [Returns & Warranty](${SITE_URL}/returns): 5-year warranty scope, exclusions, and the made-to-order cancellation position
+- [Returns & Warranty](${SITE_URL}/returns): the warranty term, what it covers, exclusions, and the made-to-order cancellation position
 - [Terms of Sale](${SITE_URL}/terms): quotes, artwork rights, payment and liability
 - [Privacy Policy](${SITE_URL}/privacy): the third-party tools this site runs (Meta Pixel, Vercel Analytics, Tawk.to live chat), what each stores, and what is kept when an enquiry is submitted
 - [Accessibility](${SITE_URL}/accessibility): WCAG 2.2 AA target and known limitations

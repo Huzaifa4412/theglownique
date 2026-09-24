@@ -15,7 +15,7 @@
  * Exit code is 1 if any check fails, so it can gate CI. Warnings do not fail.
  */
 
-import { readFile } from "node:fs/promises";
+import { access, readFile } from "node:fs/promises";
 import process from "node:process";
 
 const args = process.argv.slice(2);
@@ -91,7 +91,7 @@ const UNVERIFIED_CLAIM_PATTERNS = [
   { label: "customer count (CLM-021)", re: /\b\d[\d,]*\+?\s*(happy\s+)?(clients|customers)\b/i },
   { label: "Etsy Star Seller badge (CLM-022)", re: /\bstar\s+seller\b/i },
   { label: "shop star rating (CLM-012, withdrawn)", re: /\b(5|five)[- ]star\b[^.]{0,30}\bshop\b/i },
-  { label: "insured delivery (CLM-023)", re: /\binsured\s+(global\s+|worldwide\s+|courier\s+)?(delivery|shipping|courier)\b|\b(global|express|worldwide)\s+insured\b/i },
+  { label: "insured delivery (CLM-023)", re: /\binsured\s+(global\s+|worldwide\s+|courier\s+)?(delivery|shipping|courier)\b|\b(global|express|worldwide)\s+insured\b|\b(full|fully)\s+(transit\s+)?insur(ed|ance)\b|\btransit\s+insurance\b/i },
   { label: "starting price (CLM-019, CLM-024)", price: true, re: /\b(starts?|starting|prices?)\s+(from|at)\s+\$\s?\d/i },
   { label: "price range (CLM-019, CLM-024)", price: true, re: /\$\s?\d[\d,]*\+?\s*(to|–|-)\s*\$\s?\d/ },
   { label: "UL certification (CLM-025)", re: /\bUL[- ](listed|certified|recognized|approved)\b|\bUL\s+drivers?\b/i },
@@ -143,6 +143,15 @@ async function readRouteManifest() {
   const products = await readFile(new URL("../lib/product-catalog.ts", import.meta.url), "utf8");
   for (const path of products.matchAll(/^\s*path:\s*"([^"]+)"/gm)) {
     entries.push({ path: path[1], indexable: true });
+  }
+  // Data-driven guides. Only the modules lib/guides/index.ts imports are
+  // served, so a drafted guide that has not been registered is not expected.
+  const guideIndex = await readFile(new URL("../lib/guides/index.ts", import.meta.url), "utf8");
+  for (const [, module] of guideIndex.matchAll(/from\s+"@\/lib\/guides\/([a-z0-9-]+)"/g)) {
+    if (module === "types") continue;
+    const guide = await readFile(new URL(`../lib/guides/${module}.ts`, import.meta.url), "utf8");
+    const slug = guide.match(/^\s*slug:\s*"([^"]+)"/m);
+    if (slug) entries.push({ path: `/guides/${slug[1]}`, indexable: true });
   }
   // A sign type under /business-signs is also a literal entry in routes.ts.
   return [...new Map(entries.map((entry) => [entry.path, entry])).values()];
@@ -336,6 +345,18 @@ async function checkSitemap(manifest) {
     const present = urls.some((u) => u.replace(/\/$/, "") === expected.replace(/\/$/, ""));
     if (route.indexable && !present) fail("/sitemap.xml", `missing indexable route ${route.path}`);
     if (!route.indexable && present) fail("/sitemap.xml", `contains non-indexable route ${route.path}`);
+  }
+
+  // Image entries must name files that exist: an image sitemap full of 404s
+  // tells search engines the page's photographs are gone.
+  const images = [...xml.matchAll(/<image:loc>([^<]+)<\/image:loc>/g)].map((m) => m[1]);
+  for (const image of images) {
+    const path = decodeURI(new URL(image).pathname);
+    try {
+      await access(new URL(`../public${path}`, import.meta.url));
+    } catch {
+      fail("/sitemap.xml", `image entry has no file in public/: ${path}`);
+    }
   }
 
   // A build-clock timestamp is the defect TECH-05 exists to prevent.

@@ -97,7 +97,12 @@ export function LandingPageView({ page }: { page: LandingPage }) {
             <h1 className="mt-2 text-4xl font-extrabold tracking-tight text-[#1e1a22] sm:text-5xl">
               {page.h1}
             </h1>
-            <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-[#5e5862] sm:text-lg">
+            {page.answer ? (
+              <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-[#1e1a22] sm:text-lg">
+                {page.answer}
+              </p>
+            ) : null}
+            <p className={`mx-auto max-w-2xl leading-relaxed text-[#5e5862] ${page.answer ? "mt-3 text-sm sm:text-base" : "mt-4 text-base sm:text-lg"}`}>
               {page.intro}
             </p>
 

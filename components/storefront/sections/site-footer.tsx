@@ -40,10 +40,9 @@ const footerColumns = [
   {
     title: "Company",
     links: [
-      // TODO(owner): /#about is this footer's own id — there is no About page.
-      // Replace with /about once the owner supplies who makes the signs and
-      // where (OWNER-QUESTIONS.md).
-      ["About us", "/#about"],
+      // Was /#about, this footer's own id. The page states only what the site
+      // already evidences; who makes the signs and where is an owner question.
+      ["About us", "/about"],
       // Was "Case studies": the anchor is the homepage inspiration gallery,
       // and there are no case studies yet.
       ["Inspiration", "/#inspiration"],
