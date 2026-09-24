@@ -75,13 +75,13 @@ const COLLECTION_CONTENT: readonly CollectionContent[] = [
     slug: "wedding-signs",
     name: "Wedding Signs",
     kicker: "Weddings, proposals & receptions",
-    h1: "Custom Wedding Neon Signs",
-    tagline: "Your names, lit the way the room will remember them.",
-    metaTitle: "Custom Wedding Neon Signs & Wall Decor",
+    h1: "Custom Wedding Neon Signs & Backdrops",
+    tagline: "Your names, lit the way the room will remember them. The perfect personalized wedding neon sign.",
+    metaTitle: "Custom Wedding Neon Signs | Personalized Neon Last Name",
     metaDescription:
-      "Custom wedding neon signs — surnames, first names, Mr & Mrs and vows — in warm white or your palette. Battery or plug, free design mockup, 5-year warranty.",
+      "Custom wedding neon signs for backdrops — surnames, last names, Mr & Mrs, and 'welcome to our wedding' neon signs. Battery or plug, free design mockup.",
     intro:
-      "A custom wedding neon sign is in every photograph from the first dance to the last. Ours are built around the two things that decide whether it works: how it mounts on the day, and how it reads through a camera.",
+      "A custom wedding neon sign is in every photograph from the first dance to the last. Whether you want a wedding neon sign last name piece, a Mr and Mrs sign, or a 'welcome to our wedding neon sign', ours are built around the two things that decide whether it works: how it mounts on the day, and how it reads through a camera.",
     heroImage: "/neon-sign/wedding/iap_600x600.7378705048_ipwhq76b.webp",
     heroAlt:
       "White 'Chloé Adelina' neon sign hanging on a blush pink draped backdrop between two peach floral arrangements",

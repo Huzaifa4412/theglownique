@@ -280,13 +280,13 @@ const INDUSTRY_CONTENT: readonly LandingContent[] = [
     name: "Restaurant Signs",
     kicker: "Restaurant & Café Signage",
     h1: "Custom Restaurant Signs & Café Signage",
-    metaTitle: "Custom Restaurant Signs & Cafe Signage",
+    metaTitle: "Custom Restaurant Signs | Restaurant Neon Sign Ideas",
     metaDescription:
-      "Custom restaurant signs, illuminated café branding & backlit menu displays for dining venues. Dimmable builds with free design mockup & 5-year warranty.",
+      "Custom restaurant neon signs, illuminated café branding & backlit menu displays for dining venues. Get mexican or chinese restaurant neon sign ideas today.",
     answer:
-      "A restaurant usually needs two kinds of sign. Outside, 3D metal channel letters carry the name on the façade, front-lit, halo-lit or dual-lit and built for outdoor mounting. Inside, slim lightboxes suit menu boards that change with the season, LED neon makes a feature wall guests photograph, and UV-printed acrylic carries full-colour menus and logos. All are made to order after a free mockup.",
+      "A restaurant usually needs two kinds of sign. Outside, 3D metal channel letters carry the name on the façade, front-lit, halo-lit or dual-lit and built for outdoor mounting. Inside, slim lightboxes suit menu boards that change with the season, a restaurant neon sign makes a feature wall guests photograph, and UV-printed acrylic carries full-colour menus and logos.",
     intro:
-      "Storefront identity, interior branding and menu display for venues where the same wall has to look right in daylight service and at candlelit covers.",
+      "Storefront identity, interior branding and menu display for venues where the same wall has to look right in daylight service and at candlelit covers. Whether you need a mexican restaurant neon sign, a chinese restaurant neon sign, or general restaurant neon sign ideas, we custom build them all.",
     heroImage: "/3d-metallic-neon-sign/Resturants/generated/026ad950-fafb-4407-8420-c83be7f49365.webp",
     heroAlt: "Illuminated 3D metal restaurant sign on an interior wall",
     quoteProductName: "custom restaurant sign",
@@ -449,14 +449,14 @@ const INDUSTRY_CONTENT: readonly LandingContent[] = [
     slug: "salon-spa-signs",
     name: "Salon & Spa Signs",
     kicker: "Salon, Spa & Studio Signage",
-    h1: "Custom Salon & Spa Neon Signs",
-    metaTitle: "Custom Salon & Spa Neon Signs",
+    h1: "Custom Salon Neon Signs & Spa Logo Signage",
+    metaTitle: "Custom Salon Neon Sign | Spa & Beauty Studio Branding",
     metaDescription:
-      "Custom salon neon signs, spa logo signage and beauty studio branding. Camera-ready lighting in your brand colours, with free mockup & 5-year warranty.",
+      "Looking for a custom hair salon neon sign? We build camera-ready salon neon signs, spa logo signage, and beauty studio branding in your brand colours.",
     answer:
-      "LED neon suits most salons and spas: warm, saturated colour that sits well behind a mirror wall and shows up clearly in clients' photos. For a full-colour logo at reception or a price board, UV-printed layered acrylic carries the artwork, and 3D metal channel letters carry the studio name on the street frontage. Every sign is made to order after a free design mockup.",
+      "A salon neon sign suits most studios and spas: warm, saturated colour that sits well behind a mirror wall and shows up clearly in clients' photos. For a full-colour logo at reception or a price board, UV-printed layered acrylic carries the artwork, and 3D metal channel letters carry the studio name on the street frontage. Every sign is made to order after a free design mockup.",
     intro:
-      "Reception marks, mirror walls and treatment-room branding for spaces where the sign ends up in every client's photo whether you planned for it or not.",
+      "From a classic hair salon neon sign to reception marks and treatment-room branding, we build signage for spaces where the sign ends up in every client's photo whether you planned for it or not.",
     heroImage: "/3d-metallic-neon-sign/Salon/generated/235762e8-14ec-4167-b534-2dad36c826ba.webp",
     heroAlt: "Illuminated salon logo sign on a treatment-room wall",
     quoteProductName: "custom salon neon sign",
