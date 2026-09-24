@@ -98,10 +98,17 @@ const UNVERIFIED_CLAIM_PATTERNS = [
 ];
 
 /**
- * /contact carries a budget selector ("$250 - $500") — the visitor's input, not
- * a price we state — so the two price patterns do not apply there.
+ * The quote forms carry a budget selector ("$250 - $500") — the visitor's
+ * input, not a price we state. Price patterns are therefore tested against the
+ * page with every <select> removed, and with scripts removed too, because the
+ * React payload repeats the option labels as strings.
  */
-const PRICE_PATTERN_EXEMPT = new Set(["/contact"]);
+function textForPriceClaims(html) {
+  return html
+    .replace(/<select[\s\S]*?<\/select>/gi, " ")
+    .replace(/<script[\s\S]*?<\/script>/gi, " ")
+    .replace(/<[^>]+>/g, " ");
+}
 
 /** Structured-data properties that would assert a price or a rating we cannot evidence. */
 const UNSUPPORTED_SCHEMA_KEYS = /"(price|lowPrice|highPrice|aggregateRating|ratingValue|reviewCount)"\s*:/;
@@ -262,10 +269,12 @@ function checkPage(route, html, status, headers) {
   // ── Unverified claims (CLM-019, CLM-021 to CLM-025) ───────────────────────
   {
     const text = html.replace(/<[^>]+>/g, " ");
+    const priceText = textForPriceClaims(html);
     const report = path.startsWith("/blog/") ? warn : fail;
     for (const claim of UNVERIFIED_CLAIM_PATTERNS) {
-      if (claim.price && PRICE_PATTERN_EXEMPT.has(path)) continue;
-      if (claim.re.test(text)) report(path, `unverified claim visible: ${claim.label}`);
+      if (claim.re.test(claim.price ? priceText : text)) {
+        report(path, `unverified claim visible: ${claim.label}`);
+      }
     }
   }
 }

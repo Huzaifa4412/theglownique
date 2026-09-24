@@ -567,7 +567,7 @@ export function ProductDetail({ slug }: { slug: string }) {
         />
         <Reveal className="relative z-10 mx-auto max-w-2xl px-4 text-center sm:px-6">
           <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl">
-            Ready to design your {product.name.replace(/s$/, "").toLowerCase()}?
+            Ready to design your {product.singular}?
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-gray-300">
             Send your idea and we&apos;ll send back a free mockup — with tracked worldwide delivery, a

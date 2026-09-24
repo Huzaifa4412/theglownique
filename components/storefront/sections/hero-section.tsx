@@ -23,7 +23,6 @@ import homeImage from "@/app/assets/hero/home.webp";
 import { IconBox } from "@/components/icon-box";
 import { useStorefront } from "@/components/storefront/storefront-context";
 import TextType from "@/components/TextType";
-import { Badge } from "@/components/ui/badge";
 import { DELIVERY } from "@/lib/claims";
 import { categoryLabels, heroSlides } from "@/lib/store-data";
 
@@ -100,18 +99,23 @@ export function HeroSection() {
   return (
     <section className="hero" aria-labelledby="hero-heading">
       <div className="hero__copy shell-edge">
+        {/* The H1 is the visible pill: it says what the business makes, in the
+            words buyers search. It replaced an sr-only keyword chain that
+            differed from anything a sighted visitor could see — hidden text to
+            search engines, and a different headline to screen readers. */}
         <div className="hero__eyebrow-wrap">
-          <Badge variant="accent" className="hero__badge">
-            <Sparkle className="w-3.5 h-3.5" weight="fill" />
-            <span>Made For You · Made To Glow</span>
-          </Badge>
+          <h1 id="hero-heading" className="hero__badge">
+            <Sparkle className="w-3.5 h-3.5" weight="fill" aria-hidden="true" />
+            <span>Custom LED Neon &amp; Business Signs</span>
+          </h1>
         </div>
 
-        <h1 id="hero-heading" className="hero-title">
-          <span className="sr-only">
-            Custom LED Neon Signs &amp; 3D Business Signage, Handcrafted
-            Commercial &amp; Custom Illuminated Signs That Light Up Everything
-          </span>
+        {/* The display line. Its accessible text is exactly what is on screen;
+            the typing animation stays out of the accessibility tree and out of
+            the H1, so neither the cursor glyph nor the width-reserve copy ends
+            up in the page's headline. */}
+        <p className="hero-title">
+          <span className="sr-only">Custom signs built to light up everything.</span>
           <span className="hero-title__line" aria-hidden="true">
             Custom signs built to
           </span>
@@ -144,7 +148,7 @@ export function HeroSection() {
               )}
             </span>
           </span>
-        </h1>
+        </p>
 
         <p className="hero__intro">
           Design your bespoke neon sign for your home, business, wedding, or

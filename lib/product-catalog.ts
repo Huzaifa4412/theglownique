@@ -69,6 +69,12 @@ export type ProductLighting = {
 export type ProductPage = {
   slug: string;
   name: string;
+  /**
+   * One sign of this type, in running text ("a slim LED lightbox"). Written
+   * out rather than derived from `name`: stripping a trailing "s" and
+   * lower-casing it produced "lightboxe" and "3d" in live headings.
+   */
+  singular: string;
   category: string;
   tagline: string;
   accent: string;
@@ -121,6 +127,7 @@ export const PRODUCT_PAGES: ProductPage[] = [
   {
     slug: "custom-neon-signs",
     name: "Custom LED Neon Signs",
+    singular: "custom LED neon sign",
     category: "Neon Sign",
     tagline: "Flexible silicone LED neon, handcrafted to your words",
     accent: "#f40b68",
@@ -294,6 +301,7 @@ export const PRODUCT_PAGES: ProductPage[] = [
   {
     slug: "3d-metal-neon-signs",
     name: "3D Metal Neon Signs",
+    singular: "3D metal channel letter sign",
     category: "3D Metal Neon Sign",
     tagline: "Fabricated stainless-steel channel letters — frontlit, halo backlit or dual-lit",
     accent: "#e0a23c",
@@ -457,6 +465,7 @@ export const PRODUCT_PAGES: ProductPage[] = [
   {
     slug: "ultra-thin-lightbox",
     name: "Ultra Thin Slim Lightboxes",
+    singular: "slim LED lightbox",
     category: "Ultra Thin Lightbox",
     tagline: "Slim aluminium lightbox with 100% even, edge-lit LED glow",
     accent: "#0e9f6e",
@@ -583,6 +592,7 @@ export const PRODUCT_PAGES: ProductPage[] = [
   {
     slug: "uv-print-acrylic-signs",
     name: "3D Acrylic Illuminated Neon Signs",
+    singular: "UV-printed acrylic sign",
     category: "3D Acrylic Neon Sign",
     tagline: "Full-colour UV artwork on acrylic, traced with glowing LED neon",
     accent: "#7c3aed",

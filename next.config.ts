@@ -38,9 +38,41 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  // Required by the PostHog /ingest proxy above, whose API paths end in "/".
+  // It also switches off Next's own trailing-slash normalisation for every
+  // page, which left /business-signs/ and /business-signs both answering 200.
+  // The first redirect below puts that normalisation back for everything
+  // except the proxy and the API.
   skipTrailingSlashRedirect: true,
+  async redirects() {
+    return [
+      {
+        // /business-signs/ -> /business-signs, one hop, query string kept.
+        // The first segment is matched with a lookahead that ends at a "/"
+        // or the end of the path, so /ingest/e/ and /api/leads/ never match
+        // (a bare "$" would end at the end of the whole URL and let them in).
+        // Custom routes compile in strict mode, so the trailing "/" in the
+        // source is required and the redirect cannot loop.
+        source: "/:first((?!ingest(?:/|$)|api(?:/|$))[^/]+)/:rest*/",
+        destination: "/:first/:rest*",
+        // 301 rather than Next's default 308: Google treats them the same,
+        // Bing's webmaster guidelines only name 301.
+        statusCode: 301,
+      },
+    ];
+  },
   async headers() {
     return [
+      {
+        // The production deployment also answers on theglownique.vercel.app
+        // (HTTP 200, index,follow). Its canonical tags already point at www,
+        // but the alias should not be indexable in its own right. A header
+        // rather than a redirect, so anything that talks to the deployment
+        // URL directly (webhooks, preview checks) keeps working.
+        source: "/:path*",
+        has: [{ type: "host", value: ".*\\.vercel\\.app" }],
+        headers: [{ key: "X-Robots-Tag", value: "noindex" }],
+      },
       {
         // Sanity Studio is not public content (TECH-02).
         //
