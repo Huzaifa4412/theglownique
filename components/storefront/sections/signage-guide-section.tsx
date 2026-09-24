@@ -102,7 +102,7 @@ export function SignageGuideSection() {
               </ul>
             </div>
             <Link
-              href="/products/3d-metal-neon-signs"
+              href="/business-signs/channel-letter-signs"
               className="inline-flex items-center justify-between text-xs font-bold uppercase tracking-wider text-[#b45309] pt-4 border-t border-[#eadfe4] hover:text-[#78350f]"
             >
               <span>Explore 3D Channel Letters</span>
@@ -144,7 +144,7 @@ export function SignageGuideSection() {
               </ul>
             </div>
             <Link
-              href="/products/ultra-thin-lightbox"
+              href="/business-signs/lightbox-signs"
               className="inline-flex items-center justify-between text-xs font-bold uppercase tracking-wider text-[#0369a1] pt-4 border-t border-[#eadfe4] hover:text-[#0c4a6e]"
             >
               <span>Explore Slim Lightboxes</span>
@@ -186,7 +186,7 @@ export function SignageGuideSection() {
               </ul>
             </div>
             <Link
-              href="/products/uv-print-acrylic-signs"
+              href="/business-signs/acrylic-logo-signs"
               className="inline-flex items-center justify-between text-xs font-bold uppercase tracking-wider text-[#6d28d9] pt-4 border-t border-[#eadfe4] hover:text-[#4c1d95]"
             >
               <span>Explore UV Acrylic Signs</span>

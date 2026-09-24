@@ -6,6 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { CustomQuoteButton } from "@/components/storefront/custom-quote-button";
 import { PremiumAccentText } from "@/components/ui/premium-accent-text";
+import { productHref } from "@/lib/product-catalog";
 
 export const METALLIC_3D_VIDEOS = [
   {
@@ -86,7 +87,7 @@ export const SIGN_TYPES_DATA = [
     id: "3d-metal",
     slug: "3d-metal-neon-signs",
     number: "02",
-    title: "3D Metal Neon Sign",
+    title: "3D Metal Channel Letters",
     tagline: "Frontlit, Halo Backlit & Dual-Lit Channel Letters",
     description:
       "Precision-fabricated stainless-steel channel letters lit from within by energy-efficient LED. Choose bold frontlit faces, a soft halo backlit glow, or dual-lit for both — built to make storefronts, lobbies and façades unmistakable day and night.",
@@ -424,7 +425,7 @@ export function SignTypesVideoSection() {
             <div className="pt-4 border-t border-white/10 space-y-3">
               <CustomQuoteButton className="w-full justify-center text-sm py-3 font-bold" />
               <Link
-                href={`/products/${currentType.slug}`}
+                href={productHref(currentType.slug)}
                 className="flex items-center justify-center gap-1.5 text-sm font-bold text-pink-400 transition-colors hover:text-pink-300"
               >
                 Explore {currentType.title} in detail

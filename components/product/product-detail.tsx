@@ -77,9 +77,14 @@ export function ProductDetail({ slug }: { slug: string }) {
             <nav className="mb-6 flex items-center gap-2 text-xs font-medium text-white/50" aria-label="Breadcrumb">
               <Link href="/" className="transition-colors hover:text-white">Home</Link>
               <span aria-hidden="true">/</span>
-              <span className="text-white/80">Products</span>
+              {/* Same trail as the BreadcrumbList in lib/product-seo.ts. It used
+                  to read "Products" as plain text while the schema said
+                  "Custom Signage", and /products itself only redirects. */}
+              <Link href={product.parent.href} className="text-white/80 transition-colors hover:text-white">
+                {product.parent.label}
+              </Link>
               <span aria-hidden="true">/</span>
-              <span className="text-white">{product.name}</span>
+              <span className="text-white" aria-current="page">{product.name}</span>
             </nav>
 
             <span
@@ -480,8 +485,11 @@ export function ProductDetail({ slug }: { slug: string }) {
               Gallery
             </p>
             <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-[#1e1a22] sm:text-4xl">
-              See it in the wild
+              {product.galleryHeading ?? "See it in the wild"}
             </h2>
+            {product.galleryNote ? (
+              <p className="mt-3 text-sm text-[#5e5862]">{product.galleryNote}</p>
+            ) : null}
           </Reveal>
           <Reveal>
             <div className="relative aspect-[16/10] w-full overflow-hidden rounded-3xl border border-[#eadfe4] bg-black/5 shadow-xl">
@@ -609,7 +617,7 @@ export function ProductDetail({ slug }: { slug: string }) {
             {related.map((item, i) => (
               <Reveal key={item.slug} delay={i * 0.08}>
                 <Link
-                  href={`/products/${item.slug}`}
+                  href={item.path}
                   className="group block h-full overflow-hidden rounded-2xl border border-[#eadfe4] bg-white shadow-[0_10px_30px_rgba(107,38,67,0.06)] transition-transform duration-300 hover:-translate-y-1"
                 >
                   <div className="relative aspect-[16/10] w-full overflow-hidden bg-black/5">

@@ -60,8 +60,8 @@ type CollectionContent = Omit<CollectionPage, "parent" | "footerLink">;
 
 // Consumer pages send people to the product pages, not the B2B sign-type pages.
 const NEON = "/products/custom-neon-signs";
-const ACRYLIC = "/products/uv-print-acrylic-signs";
-const LIGHTBOX = "/products/ultra-thin-lightbox";
+const ACRYLIC = "/business-signs/acrylic-logo-signs";
+const LIGHTBOX = "/business-signs/lightbox-signs";
 
 const img = (src: string, alt: string, caption?: string): GalleryImage => ({
   src,

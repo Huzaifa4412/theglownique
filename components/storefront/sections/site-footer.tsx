@@ -15,29 +15,38 @@ import {
 const footerColumns = [
   {
     title: "Sign types",
+    // Each sign type has exactly one URL (ProductPage.path); these must match.
     links: [
       ["Custom neon signs", "/products/custom-neon-signs"],
-      ["3D metal signs", "/products/3d-metal-neon-signs"],
-      ["Ultra thin lightbox", "/products/ultra-thin-lightbox"],
-      ["UV-print acrylic", "/products/uv-print-acrylic-signs"],
+      ["Channel letter signs", "/business-signs/channel-letter-signs"],
+      ["Lightbox signs", "/business-signs/lightbox-signs"],
+      ["Acrylic logo signs", "/business-signs/acrylic-logo-signs"],
     ],
   },
   {
-    title: "Custom",
+    // The two hubs and the guides had no sitewide link at all: the B2B hub,
+    // every industry page under it and every buying guide were reachable only
+    // from body copy. "How it works" and "Create your own" both pointed at
+    // /#custom, and "Design ideas" at a homepage anchor.
+    title: "Explore",
     links: [
-      ["Create your own", "/#custom"],
-      ["How it works", "/#custom"],
-      ["Design ideas", "/#categories"],
+      ["Business signage", "/business-signs"],
+      ["Signs for occasions", "/custom-signage"],
+      ["Buying guides", "/guides"],
+      ["Design your sign", "/#custom"],
       ["FAQ", "/#faq"],
     ],
   },
   {
     title: "Company",
     links: [
+      // TODO(owner): /#about is this footer's own id — there is no About page.
+      // Replace with /about once the owner supplies who makes the signs and
+      // where (OWNER-QUESTIONS.md).
       ["About us", "/#about"],
-      // "Our process" removed: it pointed at /#about too, so two labels
-      // resolved to one destination. "How it works" (above) covers the process.
-      ["Case studies", "/#inspiration"],
+      // Was "Case studies": the anchor is the homepage inspiration gallery,
+      // and there are no case studies yet.
+      ["Inspiration", "/#inspiration"],
       ["Journal", "/blog"],
       ["Contact", "/contact"],
     ],

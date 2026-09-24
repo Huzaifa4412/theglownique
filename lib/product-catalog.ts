@@ -66,8 +66,29 @@ export type ProductLighting = {
   imageAlt: string;
 };
 
+/** The hub a sign type sits under, for the visible breadcrumb and its schema. */
+export type ProductParent = {
+  href: string;
+  label: string;
+};
+
 export type ProductPage = {
+  /**
+   * Internal id. Also the Meta catalog content_id, so it never changes even
+   * when the public URL does — use `path` for anything a visitor or crawler
+   * follows.
+   */
   slug: string;
+  /**
+   * The one public URL for this sign type (TECH-2026-09-24 consolidation).
+   * Three sign types used to have two pages each — /products/<slug> and a thin
+   * /business-signs/<term> twin targeting the same query — so the four pages
+   * that search engines saw competed with their own duplicates. Each now lives
+   * at a single URL, and the retired /products/<slug> addresses 301 to it
+   * (next.config.ts). Every internal link is built from this field.
+   */
+  path: string;
+  parent: ProductParent;
   name: string;
   /**
    * One sign of this type, in running text ("a slim LED lightbox"). Written
@@ -118,6 +139,14 @@ export type ProductPage = {
   colorStudio?: boolean;
   useCases: ProductUseCase[];
   gallery: ProductGalleryItem[];
+  /**
+   * Gallery heading. Defaults to "See it in the wild", which asserts that the
+   * photos show real signs in real places — true of the neon gallery (Etsy
+   * order photographs), not of galleries that include design visualisations.
+   */
+  galleryHeading?: string;
+  /** Visible note under the gallery heading, e.g. to disclose visualisations. */
+  galleryNote?: string;
   faqs: ProductFaq[];
   metaTitle: string;
   metaDescription: string;
@@ -126,6 +155,8 @@ export type ProductPage = {
 export const PRODUCT_PAGES: ProductPage[] = [
   {
     slug: "custom-neon-signs",
+    path: "/products/custom-neon-signs",
+    parent: { href: "/custom-signage", label: "Custom Signage" },
     name: "Custom LED Neon Signs",
     singular: "custom LED neon sign",
     category: "Neon Sign",
@@ -300,16 +331,22 @@ export const PRODUCT_PAGES: ProductPage[] = [
   },
   {
     slug: "3d-metal-neon-signs",
-    name: "3D Metal Neon Signs",
-    singular: "3D metal channel letter sign",
-    category: "3D Metal Neon Sign",
-    tagline: "Fabricated stainless-steel channel letters — frontlit, halo backlit or dual-lit",
+    path: "/business-signs/channel-letter-signs",
+    parent: { href: "/business-signs", label: "Business Signs" },
+    // Named for how buyers search. "3D Metal Neon Signs" matched no query:
+    // these are channel letters, and none of them contain neon.
+    name: "3D Metal Channel Letter Signs",
+    singular: "channel letter sign",
+    category: "Channel Letters",
+    tagline: "Fabricated stainless-steel channel letters — front-lit, halo-lit or dual-lit",
     accent: "#e0a23c",
     heroImage: "/3d-metallic-neon-sign/corporte/056b3189-6a8c-482a-8334-53ded7aff3e1.webp",
     heroVideo: "/3d-metallic-neon-sign/videos/2.mp4",
+    // Definition first: the query's AI Overview opens by defining the term, so
+    // the sentence an engine can quote is the first one on the page.
     intro:
-      "The Glownique manufactures premium 3D metal channel letters for outdoor commercial business signage and corporate lobbies. Fabricated from 304 stainless steel, available in front-lit, halo back-lit, and dual-lit options, these architectural signs include a 5-year warranty and a free design mockup.",
-    chips: ["Frontlit / Backlit / Dual-lit", "Stainless steel", "IP67 outdoor", "Metallic finishes"],
+      "Channel letter signs are individual 3D letters and logo shapes, built as hollow metal channels and lit from inside with LEDs. The Glownique fabricates them in stainless steel — front-lit, halo-lit or dual-lit — to your artwork and wall width, sends a free design mockup first, and ships them ready for your local sign installer.",
+    chips: ["Front-lit / Halo-lit / Dual-lit", "Stainless steel", "IP67 outdoor", "Metallic finishes"],
     features: [
       {
         icon: Sun,
@@ -421,21 +458,26 @@ export const PRODUCT_PAGES: ProductPage[] = [
         title: "Restaurants & cafés",
         text: "Warm, inviting metal signage that photographs beautifully and lasts for years.",
         image: "/3d-metallic-neon-sign/Resturants/generated/026ad950-fafb-4407-8420-c83be7f49365.webp",
-        alt: "Restaurant 3D metal dual-lit sign",
+        alt: "Visualisation of a halo-lit metal restaurant logo glowing orange on a plaster wall",
       },
       {
         title: "Salons & studios",
         text: "A halo-lit wordmark that turns a feature wall into a signature brand moment.",
         image: "/3d-metallic-neon-sign/Salon/generated/235762e8-14ec-4167-b534-2dad36c826ba.webp",
-        alt: "Salon 3D metal halo backlit sign",
+        alt: "Visualisation of a halo-lit brushed-gold salon logo on a reception wall",
       },
     ],
     gallery: [
       { src: "/3d-metallic-neon-sign/corporte/056b3189-6a8c-482a-8334-53ded7aff3e1.webp", alt: "Corporate 3D metal channel-letter sign" },
       { src: "/3d-metallic-neon-sign/corporte/14d4b621-c697-428a-b727-1c91b78e9e08.webp", alt: "Illuminated 3D metal logo sign" },
-      { src: "/3d-metallic-neon-sign/Resturants/generated/026ad950-fafb-4407-8420-c83be7f49365.webp", alt: "Restaurant dual-lit metal sign" },
-      { src: "/3d-metallic-neon-sign/Salon/generated/235762e8-14ec-4167-b534-2dad36c826ba.webp", alt: "Salon halo backlit metal sign" },
+      { src: "/3d-metallic-neon-sign/Resturants/generated/026ad950-fafb-4407-8420-c83be7f49365.webp", alt: "Visualisation of a halo-lit metal restaurant logo on a plaster wall" },
+      { src: "/3d-metallic-neon-sign/Salon/generated/235762e8-14ec-4167-b534-2dad36c826ba.webp", alt: "Visualisation of a halo-lit brushed-gold salon logo on a reception wall" },
     ],
+    // Two of the four images sit in folders named "generated" and show
+    // fictional brands, so the default "See it in the wild" heading would
+    // present renders as installations. Replace with real project photos.
+    galleryHeading: "Finishes and lighting in context",
+    galleryNote: "Some images are design visualisations of finishes and lighting styles.",
     faqs: [
       {
         q: "What's the difference between frontlit, backlit and dual-lit?",
@@ -457,21 +499,33 @@ export const PRODUCT_PAGES: ProductPage[] = [
         q: "Do you make full logos, not just text?",
         a: "Yes. Send your logo and we'll fabricate letters and shapes to match, then send a free mockup showing sizing, finish and lighting before production.",
       },
+      // Who installs is the first thing channel-letter buyers ask in forums,
+      // and the answer decides whether a ship-only supplier is an option at all.
+      {
+        q: "Do you install channel letters?",
+        a: "No. We fabricate your letters and ship them prepared for the mounting method shown on your mockup — flush to the wall, on standoffs, on a raceway or on a backing panel. A local sign installer mounts them, and a licensed electrician makes the electrical connection.",
+      },
+      {
+        q: "Do exterior channel letters need a permit?",
+        a: "Often. Many US cities and most landlords require approval before a permanent exterior sign goes up, and an illuminated sign usually needs a licensed electrician to connect it. The rules are set locally, so check with your city's building or zoning office before you order. Your mockup shows the sign's dimensions, which an application will ask for.",
+      },
     ],
-    metaTitle: "3D Metal Signs & LED Channel Letters",
+    metaTitle: "Custom Channel Letter Signs in 3D Metal",
     metaDescription:
-      "Custom 3D metal channel-letter signs: frontlit, halo backlit & dual-lit stainless steel letters. IP67 weatherproof with free mockup & 5-year warranty.",
+      "Custom 3D metal channel letter signs, front-lit, halo-lit or dual-lit, fabricated in stainless steel to your logo. Free design mockup before you order.",
   },
   {
     slug: "ultra-thin-lightbox",
-    name: "Ultra Thin Slim Lightboxes",
-    singular: "slim LED lightbox",
-    category: "Ultra Thin Lightbox",
-    tagline: "Slim aluminium lightbox with 100% even, edge-lit LED glow",
+    path: "/business-signs/lightbox-signs",
+    parent: { href: "/business-signs", label: "Business Signs" },
+    name: "Ultra-Thin LED Lightbox Signs",
+    singular: "slim LED lightbox sign",
+    category: "Lightbox Signs",
+    tagline: "Slim aluminium lightbox with even, edge-lit LED glow",
     accent: "#0e9f6e",
     heroImage: "/ultra-thin-slim-lightbox/main-hero.webp",
     intro:
-      "The Glownique produces ultra-thin slim LED lightboxes for restaurant menus and retail displays. Under an inch deep, these edge-lit aluminum displays feature a tool-free magnetic graphic swap system for 100% even, shadow-free illumination.",
+      "An ultra-thin LED lightbox sign is an illuminated display frame under an inch deep: LEDs around its edge light a printed graphic evenly through a light-guide panel. The Glownique builds them in anodized aluminium to your size, with a magnetic or snap-frame face so menus, posters and promotions change in seconds, without tools.",
     chips: ["Under 1-inch slim", "Edge-lit, shadow-free", "Tool-free graphic swap", "Retail & commercial"],
     features: [
       {
@@ -563,6 +617,9 @@ export const PRODUCT_PAGES: ProductPage[] = [
       { src: "/ultra-thin-slim-lightbox/Lobbies & branding.jpg", alt: "Corporate lobby slim lightbox branding sign" },
       { src: "/ultra-thin-slim-lightbox/Storefront windows.webp", alt: "Storefront window ultra-thin lightbox display" },
     ],
+    // Provenance of these images is unconfirmed (OWNER-QUESTIONS.md), so the
+    // heading describes settings rather than claiming finished installations.
+    galleryHeading: "Slim lightboxes in context",
     faqs: [
       {
         q: "How thin is an ultra-slim lightbox?",
@@ -584,22 +641,28 @@ export const PRODUCT_PAGES: ProductPage[] = [
         q: "Are they energy-efficient?",
         a: "Very. They run on low-voltage 12V/24V LEDs that use far less power than fluorescent lightboxes and last for years with minimal maintenance.",
       },
+      {
+        q: "Can a lightbox sign be used outdoors?",
+        a: "The standard slim lightbox is built for indoor use — shop windows, menu walls, lobbies and exhibition stands. Outdoor-rated builds are available for covered or exterior positions; tell us where the sign will hang and the mockup will specify the right build.",
+      },
     ],
-    metaTitle: "Ultra-Thin LED Lightboxes — Edge-Lit Signs",
+    metaTitle: "Ultra-Thin LED Lightbox Signs, Edge-Lit",
     metaDescription:
-      "Ultra-thin edge-lit LED lightboxes with even, shadow-free light and tool-free graphic swaps in slim aluminum frames. Free mockup & 5-year warranty.",
+      "Custom ultra-thin LED lightbox signs under an inch deep, edge-lit for even light, with tool-free graphic changes for menus, windows and retail displays.",
   },
   {
     slug: "uv-print-acrylic-signs",
-    name: "3D Acrylic Illuminated Neon Signs",
-    singular: "UV-printed acrylic sign",
-    category: "3D Acrylic Neon Sign",
+    path: "/business-signs/acrylic-logo-signs",
+    parent: { href: "/business-signs", label: "Business Signs" },
+    name: "Custom Acrylic Logo Signs",
+    singular: "custom acrylic logo sign",
+    category: "Acrylic Logo Signs",
     tagline: "Full-colour UV artwork on acrylic, traced with glowing LED neon",
     accent: "#7c3aed",
     heroImage: "/3d-arcylic/3235dc09-6dac-4056-88b6-55fc26e28571.webp",
     heroVideo: "/3d-arcylic/videos/25763cbb2ca6866a574a4dde5853343c.mp4",
     intro:
-      "When a logo needs more than one colour, this is the sign. High-definition UV printing lays sharp, full-colour artwork, gradients and brand fonts directly onto premium acrylic, and we trace it with glowing LED neon contours. The result is rich, photo-quality detail combined with the glow of neon — colour-matched to your exact brand. It's also the most cost-effective way to light up a detailed design: the print handles the intricate work that would otherwise take metres of hand-bent tubing, so more of your budget goes into the artwork and less into labour.",
+      "A UV-printed acrylic logo sign is full-colour artwork printed directly onto acrylic and outlined with LED neon, so gradients, fine text and multi-colour logos keep every detail while the contours glow. The Glownique builds them on clear, white, mirrored or coloured acrylic, in a single layer or several for real 3D depth. Because the print carries the detail, a busy logo needs far less hand-bent neon than a neon-only sign.",
     chips: ["Cost-effective", "Full-colour UV print", "Neon contours", "Pantone / HEX / CMYK", "Logos & brand art"],
     features: [
       {
@@ -694,6 +757,7 @@ export const PRODUCT_PAGES: ProductPage[] = [
       { src: "/3d-arcylic/3235dc09-6dac-4056-88b6-55fc26e28571.webp", alt: "3D acrylic UV-print neon contour sign" },
       { src: "/3d-arcylic/fff64032-bdaa-459c-8caf-a4ac67b89f19.webp", alt: "Layered 3D acrylic UV-print neon sign" },
     ],
+    galleryHeading: "Acrylic logo signs in context",
     faqs: [
       {
         q: "What is a UV-print acrylic neon sign?",
@@ -719,15 +783,34 @@ export const PRODUCT_PAGES: ProductPage[] = [
         q: "Is it suitable for outdoors?",
         a: "Choose our IP67 waterproof option and your UV-print neon sign is ready for covered outdoor and event use.",
       },
+      {
+        q: "How are acrylic logo signs mounted on a wall?",
+        a: "On wall standoffs, which hold the acrylic slightly off the wall so it reads as floating, or on a hanging kit. Both arrive ready to hang.",
+      },
     ],
-    metaTitle: "3D Acrylic Signs with UV-Print Logos",
+    metaTitle: "Custom Acrylic Logo Signs, UV-Printed & Lit",
     metaDescription:
-      "Custom 3D acrylic signs pairing full-colour UV print with glowing LED neon contours. Exact Pantone match, multi-layer depth, free mockup & 5-year warranty.",
+      "Custom acrylic logo signs: full-colour UV print traced with LED neon, on clear, white, mirrored or coloured acrylic. Brand colour matching and a free mockup.",
   },
 ];
 
 export function getProductPage(slug: string): ProductPage | undefined {
   return PRODUCT_PAGES.find((p) => p.slug === slug);
+}
+
+/**
+ * The lookup used by route files, which pass a literal slug: a miss is a typo
+ * that should stop the build, not a 404 discovered in production.
+ */
+export function requireProductPage(slug: string): ProductPage {
+  const product = getProductPage(slug);
+  if (!product) throw new Error(`No product page defined for slug "${slug}".`);
+  return product;
+}
+
+/** Canonical URL path for a sign type, from its internal slug. */
+export function productHref(slug: string): string {
+  return getProductPage(slug)?.path ?? "/custom-signage";
 }
 
 export function getRelatedProducts(slug: string): ProductPage[] {

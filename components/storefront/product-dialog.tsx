@@ -296,7 +296,7 @@ export function ProductDialog({
                 1. Neon Sign (LED Flexible Silicone)
               </option>
               <option value="3D Metal Neon Sign">
-                2. 3D Metal Neon Sign (Frontlit / Backlit / Dual-Lit)
+                2. 3D Metal Channel Letters (Front-lit / Halo-lit / Dual-lit)
               </option>
               <option value="Ultra Thin Lightbox">
                 3. Ultra Thin Lightbox Signs

@@ -1,114 +1,40 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-import { MetaViewContent } from "@/components/analytics/meta-view-trackers";
-import { AnnouncementBar } from "@/components/storefront/sections/announcement-bar";
-import { SiteFooter } from "@/components/storefront/sections/site-footer";
-import { ProductTopBar } from "@/components/product/product-top-bar";
-import { ProductDetail } from "@/components/product/product-detail";
+import { ProductRoute } from "@/components/product/product-route";
 import { PRODUCT_PAGES, getProductPage } from "@/lib/product-catalog";
-import { SITE_URL } from "@/lib/site";
-import { serializeJsonLd } from "@/lib/utils";
+import { productMetadata } from "@/lib/product-seo";
 
 type Params = { params: Promise<{ slug: string }> };
 
-// Only the four known product slugs are valid — anything else 404s.
+/**
+ * Sign types whose one public URL is /products/<slug>. The other three live
+ * under /business-signs; their old /products addresses are 301s in
+ * next.config.ts, which run before routing, and anything else 404s.
+ */
+const PRODUCTS_HERE = PRODUCT_PAGES.filter((product) => product.path === `/products/${product.slug}`);
+
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return PRODUCT_PAGES.map((product) => ({ slug: product.slug }));
+  return PRODUCTS_HERE.map((product) => ({ slug: product.slug }));
+}
+
+function productAt(slug: string) {
+  const product = getProductPage(slug);
+  return product && PRODUCTS_HERE.includes(product) ? product : undefined;
 }
 
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const { slug } = await params;
-  const product = getProductPage(slug);
-  if (!product) return {};
-
-  const url = `/products/${product.slug}`;
-  return {
-    title: product.metaTitle,
-    description: product.metaDescription,
-    alternates: { canonical: url },
-    openGraph: {
-      type: "website",
-      siteName: "The Glownique",
-      title: `${product.metaTitle} | The Glownique`,
-      description: product.metaDescription,
-      url,
-      images: [{ url: product.heroImage, alt: `${product.name} — ${product.tagline}` }],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: `${product.metaTitle} | The Glownique`,
-      description: product.metaDescription,
-      images: [product.heroImage],
-    },
-  };
+  const product = productAt(slug);
+  return product ? productMetadata(product) : {};
 }
 
 export default async function ProductPage({ params }: Params) {
   const { slug } = await params;
-  const product = getProductPage(slug);
+  const product = productAt(slug);
   if (!product) notFound();
 
-  const pageUrl = `${SITE_URL}/products/${product.slug}`;
-
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Product",
-        "@id": `${pageUrl}#product`,
-        name: product.name,
-        description: product.metaDescription,
-        image: `${SITE_URL}${product.heroImage}`,
-        category: product.category,
-        brand: { "@type": "Brand", name: "The Glownique" },
-        url: pageUrl,
-      },
-      {
-        "@type": "BreadcrumbList",
-        itemListElement: [
-          { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
-          {
-            "@type": "ListItem",
-            position: 2,
-            name: "Custom Signage",
-            item: `${SITE_URL}/custom-signage`,
-          },
-          { "@type": "ListItem", position: 3, name: product.name, item: pageUrl },
-        ],
-      },
-      {
-        "@type": "FAQPage",
-        mainEntity: product.faqs.map((faq) => ({
-          "@type": "Question",
-          name: faq.q,
-          acceptedAnswer: { "@type": "Answer", text: faq.a },
-        })),
-      },
-    ],
-  };
-
-  return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: serializeJsonLd(structuredData) }}
-      />
-      {/* content_ids is the route slug, so a Meta catalog feed added later can
-          use the same id and inherit these retargeting audiences. */}
-      <MetaViewContent
-        contentId={product.slug}
-        contentName={product.name}
-        contentCategory={product.category}
-      />
-      <AnnouncementBar />
-      <ProductTopBar productName={product.name} />
-      <main id="main-content">
-        <ProductDetail slug={product.slug} />
-      </main>
-      <SiteFooter />
-    </>
-  );
+  return <ProductRoute product={product} />;
 }

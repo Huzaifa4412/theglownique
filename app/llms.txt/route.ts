@@ -18,7 +18,7 @@ import { ETSY_SHOP_URL, SITE_URL, sameAsUrls } from "@/lib/site";
 function buildLlmsTxt(): string {
   const productEntries = PRODUCT_PAGES.map(
     (p) =>
-      `- [${p.name}](${SITE_URL}/products/${p.slug}): ${p.tagline}. ${p.chips.join(" · ")}.`,
+      `- [${p.name}](${SITE_URL}${p.path}): ${p.tagline}. ${p.chips.join(" · ")}.`,
   ).join("\n");
 
   // Specs are per-product; surface them so an engine can answer detail

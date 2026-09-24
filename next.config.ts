@@ -46,6 +46,27 @@ const nextConfig: NextConfig = {
   skipTrailingSlashRedirect: true,
   async redirects() {
     return [
+      // Sign-type consolidation (2026-09-24). Each of these products had a
+      // second, thinner page under /business-signs aimed at the same query;
+      // the two competed for one intent and split every signal. The
+      // /business-signs URL — the one whose slug matches the head term — is
+      // now the only page, and ProductPage.path in lib/product-catalog.ts is
+      // the single source for it.
+      {
+        source: "/products/3d-metal-neon-signs",
+        destination: "/business-signs/channel-letter-signs",
+        statusCode: 301,
+      },
+      {
+        source: "/products/ultra-thin-lightbox",
+        destination: "/business-signs/lightbox-signs",
+        statusCode: 301,
+      },
+      {
+        source: "/products/uv-print-acrylic-signs",
+        destination: "/business-signs/acrylic-logo-signs",
+        statusCode: 301,
+      },
       {
         // /business-signs/ -> /business-signs, one hop, query string kept.
         // The first segment is matched with a lookahead that ends at a "/"

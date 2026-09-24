@@ -89,11 +89,11 @@ export const ROUTES: readonly RouteEntry[] = [
   // B2B hub and destinations.
   { path: "/business-signs", lastModified: UBERSUGGEST_SEO_RELEASE, changeFrequency: "weekly", priority: 0.95, indexable: true },
   { path: "/business-signs/custom-logo-neon-signs", lastModified: CURRENT_SEO_RELEASE, changeFrequency: "monthly", priority: 0.9, indexable: true },
-  { path: "/business-signs/channel-letter-signs", lastModified: CURRENT_SEO_RELEASE, changeFrequency: "monthly", priority: 0.9, indexable: true },
+  { path: "/business-signs/channel-letter-signs", lastModified: GROWTH_AUDIT_RELEASE, changeFrequency: "monthly", priority: 0.9, indexable: true },
   { path: "/business-signs/backlit-signs", lastModified: BACKLIT_RELEASE, changeFrequency: "monthly", priority: 0.9, indexable: true },
   { path: "/business-signs/backlit-lobby-signs", lastModified: UBERSUGGEST_SEO_RELEASE, changeFrequency: "monthly", priority: 0.9, indexable: true },
-  { path: "/business-signs/lightbox-signs", lastModified: CURRENT_SEO_RELEASE, changeFrequency: "monthly", priority: 0.9, indexable: true },
-  { path: "/business-signs/acrylic-logo-signs", lastModified: CURRENT_SEO_RELEASE, changeFrequency: "monthly", priority: 0.9, indexable: true },
+  { path: "/business-signs/lightbox-signs", lastModified: GROWTH_AUDIT_RELEASE, changeFrequency: "monthly", priority: 0.9, indexable: true },
+  { path: "/business-signs/acrylic-logo-signs", lastModified: GROWTH_AUDIT_RELEASE, changeFrequency: "monthly", priority: 0.9, indexable: true },
 
   // The eight industry landing pages, generated from the same list that renders
   // them so a slug cannot exist in one place and not the other. They sit below
@@ -126,8 +126,10 @@ export const ROUTES: readonly RouteEntry[] = [
     priority: 0.8,
     indexable: true,
   })),
-  ...PRODUCT_PAGES.map((product) => ({
-    path: `/products/${product.slug}`,
+  // Only sign types whose one URL is under /products. The other three are the
+  // /business-signs entries above; their old /products addresses are 301s.
+  ...PRODUCT_PAGES.filter((product) => product.path.startsWith("/products/")).map((product) => ({
+    path: product.path,
     lastModified: CURRENT_SEO_RELEASE,
     changeFrequency: "monthly" as const,
     priority: 0.75,

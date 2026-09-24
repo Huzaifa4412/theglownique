@@ -22,17 +22,23 @@ import { ShopSection } from "@/components/storefront/sections/shop-section";
 import { SiteFooter } from "@/components/storefront/sections/site-footer";
 import { SiteHeader } from "@/components/storefront/sections/site-header";
 import { StorefrontShell } from "@/components/storefront/storefront-shell";
+import { PRODUCT_PAGES } from "@/lib/product-catalog";
+import { SITE_URL } from "@/lib/site";
 import { serializeJsonLd } from "@/lib/utils";
 
+const HOME_TITLE = "Custom LED Neon Signs & Business Signs | The Glownique";
+const HOME_DESCRIPTION =
+  "Custom LED neon signs, 3D metal channel letters, slim lightboxes and acrylic logo signs, made to order after a free design mockup.";
+
 export const metadata: Metadata = {
-  title: "Custom LED Neon Signs & 3D Business Signage | The Glownique",
+  title: HOME_TITLE,
   description:
     "Custom LED neon signs, 3D channel letters & slim lightboxes made to order. Free design mockup in ~2 hrs, 5-yr warranty, safe 12V & tracked crated delivery.",
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title: "Custom LED Neon Signs & 3D Business Signage | The Glownique",
+    title: HOME_TITLE,
     description:
       "Handcrafted custom LED neon signs, 3D metal channel letters & slim lightboxes. Free 1-on-1 design preview in ~2 hrs, 5-year warranty & timber-crated delivery.",
     url: "/",
@@ -50,65 +56,31 @@ export const metadata: Metadata = {
   },
 };
 
+// WebPage + the four sign types as an ItemList, built from the catalog so every
+// URL is the sign type's one canonical path. This replaced a Service >
+// OfferCatalog > Offer > Product nest whose Offers carried no price and whose
+// URLs pointed at pages that now redirect: Product nodes with no offers,
+// reviews or ratings are ineligible for product results anyway, and the
+// homepage is not a product page. Organization and WebSite come from the root
+// layout; this page refers to them by @id.
 const homeJsonLd = {
   "@context": "https://schema.org",
   "@type": "WebPage",
-  "@id": "https://www.theglownique.com/#webpage",
-  url: "https://www.theglownique.com",
-  name: "Custom LED Neon Signs & 3D Business Signage | The Glownique",
-  description:
-    "Handcrafted custom LED neon signs, 3D metal channel letters, ultra-thin lightboxes and acrylic logo signs made to order with free 1-on-1 design mockups.",
+  "@id": `${SITE_URL}/#webpage`,
+  url: SITE_URL,
+  name: HOME_TITLE,
+  description: HOME_DESCRIPTION,
+  isPartOf: { "@id": `${SITE_URL}/#website` },
+  about: { "@id": `${SITE_URL}/#organization` },
   mainEntity: {
-    "@type": "Service",
-    name: "Custom Illuminated Signage Fabrication",
-    provider: {
-      "@type": "Organization",
-      name: "The Glownique",
-      url: "https://www.theglownique.com",
-    },
-    serviceType: "Custom Sign Manufacturing",
-    hasOfferCatalog: {
-      "@type": "OfferCatalog",
-      name: "Custom Illuminated Signs",
-      itemListElement: [
-        {
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "Product",
-            name: "Custom LED Neon Signs",
-            description: "Handcrafted flexible 12V silicone LED neon signs on cast acrylic.",
-            url: "https://www.theglownique.com/products/custom-neon-signs",
-          },
-        },
-        {
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "Product",
-            name: "3D Metal Channel Letter Signs",
-            description: "Precision-fabricated 304 stainless steel frontlit, halo backlit and dual-lit signs.",
-            url: "https://www.theglownique.com/products/3d-metal-neon-signs",
-          },
-        },
-        {
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "Product",
-            name: "Ultra-Thin Slim Lightboxes",
-            description: "Edge-lit slim aluminium lightboxes with tool-free graphic swap.",
-            url: "https://www.theglownique.com/products/ultra-thin-lightbox",
-          },
-        },
-        {
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "Product",
-            name: "3D Acrylic UV Print Neon Signs",
-            description: "High-definition UV printing on acrylic with glowing LED neon contours.",
-            url: "https://www.theglownique.com/products/uv-print-acrylic-signs",
-          },
-        },
-      ],
-    },
+    "@type": "ItemList",
+    name: "Custom illuminated sign types by The Glownique",
+    itemListElement: PRODUCT_PAGES.map((product, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: product.name,
+      url: `${SITE_URL}${product.path}`,
+    })),
   },
 };
 

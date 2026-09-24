@@ -129,7 +129,6 @@ async function readRouteManifest() {
   // prefix. A new catalog spread into lib/routes.ts needs a line here too,
   // otherwise its pages are silently skipped by every check below.
   const generated = [
-    { file: "../lib/product-catalog.ts", prefix: "/products" },
     { file: "../lib/industry-pages.ts", prefix: "/business-signs" },
     { file: "../lib/collection-pages.ts", prefix: "/custom-signage" },
   ];
@@ -139,7 +138,37 @@ async function readRouteManifest() {
       entries.push({ path: `${prefix}/${slug[1]}`, indexable: true });
     }
   }
-  return entries;
+  // Sign types carry their own canonical `path` (some live under /products,
+  // some under /business-signs), so read that rather than composing a prefix.
+  const products = await readFile(new URL("../lib/product-catalog.ts", import.meta.url), "utf8");
+  for (const path of products.matchAll(/^\s*path:\s*"([^"]+)"/gm)) {
+    entries.push({ path: path[1], indexable: true });
+  }
+  // A sign type under /business-signs is also a literal entry in routes.ts.
+  return [...new Map(entries.map((entry) => [entry.path, entry])).values()];
+}
+
+/**
+ * Retired URLs and where they must keep pointing. A 301 that silently turns
+ * into a 404 throws away whatever the old URL had earned, so each one is
+ * asserted on every run rather than trusted to next.config.ts.
+ */
+const LEGACY_REDIRECTS = [
+  ["/products/3d-metal-neon-signs", "/business-signs/channel-letter-signs"],
+  ["/products/ultra-thin-lightbox", "/business-signs/lightbox-signs"],
+  ["/products/uv-print-acrylic-signs", "/business-signs/acrylic-logo-signs"],
+  ["/business-signs/", "/business-signs"],
+];
+
+async function checkLegacyRedirects() {
+  for (const [from, to] of LEGACY_REDIRECTS) {
+    const response = await fetch(`${BASE}${from}`, { redirect: "manual" });
+    const location = response.headers.get("location") ?? "";
+    const target = location ? new URL(location, BASE).pathname : "";
+    if (response.status !== 301 || target !== to) {
+      fail(from, `expected 301 to ${to}, got ${response.status}${location ? ` to ${target}` : ""}`);
+    }
+  }
 }
 
 /** Entities must be decoded before anything is measured: a raw "&amp;" is five
@@ -413,6 +442,7 @@ async function main() {
   await checkInternalLinks(known);
   await checkSitemap(manifest);
   await checkLlmsTxt();
+  await checkLegacyRedirects();
 
   for (const warning of warnings) console.log(`  warn  ${warning}`);
   for (const failure of failures) console.log(`  FAIL  ${failure}`);

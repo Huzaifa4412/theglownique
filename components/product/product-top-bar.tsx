@@ -34,7 +34,7 @@ export function ProductTopBar({ productName }: { productName: string }) {
           {PRODUCT_PAGES.map((p) => (
             <Link
               key={p.slug}
-              href={`/products/${p.slug}`}
+              href={p.path}
               className="transition-colors hover:text-[#ce0754]"
             >
               {p.category}
