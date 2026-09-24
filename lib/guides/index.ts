@@ -1,12 +1,24 @@
 import type { Guide } from "@/lib/guides/types";
 
+import { guide as howLedNeonSignsAreMade } from "@/lib/guides/how-led-neon-signs-are-made";
+import { guide as indoorVsOutdoorIlluminatedSigns } from "@/lib/guides/indoor-vs-outdoor-illuminated-signs";
+import { guide as ledNeonVsGlassNeon } from "@/lib/guides/led-neon-vs-glass-neon";
+import { guide as lightboxVsChannelLetters } from "@/lib/guides/lightbox-vs-channel-letters";
+import { guide as signSizeViewingDistance } from "@/lib/guides/sign-size-viewing-distance";
+
 /**
  * Every data-driven guide, in the order the /guides hub lists them. A guide is
  * added here only after its facts have been checked against the cited sources;
  * app/guides/[slug] generates one static page per entry, lib/routes.ts puts
  * each in the sitemap, and llms.txt reproduces each answer.
  */
-export const GUIDES: readonly Guide[] = [];
+export const GUIDES: readonly Guide[] = [
+  howLedNeonSignsAreMade,
+  indoorVsOutdoorIlluminatedSigns,
+  ledNeonVsGlassNeon,
+  lightboxVsChannelLetters,
+  signSizeViewingDistance,
+];
 
 export function getGuide(slug: string): Guide | undefined {
   return GUIDES.find((guide) => guide.slug === slug);
