@@ -67,6 +67,13 @@ const BANNERS: readonly BannerSlide[] = [
     mobile: { src: "/banner/acrylic-logo-signs-mobile.png", width: 860, height: 1828 },
     laptop: { src: "/banner/acrylic-logo-signs-laptop.png", width: 1672, height: 941 },
   },
+  {
+    id: "lightbox",
+    href: "/products/ultra-thin-lightbox",
+    alt: "Ultra thin slim LED lightbox displays for retail and storefronts",
+    mobile: { src: "/banner/ultra-thin-lightbox-mobile.png", width: 887, height: 1774 },
+    laptop: { src: "/banner/ultra-thin-lightbox-laptop.png", width: 1674, height: 940 },
+  },
 ];
 
 // Swiper's loop mode needs at least two slides more than it shows (one), so
