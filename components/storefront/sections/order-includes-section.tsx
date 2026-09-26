@@ -39,7 +39,7 @@ const inclusions: ReadonlyArray<{
   {
     icon: "ShieldCheck",
     title: "5-Year Full Glow Warranty",
-    body: "Long-life, commercial-grade LEDs. If an electrical component fails or a sign arrives damaged, send us a photo and we will put it right under the warranty.",
+    body: "Long-life, eco-friendly, commercial-grade LEDs. If an electrical component fails or a sign arrives damaged, send us a photo and we will put it right under the warranty.",
   },
   {
     icon: "SealCheck",

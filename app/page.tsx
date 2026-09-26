@@ -1,23 +1,17 @@
 import type { Metadata } from "next";
 import { AnnouncementBar } from "@/components/storefront/sections/announcement-bar";
 import { BannerSliderSection } from "@/components/storefront/sections/banner-slider-section";
-import { CategoryRail } from "@/components/storefront/sections/category-rail";
 import { ComparisonSection } from "@/components/storefront/sections/comparison-section";
-import { ConceptToGlowSection } from "@/components/storefront/sections/concept-to-glow-section";
 import { FaqSection } from "@/components/storefront/sections/faq-section";
-import { GlowDirectionsSection } from "@/components/storefront/sections/glow-directions-section";
-import { LampCtaSection } from "@/components/storefront/sections/lamp-cta-section";
 import { HeroSection } from "@/components/storefront/sections/hero-section";
-import { IlluminationStylesSection } from "@/components/storefront/sections/illumination-styles-section";
-import { InspirationSection } from "@/components/storefront/sections/inspiration-section";
+import { NeonUseCasesSection } from "@/components/storefront/sections/neon-use-cases-section";
 import { NeonColorChangerSection } from "@/components/storefront/sections/neon-color-changer-section";
-import { SignTypesVideoSection } from "@/components/storefront/sections/sign-types-video-section";
 import { SignageGuideSection } from "@/components/storefront/sections/signage-guide-section";
+import { SignTypesZigzagSection } from "@/components/storefront/sections/sign-types-zigzag-section";
 import { NewsletterSection } from "@/components/storefront/sections/newsletter-section";
 import { OrderIncludesSection } from "@/components/storefront/sections/order-includes-section";
 import { OrderTimeline } from "@/components/storefront/sections/order-timeline";
 import { ReviewsSection } from "@/components/storefront/sections/reviews-section";
-import { ScrollStackingCardsSection } from "@/components/storefront/sections/scroll-stacking-cards-section";
 import { ShopSection } from "@/components/storefront/sections/shop-section";
 import { SiteFooter } from "@/components/storefront/sections/site-footer";
 import { SiteHeader } from "@/components/storefront/sections/site-header";
@@ -26,21 +20,19 @@ import { PRODUCT_PAGES } from "@/lib/product-catalog";
 import { SITE_URL } from "@/lib/site";
 import { serializeJsonLd } from "@/lib/utils";
 
-const HOME_TITLE = "Custom LED Neon Signs & Business Signs | The Glownique";
+const HOME_TITLE = "Neon Signs & Business Signs, Made to Order | The Glownique";
 const HOME_DESCRIPTION =
-  "Custom LED neon signs, 3D metal channel letters, slim lightboxes and acrylic logo signs, made to order after a free design mockup.";
+  "Neon signs handmade to order for homes, weddings and businesses, plus 3D channel letters, slim lightboxes and acrylic logo signs. Free design mockup first.";
 
 export const metadata: Metadata = {
   title: HOME_TITLE,
-  description:
-    "Custom LED neon signs, 3D channel letters & slim lightboxes made to order. Free design mockup in ~2 hrs, 5-yr warranty, safe 12V & tracked crated delivery.",
+  description: HOME_DESCRIPTION,
   alternates: {
     canonical: "/",
   },
   openGraph: {
     title: HOME_TITLE,
-    description:
-      "Handcrafted custom LED neon signs, 3D metal channel letters & slim lightboxes. Free 1-on-1 design preview in ~2 hrs, 5-year warranty & timber-crated delivery.",
+    description: HOME_DESCRIPTION,
     url: "/",
     siteName: "The Glownique",
     images: [
@@ -48,7 +40,7 @@ export const metadata: Metadata = {
         url: "/hero/neon-sign-hero.png",
         width: 1200,
         height: 630,
-        alt: "The Glownique custom LED neon sign glowing on a dark wall",
+        alt: "LED neon sign glowing on a dark wall, handmade to order by The Glownique",
       },
     ],
     locale: "en_US",
@@ -95,22 +87,20 @@ export default function Home() {
       <SiteHeader />
       <main id="main-content">
         <BannerSliderSection />
+        {/* Neon: the head term this page is mapped to ("neon signs"). */}
         <HeroSection />
-        <CategoryRail />
-        <IlluminationStylesSection />
-        <NeonColorChangerSection />
-        <ConceptToGlowSection />
-        <SignTypesVideoSection />
+        <NeonUseCasesSection />
+        {/* The other three sign types, each routed to its one canonical page. */}
+        <SignTypesZigzagSection />
+        {/* Side-by-side comparison of all four types, plus the buying guides. */}
         <SignageGuideSection />
-        <GlowDirectionsSection />
         <ShopSection />
-        <InspirationSection />
+        {/* The interactive designer: the strongest dwell-time asset on the page. */}
+        <NeonColorChangerSection />
         <ReviewsSection />
         <OrderTimeline />
-        <ScrollStackingCardsSection />
         <OrderIncludesSection />
         <ComparisonSection />
-        <LampCtaSection />
         <FaqSection />
         <NewsletterSection />
       </main>
@@ -118,3 +108,5 @@ export default function Home() {
     </StorefrontShell>
   );
 }
+
+

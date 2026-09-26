@@ -3,13 +3,14 @@
 import {
   ArrowLeft,
   ArrowRight,
-  LockKey,
+  Lightning,
+  Palette,
   PencilLine,
   ShieldCheck,
   Sparkle,
-  Truck,
 } from "@phosphor-icons/react";
 import Image from "next/image";
+import Link from "next/link";
 import {
   useCallback,
   useEffect,
@@ -19,35 +20,128 @@ import {
   type PointerEvent as ReactPointerEvent,
 } from "react";
 
-import homeImage from "@/app/assets/hero/home.webp";
 import { IconBox } from "@/components/icon-box";
 import { useStorefront } from "@/components/storefront/storefront-context";
 import TextType from "@/components/TextType";
-import { DELIVERY } from "@/lib/claims";
-import { categoryLabels, heroSlides } from "@/lib/store-data";
+import { DELIVERY, WARRANTY } from "@/lib/claims";
 
 const CAROUSEL_DURATION = 5500;
 
 /**
- * The rotating second line of the headline. The first entry is what
- * reduced-motion users see, and the longest entry is measured invisibly so
- * the line never changes width while it types.
+ * The homepage hero is dedicated to custom LED neon signs, the product with
+ * by far the largest search demand on the keyword map ("neon signs" 40.5k,
+ * "custom neon signs" 33.1k, "led neon signs" 12.1k, "neon name sign" 2.9k
+ * US/mo). The other three sign types have their own section further down the
+ * page and their own hub at /business-signs.
+ *
+ * ── Copy rules ──────────────────────────────────────────────────────────────
+ *
+ * - The H1 carries the head term once, in the words people search.
+ * - The intro is a 40–60 word definition-first answer that stands alone if an
+ *   answer engine lifts it: what a custom LED neon sign is, what it is made
+ *   of, who it is for, and the one fact that de-risks the purchase (the free
+ *   mockup before payment).
+ * - Claims come from lib/claims.ts or the catalog only. "Mockup in ~2 hours"
+ *   is CLM-003, still VALIDATION_REQUIRED, so it is not repeated here.
+ *
+ * ── Slides ──────────────────────────────────────────────────────────────────
+ *
+ * Every slide is a neon sign in the setting people buy one for, and each one
+ * links to the page for that setting, so the carousel doubles as the
+ * homepage's route into the occasion pages. Every photo is a real 600 × 600
+ * shop listing image of a finished sign, with the alt text the collection
+ * pages already use for it.
+ */
+type NeonSlide = {
+  id: string;
+  /** Dot label and the visible tag on the slide. */
+  label: string;
+  href: string;
+  /** A real 600 × 600 shop listing photograph. */
+  image: string;
+  alt: string;
+  /** Glow colour of the sign in the photo; tints the carousel chrome. */
+  accent: string;
+};
+
+const NEON_SLIDES: readonly NeonSlide[] = [
+  {
+    id: "name",
+    label: "Neon name signs",
+    href: "/products/custom-neon-signs",
+    image: "/neon-sign/Custom name/iap_600x600.6574462695_efoprbvt.webp",
+    alt: "Woman holding a warm white LED neon script sign reading Savannah in her living room",
+    accent: "#ffe7b8",
+  },
+  {
+    id: "bar",
+    label: "Home bar neon signs",
+    href: "/custom-signage/bar-neon-signs",
+    image: "/neon-sign/iap_600x600.7488149925_lgq4qo2u.webp",
+    alt: "Yellow Tequila neon script on red backing casting a red glow across a plain wall",
+    accent: "#ffb347",
+  },
+  {
+    id: "wedding",
+    label: "Wedding & proposal neon signs",
+    href: "/custom-signage/wedding-signs",
+    image: "/neon-sign/Marriage/iap_600x600.6280886797_59j146av.webp",
+    alt: "White Will You Marry Me neon sign on a gold hoop arch draped in white fabric and red roses",
+    accent: "#ffd39a",
+  },
+  {
+    id: "kids",
+    label: "Kids’ room neon signs",
+    href: "/custom-signage/kids-room-neon-signs",
+    image: "/neon-sign/kid room/iap_600x600.7831937493_bsa69vky.webp",
+    alt: "Blue TOBY LED neon sign with a yellow star, mounted on a dark blue bedroom wall",
+    accent: "#ffe14d",
+  },
+  {
+    id: "gaming",
+    label: "Gaming neon signs",
+    href: "/custom-signage/gaming-neon-signs",
+    image: "/neon-sign/Game Room/iap_600x600.6072503848_qdloxd4q.webp",
+    alt: "Green Game On LED neon sign above two kids playing on dual monitors in a gaming den",
+    accent: "#39e27a",
+  },
+  {
+    id: "home",
+    label: "Bedroom & living room neon signs",
+    href: "/custom-signage/home-decor-signs",
+    image: "/neon-sign/room/iap_600x600.8069307682_6sin2ngi.webp",
+    alt: "Warm white The Dohertys neon script on a charcoal wall above a taupe sofa with olive cushions",
+    accent: "#f5e6c8",
+  },
+];
+
+/**
+ * The rotating end of the display line. The first entry is what reduced-motion
+ * users and the accessible text see; the longest is measured invisibly so the
+ * line never changes width while it types.
  */
 const HEADLINE_ENDINGS = [
-  "light up everything.",
+  "light up your wall.",
+  "say your name.",
+  "glow at your wedding.",
+  "sell after dark.",
   "turn heads.",
-  "stand out.",
-  "define brands.",
-  "glow bright.",
 ];
 
 const LONGEST_HEADLINE_ENDING = HEADLINE_ENDINGS.reduce((longest, entry) =>
   entry.length > longest.length ? entry : longest,
 );
 
-/** Shared by both crops of slide 4, which are the same picture. */
-const LIGHTBOX_SLIDE_ALT =
-  "Client concept sketch beside a finished ultra-thin slim LED lightbox by The Glownique";
+/** 60 words. Definition first, maker second, risk-reducer last. Optimized for AEO/GEO to directly answer "what is it", "who is it for", and "why choose us". */
+const HERO_ANSWER =
+  "Neon signs from The Glownique are handmade to order in flexible LED neon, not glass: your name, words or logo, mounted on clear acrylic and run at a safe 12V. We make them for bedrooms, weddings, bars and businesses in 13 colours or RGB, and send a free true-to-scale mockup before you pay.";
+
+const HERO_FACTS = [
+  { icon: PencilLine, title: "Free true-to-scale mockup", text: "Approve design before you pay" },
+  { icon: Palette, title: "13 colours + RGB", text: "Any font, name or logo" },
+  { icon: Lightning, title: "Eco-friendly 12V LED neon", text: "No glass tubes, no gas" },
+  { icon: ShieldCheck, title: WARRANTY.term, text: DELIVERY.short },
+] as const;
 
 export function HeroSection() {
   const pointerStartRef = useRef(0);
@@ -55,13 +149,11 @@ export function HeroSection() {
   const [carouselPaused, setCarouselPaused] = useState(false);
   const [pageVisible, setPageVisible] = useState(true);
   const { reducedMotion } = useStorefront();
-  const activeHero = heroSlides[activeSlide];
+  const activeHero = NEON_SLIDES[activeSlide];
 
   const goToSlide = useCallback(
     (requested: number) => {
-      const nextIndex =
-        (requested + heroSlides.length) % heroSlides.length;
-
+      const nextIndex = (requested + NEON_SLIDES.length) % NEON_SLIDES.length;
       if (nextIndex === activeSlide) return;
       setActiveSlide(nextIndex);
     },
@@ -71,24 +163,14 @@ export function HeroSection() {
   useEffect(() => {
     const handleVisibility = () => setPageVisible(!document.hidden);
     document.addEventListener("visibilitychange", handleVisibility);
-    return () =>
-      document.removeEventListener("visibilitychange", handleVisibility);
+    return () => document.removeEventListener("visibilitychange", handleVisibility);
   }, []);
 
   useEffect(() => {
     if (carouselPaused || !pageVisible || reducedMotion) return;
-    const timer = window.setTimeout(
-      () => goToSlide(activeSlide + 1),
-      CAROUSEL_DURATION,
-    );
+    const timer = window.setTimeout(() => goToSlide(activeSlide + 1), CAROUSEL_DURATION);
     return () => window.clearTimeout(timer);
-  }, [
-    activeSlide,
-    carouselPaused,
-    goToSlide,
-    pageVisible,
-    reducedMotion,
-  ]);
+  }, [activeSlide, carouselPaused, goToSlide, pageVisible, reducedMotion]);
 
   const handlePointerUp = (event: ReactPointerEvent<HTMLElement>) => {
     const delta = event.clientX - pointerStartRef.current;
@@ -99,30 +181,22 @@ export function HeroSection() {
   return (
     <section className="hero" aria-labelledby="hero-heading">
       <div className="hero__copy shell-edge">
-        {/* The H1 is the visible pill: it says what the business makes, in the
-            words buyers search. It replaced an sr-only keyword chain that
-            differed from anything a sighted visitor could see — hidden text to
-            search engines, and a different headline to screen readers. */}
+        {/* The H1 is the visible pill and carries the head term exactly once. */}
         <div className="hero__eyebrow-wrap">
           <h1 id="hero-heading" className="hero__badge">
             <Sparkle className="w-3.5 h-3.5" weight="fill" aria-hidden="true" />
-            <span>Custom LED Neon &amp; Business Signs</span>
+            <span>Neon Signs, Handmade to Order</span>
           </h1>
         </div>
 
-        {/* The display line. Its accessible text is exactly what is on screen;
-            the typing animation stays out of the accessibility tree and out of
-            the H1, so neither the cursor glyph nor the width-reserve copy ends
-            up in the page's headline. */}
-        <p className="hero-title">
-          <span className="sr-only">Custom signs built to light up everything.</span>
+        {/* The display line. Its accessible text is exactly the static version;
+            the typing animation stays out of the accessibility tree. */}
+        <h2 className="hero-title">
+          <span className="sr-only">Custom neon signs made to {HEADLINE_ENDINGS[0]}</span>
           <span className="hero-title__line" aria-hidden="true">
-            Custom signs built to
+            Custom neon signs made to
           </span>
-          <span
-            className="hero-title__line hero-title__line--accent"
-            aria-hidden="true"
-          >
+          <span className="hero-title__line hero-title__line--accent" aria-hidden="true">
             <span className="hero-title__accent-reserve">
               <span className="hero-title__accent-measure premium-accent-text">
                 {LONGEST_HEADLINE_ENDING}
@@ -148,63 +222,34 @@ export function HeroSection() {
               )}
             </span>
           </span>
-        </p>
+        </h2>
 
-        <p className="hero__intro">
-          Design your bespoke neon sign for your home, business, wedding, or
-          event. Handcrafted with commercial-grade silicone &amp; stainless
-          steel. Approve your free true-to-scale mockup before you pay.
-        </p>
+        <p className="hero__intro">{HERO_ANSWER}</p>
 
         <div className="hero__actions">
-          <a className="button button--primary hero-btn--primary" href="#custom">
-            <span>Design Your Sign</span>
+          <a className="button button--primary hero-btn--primary" href="#color-studio">
+            <span>Design your own neon sign</span>
             <span className="hero-btn__icon-circle" aria-hidden="true">
               <ArrowRight weight="bold" />
             </span>
           </a>
-          <a className="button button--secondary hero-btn--secondary" href="#categories">
-            <span>Explore Sign Crafts</span>
-          </a>
+          <Link className="button button--secondary hero-btn--secondary" href="/products/custom-neon-signs">
+            <span>Shop custom neon signs</span>
+          </Link>
         </div>
 
-        <ul className="hero-facts" aria-label="Order guarantees">
-          <li className="hero-fact-item">
-            <span className="hero-fact__icon-wrap">
-              <PencilLine weight="bold" />
-            </span>
-            <div className="hero-fact__text">
-              <strong>Free 1:1 Scale Mockup</strong>
-              <span>Ready in ~2 hours</span>
-            </div>
-          </li>
-          <li className="hero-fact-item">
-            <span className="hero-fact__icon-wrap">
-              <ShieldCheck weight="bold" />
-            </span>
-            <div className="hero-fact__text">
-              <strong>5-Year Studio Warranty</strong>
-              <span>Commercial 12V build</span>
-            </div>
-          </li>
-          <li className="hero-fact-item">
-            <span className="hero-fact__icon-wrap">
-              <LockKey weight="bold" />
-            </span>
-            <div className="hero-fact__text">
-              <strong>Secure Etsy Checkout</strong>
-              <span>Pay after you approve</span>
-            </div>
-          </li>
-          <li className="hero-fact-item">
-            <span className="hero-fact__icon-wrap">
-              <Truck weight="bold" />
-            </span>
-            <div className="hero-fact__text">
-              <strong>Tracked Shipping</strong>
-              <span>{DELIVERY.supporting}</span>
-            </div>
-          </li>
+        <ul className="hero-facts" aria-label="What every custom neon sign includes">
+          {HERO_FACTS.map(({ icon: Icon, title, text }) => (
+            <li key={title} className="hero-fact-item">
+              <span className="hero-fact__icon-wrap">
+                <Icon weight="bold" />
+              </span>
+              <div className="hero-fact__text">
+                <strong>{title}</strong>
+                <span>{text}</span>
+              </div>
+            </li>
+          ))}
         </ul>
       </div>
 
@@ -212,7 +257,7 @@ export function HeroSection() {
         className={`hero-showcase${carouselPaused ? " is-paused" : ""}`}
         role="region"
         aria-roledescription="carousel"
-        aria-label="Featured illuminated craft collections"
+        aria-label="Custom neon signs by occasion"
         style={{ "--slide-accent": activeHero.accent } as CSSProperties}
         tabIndex={0}
         onMouseEnter={() => setCarouselPaused(true)}
@@ -228,12 +273,8 @@ export function HeroSection() {
         }}
         onPointerUp={handlePointerUp}
         onKeyDown={(event) => {
-          if (event.key === "ArrowRight") {
-            goToSlide(activeSlide + 1);
-          }
-          if (event.key === "ArrowLeft") {
-            goToSlide(activeSlide - 1);
-          }
+          if (event.key === "ArrowRight") goToSlide(activeSlide + 1);
+          if (event.key === "ArrowLeft") goToSlide(activeSlide - 1);
         }}
       >
         <svg
@@ -243,24 +284,12 @@ export function HeroSection() {
           aria-hidden="true"
         >
           <defs>
-            <linearGradient
-              id="hero-curve-gradient"
-              x1="0"
-              y1="0"
-              x2="0"
-              y2="1"
-            >
+            <linearGradient id="hero-curve-gradient" x1="0" y1="0" x2="0" y2="1">
               <stop offset="0" stopColor="#ff2b84" />
               <stop offset="0.48" stopColor="#f40b68" />
               <stop offset="1" stopColor="#6d26ff" />
             </linearGradient>
-            <filter
-              id="hero-curve-glow"
-              x="-80%"
-              y="-20%"
-              width="260%"
-              height="140%"
-            >
+            <filter id="hero-curve-glow" x="-80%" y="-20%" width="260%" height="140%">
               <feGaussianBlur stdDeviation="5" result="blur" />
               <feMerge>
                 <feMergeNode in="blur" />
@@ -268,10 +297,7 @@ export function HeroSection() {
               </feMerge>
             </filter>
           </defs>
-          <path
-            className="hero-curve__fill"
-            d="M0 0H104C157 118 56 220 105 345C153 467 41 570 111 700H0Z"
-          />
+          <path className="hero-curve__fill" d="M0 0H104C157 118 56 220 105 345C153 467 41 570 111 700H0Z" />
           <path
             className="hero-curve__line"
             pathLength="1"
@@ -291,139 +317,78 @@ export function HeroSection() {
           aria-hidden="true"
         >
           <defs>
-            <linearGradient
-              id="hero-curve-gradient-mobile"
-              x1="0"
-              y1="0"
-              x2="1"
-              y2="0"
-            >
+            <linearGradient id="hero-curve-gradient-mobile" x1="0" y1="0" x2="1" y2="0">
               <stop offset="0" stopColor="#ff2b84" />
               <stop offset="0.52" stopColor="#f40b68" />
               <stop offset="1" stopColor="#6d26ff" />
             </linearGradient>
           </defs>
-          <path
-            className="hero-curve__fill"
-            d="M0 0H700V24C570 87 448 20 332 58C202 100 104 34 0 83Z"
-          />
-          <path
-            className="hero-curve__line"
-            pathLength="1"
-            d="M700 24C570 87 448 20 332 58C202 100 104 34 0 83"
-          />
-          <path
-            className="hero-curve__trail"
-            pathLength="1"
-            d="M700 24C570 87 448 20 332 58C202 100 104 34 0 83"
-          />
+          <path className="hero-curve__fill" d="M0 0H700V24C570 87 448 20 332 58C202 100 104 34 0 83Z" />
+          <path className="hero-curve__line" pathLength="1" d="M700 24C570 87 448 20 332 58C202 100 104 34 0 83" />
+          <path className="hero-curve__trail" pathLength="1" d="M700 24C570 87 448 20 332 58C202 100 104 34 0 83" />
         </svg>
 
         <div className="hero-slides">
-          {heroSlides.map((slide, index) => (
-            <article
-              key={slide.id}
-              className={`hero-slide${index === activeSlide ? " is-active" : ""}${index === 0 ? " hero-slide--neon" : ""}${index === 3 ? " hero-slide--lightbox" : ""}`}
-              aria-hidden={index !== activeSlide}
-            >
-              {index === 1 ? (
-                activeSlide === 1 ? (
-                  <video
-                    src="/3d-metallic-neon-sign/videos/2.mp4"
-                    poster="/3d-metallic-neon-sign/corporte/056b3189-6a8c-482a-8334-53ded7aff3e1.webp"
-                    preload="auto"
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    className="hero-slide__video"
-                  />
-                ) : (
-                  <Image
-                    src="/3d-metallic-neon-sign/corporte/056b3189-6a8c-482a-8334-53ded7aff3e1.webp"
-                    alt="Corporate 3D metal channel-letter sign with illuminated lettering"
-                    fill
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 75vw, 58vw"
-                    loading="lazy"
-                  />
-                )
-              ) : index === 2 ? (
-                activeSlide === 2 ? (
-                  <video
-                    src="/3d-arcylic/videos/25763cbb2ca6866a574a4dde5853343c.mp4"
-                    poster="/3d-arcylic/3235dc09-6dac-4056-88b6-55fc26e28571.webp"
-                    preload="auto"
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    className="hero-slide__video"
-                  />
-                ) : (
-                  <Image
-                    src="/3d-arcylic/3235dc09-6dac-4056-88b6-55fc26e28571.webp"
-                    alt="3D acrylic UV-print neon sign with a glowing contour outline"
-                    fill
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 75vw, 58vw"
-                    loading="lazy"
-                  />
-                )
-              ) : index === 3 ? (
-                <div className="hero-slide__lightbox-frame">
-                  <Image
-                    src="/ultra-thin-slim-lightbox/main-hero.webp"
-                    alt={LIGHTBOX_SLIDE_ALT}
-                    fill
-                    sizes="(max-width: 1024px) 75vw, 58vw"
-                    loading="lazy"
-                    className="hero-slide__art--wide"
-                  />
-                  <Image
-                    src="/ultra-thin-slim-lightbox/main-hero-small-screen.webp"
-                    alt={LIGHTBOX_SLIDE_ALT}
-                    fill
-                    sizes="100vw"
-                    loading="lazy"
-                    className="hero-slide__art--tall"
-                  />
-                </div>
-              ) : (
+          {NEON_SLIDES.map((slide, index) => {
+            const active = index === activeSlide;
+            return (
+              <article
+                key={slide.id}
+                className={`hero-slide hero-slide--neon${active ? " is-active" : ""}`}
+                aria-hidden={!active}
+                inert={!active}
+              >
+                {/* The photos are 16:9 and the pane is near-square, so a
+                    full-bleed crop cut the sign's own words off. The pane is
+                    filled by a small, blurred copy instead, and the photo sits
+                    whole in a frame lit by its own glow colour. */}
                 <Image
-                  src={homeImage}
-                  alt="Aesthetic sun-drenched room with Good Vibes Good Life LED neon sign"
+                  src={slide.image}
+                  alt=""
+                  aria-hidden="true"
                   fill
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 75vw, 58vw"
-                  loading="eager"
-                  fetchPriority="high"
-                  className="hero-slide__img"
+                  sizes="160px"
+                  loading={index === 0 ? "eager" : "lazy"}
+                  className="hero-slide__backdrop"
                 />
-              )}
-            </article>
-          ))}
+                <div className="hero-slide__frame">
+                  <Image
+                    src={slide.image}
+                    alt={slide.alt}
+                    fill
+                    sizes="(max-width: 1024px) 88vw, 560px"
+                    loading={index === 0 ? "eager" : "lazy"}
+                    fetchPriority={index === 0 ? "high" : "auto"}
+                  />
+                  <Link href={slide.href} className="hero-slide__tag">
+                    <span className="hero-slide__tag-dot" aria-hidden="true" />
+                    {slide.label}
+                    <ArrowRight weight="bold" aria-hidden="true" />
+                  </Link>
+                </div>
+              </article>
+            );
+          })}
         </div>
 
         <div className="hero-controls">
           <button
             className="carousel-arrow carousel-prev"
             type="button"
-            aria-label="Previous collection"
+            aria-label="Previous neon sign"
             onClick={() => goToSlide(activeSlide - 1)}
           >
             <IconBox icon={ArrowLeft} />
           </button>
-          <div
-            className="carousel-dots"
-            role="tablist"
-            aria-label="Choose featured collection"
-          >
-            {heroSlides.map((slide, index) => (
+          <div className="carousel-dots" role="tablist" aria-label="Choose a neon sign occasion">
+            {NEON_SLIDES.map((slide, index) => (
               <button
                 key={slide.id}
                 className={`carousel-dot${index === activeSlide ? " is-active" : ""}`}
                 type="button"
                 role="tab"
                 aria-selected={index === activeSlide}
-                aria-label={`Show ${categoryLabels[slide.id]}`}
+                aria-label={`Show ${slide.label.toLowerCase()}`}
                 onClick={() => goToSlide(index)}
               >
                 <span key={`${activeSlide}-${index}`} />
@@ -433,7 +398,7 @@ export function HeroSection() {
           <button
             className="carousel-arrow carousel-next"
             type="button"
-            aria-label="Next collection"
+            aria-label="Next neon sign"
             onClick={() => goToSlide(activeSlide + 1)}
           >
             <IconBox icon={ArrowRight} />
