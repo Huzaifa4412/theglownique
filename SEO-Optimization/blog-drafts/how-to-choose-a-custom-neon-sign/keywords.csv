@@ -1,0 +1,10 @@
+keyword,role,market,language,average_monthly_searches,seo_difficulty,cpc_usd,retrieved_date,status,notes
+neon and signs,user_supplied_seed,United States,en,40500,32,,2026-09-26,USER_SUPPLIED,"Same volume as 'neon signs' (40,500), which KEYWORD-MAP.csv assigns to the homepage. Treated as a variant of that head term: used once naturally, not targeted, so the post does not compete with /."
+neon signs,homepage_owned,United States,en,40500,34,,2026-09-26,FROM_KEYWORD_MAP,"Owned by /. Do not target in title or H1."
+custom neon signs,product_owned,United States,en,33100,63,,2026-09-26,FROM_KEYWORD_MAP,"Owned by /products/custom-neon-signs. Linked, not targeted."
+how to choose a custom neon sign,editorial_primary,United States,en,,,,2026-09-26,UNMEASURED,"Informational buyer-guide intent with no owner on the site. Competitor SERP shows guide pages from echoneon.com and neonsignlife.com ranking for this intent."
+custom neon sign buying guide,secondary,United States,en,,,,2026-09-26,UNMEASURED,"Same intent; used in the SEO title and summary."
+neon sign size,secondary,United States,en,,,,2026-09-26,UNMEASURED,"Section 3 summary; detail owned by /guides/sign-size-viewing-distance."
+neon sign font,secondary,United States,en,,,,2026-09-26,UNMEASURED,"Section 4; no existing page covers fonts."
+neon sign colours,secondary,United States,en,590,24,,2026-09-26,FROM_KEYWORD_MAP,"Mapped to the colour blog posts; this post summarises and links to them."
+led neon vs glass neon,linked_not_targeted,United States,en,1600,29,,2026-09-26,FROM_KEYWORD_MAP,"Owned by /guides/led-neon-vs-glass-neon (and duplicated by /blog/led-neon-vs-glass-neon, see research notes)."

@@ -280,7 +280,7 @@ const INDUSTRY_CONTENT: readonly LandingContent[] = [
     name: "Restaurant Signs",
     kicker: "Restaurant & Café Signage",
     h1: "Custom Restaurant Signs & Café Signage",
-    metaTitle: "Custom Restaurant Signs | Restaurant Neon Sign Ideas",
+    metaTitle: "Custom Restaurant Signs & Neon Sign Ideas",
     metaDescription:
       "Custom restaurant neon signs, illuminated café branding & backlit menu displays for dining venues. Get mexican or chinese restaurant neon sign ideas today.",
     answer:
@@ -450,7 +450,7 @@ const INDUSTRY_CONTENT: readonly LandingContent[] = [
     name: "Salon & Spa Signs",
     kicker: "Salon, Spa & Studio Signage",
     h1: "Custom Salon Neon Signs & Spa Logo Signage",
-    metaTitle: "Custom Salon Neon Sign | Spa & Beauty Studio Branding",
+    metaTitle: "Custom Salon Neon Signs & Spa Logo Signs",
     metaDescription:
       "Looking for a custom hair salon neon sign? We build camera-ready salon neon signs, spa logo signage, and beauty studio branding in your brand colours.",
     answer:

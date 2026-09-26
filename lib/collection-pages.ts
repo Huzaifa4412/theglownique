@@ -77,7 +77,7 @@ const COLLECTION_CONTENT: readonly CollectionContent[] = [
     kicker: "Weddings, proposals & receptions",
     h1: "Custom Wedding Neon Signs & Backdrops",
     tagline: "Your names, lit the way the room will remember them. The perfect personalized wedding neon sign.",
-    metaTitle: "Custom Wedding Neon Signs | Personalized Neon Last Name",
+    metaTitle: "Custom Wedding Neon Signs, Names & Dates",
     metaDescription:
       "Custom wedding neon signs for backdrops — surnames, last names, Mr & Mrs, and 'welcome to our wedding' neon signs. Battery or plug, free design mockup.",
     intro:

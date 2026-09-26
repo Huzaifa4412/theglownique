@@ -148,11 +148,11 @@ export const guide: Guide = {
       blocks: [
         {
           type: "p",
-          text: "Not by IP code. **UL 48** covers the safety of a sign as a product, and **Article 600** of the National Electrical Code (NEC) covers its installation.[^isa-ul48] Citing NEC 110.28, NEMA states that IP ratings are not a substitute for US enclosure type ratings.[^nema-enclosures] Signs must be listed whatever their voltage, and a listed power adapter does not make the sign listed.[^isa-nec][^ul-listed-signs]",
+          text: "Not by IP code. **UL 48** covers the safety of a sign as a product, and **Article 600** of the National Electrical Code (NEC) covers its installation.[^isa-ul48] Citing NEC 110.28, NEMA states that IP ratings are not a substitute for US enclosure type ratings.[^nema-enclosures] Signs must be listed whatever their voltage, and a listed power adapter does not make the sign listed.[^isa-nec][^ul-sign-listing]",
         },
         {
           type: "p",
-          text: "A listed sign is marked for where it may be used — “Dry Locations Only”, “Suitable for Damp Locations” or “Suitable for Wet Locations” — after the applicable testing.[^ul-listed-signs][^ul-markings] Wet locations bring extra requirements, such as wet-rated Class 2 cable for LED signs,[^ul-markings] and sign rules call for drain holes at a sign's low points.[^isa-nec] Which category applies depends on exactly where the sign hangs, so confirm it with your electrician.",
+          text: "A listed sign is marked for where it may be used — “Dry Locations Only”, “Suitable for Damp Locations” or “Suitable for Wet Locations” — after the applicable testing.[^ul-sign-listing][^ul-markings] Wet locations bring extra requirements, such as wet-rated Class 2 cable for LED signs,[^ul-markings] and sign rules call for drain holes at a sign's low points.[^isa-nec] Which category applies depends on exactly where the sign hangs, so confirm it with your electrician.",
         },
         {
           type: "list",
@@ -223,7 +223,7 @@ export const guide: Guide = {
         },
         {
           type: "p",
-          text: "**Channel letters.** The IP67 figure belongs to the LED modules, not the finished letters; for an exterior sign in the US, what an inspector looks for is the listing mark.[^ul-listed-signs] For sites within about 50 miles of the ocean, one metal-letter fabricator recommends 316 stainless steel or anodised aluminium,[^gemini-halo] so mention a coastal site when you ask for a quote. A local sign installer mounts the letters, and a licensed electrician makes the electrical connection.",
+          text: "**Channel letters.** The IP67 figure belongs to the LED modules, not the finished letters; for an exterior sign in the US, what an inspector looks for is the listing mark.[^ul-sign-listing] For sites within about 50 miles of the ocean, one metal-letter fabricator recommends 316 stainless steel or anodised aluminium,[^gemini-halo] so mention a coastal site when you ask for a quote. A local sign installer mounts the letters, and a licensed electrician makes the electrical connection.",
         },
         {
           type: "p",
@@ -377,7 +377,7 @@ export const guide: Guide = {
       url: "http://nxt-live-books.s3.amazonaws.com/pub/nxtbooks/csg/isa_2011nec_guidelines/offline/csg_isa_2011nec_guidelines.pdf",
     },
     {
-      id: "ul-listed-signs",
+      id: "ul-sign-listing",
       title: "Listed Signs: Identifying UL Certification and Proper Use",
       publisher: "UL (2014)",
       url: "https://code-authorities.ul.com/wp-content/uploads/sites/40/2015/02/UL-TCAEC-2014-Fall-v3.pdf",

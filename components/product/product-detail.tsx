@@ -132,7 +132,7 @@ export function ProductDetail({ slug, reading = [] }: { slug: string; reading?: 
                 <WhatsappIcon className="h-6 w-6 shrink-0" />
               </a>
               <Link
-                href="/#stacking-craft"
+                href="/#custom"
                 className="text-sm font-bold text-white/80 underline-offset-4 transition-colors hover:text-white hover:underline"
               >
                 See how ordering works

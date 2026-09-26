@@ -1,0 +1,78 @@
+{
+  "status": "implementation-ready",
+  "researchDate": "2026-09-26",
+  "title": "How to Choose a Custom Neon Sign: Size, Font, Colour and Placement",
+  "slug": "how-to-choose-a-custom-neon-sign",
+  "categorySlug": "sign-basics",
+  "cover": "living-room-family-name-sign",
+  "coverAlt": "Warm white LED neon script sign reading The Dohertys on a charcoal wall above a taupe sofa with olive cushions",
+  "coverCaption": "A family-name sign sized to the sofa beneath it. Real order photograph.",
+  "tableCaption": "Neon and other illuminated sign types compared",
+  "seoTitle": "How to Choose a Custom Neon Sign: 2026 Buyer's Guide",
+  "seoDescription": "How to choose a custom neon sign: size it from viewing distance, pick a font that bends well, match the colour to your wall and plan mounting and power.",
+  "summary": "A practical buyer's guide to custom neon signs: the seven decisions to make in order, from what the sign is for and how big it should be to the font, colour, backboard cut, mounting and power, with real examples from weddings, home bars and shop windows.",
+  "primaryKeyword": "how to choose a custom neon sign",
+  "secondaryKeywords": [
+    "custom neon sign buying guide",
+    "neon sign size",
+    "neon sign font",
+    "neon sign colours",
+    "neon and signs"
+  ],
+  "intendedCanonical": "https://www.theglownique.com/blog/how-to-choose-a-custom-neon-sign",
+  "keyTakeaways": [
+    "Decide what the sign is for before choosing words, font or colour.",
+    "Size it from viewing distance and test with a taped outline on the real wall.",
+    "Script fonts need more height than block fonts to keep their loops open.",
+    "Choose the colour against the wall it will hang on, and think about photographs.",
+    "Find the outlet and plan the cable before fixing the position.",
+    "Approve a free true-to-scale mockup before anything is built."
+  ],
+  "relatedLinks": [
+    {
+      "kind": "commercial",
+      "label": "Custom LED neon signs",
+      "description": "Choose your words, font and colour and get a free true-to-scale mockup.",
+      "href": "/products/custom-neon-signs"
+    },
+    {
+      "kind": "guide",
+      "label": "What size sign do I need?",
+      "description": "Letter height by viewing distance, with a taped-outline test for indoor walls.",
+      "href": "/guides/sign-size-viewing-distance"
+    },
+    {
+      "kind": "guide",
+      "label": "LED neon vs glass neon",
+      "description": "Where each one wins, and why most home and venue signs are LED.",
+      "href": "/guides/led-neon-vs-glass-neon"
+    }
+  ],
+  "sources": [
+    {
+      "label": "Sign Legibility Rules of Thumb",
+      "publisher": "United States Sign Council",
+      "url": "https://files.secure.website/wscfus/7691102/uploads/USSC_Sign_Legibility_Rules_of_Thumb.pdf",
+      "accessed": "2026-09-26"
+    },
+    {
+      "label": "Preservation Brief 25: The Preservation of Historic Signs",
+      "publisher": "US National Park Service",
+      "url": "https://www.nps.gov/orgs/1739/upload/preservation-brief-25-signs.pdf",
+      "accessed": "2026-09-26"
+    },
+    {
+      "label": "Lifetime and Reliability (solid-state lighting fact sheet)",
+      "publisher": "US Department of Energy",
+      "url": "https://www1.eere.energy.gov/buildings/publications/pdfs/ssl/life-reliability_fact-sheet.pdf",
+      "accessed": "2026-09-26"
+    },
+    {
+      "label": "Ingress Protection (IP) ratings",
+      "publisher": "International Electrotechnical Commission",
+      "url": "https://www.iec.ch/ip-ratings",
+      "accessed": "2026-09-26"
+    }
+  ],
+  "publicationNotes": "Consumed by scripts/blog-posts/how-to-choose-a-custom-neon-sign.mjs. All four images are real 600 x 600 shop listing photographs of finished signs. Pillar for the sign-basics cluster: it summarises each decision and links to the spoke that owns it, so it does not compete with them."
+}

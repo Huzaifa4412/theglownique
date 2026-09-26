@@ -43,9 +43,9 @@ const footerColumns = [
       // Was /#about, this footer's own id. The page states only what the site
       // already evidences; who makes the signs and where is an owner question.
       ["About us", "/about"],
-      // Was "Case studies": the anchor is the homepage inspiration gallery,
-      // and there are no case studies yet.
-      ["Inspiration", "/#inspiration"],
+      // The homepage inspiration gallery was retired (2026-09-26); the real
+      // photo cards by occasion replaced it.
+      ["Neon sign ideas", "/#neon-ideas"],
       ["Journal", "/blog"],
       ["Contact", "/contact"],
     ],

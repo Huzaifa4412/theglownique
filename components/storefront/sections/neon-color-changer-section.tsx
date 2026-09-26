@@ -539,11 +539,11 @@ export function NeonColorChangerSection({
           </div>
 
           <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight mb-4 leading-tight">
-            Bold, Forward-Facing <PremiumAccentText>Glow</PremiumAccentText>
+            Design your neon sign <PremiumAccentText>live</PremiumAccentText>
           </h2>
 
           <p className="text-gray-300 text-base md:text-lg">
-            Unlike backlit signs, a traditional <strong>custom neon sign</strong> has its vibrant LEDs facing directly out into the room. It’s bold, energetic, and completely customizable. Explore our hand-mixed shades on a real sign, or hit{" "}
+            Type your words, pick a font and try every tube colour on a real sign before you order. Neon faces straight out into the room, so the colour you choose here is the colour your guests see. Or hit{" "}
             <strong className="text-pink-400">RGBA Party</strong> to watch it morph through every color in real time.
           </p>
         </div>

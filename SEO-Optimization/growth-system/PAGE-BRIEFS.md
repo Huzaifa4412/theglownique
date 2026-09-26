@@ -118,4 +118,4 @@ One brief per major page. "Status" says what exists on branch `seo/growth-system
 | Primary keyword | outdoor business signs (9,900, benchmark); custom business signs (4,400, SD 84); storefront signs (3,600) |
 | Role | Route a business to one of four sign types or eight industry pages |
 | Next | A short "which sign type for which job" matrix above the cards; links to the lighting and cost guides |
-| Status | Sitewide footer link and unconfirmed steel grades DONE |
+| Status | Sitewide footer link and unconfirmed steel grades DONE. Rebuilt 2026-09-26 with the matrix and guide links (EXP-09) DONE |

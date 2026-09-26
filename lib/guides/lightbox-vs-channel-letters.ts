@@ -185,7 +185,7 @@ export const guide: Guide = {
       blocks: [
         {
           type: "p",
-          text: "In the US, the National Electrical Code requires a sign to be listed whatever its voltage,[^isa-nec] and a UL listing mark can only be applied at the manufacturer's facility.[^ul-listed-signs] Most communities also require a permit for a new sign,[^isa-permits] and local rules decide who may connect it: in New York City, any electrical connection needs its own electrical work permit, filed by a licensed electrician.[^nyc-sign-permits] Check your city's requirements before you apply.",
+          text: "In the US, the National Electrical Code requires a sign to be listed whatever its voltage,[^isa-nec] and a UL listing mark can only be applied at the manufacturer's facility.[^ul-sign-listing] Most communities also require a permit for a new sign,[^isa-permits] and local rules decide who may connect it: in New York City, any electrical connection needs its own electrical work permit, filed by a licensed electrician.[^nyc-sign-permits] Check your city's requirements before you apply.",
         },
         {
           type: "p",
@@ -229,7 +229,7 @@ export const guide: Guide = {
         {
           type: "list",
           items: [
-            "**A listing on the finished sign.** A listed power supply does not make the sign listed.[^ul-listed-signs] Labs other than UL, including Intertek (ETL), CSA and TÜV, also list signs to UL 48.[^isa-nrtl]",
+            "**A listing on the finished sign.** A listed power supply does not make the sign listed.[^ul-sign-listing] Labs other than UL, including Intertek (ETL), CSA and TÜV, also list signs to UL 48.[^isa-nrtl]",
             "**A wet-location marking.** A listed sign states whether it suits dry, damp or wet locations, and outdoor signs are marked “Suitable for Wet Locations”.[^ul-sign-markings]",
             "**Drain holes** at the cabinet's low points.[^isa-nec]",
             "**A face suited to the site.** Polycarbonate has much higher impact strength than acrylic,[^glantz-channel-letters] but it absorbs UV and yellows unless protected by a UV cap layer, which should face the sun.[^palram-uv] A plastic face that also forms the enclosure must be listed for that purpose.[^isa-nec]",
@@ -375,7 +375,7 @@ export const guide: Guide = {
       url: "http://nxt-live-books.s3.amazonaws.com/pub/nxtbooks/csg/isa_2011nec_guidelines/offline/csg_isa_2011nec_guidelines.pdf",
     },
     {
-      id: "ul-listed-signs",
+      id: "ul-sign-listing",
       title: "Listed Signs: Identifying UL Certification and Proper Use",
       publisher: "UL (Fall 2014)",
       url: "https://code-authorities.ul.com/wp-content/uploads/sites/40/2015/02/UL-TCAEC-2014-Fall-v3.pdf",

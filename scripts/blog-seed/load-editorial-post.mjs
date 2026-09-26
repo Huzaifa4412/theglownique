@@ -59,7 +59,9 @@ for (const chunk of bodyMarkdown.trim().split(/\n\s*\n/)) {
   if (chunk.startsWith("|")) {
     const rows = chunk.split("\n").map((row) => row.split("|").slice(1, -1).map((cell) => cell.trim()));
     if (!rows[1]?.every((cell) => /^:?-+:?$/.test(cell))) throw new Error("Invalid table separator.");
-    body.push(table("Halloween neon display ideas by space", rows[0], rows.slice(2)));
+    // Each article names its own table; the fallback keeps the Halloween
+    // post, written before this field existed, rendering exactly as before.
+    body.push(table(metadata.tableCaption ?? "Halloween neon display ideas by space", rows[0], rows.slice(2)));
     continue;
   }
   if (/^\d+\. /.test(chunk)) {

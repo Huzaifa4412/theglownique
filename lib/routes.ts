@@ -83,12 +83,21 @@ const UBERSUGGEST_SEO_RELEASE = "2026-09-18";
  */
 const GROWTH_AUDIT_RELEASE = "2026-09-24";
 
+/**
+ * The /business-signs hub is rebuilt: direct answer, sign-for-job matrix,
+ * lighting styles, outdoor/indoor split, quote process, reading list and FAQs.
+ */
+const HUB_REDESIGN_RELEASE = "2026-09-26";
+
+/** Homepage hero rebuilt around custom LED neon signs: new H1, direct answer, neon-only slides. */
+const NEON_HERO_RELEASE = "2026-09-26";
+
 export const ROUTES: readonly RouteEntry[] = [
   // Home — primary H1 keywords, FAQ schemas and entity grounded content.
-  { path: "/", lastModified: GROWTH_AUDIT_RELEASE, changeFrequency: "weekly", priority: 1.0, indexable: true },
+  { path: "/", lastModified: NEON_HERO_RELEASE, changeFrequency: "weekly", priority: 1.0, indexable: true },
 
   // B2B hub and destinations.
-  { path: "/business-signs", lastModified: UBERSUGGEST_SEO_RELEASE, changeFrequency: "weekly", priority: 0.95, indexable: true },
+  { path: "/business-signs", lastModified: HUB_REDESIGN_RELEASE, changeFrequency: "weekly", priority: 0.95, indexable: true },
   { path: "/business-signs/custom-logo-neon-signs", lastModified: CURRENT_SEO_RELEASE, changeFrequency: "monthly", priority: 0.9, indexable: true },
   { path: "/business-signs/channel-letter-signs", lastModified: GROWTH_AUDIT_RELEASE, changeFrequency: "monthly", priority: 0.9, indexable: true },
   { path: "/business-signs/backlit-signs", lastModified: BACKLIT_RELEASE, changeFrequency: "monthly", priority: 0.9, indexable: true },

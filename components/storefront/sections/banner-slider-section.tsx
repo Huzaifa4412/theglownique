@@ -69,7 +69,7 @@ const BANNERS: readonly BannerSlide[] = [
   },
   {
     id: "lightbox",
-    href: "/products/ultra-thin-lightbox",
+    href: "/business-signs/lightbox-signs",
     alt: "Ultra thin slim LED lightbox displays for retail and storefronts",
     mobile: { src: "/banner/ultra-thin-lightbox-mobile.png", width: 887, height: 1774 },
     laptop: { src: "/banner/ultra-thin-lightbox-laptop.png", width: 1674, height: 940 },

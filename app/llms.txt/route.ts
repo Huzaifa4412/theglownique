@@ -72,7 +72,7 @@ The Glownique does not sell pre-made or off-the-shelf signs.
 ${productEntries}
 
 - [Custom Signage Range](${SITE_URL}/custom-signage): Overview of all 4 handcrafted sign types for home & business.
-- [Commercial Business Signage Hub](${SITE_URL}/business-signs): B2B architectural signage, storefront channel letters, corporate logo signs & lightboxes.
+- [Commercial Business Signage Hub](${SITE_URL}/business-signs): Which of the four sign types suits which business job (façade, reception wall, changing window or menu, full-colour logo, feature wall, trade show), with lighting styles, outdoor vs indoor guidance and how a quote works.
 
 ## Business Signs by Industry
 

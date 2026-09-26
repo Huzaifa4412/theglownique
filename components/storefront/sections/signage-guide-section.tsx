@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, CheckCircle2, ShieldCheck, Zap, Sparkles, HelpCircle } from "lucide-react";
+import { ArrowRight, CheckCircle2, HelpCircle } from "lucide-react";
 import { CustomQuoteButton } from "@/components/storefront/custom-quote-button";
 import { PremiumAccentText } from "@/components/ui/premium-accent-text";
 
@@ -19,7 +19,7 @@ export function SignageGuideSection() {
           >
             How to choose the <PremiumAccentText>right sign</PremiumAccentText> for your space
           </h2>
-          <p className="text-sm sm:text-base text-[#5e5862] leading-relaxed mt-4">
+          <p className="text-sm sm:text-base text-[#5e5862] leading-relaxed mt-6">
             Not sure whether flexible LED neon, 3D metal channel lettering, or an ultra-thin lightbox fits your wall? Here is an honest, artisan breakdown of how each sign type performs in the real world.
           </p>
         </header>
@@ -51,7 +51,7 @@ export function SignageGuideSection() {
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle2 className="h-4 w-4 shrink-0 text-[#ce0754] mt-0.5" />
-                  <span><strong>Power:</strong> 12V low-voltage, cool-to-touch, zero buzzing</span>
+                  <span><strong>Power:</strong> 12V low-voltage, no glass tubes, no buzzing</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle2 className="h-4 w-4 shrink-0 text-[#ce0754] mt-0.5" />
@@ -84,7 +84,7 @@ export function SignageGuideSection() {
                 Frontlit, Halo Backlit &amp; Dual-Lit
               </p>
               <p className="text-xs sm:text-sm text-[#5e5862] leading-relaxed mb-4">
-                Architectural signage built from precision-fabricated 304 stainless steel. Available in front-lit, halo-lit or dual-lit styles, built for exterior façades or interior walls.
+                Architectural signage built from precision-fabricated stainless steel. Available in front-lit, halo-lit or dual-lit styles, built for exterior façades or interior walls.
               </p>
               <ul className="space-y-2 text-xs font-medium text-[#4a424d] mb-6">
                 <li className="flex items-start gap-2">
@@ -93,7 +93,7 @@ export function SignageGuideSection() {
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle2 className="h-4 w-4 shrink-0 text-[#b45309] mt-0.5" />
-                  <span><strong>Finishes:</strong> Brushed gold, matte black, titanium &amp; polished chrome</span>
+                  <span><strong>Finishes:</strong> Brushed, mirrored or matte in gold, rose gold, brass, silver or black</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle2 className="h-4 w-4 shrink-0 text-[#b45309] mt-0.5" />
@@ -126,7 +126,7 @@ export function SignageGuideSection() {
                 Edge-Lit Slim Aluminium Profile
               </p>
               <p className="text-xs sm:text-sm text-[#5e5862] leading-relaxed mb-4">
-                Less than one inch thick with edge-lit matrix LED panels delivering 100% uniform, shadow-free illumination. Front snap-frame allows poster swaps in seconds.
+                Less than one inch thick with edge-lit matrix LED panels delivering even, shadow-free illumination. Front snap-frame allows poster swaps in seconds.
               </p>
               <ul className="space-y-2 text-xs font-medium text-[#4a424d] mb-6">
                 <li className="flex items-start gap-2">
@@ -177,7 +177,7 @@ export function SignageGuideSection() {
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle2 className="h-4 w-4 shrink-0 text-[#6d28d9] mt-0.5" />
-                  <span><strong>Color Accuracy:</strong> Exact Pantone / HEX / CMYK code matching</span>
+                  <span><strong>Color Accuracy:</strong> Pantone / HEX / CMYK matched as closely as the materials allow</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle2 className="h-4 w-4 shrink-0 text-[#6d28d9] mt-0.5" />
@@ -207,7 +207,7 @@ export function SignageGuideSection() {
                 Read our in-depth guides before spending a dollar.
               </h3>
               <p className="text-sm text-[#5e5862] leading-relaxed">
-                We believe in transparent pricing and zero surprises. Check out our detailed fabrication guides and cost breakdowns to see how sign size, lighting types, and wall surfaces impact your project budget.
+                Every quote is itemised against your artwork and your wall. These guides explain how sign size, lighting style and wall surface change a project, so you know what to ask for before you ask.
               </p>
               <div className="flex flex-wrap gap-4 pt-2">
                 <Link
@@ -231,6 +231,20 @@ export function SignageGuideSection() {
                   <span>Wall Surfaces &amp; Standoff Mounting Guide</span>
                   <ArrowRight className="h-3.5 w-3.5" />
                 </Link>
+                <Link
+                  href="/guides/lightbox-vs-channel-letters"
+                  className="inline-flex items-center gap-2 text-xs font-bold text-[#1e1a22] underline underline-offset-4 decoration-[#f40b68] hover:text-[#ce0754]"
+                >
+                  <span>Lightbox vs Channel Letters: Which to Choose</span>
+                  <ArrowRight className="h-3.5 w-3.5" />
+                </Link>
+                <Link
+                  href="/business-signs"
+                  className="inline-flex items-center gap-2 text-xs font-bold text-[#1e1a22] underline underline-offset-4 decoration-[#f40b68] hover:text-[#ce0754]"
+                >
+                  <span>All Business Signs by Industry</span>
+                  <ArrowRight className="h-3.5 w-3.5" />
+                </Link>
               </div>
             </div>
 
@@ -240,7 +254,7 @@ export function SignageGuideSection() {
                   Need expert recommendation?
                 </p>
                 <p className="text-xs text-[#5e5862]">
-                  Send your logo or space photo for a free 1-on-1 recommendation in ~2 hours.
+                  Send your logo or a photo of the space for a free 1-on-1 recommendation and mockup.
                 </p>
               </div>
               <CustomQuoteButton

@@ -2,18 +2,15 @@ import { CustomQuoteButton } from "@/components/storefront/custom-quote-button";
 import { PremiumAccentText } from "@/components/ui/premium-accent-text";
 import { serializeJsonLd } from "@/lib/utils";
 
+// Lifespan and safety are answered on /products/custom-neon-signs, whose
+// FAQPage owns those neon-specific queries; asking them here too put two
+// pages up for the same rich result. This list stays at brand and ordering
+// level: what we make, mockups, colour matching, outdoor, timing, cost,
+// installation, what ships, warranty.
 const faqs = [
   {
     q: "What types of custom business signs and neon signs does The Glownique make?",
     a: "We handcraft four distinct custom signage types: flexible silicone LED neon signs, 3D metal channel-letter signs (available frontlit, halo backlit or dual-lit), ultra-thin edge-lit lightboxes for retail, and 3D acrylic signs pairing high-definition UV print with glowing LED neon contours.",
-  },
-  {
-    q: "How long do custom LED neon signs last compared to traditional glass neon?",
-    a: "LED neon is built on long-life LEDs, and a well-made sign gives years of everyday use. A rated LED life describes when the LEDs fade to 70% of their original brightness, not when the sign stops, and the power supply is usually the first part to wear out. Unlike glass neon, there are no gas-filled tubes to refill or re-bend, and it does not buzz.",
-  },
-  {
-    q: "Are custom LED neon signs safe?",
-    a: "They run on low-voltage 12V DC from a plug-in power supply — far below the high-voltage transformers glass neon needs — and use flexible silicone LED neon instead of glass tubes and gas. That makes them well suited to bedrooms, weddings, bars and shops. As with any plug-in light, use the supplied power supply, keep it dry and ventilated, and choose an outdoor build for use outside.",
   },
   {
     q: "Can I receive a free design preview and mockup before ordering?",
