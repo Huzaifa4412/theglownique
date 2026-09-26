@@ -37,10 +37,14 @@ export const post = {
   // Own author record, so the byline does not change every post that uses
   // the shared workshop-lead document. Created with the post (2026-09-26).
   authorSlug: "john",
+  // Only publicly readable ids. A dotted id resolves to null for anonymous
+  // reads, and a null in this list crashed the post route in production
+  // (2026-09-27). The eight dotted launch posts stay out until
+  // scripts/migrate-doc-ids.mjs runs.
   relatedPosts: [
-    "post.how-to-hang-a-neon-sign", // seeded with a dotted id
-    "post-how-to-choose-the-right-neon-color-for-your-sign", // neon colour guide
-    "post.how-long-do-led-neon-signs-last", // seeded with a dotted id
+    "post-how-to-choose-the-right-neon-color-for-your-sign", // colour guide
+    "53a1de04-8eec-4731-a6c4-257845c41225", // custom-neon-signs-for-bedroom-and-home-decor
+    "0878952d-1694-473b-a816-ee8be504cf0c", // custom-wedding-neon-signs-backdrop-guide
   ],
 };
 

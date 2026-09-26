@@ -112,6 +112,7 @@ const USE_CASES: readonly UseCase[] = [
 
 /** Long-tail neon queries, each pointing at the page that answers it. */
 const NEON_IDEAS: readonly { label: string; href: string }[] = [
+  { label: "How to choose a neon sign", href: "/blog/how-to-choose-a-custom-neon-sign" },
   { label: "Neon name signs", href: "/products/custom-neon-signs" },
   { label: "Proposal neon signs", href: "/custom-signage/wedding-signs" },
   { label: "Business logo neon signs", href: "/business-signs/custom-logo-neon-signs" },

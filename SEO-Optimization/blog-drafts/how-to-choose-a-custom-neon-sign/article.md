@@ -72,7 +72,7 @@ Three practical rules help:
 2. **Think about photographs.** At weddings, events and in salons, the sign ends up in pictures. Warm whites and soft pinks flatter skin; strong blues and greens colour everything near them.
 3. **Match the brand, not the logo file.** For a business, choose the tube colour that reads as your brand in light, then confirm it on the mockup.
 
-We make custom neon in 13 colours, plus RGB colour-change for a sign that switches between them. Brand colours are matched to your Pantone or HEX references as closely as the materials allow. For deeper help, read [how to choose the right neon colour for your sign](/blog/how-to-choose-the-right-neon-color-for-your-sign), or for businesses, [choosing neon sign colours for your brand](/blog/choosing-neon-sign-colours-for-your-brand).
+We make custom neon in 13 colours, plus RGB colour-change for a sign that switches between them. Brand colours are matched to your Pantone or HEX references as closely as the materials allow. For deeper help, read [how to choose the right neon colour for your sign](/blog/how-to-choose-the-right-neon-color-for-your-sign), or for businesses, see how brand colours are matched on [custom logo neon signs](/business-signs/custom-logo-neon-signs).
 
 ## 6. Decide how the backboard is cut
 
@@ -92,7 +92,7 @@ This is the decision people leave until the sign arrives, and it is the one that
 
 **Find the outlet first.** Indoor LED neon runs on 12V from a plug-in power supply, so the sign needs a standard outlet within reach of its cable. Decide where the cable will run and where the power supply will sit before you choose the exact position on the wall.
 
-**Choose the mounting method.** Most signs mount on standoffs screwed into the wall, which hold the backboard a little away from it, or hang from a hanging kit. Standoffs look cleaner; hanging suits walls you cannot drill and event backdrops. Our guide to [how to hang a neon sign](/blog/how-to-hang-a-neon-sign) walks through both.
+**Choose the mounting method.** Most signs mount on standoffs screwed into the wall, which hold the backboard a little away from it, or hang from a hanging kit. Standoffs look cleaner; hanging suits walls you cannot drill and event backdrops. For a wedding or event backdrop, our [wedding neon sign backdrop guide](/blog/custom-wedding-neon-signs-backdrop-guide) covers hanging in detail.
 
 **Think about dimming.** A sign that is perfect at a party can be too bright in a bedroom at night. An optional wireless dimmer lets you set the brightness to the room.
 
@@ -100,7 +100,7 @@ This is the decision people leave until the sign arrives, and it is the one that
 
 ## Care and lifespan
 
-LED neon needs very little looking after: an occasional wipe with a soft, dry cloth, and a power supply kept dry and ventilated. A rated LED lifetime describes when the LEDs fade to a set share of their original brightness, not when the sign stops working, and the power supply is usually the first part to need attention. Every sign we make carries a 5-year warranty. For the detail, see [how long LED neon signs last](/blog/how-long-do-led-neon-signs-last) and [how to clean and maintain LED neon signs](/blog/how-to-clean-and-maintain-led-neon-signs).
+LED neon needs very little looking after: an occasional wipe with a soft, dry cloth, and a power supply kept dry and ventilated. A rated LED lifetime describes when the LEDs fade to a set share of their original brightness, not when the sign stops working, and the power supply is usually the first part to need attention. Every sign we make carries a 5-year warranty. For the detail, see [how LED neon signs are made](/guides/how-led-neon-signs-are-made), which explains what a rated LED lifetime means, and the care questions answered on our [custom LED neon sign page](/products/custom-neon-signs).
 
 ## How these choices play out in three real settings
 

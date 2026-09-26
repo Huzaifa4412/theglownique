@@ -109,7 +109,11 @@ export default async function BlogPostPage({ params }: Params) {
   const pageUrl = `${SITE_URL}/blog/${post.slug}`;
   const toc = buildToc(post.body);
   const byline = displayDate(post);
-  const related = post.related ?? [];
+  // A related post that anonymous reads cannot see (a dotted _id, or one
+  // deleted after being referenced) dereferences to null. Rendering it
+  // crashed the whole article with a 500 in production (2026-09-27), so drop
+  // unresolved entries rather than trusting the editor's list.
+  const related = (post.related ?? []).filter((item): item is NonNullable<typeof item> => Boolean(item?._id));
   const faqs = post.faqs ?? [];
 
   const authorNode = post.author
