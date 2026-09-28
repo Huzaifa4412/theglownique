@@ -36,32 +36,18 @@ export type ClaimStatus =
 // shows the real figure at checkout, which is where the money actually changes
 // hands.
 
-export const FREE_DELIVERY_PROMO = {
-  status: "retired" as ClaimStatus,
-  /** Last day the promotion was valid. Kept for the audit trail. */
-  endedOn: "2026-08-11",
-  reviewedOn: "2026-08-19",
+export const FREE_DELIVERY_POLICY = {
+  status: "approved" as ClaimStatus,
 } as const;
 
-/** True only while a free-delivery promotion is actually running. */
-export const HAS_FREE_DELIVERY_PROMO =
-  FREE_DELIVERY_PROMO.status !== "retired";
+export const HAS_FREE_DELIVERY_PROMO = false;
 
 export const DELIVERY = {
   status: "approved" as ClaimStatus,
-
-  /** Chip/badge length. Used in trust rows and feature lists. */
-  short: "Tracked worldwide delivery",
-
-  /** One clause, for metadata and inline marketing sentences. */
-  clause: "tracked worldwide delivery",
-
-  /** A full sentence for body copy. States capability, never a price. */
-  sentence:
-    "We ship worldwide with tracked delivery, and your shipping cost is confirmed with your quote before you pay.",
-
-  /** Sub-label for the footer/hero trust rows. */
-  supporting: "Shipping confirmed with your quote",
+  short: "Free worldwide delivery",
+  clause: "free worldwide delivery",
+  sentence: "We ship worldwide with free delivery on every order.",
+  supporting: "Standing policy on all signs",
 } as const;
 
 // ── Lead time (CLM-002) ─────────────────────────────────────────────────────
@@ -73,15 +59,15 @@ export const DELIVERY = {
 // existing wording alone rather than inventing a number or silently redefining
 // a delivery promise customers have already relied on.
 export const LEAD_TIME = {
-  status: "validation_required" as ClaimStatus,
-  productionDays: "10–15 days",
-  /** Owner must define transit separately before this can be stated. */
-  transit: null,
+  status: "approved" as ClaimStatus,
+  neonProductionDays: "3-5 business days",
+  otherProductionDays: "3-10 business days",
+  transit: "3-8 business days",
 } as const;
 
 // ── Warranty (CLM-004) ──────────────────────────────────────────────────────
 export const WARRANTY = {
-  status: "validation_required" as ClaimStatus,
+  status: "approved" as ClaimStatus,
   term: "5-year warranty",
 } as const;
 

@@ -6,7 +6,7 @@ import { PremiumAccentText } from "@/components/ui/premium-accent-text";
  * "What every order includes" — the homepage reassurance band.
  *
  * Replaces the free-delivery countdown section, which was removed when that
- * promotion ended on 2026-08-11. The countdown could not simply be re-pointed:
+ * promotion concluded on 2026-08-11. The countdown could not simply be re-pointed:
  * its entire subject was a discount that no longer exists, and a timer counting
  * down to nothing is worse than no section at all.
  *
@@ -39,7 +39,7 @@ const inclusions: ReadonlyArray<{
   {
     icon: "ShieldCheck",
     title: "5-Year Full Glow Warranty",
-    body: "Long-life, eco-friendly, commercial-grade LEDs. If an electrical component fails or a sign arrives damaged, send us a photo and we will put it right under the warranty.",
+    body: "Long-life, commercial-grade LEDs. If an electrical component fails or a sign arrives damaged, send us a photo and we will put it right under the warranty.",
   },
   {
     icon: "SealCheck",

@@ -75,13 +75,13 @@ const COLLECTION_CONTENT: readonly CollectionContent[] = [
     slug: "wedding-signs",
     name: "Wedding Signs",
     kicker: "Weddings, proposals & receptions",
-    h1: "Custom Wedding Neon Signs & Backdrops",
-    tagline: "Your names, lit the way the room will remember them. The perfect personalized wedding neon sign.",
-    metaTitle: "Custom Wedding Neon Signs, Names & Dates",
+    h1: "Custom Wedding Neon Signs",
+    tagline: "Your names, lit the way the room will remember them.",
+    metaTitle: "Custom Wedding Neon Signs & Wall Decor",
     metaDescription:
-      "Custom wedding neon signs for backdrops — surnames, last names, Mr & Mrs, and 'welcome to our wedding' neon signs. Battery or plug, free design mockup.",
+      "Custom wedding neon signs — surnames, first names, Mr & Mrs and vows — in warm white or your palette. Battery or plug, free design mockup, 5-year warranty.",
     intro:
-      "A custom wedding neon sign is in every photograph from the first dance to the last. Whether you want a wedding neon sign last name piece, a Mr and Mrs sign, or a 'welcome to our wedding neon sign', ours are built around the two things that decide whether it works: how it mounts on the day, and how it reads through a camera.",
+      "A custom wedding neon sign is in every photograph from the first dance to the last. Ours are built around the two things that decide whether it works: how it mounts on the day, and how it reads through a camera.",
     heroImage: "/neon-sign/wedding/iap_600x600.7378705048_ipwhq76b.webp",
     heroAlt:
       "White 'Chloé Adelina' neon sign hanging on a blush pink draped backdrop between two peach floral arrangements",
@@ -232,9 +232,9 @@ const COLLECTION_CONTENT: readonly CollectionContent[] = [
       "Kids’ room neon signs and neon name signs for nurseries, bedrooms and teen rooms. 12V silicone, no glass, dimmable, any colour. Free mockup, 5-year warranty.",
     intro:
       "A kids’ room neon sign is the one piece of a child’s room that is theirs alone, and it has to survive being lived under every night. These are built for that: low-voltage silicone with no glass, a glow that dims to a nightlight, and colours that still look right when they are twelve.",
-    heroImage: "/neon-sign/kid room/iap_600x600.7831937493_bsa69vky.webp",
-    heroAlt: "Blue 'TOBY' LED neon sign with a yellow star, mounted on a dark blue bedroom wall",
-    heroCaption: "“TOBY” in blue with a yellow star, on a navy bedroom wall.",
+    heroImage: "/images/kids-bedroom-main.jpeg",
+    heroAlt: "Pink 'Melanie' LED neon script sign glowing above a white vanity desk in a girl's bedroom",
+    heroCaption: "“Melanie” in pink above a vanity desk — custom bedroom glow.",
     accent: "#ff7ac3",
     accentInk: "#b0186f",
     quoteProductName: "custom kids room neon name sign",
@@ -262,6 +262,21 @@ const COLLECTION_CONTENT: readonly CollectionContent[] = [
       },
     ],
     gallery: [
+      img(
+        "/images/kids-bedroom.jpeg",
+        "Green 'MATTHEW' LED neon sign with PlayStation icon glowing above a boy in bed giving two thumbs up",
+        "“MATTHEW” in bright green with PlayStation logo — personalized gaming and bedroom glow.",
+      ),
+      img(
+        "/images/kids-bedroom1.jpeg",
+        "Blue 'Wyatt' script neon sign with soccer ball icon above a white panel feature wall and fireplace",
+        "“Wyatt” in blue with a white soccer ball — sports-themed bedroom neon.",
+      ),
+      img(
+        "/neon-sign/kid room/iap_600x600.7831937493_bsa69vky.webp",
+        "Blue 'TOBY' LED neon sign with a yellow star, mounted on a dark blue bedroom wall",
+        "“TOBY” in blue with a yellow star on navy.",
+      ),
       img(
         "/neon-sign/kid room/iap_600x600.7610949369_glo5mwm8.webp",
         "White 'Kaylee' script neon sign with a crown, glowing on a plain grey kids' bedroom wall",
@@ -324,7 +339,7 @@ const COLLECTION_CONTENT: readonly CollectionContent[] = [
       {
         name: "LED Neon Signs",
         href: NEON,
-        why: "The one for a child’s room. Flexible 12V silicone with no glass tubes, dimmable to a nightlight with the optional remote.",
+        why: "The one for a child’s room. Flexible 12V silicone with no glass tubes, dimmable to a nightlight with the included remote.",
       },
       {
         name: "UV-Print Acrylic Signs",
@@ -670,7 +685,7 @@ const COLLECTION_CONTENT: readonly CollectionContent[] = [
       },
       {
         q: "Can I dim it or leave it on at night?",
-        a: "Yes. With the optional remote it dims from full brightness to a low glow and switches off from bed. LED neon runs cool and draws little power, so leaving it on is normal use.",
+        a: "Yes. With the included remote it dims from full brightness to a low glow and switches off from bed. LED neon runs cool and draws little power, so leaving it on is normal use.",
       },
       {
         q: "Will the colour look the same as on my phone?",
@@ -701,11 +716,11 @@ const COLLECTION_CONTENT: readonly CollectionContent[] = [
       "Personalized neon bar signs for home bars, man caves, kitchens and garages — your bar name or quote. Dimmable 12V LED neon, free mockup & 5-year warranty.",
     intro:
       "A home bar becomes a bar the moment its name is lit above it. A personalized neon bar sign is built for the rooms it actually goes in — dark corners, garages, kitchens — where the glow does the work the decor cannot.",
-    heroImage: "/neon-sign/iap_600x600.7488149925_lgq4qo2u.webp",
-    heroAlt: "Yellow 'Tequila' neon script on red backing casting a red glow across a plain wall",
-    heroCaption: "“Tequila” in yellow on a red backboard, and the red wash it leaves on the wall.",
-    accent: "#ffb347",
-    accentInk: "#9a4f00",
+    heroImage: "/images/homebar-main.jpeg",
+    heroAlt: "Cyan 'Brad\'s Bar EST. 2026' LED neon sign with acrylic border mounted above a kitchen bar counter",
+    heroCaption: "“Brad's Bar EST. 2026” in cyan with an acrylic border over a kitchen bar counter.",
+    accent: "#22d3ee",
+    accentInk: "#0e7490",
     quoteProductName: "personalised neon bar sign",
     quoteLabel: "Mock up your bar sign for free",
     keyword: "personalized neon bar sign",
@@ -731,6 +746,16 @@ const COLLECTION_CONTENT: readonly CollectionContent[] = [
       },
     ],
     gallery: [
+      img(
+        "/images/homebar1.jpeg",
+        "Warm white 'Petra\'s Bar EST. 2000' LED neon sign glowing on a textured wall above bottles on a home bar",
+        "“Petra's Bar EST. 2000” in warm white above a home bar bottle shelf.",
+      ),
+      img(
+        "/neon-sign/iap_600x600.7488149925_lgq4qo2u.webp",
+        "Yellow 'Tequila' neon script on red backing casting a red glow across a plain wall",
+        "“Tequila” in yellow on a red backboard, and the red wash it leaves on the wall.",
+      ),
       img(
         "/neon-sign/Bar/iap_600x600.5588358323_i7bgtidf.webp",
         "Round pink LED neon 'BAR' sign glowing on a pallet-wood home bar with stools and string lights",

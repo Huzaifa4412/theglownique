@@ -41,8 +41,8 @@ const CAROUSEL_DURATION = 5500;
  *   answer engine lifts it: what a custom LED neon sign is, what it is made
  *   of, who it is for, and the one fact that de-risks the purchase (the free
  *   mockup before payment).
- * - Claims come from lib/claims.ts or the catalog only. "Mockup in ~2 hours"
- *   is CLM-003, still VALIDATION_REQUIRED, so it is not repeated here.
+ * - Claims come from lib/claims.ts or the catalog only. "Mockup in 24h"
+ *   is an approved claim, replacing the unverified "~2 hours" claim.
  *
  * ── Slides ──────────────────────────────────────────────────────────────────
  *
@@ -77,9 +77,9 @@ const NEON_SLIDES: readonly NeonSlide[] = [
     id: "bar",
     label: "Home bar neon signs",
     href: "/custom-signage/bar-neon-signs",
-    image: "/neon-sign/iap_600x600.7488149925_lgq4qo2u.webp",
-    alt: "Yellow Tequila neon script on red backing casting a red glow across a plain wall",
-    accent: "#ffb347",
+    image: "/images/homebar-main.jpeg",
+    alt: "Cyan 'Brad's Bar EST. 2026' LED neon sign with border glowing on acrylic above a bar counter",
+    accent: "#38bdf8",
   },
   {
     id: "wedding",
@@ -93,9 +93,9 @@ const NEON_SLIDES: readonly NeonSlide[] = [
     id: "kids",
     label: "Kids’ room neon signs",
     href: "/custom-signage/kids-room-neon-signs",
-    image: "/neon-sign/kid room/iap_600x600.7831937493_bsa69vky.webp",
-    alt: "Blue TOBY LED neon sign with a yellow star, mounted on a dark blue bedroom wall",
-    accent: "#ffe14d",
+    image: "/images/kids-bedroom-main.jpeg",
+    alt: "Pink 'Melanie' LED neon script sign glowing above a white vanity desk in a girl's bedroom",
+    accent: "#ff5fb0",
   },
   {
     id: "gaming",
@@ -139,7 +139,7 @@ const HERO_ANSWER =
 const HERO_FACTS = [
   { icon: PencilLine, title: "Free true-to-scale mockup", text: "Approve design before you pay" },
   { icon: Palette, title: "13 colours + RGB", text: "Any font, name or logo" },
-  { icon: Lightning, title: "Eco-friendly 12V LED neon", text: "No glass tubes, no gas" },
+  { icon: Lightning, title: "12V LED neon", text: "No glass tubes, no gas" },
   { icon: ShieldCheck, title: WARRANTY.term, text: DELIVERY.short },
 ] as const;
 

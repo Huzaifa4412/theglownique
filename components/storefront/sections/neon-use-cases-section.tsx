@@ -49,10 +49,10 @@ const USE_CASES: readonly UseCase[] = [
     title: "Kids’ room neon signs",
     text: "Their name in a glow soft enough to sleep under, dimmable at bedtime.",
     href: "/custom-signage/kids-room-neon-signs",
-    image: "/neon-sign/kid room/iap_600x600.7831937493_bsa69vky.webp",
-    alt: "Blue 'TOBY' LED neon sign with a yellow star, mounted on a dark blue bedroom wall",
+    image: "/images/kids-bedroom-main.jpeg",
+    alt: "Pink 'Melanie' LED neon script sign glowing above a white vanity desk in a girl's bedroom",
     group: "Home & gifts",
-    accent: "#ffe14d",
+    accent: "#ff7ac3",
   },
   {
     title: "Gaming neon signs",
@@ -139,7 +139,7 @@ export function NeonUseCasesSection() {
               Custom LED neon signs for <em>every room and occasion</em>
             </h2>
             <p className="signage-lead">
-              The same flexible eco-friendly LED neon, built differently for where it hangs: soft and dimmable
+              The same flexible 12V LED neon, built differently for where it hangs: soft and dimmable
               for a nursery, bold and colour-matched for a bar, sized perfectly for the photo booth at a
               wedding. Pick the setting and see real custom signs we have made for it.
             </p>

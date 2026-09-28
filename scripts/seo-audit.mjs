@@ -62,14 +62,8 @@ const warn = (route, message) => warnings.push(`${route}: ${message}`);
  * the technical plan).
  */
 const RETIRED_CLAIM_PATTERNS = [
-  // Two patterns, because word order varies. The first catches "free worldwide
-  // delivery"; the second catches "tracked delivery, free worldwide", which the
-  // first missed and which shipped to production on /contact as a result.
-  // Deliberately narrow on the second: "free" must be followed by worldwide or
-  // "of charge", so "tracked delivery and a free design mockup" stays legal.
-  { label: "free-delivery promotion (CLM-001, ended 2026-08-11)", re: /\bfree\s+(worldwide\s+)?(delivery|shipping)\b/i },
-  { label: "free-delivery promotion, reversed word order (CLM-001)", re: /\b(delivery|shipping)\b[^.]{0,20}\bfree\s+(worldwide|of charge)\b/i },
   { label: "\"no tracking pixels\" while the Meta Pixel ships (CLM-016)", re: /no\s+(advertising\s+cookies\s+or\s+)?tracking\s+pixels/i },
+  { label: "Eco-friendly (FTC substantiation missing)", re: /\beco[- ]friendly\b/i },
 ];
 
 /** Pages allowed to discuss a retired claim in order to correct the record. */

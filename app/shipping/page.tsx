@@ -35,14 +35,8 @@ export default function ShippingPage() {
     >
       <h2>Where we ship and what it costs</h2>
       <p>
-        We ship to almost every country with <strong>tracked delivery</strong>. Shipping is
-        confirmed with your quote before you pay, and the exact figure is shown again at Etsy
-        checkout — so the number you agree to is the number you pay.
+        We ship to almost every country with <strong>free tracked delivery</strong> as a standing policy on all orders.
       </p>
-      <div className="legal-note">
-        Our free-worldwide-delivery promotion ended on 11 August 2026. If you were quoted while it
-        was running and haven&apos;t ordered yet, tell us — we&apos;ll honour what your quote said.
-      </div>
 
       <h2>How long it takes</h2>
       <dl>
@@ -55,16 +49,15 @@ export default function ShippingPage() {
           do.
         </dd>
 
-        <dt>Days 3–10 — Handcraft and packing</dt>
-        <dd>Your sign is shaped, light-tested, quality-checked and packed.</dd>
+        <dt>Production</dt>
+        <dd>Your sign is shaped, light-tested, quality-checked and packed. Production takes 3–5 business days for LED neon signs, and 3–10 business days for other types.</dd>
 
-        <dt>Days 10–15 — Shipping</dt>
-        <dd>Tracked delivery to your door.</dd>
+        <dt>Transit</dt>
+        <dd>Free worldwide delivery to your door in 3–8 business days.</dd>
       </dl>
       <p>
-        So roughly <strong>10–15 days from approval to arrival</strong> for most orders. Larger 3D
-        metal signage and complex multi-colour work can take longer; we&apos;ll tell you the
-        realistic timeline with your quote. If you have a hard deadline, say so before ordering and
+        Larger 3D metal signage and complex multi-colour work can take longer; we&apos;ll tell you the
+        realistic timeline with your quote. We also offer rush orders at no extra cost. If you have a hard deadline, say so before ordering and
         we&apos;ll give you an honest answer rather than an optimistic one.
       </p>
 

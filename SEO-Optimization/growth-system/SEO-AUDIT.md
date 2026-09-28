@@ -1,14 +1,21 @@
 # SEO, AEO & GEO Audit — The Glownique
 
-Audit date: 2026-09-24 · Branch: `seo/growth-system-2026-09` · Market: US English (national, ship-only)
+Audit date: 2026-09-28 · Branch: `seo/antigravity-2026-10` · Market: US English (national, ship-only)
+
+## State of search, 2026-09 (Checkpoint 0)
+- **GSC Property:** Apex property (`sc-domain:theglownique.com`) exists and is active. `www` property is NOT verified.
+- **Sitemap vs Indexed:** `https://www.theglownique.com/sitemap.xml/` submitted with 49 URLs, 0 indexed.
+- **Top Queries:** `uv neon` (pos 39, 1 imp), `uv signs` (pos 56, 1 imp).
+- **Product Snippets:** None active (searchAppearance query returned 0 rows).
+- **GA4 Key Events Missing:** `quote submit`, `configurator start`, `Etsy click`, `WhatsApp click`.
+- **BigQuery Link:** No active dataset found or inaccessible via `datacloud_bigquery_remote`. (Steps for owner: GA4 Admin > Product Links > BigQuery Links and Search Console Settings > Bulk data export).
 
 Evidence labels used throughout:
 
-- **Measured** — a number from a tool run on 2026-09-24 (crawl, Lighthouse, trace, PostHog query).
+- **Measured** — a number from a tool run on 2026-09-28 (crawl, Lighthouse, trace, PostHog query).
 - **Observed** — seen on a live page or search result; can change tomorrow.
 - **Inferred** — a conclusion drawn from measured/observed evidence.
 - **Recommendation** — what should happen, and why.
-
 Unavailable sources, not guessed at: **Google Search Console** (the property is verified by a meta tag in `app/layout.tsx`, but no access was granted to this session), **GA4** (tag `G-6PWLMLHEMK` is live; no API access), **Bing Webmaster Tools**, **Ahrefs/Semrush/DataForSEO**, **TinyFish** and the **Sanity MCP** (both need authorisation), **PageSpeed Insights API** (keyless quota exhausted). PostHog's own API stood in for analytics, and a cold-cache Chrome trace for lab performance.
 
 ---

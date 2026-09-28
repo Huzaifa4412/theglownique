@@ -68,16 +68,13 @@ const nextConfig: NextConfig = {
         statusCode: 301,
       },
       {
-        // /business-signs/ -> /business-signs, one hop, query string kept.
-        // The first segment is matched with a lookahead that ends at a "/"
-        // or the end of the path, so /ingest/e/ and /api/leads/ never match
-        // (a bare "$" would end at the end of the whole URL and let them in).
-        // Custom routes compile in strict mode, so the trailing "/" in the
-        // source is required and the redirect cannot loop.
-        source: "/:first((?!ingest(?:/|$)|api(?:/|$))[^/]+)/:rest*/",
-        destination: "/:first/:rest*",
-        // 301 rather than Next's default 308: Google treats them the same,
-        // Bing's webmaster guidelines only name 301.
+        source: "/:first((?!ingest(?:/|$)|api(?:/|$))[^/]+)/",
+        destination: "/:first",
+        statusCode: 301,
+      },
+      {
+        source: "/:first((?!ingest(?:/|$)|api(?:/|$))[^/]+)/:rest+/",
+        destination: "/:first/:rest+",
         statusCode: 301,
       },
     ];

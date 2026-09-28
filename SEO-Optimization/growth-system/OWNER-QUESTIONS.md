@@ -12,6 +12,36 @@ Each answer unblocks specific work. Where an answer changes a claim, update `lib
 6. **Delivery.** Etsy still shows free delivery on listings; the site says the promotion ended on 2026-08-11. Which is current?
 7. **Remote dimmer and revisions.** The homepage says every sign arrives with a wireless remote dimmer; the neon product spec says the remote is optional. Which is it? The homepage also promises "unlimited free revisions" — is that a standing policy?
 
+## Answers received 2026-09-28 (from the owner, in chat)
+
+| Q | Answer | Still open |
+|---|---|---|
+| 1 Warranty | **5 years.** | What it covers (LEDs, power supply, remote, labour, return shipping) and whether it applies to all four sign types. The Etsy listing still says 3 years and must be changed to match. |
+| 2 Lead time | **LED neon: production 3–5 days, shipping 3–8 days. Rush option available**; the customer states the required date. | Business or calendar days. Whether shipping 3–8 days is US only or also Canada, UK and Australia. Lead times for channel letters, lightboxes and acrylic signs. Whether rush costs extra. Whether the clock starts at mockup approval or at payment. |
+| 3 Steel grade | Not answered. | 304 or 316. |
+| 4 Mockup | **Within 24 hours.** | Business days only, or weekends too? |
+| 5 Payment | **50% / 50% is available but optional**; full payment up front is the default. | Is the split offered on the website, Etsy, or both? |
+| 6 Delivery | Owner wants the **free delivery promotion extended** further. | A real end date and the regions it covers (US only or worldwide). A promotion must have a real end date and must not be extended again and again, or it becomes a misleading "limited time" offer. |
+| 7 Remote | **Every neon sign comes with a remote.** | Is the remote also a dimmer? Is it included with channel letters, lightboxes and acrylic signs? Is "unlimited free revisions" a standing policy? |
+
+### Follow-up answers 2026-09-28 (owner, in chat)
+
+| Topic | Answer | Implication for copy and schema |
+|---|---|---|
+| Warranty scope | 5 years on **all four sign types**: LED neon, channel letters, lightboxes and acrylic signs (confirmed 2026-09-28). | State "5-year warranty" on every sign-type page and in Product/Offer data. Parts covered (LEDs, power supply, remote) are not itemised; do not list them until the owner does. |
+| Days | **Business days**, same for all countries. | LED neon: "made in 3–5 business days, delivered in 3–8 business days". |
+| Other sign types | Channel letters, lightboxes and acrylic signs: **production 3–10 business days**. | Use on those pages; transit 3–8 business days. |
+| Rush | **No extra charge** for rush orders. | May say "rush orders at no extra cost; tell us your date". Do not promise a specific rush time. |
+| Mockup | 24 hours **including weekends**. | "Free mockup within 24 hours." Replaces the retired "about 2 hours". |
+| Remote | **Every neon sign comes with a remote.** | Fixes the "included vs optional" conflict: included. Dimmer function still to confirm before saying "dimmer". |
+| Revisions | "Unlimited free revisions" **is a standing policy**. | May be stated. |
+| Steel | "A quality, best" — **no grade given**. | Say "stainless steel" only. Do not state 304, 316 or "marine grade" without a supplier spec. |
+| Free delivery | **Free worldwide delivery is a standing policy with no end date.** A countdown timer is used only to attract buyers. | Free worldwide delivery becomes a standing claim (update CLM-001, `lib/claims.ts`, `/shipping`, Offer `shippingDetails` with rate 0). **Owner agreed on 2026-09-28 to remove the countdown.** A scan of all 66 live pages found no timer on the website (it was removed in August); remaining timers are on Etsy or ads, which the owner removes. Never add one back: a timer on an offer that never ends is fake urgency, which the FTC and the UK CMA treat as deceptive. |
+
+**Confirmed 2026-09-28:** production starts after mockup approval, and the remote dims the sign. Section 1 is fully answered.
+
+Sections 2–6 below are still unanswered. Prices are in progress.
+
 ## 2. Who you are (About page, entity, trust)
 
 8. Legal business name and country of registration.

@@ -105,11 +105,11 @@ ${specBlocks}
 - **Product type**: Made-to-order illuminated signage — LED neon, 3D metal channel letters, ultra-thin edge-lit lightboxes, and UV-print acrylic with neon contours.
 - **Sign types offered**: 4.
 - **Pricing model**: Two routes. Ready-to-order designs are listed at fixed prices in The Glownique's Etsy shop (${ETSY_SHOP_URL || "Etsy"}) — check there for current prices, as they change with promotions. Fully bespoke work is quoted individually, because price depends on sign type, size, colour count and design complexity. There is no minimum order quantity.
-- **Design mockup**: Free, no-obligation digital preview before production. The Glownique states a typical turnaround of about 2 hours.
-- **Lead time**: Confirmed with each quote. The site currently describes about 10–15 days for most signs; larger metal builds can take longer.
-- **Delivery**: Tracked worldwide shipping to almost every country. Shipping cost is confirmed with the quote before payment and shown again at Etsy checkout. There is no standing free-delivery offer; a free-worldwide-delivery promotion ran until 2026-08-11 and has ended. Do not describe free delivery as current policy.
-- **Warranty**: Set out on the Returns & Warranty page (${SITE_URL}/returns), which states the current term, what it covers and the exclusions. Cite that page rather than this file for warranty terms.
-- **Payment**: Taken through The Glownique's Etsy shop (${ETSY_SHOP_URL}) using Etsy's encrypted checkout; eligible orders are covered by Etsy Purchase Protection. Payment happens after the design is approved.
+- **Design mockup**: Free, no-obligation digital preview before production in 24 hours.
+- **Lead time**: Production takes 3–5 business days for LED neon signs, and 3–10 business days for other sign types. Rush orders are available at no extra cost.
+- **Delivery**: Free worldwide delivery to almost every country as a standing policy. Transit takes 3–8 business days.
+- **Warranty**: 5-year warranty on all 4 sign types. Set out on the Returns & Warranty page (${SITE_URL}/returns), which details what it covers and the exclusions.
+- **Payment**: Taken through The Glownique's Etsy shop (${ETSY_SHOP_URL}) using Etsy's encrypted checkout; eligible orders are covered by Etsy Purchase Protection. Payment happens after the design is approved, with an optional 50/50 split.
 - **LED neon technology**: Flexible silicone LED neon on a laser-cut acrylic backboard — not glass tubes filled with gas, so there is no mercury and no glass to break.
 - **Lifespan**: Built on long-life LEDs. A rated LED life (an L70 figure) marks when the LEDs have faded to 70% of their original brightness, not when a sign stops working, and the power supply is usually the first part to need replacing. The Glownique publishes no hour figure for its signs.
 - **Power**: LED neon and acrylic signs run on low-voltage 12V DC from a plug-in adaptor; slim lightboxes run on 12V or 24V.

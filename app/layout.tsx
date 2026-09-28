@@ -56,7 +56,7 @@ export const metadata: Metadata = {
     siteName: "The Glownique",
     title: "Custom LED Neon Signs & Business Signage | The Glownique",
     description:
-      "Handcrafted custom neon signs, 3D channel letters & slim lightboxes. Free 1-on-1 design preview in ~2 hrs, 5-year warranty & timber-crated delivery.",
+      "Handcrafted custom neon signs, 3D channel letters & slim lightboxes. Free 1-on-1 design preview in 24h, 5-year warranty & free worldwide delivery.",
     url: "/",
     locale: "en_US",
     images: [
@@ -72,7 +72,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Custom LED Neon Signs & Business Signage | The Glownique",
     description:
-      "Handcrafted custom neon signs, 3D channel letters & slim lightboxes. Free 1-on-1 design preview in ~2 hrs, 5-year warranty & timber-crated delivery.",
+      "Handcrafted custom neon signs, 3D channel letters & slim lightboxes. Free 1-on-1 design preview in 24h, 5-year warranty & free worldwide delivery.",
     images: ["/hero/neon-sign-hero.png"],
   },
   robots: {
