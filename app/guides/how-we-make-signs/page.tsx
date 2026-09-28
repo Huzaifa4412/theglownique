@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     description:
       "Understand the manufacturing process behind commercial custom neon signs — from vintage glass blowing and gas filling to precision LED silicone and laser-cut acrylic.",
     url: "/guides/how-we-make-signs",
-    images: [{ url: "/hero/neon-sign-hero.webp", alt: &quot;how to make neon signs&quot; }],
+    images: [{ url: "/hero/neon-sign-hero.webp", alt: "How to Make Neon Signs" }],
   },
   twitter: {
     card: "summary_large_image",
@@ -74,7 +74,7 @@ export default function HowToMakeNeonSignsGuidePage() {
         itemListElement: [
           { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
           { "@type": "ListItem", position: 2, name: "Guides", item: `${SITE_URL}/guides` },
-          { "@type": "ListItem", position: 3, name: &quot;how to make neon signs&quot;, item: pageUrl },
+          { "@type": "ListItem", position: 3, name: "How to Make Neon Signs", item: pageUrl },
         ],
       },
       {
@@ -94,7 +94,7 @@ export default function HowToMakeNeonSignsGuidePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: serializeJsonLd(structuredData) }}
       />
-      <MetaGuideView guideName=&quot;how to make neon signs&quot; />
+      <MetaGuideView guideName="How to Make Neon Signs" />
       <AnnouncementBar />
       <ProductTopBar productName="manufacturing guide" />
       <main id="main-content" className="bg-white">
@@ -126,7 +126,7 @@ export default function HowToMakeNeonSignsGuidePage() {
                 The Evolution of Neon Sign Manufacturing
               </h2>
               <p className="mt-4 text-base leading-relaxed text-[#5e5862]">
-                Since its invention in the early 20th century, the neon sign has been an iconic staple of commercial advertising and interior design. However, the exact answer to &quot;how to make neon signs&quot; depends entirely on which generation of technology you are talking about.
+                Since its invention in the early 20th century, the neon sign has been an iconic staple of commercial advertising and interior design. However, the exact answer to "How to Make Neon Signs" depends entirely on which generation of technology you are talking about.
               </p>
               <p className="mt-4 text-base leading-relaxed text-[#5e5862]">
                 Today, the industry is split between two entirely different manufacturing disciplines: the century-old art of glass blowing, and the modern precision-engineering of LED silicone flex.
