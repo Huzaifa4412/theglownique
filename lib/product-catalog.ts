@@ -610,7 +610,7 @@ export const PRODUCT_PAGES: ProductPage[] = [
       {
         title: "Retail displays",
         text: "Showcase promotions and product launches with bright, space-saving signage.",
-        image: "/ultra-thin-slim-lightbox/Retail displays.jpg",
+        image: "/ultra-thin-slim-lightbox/retail-displays.jpg",
         alt: "Retail ultra-thin slim LED lightbox display",
         href: "/business-signs/retail-storefronts",
         linkLabel: "Retail storefront signs",
@@ -618,7 +618,7 @@ export const PRODUCT_PAGES: ProductPage[] = [
       {
         title: "Menu boards",
         text: "Crisp, easy-to-read menus you can update in seconds as your offer changes.",
-        image: "/ultra-thin-slim-lightbox/Menu boards.jpg",
+        image: "/ultra-thin-slim-lightbox/menu-boards.jpg",
         alt: "Illuminated slim lightbox menu board",
         href: "/business-signs/restaurant-signs",
         linkLabel: "Restaurant and café signs",
@@ -626,7 +626,7 @@ export const PRODUCT_PAGES: ProductPage[] = [
       {
         title: "Lobbies & branding",
         text: "A modern, professional way to display branding and wayfinding indoors.",
-        image: "/ultra-thin-slim-lightbox/Lobbies & branding.jpg",
+        image: "/ultra-thin-slim-lightbox/lobbies-and-branding.jpg",
         alt: "Corporate lobby slim lightbox branding sign",
         href: "/business-signs/office-signs",
         linkLabel: "Office and reception signs",
@@ -634,7 +634,7 @@ export const PRODUCT_PAGES: ProductPage[] = [
       {
         title: "Storefront windows",
         text: "High-contrast, eye-catching displays that draw foot traffic day and night.",
-        image: "/ultra-thin-slim-lightbox/Storefront windows.webp",
+        image: "/ultra-thin-slim-lightbox/storefront-windows.webp",
         alt: "Storefront window ultra-thin lightbox display",
         href: "/business-signs/open-signs",
         linkLabel: "Open signs for storefronts",
@@ -642,10 +642,10 @@ export const PRODUCT_PAGES: ProductPage[] = [
     ],
     gallery: [
       { src: "/ultra-thin-slim-lightbox/main-hero.webp", alt: "Ultra-thin slim LED lightbox transformation" },
-      { src: "/ultra-thin-slim-lightbox/Retail displays.jpg", alt: "Retail ultra-thin slim LED lightbox display" },
-      { src: "/ultra-thin-slim-lightbox/Menu boards.jpg", alt: "Illuminated slim lightbox menu board" },
-      { src: "/ultra-thin-slim-lightbox/Lobbies & branding.jpg", alt: "Corporate lobby slim lightbox branding sign" },
-      { src: "/ultra-thin-slim-lightbox/Storefront windows.webp", alt: "Storefront window ultra-thin lightbox display" },
+      { src: "/ultra-thin-slim-lightbox/retail-displays.jpg", alt: "Retail ultra-thin slim LED lightbox display" },
+      { src: "/ultra-thin-slim-lightbox/menu-boards.jpg", alt: "Illuminated slim lightbox menu board" },
+      { src: "/ultra-thin-slim-lightbox/lobbies-and-branding.jpg", alt: "Corporate lobby slim lightbox branding sign" },
+      { src: "/ultra-thin-slim-lightbox/storefront-windows.webp", alt: "Storefront window ultra-thin lightbox display" },
     ],
     // Provenance of these images is unconfirmed (OWNER-QUESTIONS.md), so the
     // heading describes settings rather than claiming finished installations.
