@@ -41,13 +41,15 @@ export function PostHogProvider({ children }: { children: React.ReactNode }) {
 
     if (!token) return;
 
+    const isMobile = window.innerWidth < 768;
+
     posthog.init(token, {
       api_host: "/ingest",
       ui_host: "https://us.posthog.com",
       capture_pageview: false, // Handled by PostHogPageView to support SPA route changes
       capture_pageleave: true,
-      autocapture: true,
-      disable_session_recording: false,
+      autocapture: !isMobile, // Defer autocapture (dead-clicks etc) on mobile
+      disable_session_recording: isMobile, // Defer session recording on mobile
       capture_exceptions: true,
       capture_performance: true,
       person_profiles: "identified_only",
@@ -58,6 +60,21 @@ export function PostHogProvider({ children }: { children: React.ReactNode }) {
         },
       },
     });
+
+    // If mobile, we can defer starting these heavy features until the user interacts
+    if (isMobile) {
+      const startHeavyFeatures = () => {
+        posthog.startSessionRecording();
+        // PostHog doesn't have a public startAutocapture, but session recording is the main weight.
+        window.removeEventListener("scroll", startHeavyFeatures);
+        window.removeEventListener("touchstart", startHeavyFeatures);
+        window.removeEventListener("click", startHeavyFeatures);
+      };
+      
+      window.addEventListener("scroll", startHeavyFeatures, { once: true, passive: true });
+      window.addEventListener("touchstart", startHeavyFeatures, { once: true, passive: true });
+      window.addEventListener("click", startHeavyFeatures, { once: true, passive: true });
+    }
   }, []);
 
   return (
