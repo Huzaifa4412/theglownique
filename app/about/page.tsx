@@ -113,7 +113,7 @@ export default function AboutPage() {
               About The Glownique
             </h1>
             <p className="mt-5 text-lg leading-relaxed text-[#1e1a22]">
-              The Glownique designs and makes custom illuminated signs to order: LED neon signs, 3D metal
+              The Glownique [OWNER: Insert your legal business name, registration country, and founding year here] designs and makes custom illuminated signs to order: LED neon signs, 3D metal
               channel letters, slim LED lightboxes and UV-printed acrylic logo signs. Every order starts
               with a free design mockup, is quoted on WhatsApp and is paid through our Etsy shop once you
               have approved the design.
@@ -127,7 +127,7 @@ export default function AboutPage() {
               What we make
             </h2>
             <p className="mt-3 leading-relaxed text-[#5e5862]">
-              Four kinds of sign, each made to order in the size, colours and wording you choose. Our
+              Four kinds of sign, each made to order in the size, colours and wording you choose. [OWNER: Insert where signs are designed and fabricated, and team member names/roles if desired]. Our
               neon is LED neon, not glass.
             </p>
             <ul className="mt-6 grid gap-4 sm:grid-cols-2">

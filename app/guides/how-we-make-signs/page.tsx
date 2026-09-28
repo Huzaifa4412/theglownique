@@ -14,14 +14,14 @@ export const metadata: Metadata = {
   title: "How to Make Neon Signs: Glass vs LED",
   description:
     "Learn how custom neon signs are made. We compare traditional glass blowing techniques against the modern, shatterproof LED silicone manufacturing process.",
-  alternates: { canonical: "/guides/how-to-make-neon-signs" },
+  alternates: { canonical: "/guides/how-we-make-signs" },
   openGraph: {
     type: "article",
     siteName: "The Glownique",
     title: "How to Make Neon Signs: Glass vs LED | The Glownique",
     description:
       "Understand the manufacturing process behind commercial custom neon signs — from vintage glass blowing and gas filling to precision LED silicone and laser-cut acrylic.",
-    url: "/guides/how-to-make-neon-signs",
+    url: "/guides/how-we-make-signs",
     images: [{ url: "/hero/neon-sign-hero.webp", alt: "How to Make Neon Signs" }],
   },
   twitter: {
@@ -53,7 +53,7 @@ const guideFaqs = [
 ];
 
 export default function HowToMakeNeonSignsGuidePage() {
-  const pageUrl = `${SITE_URL}/guides/how-to-make-neon-signs`;
+  const pageUrl = `${SITE_URL}/guides/how-we-make-signs`;
 
   const structuredData = {
     "@context": "https://schema.org",
