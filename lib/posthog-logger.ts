@@ -2,7 +2,7 @@ import { SeverityNumber } from "@opentelemetry/api-logs";
 import type { Logger } from "@opentelemetry/api-logs";
 
 declare global {
-  // eslint-disable-next-line no-var
+   
   var __posthogLogger: Logger | undefined;
 }
 

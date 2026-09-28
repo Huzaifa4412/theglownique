@@ -21,7 +21,7 @@ export default function ProjectsPage() {
               Our Projects
             </h1>
             <p className="mx-auto mt-4 max-w-2xl text-lg text-[#5e5862]">
-              Explore some of our favorite custom signs we've crafted for brands and events worldwide.
+              Explore some of our favorite custom signs we&apos;ve crafted for brands and events worldwide.
             </p>
           </div>
 

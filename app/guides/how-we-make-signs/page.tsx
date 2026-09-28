@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
+
 
 import { MetaGuideView } from "@/components/analytics/meta-view-trackers";
 import { AnnouncementBar } from "@/components/storefront/sections/announcement-bar";
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     description:
       "Understand the manufacturing process behind commercial custom neon signs — from vintage glass blowing and gas filling to precision LED silicone and laser-cut acrylic.",
     url: "/guides/how-we-make-signs",
-    images: [{ url: "/hero/neon-sign-hero.webp", alt: "How to Make Neon Signs" }],
+    images: [{ url: "/hero/neon-sign-hero.webp", alt: &quot;how to make neon signs&quot; }],
   },
   twitter: {
     card: "summary_large_image",
@@ -74,7 +74,7 @@ export default function HowToMakeNeonSignsGuidePage() {
         itemListElement: [
           { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
           { "@type": "ListItem", position: 2, name: "Guides", item: `${SITE_URL}/guides` },
-          { "@type": "ListItem", position: 3, name: "How to Make Neon Signs", item: pageUrl },
+          { "@type": "ListItem", position: 3, name: &quot;how to make neon signs&quot;, item: pageUrl },
         ],
       },
       {
@@ -94,7 +94,7 @@ export default function HowToMakeNeonSignsGuidePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: serializeJsonLd(structuredData) }}
       />
-      <MetaGuideView guideName="How to Make Neon Signs" />
+      <MetaGuideView guideName=&quot;how to make neon signs&quot; />
       <AnnouncementBar />
       <ProductTopBar productName="manufacturing guide" />
       <main id="main-content" className="bg-white">
@@ -126,7 +126,7 @@ export default function HowToMakeNeonSignsGuidePage() {
                 The Evolution of Neon Sign Manufacturing
               </h2>
               <p className="mt-4 text-base leading-relaxed text-[#5e5862]">
-                Since its invention in the early 20th century, the neon sign has been an iconic staple of commercial advertising and interior design. However, the exact answer to "how to make neon signs" depends entirely on which generation of technology you are talking about.
+                Since its invention in the early 20th century, the neon sign has been an iconic staple of commercial advertising and interior design. However, the exact answer to &quot;how to make neon signs&quot; depends entirely on which generation of technology you are talking about.
               </p>
               <p className="mt-4 text-base leading-relaxed text-[#5e5862]">
                 Today, the industry is split between two entirely different manufacturing disciplines: the century-old art of glass blowing, and the modern precision-engineering of LED silicone flex.
@@ -143,7 +143,7 @@ export default function HowToMakeNeonSignsGuidePage() {
                   <li><strong>Bending the Glass:</strong> A craftsperson heats hollow glass tubes over an open flame burner until the glass softens. Using a traced pattern underneath, they rapidly bend the tube by hand. Because glass cools quickly, this step requires extreme speed and muscle memory.</li>
                   <li><strong>Splicing and Electrodes:</strong> Once the letters are shaped, electrodes are fused to each end of the tube.</li>
                   <li><strong>Bombarding and Gas Filling:</strong> The tube is connected to a vacuum pump to remove all air and impurities. It is then injected with a noble gas (Neon for a red glow, Argon mixed with a drop of mercury for blue/other colors).</li>
-                  <li><strong>High-Voltage Aging:</strong> Finally, a high-voltage transformer (operating between 3,000V and 15,000V) is attached to ignite the gas and "burn in" the tube, stabilizing the glow.</li>
+                  <li><strong>High-Voltage Aging:</strong> Finally, a high-voltage transformer (operating between 3,000V and 15,000V) is attached to ignite the gas and &quot;burn in&quot; the tube, stabilizing the glow.</li>
                 </ul>
               </div>
 
