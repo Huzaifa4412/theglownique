@@ -1,4 +1,3 @@
-import type { CSSProperties } from "react";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -8,7 +7,13 @@ import "./blog-hub.css";
 
 import { MetaViewCategory } from "@/components/analytics/meta-view-trackers";
 import { BlogNewsletter } from "@/components/blog/blog-newsletter";
-import { SanityImage } from "@/components/blog/sanity-image";
+import {
+  CoverStory,
+  RailStory,
+  ShelfCard,
+  accentFor,
+  accentStyle,
+} from "@/components/blog/journal-cards";
 import { ShelfScroller } from "@/components/blog/shelf-scroller";
 import { AnnouncementBar } from "@/components/storefront/sections/announcement-bar";
 import { ProductTopBar } from "@/components/product/product-top-bar";
@@ -17,7 +22,6 @@ import {
   BLOG_SETTINGS_FALLBACK,
   type BlogCategory,
   type BlogPostCard,
-  displayDate,
   getBlogSettings,
   getCategories,
   getPosts,
@@ -65,26 +69,6 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 /**
- * Each category glows in its own colour, so a reader learns the shelves by
- * colour as well as by name. An unknown category falls back to brand pink.
- */
-const CATEGORY_ACCENTS: Record<string, string> = {
-  "ideas-and-inspiration": "#ffb547",
-  "colour-and-design": "#f40b68",
-  "care-and-setup": "#2fd4ff",
-  "sign-basics": "#7c4dff",
-  trends: "#3ee08f",
-};
-
-function accentFor(slug: string | undefined): string {
-  return (slug && CATEGORY_ACCENTS[slug]) || "#f40b68";
-}
-
-function accentStyle(accent: string): CSSProperties {
-  return { "--accent": accent } as CSSProperties;
-}
-
-/**
  * Where the hub sends people who came for ideas and left with a decision to
  * make. This is the internal-link contract at hub level: /blog owns awareness,
  * and it must hand off to the clusters that own everything downstream of it
@@ -120,107 +104,37 @@ const NEXT_STEPS = [
   },
 ] as const;
 
-function PostMeta({ post }: { post: BlogPostCard }) {
-  const { label, iso, wasUpdated } = displayDate(post);
-  return (
-    <p className="bhub-meta">
-      <time dateTime={iso}>
-        {wasUpdated ? "Updated " : ""}
-        {label}
-      </time>
-      <span aria-hidden="true">·</span>
-      <span>{post.readingMinutes} min read</span>
-    </p>
-  );
-}
+/** A category needs this many posts to fill a shelf of its own. */
+const MIN_SHELF = 3;
 
-/** The cover story: the biggest image on the page, title set over it. */
-function CoverStory({ post }: { post: BlogPostCard }) {
-  return (
-    <article className="bhub-cover" style={accentStyle(accentFor(post.category?.slug))}>
-      <div className="bhub-cover__media">
-        <SanityImage image={post.coverImage} sizes="(min-width: 1024px) 760px, 100vw" fill priority />
-      </div>
-      <div className="bhub-cover__body">
-        <p className="bhub-chips">
-          <span className="bhub-chip bhub-chip--solid">Cover story</span>
-          {post.category ? <span className="bhub-chip">{post.category.title}</span> : null}
-        </p>
-        <h2 className="bhub-cover__title">
-          <Link href={`/blog/${post.slug}`} className="bhub-stretch">
-            {post.title}
-          </Link>
-        </h2>
-        <p className="bhub-cover__summary">{post.summary}</p>
-        <PostMeta post={post} />
-      </div>
-    </article>
-  );
-}
-
-/** A small row in the hero rail: thumbnail beside the title. */
-function RailStory({ post }: { post: BlogPostCard }) {
-  return (
-    <li>
-      <article className="bhub-rail__item" style={accentStyle(accentFor(post.category?.slug))}>
-        <div className="bhub-rail__thumb">
-          <SanityImage image={post.coverImage} alt="" sizes="120px" fill />
-        </div>
-        <div>
-          {post.category ? <p className="bhub-rail__cat">{post.category.title}</p> : null}
-          <h3 className="bhub-rail__title">
-            <Link href={`/blog/${post.slug}`} className="bhub-stretch">
-              {post.title}
-            </Link>
-          </h3>
-          <PostMeta post={post} />
-        </div>
-      </article>
-    </li>
-  );
-}
-
-/** A shelf card: the cover photo is the card, the title sits on it. */
-function ShelfCard({ post, accent }: { post: BlogPostCard; accent: string }) {
-  return (
-    <li className="bhub-shelf__item">
-      <article className="bhub-card" style={accentStyle(accent)}>
-        <div className="bhub-card__media">
-          <SanityImage
-            image={post.coverImage}
-            sizes="(min-width: 1024px) 300px, (min-width: 640px) 40vw, 78vw"
-            fill
-          />
-        </div>
-        <div className="bhub-card__body">
-          <h3 className="bhub-card__title">
-            <Link href={`/blog/${post.slug}`} className="bhub-stretch">
-              {post.title}
-            </Link>
-          </h3>
-          <PostMeta post={post} />
-        </div>
-      </article>
-    </li>
-  );
-}
+/** Desktop fits about this many cards before the row has to scroll. */
+const CARDS_IN_VIEW = 4;
 
 /**
- * Every post appears on its category's shelf, newest first. Shelves are ordered
- * by how many posts they hold, so the fullest shelf leads. Posts with no
- * category get their own shelf at the end rather than disappearing.
+ * Every post appears on exactly one shelf, newest first. A category with enough
+ * posts gets its own shelf, fullest first. Smaller categories, and any post
+ * whose category is missing, share a final mixed shelf, so a category with one
+ * post never leaves a mostly empty row and no post can disappear.
  */
 function buildShelves(categories: BlogCategory[], posts: BlogPostCard[]) {
-  const shelves = categories
+  const withPosts = categories
     .map((category) => ({
       category,
       posts: posts.filter((post) => post.category?.slug === category.slug),
     }))
-    .filter((shelf) => shelf.posts.length > 0)
-    .sort((a, b) => b.posts.length - a.posts.length);
+    .filter((shelf) => shelf.posts.length > 0);
 
-  const uncategorised = posts.filter((post) => !post.category);
-  return { shelves, uncategorised };
+  const shelves = withPosts
+    .filter((shelf) => shelf.posts.length >= MIN_SHELF)
+    .sort((a, b) => b.posts.length - a.posts.length);
+  const onShelf = new Set(shelves.flatMap((shelf) => shelf.posts.map((post) => post._id)));
+
+  const mixedCategories = withPosts
+    .filter((shelf) => shelf.posts.length < MIN_SHELF)
+    .map((shelf) => shelf.category);
+  const mixed = posts.filter((post) => !onShelf.has(post._id));
+
+  return { shelves, mixed, mixedCategories };
 }
 
 export default async function BlogHubPage() {
@@ -239,7 +153,7 @@ export default async function BlogHubPage() {
   // that will one day look broken.
   const featured = posts.find((post) => post.featured) ?? posts[0] ?? null;
   const rail = posts.filter((post) => post._id !== featured?._id).slice(0, 3);
-  const { shelves, uncategorised } = buildShelves(categories, posts);
+  const { shelves, mixed, mixedCategories } = buildShelves(categories, posts);
 
   const structuredData = {
     "@context": "https://schema.org",
@@ -382,7 +296,10 @@ export default async function BlogHubPage() {
                     <span aria-hidden="true">→</span>
                   </Link>
                 </header>
-                <ShelfScroller label={`${category.title} articles`}>
+                <ShelfScroller
+                  label={`${category.title} articles`}
+                  controls={shelfPosts.length > CARDS_IN_VIEW}
+                >
                   {shelfPosts.map((post) => (
                     <ShelfCard key={post._id} post={post} accent={accent} />
                   ))}
@@ -392,15 +309,44 @@ export default async function BlogHubPage() {
           );
         })}
 
-        {uncategorised.length > 0 ? (
-          <section className="bhub-section" aria-labelledby="shelf-more">
+        {mixed.length > 0 ? (
+          <section
+            className={`bhub-section${shelves.length % 2 === 1 ? " bhub-section--tint" : ""}`}
+            aria-labelledby="shelf-more"
+          >
             <div className="bhub-shell">
               <header className="bhub-section__head">
-                <h2 id="shelf-more">More articles</h2>
+                <div>
+                  <p className="bhub-section__eyebrow">
+                    <span className="bhub-dot" aria-hidden="true" />
+                    {mixed.length} {mixed.length === 1 ? "article" : "articles"}
+                  </p>
+                  <h2 id="shelf-more">More from the journal</h2>
+                </div>
+                {mixedCategories.length > 0 ? (
+                  <nav className="bhub-seeall-group" aria-label="More categories">
+                    {mixedCategories.map((category) => (
+                      <Link
+                        key={category.slug}
+                        href={`/blog/category/${category.slug}`}
+                        className="bhub-seeall"
+                        style={accentStyle(accentFor(category.slug))}
+                      >
+                        <span className="bhub-dot" aria-hidden="true" />
+                        {category.title} <span aria-hidden="true">→</span>
+                      </Link>
+                    ))}
+                  </nav>
+                ) : null}
               </header>
-              <ShelfScroller label="More articles">
-                {uncategorised.map((post) => (
-                  <ShelfCard key={post._id} post={post} accent={accentFor(undefined)} />
+              <ShelfScroller label="More articles" controls={mixed.length > CARDS_IN_VIEW}>
+                {mixed.map((post) => (
+                  <ShelfCard
+                    key={post._id}
+                    post={post}
+                    accent={accentFor(post.category?.slug)}
+                    showCategory
+                  />
                 ))}
               </ShelfScroller>
             </div>

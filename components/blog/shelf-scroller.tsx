@@ -10,29 +10,55 @@ import { useRef, type ReactNode } from "react";
  * convenience for mouse users, which is why they are hidden from assistive
  * technology: the cards stay in normal tab order either way.
  */
-export function ShelfScroller({ label, children }: { label: string; children: ReactNode }) {
+export function ShelfScroller({
+  label,
+  controls = true,
+  children,
+}: {
+  label: string;
+  /** Off when every card already fits, so the arrows never do nothing. */
+  controls?: boolean;
+  children: ReactNode;
+}) {
   const listRef = useRef<HTMLUListElement>(null);
 
   const scroll = (direction: 1 | -1) => {
     const list = listRef.current;
     if (!list) return;
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    list.scrollBy({ left: direction * list.clientWidth * 0.85, behavior: reduce ? "auto" : "smooth" });
+    const reduce = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+    list.scrollBy({
+      left: direction * list.clientWidth * 0.85,
+      behavior: reduce ? "auto" : "smooth",
+    });
   };
 
   return (
-    <div className="bhub-shelf">
+    <div className={`bhub-shelf${controls ? "" : " bhub-shelf--fit"}`}>
       <ul ref={listRef} className="bhub-shelf__list" aria-label={label}>
         {children}
       </ul>
-      <div className="bhub-shelf__controls" aria-hidden="true">
-        <button type="button" tabIndex={-1} onClick={() => scroll(-1)} className="bhub-shelf__btn">
-          ←
-        </button>
-        <button type="button" tabIndex={-1} onClick={() => scroll(1)} className="bhub-shelf__btn">
-          →
-        </button>
-      </div>
+      {controls ? (
+        <div className="bhub-shelf__controls" aria-hidden="true">
+          <button
+            type="button"
+            tabIndex={-1}
+            onClick={() => scroll(-1)}
+            className="bhub-shelf__btn"
+          >
+            ←
+          </button>
+          <button
+            type="button"
+            tabIndex={-1}
+            onClick={() => scroll(1)}
+            className="bhub-shelf__btn"
+          >
+            →
+          </button>
+        </div>
+      ) : null}
     </div>
   );
 }
