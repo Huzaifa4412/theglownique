@@ -33,6 +33,7 @@ export default function TermsPage() {
       eyebrow="The agreement"
       title="Terms of Sale"
       intro="What you can expect from us, and what we need from you, when ordering a made-to-order sign."
+      lastUpdated="2026-09-29"
     >
       <h2>Quotes are estimates until confirmed</h2>
       <p>
@@ -88,8 +89,9 @@ export default function TermsPage() {
 
       <h2>Production and delivery</h2>
       <p>
-        Most signs are handcrafted, light-tested and quality-checked in around 10–15 days, then sent
-        with tracked delivery. These are genuine estimates rather than guarantees — handmade work
+        Production starts when you approve your design mockup. LED neon signs are handcrafted,
+        light-tested and quality-checked in 3–5 business days, and channel letters, lightboxes and
+        acrylic signs in 3–10 business days. Delivery then takes 3–8 business days, with tracking. These are genuine estimates rather than guarantees — handmade work
         occasionally takes longer, and couriers are outside our control. If you&apos;re working to a
         deadline, tell us before you order and we&apos;ll say honestly whether it&apos;s achievable.
       </p>

@@ -213,7 +213,7 @@ export default function CustomBusinessSignCostGuidePage() {
                   Get an Itemized Quote for Your Business Sign
                 </h3>
                 <p className="mt-2 text-sm text-[#5e5862]">
-                  Share your logo or design idea with our team and receive a free digital mockup and itemized price breakdown within 1–2 hours.
+                  Share your logo or design idea with our team and receive a free digital mockup and itemized price breakdown within 24 hours.
                 </p>
                 <div className="mt-6">
                   <CustomQuoteButton

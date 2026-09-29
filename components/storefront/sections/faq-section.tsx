@@ -26,7 +26,7 @@ const faqs = [
   },
   {
     q: "How long does custom sign fabrication and delivery take?",
-    a: "Custom signs are handcrafted in approximately 10–15 days and shipped with tracked international delivery. If you have an upcoming event, wedding or grand opening deadline, let us know and we will do our best to accommodate your schedule.",
+    a: "LED neon signs are made in 3–5 business days after you approve your free mockup, and channel letters, lightboxes and acrylic signs in 3–10 business days. Delivery then takes 3–8 business days, free and tracked. Rush orders cost nothing extra: if you have a wedding, event or opening date, tell us in your first message.",
   },
   {
     q: "How much does a custom neon sign or business sign cost?",

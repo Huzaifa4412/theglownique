@@ -294,7 +294,7 @@ export default function BacklitLobbySignsPage() {
               Bring Your Corporate Identity to Life
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-base text-[#a0a0b0]">
-              Send your logo file (AI, EPS, SVG or PDF) and a photo of your reception wall. We’ll generate a 1:1 scale architectural mockup with mounting specs and hardware recommendations within 2 hours.
+              Send your logo file (AI, EPS, SVG or PDF) and a photo of your reception wall. We’ll generate a 1:1 scale architectural mockup with mounting specs and hardware recommendations within 24 hours.
             </p>
             <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row sm:items-center">
               <CustomQuoteButton

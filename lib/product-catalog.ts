@@ -217,7 +217,7 @@ export const PRODUCT_PAGES: ProductPage[] = [
       { label: "Power", value: "12V low-voltage plug-and-play adaptor" },
       { label: "LED life", value: "Long-life LEDs, covered by our warranty" },
       { label: "Colours", value: "13 solid colours, plus RGB colour-changing" },
-      { label: "Dimming", value: "Optional wireless RF remote (1–100%)" },
+      { label: "Dimming", value: "Wireless RF dimmer remote included (1–100%)" },
       { label: "Mounting", value: "Wall standoffs or hanging kit — ready to hang" },
       { label: "Use", value: "Indoor as standard; outdoor build available" },
       { label: "Sizes", value: "Fully custom, from ~30 cm to several metres" },
@@ -319,6 +319,10 @@ export const PRODUCT_PAGES: ProductPage[] = [
     ],
     faqs: [
       {
+        q: "How long does it take to make and deliver?",
+        a: "The free mockup comes back within 24 hours. Once you approve it, the sign takes 3–5 business days to make and 3–8 business days to deliver, free and tracked. Rush orders cost nothing extra: tell us your date when you ask for the mockup.",
+      },
+      {
         q: "How long do LED neon signs last?",
         a: "It is built on long-life LEDs, and a well-made sign gives years of everyday use. A rated LED life describes when the LEDs fade to 70% of their original brightness, not when the sign stops working, and the power supply is usually the first part to wear out — which is why every sign carries our warranty.",
       },
@@ -332,7 +336,7 @@ export const PRODUCT_PAGES: ProductPage[] = [
       },
       {
         q: "Can I dim it or change the colour?",
-        a: "Yes — add a wireless RF remote for 1–100% dimming, or choose our RGB option to switch colours, pulse or flash whenever you like.",
+        a: "Yes — every neon sign comes with a wireless RF remote for 1–100% dimming, or choose our RGB option to switch colours, pulse or flash whenever you like.",
       },
       {
         q: "Can I use it outdoors?",
@@ -502,6 +506,10 @@ export const PRODUCT_PAGES: ProductPage[] = [
     galleryNote: "Some images are design visualisations of finishes and lighting styles.",
     faqs: [
       {
+        q: "How long does it take to make and deliver?",
+        a: "The free mockup comes back within 24 hours. Once you approve it, the sign takes 3–10 business days to make and 3–8 business days to deliver, free and tracked. Rush orders cost nothing extra: tell us your date when you ask for the mockup.",
+      },
+      {
         q: "What's the difference between frontlit, backlit and dual-lit?",
         a: "Frontlit letters glow from the face for bold readability. Halo (backlit) letters throw a soft glow onto the wall behind for a premium, floating look. Dual-lit combines both for maximum day-and-night impact.",
       },
@@ -652,6 +660,10 @@ export const PRODUCT_PAGES: ProductPage[] = [
     galleryHeading: "Slim lightboxes in context",
     faqs: [
       {
+        q: "How long does it take to make and deliver?",
+        a: "The free mockup comes back within 24 hours. Once you approve it, the sign takes 3–10 business days to make and 3–8 business days to deliver, free and tracked. Rush orders cost nothing extra: tell us your date when you ask for the mockup.",
+      },
+      {
         q: "How thin is an ultra-slim lightbox?",
         a: "Our slim lightboxes are under an inch deep (around 25 mm) — a fraction of a traditional lightbox — so they sit almost flush to the wall for a clean, modern look.",
       },
@@ -795,6 +807,10 @@ export const PRODUCT_PAGES: ProductPage[] = [
     ],
     galleryHeading: "Acrylic logo signs in context",
     faqs: [
+      {
+        q: "How long does it take to make and deliver?",
+        a: "The free mockup comes back within 24 hours. Once you approve it, the sign takes 3–10 business days to make and 3–8 business days to deliver, free and tracked. Rush orders cost nothing extra: tell us your date when you ask for the mockup.",
+      },
       {
         q: "What is a UV-print acrylic neon sign?",
         a: "It combines high-definition UV printing — vivid, full-colour artwork cured directly onto acrylic — with glowing LED neon contours, giving you rich detail and the glow of neon in one piece.",

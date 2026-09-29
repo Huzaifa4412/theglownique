@@ -12,6 +12,8 @@ type LegalPageProps = {
   children: ReactNode;
   /** Policy pages show a last-updated date; informational ones (Contact) don't. */
   showLastUpdated?: boolean;
+  /** ISO date for a page revised after the shared LEGAL.lastUpdated date. */
+  lastUpdated?: string;
 };
 
 /**
@@ -24,6 +26,7 @@ export function LegalPage({
   intro,
   children,
   showLastUpdated = true,
+  lastUpdated,
 }: LegalPageProps) {
   return (
     <>
@@ -41,7 +44,7 @@ export function LegalPage({
             <p className="mt-4 max-w-2xl text-base leading-relaxed text-[#5e5862]">{intro}</p>
             {showLastUpdated && (
               <p className="mt-6 text-xs font-semibold uppercase tracking-widest text-[#6b6570]">
-                Last updated {formattedLastUpdated()}
+                Last updated {formattedLastUpdated(lastUpdated)}
               </p>
             )}
           </div>

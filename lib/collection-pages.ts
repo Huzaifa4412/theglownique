@@ -111,6 +111,11 @@ const COLLECTION_CONTENT: readonly CollectionContent[] = [
         href: "/guides/custom-business-sign-cost",
         description: "The drivers behind every quote, and why two signs the same size can price differently.",
       },
+      {
+        label: "When to order your wedding sign",
+        href: "/shipping",
+        description: "A free mockup within 24 hours, then 6–13 business days once you approve — and how to count back from the date.",
+      },
     ],
     gallery: [
       img(
@@ -902,6 +907,11 @@ const COLLECTION_CONTENT: readonly CollectionContent[] = [
         label: "What a custom sign costs",
         href: "/guides/custom-business-sign-cost",
         description: "The drivers behind every quote, including a battery pack.",
+      },
+      {
+        label: "How long a custom sign takes",
+        href: "/shipping",
+        description: "A free mockup within 24 hours, then 6–13 business days once you approve — and how to count back from the party.",
       },
     ],
     gallery: [

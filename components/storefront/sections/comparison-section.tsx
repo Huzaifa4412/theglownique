@@ -4,8 +4,8 @@ import { PremiumAccentText } from "@/components/ui/premium-accent-text";
 import { DELIVERY } from "@/lib/claims";
 
 const comparisonRows = [
-  ["1-on-1 Design Mockup", "Human designer proof in 1–2 hrs", "Automated bot or days of waiting"],
-  ["Handcrafted Build Time", "10–15 days honest dispatch", "Vague estimates or drop-shipped weeks"],
+  ["1-on-1 Design Mockup", "Human designer proof within 24 hrs", "Automated bot or days of waiting"],
+  ["Handcrafted Build Time", "3–5 business days for LED neon", "Vague estimates or drop-shipped weeks"],
   ["Direct Artisan Support", "7 days/week via WhatsApp & Etsy", "Slow automated ticket queues"],
 ] as const;
 
