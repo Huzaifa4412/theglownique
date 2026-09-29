@@ -20,7 +20,7 @@ export const guide: Guide = {
     "what does IP67 mean",
   ],
   image: {
-    src: "/ultra-thin-slim-lightbox/Storefront windows.webp",
+    src: "/ultra-thin-slim-lightbox/storefront-windows.webp",
     alt: "Round sign with a glowing white ring reading Cielo cocina fusión, mounted on metal brackets on an exterior wall at night",
     width: 1200,
     height: 1600,

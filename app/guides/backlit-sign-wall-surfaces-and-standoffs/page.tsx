@@ -21,14 +21,14 @@ export const metadata: Metadata = {
     description:
       "Technical architectural guide explaining how wall materials, texture, paint sheen, and standoff depth control halo illumination on backlit signs.",
     url: "/guides/backlit-sign-wall-surfaces-and-standoffs",
-    images: [{ url: "/3d-metallic-neon-sign/corporte/056b3189-6a8c-482a-8334-53ded7aff3e1.webp", alt: "Backlit Sign Wall Surfaces and Standoffs Guide" }],
+    images: [{ url: "/3d-metallic-neon-sign/corporte/custom-3d-metal-channel-letter-sign-office.webp", alt: "Backlit Sign Wall Surfaces and Standoffs Guide" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Backlit Sign Wall Surfaces & Standoff Guide | The Glownique",
     description:
       "Architectural guide to wall materials, standoffs, and halo light dispersion for backlit business signs.",
-    images: ["/3d-metallic-neon-sign/corporte/056b3189-6a8c-482a-8334-53ded7aff3e1.webp"],
+    images: ["/3d-metallic-neon-sign/corporte/custom-3d-metal-channel-letter-sign-office.webp"],
   },
 };
 

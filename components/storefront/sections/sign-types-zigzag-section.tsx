@@ -82,7 +82,7 @@ const ROWS: readonly Row[] = [
       { src: "/ultra-thin-slim-lightbox/IMG-20260803-WA0010.webp", alt: "Backlit LED lightbox sign of a blue Charlotte Hornets Dell Curry number 30 jersey" },
       { src: "/ultra-thin-slim-lightbox/IMG-20260803-WA0004.jpg", alt: "Shaped LED lightbox sign reading Sinners Tattoo in white letters with a red cross, lit against a white wall" },
       { src: "/ultra-thin-slim-lightbox/Retail displays.jpg", alt: "Three slim LED lightbox posters for coffee, a burger and a fashion sale on a shop wall" },
-      { src: "/ultra-thin-slim-lightbox/Menu boards.jpg", alt: "Two illuminated slim lightbox menu boards on a restaurant wall" },
+      { src: "/ultra-thin-slim-lightbox/menu-boards.jpg", alt: "Two illuminated slim lightbox menu boards on a restaurant wall" },
     ],
     caption: "Under an inch deep, lit edge to edge",
   },

@@ -22,14 +22,14 @@ export const metadata: Metadata = {
     description:
       "Commercial 3D metal backlit signs and halo-lit channel letters for storefronts, reception walls, and corporate offices. 12V low-voltage with 5-year warranty.",
     url: "/business-signs/backlit-signs",
-    images: [{ url: "/3d-metallic-neon-sign/corporte/056b3189-6a8c-482a-8334-53ded7aff3e1.webp", alt: "Custom Backlit Signs for Business" }],
+    images: [{ url: "/3d-metallic-neon-sign/corporte/custom-3d-metal-channel-letter-sign-office.webp", alt: "Custom Backlit Signs for Business" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Custom Backlit Signs for Business | The Glownique",
     description:
       "Handcrafted 3D stainless steel backlit signage and halo-lit letters for businesses.",
-    images: ["/3d-metallic-neon-sign/corporte/056b3189-6a8c-482a-8334-53ded7aff3e1.webp"],
+    images: ["/3d-metallic-neon-sign/corporte/custom-3d-metal-channel-letter-sign-office.webp"],
   },
 };
 
@@ -68,7 +68,7 @@ export default function BacklitSignsPage() {
         name: "Custom 3D Metal Backlit Signs",
         description:
           "Custom fabricated 3D stainless steel backlit signage and halo-lit channel letters engineered for corporate lobbies, boutique storefronts, and architectural walls.",
-        image: `${SITE_URL}/3d-metallic-neon-sign/corporte/056b3189-6a8c-482a-8334-53ded7aff3e1.webp`,
+        image: `${SITE_URL}/3d-metallic-neon-sign/corporte/custom-3d-metal-channel-letter-sign-office.webp`,
         category: "Commercial Illuminated Signage",
         brand: { "@type": "Brand", name: "The Glownique" },
         url: pageUrl,
@@ -152,7 +152,7 @@ export default function BacklitSignsPage() {
               <div className="relative lg:col-span-5">
                 <div className="relative mx-auto aspect-square w-full max-w-[460px] overflow-hidden rounded-2xl border border-white/15 shadow-2xl shadow-black/60">
                   <Image
-                    src="/3d-metallic-neon-sign/corporte/056b3189-6a8c-482a-8334-53ded7aff3e1.webp"
+                    src="/3d-metallic-neon-sign/corporte/custom-3d-metal-channel-letter-sign-office.webp"
                     alt="Custom halo-lit 3D metal backlit sign on an office reception wall"
                     fill
                     priority

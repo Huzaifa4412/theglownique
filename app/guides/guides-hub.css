@@ -1,0 +1,743 @@
+/*
+ * /guides hub. Scoped under .ghub so nothing leaks into the guide articles.
+ *
+ * The page's one idea is "lights on": the hero headline ignites, the four
+ * sign-type photos switch on one after another, and every guide photo brightens
+ * from dim to lit as it scrolls into view. Browsers without scroll-driven
+ * animations, and anyone who prefers reduced motion, simply see the lit state.
+ */
+
+.ghub {
+  --night: #0b0910;
+  --night-2: #16111d;
+  --ink: #1e1a22;
+  --muted: #5e5862;
+  --line: #eadfe4;
+  --blush: #fdf7f9;
+  --pink: #f40b68;
+  --pink-ink: #ce0754;
+  --violet: #7c4dff;
+  --amber: #ffb547;
+  color: var(--ink);
+  background: #fff;
+}
+
+.ghub :focus-visible {
+  outline: 2px solid var(--pink);
+  outline-offset: 3px;
+  border-radius: 8px;
+}
+
+.ghub-shell {
+  width: min(1240px, 100% - 32px);
+  margin-inline: auto;
+}
+
+@media (min-width: 640px) {
+  .ghub-shell {
+    width: min(1240px, 100% - 48px);
+  }
+}
+
+/* ── Hero: the dark wall ──────────────────────────────────────────────────── */
+
+.ghub-hero {
+  position: relative;
+  overflow: hidden;
+  background: var(--night);
+  color: #fff;
+  isolation: isolate;
+}
+
+.ghub-hero::before {
+  /* plaster-like grain so the wall reads as a surface, not a flat fill */
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image: url("/noise.webp");
+  opacity: 0.08;
+  mix-blend-mode: screen;
+}
+
+.ghub-hero__glow {
+  position: absolute;
+  z-index: -1;
+  border-radius: 50%;
+  filter: blur(120px);
+  pointer-events: none;
+}
+
+.ghub-hero__glow--pink {
+  width: 520px;
+  height: 520px;
+  top: -200px;
+  left: -160px;
+  background: var(--pink);
+  opacity: 0.3;
+}
+
+.ghub-hero__glow--violet {
+  width: 560px;
+  height: 560px;
+  bottom: -300px;
+  right: -120px;
+  background: var(--violet);
+  opacity: 0.26;
+}
+
+.ghub-hero__inner {
+  display: grid;
+  gap: 44px;
+  padding-block: 56px 64px;
+}
+
+@media (min-width: 1024px) {
+  .ghub-hero__inner {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: center;
+    gap: 64px;
+    padding-block: 88px 96px;
+  }
+}
+
+.ghub-crumbs {
+  display: flex;
+  gap: 8px;
+  margin: 0 0 22px;
+  padding: 0;
+  list-style: none;
+  font-size: 0.78rem;
+  color: #ffffff80;
+}
+
+.ghub-crumbs a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.ghub-crumbs a:hover,
+.ghub-crumbs [aria-current] {
+  color: #fff;
+}
+
+.ghub-eyebrow {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--pink);
+}
+
+.ghub-h1 {
+  margin: 16px 0 0;
+  font-family: var(--font-display);
+  font-size: clamp(2.3rem, 5.2vw, 4.1rem);
+  font-weight: 800;
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+
+/* The phrase that switches on. */
+.ghub-h1__lit {
+  display: inline-block;
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: #fff4f8;
+  text-shadow:
+    0 0 4px #fff,
+    0 0 14px var(--pink),
+    0 0 34px var(--pink),
+    0 0 70px color-mix(in srgb, var(--pink) 70%, transparent);
+}
+
+.ghub-lede {
+  max-width: 54ch;
+  margin: 22px 0 0;
+  font-size: 1.04rem;
+  line-height: 1.7;
+  color: #ffffffbf;
+}
+
+.ghub-jump {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 30px;
+}
+
+.ghub-jump a {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 10px 16px;
+  border: 1px solid #ffffff26;
+  border-radius: 999px;
+  background: #ffffff0a;
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: #fff;
+  text-decoration: none;
+  transition:
+    border-color 0.2s,
+    background 0.2s;
+}
+
+.ghub-jump a:hover {
+  border-color: var(--accent, var(--pink));
+  background: color-mix(in srgb, var(--accent, var(--pink)) 14%, transparent);
+}
+
+.ghub-dot {
+  width: 7px;
+  height: 7px;
+  flex: none;
+  border-radius: 50%;
+  background: var(--accent, var(--pink));
+  box-shadow: 0 0 10px var(--accent, var(--pink));
+}
+
+.ghub-facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 22px;
+  margin: 34px 0 0;
+  padding: 22px 0 0;
+  border-top: 1px solid #ffffff1a;
+  list-style: none;
+  font-size: 0.82rem;
+  color: #ffffff99;
+}
+
+.ghub-facts strong {
+  color: #fff;
+  font-weight: 800;
+}
+
+/* Four sign types, switched on one after another. */
+.ghub-mosaic {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (min-width: 640px) {
+  .ghub-mosaic {
+    gap: 16px;
+  }
+
+  .ghub-mosaic li:nth-child(even) {
+    transform: translateY(36px);
+  }
+}
+
+.ghub-tile {
+  position: relative;
+  display: block;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border: 1px solid #ffffff1f;
+  border-radius: 22px;
+  background: var(--night-2);
+  color: #fff;
+  text-decoration: none;
+  box-shadow: 0 30px 60px -30px #000c;
+  transition:
+    transform 0.3s,
+    box-shadow 0.3s,
+    border-color 0.3s;
+}
+
+.ghub-tile:hover {
+  transform: translateY(-4px);
+  border-color: color-mix(in srgb, var(--accent) 60%, transparent);
+  box-shadow: 0 30px 80px -26px color-mix(in srgb, var(--accent) 80%, transparent);
+}
+
+.ghub-tile img {
+  transition: transform 0.6s;
+}
+
+.ghub-tile:hover img {
+  transform: scale(1.05);
+}
+
+.ghub-tile::after {
+  content: "";
+  position: absolute;
+  inset: 45% 0 0;
+  background: linear-gradient(to top, #0b0910f0, transparent);
+  pointer-events: none;
+}
+
+.ghub-tile__label {
+  position: absolute;
+  z-index: 1;
+  left: 14px;
+  right: 14px;
+  bottom: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-weight: 800;
+}
+
+.ghub-tile__label span:last-child {
+  color: var(--accent);
+  transition: transform 0.2s;
+}
+
+.ghub-tile:hover .ghub-tile__label span:last-child {
+  transform: translateX(3px);
+}
+
+/* ── Guide sections ───────────────────────────────────────────────────────── */
+
+.ghub-group {
+  padding-block: 72px;
+}
+
+.ghub-group + .ghub-group {
+  border-top: 1px solid var(--line);
+}
+
+.ghub-group--tint {
+  background: var(--blush);
+}
+
+@media (min-width: 1024px) {
+  .ghub-group {
+    padding-block: 96px;
+  }
+}
+
+.ghub-group__head {
+  display: grid;
+  gap: 10px;
+  max-width: 64ch;
+  margin-bottom: 36px;
+  scroll-margin-top: 96px;
+}
+
+.ghub-group__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent-ink, var(--pink-ink));
+}
+
+.ghub-group__head h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3.4vw, 2.7rem);
+  font-weight: 800;
+  line-height: 1.06;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+}
+
+.ghub-group__head p:last-child {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--muted);
+}
+
+.ghub-grid {
+  display: grid;
+  gap: 22px;
+}
+
+@media (min-width: 768px) {
+  .ghub-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .ghub-grid > .ghub-card--feature {
+    grid-column: 1 / -1;
+  }
+}
+
+/* ── Guide cards ─────────────────────────────────────────────────────────── */
+
+.ghub-card {
+  position: relative;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 26px;
+  background: #fff;
+  box-shadow: 0 12px 34px -22px #6b264340;
+  transition:
+    transform 0.3s,
+    box-shadow 0.3s,
+    border-color 0.3s;
+}
+
+.ghub-card:hover,
+.ghub-card:focus-within {
+  transform: translateY(-4px);
+  border-color: color-mix(in srgb, var(--accent) 45%, var(--line));
+  box-shadow: 0 30px 70px -34px color-mix(in srgb, var(--accent) 75%, transparent);
+}
+
+@media (min-width: 768px) {
+  .ghub-card--feature {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+    grid-template-rows: none;
+  }
+
+  .ghub-card--feature.ghub-card--flip .ghub-photo {
+    order: 2;
+  }
+}
+
+.ghub-photo {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: var(--night);
+}
+
+@media (min-width: 768px) {
+  .ghub-card--feature .ghub-photo {
+    aspect-ratio: auto;
+    min-height: 380px;
+  }
+}
+
+.ghub-photo img {
+  transition: transform 0.7s;
+}
+
+.ghub-card:hover .ghub-photo img {
+  transform: scale(1.045);
+}
+
+/* "Versus" guides show both sides of the comparison, split on a diagonal. */
+.ghub-photo--split .ghub-photo__half {
+  position: absolute;
+  inset: 0;
+}
+
+.ghub-photo__half--a {
+  clip-path: polygon(0 0, 58% 0, 42% 100%, 0 100%);
+}
+
+.ghub-photo__half--b {
+  clip-path: polygon(58% 0, 100% 0, 100% 100%, 42% 100%);
+}
+
+.ghub-photo__vs {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  translate: -50% -50%;
+  border: 1px solid #ffffff4d;
+  border-radius: 50%;
+  background: #0b0910cc;
+  backdrop-filter: blur(6px);
+  font-family: var(--font-accent);
+  font-size: 1.15rem;
+  font-style: italic;
+  font-weight: 600;
+  color: #fff;
+  box-shadow: 0 0 24px color-mix(in srgb, var(--accent) 70%, transparent);
+}
+
+.ghub-chip {
+  position: absolute;
+  z-index: 2;
+  top: 16px;
+  left: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border: 1px solid #ffffff33;
+  border-radius: 999px;
+  background: #0b0910b3;
+  backdrop-filter: blur(8px);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  color: #fff;
+}
+
+.ghub-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 26px 26px 24px;
+}
+
+@media (min-width: 768px) {
+  .ghub-card--feature .ghub-card__body {
+    justify-content: center;
+    padding: 44px 44px 40px;
+  }
+}
+
+.ghub-card h3 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+
+.ghub-card--feature h3 {
+  font-size: clamp(1.5rem, 2.4vw, 2rem);
+}
+
+/* The whole card is clickable through the heading link. */
+.ghub-card h3 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.ghub-card h3 a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+}
+
+.ghub-card h3 a:focus-visible {
+  outline: none;
+}
+
+.ghub-card:has(h3 a:focus-visible) {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.ghub-card__summary {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--muted);
+}
+
+.ghub-card__foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 16px;
+  margin-top: auto;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+.ghub-card__read {
+  font-weight: 800;
+  color: var(--accent-ink, var(--pink-ink));
+  transition: transform 0.2s;
+}
+
+.ghub-card:hover .ghub-card__read {
+  transform: translateX(3px);
+}
+
+/* ── Closing call to action ──────────────────────────────────────────────── */
+
+/* Light, so it does not stack on the footer's own dark call to action. */
+.ghub-cta {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  border-top: 1px solid var(--line);
+  background: linear-gradient(180deg, #fff 0%, var(--blush) 100%);
+  color: var(--ink);
+}
+
+.ghub-cta__inner {
+  display: grid;
+  gap: 40px;
+  align-items: center;
+  padding-block: 72px;
+}
+
+@media (min-width: 1024px) {
+  .ghub-cta__inner {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    gap: 72px;
+    padding-block: 96px;
+  }
+}
+
+.ghub-cta h2 {
+  margin: 14px 0 0;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 800;
+  line-height: 1.04;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+}
+
+.ghub-cta p:not(.ghub-eyebrow) {
+  max-width: 50ch;
+  margin: 18px 0 0;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--muted);
+}
+
+.ghub-cta__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px 22px;
+  margin-top: 30px;
+}
+
+.ghub-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 24px;
+  border-radius: 999px;
+  background: var(--pink);
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #fff;
+  text-decoration: none;
+  box-shadow: 0 16px 40px -14px var(--pink);
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+}
+
+.ghub-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 20px 50px -12px var(--pink);
+}
+
+.ghub-link {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--ink) 25%, transparent);
+  text-underline-offset: 5px;
+  transition: text-decoration-color 0.2s;
+}
+
+.ghub-link:hover {
+  color: var(--pink-ink);
+  text-decoration-color: var(--pink);
+}
+
+.ghub-cta__photo {
+  position: relative;
+  aspect-ratio: 5 / 4;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  background: var(--night);
+  box-shadow: 0 40px 100px -40px color-mix(in srgb, var(--amber) 70%, transparent);
+}
+
+/* ── Motion: switching the lights on ─────────────────────────────────────── */
+
+@keyframes ghub-ignite {
+  0% {
+    opacity: 0.12;
+    text-shadow: none;
+  }
+  6% {
+    opacity: 1;
+  }
+  10% {
+    opacity: 0.25;
+  }
+  16% {
+    opacity: 1;
+  }
+  19% {
+    opacity: 0.45;
+  }
+  28%,
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes ghub-switch-on {
+  from {
+    filter: brightness(0.28) saturate(0.35);
+  }
+  to {
+    filter: none;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .ghub-h1__lit {
+    animation: ghub-ignite 1.4s ease-out 0.25s both;
+  }
+
+  .ghub-mosaic .ghub-tile img {
+    animation: ghub-switch-on 0.9s ease-out both;
+  }
+
+  .ghub-mosaic li:nth-child(1) img {
+    animation-delay: 0.9s;
+  }
+  .ghub-mosaic li:nth-child(2) img {
+    animation-delay: 1.15s;
+  }
+  .ghub-mosaic li:nth-child(3) img {
+    animation-delay: 1.4s;
+  }
+  .ghub-mosaic li:nth-child(4) img {
+    animation-delay: 1.65s;
+  }
+
+  @supports (animation-timeline: view()) {
+    .ghub-photo,
+    .ghub-cta__photo {
+      animation: ghub-switch-on linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 38%;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ghub *,
+  .ghub *::before,
+  .ghub *::after {
+    transition-duration: 0.01ms !important;
+  }
+}

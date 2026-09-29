@@ -162,7 +162,7 @@ export const guide: Guide = {
         {
           type: "image",
           image: {
-            src: "/ultra-thin-slim-lightbox/Menu boards.jpg",
+            src: "/ultra-thin-slim-lightbox/menu-boards.jpg",
             alt: "Two slim illuminated menu boards on a blue-grey wall, thin glowing frames around printed menus of burgers, pizza and drinks",
             width: 1199,
             height: 1066,
