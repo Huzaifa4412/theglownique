@@ -48,7 +48,7 @@ const ROWS: readonly Row[] = [
     eyebrow: "For storefronts & reception walls",
     heading: "3D metal channel letter signs",
     summary:
-      "Individual 3D letters in stainless steel, lit from inside with LEDs, for the name on a façade or a logo on a reception wall. Choose front-lit for the loudest read, halo-lit for a softer architectural glow, or both.",
+      "Individual 3D letters in stainless steel, lit from inside with LEDs, for the name on a façade or a logo on a reception wall. Choose front-lit for the loudest read, halo-lit for a softer architectural glow, or both. These make excellent custom business signs outdoor.",
     bestFor: [
       "The business name on a façade, read from across the street",
       "Halo-lit logos on reception and lobby walls",
@@ -91,7 +91,7 @@ const ROWS: readonly Row[] = [
     eyebrow: "For full-colour logos & brand walls",
     heading: "Custom acrylic logo signs",
     summary:
-      "Your full-colour logo printed straight onto acrylic and traced with LED neon, for artwork neon alone cannot draw: gradients, photos and fine type. Built single-layer or layered for 3D depth.",
+      "Your full-colour logo printed straight onto acrylic and traced with LED neon, for artwork neon alone cannot draw: gradients, photos and fine type. Built single-layer or layered for 3D depth, these make stunning acrylic business signs.",
     bestFor: [
       "Full-colour logos, gradients and fine text neon cannot trace",
       "Reception walls and office branding",

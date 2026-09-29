@@ -134,7 +134,7 @@ const LONGEST_HEADLINE_ENDING = HEADLINE_ENDINGS.reduce((longest, entry) =>
 
 /** 60 words. Definition first, maker second, risk-reducer last. Optimized for AEO/GEO to directly answer "what is it", "who is it for", and "why choose us". */
 const HERO_ANSWER =
-  "Neon signs from The Glownique are handmade to order in flexible LED neon, not glass: your name, words or logo, mounted on clear acrylic and run at a safe 12V. We make them for bedrooms, weddings, bars and businesses in 13 colours or RGB, and send a free true-to-scale mockup before you pay.";
+  "Custom designed neon signs from The Glownique are handmade to order in flexible LED neon, not glass: your name, words or custom logo signs, mounted on clear acrylic and run at a safe 12V. We make lighted business signs and custom name neon signs for bedrooms, weddings, and bars in 13 colours or RGB, and send a free true-to-scale mockup before you pay.";
 
 const HERO_FACTS = [
   { icon: PencilLine, title: "Free true-to-scale mockup", text: "Approve design before you pay" },

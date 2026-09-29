@@ -150,6 +150,14 @@ export default function CustomLogoNeonSignsPage() {
               </div>
 
               <div className="space-y-6">
+                <div className="mb-10 rounded-2xl border border-[#eadfe4] bg-[#fdfafb] p-6 shadow-sm">
+                  <h2 className="text-2xl font-extrabold text-[#1e1a22]">
+                    What is a Custom Logo Neon Sign?
+                  </h2>
+                  <p className="mt-3 text-sm leading-relaxed text-[#5e5862]">
+                    A custom logo neon sign is a commercial illuminated display manufactured to exactly replicate a brand's unique typography, emblem, and corporate colors. Unlike off-the-shelf decorative lighting, custom logo signs are precision-crafted using flexible LED neon encased in silicone or PVC, mounted to a customized optical cast acrylic backboard. This creates a highly visible, low-voltage (12V) glowing replica of your brand identity that is safe for high-traffic commercial spaces.
+                  </p>
+                </div>
                 <h2 className="text-3xl font-extrabold text-[#1e1a22]">
                   Built for Maximum Commercial Visibility &amp; Longevity
                 </h2>
