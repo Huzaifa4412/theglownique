@@ -695,7 +695,7 @@ const INDUSTRY_CONTENT: readonly LandingContent[] = [
     name: "Hotel Reception Signs",
     kicker: "Hotel & Hospitality Signage",
     h1: "Custom Hotel Reception Neon Signs & Lobby Signage",
-    metaTitle: "Custom Hotel Reception Neon Signs & Lobby Signage",
+    metaTitle: "Hotel Reception Neon Signs & Lobby Signage",
     metaDescription:
       "Custom backlit hotel lobby signs & reception neon signage designed for luxury check-in experiences. 3D halo-lit channel letters & UV acrylic with a 5-year warranty.",
     answer:

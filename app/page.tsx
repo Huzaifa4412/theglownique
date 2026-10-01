@@ -28,7 +28,8 @@ export const metadata: Metadata = {
   title: HOME_TITLE,
   description: HOME_DESCRIPTION,
   alternates: {
-    canonical: "",
+    // "/" and not "": an empty string makes Next emit no canonical link at all.
+    canonical: "/",
   },
   openGraph: {
     title: HOME_TITLE,
