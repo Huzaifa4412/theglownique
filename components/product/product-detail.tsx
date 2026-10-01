@@ -1,16 +1,18 @@
-"use client";
-
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import Link from "next/link";
-import { useState, type CSSProperties, type ReactNode } from "react";
-import { motion } from "motion/react";
+import type { CSSProperties } from "react";
 import { ArrowRight, Check, ChevronDown } from "lucide-react";
 
-import { getProductPage, getRelatedProducts } from "@/lib/product-catalog";
-import { whatsappQuoteUrl } from "@/lib/site";
-import { WhatsappIcon } from "@/components/ui/whatsapp-icon";
-import { DELIVERY } from "@/lib/claims";
+import { DetailCtaPair } from "@/components/detail/detail-cta-pair";
+import { DetailGallery, type DetailImage } from "@/components/detail/detail-gallery";
+import { DetailStickyCta } from "@/components/detail/detail-sticky-cta";
+import { DetailVideo } from "@/components/detail/detail-video";
+import { DELIVERY, WARRANTY } from "@/lib/claims";
+import { getRelatedProducts, type ProductPage } from "@/lib/product-catalog";
+import { ETSY_SHOP_URL, whatsappQuoteUrl } from "@/lib/site";
+
+import "@/components/detail/detail.css";
 
 // Canvas-based and only rendered on the LED neon page, so it's split into its
 // own chunk rather than shipped with all four product routes. No `ssr: false`
@@ -21,270 +23,195 @@ const NeonColorChangerSection = dynamic(() =>
   ),
 );
 
-function Reveal({
-  children,
-  className,
-  delay = 0,
-}: {
-  children: ReactNode;
-  className?: string;
-  delay?: number;
-}) {
-  return (
-    <motion.div
-      className={className}
-      initial={{ opacity: 0, y: 26 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay }}
-    >
-      {children}
-    </motion.div>
-  );
-}
-
 /** A buying guide, resolved on the server (lib/guides stays out of this bundle). */
 export type ProductReading = { href: string; title: string; summary: string };
 
-export function ProductDetail({ slug, reading = [] }: { slug: string; reading?: ProductReading[] }) {
-  const product = getProductPage(slug);
-  const [activeImg, setActiveImg] = useState(0);
+const article = (noun: string) => (/^[aeiou]/i.test(noun) ? "an" : "a");
 
-  if (!product) return null;
+/** Hero first, then the rest of the gallery, without repeating a picture. */
+function heroImages(product: ProductPage): DetailImage[] {
+  const seen = new Set<string>();
+  return [{ src: product.heroImage, alt: `${product.name}: ${product.tagline}` }, ...product.gallery]
+    .filter((item) => (seen.has(item.src) ? false : (seen.add(item.src), true)))
+    .slice(0, 5)
+    .map((item, index) => ({ ...item, label: `picture ${index + 1}` }));
+}
 
-  const related = getRelatedProducts(slug);
-  const quoteUrl = whatsappQuoteUrl(product.name);
-  const accent = product.accent;
-  const activeImage = product.gallery[activeImg] ?? product.gallery[0];
+/**
+ * The sign-type detail page: LED neon, channel letters, lightboxes and acrylic
+ * logo signs all render through this one template, from lib/product-catalog.ts.
+ *
+ * A Server Component. It used to be a client component that faded every
+ * section in on scroll, which left the page blank to anything that does not
+ * scroll (a crawler, a link preview, a full-page capture) and shipped the whole
+ * catalog entry to the browser. The only interactive parts now are the
+ * gallery, the sticky bar, the clips and the neon colour studio.
+ *
+ * Both ways to buy — WhatsApp and Etsy — sit directly under the hero picture,
+ * under every use-case picture and at the close, and stay one tap away on a
+ * phone through the sticky bar.
+ */
+export function ProductDetail({ product, reading = [] }: { product: ProductPage; reading?: ProductReading[] }) {
+  const related = getRelatedProducts(product.slug);
+  const etsyUrl = product.etsyUrl ?? ETSY_SHOP_URL;
+  const quoteUrl = whatsappQuoteUrl(product.singular);
+  // Tracking prefix: the internal slug, which is also the Meta content id.
+  const source = product.slug;
 
   return (
-    <div style={{ "--accent": accent } as CSSProperties}>
+    <div className="detail-page" style={{ "--dt-accent": product.accent } as CSSProperties}>
       {/* ───────────────────────── HERO ───────────────────────── */}
-      <section className="relative overflow-hidden bg-[#0b0910] text-white">
-        <div
-          className="pointer-events-none absolute -top-40 -right-24 h-[520px] w-[520px] rounded-full blur-[150px] opacity-40"
-          style={{ background: accent }}
-          aria-hidden="true"
-        />
-        <div
-          className="pointer-events-none absolute -bottom-40 -left-24 h-[480px] w-[480px] rounded-full bg-[#6d26ff]/30 blur-[150px]"
-          aria-hidden="true"
-        />
-
-        <div className="relative z-10 mx-auto grid max-w-[1320px] items-center gap-10 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:py-24">
-          <motion.div
-            initial={{ opacity: 0, y: 28 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          >
-            <nav className="mb-6 flex items-center gap-2 text-xs font-medium text-white/50" aria-label="Breadcrumb">
-              <Link href="/" className="transition-colors hover:text-white">Home</Link>
+      <section className="detail-hero">
+        <div className="relative z-10 mx-auto grid max-w-[1320px] gap-6 px-4 pb-12 pt-6 sm:gap-8 sm:px-6 sm:pt-10 lg:grid-cols-[1fr_1.05fr] lg:items-center lg:gap-12 lg:pb-20 lg:pt-16">
+          <div>
+            <nav className="mb-4 flex flex-wrap items-center gap-2 text-xs font-medium text-white/60" aria-label="Breadcrumb">
+              <Link href="/" className="transition-colors hover:text-white">
+                Home
+              </Link>
               <span aria-hidden="true">/</span>
-              {/* Same trail as the BreadcrumbList in lib/product-seo.ts. It used
-                  to read "Products" as plain text while the schema said
-                  "Custom Signage", and /products itself only redirects. */}
+              {/* Same trail as the BreadcrumbList in lib/product-seo.ts. */}
               <Link href={product.parent.href} className="text-white/80 transition-colors hover:text-white">
                 {product.parent.label}
               </Link>
               <span aria-hidden="true">/</span>
-              <span className="text-white" aria-current="page">{product.name}</span>
+              <span className="text-white" aria-current="page">
+                {product.name}
+              </span>
             </nav>
 
-            <span
-              className="inline-flex items-center gap-2 rounded-full border px-4 py-1.5 text-xs font-extrabold uppercase tracking-widest backdrop-blur-md"
-              style={{ borderColor: `${accent}66`, color: accent, backgroundColor: `${accent}1a` }}
-            >
-              <span className="h-1.5 w-1.5 rounded-full" style={{ backgroundColor: accent }} />
-              {product.category}
-            </span>
-
-            <h1 className="mt-5 text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
+            <p className="detail-eyebrow detail-eyebrow--light">{product.category}</p>
+            <h1 className="mt-2 text-[2.25rem] font-extrabold leading-[1.04] tracking-tight sm:mt-3 sm:text-5xl lg:text-6xl">
               {product.name}
             </h1>
-            <p className="mt-4 text-lg font-semibold" style={{ color: accent }}>
-              {product.tagline}
-            </p>
-            <p className="mt-5 max-w-xl text-base leading-relaxed text-gray-300">
-              {product.intro}
-            </p>
+            <p className="mt-3 max-w-xl text-base leading-relaxed text-white/85 sm:mt-5 sm:text-lg">{product.tagline}</p>
 
-            <div className="mt-7 flex flex-wrap gap-2.5">
+            <ul className="mt-6 hidden max-w-xl gap-x-6 gap-y-2.5 text-sm font-semibold text-white/90 sm:grid sm:grid-cols-2">
               {product.chips.map((chip) => (
-                <span
-                  key={chip}
-                  className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/5 px-3 py-1.5 text-xs font-semibold text-gray-200 backdrop-blur-md"
-                >
-                  <Check className="h-3 w-3" style={{ color: accent }} aria-hidden="true" />
+                <li key={chip} className="flex items-center gap-2">
+                  <Check className="h-4 w-4 shrink-0 text-(--dt-accent)" aria-hidden="true" />
                   {chip}
-                </span>
+                </li>
               ))}
-            </div>
+            </ul>
+          </div>
 
-            <div className="mt-9 flex flex-wrap items-center gap-4">
-              <a
-                href={quoteUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                data-meta-source="product-hero-cta"
-                className="button button--whatsapp text-base py-3.5 px-6 font-bold flex items-center gap-2.5"
-              >
-                <span>Get a free quote &amp; mockup</span>
-                <WhatsappIcon className="h-6 w-6 shrink-0" />
-              </a>
-              <Link
-                href="/#custom"
-                className="text-sm font-bold text-white/80 underline-offset-4 transition-colors hover:text-white hover:underline"
-              >
-                See how ordering works
-              </Link>
-            </div>
-          </motion.div>
-
-          <motion.div
-            className="relative"
-            initial={{ opacity: 0, scale: 0.96 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
-          >
-            <div
-              className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl border border-white/10 shadow-2xl"
-              style={{ boxShadow: `0 30px 90px -20px ${accent}55` }}
+          <div className="min-w-0">
+            <DetailGallery
+              images={heroImages(product)}
+              sizes="(max-width: 1024px) 100vw, 660px"
+              label={`${product.name} pictures`}
+              preload
             >
-              {product.heroVideo ? (
-                <video
-                  src={product.heroVideo}
-                  poster={product.heroImage}
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  className="h-full w-full object-cover"
-                />
-              ) : (
-                <Image
-                  src={product.heroImage}
-                  alt={`${product.name} — ${product.tagline}`}
-                  fill
-                  priority
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="object-cover"
-                />
-              )}
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* ─────────────────────── TRUST BAR ─────────────────────── */}
-      <section className="border-b border-[#eadfe4] bg-white">
-        <div className="mx-auto flex max-w-[1320px] flex-wrap items-center justify-center gap-x-8 gap-y-3 px-4 py-5 text-xs font-semibold text-[#5e5862] sm:text-sm">
-          {[DELIVERY.short, "5-year warranty", "Free design mockup", "Secure Etsy payment"].map((item) => (
-            <span key={item} className="inline-flex items-center gap-2">
-              <span className="flex h-4 w-4 items-center justify-center rounded-full" style={{ backgroundColor: accent }}>
-                <Check className="h-2.5 w-2.5 text-white" aria-hidden="true" />
-              </span>
-              {item}
-            </span>
-          ))}
-        </div>
-      </section>
-
-      {/* ─────────────────────── FEATURES ─────────────────────── */}
-      <section className="bg-white py-16 sm:py-20">
-        <div className="mx-auto max-w-[1320px] px-4 sm:px-6">
-          <Reveal className="mx-auto mb-12 max-w-2xl text-center">
-            <p className="text-xs font-extrabold uppercase tracking-widest" style={{ color: accent }}>
-              Why you&apos;ll love it
-            </p>
-            <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-[#1e1a22] sm:text-4xl">
-              Built to impress, made to last
-            </h2>
-          </Reveal>
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {product.features.map((feature, i) => {
-              const Icon = feature.icon;
-              return (
-                <Reveal key={feature.title} delay={i * 0.08}>
-                  <div className="group h-full rounded-2xl border border-[#eadfe4] bg-white p-6 shadow-[0_10px_30px_rgba(107,38,67,0.06)] transition-transform duration-300 hover:-translate-y-1">
-                    <div
-                      className="flex h-12 w-12 items-center justify-center rounded-xl text-white shadow-lg transition-transform duration-300 group-hover:scale-110"
-                      style={{ backgroundColor: accent }}
-                    >
-                      <Icon className="h-6 w-6" aria-hidden="true" />
-                    </div>
-                    <h3 className="mt-4 text-lg font-bold text-[#1e1a22]">{feature.title}</h3>
-                    <p className="mt-2 text-sm leading-6 text-[#5e5862]">{feature.text}</p>
-                  </div>
-                </Reveal>
-              );
-            })}
+              <div>
+                <DetailCtaPair subject={product.singular} etsyUrl={etsyUrl} source={`${source}-hero`} />
+                <p className="mt-2.5 text-center text-xs leading-relaxed text-white/70">
+                  Free mockup first. You pay nothing until you approve the design.
+                </p>
+              </div>
+            </DetailGallery>
           </div>
         </div>
       </section>
 
+      {/* ─────────────────────── TRUST STRIP ─────────────────────── */}
+      <section className="border-b border-(--dt-line) bg-white" aria-label="What every order includes">
+        <ul className="mx-auto grid max-w-[1320px] grid-cols-2 gap-x-6 gap-y-3 px-4 py-5 text-sm font-semibold text-(--dt-muted) sm:px-6 lg:flex lg:flex-wrap lg:justify-center lg:gap-x-10">
+          {["Free mockup within 24 hours", WARRANTY.term, DELIVERY.short, "Secure Etsy checkout"].map((item) => (
+            <li key={item} className="flex items-center gap-2">
+              <span className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-(--dt-accent-ink)">
+                <Check className="h-2.5 w-2.5 text-white" aria-hidden="true" />
+              </span>
+              <span className="first-letter:uppercase">{item}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      {/* ─────────────────────── DIRECT ANSWER ───────────────────────
+          The catalog intro is written definition-first, so it answers the
+          question in the heading in its first sentence. */}
+      <section className="bg-white py-14 sm:py-16">
+        <div className="mx-auto max-w-3xl px-4 sm:px-6">
+          <h2 className="text-2xl font-extrabold tracking-tight sm:text-3xl">
+            What is {article(product.singular)} {product.singular}?
+          </h2>
+          <p className="mt-4 text-lg leading-relaxed text-(--dt-ink)">{product.intro}</p>
+        </div>
+      </section>
+
+      {/* ─────────────────────── FEATURES ─────────────────────── */}
+      <section className="border-t border-(--dt-line) bg-(--dt-blush) py-14 sm:py-20">
+        <div className="mx-auto max-w-[1320px] px-4 sm:px-6">
+          <div className="max-w-2xl">
+            <p className="detail-eyebrow">Why choose it</p>
+            <h2 className="mt-2 text-3xl font-extrabold tracking-tight sm:text-4xl">Built to impress, made to last</h2>
+          </div>
+          <ul className="mt-10 grid gap-x-8 gap-y-8 sm:grid-cols-2 lg:grid-cols-4">
+            {product.features.map((feature) => {
+              const Icon = feature.icon;
+              return (
+                <li key={feature.title} className="border-t-2 border-(--dt-ink) pt-5">
+                  <Icon className="h-6 w-6 text-(--dt-accent-ink)" aria-hidden="true" />
+                  <h3 className="mt-3 text-lg font-extrabold tracking-tight">{feature.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-(--dt-muted)">{feature.text}</p>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      </section>
+
       {/* ─────────────────── CRAFT / HOW IT'S MADE ─────────────────── */}
-      <section className="border-t border-[#eadfe4] bg-[#fdf7f9] py-16 sm:py-20">
-        <div className="mx-auto grid max-w-[1320px] items-center gap-10 px-4 sm:px-6 lg:grid-cols-2">
-          <Reveal className="order-2 lg:order-1">
-            <p className="text-xs font-extrabold uppercase tracking-widest" style={{ color: accent }}>
-              The craft
-            </p>
-            <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-[#1e1a22] sm:text-4xl">
-              {product.craft.heading}
-            </h2>
-            <p className="mt-4 text-base leading-relaxed text-[#5e5862]">{product.craft.body}</p>
-            <ul className="mt-6 space-y-3">
+      <section className="bg-white py-14 sm:py-20">
+        <div className="mx-auto grid max-w-[1320px] items-center gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:gap-14">
+          <div className="relative aspect-[5/4] w-full overflow-hidden rounded-[20px] bg-(--dt-night)">
+            <Image
+              src={product.craft.image}
+              alt={product.craft.imageAlt}
+              fill
+              sizes="(max-width: 1024px) 100vw, 640px"
+              loading="lazy"
+              className="object-cover"
+            />
+          </div>
+          <div>
+            <p className="detail-eyebrow">The craft</p>
+            <h2 className="mt-2 text-3xl font-extrabold tracking-tight sm:text-4xl">{product.craft.heading}</h2>
+            <p className="mt-4 text-base leading-relaxed text-(--dt-muted)">{product.craft.body}</p>
+            <ul className="mt-6 grid gap-3">
               {product.craft.points.map((point) => (
-                <li key={point} className="flex items-start gap-3 text-sm font-medium text-[#1e1a22]">
-                  <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full" style={{ backgroundColor: accent }}>
+                <li key={point} className="flex items-start gap-3 text-sm font-medium text-(--dt-ink)">
+                  <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-(--dt-accent-ink)">
                     <Check className="h-3 w-3 text-white" aria-hidden="true" />
                   </span>
                   {point}
                 </li>
               ))}
             </ul>
-          </Reveal>
-          <Reveal className="order-1 lg:order-2" delay={0.1}>
-            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl border border-[#eadfe4] shadow-xl">
-              <Image
-                src={product.craft.image}
-                alt={product.craft.imageAlt}
-                fill
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                loading="lazy"
-                className="object-cover"
-              />
-            </div>
-          </Reveal>
+          </div>
         </div>
       </section>
 
       {/* ─────────────────────── SPECS ─────────────────────── */}
-      <section className="bg-white py-16 sm:py-20">
+      <section className="border-t border-(--dt-line) bg-(--dt-blush) py-14 sm:py-20" aria-labelledby="detail-specs">
         <div className="mx-auto max-w-4xl px-4 sm:px-6">
-          <Reveal className="mb-10 text-center">
-            <p className="text-xs font-extrabold uppercase tracking-widest" style={{ color: accent }}>
-              The details
-            </p>
-            <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-[#1e1a22] sm:text-4xl">
-              Specifications
-            </h2>
-          </Reveal>
-          <Reveal>
-            <dl className="overflow-hidden rounded-2xl border border-[#eadfe4]">
-              {product.specs.map((spec, i) => (
-                <div
-                  key={spec.label}
-                  className={`grid grid-cols-1 gap-1 px-5 py-4 sm:grid-cols-[220px_1fr] sm:gap-4 ${
-                    i % 2 === 0 ? "bg-[#fdf7f9]" : "bg-white"
-                  }`}
-                >
-                  <dt className="text-sm font-bold text-[#1e1a22]">{spec.label}</dt>
-                  <dd className="text-sm leading-6 text-[#5e5862]">{spec.value}</dd>
-                </div>
-              ))}
-            </dl>
-          </Reveal>
+          <p className="detail-eyebrow">The details</p>
+          <h2 id="detail-specs" className="mt-2 text-3xl font-extrabold tracking-tight sm:text-4xl">
+            {product.name}: specifications
+          </h2>
+          <dl className="mt-8 overflow-hidden rounded-2xl border border-(--dt-line) bg-white">
+            {product.specs.map((spec, index) => (
+              <div
+                key={spec.label}
+                className={`grid grid-cols-1 gap-1 px-5 py-4 sm:grid-cols-[200px_1fr] sm:gap-4 ${
+                  index % 2 === 0 ? "bg-white" : "bg-(--dt-blush)"
+                }`}
+              >
+                <dt className="text-sm font-bold text-(--dt-ink)">{spec.label}</dt>
+                <dd className="text-sm leading-relaxed text-(--dt-muted)">{spec.value}</dd>
+              </div>
+            ))}
+          </dl>
         </div>
       </section>
 
@@ -292,149 +219,118 @@ export function ProductDetail({ slug, reading = [] }: { slug: string; reading?: 
           Only the LED neon page defines `backings`; the other sign types have
           no backboard choice, so this drops out entirely for them. */}
       {product.backings && (
-        <section className="border-t border-[#eadfe4] bg-[#fdf7f9] py-16 sm:py-20">
+        <section className="bg-white py-14 sm:py-20">
           <div className="mx-auto max-w-[1320px] px-4 sm:px-6">
-            <Reveal className="mx-auto mb-12 max-w-2xl text-center">
-              <p className="text-xs font-extrabold uppercase tracking-widest" style={{ color: accent }}>
-                Choose your backboard
-              </p>
-              <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-[#1e1a22] sm:text-4xl">
-                {product.backings.heading}
-              </h2>
-              <p className="mt-4 text-base leading-relaxed text-[#5e5862]">
-                {product.backings.body}
-              </p>
-            </Reveal>
+            <div className="max-w-2xl">
+              <p className="detail-eyebrow">Choose your backboard</p>
+              <h2 className="mt-2 text-3xl font-extrabold tracking-tight sm:text-4xl">{product.backings.heading}</h2>
+              <p className="mt-4 text-base leading-relaxed text-(--dt-muted)">{product.backings.body}</p>
+            </div>
 
             {/* One wide comparison shot with the three cuts labelled in-image.
                 Below ~640px it would shrink past legibility, so it stays at a
                 readable width there and the strip pans instead. */}
-            <Reveal className="mb-8">
-              <div className="overflow-x-auto rounded-3xl border border-[#eadfe4] bg-[#0b0910] shadow-xl">
-                <Image
-                  src={product.backings.image}
-                  alt={product.backings.imageAlt}
-                  width={1921}
-                  height={819}
-                  sizes="(max-width: 640px) 640px, (max-width: 1360px) 100vw, 1320px"
-                  className="h-auto w-full min-w-[640px]"
-                />
-              </div>
-            </Reveal>
+            <div className="mt-8 overflow-x-auto rounded-[20px] border border-(--dt-line) bg-(--dt-night)">
+              <Image
+                src={product.backings.image}
+                alt={product.backings.imageAlt}
+                width={1921}
+                height={819}
+                sizes="(max-width: 640px) 640px, (max-width: 1360px) 100vw, 1320px"
+                className="h-auto w-full min-w-[640px]"
+              />
+            </div>
 
             {/* Same left-to-right order as the photo above, so a reader can map
-                each card onto the sign it describes. */}
-            <div className="grid gap-5 md:grid-cols-3">
-              {product.backings.items.map((backing, i) => (
-                <Reveal key={backing.name} delay={i * 0.08}>
-                  <div className="flex h-full flex-col rounded-2xl border border-[#eadfe4] bg-white p-6 shadow-[0_10px_30px_rgba(107,38,67,0.06)] transition-transform duration-300 hover:-translate-y-1">
-                    <p
-                      className="text-xs font-extrabold uppercase tracking-widest"
-                      style={{ color: accent }}
-                    >
-                      {backing.summary}
-                    </p>
-                    <h3 className="mt-1.5 text-lg font-bold text-[#1e1a22]">{backing.name}</h3>
-                    <p className="mt-2 flex-1 text-sm leading-6 text-[#5e5862]">{backing.text}</p>
-                    <p className="mt-4 border-t border-[#eadfe4] pt-3 text-xs font-semibold text-[#1e1a22]">
-                      Best for:{" "}
-                      <span className="font-medium text-[#5e5862]">{backing.bestFor}</span>
-                    </p>
-                  </div>
-                </Reveal>
+                each column onto the sign it describes. */}
+            <ul className="mt-8 grid gap-x-8 gap-y-8 md:grid-cols-3">
+              {product.backings.items.map((backing) => (
+                <li key={backing.name} className="border-t-2 border-(--dt-ink) pt-5">
+                  <p className="detail-eyebrow">{backing.summary}</p>
+                  <h3 className="mt-1.5 text-lg font-extrabold tracking-tight">{backing.name}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-(--dt-muted)">{backing.text}</p>
+                  <p className="mt-3 text-sm font-semibold text-(--dt-ink)">
+                    Best for: <span className="font-normal text-(--dt-muted)">{backing.bestFor}</span>
+                  </p>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
         </section>
       )}
 
       {/* ───────────────── LIGHTING DIRECTION ─────────────────
           Only the 3D metal page defines `lighting`; every other sign type is
-          lit one way only, so this drops out entirely for them. It shares the
-          backboard section's slot — neither product defines both. */}
+          lit one way only, so this drops out entirely for them. */}
       {product.lighting && (
-        <section className="border-t border-[#eadfe4] bg-[#fdf7f9] py-16 sm:py-20">
+        <section className="bg-white py-14 sm:py-20">
           <div className="mx-auto max-w-[1320px] px-4 sm:px-6">
-            <Reveal className="mx-auto mb-12 max-w-2xl text-center">
-              <p className="text-xs font-extrabold uppercase tracking-widest" style={{ color: accent }}>
-                Choose your glow
-              </p>
-              <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-[#1e1a22] sm:text-4xl">
-                {product.lighting.heading}
-              </h2>
-              <p className="mt-4 text-base leading-relaxed text-[#5e5862]">
-                {product.lighting.body}
-              </p>
-            </Reveal>
-
-            {/* A photo per card rather than one comparison strip: the whole
-                difference here is the glow, which needs the full frame. Dark
-                plate behind each shot so the lit faces read at full contrast. */}
-            <div className="grid gap-5 md:grid-cols-3">
-              {product.lighting.items.map((style, i) => (
-                <Reveal key={style.name} delay={i * 0.08}>
-                  <div className="group flex h-full flex-col overflow-hidden rounded-2xl border border-[#eadfe4] bg-white shadow-[0_10px_30px_rgba(107,38,67,0.06)] transition-transform duration-300 hover:-translate-y-1">
-                    <div className="relative aspect-square w-full overflow-hidden bg-[#0b0910]">
-                      <Image
-                        src={style.image}
-                        alt={style.imageAlt}
-                        fill
-                        sizes="(max-width: 768px) 100vw, 33vw"
-                        loading="lazy"
-                        className="object-cover transition-transform duration-500 group-hover:scale-105"
-                      />
-                    </div>
-                    <div className="flex flex-1 flex-col p-6">
-                      <p
-                        className="text-xs font-extrabold uppercase tracking-widest"
-                        style={{ color: accent }}
-                      >
-                        {style.summary}
-                      </p>
-                      <h3 className="mt-1.5 text-lg font-bold text-[#1e1a22]">{style.name}</h3>
-                      <p className="mt-2 flex-1 text-sm leading-6 text-[#5e5862]">{style.text}</p>
-                      <p className="mt-4 border-t border-[#eadfe4] pt-3 text-xs font-semibold text-[#1e1a22]">
-                        Best for:{" "}
-                        <span className="font-medium text-[#5e5862]">{style.bestFor}</span>
-                      </p>
-                    </div>
-                  </div>
-                </Reveal>
-              ))}
+            <div className="max-w-2xl">
+              <p className="detail-eyebrow">Choose your glow</p>
+              <h2 className="mt-2 text-3xl font-extrabold tracking-tight sm:text-4xl">{product.lighting.heading}</h2>
+              <p className="mt-4 text-base leading-relaxed text-(--dt-muted)">{product.lighting.body}</p>
             </div>
+
+            {/* A photo per style rather than one comparison strip: the whole
+                difference here is the glow, which needs the full frame. */}
+            <ul className="mt-10 grid gap-x-8 gap-y-10 md:grid-cols-3">
+              {product.lighting.items.map((style) => (
+                <li key={style.name}>
+                  <div className="relative aspect-square w-full overflow-hidden rounded-[20px] bg-(--dt-night)">
+                    <Image
+                      src={style.image}
+                      alt={style.imageAlt}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 420px"
+                      loading="lazy"
+                      className="object-cover"
+                    />
+                  </div>
+                  <p className="detail-eyebrow mt-5">{style.summary}</p>
+                  <h3 className="mt-1.5 text-lg font-extrabold tracking-tight">{style.name}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-(--dt-muted)">{style.text}</p>
+                  <p className="mt-3 text-sm font-semibold text-(--dt-ink)">
+                    Best for: <span className="font-normal text-(--dt-muted)">{style.bestFor}</span>
+                  </p>
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
       )}
 
       {/* ─────────────────────── OPTIONS ─────────────────────── */}
-      <section className="border-t border-[#eadfe4] bg-[#0b0910] py-16 text-white sm:py-20">
-        <div className="relative mx-auto max-w-3xl px-4 text-center sm:px-6">
-          <div
-            className="pointer-events-none absolute left-1/2 top-1/2 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full blur-[120px] opacity-40"
-            style={{ background: accent }}
-            aria-hidden="true"
-          />
-          <Reveal className="relative z-10">
-            <p className="text-xs font-extrabold uppercase tracking-widest" style={{ color: accent }}>
-              Make it yours
-            </p>
-            <h2 className="mt-2 text-3xl font-extrabold tracking-tight sm:text-4xl">
-              {product.options.heading}
-            </h2>
-            <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-gray-300">
-              {product.options.body}
-            </p>
-            <div className="mt-8 flex flex-wrap justify-center gap-2.5">
+      <section className="bg-(--dt-night) py-14 text-white sm:py-20">
+        <div
+          className={`mx-auto grid max-w-[1320px] gap-10 px-4 sm:px-6 ${
+            product.heroVideo ? "lg:grid-cols-2 lg:items-center lg:gap-14" : ""
+          }`}
+        >
+          <div className="max-w-2xl">
+            <p className="detail-eyebrow detail-eyebrow--light">Make it yours</p>
+            <h2 className="mt-2 text-3xl font-extrabold tracking-tight sm:text-4xl">{product.options.heading}</h2>
+            <p className="mt-4 text-base leading-relaxed text-white/80">{product.options.body}</p>
+            <ul className="mt-7 flex flex-wrap gap-2.5">
               {product.options.items.map((item) => (
-                <span
+                <li
                   key={item}
-                  className="rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm font-semibold text-gray-200 backdrop-blur-md transition-colors hover:border-white/40"
+                  className="rounded-full border border-white/20 bg-white/5 px-4 py-2 text-sm font-semibold text-white/90"
                 >
                   {item}
-                </span>
+                </li>
               ))}
-            </div>
-          </Reveal>
+            </ul>
+          </div>
+          {product.heroVideo ? (
+            <figure className="min-w-0">
+              <DetailVideo
+                src={product.heroVideo}
+                poster={product.heroImage}
+                label={`Video of ${article(product.singular)} ${product.singular}, filmed up close`}
+              />
+              <figcaption className="mt-3 text-sm text-white/65">Filmed up close, so you can see the build.</figcaption>
+            </figure>
+          ) : null}
         </div>
       </section>
 
@@ -445,259 +341,158 @@ export function ProductDetail({ slug, reading = [] }: { slug: string; reading?: 
       {product.colorStudio && <NeonColorChangerSection quoteHref={quoteUrl} />}
 
       {/* ─────────────────────── USE CASES ─────────────────────── */}
-      <section className="bg-white py-16 sm:py-20">
+      <section className="border-t border-(--dt-line) bg-(--dt-blush) py-14 sm:py-20" aria-labelledby="detail-uses">
         <div className="mx-auto max-w-[1320px] px-4 sm:px-6">
-          <Reveal className="mx-auto mb-12 max-w-2xl text-center">
-            <p className="text-xs font-extrabold uppercase tracking-widest" style={{ color: accent }}>
-              Where it shines
-            </p>
-            <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-[#1e1a22] sm:text-4xl">
-              Perfect for
+          <div className="max-w-2xl">
+            <p className="detail-eyebrow">Where it goes</p>
+            <h2 id="detail-uses" className="mt-2 text-3xl font-extrabold tracking-tight sm:text-4xl">
+              {product.galleryHeading ?? `Where ${article(product.singular)} ${product.singular} works best`}
             </h2>
-          </Reveal>
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {product.useCases.map((useCase, i) => (
-              <Reveal key={useCase.title} delay={i * 0.08}>
-                <div className="group h-full overflow-hidden rounded-2xl border border-[#eadfe4] bg-white shadow-[0_10px_30px_rgba(107,38,67,0.06)]">
-                  <div className="relative aspect-[4/3] w-full overflow-hidden bg-black/5">
-                    <Image
-                      src={useCase.image}
-                      alt={useCase.alt}
-                      fill
-                      sizes="(max-width: 640px) 100vw, 25vw"
-                      loading="lazy"
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                  </div>
-                  <div className="p-5">
-                    <h3 className="text-base font-bold text-[#1e1a22]">{useCase.title}</h3>
-                    <p className="mt-1.5 text-sm leading-6 text-[#5e5862]">{useCase.text}</p>
-                    {/* The industry and occasion pages were reachable almost
-                        only from their hub; these are the product pages'
-                        contextual links into them. */}
-                    {useCase.href ? (
-                      <Link
-                        href={useCase.href}
-                        className="mt-3 inline-flex items-center gap-1 text-sm font-bold text-[#ce0754] underline-offset-4 hover:underline"
-                      >
+            {product.galleryNote ? (
+              <p className="mt-4 text-sm leading-relaxed text-(--dt-muted)">{product.galleryNote}</p>
+            ) : null}
+          </div>
+          <div className="mt-10 grid gap-x-10 gap-y-12 md:grid-cols-2">
+            {product.useCases.map((useCase) => (
+              <article key={useCase.title} className="grid gap-4">
+                <div className="relative aspect-[5/4] w-full overflow-hidden rounded-[20px] bg-(--dt-night)">
+                  <Image
+                    src={useCase.image}
+                    alt={useCase.alt}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 640px"
+                    loading="lazy"
+                    className="object-cover"
+                  />
+                </div>
+                {/* Both ways to buy, directly under the picture. */}
+                <DetailCtaPair
+                  subject={`${product.singular} for ${useCase.title.toLowerCase()}`}
+                  etsyUrl={etsyUrl}
+                  source={`${source}-use-${useCase.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}`}
+                />
+                <div>
+                  <h3 className="text-xl font-extrabold tracking-tight">{useCase.title}</h3>
+                  <p className="mt-2 text-base leading-relaxed text-(--dt-muted)">{useCase.text}</p>
+                  {/* The industry and occasion pages were reachable almost only
+                      from their hub; these are the product pages' contextual
+                      links into them. */}
+                  {useCase.href ? (
+                    <p className="mt-3 text-sm">
+                      <Link href={useCase.href} className="detail-link inline-flex items-center gap-1">
                         {useCase.linkLabel ?? `${useCase.title} signs`}
                         <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
                       </Link>
-                    ) : null}
-                  </div>
+                    </p>
+                  ) : null}
                 </div>
-              </Reveal>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ─────────────────────── GALLERY ─────────────────────── */}
-      <section className="border-t border-[#eadfe4] bg-[#fdf7f9] py-16 sm:py-20">
-        <div className="mx-auto max-w-5xl px-4 sm:px-6">
-          <Reveal className="mb-10 text-center">
-            <p className="text-xs font-extrabold uppercase tracking-widest" style={{ color: accent }}>
-              Gallery
-            </p>
-            <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-[#1e1a22] sm:text-4xl">
-              {product.galleryHeading ?? "See it in the wild"}
-            </h2>
-            {product.galleryNote ? (
-              <p className="mt-3 text-sm text-[#5e5862]">{product.galleryNote}</p>
-            ) : null}
-          </Reveal>
-          <Reveal>
-            <div className="relative aspect-[16/10] w-full overflow-hidden rounded-3xl border border-[#eadfe4] bg-black/5 shadow-xl">
-              <Image
-                key={activeImage.src}
-                src={activeImage.src}
-                alt={activeImage.alt}
-                fill
-                sizes="(max-width: 1024px) 100vw, 60vw"
-                loading="lazy"
-                className="object-cover"
-              />
-            </div>
-            <div className="mt-4 grid grid-cols-4 gap-3">
-              {product.gallery.map((item, i) => (
-                <button
-                  key={item.src}
-                  type="button"
-                  onClick={() => setActiveImg(i)}
-                  aria-label={`Show ${item.alt}`}
-                  aria-current={i === activeImg}
-                  className="relative aspect-[4/3] overflow-hidden rounded-xl border-2 bg-black/5 transition-all"
-                  style={{ borderColor: i === activeImg ? accent : "transparent", opacity: i === activeImg ? 1 : 0.7 }}
-                >
-                  <Image
-                    src={item.src}
-                    alt={item.alt}
-                    fill
-                    sizes="25vw"
-                    loading="lazy"
-                    className="object-cover"
-                  />
-                </button>
-              ))}
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ─────────────────── BEFORE YOU ORDER ─────────────────── */}
-      {/* The guides answer the questions a buyer has before the FAQ's
-          ordering questions: which lighting, what size, indoor or outdoor. */}
+      {/* ─────────────────── BEFORE YOU ORDER ───────────────────
+          The guides answer the questions a buyer has before the FAQ's ordering
+          questions: which lighting, what size, indoor or outdoor. */}
       {reading.length > 0 ? (
-        <section className="border-t border-[#eadfe4] bg-[#fdf7f9] py-16 sm:py-20" aria-labelledby="before-you-order">
-          <div className="mx-auto max-w-[1100px] px-4 sm:px-6">
-            <Reveal className="mb-10 text-center">
-              <p className="text-xs font-extrabold uppercase tracking-widest" style={{ color: accent }}>
-                Before you order
-              </p>
-              <h2 id="before-you-order" className="mt-2 text-3xl font-extrabold tracking-tight text-[#1e1a22] sm:text-4xl">
-                Guides for choosing your {product.singular}
-              </h2>
-            </Reveal>
-            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-              {reading.map((guide, i) => (
-                <Reveal key={guide.href} delay={i * 0.06}>
-                  <Link
-                    href={guide.href}
-                    className="group flex h-full flex-col rounded-2xl border border-[#eadfe4] bg-white p-6 shadow-[0_10px_30px_rgba(107,38,67,0.05)] transition-colors hover:border-[#f8c6da]"
-                  >
-                    <h3 className="text-base font-bold text-[#1e1a22] group-hover:underline">{guide.title}</h3>
-                    <p className="mt-2 flex-1 text-sm leading-6 text-[#5e5862]">{guide.summary}</p>
-                    <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-bold" style={{ color: accent }}>
-                      Read the guide
-                      <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true" />
-                    </span>
+        <section className="bg-white py-14 sm:py-20" aria-labelledby="before-you-order">
+          <div className="mx-auto max-w-[1320px] px-4 sm:px-6">
+            <p className="detail-eyebrow">Before you order</p>
+            <h2 id="before-you-order" className="mt-2 text-3xl font-extrabold tracking-tight sm:text-4xl">
+              Guides for choosing your {product.singular}
+            </h2>
+            <ul className="mt-8 grid gap-x-8 gap-y-6 sm:grid-cols-2 lg:grid-cols-3">
+              {reading.map((guide) => (
+                <li key={guide.href} className="border-t border-(--dt-line) pt-4">
+                  <Link href={guide.href} className="detail-link text-base">
+                    {guide.title}
                   </Link>
-                </Reveal>
+                  <p className="mt-1.5 text-sm leading-relaxed text-(--dt-muted)">{guide.summary}</p>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
         </section>
       ) : null}
 
       {/* ─────────────────────── FAQ ─────────────────────── */}
-      <section className="bg-white py-16 sm:py-20">
+      <section className="border-t border-(--dt-line) bg-white py-14 sm:py-20" aria-labelledby="detail-faq">
         <div className="mx-auto max-w-3xl px-4 sm:px-6">
-          <Reveal className="mb-10 text-center">
-            <p className="text-xs font-extrabold uppercase tracking-widest" style={{ color: accent }}>
-              Questions, answered
-            </p>
-            <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-[#1e1a22] sm:text-4xl">
-              {product.name} FAQs
-            </h2>
-          </Reveal>
-          <Reveal className="space-y-3">
-            {product.faqs.map((faq) => (
+          <p className="detail-eyebrow">Questions</p>
+          <h2 id="detail-faq" className="mt-2 text-3xl font-extrabold tracking-tight sm:text-4xl">
+            {product.name} FAQs
+          </h2>
+          <div className="mt-8 grid gap-3">
+            {product.faqs.map((faq, index) => (
               <details
                 key={faq.q}
-                className="group rounded-2xl border border-[#eadfe4] bg-white shadow-[0_10px_30px_rgba(107,38,67,0.05)] transition-colors open:border-[#f8c6da]"
+                // The first answer starts open, so a skimming visitor has
+                // something to read without tapping.
+                open={index === 0}
+                className="group rounded-2xl border border-(--dt-line) bg-white open:border-(--dt-accent-ink)"
               >
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 text-left text-base font-bold text-[#1e1a22] [&::-webkit-details-marker]:hidden">
-                  {faq.q}
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 rounded-2xl px-5 py-4 text-left [&::-webkit-details-marker]:hidden">
+                  <h3 className="text-base font-bold text-(--dt-ink)">{faq.q}</h3>
                   <ChevronDown
-                    className="h-5 w-5 shrink-0 transition-transform duration-300 group-open:rotate-180"
-                    style={{ color: accent }}
+                    className="h-5 w-5 shrink-0 text-(--dt-accent-ink) transition-transform duration-300 group-open:rotate-180"
                     aria-hidden="true"
                   />
                 </summary>
-                <div className="px-5 pb-5 text-sm leading-6 text-[#5e5862]">{faq.a}</div>
+                <p className="px-5 pb-5 text-sm leading-relaxed text-(--dt-muted)">{faq.a}</p>
               </details>
             ))}
-          </Reveal>
+          </div>
         </div>
       </section>
 
-      {/* ─────────────────────── CTA BAND ─────────────────────── */}
-      <section className="relative overflow-hidden bg-[#0b0910] py-16 text-white sm:py-20">
-        <div
-          className="pointer-events-none absolute inset-x-0 top-0 h-1.5"
-          style={{ background: `linear-gradient(90deg, ${accent}, #6d26ff)` }}
-          aria-hidden="true"
-        />
-        <div
-          className="pointer-events-none absolute left-1/2 top-1/2 h-72 w-[36rem] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[130px] opacity-30"
-          style={{ background: accent }}
-          aria-hidden="true"
-        />
-        <Reveal className="relative z-10 mx-auto max-w-2xl px-4 text-center sm:px-6">
-          <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl">
-            Ready to design your {product.singular}?
-          </h2>
-          <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-gray-300">
-            Send your idea and we&apos;ll send back a free mockup — with tracked worldwide delivery, a
-            5-year warranty and secure Etsy payment on every order.
+      {/* ─────────────────────── CLOSING CTA ─────────────────────── */}
+      <section className="detail-hero py-16 sm:py-20">
+        <div className="relative z-10 mx-auto max-w-2xl px-4 text-center sm:px-6">
+          <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl">Ready to design your {product.singular}?</h2>
+          <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-white/80">
+            Send your idea and the free mockup comes back within 24 hours. If you like it, you get a quote for that exact
+            sign, with {DELIVERY.clause} and a {WARRANTY.term}.
           </p>
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
-            <a
-              href={quoteUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              data-meta-source="product-closing-cta"
-              className="button button--whatsapp text-base py-3.5 px-6 font-bold flex items-center gap-2.5"
-            >
-              <span>Get a free quote &amp; mockup</span>
-              <WhatsappIcon className="h-6 w-6 shrink-0" />
-            </a>
-            <Link
-              href="/#shop"
-              className="text-sm font-bold text-white/80 underline-offset-4 transition-colors hover:text-white hover:underline"
-            >
-              Browse the full collection
-            </Link>
-          </div>
-        </Reveal>
+          <DetailCtaPair
+            subject={product.singular}
+            etsyUrl={etsyUrl}
+            source={`${source}-closing`}
+            className="mx-auto mt-8 max-w-md"
+          />
+        </div>
       </section>
 
       {/* ─────────────────────── RELATED ─────────────────────── */}
-      <section className="border-t border-[#eadfe4] bg-white py-16 sm:py-20">
+      <section className="border-t border-(--dt-line) bg-white py-14 sm:py-16">
         <div className="mx-auto max-w-[1320px] px-4 sm:px-6">
-          <Reveal className="mb-10 text-center">
-            <p className="text-xs font-extrabold uppercase tracking-widest" style={{ color: accent }}>
-              Explore more
-            </p>
-            <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-[#1e1a22] sm:text-4xl">
-              Other sign types
-            </h2>
-          </Reveal>
-          <div className="grid gap-5 sm:grid-cols-3">
-            {related.map((item, i) => (
-              <Reveal key={item.slug} delay={i * 0.08}>
-                <Link
-                  href={item.path}
-                  className="group block h-full overflow-hidden rounded-2xl border border-[#eadfe4] bg-white shadow-[0_10px_30px_rgba(107,38,67,0.06)] transition-transform duration-300 hover:-translate-y-1"
-                >
-                  <div className="relative aspect-[16/10] w-full overflow-hidden bg-black/5">
+          <h2 className="text-2xl font-extrabold tracking-tight">Other sign types</h2>
+          <ul className="mt-6 grid gap-6 sm:grid-cols-3">
+            {related.map((item) => (
+              <li key={item.slug}>
+                <Link href={item.path} className="group block">
+                  <div className="relative aspect-[16/10] w-full overflow-hidden rounded-2xl bg-(--dt-night)">
                     <Image
                       src={item.heroImage}
-                      alt={item.name}
+                      alt=""
                       fill
-                      sizes="(max-width: 640px) 100vw, 33vw"
+                      sizes="(max-width: 640px) 100vw, 420px"
                       loading="lazy"
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                     />
                   </div>
-                  <div className="flex items-center justify-between gap-3 p-5">
-                    <div>
-                      <p className="text-xs font-bold uppercase tracking-widest" style={{ color: item.accent }}>
-                        {item.category}
-                      </p>
-                      <h3 className="mt-1 text-base font-bold text-[#1e1a22]">{item.name}</h3>
-                    </div>
-                    <ArrowRight
-                      className="h-5 w-5 shrink-0 text-[#5e5862] transition-transform duration-300 group-hover:translate-x-1"
-                      aria-hidden="true"
-                    />
-                  </div>
+                  <p className="mt-3 flex items-center justify-between gap-3 text-base font-bold text-(--dt-ink) group-hover:underline">
+                    {item.name}
+                    <ArrowRight className="h-4 w-4 shrink-0" aria-hidden="true" />
+                  </p>
                 </Link>
-              </Reveal>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       </section>
+
+      <DetailStickyCta whatsappUrl={quoteUrl} etsyUrl={etsyUrl} source={source} />
     </div>
   );
 }

@@ -1,3 +1,4 @@
+import { BACKLIT_PATH, BACKLIT_ROUTE_IMAGES, BACKLIT_UPDATED_ON } from "@/lib/backlit-signs";
 import { COLLECTION_PAGES } from "@/lib/collection-pages";
 import { GUIDES } from "@/lib/guides";
 import { INDUSTRY_PAGES } from "@/lib/industry-pages";
@@ -54,9 +55,6 @@ const SEO_ISSUES_RELEASE = "2026-08-21";
 /** The journal launches: /blog hub, category archives and the first posts. */
 const BLOG_RELEASE = "2026-08-22";
 
-/** Comprehensive site-wide SEO keyword optimization across B2B hubs, products, guides & home. */
-const CURRENT_SEO_RELEASE = "2026-08-25";
-
 /**
  * The eight /business-signs industry pages and the three /custom-signage
  * collection pages launch.
@@ -69,9 +67,6 @@ const INDUSTRY_RELEASE = "2026-08-28";
  * galleries on the three that already existed.
  */
 const COLLECTION_RELEASE = "2026-09-14";
-
-/** Backlit signage cluster launches: commercial hub, lobby use-case, and wall mounting guide. */
-const BACKLIT_RELEASE = "2026-09-15";
 
 /** Ubersuggest keyword optimization & internal linking expansion. */
 const UBERSUGGEST_SEO_RELEASE = "2026-09-18";
@@ -92,18 +87,34 @@ const HUB_REDESIGN_RELEASE = "2026-09-26";
 /** Homepage hero rebuilt around custom LED neon signs: new H1, direct answer, neon-only slides. */
 const NEON_HERO_RELEASE = "2026-09-26";
 
+/**
+ * /business-signs/backlit-signs rebuilt as the backlit detail page: five spaces
+ * (hair, nail and beauty salons, lobbies, offices) with their own photos and
+ * WhatsApp / Etsy buttons, a live preview, specs, sizing and wall tables, a
+ * comparison and 13 FAQs. The date itself lives beside the content.
+ */
+const BACKLIT_DETAIL_RELEASE = BACKLIT_UPDATED_ON;
+
+/**
+ * The other detail pages move onto the same layout: the sign-type template
+ * (neon, channel letters, lightboxes, acrylic) gains a hero gallery, a direct
+ * answer and WhatsApp + Etsy buttons under every picture; the backlit lobby
+ * and logo neon pages are rewritten, with their unsupported claims removed.
+ */
+const DETAIL_PAGES_RELEASE = "2026-10-01";
+
 export const ROUTES: readonly RouteEntry[] = [
   // Home — primary H1 keywords, FAQ schemas and entity grounded content.
   { path: "/", lastModified: NEON_HERO_RELEASE, changeFrequency: "weekly", priority: 1.0, indexable: true },
 
   // B2B hub and destinations.
   { path: "/business-signs", lastModified: HUB_REDESIGN_RELEASE, changeFrequency: "weekly", priority: 0.95, indexable: true },
-  { path: "/business-signs/custom-logo-neon-signs", lastModified: CURRENT_SEO_RELEASE, changeFrequency: "monthly", priority: 0.9, indexable: true },
-  { path: "/business-signs/channel-letter-signs", lastModified: GROWTH_AUDIT_RELEASE, changeFrequency: "monthly", priority: 0.9, indexable: true },
-  { path: "/business-signs/backlit-signs", lastModified: BACKLIT_RELEASE, changeFrequency: "monthly", priority: 0.9, indexable: true },
-  { path: "/business-signs/backlit-lobby-signs", lastModified: UBERSUGGEST_SEO_RELEASE, changeFrequency: "monthly", priority: 0.9, indexable: true },
-  { path: "/business-signs/lightbox-signs", lastModified: GROWTH_AUDIT_RELEASE, changeFrequency: "monthly", priority: 0.9, indexable: true },
-  { path: "/business-signs/acrylic-logo-signs", lastModified: GROWTH_AUDIT_RELEASE, changeFrequency: "monthly", priority: 0.9, indexable: true },
+  { path: "/business-signs/custom-logo-neon-signs", lastModified: DETAIL_PAGES_RELEASE, changeFrequency: "monthly", priority: 0.9, indexable: true },
+  { path: "/business-signs/channel-letter-signs", lastModified: DETAIL_PAGES_RELEASE, changeFrequency: "monthly", priority: 0.9, indexable: true },
+  { path: "/business-signs/backlit-signs", lastModified: BACKLIT_DETAIL_RELEASE, changeFrequency: "monthly", priority: 0.9, indexable: true },
+  { path: "/business-signs/backlit-lobby-signs", lastModified: DETAIL_PAGES_RELEASE, changeFrequency: "monthly", priority: 0.9, indexable: true },
+  { path: "/business-signs/lightbox-signs", lastModified: DETAIL_PAGES_RELEASE, changeFrequency: "monthly", priority: 0.9, indexable: true },
+  { path: "/business-signs/acrylic-logo-signs", lastModified: DETAIL_PAGES_RELEASE, changeFrequency: "monthly", priority: 0.9, indexable: true },
 
   // The eight industry landing pages, generated from the same list that renders
   // them so a slug cannot exist in one place and not the other. They sit below
@@ -149,7 +160,7 @@ export const ROUTES: readonly RouteEntry[] = [
   // /business-signs entries above; their old /products addresses are 301s.
   ...PRODUCT_PAGES.filter((product) => product.path.startsWith("/products/")).map((product) => ({
     path: product.path,
-    lastModified: GROWTH_AUDIT_RELEASE,
+    lastModified: DETAIL_PAGES_RELEASE,
     changeFrequency: "monthly" as const,
     priority: 0.75,
     indexable: true,
@@ -195,6 +206,25 @@ function distinct(sources: readonly (string | undefined)[]): string[] {
  * scripts/seo-audit.mjs checks that every listed file exists in public/.
  */
 export const ROUTE_IMAGES: ReadonlyMap<string, readonly string[]> = new Map([
+  [BACKLIT_PATH, BACKLIT_ROUTE_IMAGES] as const,
+  [
+    "/business-signs/backlit-lobby-signs",
+    [
+      "/backlit-signs/backlit-lobby-sign-reception-desk-wood-wall.webp",
+      "/backlit-signs/backlit-office-sign-reception-wall.webp",
+      "/3d-metallic-neon-sign/corporte/14d4b621-c697-428a-b727-1c91b78e9e08.webp",
+      "/backlit-signs/backlit-reception-sign-monogram-gold.webp",
+    ],
+  ] as const,
+  [
+    "/business-signs/custom-logo-neon-signs",
+    [
+      "/neon-sign/Bar/custom-bar-neon-sign-cocktails.webp",
+      "/neon-sign/Gym/custom-gym-neon-sign-motivational.webp",
+      "/neon-sign/Bar/iap_600x600.7058329985_cpckkkq7.webp",
+      "/neon-sign/Gym/iap_600x600.6953364134_pc0zxc98.webp",
+    ],
+  ] as const,
   ...PRODUCT_PAGES.map((product) => [
     product.path,
     distinct([

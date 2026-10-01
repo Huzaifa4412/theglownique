@@ -151,6 +151,11 @@ export type ProductPage = {
   galleryHeading?: string;
   /** Visible note under the gallery heading, e.g. to disclose visualisations. */
   galleryNote?: string;
+  /**
+   * Etsy listing for "Order on Etsy". Set only where the shop has a listing for
+   * this sign type; the buttons fall back to the shop page otherwise.
+   */
+  etsyUrl?: string;
   faqs: ProductFaq[];
   metaTitle: string;
   metaDescription: string;
@@ -168,6 +173,8 @@ export const PRODUCT_PAGES: ProductPage[] = [
     accent: "#f40b68",
     heroImage: "/hero/neon-sign-hero.webp",
     heroVideo: "/neon-sign/Videos/en-GB_1fa05acfc3a2cdf80c7787c5f585c30a.mp4",
+    // The shop's general custom neon listing, verified live on 2026-10-01.
+    etsyUrl: "https://www.etsy.com/listing/4501012917/custom-neon-sign-personalized-led-neon",
     // Definition first, like the other three sign types: the sentence an
     // answer engine quotes should say what the thing is before who sells it.
     intro:
@@ -360,6 +367,9 @@ export const PRODUCT_PAGES: ProductPage[] = [
     accent: "#e0a23c",
     heroImage: "/3d-metallic-neon-sign/corporte/custom-3d-metal-channel-letter-sign-office.webp",
     heroVideo: "/3d-metallic-neon-sign/videos/2.mp4",
+    // The shop's backlit metal logo listing, verified live on 2026-10-01. There
+    // is no front-lit or dual-lit listing; those are quoted in the same thread.
+    etsyUrl: "https://www.etsy.com/listing/4575898470/custom-led-sign-3d-metal-logo-backlit",
     // Definition first: the query's AI Overview opens by defining the term, so
     // the sentence an engine can quote is the first one on the page.
     intro:

@@ -89,7 +89,9 @@ export function sameAsUrls(): string[] {
  * "hide or disable this CTA", never as a link to render.
  */
 export function whatsappQuoteUrl(productName: string): string {
-  const message = `Hi The Glownique! I'd like a free quote and mockup for a ${productName}. Here's my idea: `;
+  // "an acrylic logo sign", not "a acrylic logo sign".
+  const article = /^[aeiou]/i.test(productName) ? "an" : "a";
+  const message = `Hi The Glownique! I'd like a free quote and mockup for ${article} ${productName}. Here's my idea: `;
   return buildWhatsappUrl(message, WHATSAPP_NUMBER);
 }
 

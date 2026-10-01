@@ -64,9 +64,10 @@ export function ProductRoute({ product }: { product: ProductPage }) {
         contentCategory={product.category}
       />
       <AnnouncementBar />
-      <ProductTopBar productName={product.name} />
+      {/* The singular, so the prefilled message reads "for a channel letter sign". */}
+      <ProductTopBar productName={product.singular} />
       <main id="main-content">
-        <ProductDetail slug={product.slug} reading={reading} />
+        <ProductDetail product={product} reading={reading} />
       </main>
       <SiteFooter />
     </>

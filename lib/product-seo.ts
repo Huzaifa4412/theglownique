@@ -55,10 +55,20 @@ export function productJsonLd(product: ProductPage) {
         "@id": `${pageUrl}#product`,
         name: product.name,
         description: product.intro,
-        image: `${SITE_URL}${product.heroImage}`,
+        // Every picture the hero gallery shows, hero first.
+        image: [...new Set([product.heroImage, ...product.gallery.map((item) => item.src)])].map((src) =>
+          encodeURI(`${SITE_URL}${src}`),
+        ),
         category: product.category,
         brand: { "@type": "Brand", name: "The Glownique" },
+        manufacturer: { "@id": `${SITE_URL}/#organization` },
         url: pageUrl,
+        // The visible specification table, as data an engine can read.
+        additionalProperty: product.specs.map((spec) => ({
+          "@type": "PropertyValue",
+          name: spec.label,
+          value: spec.value,
+        })),
       },
       {
         "@type": "BreadcrumbList",
