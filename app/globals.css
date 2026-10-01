@@ -431,6 +431,9 @@ h2 {
   width: auto;
   min-height: var(--header-h);
   padding-inline: clamp(12px, 1.5vw, 22px);
+  /* Tighter than the base gap: six links plus both CTAs have to fit at 1181px,
+     the narrowest width the desktop nav is shown at. */
+  gap: clamp(12px, 1.6vw, 58px);
 }
 
 .brand {
@@ -460,8 +463,8 @@ h2 {
 .desktop-nav {
   display: flex;
   align-items: center;
-  /* Smaller than it looks: each link now carries 12px of its own side padding
-     for the hover pill, so the visible spacing between labels is unchanged. */
+  /* Smaller than it looks: each link carries 10px of its own side padding for
+     the hover pill, which is most of the visible spacing between labels. */
   gap: clamp(0px, 0.4vw, 12px);
   font-size: 0.88rem;
   font-weight: 600;
@@ -469,7 +472,7 @@ h2 {
 
 /* Two-word labels wrapped onto two lines just above the 1180px breakpoint. */
 .desktop-nav a {
-  padding: 8px 12px;
+  padding: 8px 10px;
   border-radius: 999px;
   white-space: nowrap;
 }
@@ -518,6 +521,24 @@ h2 {
   .header-actions .button--primary,
   .header-actions .button--whatsapp {
     display: none;
+  }
+}
+
+/* Narrow desktops: six links, the wordmark and both CTAs need about 1280px.
+   Below that the grid squeezed the brand column and the wordmark ran under the
+   first link. Dropping "Order on" (the Etsy mark and wordmark still say it, as
+   on phones) and tightening the links buys the room back. */
+@media (min-width: 1180.02px) and (max-width: 1320px) {
+  .header-actions .etsy-lead {
+    display: none;
+  }
+
+  .desktop-nav {
+    font-size: 0.84rem;
+  }
+
+  .desktop-nav a {
+    padding-inline: 8px;
   }
 }
 

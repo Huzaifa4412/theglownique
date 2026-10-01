@@ -7,16 +7,20 @@ import { List, X } from "@phosphor-icons/react";
 import { IconBox } from "@/components/icon-box";
 import { CustomQuoteButton } from "@/components/storefront/custom-quote-button";
 import { EtsyButton } from "@/components/storefront/etsy-button";
+import { BACKLIT_PATH } from "@/lib/backlit-signs";
 import { useNavTone } from "@/lib/use-nav-tone";
 
-// The desktop bar has room for five items at its narrowest (1181px), so it
-// carries the destinations a first-time visitor is choosing between: a
-// business buyer had no header route to the business signs at all, and
-// "Products" led only to the consumer collections. Homepage anchors, the
-// journal and the occasion collections stay in the mobile menu and the footer.
+// The desktop bar has room for six items at its narrowest (1181px), and only
+// just — a seventh overflows it. So it carries the destinations a first-time
+// visitor is choosing between: a business buyer had no header route to the
+// business signs at all, and "Products" led only to the consumer collections.
+// Backlit signs get their own slot because the backlit ads land on that page
+// and nothing in the header led back to it. Homepage anchors, the journal and
+// the occasion collections stay in the mobile menu and the footer.
 const desktopLinks = [
   ["Shop", "#shop"],
   ["Neon Signs", "/products/custom-neon-signs"],
+  ["Backlit Signs", BACKLIT_PATH],
   ["Business Signs", "/business-signs"],
   ["Guides", "/guides"],
   ["Contact", "/contact"],
@@ -25,6 +29,7 @@ const desktopLinks = [
 const mobileLinks = [
   ["Shop", "#shop"],
   ["Neon Signs", "/products/custom-neon-signs"],
+  ["Backlit Signs", BACKLIT_PATH],
   ["Business Signs", "/business-signs"],
   ["Signs for Occasions", "/custom-signage"],
   ["Design Your Neon", "#color-studio"],

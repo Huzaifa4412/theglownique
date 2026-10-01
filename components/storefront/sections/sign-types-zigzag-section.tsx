@@ -3,6 +3,7 @@ import type { CSSProperties } from "react";
 
 import { ZigzagMedia, type ZigzagImage } from "@/components/storefront/sections/zigzag-media";
 import { CustomQuoteButton } from "@/components/storefront/custom-quote-button";
+import { BACKLIT_PATH } from "@/lib/backlit-signs";
 import { requireProductPage, type ProductPage } from "@/lib/product-catalog";
 
 import "./signage-sections.css";
@@ -40,6 +41,9 @@ type Row = {
   images: readonly ZigzagImage[];
   /** Short caption on the main photo, for photos with no label of their own. */
   caption: string;
+  /** A detail page that is not one of the four catalog sign types but belongs
+      to this row, e.g. backlit signs under channel letters. */
+  related?: { lead: string; label: string; href: string };
 };
 
 // Channel-letter lighting styles, worded as what you can see in the photo.
@@ -74,6 +78,10 @@ const ROWS: readonly Row[] = [
       { src: "/3d-metallic-neon-sign/corporte/056b3189-6a8c-482a-8334-53ded7aff3e1.png", label: HALO_LIT, alt: "Halo-lit 3D metal logo sign glowing softly onto a corporate reception wall" },
     ],
     caption: "Front-lit, halo-lit or dual-lit",
+    // Backlit has its own detail page (the landing page for the backlit ads)
+    // but is not a catalog sign type, so nothing on the homepage linked to it
+    // except one banner slide.
+    related: { lead: "Only want the halo glow?", label: "See backlit signs →", href: BACKLIT_PATH },
   },
   {
     slug: "ultra-thin-lightbox",
@@ -207,6 +215,13 @@ export function SignTypesZigzagSection() {
                         {link.label}
                       </Link>
                     ))}
+                  </p>
+                ) : null}
+
+                {row.related ? (
+                  <p className="zigzag-row__uses">
+                    <span>{row.related.lead}</span>
+                    <Link href={row.related.href}>{row.related.label}</Link>
                   </p>
                 ) : null}
 

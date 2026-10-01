@@ -19,6 +19,9 @@ const footerColumns = [
     links: [
       ["Custom neon signs", "/products/custom-neon-signs"],
       ["Channel letter signs", "/business-signs/channel-letter-signs"],
+      // Not a fifth catalog type, but it has its own detail page and the
+      // backlit ads land there; it had no sitewide link.
+      ["Backlit signs", "/business-signs/backlit-signs"],
       ["Lightbox signs", "/business-signs/lightbox-signs"],
       ["Acrylic logo signs", "/business-signs/acrylic-logo-signs"],
     ],
