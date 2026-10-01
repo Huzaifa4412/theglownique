@@ -1,16 +1,21 @@
 "use client";
 
+import { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { WhatsappIcon } from "@/components/ui/whatsapp-icon";
 
 import { PRODUCT_PAGES } from "@/lib/product-catalog";
 import { whatsappQuoteUrl } from "@/lib/site";
+import { useNavTone } from "@/lib/use-nav-tone";
 
 export function ProductTopBar({ productName }: { productName: string }) {
+  const headerRef = useRef<HTMLElement>(null);
+  const tone = useNavTone(headerRef);
+
   return (
-    <header className="sticky top-0 z-50 border-b border-[#eadfe4] bg-white/85 backdrop-blur-md">
-      <div className="mx-auto flex max-w-[1320px] items-center justify-between gap-4 px-4 py-3 sm:px-6">
+    <header ref={headerRef} className="glass-nav z-50" data-tone={tone}>
+      <div className="flex items-center justify-between gap-4 px-4 py-3 sm:px-6">
         <Link href="/" className="brand" aria-label="The Glownique home">
           <Image
             className="brand__logo"
@@ -25,7 +30,7 @@ export function ProductTopBar({ productName }: { productName: string }) {
         </Link>
 
         <nav
-          className="hidden items-center gap-5 text-xs font-bold uppercase tracking-wide text-[#5e5862] lg:flex"
+          className="hidden items-center gap-5 text-xs font-bold uppercase tracking-wide text-(--glass-muted) lg:flex"
           aria-label="Primary navigation"
         >
           {/* The logo already links home; the slot goes to the buying guides,
@@ -34,18 +39,18 @@ export function ProductTopBar({ productName }: { productName: string }) {
             <Link
               key={p.slug}
               href={p.path}
-              className="transition-colors hover:text-[#ce0754]"
+              className="transition-colors hover:text-(--glass-accent)"
             >
               {p.category}
             </Link>
           ))}
-          <Link href="/guides" className="transition-colors hover:text-[#ce0754]">
+          <Link href="/guides" className="transition-colors hover:text-(--glass-accent)">
             Guides
           </Link>
-          <Link href="/blog" className="transition-colors hover:text-[#ce0754]">
+          <Link href="/blog" className="transition-colors hover:text-(--glass-accent)">
             Journal
           </Link>
-          <Link href="/contact" className="transition-colors hover:text-[#ce0754]">
+          <Link href="/contact" className="transition-colors hover:text-(--glass-accent)">
             Contact
           </Link>
         </nav>

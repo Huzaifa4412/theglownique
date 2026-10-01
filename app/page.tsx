@@ -84,7 +84,7 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: serializeJsonLd(homeJsonLd) }}
       />
       <AnnouncementBar />
-      <SiteHeader />
+      <SiteHeader overlay />
       <main id="main-content">
         <BannerSliderSection />
         {/* Neon: the head term this page is mapped to ("neon signs"). */}

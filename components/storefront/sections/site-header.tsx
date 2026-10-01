@@ -1,12 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { List, X } from "@phosphor-icons/react";
 import { IconBox } from "@/components/icon-box";
 import { CustomQuoteButton } from "@/components/storefront/custom-quote-button";
 import { EtsyButton } from "@/components/storefront/etsy-button";
+import { useNavTone } from "@/lib/use-nav-tone";
 
 // The desktop bar has room for five items at its narrowest (1181px), so it
 // carries the destinations a first-time visitor is choosing between: a
@@ -33,11 +34,23 @@ const mobileLinks = [
   ["Contact", "/contact"],
 ] as const;
 
-export function SiteHeader() {
+// `overlay` floats the bar over the page's first block instead of reserving a
+// strip above it. Only for pages that open on imagery (the homepage banner):
+// over a text-first page it would cover the heading.
+export function SiteHeader({ overlay = false }: { overlay?: boolean }) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const headerRef = useRef<HTMLElement>(null);
+  // An overlay bar starts on the banner, so it renders dark from the server
+  // and the first paint needs no correction.
+  const tone = useNavTone(headerRef, overlay ? "dark" : "light");
 
   return (
-    <header className="site-header" id="site-header">
+    <header
+      ref={headerRef}
+      className={`site-header glass-nav${overlay ? " site-header--overlay" : ""}`}
+      id="site-header"
+      data-tone={tone}
+    >
       <div className="shell header__inner">
         <button
           className="icon-button mobile-menu-button"
@@ -106,7 +119,7 @@ export function SiteHeader() {
         aria-hidden={!menuOpen}
         inert={!menuOpen ? true : undefined}
       >
-        <div className="flex flex-col space-y-2.5 text-sm font-bold text-[#1e1a22] pb-3">
+        <div className="flex flex-col space-y-2.5 text-sm font-bold pb-3">
           {mobileLinks.map(([label, href]) =>
             href.startsWith("/") ? (
               <Link key={href} href={href} onClick={() => setMenuOpen(false)}>
