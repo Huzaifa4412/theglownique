@@ -111,6 +111,11 @@ const COLLECTION_CONTENT: readonly CollectionContent[] = [
         href: "/guides/custom-business-sign-cost",
         description: "The drivers behind every quote, and why two signs the same size can price differently.",
       },
+      {
+        label: "When to order your wedding sign",
+        href: "/shipping",
+        description: "A free mockup within 24 hours, then 6–13 business days once you approve — and how to count back from the date.",
+      },
     ],
     gallery: [
       img(
@@ -288,7 +293,7 @@ const COLLECTION_CONTENT: readonly CollectionContent[] = [
         "“Charlotte” above a loft bed, with butterfly decals.",
       ),
       img(
-        "/neon-sign/girls room/iap_600x600.5331151538_61m43otq.webp",
+        "/neon-sign/girls room/custom-neon-sign-home-bedroom.webp",
         "Pink 'Hello gorgeous' neon sign set into a pink and white flower wall above a child's white vanity with a mirror",
         "“Hello gorgeous” set into a flower wall over a vanity.",
       ),
@@ -416,7 +421,7 @@ const COLLECTION_CONTENT: readonly CollectionContent[] = [
       "Custom gaming neon signs for game rooms, stream setups & arcades — gamertags & logos. Dimmable 12V LED silicone with free mockup & 5-year warranty.",
     intro:
       "Gaming rooms already glow. A gaming neon sign has to win against RGB strips, monitor light and a camera pointed at your face — which changes the colour you pick, where it hangs and how bright it runs.",
-    heroImage: "/neon-sign/Game Room/iap_600x600.6072503848_qdloxd4q.webp",
+    heroImage: "/neon-sign/Game Room/custom-gaming-neon-sign.webp",
     heroAlt: "Green 'Game On' LED neon sign above two kids playing on dual monitors in a framed-art gaming den",
     heroCaption: "“GAME ON” in green over a two-screen den.",
     accent: "#8b5cf6",
@@ -757,7 +762,7 @@ const COLLECTION_CONTENT: readonly CollectionContent[] = [
         "“Tequila” in yellow on a red backboard, and the red wash it leaves on the wall.",
       ),
       img(
-        "/neon-sign/Bar/iap_600x600.5588358323_i7bgtidf.webp",
+        "/neon-sign/Bar/custom-bar-neon-sign-cocktails.webp",
         "Round pink LED neon 'BAR' sign glowing on a pallet-wood home bar with stools and string lights",
         "“BAR” in a pink ring over a pallet-wood garden bar — a shape reads from across the garden.",
       ),
@@ -903,6 +908,11 @@ const COLLECTION_CONTENT: readonly CollectionContent[] = [
         href: "/guides/custom-business-sign-cost",
         description: "The drivers behind every quote, including a battery pack.",
       },
+      {
+        label: "How long a custom sign takes",
+        href: "/shipping",
+        description: "A free mockup within 24 hours, then 6–13 business days once you approve — and how to count back from the party.",
+      },
     ],
     gallery: [
       img(
@@ -911,7 +921,7 @@ const COLLECTION_CONTENT: readonly CollectionContent[] = [
         "“Jewels of July” in hot pink over the dessert table — the dark backdrop makes the pink hit.",
       ),
       img(
-        "/neon-sign/Marriage/iap_600x600.6280886797_59j146av.webp",
+        "/neon-sign/Marriage/custom-wedding-neon-sign-better-together.webp",
         "White 'Will You Marry Me?' neon sign inside a gold hoop arch with white drapes and red roses",
         "“Will You Marry Me?” inside a hoop arch of roses.",
       ),

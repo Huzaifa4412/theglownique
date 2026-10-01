@@ -1,17 +1,27 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 
 import "./blog.css";
+import "./blog-hub.css";
 
 import { MetaViewCategory } from "@/components/analytics/meta-view-trackers";
 import { BlogNewsletter } from "@/components/blog/blog-newsletter";
-import { CategoryNav } from "@/components/blog/category-nav";
-import { PostCard } from "@/components/blog/post-card";
+import {
+  CoverStory,
+  RailStory,
+  ShelfCard,
+  accentFor,
+  accentStyle,
+} from "@/components/blog/journal-cards";
+import { ShelfScroller } from "@/components/blog/shelf-scroller";
 import { AnnouncementBar } from "@/components/storefront/sections/announcement-bar";
 import { ProductTopBar } from "@/components/product/product-top-bar";
 import { SiteFooter } from "@/components/storefront/sections/site-footer";
 import {
   BLOG_SETTINGS_FALLBACK,
+  type BlogCategory,
+  type BlogPostCard,
   getBlogSettings,
   getCategories,
   getPosts,
@@ -69,18 +79,63 @@ const NEXT_STEPS = [
     href: "/guides",
     title: "Buying guides",
     text: "Costs, lighting comparisons and sizing — the decisions that come after the idea.",
+    image: {
+      src: "/3d-metallic-neon-sign/duallit/2.webp",
+      alt: "White 3D letters spelling AMERICA, lit so the glow falls on the surface around them",
+    },
   },
   {
     href: "/business-signs",
     title: "Business signage",
     text: "Channel letters, lightboxes, acrylic logos and logo neon for storefronts and interiors.",
+    image: {
+      src: "/ultra-thin-slim-lightbox/lobbies-and-branding.jpg",
+      alt: "Round lit lightbox sign reading Barb's Coffee House",
+    },
   },
   {
     href: "/custom-signage",
     title: "All sign types",
     text: "The full catalogue of what we build, with specifications for each.",
+    image: {
+      src: "/blog/how-to-choose-a-custom-neon-sign/wedding-backdrop-name-sign.webp",
+      alt: "Pink script neon name sign on a peach drape, framed by two flower arrangements",
+    },
   },
 ] as const;
+
+/** A category needs this many posts to fill a shelf of its own. */
+const MIN_SHELF = 3;
+
+/** Desktop fits about this many cards before the row has to scroll. */
+const CARDS_IN_VIEW = 4;
+
+/**
+ * Every post appears on exactly one shelf, newest first. A category with enough
+ * posts gets its own shelf, fullest first. Smaller categories, and any post
+ * whose category is missing, share a final mixed shelf, so a category with one
+ * post never leaves a mostly empty row and no post can disappear.
+ */
+function buildShelves(categories: BlogCategory[], posts: BlogPostCard[]) {
+  const withPosts = categories
+    .map((category) => ({
+      category,
+      posts: posts.filter((post) => post.category?.slug === category.slug),
+    }))
+    .filter((shelf) => shelf.posts.length > 0);
+
+  const shelves = withPosts
+    .filter((shelf) => shelf.posts.length >= MIN_SHELF)
+    .sort((a, b) => b.posts.length - a.posts.length);
+  const onShelf = new Set(shelves.flatMap((shelf) => shelf.posts.map((post) => post._id)));
+
+  const mixedCategories = withPosts
+    .filter((shelf) => shelf.posts.length < MIN_SHELF)
+    .map((shelf) => shelf.category);
+  const mixed = posts.filter((post) => !onShelf.has(post._id));
+
+  return { shelves, mixed, mixedCategories };
+}
 
 export default async function BlogHubPage() {
   const [settings, categories, posts] = await Promise.all([
@@ -92,12 +147,13 @@ export default async function BlogHubPage() {
   const copy = settings ?? BLOG_SETTINGS_FALLBACK;
   const pageUrl = `${SITE_URL}/blog`;
 
-  // The hero slot goes to the newest post flagged `featured`. If nobody has
-  // flagged one, the newest post takes it — an empty hero would be worse, and
+  // The cover goes to the newest post flagged `featured`. If nobody has
+  // flagged one, the newest post takes it — an empty cover would be worse, and
   // a hub whose top slot depends on an editor remembering a toggle is a hub
   // that will one day look broken.
   const featured = posts.find((post) => post.featured) ?? posts[0] ?? null;
-  const rest = featured ? posts.filter((post) => post._id !== featured._id) : posts;
+  const rail = posts.filter((post) => post._id !== featured?._id).slice(0, 3);
+  const { shelves, mixed, mixedCategories } = buildShelves(categories, posts);
 
   const structuredData = {
     "@context": "https://schema.org",
@@ -145,66 +201,194 @@ export default async function BlogHubPage() {
       <AnnouncementBar />
       <ProductTopBar productName="custom sign" />
 
-      <main id="main-content" className="bg-white">
-        <section className="blog-hero">
-          <div className="blog-hero__inner">
-            <nav className="blog-breadcrumb" aria-label="Breadcrumb">
-              <Link href="/">Home</Link>
-              <span aria-hidden="true">›</span>
-              <span aria-current="page">Journal</span>
-            </nav>
-            <p className="eyebrow">{copy.eyebrow}</p>
-            <h1 className="blog-hero__title">{copy.heading}</h1>
-            <p className="blog-hero__intro">{copy.intro}</p>
+      <main id="main-content" className="bhub">
+        <section className="bhub-hero" aria-labelledby="blog-heading">
+          <div className="bhub-hero__glow bhub-hero__glow--a" aria-hidden="true" />
+          <div className="bhub-hero__glow bhub-hero__glow--b" aria-hidden="true" />
+          <div className="bhub-shell">
+            <div className="bhub-hero__head">
+              <div>
+                <nav aria-label="Breadcrumb">
+                  <ol className="bhub-crumbs">
+                    <li>
+                      <Link href="/">Home</Link>
+                    </li>
+                    <li aria-hidden="true">/</li>
+                    <li aria-current="page">Journal</li>
+                  </ol>
+                </nav>
+                <p className="bhub-eyebrow">{copy.eyebrow}</p>
+                <h1 id="blog-heading" className="bhub-h1">
+                  {copy.heading}
+                </h1>
+              </div>
+              <p className="bhub-intro">{copy.intro}</p>
+            </div>
+
+            {categories.length > 0 ? (
+              <nav className="bhub-cats" aria-label="Article categories">
+                <Link href="/blog" className="bhub-cat" aria-current="page">
+                  All articles
+                  <span className="bhub-cat__count">{posts.length}</span>
+                </Link>
+                {categories.map((category) => (
+                  <Link
+                    key={category.slug}
+                    href={`/blog/category/${category.slug}`}
+                    className="bhub-cat"
+                    style={accentStyle(accentFor(category.slug))}
+                  >
+                    <span className="bhub-dot" aria-hidden="true" />
+                    {category.title}
+                    <span className="bhub-cat__count">{category.count}</span>
+                  </Link>
+                ))}
+              </nav>
+            ) : null}
+
+            {featured ? (
+              <div className="bhub-front">
+                <CoverStory post={featured} />
+                {rail.length > 0 ? (
+                  <section className="bhub-rail" aria-labelledby="blog-new-heading">
+                    <h2 id="blog-new-heading" className="bhub-rail__heading">
+                      Just published
+                    </h2>
+                    <ul>
+                      {rail.map((post) => (
+                        <RailStory key={post._id} post={post} />
+                      ))}
+                    </ul>
+                  </section>
+                ) : null}
+              </div>
+            ) : (
+              <p className="bhub-empty">
+                The first articles are being written. In the meantime, the{" "}
+                <Link href="/guides">buying guides</Link> cover costs, lighting comparisons and sizing.
+              </p>
+            )}
           </div>
         </section>
 
-        <div className="blog-shell">
-          <CategoryNav categories={categories} />
-
-          {posts.length === 0 ? (
-            <p className="blog-empty">
-              The first articles are being written. In the meantime, the{" "}
-              <Link href="/guides">buying guides</Link> cover costs, lighting comparisons and
-              sizing.
-            </p>
-          ) : (
-            <>
-              {featured ? (
-                <section aria-label="Featured article" className="blog-featured">
-                  <PostCard post={featured} variant="feature" priority />
-                </section>
-              ) : null}
-
-              {rest.length > 0 ? (
-                <section aria-labelledby="blog-latest-heading" className="blog-section">
-                  <h2 className="blog-section__heading" id="blog-latest-heading">
-                    Latest articles
-                  </h2>
-                  <div className="blog-grid">
-                    {rest.map((post) => (
-                      <PostCard key={post._id} post={post} headingLevel="h3" />
-                    ))}
+        {shelves.map(({ category, posts: shelfPosts }, index) => {
+          const accent = accentFor(category.slug);
+          const headingId = `shelf-${category.slug}`;
+          return (
+            <section
+              key={category.slug}
+              className={`bhub-section${index % 2 === 1 ? " bhub-section--tint" : ""}`}
+              aria-labelledby={headingId}
+              style={accentStyle(accent)}
+            >
+              <div className="bhub-shell">
+                <header className="bhub-section__head">
+                  <div>
+                    <p className="bhub-section__eyebrow">
+                      <span className="bhub-dot" aria-hidden="true" />
+                      {category.count} {category.count === 1 ? "article" : "articles"}
+                    </p>
+                    <h2 id={headingId}>{category.title}</h2>
+                    {category.description ? <p>{category.description}</p> : null}
                   </div>
-                </section>
-              ) : null}
-            </>
-          )}
+                  <Link href={`/blog/category/${category.slug}`} className="bhub-seeall">
+                    See all <span className="sr-only">{category.title} articles</span>
+                    <span aria-hidden="true">→</span>
+                  </Link>
+                </header>
+                <ShelfScroller
+                  label={`${category.title} articles`}
+                  controls={shelfPosts.length > CARDS_IN_VIEW}
+                >
+                  {shelfPosts.map((post) => (
+                    <ShelfCard key={post._id} post={post} accent={accent} />
+                  ))}
+                </ShelfScroller>
+              </div>
+            </section>
+          );
+        })}
 
-          <section aria-labelledby="blog-next-heading" className="blog-section">
-            <h2 className="blog-section__heading" id="blog-next-heading">
-              Ready to decide, not just read?
-            </h2>
-            <div className="blog-next">
-              {NEXT_STEPS.map((step) => (
-                <Link key={step.href} href={step.href} className="blog-next__card">
-                  <span className="blog-next__title">{step.title}</span>
-                  <span className="blog-next__text">{step.text}</span>
-                </Link>
-              ))}
+        {mixed.length > 0 ? (
+          <section
+            className={`bhub-section${shelves.length % 2 === 1 ? " bhub-section--tint" : ""}`}
+            aria-labelledby="shelf-more"
+          >
+            <div className="bhub-shell">
+              <header className="bhub-section__head">
+                <div>
+                  <p className="bhub-section__eyebrow">
+                    <span className="bhub-dot" aria-hidden="true" />
+                    {mixed.length} {mixed.length === 1 ? "article" : "articles"}
+                  </p>
+                  <h2 id="shelf-more">More from the journal</h2>
+                </div>
+                {mixedCategories.length > 0 ? (
+                  <nav className="bhub-seeall-group" aria-label="More categories">
+                    {mixedCategories.map((category) => (
+                      <Link
+                        key={category.slug}
+                        href={`/blog/category/${category.slug}`}
+                        className="bhub-seeall"
+                        style={accentStyle(accentFor(category.slug))}
+                      >
+                        <span className="bhub-dot" aria-hidden="true" />
+                        {category.title} <span aria-hidden="true">→</span>
+                      </Link>
+                    ))}
+                  </nav>
+                ) : null}
+              </header>
+              <ShelfScroller label="More articles" controls={mixed.length > CARDS_IN_VIEW}>
+                {mixed.map((post) => (
+                  <ShelfCard
+                    key={post._id}
+                    post={post}
+                    accent={accentFor(post.category?.slug)}
+                    showCategory
+                  />
+                ))}
+              </ShelfScroller>
             </div>
           </section>
+        ) : null}
 
+        <section className="bhub-next" aria-labelledby="blog-next-heading">
+          <div className="bhub-shell">
+            <header className="bhub-section__head">
+              <div>
+                <p className="bhub-section__eyebrow">
+                  <span className="bhub-dot" aria-hidden="true" />
+                  From ideas to an order
+                </p>
+                <h2 id="blog-next-heading">Ready to decide, not just read?</h2>
+              </div>
+            </header>
+            <ul className="bhub-next__grid">
+              {NEXT_STEPS.map((step) => (
+                <li key={step.href}>
+                  <Link href={step.href} className="bhub-next__card">
+                    <span className="bhub-next__media">
+                      <Image
+                        src={step.image.src}
+                        alt={step.image.alt}
+                        fill
+                        sizes="(min-width: 768px) 33vw, 100vw"
+                        className="object-cover"
+                      />
+                    </span>
+                    <span className="bhub-next__title">
+                      {step.title} <span aria-hidden="true">→</span>
+                    </span>
+                    <span className="bhub-next__text">{step.text}</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+
+        <div className="blog-shell bhub-newsletter">
           <BlogNewsletter heading={copy.newsletterHeading} text={copy.newsletterText} />
         </div>
       </main>

@@ -58,8 +58,8 @@ export const HAS_ADDRESS = LEGAL.address.length > 0;
 export const HAS_PHONE = LEGAL.phone.length > 0;
 
 /** Human-readable "last updated" for page footers. */
-export function formattedLastUpdated(): string {
-  return new Date(LEGAL.lastUpdated).toLocaleDateString("en-GB", {
+export function formattedLastUpdated(date: string = LEGAL.lastUpdated): string {
+  return new Date(date).toLocaleDateString("en-GB", {
     day: "numeric",
     month: "long",
     year: "numeric",

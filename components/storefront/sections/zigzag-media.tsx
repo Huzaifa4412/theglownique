@@ -3,7 +3,13 @@
 import Image from "next/image";
 import { useCallback, useEffect, useRef, useState, type CSSProperties } from "react";
 
-export type ZigzagImage = { src: string; alt: string };
+export type ZigzagImage = {
+  src: string;
+  alt: string;
+  /** What this particular photo shows, e.g. its lighting style. Replaces the
+      row's caption while the photo is on screen. */
+  label?: string;
+};
 
 type ZigzagMediaProps = {
   /** Sign type name, for the carousel's accessible label. */
@@ -102,7 +108,7 @@ export function ZigzagMedia({ label, images, caption, offsetMs = 0 }: ZigzagMedi
 
         <span className="zigzag-row__caption">
           <span aria-hidden="true" className="zigzag-row__dot" />
-          {caption}
+          {images[active].label ?? caption}
         </span>
 
         {count > 1 ? (

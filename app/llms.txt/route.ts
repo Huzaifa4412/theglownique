@@ -1,3 +1,4 @@
+import { BACKLIT_ANSWER, BACKLIT_PATH, BACKLIT_SPACES, BACKLIT_UPDATED_ON } from "@/lib/backlit-signs";
 import { COLLECTION_PAGES } from "@/lib/collection-pages";
 import { GUIDES } from "@/lib/guides";
 import { INDUSTRY_PAGES } from "@/lib/industry-pages";
@@ -57,6 +58,11 @@ function buildLlmsTxt(): string {
     (g) => `- [${g.h1}](${SITE_URL}/guides/${g.slug}) (reviewed ${g.updatedOn}): ${g.answer}\n`,
   ).join("");
 
+  // Lower-cased space names, joined as a sentence fragment for the backlit entry.
+  const backlitSpaces = BACKLIT_SPACES.map((space) => `${space.name.toLowerCase()}s`)
+    .join(", ")
+    .replace("lobbys", "lobbies");
+
   return `# The Glownique
 
 > The Glownique handcrafts made-to-order illuminated signage in four types:
@@ -70,6 +76,7 @@ The Glownique does not sell pre-made or off-the-shelf signs.
 ## Products & Signage Hubs
 
 ${productEntries}
+- [Custom Backlit Signs](${SITE_URL}${BACKLIT_PATH}) (updated ${BACKLIT_UPDATED_ON}): ${BACKLIT_ANSWER} Made to order in stainless steel for ${backlitSpaces}; the page has finishes, light colors, specifications, sizing and wall tables, a comparison with front-lit, LED neon and lightbox signs, and FAQs.
 
 - [Custom Signage Range](${SITE_URL}/custom-signage): Overview of all 4 handcrafted sign types for home & business.
 - [Commercial Business Signage Hub](${SITE_URL}/business-signs): Which of the four sign types suits which business job (façade, reception wall, changing window or menu, full-colour logo, feature wall, trade show), with lighting styles, outdoor vs indoor guidance and how a quote works.

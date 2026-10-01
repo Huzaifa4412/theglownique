@@ -109,7 +109,7 @@ const SIGN_TYPE_SOURCE: ReadonlyArray<{
     name: "Custom Logo Neon Signs",
     shortName: "Logo Neon Signs",
     tagline: "Flexible silicone LED neon, hand-bent to your logo and brand colours",
-    image: "/neon-sign/Bar/iap_600x600.5588358323_i7bgtidf.webp",
+    image: "/neon-sign/Bar/custom-bar-neon-sign-cocktails.webp",
     alt: "Custom LED neon bar logo glowing pink and blue behind a commercial bar counter",
     bestFor: "Back bars, feature walls and window pieces that need colour after dark",
   },
@@ -256,7 +256,7 @@ const LIGHTING = [
   {
     ...requireLighting("Halo backlit"),
     label: "Halo-lit",
-    image: "/3d-metallic-neon-sign/corporte/056b3189-6a8c-482a-8334-53ded7aff3e1.webp",
+    image: "/3d-metallic-neon-sign/corporte/custom-3d-metal-channel-letter-sign-office.webp",
     alt: "Halo-lit 3D metal logo sign glowing softly onto a corporate reception wall",
     href: `${PATH}/backlit-signs`,
     linkLabel: "Backlit signs",

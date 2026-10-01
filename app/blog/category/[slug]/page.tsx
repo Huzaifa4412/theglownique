@@ -3,9 +3,16 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import "../../blog.css";
+import "../../blog-hub.css";
 
-import { CategoryNav } from "@/components/blog/category-nav";
-import { PostCard } from "@/components/blog/post-card";
+import { BlogNewsletter } from "@/components/blog/blog-newsletter";
+import {
+  CoverStory,
+  ShelfCard,
+  accentFor,
+  accentStyle,
+} from "@/components/blog/journal-cards";
+import { SanityImage } from "@/components/blog/sanity-image";
 import { AnnouncementBar } from "@/components/storefront/sections/announcement-bar";
 import { ProductTopBar } from "@/components/product/product-top-bar";
 import { SiteFooter } from "@/components/storefront/sections/site-footer";
@@ -13,8 +20,8 @@ import {
   getCategories,
   getCategory,
   getCategoryRoutes,
+  getPosts,
   getPostsByCategory,
-  isoDate,
 } from "@/lib/blog";
 import { SITE_URL } from "@/lib/site";
 import { serializeJsonLd } from "@/lib/utils";
@@ -75,10 +82,11 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
 export default async function BlogCategoryPage({ params }: Params) {
   const { slug } = await params;
 
-  const [category, posts, categories] = await Promise.all([
+  const [category, posts, categories, allPosts] = await Promise.all([
     getCategory(slug),
     getPostsByCategory(slug),
     getCategories(),
+    getPosts(),
   ]);
 
   if (!category) notFound();
@@ -133,6 +141,19 @@ export default async function BlogCategoryPage({ params }: Params) {
       ? newestDate.getFullYear()
       : null;
 
+  const accent = accentFor(category.slug);
+  const [lead, ...others] = posts;
+  // Up to three covers from this category, fanned out in the hero.
+  const fan = posts.filter((post) => post.coverImage?.url).slice(0, 3);
+  // Every other topic, shown by the cover of its newest post, so even a
+  // one-article archive ends with somewhere to go.
+  const otherTopics = categories
+    .filter((item) => item.slug !== category.slug)
+    .map((item) => ({
+      category: item,
+      cover: allPosts.find((post) => post.category?.slug === item.slug && post.coverImage?.url),
+    }));
+
   return (
     <>
       <script
@@ -142,39 +163,132 @@ export default async function BlogCategoryPage({ params }: Params) {
       <AnnouncementBar />
       <ProductTopBar productName="custom sign" />
 
-      <main id="main-content" className="bg-white">
-        <section className="blog-hero">
-          <div className="blog-hero__inner">
-            <nav className="blog-breadcrumb" aria-label="Breadcrumb">
-              <Link href="/">Home</Link>
-              <span aria-hidden="true">›</span>
-              <Link href="/blog">Journal</Link>
-              <span aria-hidden="true">›</span>
-              <span aria-current="page">{category.title}</span>
+      <main id="main-content" className="bhub" style={accentStyle(accent)}>
+        <section className="bhub-hero bhub-hero--archive" aria-labelledby="category-heading">
+          <div className="bhub-hero__glow bhub-hero__glow--accent" aria-hidden="true" />
+          <div className="bhub-hero__glow bhub-hero__glow--b" aria-hidden="true" />
+          <div className="bhub-shell">
+            <div className="bhub-archive">
+              <div>
+                <nav aria-label="Breadcrumb">
+                  <ol className="bhub-crumbs">
+                    <li>
+                      <Link href="/">Home</Link>
+                    </li>
+                    <li aria-hidden="true">/</li>
+                    <li>
+                      <Link href="/blog">Journal</Link>
+                    </li>
+                    <li aria-hidden="true">/</li>
+                    <li aria-current="page">{category.title}</li>
+                  </ol>
+                </nav>
+                <p className="bhub-section__eyebrow bhub-section__eyebrow--light">
+                  <span className="bhub-dot" aria-hidden="true" />
+                  {posts.length} article{posts.length === 1 ? "" : "s"}
+                  {latestYear ? ` · latest ${latestYear}` : ""}
+                </p>
+                <h1 id="category-heading" className="bhub-h1">
+                  {category.title}
+                </h1>
+                <p className="bhub-intro bhub-intro--archive">{intro}</p>
+              </div>
+
+              {fan.length > 0 ? (
+                <div className={`bhub-fan bhub-fan--${fan.length}`} aria-hidden="true">
+                  {fan.map((post) => (
+                    <div key={post._id} className="bhub-fan__card">
+                      <SanityImage image={post.coverImage} alt="" sizes="280px" fill />
+                    </div>
+                  ))}
+                </div>
+              ) : null}
+            </div>
+
+            <nav className="bhub-cats" aria-label="Article categories">
+              <Link href="/blog" className="bhub-cat">
+                All articles
+                <span className="bhub-cat__count">{allPosts.length}</span>
+              </Link>
+              {categories.map((item) => (
+                <Link
+                  key={item.slug}
+                  href={`/blog/category/${item.slug}`}
+                  className="bhub-cat"
+                  aria-current={item.slug === category.slug ? "page" : undefined}
+                  style={accentStyle(accentFor(item.slug))}
+                >
+                  <span className="bhub-dot" aria-hidden="true" />
+                  {item.title}
+                  <span className="bhub-cat__count">{item.count}</span>
+                </Link>
+              ))}
             </nav>
-            <p className="eyebrow">
-              {posts.length} article{posts.length === 1 ? "" : "s"}
-              {latestYear ? ` · latest ${latestYear}` : ""}
-            </p>
-            <h1 className="blog-hero__title">{category.title}</h1>
-            <p className="blog-hero__intro">{intro}</p>
           </div>
         </section>
 
-        <div className="blog-shell">
-          <CategoryNav categories={categories} activeSlug={category.slug} />
+        <section className="bhub-section" aria-label={`${category.title} articles`}>
+          <div className="bhub-shell">
+            {lead ? <CoverStory post={lead} label="Latest" showCategory={false} /> : null}
+            {others.length > 0 ? (
+              <ul className="bhub-cardgrid">
+                {others.map((post) => (
+                  <ShelfCard key={post._id} post={post} accent={accent} />
+                ))}
+              </ul>
+            ) : null}
+          </div>
+        </section>
 
-          <section aria-label={`${category.title} articles`} className="blog-section">
-            <div className="blog-grid">
-              {posts.map((post, index) => (
-                <PostCard key={post._id} post={post} priority={index === 0} />
-              ))}
+        {otherTopics.length > 0 ? (
+          <section className="bhub-section bhub-section--tint" aria-labelledby="other-topics">
+            <div className="bhub-shell">
+              <header className="bhub-section__head">
+                <div>
+                  <p className="bhub-section__eyebrow">
+                    <span className="bhub-dot" aria-hidden="true" />
+                    Keep exploring
+                  </p>
+                  <h2 id="other-topics">Other topics in the journal</h2>
+                </div>
+                <Link href="/blog" className="bhub-seeall">
+                  All articles <span aria-hidden="true">→</span>
+                </Link>
+              </header>
+              <ul className="bhub-topics">
+                {otherTopics.map(({ category: topic, cover }) => (
+                  <li key={topic.slug}>
+                    <Link
+                      href={`/blog/category/${topic.slug}`}
+                      className="bhub-topic"
+                      style={accentStyle(accentFor(topic.slug))}
+                    >
+                      <span className="bhub-topic__media">
+                        {cover ? (
+                          <SanityImage
+                            image={cover.coverImage}
+                            alt=""
+                            sizes="(min-width: 1024px) 300px, 50vw"
+                            fill
+                          />
+                        ) : null}
+                      </span>
+                      <span className="bhub-topic__body">
+                        <span className="bhub-topic__title">{topic.title}</span>
+                        <span className="bhub-topic__count">
+                          {topic.count} article{topic.count === 1 ? "" : "s"} →
+                        </span>
+                      </span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </div>
           </section>
+        ) : null}
 
-          <p className="blog-backlink">
-            <Link href="/blog">← All articles</Link>
-          </p>
+        <div className="blog-shell bhub-newsletter">
+          <BlogNewsletter />
         </div>
       </main>
 

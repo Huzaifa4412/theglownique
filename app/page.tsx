@@ -28,7 +28,8 @@ export const metadata: Metadata = {
   title: HOME_TITLE,
   description: HOME_DESCRIPTION,
   alternates: {
-    canonical: "",
+    // "/" and not "": an empty string makes Next emit no canonical link at all.
+    canonical: "/",
   },
   openGraph: {
     title: HOME_TITLE,
@@ -84,7 +85,7 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: serializeJsonLd(homeJsonLd) }}
       />
       <AnnouncementBar />
-      <SiteHeader />
+      <SiteHeader overlay />
       <main id="main-content">
         <BannerSliderSection />
         {/* Neon: the head term this page is mapped to ("neon signs"). */}

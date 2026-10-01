@@ -1,0 +1,291 @@
+/* Shared styles for the sign detail pages: the sign-type template
+ * (components/product/product-detail.tsx) and the hand-built pages under
+ * /business-signs (backlit, backlit lobby, logo neon).
+ *
+ * Layout is Tailwind in the pages; this file holds what utilities cannot say:
+ * the gallery, the WhatsApp + Etsy pair, the phone sticky bar, tables and the
+ * dark hero. Everything is prefixed `detail-` and kept one class deep, so
+ * nothing here outranks or is outranked by the shared `.button` rules in
+ * globals.css.
+ *
+ * A page sets --dt-accent (its sign type's colour) on .detail-page. The accent
+ * is used as-is on dark sections and darkened where it carries text on white,
+ * so every accent clears contrast without each page picking two colours.
+ */
+
+.detail-page {
+  --dt-ink: #1e1a22;
+  --dt-muted: #5e5862;
+  --dt-line: #eadfe4;
+  --dt-blush: #fdf7f9;
+  --dt-night: #0b0910;
+  /* The sign type's colour. Brushed gold unless the page sets its own. */
+  --dt-accent: #e2c078;
+  /* The same colour, darkened until it carries text on white. */
+  --dt-accent-ink: color-mix(in srgb, var(--dt-accent) 50%, #1e1a22);
+  color: var(--dt-ink);
+}
+
+.detail-page h1,
+.detail-page h2,
+.detail-page h3 {
+  font-family: var(--font-display);
+}
+
+/* globals.css zeroes the top margin of every heading and paragraph in
+   unlayered CSS, which outranks Tailwind's layered mt-* utilities. revert-layer
+   hands the property back to the utility layer, so the spacing written in the
+   page applies; with no utility it falls through to preflight's 0. */
+.detail-page :is(h1, h2, h3, p) {
+  margin-block-start: revert-layer;
+}
+
+/* Anchored sections clear the sticky glass header. */
+.detail-anchor {
+  scroll-margin-top: 96px;
+}
+
+.detail-eyebrow {
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--dt-accent-ink);
+}
+
+.detail-eyebrow--light {
+  color: var(--dt-accent);
+}
+
+.detail-link {
+  font-weight: 700;
+  color: var(--pink-dark);
+  text-underline-offset: 4px;
+}
+
+.detail-link:hover {
+  text-decoration: underline;
+}
+
+.detail-accent {
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+.detail-hero {
+  position: relative;
+  overflow: hidden;
+  background: var(--dt-night);
+  color: #fff;
+}
+
+/* A wash of the accent behind the picture, the way a lit sign warms a wall. */
+.detail-hero::before {
+  content: "";
+  position: absolute;
+  top: -10%;
+  right: -12%;
+  width: min(760px, 90vw);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--dt-accent) 24%, transparent), transparent 70%);
+  pointer-events: none;
+}
+
+/* ── Gallery ─────────────────────────────────────────────────────────────── */
+
+.detail-gallery {
+  display: grid;
+  gap: 12px;
+  min-width: 0;
+}
+
+.detail-gallery__frame {
+  position: relative;
+  aspect-ratio: 5 / 4;
+  overflow: hidden;
+  border-radius: 20px;
+  background: #1a151c;
+}
+
+.detail-gallery__thumbs {
+  display: flex;
+  gap: 8px;
+}
+
+.detail-gallery__thumb {
+  position: relative;
+  flex: 1 1 0;
+  max-width: 96px;
+  aspect-ratio: 5 / 4;
+  overflow: hidden;
+  border-radius: 10px;
+  border: 2px solid transparent;
+  background: #1a151c;
+  opacity: 0.72;
+  cursor: pointer;
+  transition: opacity 160ms ease, border-color 160ms ease;
+}
+
+.detail-gallery__thumb:hover {
+  opacity: 1;
+}
+
+.detail-gallery__thumb[aria-pressed="true"] {
+  opacity: 1;
+  border-color: var(--dt-accent);
+}
+
+.detail-gallery__thumb:focus-visible,
+.detail-page a:focus-visible,
+.detail-page summary:focus-visible {
+  outline: 3px solid var(--pink);
+  outline-offset: 3px;
+}
+
+/* ── WhatsApp + Etsy pair ────────────────────────────────────────────────────
+   Stacked where each label needs the full width, side by side once the pair
+   has 380px to itself. A container query, not a media query: the same pair
+   sits in a full-width hero and in a narrow card. Padding is trimmed here, in
+   one place, so both buttons keep the shared .button height. */
+.detail-cta-box {
+  container-type: inline-size;
+}
+
+.detail-cta {
+  display: grid;
+  gap: 10px;
+}
+
+.detail-cta > .button {
+  width: 100%;
+  padding-inline: 14px;
+}
+
+@container (min-width: 380px) {
+  .detail-cta {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* One button (no WhatsApp number configured) should not sit half-width. */
+  .detail-cta > .button:only-child {
+    grid-column: 1 / -1;
+  }
+}
+
+/* ── Sticky bar (phones only) ────────────────────────────────────────────── */
+
+.detail-sticky {
+  position: fixed;
+  left: 12px;
+  /* Leaves the corner to the live chat bubble and its greeting. */
+  right: 104px;
+  bottom: 14px;
+  z-index: 45;
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  gap: 8px;
+  padding: 8px;
+  border-radius: 16px;
+  background: rgba(22, 14, 24, 0.86);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.32);
+  transform: translateY(140%);
+  transition: transform 260ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.detail-sticky[data-visible="true"] {
+  transform: translateY(0);
+}
+
+.detail-sticky > .button {
+  min-height: 44px;
+  padding-inline: 10px;
+  box-shadow: none;
+}
+
+@media (min-width: 768px) {
+  .detail-sticky {
+    display: none;
+  }
+}
+
+/* ── Video ───────────────────────────────────────────────────────────────── */
+
+.detail-video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 5 / 4;
+  object-fit: cover;
+  border-radius: 18px;
+  background: #1a151c;
+}
+
+/* ── Tables ──────────────────────────────────────────────────────────────── */
+
+.detail-table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--dt-line);
+  border-radius: 16px;
+  background: #fff;
+}
+
+.detail-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.detail-table caption {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.detail-table th,
+.detail-table td {
+  padding: 13px 16px;
+  vertical-align: top;
+}
+
+.detail-table thead th {
+  background: var(--dt-blush);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--dt-ink);
+  white-space: nowrap;
+}
+
+.detail-table tbody tr {
+  border-top: 1px solid var(--dt-line);
+}
+
+.detail-table tbody th {
+  font-weight: 700;
+  color: var(--dt-ink);
+}
+
+.detail-table tbody td {
+  color: var(--dt-muted);
+}
+
+/* The row this page is about, in the comparison table. */
+.detail-table tbody tr[data-current="true"] {
+  background: #fffaf0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .detail-sticky {
+    transition: none;
+  }
+}

@@ -38,9 +38,14 @@ type Row = {
   specLabels: readonly string[];
   /** Rotated in order; the first is the one shown before JavaScript runs. */
   images: readonly ZigzagImage[];
-  /** Short caption on the main photo. */
+  /** Short caption on the main photo, for photos with no label of their own. */
   caption: string;
 };
+
+// Channel-letter lighting styles, worded as what you can see in the photo.
+const FRONT_LIT = "Front-lit: the letter faces glow";
+const HALO_LIT = "Halo-lit (backlit): glow behind the letters";
+const DUAL_LIT = "Dual-lit: lit faces + halo behind";
 
 const ROWS: readonly Row[] = [
   {
@@ -48,20 +53,25 @@ const ROWS: readonly Row[] = [
     eyebrow: "For storefronts & reception walls",
     heading: "3D metal channel letter signs",
     summary:
-      "Individual 3D letters in stainless steel, lit from inside with LEDs, for the name on a façade or a logo on a reception wall. Choose front-lit for the loudest read, halo-lit for a softer architectural glow, or both.",
+      "Individual 3D letters in stainless steel, lit from inside with LEDs, for the name on a façade or a logo on a reception wall. Choose front-lit for the loudest read, halo-lit for a softer architectural glow, or both. These make excellent custom business signs outdoor.",
     bestFor: [
       "The business name on a façade, read from across the street",
       "Halo-lit logos on reception and lobby walls",
       "Restaurant, salon and retail frontage, day and night",
     ],
     specLabels: ["Lighting styles", "Finishes", "Use"],
+    // Each photo names the lighting style it actually shows, so the caption
+    // changes with the slide instead of listing all three over every photo.
+    // "Halo-lit" and "backlit" are the same construction; buyers search both,
+    // so the label carries both words.
     images: [
-      { src: "/3d-metallic-neon-sign/frontlit/image.webp", alt: "Frontlit 3D metal channel letters spelling Food Opera, the script faces glowing bright orange against a plain wall" },
-      { src: "/3d-metallic-neon-sign/duallit/1.webp", alt: "Dual-lit channel letters with glowing white faces and dark green returns, the halo spilling onto the floor" },
-      { src: "/3d-metallic-neon-sign/corporte/14d4b621-c697-428a-b727-1c91b78e9e08.webp", alt: "Halo-lit STUDIO.S channel letters on a corporate reception wall, the light spilling onto the plaster behind them" },
-      { src: "/3d-metallic-neon-sign/frontlit/2.webp", alt: "Front-lit stainless steel channel letter R with a glowing white acrylic face, on a workshop bench" },
-      { src: "/3d-metallic-neon-sign/duallit/2.webp", alt: "Dual-lit 3D metal letters spelling AMERICA, with glowing white faces and a halo of light spilling onto the floor behind" },
-      { src: "/3d-metallic-neon-sign/corporte/056b3189-6a8c-482a-8334-53ded7aff3e1.webp", alt: "Halo-lit 3D metal logo sign glowing softly onto a corporate reception wall" },
+      { src: "/3d-metallic-neon-sign/frontlit/image.webp", label: FRONT_LIT, alt: "Frontlit 3D metal channel letters spelling Food Opera, the script faces glowing bright orange against a plain wall" },
+      { src: "/3d-metallic-neon-sign/duallit/1.webp", label: DUAL_LIT, alt: "Dual-lit channel letters with glowing white faces and dark green returns, the halo spilling onto the floor" },
+      { src: "/3d-metallic-neon-sign/corporte/14d4b621-c697-428a-b727-1c91b78e9e08.webp", label: HALO_LIT, alt: "Halo-lit STUDIO.S channel letters on a corporate reception wall, the light spilling onto the plaster behind them" },
+      { src: "/3d-metallic-neon-sign/frontlit/2.webp", label: FRONT_LIT, alt: "Front-lit stainless steel channel letter R with a glowing white acrylic face, on a workshop bench" },
+      { src: "/3d-metallic-neon-sign/duallit/2.webp", label: DUAL_LIT, alt: "Dual-lit 3D metal letters spelling AMERICA, with glowing white faces and a halo of light spilling onto the floor behind" },
+      // .png: this photo has no .webp on disk, and the .webp path 404'd.
+      { src: "/3d-metallic-neon-sign/corporte/056b3189-6a8c-482a-8334-53ded7aff3e1.png", label: HALO_LIT, alt: "Halo-lit 3D metal logo sign glowing softly onto a corporate reception wall" },
     ],
     caption: "Front-lit, halo-lit or dual-lit",
   },
@@ -82,7 +92,7 @@ const ROWS: readonly Row[] = [
       { src: "/ultra-thin-slim-lightbox/IMG-20260803-WA0010.webp", alt: "Backlit LED lightbox sign of a blue Charlotte Hornets Dell Curry number 30 jersey" },
       { src: "/ultra-thin-slim-lightbox/IMG-20260803-WA0004.jpg", alt: "Shaped LED lightbox sign reading Sinners Tattoo in white letters with a red cross, lit against a white wall" },
       { src: "/ultra-thin-slim-lightbox/Retail displays.jpg", alt: "Three slim LED lightbox posters for coffee, a burger and a fashion sale on a shop wall" },
-      { src: "/ultra-thin-slim-lightbox/Menu boards.jpg", alt: "Two illuminated slim lightbox menu boards on a restaurant wall" },
+      { src: "/ultra-thin-slim-lightbox/menu-boards.jpg", alt: "Two illuminated slim lightbox menu boards on a restaurant wall" },
     ],
     caption: "Under an inch deep, lit edge to edge",
   },
@@ -91,7 +101,7 @@ const ROWS: readonly Row[] = [
     eyebrow: "For full-colour logos & brand walls",
     heading: "Custom acrylic logo signs",
     summary:
-      "Your full-colour logo printed straight onto acrylic and traced with LED neon, for artwork neon alone cannot draw: gradients, photos and fine type. Built single-layer or layered for 3D depth.",
+      "Your full-colour logo printed straight onto acrylic and traced with LED neon, for artwork neon alone cannot draw: gradients, photos and fine type. Built single-layer or layered for 3D depth, these make stunning acrylic business signs.",
     bestFor: [
       "Full-colour logos, gradients and fine text neon cannot trace",
       "Reception walls and office branding",

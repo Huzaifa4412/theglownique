@@ -151,6 +151,11 @@ export type ProductPage = {
   galleryHeading?: string;
   /** Visible note under the gallery heading, e.g. to disclose visualisations. */
   galleryNote?: string;
+  /**
+   * Etsy listing for "Order on Etsy". Set only where the shop has a listing for
+   * this sign type; the buttons fall back to the shop page otherwise.
+   */
+  etsyUrl?: string;
   faqs: ProductFaq[];
   metaTitle: string;
   metaDescription: string;
@@ -168,6 +173,8 @@ export const PRODUCT_PAGES: ProductPage[] = [
     accent: "#f40b68",
     heroImage: "/hero/neon-sign-hero.webp",
     heroVideo: "/neon-sign/Videos/en-GB_1fa05acfc3a2cdf80c7787c5f585c30a.mp4",
+    // The shop's general custom neon listing, verified live on 2026-10-01.
+    etsyUrl: "https://www.etsy.com/listing/4501012917/custom-neon-sign-personalized-led-neon",
     // Definition first, like the other three sign types: the sentence an
     // answer engine quotes should say what the thing is before who sells it.
     intro:
@@ -217,7 +224,7 @@ export const PRODUCT_PAGES: ProductPage[] = [
       { label: "Power", value: "12V low-voltage plug-and-play adaptor" },
       { label: "LED life", value: "Long-life LEDs, covered by our warranty" },
       { label: "Colours", value: "13 solid colours, plus RGB colour-changing" },
-      { label: "Dimming", value: "Optional wireless RF remote (1–100%)" },
+      { label: "Dimming", value: "Wireless RF dimmer remote included (1–100%)" },
       { label: "Mounting", value: "Wall standoffs or hanging kit — ready to hang" },
       { label: "Use", value: "Indoor as standard; outdoor build available" },
       { label: "Sizes", value: "Fully custom, from ~30 cm to several metres" },
@@ -281,7 +288,7 @@ export const PRODUCT_PAGES: ProductPage[] = [
       {
         title: "Home & bedroom",
         text: "Set the mood with a name, quote or shape that makes a room feel like yours.",
-        image: "/neon-sign/girls room/iap_600x600.5331151538_61m43otq.webp",
+        image: "/neon-sign/girls room/custom-neon-sign-home-bedroom.webp",
         alt: "Pink LED neon sign glowing in a styled bedroom",
         href: "/custom-signage/home-decor-signs",
         linkLabel: "Bedroom and home neon signs",
@@ -289,7 +296,7 @@ export const PRODUCT_PAGES: ProductPage[] = [
       {
         title: "Weddings & events",
         text: "A custom backdrop your guests will photograph all night — and you'll keep forever.",
-        image: "/neon-sign/Marriage/iap_600x600.6280886797_59j146av.webp",
+        image: "/neon-sign/Marriage/custom-wedding-neon-sign-better-together.webp",
         alt: "Better Together wedding LED neon sign",
         href: "/custom-signage/wedding-signs",
         linkLabel: "Wedding neon signs",
@@ -297,7 +304,7 @@ export const PRODUCT_PAGES: ProductPage[] = [
       {
         title: "Bars & studios",
         text: "Give your space a signature glow that sets the tone the moment people walk in.",
-        image: "/neon-sign/Bar/iap_600x600.5588358323_i7bgtidf.webp",
+        image: "/neon-sign/Bar/custom-bar-neon-sign-cocktails.webp",
         alt: "Cocktails LED neon sign in a bar",
         href: "/business-signs/bar-signs",
         linkLabel: "Neon bar signs for venues",
@@ -305,7 +312,7 @@ export const PRODUCT_PAGES: ProductPage[] = [
       {
         title: "Gaming & personal",
         text: "Icons, gamertags and callouts that turn a wall into a statement.",
-        image: "/neon-sign/Game Room/iap_600x600.6072503848_qdloxd4q.webp",
+        image: "/neon-sign/Game Room/custom-gaming-neon-sign.webp",
         alt: "Game On arcade LED neon sign in a games room",
         href: "/custom-signage/gaming-neon-signs",
         linkLabel: "Gaming neon signs",
@@ -314,10 +321,14 @@ export const PRODUCT_PAGES: ProductPage[] = [
     gallery: [
       { src: "/hero/neon-sign-hero.webp", alt: "Good Vibes custom LED neon sign glowing on a dark wall" },
       { src: "/neon-sign/Marriage/iap_600x600.7378705048_ipwhq76b.webp", alt: "Happily Ever After wedding neon sign" },
-      { src: "/neon-sign/Gym/iap_600x600.7178660214_6320z3ec.webp", alt: "No Pain No Gain gym LED neon sign" },
+      { src: "/neon-sign/Gym/custom-gym-neon-sign-motivational.webp", alt: "No Pain No Gain gym LED neon sign" },
       { src: "/neon-sign/Custom name/iap_600x600.6574462695_efoprbvt.webp", alt: "Personalised custom name LED neon sign" },
     ],
     faqs: [
+      {
+        q: "How long does it take to make and deliver?",
+        a: "The free mockup comes back within 24 hours. Once you approve it, the sign takes 3–5 business days to make and 3–8 business days to deliver, free and tracked. Rush orders cost nothing extra: tell us your date when you ask for the mockup.",
+      },
       {
         q: "How long do LED neon signs last?",
         a: "It is built on long-life LEDs, and a well-made sign gives years of everyday use. A rated LED life describes when the LEDs fade to 70% of their original brightness, not when the sign stops working, and the power supply is usually the first part to wear out — which is why every sign carries our warranty.",
@@ -332,7 +343,7 @@ export const PRODUCT_PAGES: ProductPage[] = [
       },
       {
         q: "Can I dim it or change the colour?",
-        a: "Yes — add a wireless RF remote for 1–100% dimming, or choose our RGB option to switch colours, pulse or flash whenever you like.",
+        a: "Yes — every neon sign comes with a wireless RF remote for 1–100% dimming, or choose our RGB option to switch colours, pulse or flash whenever you like.",
       },
       {
         q: "Can I use it outdoors?",
@@ -354,8 +365,11 @@ export const PRODUCT_PAGES: ProductPage[] = [
     category: "Channel Letters",
     tagline: "Fabricated stainless-steel channel letters — front-lit, halo-lit or dual-lit",
     accent: "#e0a23c",
-    heroImage: "/3d-metallic-neon-sign/corporte/056b3189-6a8c-482a-8334-53ded7aff3e1.webp",
+    heroImage: "/3d-metallic-neon-sign/corporte/custom-3d-metal-channel-letter-sign-office.webp",
     heroVideo: "/3d-metallic-neon-sign/videos/2.mp4",
+    // The shop's backlit metal logo listing, verified live on 2026-10-01. There
+    // is no front-lit or dual-lit listing; those are quoted in the same thread.
+    etsyUrl: "https://www.etsy.com/listing/4575898470/custom-led-sign-3d-metal-logo-backlit",
     // Definition first: the query's AI Overview opens by defining the term, so
     // the sentence an engine can quote is the first one on the page.
     intro:
@@ -440,7 +454,7 @@ export const PRODUCT_PAGES: ProductPage[] = [
           summary: "The premium one",
           text: "The face stays solid metal and the LED throws backwards instead, ringing each letter in a soft halo on the wall. You read the shape rather than the glow, which is exactly why it's the default for reception walls — it reads expensive rather than loud.",
           bestFor: "Lobbies, receptions and interior feature walls",
-          image: "/3d-metallic-neon-sign/Salon/generated/235762e8-14ec-4167-b534-2dad36c826ba.webp",
+          image: "/3d-metallic-neon-sign/Salon/custom-salon-logo-sign-halo-lit.webp",
           imageAlt:
             "Halo backlit 3D metal salon logo in brushed gold, glowing softly onto the reception wall behind it",
         },
@@ -459,7 +473,7 @@ export const PRODUCT_PAGES: ProductPage[] = [
       {
         title: "Storefronts & façades",
         text: "Pull customers in from across the street with a premium illuminated logo.",
-        image: "/3d-metallic-neon-sign/corporte/056b3189-6a8c-482a-8334-53ded7aff3e1.webp",
+        image: "/3d-metallic-neon-sign/corporte/custom-3d-metal-channel-letter-sign-office.webp",
         alt: "Corporate 3D metal channel-letter storefront sign",
         href: "/business-signs/retail-storefronts",
         linkLabel: "Retail storefront signs",
@@ -475,7 +489,7 @@ export const PRODUCT_PAGES: ProductPage[] = [
       {
         title: "Restaurants & cafés",
         text: "Warm, inviting metal signage that photographs beautifully and lasts for years.",
-        image: "/3d-metallic-neon-sign/Resturants/generated/026ad950-fafb-4407-8420-c83be7f49365.webp",
+        image: "/3d-metallic-neon-sign/Resturants/custom-halo-lit-restaurant-sign.webp",
         alt: "Visualisation of a halo-lit metal restaurant logo glowing orange on a plaster wall",
         href: "/business-signs/restaurant-signs",
         linkLabel: "Restaurant and café signs",
@@ -483,17 +497,17 @@ export const PRODUCT_PAGES: ProductPage[] = [
       {
         title: "Salons & studios",
         text: "A halo-lit wordmark that turns a feature wall into a signature brand moment.",
-        image: "/3d-metallic-neon-sign/Salon/generated/235762e8-14ec-4167-b534-2dad36c826ba.webp",
+        image: "/3d-metallic-neon-sign/Salon/custom-salon-logo-sign-halo-lit.webp",
         alt: "Visualisation of a halo-lit brushed-gold salon logo on a reception wall",
         href: "/business-signs/salon-spa-signs",
         linkLabel: "Salon and spa signs",
       },
     ],
     gallery: [
-      { src: "/3d-metallic-neon-sign/corporte/056b3189-6a8c-482a-8334-53ded7aff3e1.webp", alt: "Corporate 3D metal channel-letter sign" },
+      { src: "/3d-metallic-neon-sign/corporte/custom-3d-metal-channel-letter-sign-office.webp", alt: "Corporate 3D metal channel-letter sign" },
       { src: "/3d-metallic-neon-sign/corporte/14d4b621-c697-428a-b727-1c91b78e9e08.webp", alt: "Illuminated 3D metal logo sign" },
-      { src: "/3d-metallic-neon-sign/Resturants/generated/026ad950-fafb-4407-8420-c83be7f49365.webp", alt: "Visualisation of a halo-lit metal restaurant logo on a plaster wall" },
-      { src: "/3d-metallic-neon-sign/Salon/generated/235762e8-14ec-4167-b534-2dad36c826ba.webp", alt: "Visualisation of a halo-lit brushed-gold salon logo on a reception wall" },
+      { src: "/3d-metallic-neon-sign/Resturants/custom-halo-lit-restaurant-sign.webp", alt: "Visualisation of a halo-lit metal restaurant logo on a plaster wall" },
+      { src: "/3d-metallic-neon-sign/Salon/custom-salon-logo-sign-halo-lit.webp", alt: "Visualisation of a halo-lit brushed-gold salon logo on a reception wall" },
     ],
     // Two of the four images sit in folders named "generated" and show
     // fictional brands, so the default "See it in the wild" heading would
@@ -501,6 +515,10 @@ export const PRODUCT_PAGES: ProductPage[] = [
     galleryHeading: "Finishes and lighting in context",
     galleryNote: "Some images are design visualisations of finishes and lighting styles.",
     faqs: [
+      {
+        q: "How long does it take to make and deliver?",
+        a: "The free mockup comes back within 24 hours. Once you approve it, the sign takes 3–10 business days to make and 3–8 business days to deliver, free and tracked. Rush orders cost nothing extra: tell us your date when you ask for the mockup.",
+      },
       {
         q: "What's the difference between frontlit, backlit and dual-lit?",
         a: "Frontlit letters glow from the face for bold readability. Halo (backlit) letters throw a soft glow onto the wall behind for a premium, floating look. Dual-lit combines both for maximum day-and-night impact.",
@@ -545,7 +563,7 @@ export const PRODUCT_PAGES: ProductPage[] = [
     category: "Lightbox Signs",
     tagline: "Slim aluminium lightbox with even, edge-lit LED glow",
     accent: "#0e9f6e",
-    heroImage: "/ultra-thin-slim-lightbox/main-hero.webp",
+    heroImage: "/ultra-thin-slim-lightbox/custom-slim-led-lightbox-sign.webp",
     intro:
       "An ultra-thin LED lightbox sign is an illuminated display frame under an inch deep: LEDs around its edge light a printed graphic evenly through a light-guide panel. The Glownique builds them in anodized aluminium to your size, with a magnetic or snap-frame face so menus, posters and promotions change in seconds, without tools.",
     chips: ["Under 1-inch slim", "Edge-lit, shadow-free", "Tool-free graphic swap", "Retail & commercial"],
@@ -641,7 +659,7 @@ export const PRODUCT_PAGES: ProductPage[] = [
       },
     ],
     gallery: [
-      { src: "/ultra-thin-slim-lightbox/main-hero.webp", alt: "Ultra-thin slim LED lightbox transformation" },
+      { src: "/ultra-thin-slim-lightbox/custom-slim-led-lightbox-sign.webp", alt: "Ultra-thin slim LED lightbox transformation" },
       { src: "/ultra-thin-slim-lightbox/retail-displays.jpg", alt: "Retail ultra-thin slim LED lightbox display" },
       { src: "/ultra-thin-slim-lightbox/menu-boards.jpg", alt: "Illuminated slim lightbox menu board" },
       { src: "/ultra-thin-slim-lightbox/lobbies-and-branding.jpg", alt: "Corporate lobby slim lightbox branding sign" },
@@ -651,6 +669,10 @@ export const PRODUCT_PAGES: ProductPage[] = [
     // heading describes settings rather than claiming finished installations.
     galleryHeading: "Slim lightboxes in context",
     faqs: [
+      {
+        q: "How long does it take to make and deliver?",
+        a: "The free mockup comes back within 24 hours. Once you approve it, the sign takes 3–10 business days to make and 3–8 business days to deliver, free and tracked. Rush orders cost nothing extra: tell us your date when you ask for the mockup.",
+      },
       {
         q: "How thin is an ultra-slim lightbox?",
         a: "Our slim lightboxes are under an inch deep (around 25 mm) — a fraction of a traditional lightbox — so they sit almost flush to the wall for a clean, modern look.",
@@ -689,7 +711,7 @@ export const PRODUCT_PAGES: ProductPage[] = [
     category: "Acrylic Logo Signs",
     tagline: "Full-colour UV artwork on acrylic, traced with glowing LED neon",
     accent: "#7c3aed",
-    heroImage: "/3d-arcylic/3235dc09-6dac-4056-88b6-55fc26e28571.webp",
+    heroImage: "/3d-arcylic/custom-acrylic-logo-sign-uv-printed.webp",
     heroVideo: "/3d-arcylic/videos/25763cbb2ca6866a574a4dde5853343c.mp4",
     intro:
       "A UV-printed acrylic logo sign is full-colour artwork printed directly onto acrylic and outlined with LED neon, so gradients, fine text and multi-colour logos keep every detail while the contours glow. The Glownique builds them on clear, white, mirrored or coloured acrylic, in a single layer or several for real 3D depth. Because the print carries the detail, a busy logo needs far less hand-bent neon than a neon-only sign.",
@@ -761,7 +783,7 @@ export const PRODUCT_PAGES: ProductPage[] = [
       {
         title: "Logo & brand walls",
         text: "A full-colour logo that glows — ideal for receptions, studios and offices.",
-        image: "/3d-arcylic/3235dc09-6dac-4056-88b6-55fc26e28571.webp",
+        image: "/3d-arcylic/custom-acrylic-logo-sign-uv-printed.webp",
         alt: "3D acrylic UV-print neon logo brand wall",
         href: "/business-signs/office-signs",
         linkLabel: "Office and reception signs",
@@ -777,7 +799,7 @@ export const PRODUCT_PAGES: ProductPage[] = [
       {
         title: "Retail & hospitality",
         text: "Colour-rich signage that captures artwork neon alone simply can't.",
-        image: "/3d-arcylic/3235dc09-6dac-4056-88b6-55fc26e28571.webp",
+        image: "/3d-arcylic/custom-acrylic-logo-sign-uv-printed.webp",
         alt: "Retail 3D acrylic UV-print neon sign",
         href: "/business-signs/retail-storefronts",
         linkLabel: "Retail storefront signs",
@@ -790,11 +812,15 @@ export const PRODUCT_PAGES: ProductPage[] = [
       },
     ],
     gallery: [
-      { src: "/3d-arcylic/3235dc09-6dac-4056-88b6-55fc26e28571.webp", alt: "3D acrylic UV-print neon contour sign" },
+      { src: "/3d-arcylic/custom-acrylic-logo-sign-uv-printed.webp", alt: "3D acrylic UV-print neon contour sign" },
       { src: "/3d-arcylic/fff64032-bdaa-459c-8caf-a4ac67b89f19.webp", alt: "Layered 3D acrylic UV-print neon sign" },
     ],
     galleryHeading: "Acrylic logo signs in context",
     faqs: [
+      {
+        q: "How long does it take to make and deliver?",
+        a: "The free mockup comes back within 24 hours. Once you approve it, the sign takes 3–10 business days to make and 3–8 business days to deliver, free and tracked. Rush orders cost nothing extra: tell us your date when you ask for the mockup.",
+      },
       {
         q: "What is a UV-print acrylic neon sign?",
         a: "It combines high-definition UV printing — vivid, full-colour artwork cured directly onto acrylic — with glowing LED neon contours, giving you rich detail and the glow of neon in one piece.",

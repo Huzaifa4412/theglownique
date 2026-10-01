@@ -42,7 +42,7 @@ const INDUSTRY_CONTENT: readonly LandingContent[] = [
       "For most gyms, flexible 12V LED neon suits motivational walls and studio logos inside, because there are no glass tubes to break near a lifting area. Use 3D metal channel letters for the studio name on a façade or tall entrance wall, and UV-printed acrylic for full-colour logos, timetables and zone markers. Each sign is made to order after a free design mockup.",
     intro:
       "Motivational wall signs, studio logos and class-room branding built to survive chalk dust, dropped plates and the vibration of a busy training floor.",
-    heroImage: "/neon-sign/Gym/iap_600x600.7178660214_6320z3ec.webp",
+    heroImage: "/neon-sign/Gym/custom-gym-neon-sign-motivational.webp",
     heroAlt: "Motivational LED neon sign mounted on a gym wall",
     quoteProductName: "custom gym neon sign",
     quoteLabel: "Get a Gym Sign Quote",
@@ -122,7 +122,7 @@ const INDUSTRY_CONTENT: readonly LandingContent[] = [
       "LED neon suits the back bar of most venues: it gives warm, saturated colour at low voltage in a deliberately dark room. Add a slim lightbox for menus and specials that change without replacing the sign, UV-printed acrylic for full-colour cocktail lists and logos, and 3D metal channel letters for the venue name outside. Every sign is made to order after a free design mockup.",
     intro:
       "Back-bar logos, cocktail-list lighting and venue branding specified for the one environment that is warm, damp, greasy and deliberately dark.",
-    heroImage: "/neon-sign/Bar/iap_600x600.5588358323_i7bgtidf.webp",
+    heroImage: "/neon-sign/Bar/custom-bar-neon-sign-cocktails.webp",
     heroAlt: "Custom neon sign glowing behind a commercial bar",
     quoteProductName: "custom neon bar sign",
     quoteLabel: "Get a Bar Sign Quote",
@@ -207,7 +207,7 @@ const INDUSTRY_CONTENT: readonly LandingContent[] = [
       "A custom open sign is usually LED neon in your own typeface and colours, so it reads as your shop rather than a stock unit. In a bright, sun-facing window, an edge-lit slim lightbox stays readable and lets you change the message. UV-printed acrylic panels carry opening hours and service information beside it. Each sign is made to order after a free design mockup.",
     intro:
       "The one sign whose entire job is answering a question from across the street — and the reason a stock open sign in a bright window so often fails to.",
-    heroImage: "/ultra-thin-slim-lightbox/Storefront windows.webp",
+    heroImage: "/ultra-thin-slim-lightbox/storefront-windows.webp",
     heroAlt: "Illuminated storefront window signage seen from the street",
     quoteProductName: "custom neon open sign",
     quoteLabel: "Get an Open Sign Quote",
@@ -287,7 +287,7 @@ const INDUSTRY_CONTENT: readonly LandingContent[] = [
       "A restaurant usually needs two kinds of sign. Outside, 3D metal channel letters carry the name on the façade, front-lit, halo-lit or dual-lit and built for outdoor mounting. Inside, slim lightboxes suit menu boards that change with the season, LED neon makes a feature wall guests photograph, and UV-printed acrylic carries full-colour menus and logos. All are made to order after a free mockup.",
     intro:
       "Storefront identity, interior branding and menu display for venues where the same wall has to look right in daylight service and at candlelit covers.",
-    heroImage: "/3d-metallic-neon-sign/Resturants/generated/026ad950-fafb-4407-8420-c83be7f49365.webp",
+    heroImage: "/3d-metallic-neon-sign/Resturants/custom-halo-lit-restaurant-sign.webp",
     heroAlt: "Illuminated 3D metal restaurant sign on an interior wall",
     quoteProductName: "custom restaurant sign",
     quoteLabel: "Get a Restaurant Sign Quote",
@@ -372,7 +372,7 @@ const INDUSTRY_CONTENT: readonly LandingContent[] = [
       "For a reception wall, the usual choice is 3D metal channel letters, often halo-lit so the wall glows behind solid-looking lettering. If the logo is full-colour or cannot be reduced to letters, UV-printed acrylic on standoffs carries the artwork in print. Slim lightboxes suit directories and wayfinding that change with tenants, and LED neon suits breakout spaces. Each sign is made to order after a free mockup.",
     intro:
       "Reception walls, lobby logos and meeting-room identity, in the finishes that read as considered rather than loud.",
-    heroImage: "/3d-metallic-neon-sign/corporte/056b3189-6a8c-482a-8334-53ded7aff3e1.webp",
+    heroImage: "/3d-metallic-neon-sign/corporte/custom-3d-metal-channel-letter-sign-office.webp",
     heroAlt: "Halo-lit 3D metal logo sign on a corporate reception wall",
     quoteProductName: "custom office reception sign",
     quoteLabel: "Get an Office Sign Quote",
@@ -457,7 +457,7 @@ const INDUSTRY_CONTENT: readonly LandingContent[] = [
       "LED neon suits most salons and spas: warm, saturated colour that sits well behind a mirror wall and shows up clearly in clients' photos. For a full-colour logo at reception or a price board, UV-printed layered acrylic carries the artwork, and 3D metal channel letters carry the studio name on the street frontage. Every sign is made to order after a free design mockup.",
     intro:
       "Reception marks, mirror walls and treatment-room branding for spaces where the sign ends up in every client's photo whether you planned for it or not.",
-    heroImage: "/3d-metallic-neon-sign/Salon/generated/235762e8-14ec-4167-b534-2dad36c826ba.webp",
+    heroImage: "/3d-metallic-neon-sign/Salon/custom-salon-logo-sign-halo-lit.webp",
     heroAlt: "Illuminated salon logo sign on a treatment-room wall",
     quoteProductName: "custom salon neon sign",
     quoteLabel: "Get a Salon Sign Quote",
@@ -622,7 +622,7 @@ const INDUSTRY_CONTENT: readonly LandingContent[] = [
       "For a trade show booth, a slim LED lightbox is the workhorse: slim, light, and the printed graphic can change between shows without rebuilding the sign. LED neon adds a feature piece that draws people down the aisle, with flexible silicone and no glass to break in transit, and UV-printed acrylic carries full-colour logos and product panels. Each sign is made to order after a free mockup.",
     intro:
       "Booth branding specified around the constraint that defines exhibition signage: it has to go up in an hour, come down in twenty minutes, and survive the trip to the next show.",
-    heroImage: "/ultra-thin-slim-lightbox/main-hero.webp",
+    heroImage: "/ultra-thin-slim-lightbox/custom-slim-led-lightbox-sign.webp",
     heroAlt: "Ultra-thin illuminated display panel on an exhibition stand",
     quoteProductName: "custom trade show booth sign",
     quoteLabel: "Get an Exhibition Sign Quote",
@@ -688,6 +688,73 @@ const INDUSTRY_CONTENT: readonly LandingContent[] = [
         q: "How high should a booth sign be mounted?",
         a: "High enough to clear the crowd and be read from down the aisle. Most visitors see stand signage at an angle while walking, so height and contrast matter more than raw size, and anything below shoulder height is behind them before it registers.",
       },
+    ],
+  },
+  {
+    slug: "hotel-signs",
+    name: "Hotel Reception Signs",
+    kicker: "Hotel & Hospitality Signage",
+    h1: "Custom Hotel Reception Neon Signs & Lobby Signage",
+    metaTitle: "Hotel Reception Neon Signs & Lobby Signage",
+    metaDescription:
+      "Custom backlit hotel lobby signs & reception neon signage designed for luxury check-in experiences. 3D halo-lit channel letters & UV acrylic with a 5-year warranty.",
+    answer:
+      "For a high-end hotel reception, halo-lit 3D metal channel letters provide the warm, sophisticated glow expected in a luxury check-in area. Custom LED neon is perfect for hotel bars, rooftop lounges, and selfie walls. UV-printed acrylic panels work exceptionally well for wayfinding, room directories, and front desk branding. Each sign is precision-crafted after a free architectural mockup.",
+    intro:
+      "First impressions matter. From the moment guests step into your lobby, your reception signage sets the tone for their entire stay with warm, perfectly tuned illumination.",
+    heroImage: "/3d-metallic-neon-sign/Salon/custom-salon-logo-sign-halo-lit.webp",
+    heroAlt: "Custom backlit halo-lit reception sign for a luxury lobby",
+    quoteProductName: "custom hotel reception sign",
+    quoteLabel: "Get a Hotel Sign Quote",
+    materials: [
+      {
+        name: "3D Metal Channel Letters",
+        href: CHANNEL,
+        why: "Halo-lit 3D letters cast a soft, warm glow against your lobby wall, creating a sophisticated and welcoming check-in experience.",
+      },
+      {
+        name: "LED Neon Signs",
+        href: NEON,
+        why: "Perfect for hotel bars, rooftop lounges, and Instagram-worthy selfie walls that encourage guests to tag your property.",
+      },
+      {
+        name: "UV-Print Acrylic Signs",
+        href: ACRYLIC,
+        why: "Ideal for crisp, clean wayfinding, room directories, and multi-color logo branding behind the concierge desk.",
+      },
+    ],
+    considerations: [
+      {
+        title: "Tuning the color temperature",
+        text: "Your reception sign must harmonize with ambient architectural lighting. We tune our halo LEDs to match your ceiling fixtures: 3000K Soft White for warm luxury, or 4000K Neutral White for modern boutique hotels.",
+      },
+      {
+        title: "Silent operation",
+        text: "A quiet reception waiting area amplifies humming power supplies. We utilize solid-state low-voltage transformers with passive heat sinks rather than noisy fans.",
+      },
+      {
+        title: "ADA compliance in corridors",
+        text: "Building inspectors flag signs that project too far into walking paths. By fabricating shallow letter returns paired with precision standoffs, our assemblies maintain a depth fully complying with ADA corridor limits.",
+      }
+    ],
+    applications: [
+      { name: "Reception Lobby Logos", text: "Warm, halo-lit 3D metal letters behind the check-in desk." },
+      { name: "Hotel Bar Signage", text: "Vibrant custom neon signs for lounges, rooftops, and dining areas." },
+      { name: "Wayfinding & Directories", text: "Clean UV-printed acrylic panels for floor levels, amenities, and directional flow." }
+    ],
+    faqs: [
+      {
+        q: "What is a custom hotel reception neon sign?",
+        a: "A custom hotel reception neon sign is an illuminated branding display, typically crafted from safe, energy-efficient 12V LED neon or halo-lit metal channel letters, mounted directly behind the check-in desk to welcome guests and establish the hotel's brand identity.",
+      },
+      {
+        q: "How do you power a sign on a marble or wood-paneled lobby wall?",
+        a: "We work with your contractors to conceal all wiring. For solid surfaces like marble or wood panels, we provide a full-scale mounting template so your electrician can drill precise holes for the low-voltage wires, running them behind the wall to a remote transformer hidden in a ceiling drop or closet.",
+      },
+      {
+        q: "Do you provide installation templates for hospitality projects?",
+        a: "Yes. Every hotel sign ships with a 1:1 scale paper mounting template and premium architectural standoffs, ensuring your onsite maintenance team or general contractor can install it with absolute precision.",
+      }
     ],
   },
 ];

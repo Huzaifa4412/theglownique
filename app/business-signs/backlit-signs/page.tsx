@@ -1,77 +1,165 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { Check, ChevronDown } from "lucide-react";
 
 import { MetaViewContent } from "@/components/analytics/meta-view-trackers";
+import { DetailCtaPair } from "@/components/detail/detail-cta-pair";
+import { DetailGallery } from "@/components/detail/detail-gallery";
+import { DetailStickyCta } from "@/components/detail/detail-sticky-cta";
+import { DetailVideo } from "@/components/detail/detail-video";
+import { ProductTopBar } from "@/components/product/product-top-bar";
 import { AnnouncementBar } from "@/components/storefront/sections/announcement-bar";
 import { SiteFooter } from "@/components/storefront/sections/site-footer";
-import { ProductTopBar } from "@/components/product/product-top-bar";
-import { CustomQuoteButton } from "@/components/storefront/custom-quote-button";
-import { SITE_URL } from "@/lib/site";
+import {
+  BACKLIT_ANATOMY,
+  BACKLIT_ANSWER,
+  BACKLIT_COMPARISON,
+  BACKLIT_ETSY_URL,
+  BACKLIT_FAQS,
+  BACKLIT_FINISH_GROUPS,
+  BACKLIT_HERO_IMAGES,
+  BACKLIT_LEDE,
+  BACKLIT_LIGHT_OPTIONS,
+  BACKLIT_PATH,
+  BACKLIT_ROUTE_IMAGES,
+  BACKLIT_SIZE_ROWS,
+  BACKLIT_SPACES,
+  BACKLIT_SPECS,
+  BACKLIT_STEPS,
+  BACKLIT_UPDATED_LABEL,
+  BACKLIT_UPDATED_ON,
+  BACKLIT_WALL_ROWS,
+} from "@/lib/backlit-signs";
+import { DELIVERY, WARRANTY } from "@/lib/claims";
+import { ETSY_SHOP_URL, SITE_URL, whatsappQuoteUrl } from "@/lib/site";
 import { serializeJsonLd } from "@/lib/utils";
 
+import "@/components/detail/detail.css";
+import "./backlit.css";
+
+/**
+ * /business-signs/backlit-signs — the backlit sign detail page.
+ *
+ * Two jobs. It is the page the backlit Meta campaigns land on, so a visitor on
+ * a phone has to see the product and both ways to buy (WhatsApp, Etsy) before
+ * scrolling, and again under every picture. And it is the page that should
+ * answer "what is a backlit sign", so the definition, the specs, the sizing and
+ * wall tables and the FAQs are plain server-rendered text an engine can quote.
+ *
+ * Each space has an anchor (#hair-salon, #nail-salon, #beauty-salon,
+ * #lobby-sign, #office-sign), so an ad set aimed at one kind of business can
+ * land on its own section.
+ *
+ * Content and claims live in lib/backlit-signs.ts. No price, rating or review
+ * count appears here or in the schema (scripts/seo-audit.mjs enforces it).
+ */
+
+const TITLE = "Custom Backlit Signs for Salons & Offices";
+const DESCRIPTION =
+  "Custom backlit signs: your logo in stainless steel with a halo glow, for hair, nail and beauty salons, lobbies and offices. Free mockup in 24 hours.";
+const OG_IMAGE = BACKLIT_HERO_IMAGES[0];
+
 export const metadata: Metadata = {
-  title: "Custom Backlit Signs for Business",
-  description:
-    "Custom 3D metal backlit signs & halo-lit logo signage for business storefronts and offices. Handcrafted stainless steel letters with 5-year warranty.",
-  alternates: { canonical: "/business-signs/backlit-signs" },
+  title: TITLE,
+  description: DESCRIPTION,
+  alternates: { canonical: BACKLIT_PATH },
   openGraph: {
     type: "website",
     siteName: "The Glownique",
-    title: "Custom Backlit Signs for Business | The Glownique",
-    description:
-      "Commercial 3D metal backlit signs and halo-lit channel letters for storefronts, reception walls, and corporate offices. 12V low-voltage with 5-year warranty.",
-    url: "/business-signs/backlit-signs",
-    images: [{ url: "/3d-metallic-neon-sign/corporte/056b3189-6a8c-482a-8334-53ded7aff3e1.webp", alt: "Custom Backlit Signs for Business" }],
+    title: `${TITLE} | The Glownique`,
+    description: DESCRIPTION,
+    url: BACKLIT_PATH,
+    images: [{ url: OG_IMAGE.src, width: 1402, height: 1122, alt: OG_IMAGE.alt }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Custom Backlit Signs for Business | The Glownique",
-    description:
-      "Handcrafted 3D stainless steel backlit signage and halo-lit letters for businesses.",
-    images: ["/3d-metallic-neon-sign/corporte/056b3189-6a8c-482a-8334-53ded7aff3e1.webp"],
+    title: `${TITLE} | The Glownique`,
+    description: DESCRIPTION,
+    images: [OG_IMAGE.src],
   },
 };
 
-const backlitFaqs = [
+const VIDEOS = [
   {
-    q: "What is a backlit sign and how does halo illumination work?",
-    a: "A backlit sign (also called a halo-lit or reverse channel letter sign) features solid metal faces with open or translucent acrylic backs. High-efficiency LEDs inside each letter project light backward onto the mounting wall. The light reflects off the wall surface to create a soft, high-contrast silhouette halo around each letterform while keeping the letter face crisp and unlit.",
+    src: "/backlit-signs/backlit-sign-rose-gold-letters-workshop.mp4",
+    poster: "/backlit-signs/backlit-sign-rose-gold-letters-workshop-poster.webp",
+    name: "Backlit letters in mirror rose gold, lit on the bench",
+    label: "Close-up video of mirror rose gold backlit letters, first lit with a warm halo and then unlit to show the metal faces and sides",
+    caption: "Mirror rose gold. The face stays metal; the light comes out behind it.",
   },
   {
-    q: "What wall surfaces work best with halo backlit signs?",
-    a: "Halo-lit signage performs best on matte, light-to-medium toned wall surfaces such as painted drywall, smooth concrete, stone, and light natural timber. High-gloss finishes (like polished tile or mirror panels) can reflect individual LED diode hotspots; for gloss or uneven brick surfaces, we mount the letters onto an architectural matte backer panel first.",
+    src: "/backlit-signs/backlit-sign-matte-black-letters-halo.mp4",
+    poster: "/backlit-signs/backlit-sign-matte-black-letters-halo-poster.webp",
+    name: "Matte black backlit letters with a warm white halo",
+    label: "Close-up video of matte black backlit letters lying on a gray surface, each one ringed by a warm white halo",
+    caption: "Matte black with a warm white halo, before mounting.",
   },
-  {
-    q: "How are wires and power supplies concealed on a backlit wall sign?",
-    a: "For drywall and accessible interior walls, low-voltage wiring passes invisibly through hollow mounting standoffs directly into the wall cavity or drop ceiling. In spaces where wall penetrations are restricted, we mount the sign onto a slim, floating architectural backer panel that conceals all inter-letter wiring, requiring only a single power connection.",
-  },
-  {
-    q: "Can backlit signs be installed outdoors?",
-    a: "Yes, when they are built as exterior signs. Outdoor backlit letters are fabricated in stainless steel around sealed, IP67-rated LED modules, with an exterior-rated low-voltage power supply. An interior sign should not be moved outdoors, so tell us the sign is going outside and the quote will specify the outdoor build.",
-  },
-  {
-    q: "What metal finishes and LED color temperatures are available?",
-    a: "Faces and returns can be finished in brushed titanium gold, matte black powder coat, brushed stainless steel, champagne bronze, or custom Pantone-matched enamel. LED halo lighting is available in 2700K warm white, 3000K soft white, 4000K neutral white, 6500K daylight white, or custom vibrant brand colors.",
-  },
-];
+] as const;
 
-export default function BacklitSignsPage() {
-  const pageUrl = `${SITE_URL}/business-signs/backlit-signs`;
+const READING = [
+  {
+    href: "/guides/front-lit-vs-halo-lit-vs-dual-lit",
+    title: "Front-lit vs halo-lit vs dual-lit",
+    text: "How the three lighting styles differ, with sources.",
+  },
+  {
+    href: "/guides/backlit-sign-wall-surfaces-and-standoffs",
+    title: "Wall surfaces and standoffs",
+    text: "How the wall and the gap change the halo.",
+  },
+  {
+    href: "/business-signs/backlit-lobby-signs",
+    title: "Backlit lobby signs",
+    text: "Sizing, leased walls and mounting for reception areas.",
+  },
+  {
+    href: "/guides/custom-business-sign-cost",
+    title: "What a custom sign costs",
+    text: "What drives the price of each sign type.",
+  },
+] as const;
 
-  const structuredData = {
+function buildJsonLd() {
+  const pageUrl = `${SITE_URL}${BACKLIT_PATH}`;
+  const absolute = (src: string) => encodeURI(`${SITE_URL}${src}`);
+
+  return {
     "@context": "https://schema.org",
     "@graph": [
       {
+        "@type": "WebPage",
+        "@id": `${pageUrl}#webpage`,
+        url: pageUrl,
+        name: TITLE,
+        description: DESCRIPTION,
+        inLanguage: "en-US",
+        dateModified: BACKLIT_UPDATED_ON,
+        isPartOf: { "@id": `${SITE_URL}/#website` },
+        about: { "@id": `${pageUrl}#product` },
+        primaryImageOfPage: absolute(OG_IMAGE.src),
+      },
+      {
         "@type": "Product",
         "@id": `${pageUrl}#product`,
-        name: "Custom 3D Metal Backlit Signs",
-        description:
-          "Custom fabricated 3D stainless steel backlit signage and halo-lit channel letters engineered for corporate lobbies, boutique storefronts, and architectural walls.",
-        image: `${SITE_URL}/3d-metallic-neon-sign/corporte/056b3189-6a8c-482a-8334-53ded7aff3e1.webp`,
-        category: "Commercial Illuminated Signage",
+        name: "Custom Backlit Sign",
+        alternateName: ["Halo-lit sign", "Reverse-lit channel letters", "Backlit logo sign"],
+        description: BACKLIT_ANSWER,
+        image: BACKLIT_ROUTE_IMAGES.map(absolute),
+        category: "Illuminated business signage",
+        material: "Stainless steel",
         brand: { "@type": "Brand", name: "The Glownique" },
+        manufacturer: { "@id": `${SITE_URL}/#organization` },
         url: pageUrl,
+        audience: {
+          "@type": "BusinessAudience",
+          name: "Hair salons, nail salons, beauty salons, spas, offices and reception areas",
+        },
+        additionalProperty: BACKLIT_SPECS.map((spec) => ({
+          "@type": "PropertyValue",
+          name: spec.label,
+          value: spec.value,
+        })),
       },
       {
         "@type": "BreadcrumbList",
@@ -82,8 +170,36 @@ export default function BacklitSignsPage() {
         ],
       },
       {
+        "@type": "ItemList",
+        name: "Backlit signs by space",
+        itemListElement: BACKLIT_SPACES.map((space, index) => ({
+          "@type": "ListItem",
+          position: index + 1,
+          name: space.heading,
+          url: `${pageUrl}#${space.id}`,
+        })),
+      },
+      {
+        "@type": "HowTo",
+        name: "How to order a custom backlit sign",
+        step: BACKLIT_STEPS.map((step, index) => ({
+          "@type": "HowToStep",
+          position: index + 1,
+          name: step.name,
+          text: step.text,
+        })),
+      },
+      ...VIDEOS.map((video) => ({
+        "@type": "VideoObject",
+        name: video.name,
+        description: video.label,
+        thumbnailUrl: absolute(video.poster),
+        contentUrl: absolute(video.src),
+        uploadDate: BACKLIT_UPDATED_ON,
+      })),
+      {
         "@type": "FAQPage",
-        mainEntity: backlitFaqs.map((faq) => ({
+        mainEntity: BACKLIT_FAQS.map((faq) => ({
           "@type": "Question",
           name: faq.q,
           acceptedAnswer: { "@type": "Answer", text: faq.a },
@@ -91,378 +207,589 @@ export default function BacklitSignsPage() {
       },
     ],
   };
+}
+
+export default function BacklitSignsPage() {
+  const generalWhatsapp = whatsappQuoteUrl("custom backlit sign");
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: serializeJsonLd(structuredData) }}
-      />
-      <MetaViewContent
-        contentId="backlit-signs"
-        contentName="Custom Backlit Signs for Business"
-        contentCategory="Business signage"
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(buildJsonLd()) }} />
+      {/* The id is this route's slug, so a Meta catalog feed added later can
+          use it as the item id and inherit the audiences built here. */}
+      <MetaViewContent contentId="backlit-signs" contentName="Custom Backlit Signs" contentCategory="Backlit signs" />
       <AnnouncementBar />
-      <ProductTopBar productName="backlit signs" />
+      <ProductTopBar productName="custom backlit sign" />
 
-      <main id="main-content" className="bg-[#0b0b0e] text-[#f5f5f7]">
-        {/* Hero Section */}
-        <section className="relative overflow-hidden border-b border-white/10 bg-gradient-to-b from-[#181820] via-[#0f0f14] to-[#0b0b0e] pt-12 pb-20 sm:pt-20 sm:pb-28">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12">
-              <div className="lg:col-span-7">
-                <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-[#e0a23c]">
-                  Architectural Halo Illumination
-                </p>
-                <h1 className="text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
-                  Custom Backlit Signs & Halo-Lit Business Signage
-                </h1>
+      <main id="main-content" className="detail-page">
+        {/* ───────────────────────── HERO ───────────────────────── */}
+        <section className="detail-hero">
+          <div className="relative z-10 mx-auto grid max-w-[1320px] gap-6 px-4 pb-12 pt-6 sm:gap-8 sm:px-6 sm:pt-10 lg:grid-cols-[1fr_1.05fr] lg:items-center lg:gap-12 lg:pb-20 lg:pt-16">
+            <div>
+              <nav className="mb-4 flex flex-wrap items-center gap-2 text-xs font-medium text-white/60" aria-label="Breadcrumb">
+                <Link href="/" className="transition-colors hover:text-white">
+                  Home
+                </Link>
+                <span aria-hidden="true">/</span>
+                <Link href="/business-signs" className="text-white/80 transition-colors hover:text-white">
+                  Business Signs
+                </Link>
+                <span aria-hidden="true">/</span>
+                <span className="text-white" aria-current="page">
+                  Backlit Signs
+                </span>
+              </nav>
 
-                {/* Direct Answer Block for Search & AI Overviews */}
-                <div className="mt-6 rounded-xl border border-white/10 bg-white/5 p-5 backdrop-blur-sm">
-                  <p className="text-sm leading-relaxed text-[#c7c7d2] sm:text-base">
-                    <strong className="text-white">What is a backlit sign?</strong> A backlit sign is an architectural 3D illuminated display where solid metal letters project light backward onto the mounting wall. The light reflects off the surface to create a sophisticated, floating halo glow. Backlit signage delivers premium, glare-free legibility for executive reception walls, boutique retail, and upscale storefront facades.
-                  </p>
-                </div>
-
-                <div className="mt-6 flex flex-wrap gap-2 text-xs text-[#a0a0b0]">
-                  <span className="rounded-md border border-white/10 bg-white/5 px-3 py-1">5-Year Warranty</span>
-                  <span className="rounded-md border border-white/10 bg-white/5 px-3 py-1">Free 2-Hour Mockup</span>
-                  <span className="rounded-md border border-white/10 bg-white/5 px-3 py-1">Stainless Steel</span>
-                  <span className="rounded-md border border-white/10 bg-white/5 px-3 py-1">12V Silent LED Drivers</span>
-                  <span className="rounded-md border border-white/10 bg-white/5 px-3 py-1">Outdoor Builds</span>
-                </div>
-
-                <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
-                  <CustomQuoteButton
-                    productName="custom backlit sign"
-                    label="Request Free Backlit Mockup"
-                    className="w-full sm:w-auto"
-                  />
-                  <Link
-                    href="/guides/front-lit-vs-halo-lit-vs-dual-lit"
-                    className="text-center text-sm font-medium text-[#e0a23c] hover:underline"
-                  >
-                    Compare Front-Lit vs Halo-Lit →
-                  </Link>
-                </div>
-              </div>
-
-              <div className="relative lg:col-span-5">
-                <div className="relative mx-auto aspect-square w-full max-w-[460px] overflow-hidden rounded-2xl border border-white/15 shadow-2xl shadow-black/60">
-                  <Image
-                    src="/3d-metallic-neon-sign/corporte/056b3189-6a8c-482a-8334-53ded7aff3e1.webp"
-                    alt="Custom halo-lit 3D metal backlit sign on an office reception wall"
-                    fill
-                    priority
-                    sizes="(max-width: 1024px) 90vw, 460px"
-                    className="object-cover"
-                  />
-                </div>
-                <p className="mt-3 text-center text-xs text-[#808090]">
-                  Custom brushed-gold halo backlit logo sign installed on a matte architectural wall.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Optical Principles Section */}
-        <section className="border-b border-white/10 py-16 sm:py-24">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="mx-auto max-w-3xl text-center">
-              <h2 className="text-2xl font-bold tracking-tight text-white sm:text-3xl">
-                The Optical Principle: How Halo Backlighting Works
-              </h2>
-              <p className="mt-4 text-base leading-relaxed text-[#a0a0b0]">
-                Unlike front-lit signs where light travels directly from the face to the viewer’s eye, a backlit sign borrows the mounting wall as an optical component. The wall finish, color, and standoff distance determine the character of your sign.
+              <p className="detail-eyebrow detail-eyebrow--light">Halo-lit metal logo signs</p>
+              <h1 className="mt-2 text-[2.25rem] font-extrabold leading-[1.04] tracking-tight sm:mt-3 sm:text-5xl lg:text-6xl">
+                Custom <span className="backlit-word">Backlit</span> Signs{" "}
+                <span className="detail-accent text-white/85">for salons, lobbies and offices</span>
+              </h1>
+              <p className="mt-3 max-w-xl text-base leading-relaxed text-white/85 sm:mt-5 sm:text-lg">
+                {BACKLIT_LEDE.lead} <span className="hidden sm:inline">{BACKLIT_LEDE.rest}</span>
               </p>
+
+              <ul className="mt-6 hidden max-w-xl gap-x-6 gap-y-2.5 text-sm font-semibold text-white/90 sm:grid sm:grid-cols-2">
+                {["Free mockup within 24 hours", WARRANTY.term, DELIVERY.short, "Unlimited free revisions"].map((item) => (
+                  <li key={item} className="flex items-center gap-2">
+                    <Check className="h-4 w-4 shrink-0 text-(--dt-accent)" aria-hidden="true" />
+                    <span className="first-letter:uppercase">{item}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
 
-            <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-3">
-              <div className="rounded-xl border border-white/10 bg-[#13131a] p-6">
-                <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-[#e0a23c]/10 text-[#e0a23c] font-bold">
-                  1
-                </div>
-                <h3 className="text-lg font-semibold text-white">Solid Dimensional Face</h3>
-                <p className="mt-2 text-sm leading-relaxed text-[#9595a5]">
-                  Each letter is laser-cut and welded from sheet metal with deep side returns (depths from 1 to 3 inches). The solid opaque face ensures crisp typographic contrast in daylight and direct interior lighting.
-                </p>
-              </div>
-
-              <div className="rounded-xl border border-white/10 bg-[#13131a] p-6">
-                <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-[#e0a23c]/10 text-[#e0a23c] font-bold">
-                  2
-                </div>
-                <h3 className="text-lg font-semibold text-white">Controlled Rear Diffusion</h3>
-                <p className="mt-2 text-sm leading-relaxed text-[#9595a5]">
-                  Commercial-grade LED modules are mounted inside the hollow channel, firing backward through a frosted acrylic diffuser plate that prevents internal LED hotspots and creates an even wash of light.
-                </p>
-              </div>
-
-              <div className="rounded-xl border border-white/10 bg-[#13131a] p-6">
-                <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-[#e0a23c]/10 text-[#e0a23c] font-bold">
-                  3
-                </div>
-                <h3 className="text-lg font-semibold text-white">Calibrated Standoff Depth</h3>
-                <p className="mt-2 text-sm leading-relaxed text-[#9595a5]">
-                  Architectural standoffs hold the letters away from the wall (typically 15mm to 40mm). The standoff distance determines the width of the halo: shorter standoffs produce a crisp rim, while longer standoffs produce a wide ambient glow.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Wall Surface Compatibility Table */}
-        <section className="border-b border-white/10 bg-[#0e0e13] py-16 sm:py-24">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="mx-auto max-w-3xl text-center">
-              <h2 className="text-2xl font-bold tracking-tight text-white sm:text-3xl">
-                Wall Surface Compatibility Matrix
-              </h2>
-              <p className="mt-4 text-sm text-[#a0a0b0] sm:text-base">
-                Because the wall reflects the illumination, your background material dictates the ideal standoff distance and mounting specification.
-              </p>
-            </div>
-
-            <div className="mt-10 overflow-x-auto">
-              <table className="w-full min-w-[640px] border-collapse text-left text-sm">
-                <thead>
-                  <tr className="border-b border-white/15 bg-white/5 text-white">
-                    <th className="py-3 px-4 font-semibold">Wall Surface</th>
-                    <th className="py-3 px-4 font-semibold">Halo Reflection Behavior</th>
-                    <th className="py-3 px-4 font-semibold">Recommended Standoff</th>
-                    <th className="py-3 px-4 font-semibold">Mounting Recommendation</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-white/10 text-[#c0c0d0]">
-                  <tr>
-                    <td className="py-3 px-4 font-medium text-white">Matte Drywall (White / Off-White)</td>
-                    <td className="py-3 px-4">Broad, uniform dispersion with maximum soft glow.</td>
-                    <td className="py-3 px-4">25 mm (1 in)</td>
-                    <td className="py-3 px-4">Direct stud mount with concealed wiring.</td>
-                  </tr>
-                  <tr>
-                    <td className="py-3 px-4 font-medium text-white">Acoustic Slat Wood Panelling</td>
-                    <td className="py-3 px-4">Warm reflection; vertical slats create subtle rhythmic shadows.</td>
-                    <td className="py-3 px-4">25–35 mm</td>
-                    <td className="py-3 px-4">Fastened into solid timber battens behind slats.</td>
-                  </tr>
-                  <tr>
-                    <td className="py-3 px-4 font-medium text-white">Dark Matte Walls (Charcoal / Navy)</td>
-                    <td className="py-3 px-4">Tight, dramatic outline; background absorbs ambient wash.</td>
-                    <td className="py-3 px-4">15–20 mm</td>
-                    <td className="py-3 px-4">Use higher-lumen LEDs or contrasting backer plate.</td>
-                  </tr>
-                  <tr>
-                    <td className="py-3 px-4 font-medium text-white">Exposed Brick / Masonry</td>
-                    <td className="py-3 px-4">Textured, rustic dispersion; deep joints create shadow lines.</td>
-                    <td className="py-3 px-4">30–40 mm</td>
-                    <td className="py-3 px-4">Anchored into mortar joints, or backer panel mount.</td>
-                  </tr>
-                  <tr>
-                    <td className="py-3 px-4 font-medium text-white">Gloss Paint, Glass or Polished Tile</td>
-                    <td className="py-3 px-4">Specular reflection can reveal individual LED diode dots.</td>
-                    <td className="py-3 px-4">N/A (Backer Required)</td>
-                    <td className="py-3 px-4">Always specify a floating matte backer panel.</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-
-            <div className="mt-6 text-center">
-              <Link
-                href="/guides/backlit-sign-wall-surfaces-and-standoffs"
-                className="text-sm font-medium text-[#e0a23c] hover:underline"
+            <div className="min-w-0">
+              <DetailGallery
+                images={BACKLIT_HERO_IMAGES}
+                sizes="(max-width: 1024px) 100vw, 660px"
+                label="Backlit sign photos by space"
+                preload
               >
-                Read the full technical guide to wall surfaces & standoffs →
-              </Link>
+                <div>
+                  <DetailCtaPair subject="custom backlit sign" etsyUrl={BACKLIT_ETSY_URL} source="detail-hero" />
+                  <p className="mt-2.5 text-center text-xs leading-relaxed text-white/70">
+                    Free mockup first. You pay nothing until you approve the design.
+                  </p>
+                </div>
+              </DetailGallery>
             </div>
           </div>
         </section>
 
-        {/* Architectural Finishes & Materials */}
-        <section className="border-b border-white/10 py-16 sm:py-24">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="mx-auto max-w-3xl text-center">
-              <h2 className="text-2xl font-bold tracking-tight text-white sm:text-3xl">
-                Precision Metal Finishes
+        {/* ─────────────────────── TRUST STRIP ─────────────────────── */}
+        <section className="border-b border-(--dt-line) bg-white" aria-label="What every order includes">
+          <ul className="mx-auto grid max-w-[1320px] grid-cols-2 gap-x-6 gap-y-3 px-4 py-5 text-sm font-semibold text-(--dt-muted) sm:px-6 lg:flex lg:flex-wrap lg:justify-center lg:gap-x-10">
+            {["Free mockup within 24 hours", WARRANTY.term, DELIVERY.short, "Secure Etsy checkout"].map((item) => (
+              <li key={item} className="flex items-center gap-2">
+                <span className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-(--dt-accent-ink)">
+                  <Check className="h-2.5 w-2.5 text-white" aria-hidden="true" />
+                </span>
+                <span className="first-letter:uppercase">{item}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        {/* ─────────────────────── DIRECT ANSWER ─────────────────────── */}
+        <section className="bg-white py-14 sm:py-16">
+          <div className="mx-auto max-w-3xl px-4 sm:px-6">
+            <h2 className="text-2xl font-extrabold tracking-tight sm:text-3xl">What is a backlit sign?</h2>
+            <p className="mt-4 text-lg leading-relaxed text-(--dt-ink)">{BACKLIT_ANSWER}</p>
+            <p className="mt-4 text-base leading-relaxed text-(--dt-muted)">
+              The Glownique makes each one to order from your own logo, in stainless steel, in the finish and glow you
+              choose. You see a free mockup on your wall before anything is made.
+            </p>
+            <p className="mt-5 text-sm text-(--dt-muted)">
+              Updated <time dateTime={BACKLIT_UPDATED_ON}>{BACKLIT_UPDATED_LABEL}</time>.
+            </p>
+          </div>
+        </section>
+
+        {/* ─────────────────────── SPACES ─────────────────────── */}
+        <section className="border-t border-(--dt-line) bg-(--dt-blush) py-14 sm:py-20" aria-labelledby="backlit-spaces">
+          <div className="mx-auto max-w-[1320px] px-4 sm:px-6">
+            <div className="mx-auto max-w-2xl text-center">
+              <p className="detail-eyebrow">Find your space</p>
+              <h2 id="backlit-spaces" className="mt-2 text-3xl font-extrabold tracking-tight sm:text-4xl">
+                Backlit signs for salons, lobbies and offices
               </h2>
-              <p className="mt-4 text-base leading-relaxed text-[#a0a0b0]">
-                Every backlit sign is fabricated in stainless steel, so the letters stay crisp on a façade or a reception wall alike.
+              <p className="mt-4 text-base leading-relaxed text-(--dt-muted)">
+                The same sign is chosen differently for each room. Pick yours for the finish, glow and size we would
+                start from.
               </p>
             </div>
 
-            <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-              <div className="rounded-xl border border-white/10 bg-[#13131a] p-5">
-                <div className="h-2 w-12 rounded-full bg-[#d4af37] mb-4" />
-                <h3 className="text-base font-semibold text-white">Brushed Titanium Gold</h3>
-                <p className="mt-2 text-xs leading-relaxed text-[#9595a5]">
-                  PVD titanium coated for luxury boutique hotels, private clubs, and fine jewelry reception walls. Scratch and fingerprint resistant.
-                </p>
-              </div>
+            <nav className="mt-8 flex flex-wrap justify-center gap-2" aria-label="Backlit signs by space">
+              {BACKLIT_SPACES.map((space) => (
+                <a
+                  key={space.id}
+                  href={`#${space.id}`}
+                  className="rounded-full border border-(--dt-line) bg-white px-4 py-2 text-sm font-bold text-(--dt-ink) transition-colors hover:border-(--dt-accent-ink)"
+                >
+                  {space.name}
+                </a>
+              ))}
+            </nav>
 
-              <div className="rounded-xl border border-white/10 bg-[#13131a] p-5">
-                <div className="h-2 w-12 rounded-full bg-[#202025] border border-white/20 mb-4" />
-                <h3 className="text-base font-semibold text-white">Matte Black Powder Coat</h3>
-                <p className="mt-2 text-xs leading-relaxed text-[#9595a5]">
-                  Electrostatic powder coating offering an ultra-deep non-reflective finish. Perfect for modern industrial and tech headquarters.
-                </p>
-              </div>
+            <p className="mx-auto mt-6 max-w-2xl text-center text-sm text-(--dt-muted)">
+              Pictures are design previews from our Etsy listings and show sample logos. Your sign is made from your own.
+            </p>
 
-              <div className="rounded-xl border border-white/10 bg-[#13131a] p-5">
-                <div className="h-2 w-12 rounded-full bg-[#a8a8b2] mb-4" />
-                <h3 className="text-base font-semibold text-white">Brushed Stainless Steel</h3>
-                <p className="mt-2 text-xs leading-relaxed text-[#9595a5]">
-                  Classic horizontal directional grain. The industry standard for corporate law firms, financial institutions, and medical suites.
-                </p>
-              </div>
-
-              <div className="rounded-xl border border-white/10 bg-[#13131a] p-5">
-                <div className="h-2 w-12 rounded-full bg-[#b87333] mb-4" />
-                <h3 className="text-base font-semibold text-white">Champagne & Rose Bronze</h3>
-                <p className="mt-2 text-xs leading-relaxed text-[#9595a5]">
-                  Warm metallic undertones that complement Scandinavian timber, warm white 2700K lighting, and natural interior stone.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Use Cases Section */}
-        <section className="border-b border-white/10 bg-[#0e0e13] py-16 sm:py-24">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="mx-auto max-w-3xl text-center">
-              <h2 className="text-2xl font-bold tracking-tight text-white sm:text-3xl">
-                Commercial Use Cases for Backlit Signs
-              </h2>
-              <p className="mt-4 text-base leading-relaxed text-[#a0a0b0]">
-                Engineered for indoor executive interiors and high-end exterior architectural building facades.
-              </p>
-            </div>
-
-            <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2">
-              <div className="flex flex-col justify-between rounded-xl border border-white/10 bg-[#13131a] p-6">
-                <div>
-                  <h3 className="text-lg font-bold text-white">Corporate Lobbies & Reception Walls</h3>
-                  <p className="mt-3 text-sm leading-relaxed text-[#a0a0b0]">
-                    Create a commanding first impression for clients and investors. Backlit letters project an aura of stability, permanence, and sophisticated design. Pair with our silent remote-driver setup to ensure completely quiet operation in waiting areas.
-                  </p>
-                </div>
-                <div className="mt-6">
-                  <Link
-                    href="/business-signs/backlit-lobby-signs"
-                    className="text-sm font-semibold text-[#e0a23c] hover:underline"
+            <div className="mt-12 grid gap-14 lg:gap-20">
+              {BACKLIT_SPACES.map((space, index) => (
+                <article
+                  key={space.id}
+                  id={space.id}
+                  // Heading first in the source, so a phone reads "hair salons"
+                  // before the pictures; from lg it sits beside the gallery.
+                  className="detail-anchor grid gap-5 lg:grid-cols-2 lg:gap-x-14 lg:gap-y-4"
+                >
+                  <h3
+                    className={`text-2xl font-extrabold tracking-tight sm:text-3xl lg:row-start-1 lg:self-end ${
+                      index % 2 === 1 ? "lg:col-start-1" : "lg:col-start-2"
+                    }`}
                   >
-                    Explore Backlit Lobby Signs Guide →
-                  </Link>
-                </div>
-              </div>
-
-              <div className="flex flex-col justify-between rounded-xl border border-white/10 bg-[#13131a] p-6">
-                <div>
-                  <h3 className="text-lg font-bold text-white">Boutique Retail & Showroom Storefronts</h3>
-                  <p className="mt-3 text-sm leading-relaxed text-[#a0a0b0]">
-                    Luxury fashion, bridal ateliers, and high-end retailers use backlit letters to establish distinct brand prestige without the harsh glare of generic plastic channel letters.
-                  </p>
-                </div>
-                <div className="mt-6">
-                  <Link
-                    href="/business-signs/retail-storefronts"
-                    className="text-sm font-semibold text-[#e0a23c] hover:underline"
-                  >
-                    View Retail Storefront Solutions →
-                  </Link>
-                </div>
-              </div>
-
-              <div className="flex flex-col justify-between rounded-xl border border-white/10 bg-[#13131a] p-6">
-                <div>
-                  <h3 className="text-lg font-bold text-white">Salons, Spas & Aesthetic Clinics</h3>
-                  <p className="mt-3 text-sm leading-relaxed text-[#a0a0b0]">
-                    Halo backlighting produces soft, diffused illumination that flatters skin tones and photographs cleanly on camera without lens flare, making it ideal for Instagrammable client check-in desks.
-                  </p>
-                </div>
-                <div className="mt-6">
-                  <Link
-                    href="/business-signs/salon-spa-signs"
-                    className="text-sm font-semibold text-[#e0a23c] hover:underline"
-                  >
-                    View Salon & Spa Signage →
-                  </Link>
-                </div>
-              </div>
-
-              <div className="flex flex-col justify-between rounded-xl border border-white/10 bg-[#13131a] p-6">
-                <div>
-                  <h3 className="text-lg font-bold text-white">Restaurants, Bars & Private Clubs</h3>
-                  <p className="mt-3 text-sm leading-relaxed text-[#a0a0b0]">
-                    In mood-lit dining rooms and cocktail lounges, backlit letters provide ambient illumination that integrates directly with dimmable architectural scene lighting.
-                  </p>
-                </div>
-                <div className="mt-6">
-                  <Link
-                    href="/business-signs/restaurant-signs"
-                    className="text-sm font-semibold text-[#e0a23c] hover:underline"
-                  >
-                    View Restaurant & Bar Signage →
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* FAQs Section */}
-        <section className="border-b border-white/10 py-16 sm:py-24">
-          <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-            <h2 className="text-center text-2xl font-bold tracking-tight text-white sm:text-3xl">
-              Frequently Asked Questions About Backlit Signs
-            </h2>
-
-            <div className="mt-12 divide-y divide-white/10">
-              {backlitFaqs.map((faq, index) => (
-                <div key={index} className="py-6">
-                  <h3 className="text-base font-semibold text-white sm:text-lg">
-                    {faq.q}
+                    {space.heading}
                   </h3>
-                  <p className="mt-3 text-sm leading-relaxed text-[#a0a0b0] sm:text-base">
-                    {faq.a}
-                  </p>
-                </div>
+
+                  <div
+                    className={`min-w-0 lg:row-span-2 lg:row-start-1 lg:self-center ${
+                      index % 2 === 1 ? "lg:col-start-2" : "lg:col-start-1"
+                    }`}
+                  >
+                    <DetailGallery
+                      images={space.images}
+                      sizes="(max-width: 1024px) 100vw, 640px"
+                      label={`${space.name} sign photos`}
+                    >
+                      <DetailCtaPair
+                        subject={`backlit sign for ${/^[aeiou]/i.test(space.name) ? "an" : "a"} ${space.name.toLowerCase()}`}
+                        etsyUrl={space.etsyUrl}
+                        source={`backlit-${space.id}`}
+                      />
+                    </DetailGallery>
+                  </div>
+
+                  <div className={`min-w-0 lg:row-start-2 ${index % 2 === 1 ? "lg:col-start-1" : "lg:col-start-2"}`}>
+                    <p className="text-base leading-relaxed text-(--dt-muted)">{space.answer}</p>
+                    <dl className="mt-6 divide-y divide-(--dt-line) border-y border-(--dt-line)">
+                      {space.picks.map((pick) => (
+                        <div key={pick.label} className="grid grid-cols-[84px_1fr] gap-4 py-3 text-sm">
+                          <dt className="font-bold text-(--dt-ink)">{pick.label}</dt>
+                          <dd className="leading-relaxed text-(--dt-muted)">{pick.value}</dd>
+                        </div>
+                      ))}
+                    </dl>
+                    {space.more ? (
+                      <p className="mt-5 text-sm">
+                        <Link href={space.more.href} className="detail-link">
+                          {space.more.label}
+                        </Link>
+                      </p>
+                    ) : null}
+                  </div>
+                </article>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Final Conversion CTA */}
-        <section className="bg-gradient-to-t from-[#181820] to-[#0b0b0e] py-16 sm:py-24">
-          <div className="mx-auto max-w-5xl px-4 text-center sm:px-6 lg:px-8">
-            <h2 className="text-2xl font-bold tracking-tight text-white sm:text-3xl lg:text-4xl">
-              Preview Your Backlit Logo in Full Scale
-            </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-base text-[#a0a0b0]">
-              Send your logo artwork and a straight-on photo of your wall. Our engineering team will create an accurate 2D digital mockup showing halo spread, standoff depth, and wire concealment options.
-            </p>
-            <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row sm:items-center">
-              <CustomQuoteButton
-                productName="custom backlit sign"
-                label="Request Free Backlit Mockup"
-                className="w-full sm:w-auto"
+        {/* ─────────────────────── HOW IT WORKS ─────────────────────── */}
+        <section className="bg-white py-14 sm:py-20" aria-labelledby="backlit-how">
+          <div className="mx-auto grid max-w-[1320px] gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:items-center lg:gap-14">
+            <div className="relative aspect-[5/4] overflow-hidden rounded-[20px] bg-(--dt-night)">
+              <Image
+                src="/backlit-signs/backlit-sign-standoff-halo-close-up.webp"
+                alt="Design preview, seen from the side, of matte black backlit letters standing off a concrete wall with warm light spilling out behind them"
+                fill
+                sizes="(max-width: 1024px) 100vw, 640px"
+                loading="lazy"
+                className="object-cover"
               />
-              <Link
-                href="/contact"
-                className="inline-flex items-center justify-center rounded-lg border border-white/20 bg-white/5 px-6 py-3 text-sm font-medium text-white hover:bg-white/10"
-              >
-                Speak with a Sign Specialist
-              </Link>
             </div>
+            <div>
+              <p className="detail-eyebrow">How it works</p>
+              <h2 id="backlit-how" className="mt-2 text-3xl font-extrabold tracking-tight sm:text-4xl">
+                How a backlit sign is built
+              </h2>
+              <p className="mt-4 text-base leading-relaxed text-(--dt-muted)">
+                A backlit sign uses the wall as part of the light. Four things decide how it looks: the face, the sides,
+                the LEDs and the gap behind the letters.
+              </p>
+              <dl className="mt-6 grid gap-5 sm:grid-cols-2">
+                {BACKLIT_ANATOMY.map((item) => (
+                  <div key={item.part}>
+                    <dt className="text-base font-bold text-(--dt-ink)">{item.part}</dt>
+                    <dd className="mt-1.5 text-sm leading-relaxed text-(--dt-muted)">{item.text}</dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
+          </div>
+
+          <div className="mx-auto mt-14 max-w-[1320px] px-4 sm:px-6">
+            <h3 className="text-xl font-extrabold tracking-tight sm:text-2xl">Real letters, filmed up close</h3>
+            <p className="mt-2 max-w-2xl text-sm leading-relaxed text-(--dt-muted)">
+              Two clips from our Etsy listings: fabricated letters on the bench, lit, before they are mounted.
+            </p>
+            <div className="mt-6 grid gap-6 sm:grid-cols-2">
+              {VIDEOS.map((video) => (
+                <figure key={video.src}>
+                  <DetailVideo src={video.src} poster={video.poster} label={video.label} />
+                  <figcaption className="mt-3 text-sm text-(--dt-muted)">{video.caption}</figcaption>
+                </figure>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ─────────────────────── FINISHES & LIGHT ─────────────────────── */}
+        <section className="border-t border-(--dt-line) bg-(--dt-blush) py-14 sm:py-20" aria-labelledby="backlit-finishes">
+          <div className="mx-auto max-w-[1320px] px-4 sm:px-6">
+            <div className="max-w-2xl">
+              <p className="detail-eyebrow">Options</p>
+              <h2 id="backlit-finishes" className="mt-2 text-3xl font-extrabold tracking-tight sm:text-4xl">
+                Metal finishes and light colors
+              </h2>
+              <p className="mt-4 text-base leading-relaxed text-(--dt-muted)">
+                Two choices set the character of a backlit sign: the metal you see by day, and the color of the light
+                behind it at night.
+              </p>
+            </div>
+
+            <div className="mt-10 grid gap-10 lg:grid-cols-[1.1fr_1fr] lg:gap-14">
+              <figure>
+                <div className="overflow-hidden rounded-[20px] border border-(--dt-line) bg-white">
+                  <Image
+                    src="/backlit-signs/backlit-sign-metal-finish-chart.webp"
+                    alt="Finish chart of 18 stainless steel letter samples: mirror, brushed and antique finishes in silver, titanium gold, rose gold, champagne gold, black titanium, copper and brass"
+                    width={1600}
+                    height={1280}
+                    sizes="(max-width: 1024px) 100vw, 680px"
+                    loading="lazy"
+                    className="h-auto w-full"
+                  />
+                </div>
+                <figcaption className="mt-3 text-sm text-(--dt-muted)">
+                  The finish chart from our Etsy listings. Screens shift metal tones, so ask for a photo of the finish you
+                  are choosing.
+                </figcaption>
+              </figure>
+
+              <div className="grid gap-9">
+                <div>
+                  <h3 className="text-xl font-extrabold tracking-tight">Metal finishes</h3>
+                  <dl className="mt-4 divide-y divide-(--dt-line) border-y border-(--dt-line)">
+                    {BACKLIT_FINISH_GROUPS.map((group) => (
+                      <div key={group.group} className="grid grid-cols-[84px_1fr] gap-4 py-3 text-sm">
+                        <dt className="font-bold text-(--dt-ink)">{group.group}</dt>
+                        <dd className="leading-relaxed text-(--dt-muted)">{group.finishes}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                </div>
+                <div>
+                  <h3 className="text-xl font-extrabold tracking-tight">Light colors</h3>
+                  <dl className="mt-4 divide-y divide-(--dt-line) border-y border-(--dt-line)">
+                    {BACKLIT_LIGHT_OPTIONS.map((option) => (
+                      <div key={option.name} className="py-3 text-sm">
+                        <dt className="font-bold text-(--dt-ink)">{option.name}</dt>
+                        <dd className="mt-1 leading-relaxed text-(--dt-muted)">{option.text}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ─────────────────────── SPECS ─────────────────────── */}
+        <section className="bg-white py-14 sm:py-20" aria-labelledby="backlit-specs">
+          <div className="mx-auto max-w-4xl px-4 sm:px-6">
+            <p className="detail-eyebrow">The details</p>
+            <h2 id="backlit-specs" className="mt-2 text-3xl font-extrabold tracking-tight sm:text-4xl">
+              Backlit sign specifications
+            </h2>
+            <dl className="mt-8 overflow-hidden rounded-2xl border border-(--dt-line)">
+              {BACKLIT_SPECS.map((spec, index) => (
+                <div
+                  key={spec.label}
+                  className={`grid grid-cols-1 gap-1 px-5 py-4 sm:grid-cols-[200px_1fr] sm:gap-4 ${
+                    index % 2 === 0 ? "bg-(--dt-blush)" : "bg-white"
+                  }`}
+                >
+                  <dt className="text-sm font-bold text-(--dt-ink)">{spec.label}</dt>
+                  <dd className="text-sm leading-relaxed text-(--dt-muted) first-letter:uppercase">{spec.value}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        </section>
+
+        {/* ─────────────────────── SIZE & WALL ─────────────────────── */}
+        <section className="border-t border-(--dt-line) bg-(--dt-blush) py-14 sm:py-20">
+          <div className="mx-auto grid max-w-[1320px] gap-14 px-4 sm:px-6">
+            {/* min-w-0: a grid item is otherwise as wide as the table inside it. */}
+            <div className="min-w-0">
+              <p className="detail-eyebrow">Sizing</p>
+              <h2 className="mt-2 text-3xl font-extrabold tracking-tight sm:text-4xl">What size should a backlit sign be?</h2>
+              <p className="mt-4 max-w-3xl text-base leading-relaxed text-(--dt-muted)">
+                Size a backlit sign to the wall and the furniture under it. Behind a reception desk, a sign about half to
+                three-quarters of the desk width looks balanced. These are starting points, not rules: the mockup shows
+                the sign at scale on a photo of your wall.
+              </p>
+              <div className="detail-table-wrap mt-7">
+                <table className="detail-table min-w-[620px]">
+                  <caption>Suggested backlit sign width by reception desk width</caption>
+                  <thead>
+                    <tr>
+                      <th scope="col">Desk or wall</th>
+                      <th scope="col">Sign width</th>
+                      <th scope="col">Placement</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {BACKLIT_SIZE_ROWS.map((row) => (
+                      <tr key={row.desk}>
+                        <th scope="row">{row.desk}</th>
+                        <td>{row.sign}</td>
+                        <td>{row.note}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              <p className="mt-4 max-w-3xl text-sm leading-relaxed text-(--dt-muted)">
+                In a corridor or walkway, check the depth as well. The{" "}
+                <a
+                  className="detail-link"
+                  href="https://www.ada.gov/law-and-regs/design-standards/2010-stds/"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  2010 ADA Standards (section 307.2)
+                </a>{" "}
+                limit objects mounted between 27 and 80 inches above the floor to 4 inches of projection into a
+                circulation path. Ask us to mark the total depth, letters plus gap, on your mockup.
+              </p>
+            </div>
+
+            <div className="min-w-0">
+              <p className="detail-eyebrow">Your wall</p>
+              <h2 className="mt-2 text-3xl font-extrabold tracking-tight sm:text-4xl">Which walls suit a backlit sign?</h2>
+              <p className="mt-4 max-w-3xl text-base leading-relaxed text-(--dt-muted)">
+                Matte walls in a light or mid tone give the widest, most even halo. The wall is half of the effect, so
+                tell us what yours is made of.
+              </p>
+              <div className="detail-table-wrap mt-7">
+                <table className="detail-table min-w-[680px]">
+                  <caption>How a backlit sign looks and mounts on different wall surfaces</caption>
+                  <thead>
+                    <tr>
+                      <th scope="col">Wall</th>
+                      <th scope="col">How the halo looks</th>
+                      <th scope="col">How we mount it</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {BACKLIT_WALL_ROWS.map((row) => (
+                      <tr key={row.wall}>
+                        <th scope="row">{row.wall}</th>
+                        <td>{row.glow}</td>
+                        <td>{row.mount}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              <p className="mt-4 text-sm">
+                <Link href="/guides/backlit-sign-wall-surfaces-and-standoffs" className="detail-link">
+                  Read the full guide to wall surfaces and standoffs
+                </Link>
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* ─────────────────────── COMPARISON ─────────────────────── */}
+        <section className="bg-white py-14 sm:py-20" aria-labelledby="backlit-compare">
+          <div className="mx-auto max-w-[1320px] px-4 sm:px-6">
+            <p className="detail-eyebrow">Compare</p>
+            <h2 id="backlit-compare" className="mt-2 text-3xl font-extrabold tracking-tight sm:text-4xl">
+              Backlit sign vs front-lit, LED neon and lightbox
+            </h2>
+            <p className="mt-4 max-w-3xl text-base leading-relaxed text-(--dt-muted)">
+              Choose backlit when the logo should look like metal first and light second. Choose one of the others when
+              the sign has to be read from far away, be colorful, or show a picture.
+            </p>
+            <div className="detail-table-wrap mt-7">
+              <table className="detail-table min-w-[820px]">
+                <caption>Backlit signs compared with front-lit channel letters, LED neon signs and lightboxes</caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Sign type</th>
+                    <th scope="col">Where the light comes from</th>
+                    <th scope="col">Look</th>
+                    <th scope="col">Best for</th>
+                    <th scope="col">Watch out for</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {BACKLIT_COMPARISON.map((row) => (
+                    <tr key={row.type} data-current={row.href ? undefined : "true"}>
+                      <th scope="row">
+                        {row.href ? (
+                          <Link href={row.href} className="detail-link">
+                            {row.type}
+                          </Link>
+                        ) : (
+                          row.type
+                        )}
+                      </th>
+                      <td>{row.light}</td>
+                      <td>{row.look}</td>
+                      <td>{row.bestFor}</td>
+                      <td>{row.watch}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        {/* ─────────────────────── HOW TO ORDER ─────────────────────── */}
+        <section className="border-t border-(--dt-line) bg-(--dt-blush) py-14 sm:py-20" aria-labelledby="backlit-order">
+          <div className="mx-auto max-w-[1320px] px-4 sm:px-6">
+            <div className="max-w-2xl">
+              <p className="detail-eyebrow">Ordering</p>
+              <h2 id="backlit-order" className="mt-2 text-3xl font-extrabold tracking-tight sm:text-4xl">
+                How to order a custom backlit sign
+              </h2>
+              <p className="mt-4 text-base leading-relaxed text-(--dt-muted)">
+                Six steps, and the first two cost nothing. Every backlit sign is quoted for its own logo and size, so the
+                price on an Etsy listing is a placeholder, not your final price.
+              </p>
+            </div>
+
+            {/* A numbered list because the order is real: each step waits on the one before. */}
+            <ol className="mt-10 grid gap-x-8 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
+              {BACKLIT_STEPS.map((step, index) => (
+                <li key={step.name} className="border-t-2 border-(--dt-ink) pt-4">
+                  <p className="text-sm font-extrabold text-(--dt-accent-ink)">Step {index + 1}</p>
+                  <h3 className="mt-1 text-lg font-extrabold tracking-tight">{step.name}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-(--dt-muted)">{step.text}</p>
+                </li>
+              ))}
+            </ol>
+
+            <div className="mt-10 max-w-xl">
+              <DetailCtaPair subject="custom backlit sign" etsyUrl={BACKLIT_ETSY_URL} source="backlit-order" />
+            </div>
+            <p className="mt-5 max-w-2xl text-sm leading-relaxed text-(--dt-muted)">
+              We make and ship the sign; we do not install it. A local installer mounts it, and a licensed electrician
+              makes any hard-wired connection.{" "}
+              <Link href="/shipping" className="detail-link">
+                Delivery times
+              </Link>{" "}
+              and the{" "}
+              <Link href="/returns" className="detail-link">
+                {WARRANTY.term}
+              </Link>{" "}
+              are set out in full on their own pages.
+            </p>
+          </div>
+        </section>
+
+        {/* ─────────────────────── FAQ ─────────────────────── */}
+        <section className="bg-white py-14 sm:py-20" aria-labelledby="backlit-faq">
+          <div className="mx-auto max-w-3xl px-4 sm:px-6">
+            <p className="detail-eyebrow">Questions</p>
+            <h2 id="backlit-faq" className="mt-2 text-3xl font-extrabold tracking-tight sm:text-4xl">
+              Backlit sign FAQs
+            </h2>
+            <div className="mt-8 grid gap-3">
+              {BACKLIT_FAQS.map((faq, index) => (
+                <details
+                  key={faq.q}
+                  // The first answer starts open: it is the definition, and a
+                  // collapsed FAQ gives a skimming visitor nothing to read.
+                  open={index === 0}
+                  className="group rounded-2xl border border-(--dt-line) bg-white open:border-(--dt-accent-ink)"
+                >
+                  <summary className="flex cursor-pointer list-none items-center justify-between gap-4 rounded-2xl px-5 py-4 text-left text-base font-bold text-(--dt-ink) [&::-webkit-details-marker]:hidden">
+                    <h3 className="text-base font-bold">{faq.q}</h3>
+                    <ChevronDown
+                      className="h-5 w-5 shrink-0 text-(--dt-accent-ink) transition-transform duration-300 group-open:rotate-180"
+                      aria-hidden="true"
+                    />
+                  </summary>
+                  <p className="px-5 pb-5 text-sm leading-relaxed text-(--dt-muted)">{faq.a}</p>
+                </details>
+              ))}
+            </div>
+            {ETSY_SHOP_URL ? (
+              <p className="mt-6 text-sm text-(--dt-muted)">
+                Customer reviews are on our{" "}
+                <a
+                  className="detail-link"
+                  href={ETSY_SHOP_URL}
+                  target="_blank"
+                  rel="noopener"
+                  data-meta-source="backlit-faq-etsy-reviews"
+                >
+                  Etsy shop
+                </a>
+                , where each one is tied to a real purchase.
+              </p>
+            ) : null}
+          </div>
+        </section>
+
+        {/* ─────────────────────── CLOSING CTA ─────────────────────── */}
+        <section className="detail-hero py-16 sm:py-20">
+          <div className="relative z-10 mx-auto max-w-2xl px-4 text-center sm:px-6">
+            <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl">
+              Send your logo. See it <span className="backlit-word">lit</span> within 24 hours.
+            </h2>
+            <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-white/80">
+              The mockup is free and so are the revisions. If you like it, you get a quote for that exact sign, with{" "}
+              {DELIVERY.clause} and a {WARRANTY.term}.
+            </p>
+            <div className="mx-auto mt-8 max-w-md">
+              <DetailCtaPair subject="custom backlit sign" etsyUrl={BACKLIT_ETSY_URL} source="backlit-closing" />
+            </div>
+          </div>
+        </section>
+
+        {/* ─────────────────────── FURTHER READING ─────────────────────── */}
+        <section className="border-t border-(--dt-line) bg-white py-14 sm:py-16" aria-labelledby="backlit-reading">
+          <div className="mx-auto max-w-[1320px] px-4 sm:px-6">
+            <h2 id="backlit-reading" className="text-2xl font-extrabold tracking-tight">
+              Before you decide
+            </h2>
+            <ul className="mt-6 grid gap-x-8 gap-y-5 sm:grid-cols-2 lg:grid-cols-4">
+              {READING.map((item) => (
+                <li key={item.href} className="border-t border-(--dt-line) pt-4">
+                  <Link href={item.href} className="detail-link text-base">
+                    {item.title}
+                  </Link>
+                  <p className="mt-1.5 text-sm leading-relaxed text-(--dt-muted)">{item.text}</p>
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
       </main>
 
       <SiteFooter />
+      <DetailStickyCta
+        whatsappUrl={generalWhatsapp}
+        etsyUrl={BACKLIT_ETSY_URL}
+        source="backlit"
+      />
     </>
   );
 }

@@ -3,12 +3,13 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import "../blog.css";
+import "../blog-hub.css";
 
 import { MetaGuideView } from "@/components/analytics/meta-view-trackers";
 import { AuthorCard } from "@/components/blog/author-card";
 import { BlogNewsletter } from "@/components/blog/blog-newsletter";
 import { BlogPortableText } from "@/components/blog/portable-text";
-import { PostCard } from "@/components/blog/post-card";
+import { ShelfCard, accentFor, accentStyle } from "@/components/blog/journal-cards";
 import { SanityImage } from "@/components/blog/sanity-image";
 import { TableOfContents } from "@/components/blog/table-of-contents";
 import { AnnouncementBar } from "@/components/storefront/sections/announcement-bar";
@@ -115,6 +116,7 @@ export default async function BlogPostPage({ params }: Params) {
   // unresolved entries rather than trusting the editor's list.
   const related = (post.related ?? []).filter((item): item is NonNullable<typeof item> => Boolean(item?._id));
   const faqs = post.faqs ?? [];
+  const accent = accentFor(post.category?.slug);
 
   const authorNode = post.author
     ? {
@@ -217,60 +219,83 @@ export default async function BlogPostPage({ params }: Params) {
       <AnnouncementBar />
       <ProductTopBar productName="custom sign" />
 
-      <main id="main-content" className="bg-white">
+      <main id="main-content" className="bhub" style={accentStyle(accent)}>
+        <div className="bpost-progress" aria-hidden="true" />
         <article>
-          <header className="blog-post__header">
-            <div className="blog-post__header-inner">
-              <nav className="blog-breadcrumb" aria-label="Breadcrumb">
-                <Link href="/">Home</Link>
-                <span aria-hidden="true">›</span>
-                <Link href="/blog">Journal</Link>
+          <header className="bpost-hero">
+            {post.coverImage?.url ? (
+              <div className="bpost-hero__bg" aria-hidden="true">
+                <SanityImage image={post.coverImage} alt="" sizes="200px" fill />
+              </div>
+            ) : null}
+            <div className="bhub-shell">
+              <div className="bpost-hero__inner">
+                <nav aria-label="Breadcrumb">
+                  <ol className="bhub-crumbs">
+                    <li>
+                      <Link href="/">Home</Link>
+                    </li>
+                    <li aria-hidden="true">/</li>
+                    <li>
+                      <Link href="/blog">Journal</Link>
+                    </li>
+                  </ol>
+                </nav>
                 {post.category ? (
-                  <>
-                    <span aria-hidden="true">›</span>
-                    <Link href={`/blog/category/${post.category.slug}`}>{post.category.title}</Link>
-                  </>
+                  <Link href={`/blog/category/${post.category.slug}`} className="bpost-cat">
+                    <span className="bhub-dot" aria-hidden="true" />
+                    {post.category.title}
+                  </Link>
                 ) : null}
-              </nav>
 
-              <h1 className="blog-post__title">{post.title}</h1>
-              <p className="blog-post__summary">{post.summary}</p>
+                <h1 className="bpost-title">{post.title}</h1>
+                <p className="bpost-summary">{post.summary}</p>
 
-              <div className="blog-post__byline">
-                {post.author ? (
-                  <>
-                    <span>
-                      By <strong>{post.author.name}</strong>, {post.author.role}
+                <div className="bpost-byline">
+                  {post.author?.image?.url ? (
+                    <span className="bpost-avatar">
+                      <SanityImage image={post.author.image} alt="" sizes="36px" fill />
                     </span>
-                    <span aria-hidden="true">·</span>
-                  </>
-                ) : null}
-                <time dateTime={byline.iso}>
-                  {byline.wasUpdated ? "Updated " : ""}
-                  {byline.label}
-                </time>
-                <span aria-hidden="true">·</span>
-                <span>{post.readingMinutes} min read</span>
-                {post.reviewer && post.reviewer.name !== post.author?.name ? (
-                  <>
-                    <span aria-hidden="true">·</span>
-                    <span>Reviewed by {post.reviewer.name}</span>
-                  </>
-                ) : null}
+                  ) : null}
+                  {post.author ? (
+                    <>
+                      <span>
+                        By <strong>{post.author.name}</strong>, {post.author.role}
+                      </span>
+                      <span aria-hidden="true">·</span>
+                    </>
+                  ) : null}
+                  <time dateTime={byline.iso}>
+                    {byline.wasUpdated ? "Updated " : ""}
+                    {byline.label}
+                  </time>
+                  <span aria-hidden="true">·</span>
+                  <span>{post.readingMinutes} min read</span>
+                  {post.reviewer && post.reviewer.name !== post.author?.name ? (
+                    <>
+                      <span aria-hidden="true">·</span>
+                      <span>Reviewed by {post.reviewer.name}</span>
+                    </>
+                  ) : null}
+                </div>
               </div>
             </div>
           </header>
 
           {post.coverImage?.url ? (
-            <figure className="blog-post__cover">
+            <figure
+              className="bpost-cover"
+              // Never wider than the asset itself: a small cover stretched to
+              // 1100px is blurry and fills the whole screen.
+              style={post.coverImage.width ? { maxWidth: post.coverImage.width } : undefined}
+            >
               <SanityImage
                 image={post.coverImage}
                 sizes="(min-width: 1200px) 1100px, 100vw"
                 priority
-                className="w-full rounded-3xl border border-[#eadfe4]"
               />
               {post.coverImage.caption ? (
-                <figcaption className="blog-prose__caption">{post.coverImage.caption}</figcaption>
+                <figcaption>{post.coverImage.caption}</figcaption>
               ) : null}
             </figure>
           ) : null}
@@ -388,11 +413,16 @@ export default async function BlogPostPage({ params }: Params) {
               <h2 className="blog-section__heading" id="blog-related-heading">
                 Keep reading
               </h2>
-              <div className="blog-grid blog-grid--compact">
+              <ul className="bhub-cardgrid">
                 {related.map((item) => (
-                  <PostCard key={item._id} post={item} variant="compact" headingLevel="h3" />
+                  <ShelfCard
+                    key={item._id}
+                    post={item}
+                    accent={accentFor(item.category?.slug)}
+                    showCategory
+                  />
                 ))}
-              </div>
+              </ul>
             </section>
           ) : null}
 

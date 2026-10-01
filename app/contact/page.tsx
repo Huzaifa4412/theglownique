@@ -64,7 +64,7 @@ const contactFaqs = [
   },
   {
     q: "How quickly does The Glownique reply?",
-    a: "We aim to answer every enquiry within one working day, and support runs 7 days a week. Mockups usually come back within a couple of hours during our support window. If you are working to a deadline, say so in your first message and we will tell you honestly whether it is achievable.",
+    a: "We aim to answer every enquiry within one working day, and support runs 7 days a week. Mockups come back within 24 hours, weekends included. If you are working to a deadline, say so in your first message and we will tell you honestly whether it is achievable.",
   },
   {
     q: "What is the fastest way to contact The Glownique?",
@@ -463,7 +463,7 @@ export default function ContactPage() {
                     ],
                     [
                       "You approve, then we build",
-                      "Most signs are handcrafted in around 10–15 days.",
+                      "LED neon takes 3–5 business days to make, other sign types 3–10, then 3–8 business days to deliver.",
                     ],
                     [
                       "Tracked delivery to your door",

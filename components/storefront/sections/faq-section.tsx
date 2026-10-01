@@ -13,6 +13,10 @@ const faqs = [
     a: "We handcraft four distinct custom signage types: flexible silicone LED neon signs, 3D metal channel-letter signs (available frontlit, halo backlit or dual-lit), ultra-thin edge-lit lightboxes for retail, and 3D acrylic signs pairing high-definition UV print with glowing LED neon contours.",
   },
   {
+    q: "How do you make neon signs?",
+    a: "Our custom designed neon signs are handmade using flexible LED neon flex mounted onto a clear acrylic backboard. We precisely trace your custom name or logo, secure the LED tubing, and wire it for safe, energy-efficient 12V power. This modern process provides the brilliant glow of traditional glass neon but is safer and more durable.",
+  },
+  {
     q: "Can I receive a free design preview and mockup before ordering?",
     a: "Always. Simply share your words, business logo, brand colours or a rough sketch. Our design team will prepare a free, colour-matched digital mockup showing exact sizing, lighting and font style before production begins — with zero obligation.",
   },
@@ -26,7 +30,7 @@ const faqs = [
   },
   {
     q: "How long does custom sign fabrication and delivery take?",
-    a: "Custom signs are handcrafted in approximately 10–15 days and shipped with tracked international delivery. If you have an upcoming event, wedding or grand opening deadline, let us know and we will do our best to accommodate your schedule.",
+    a: "LED neon signs are made in 3–5 business days after you approve your free mockup, and channel letters, lightboxes and acrylic signs in 3–10 business days. Delivery then takes 3–8 business days, free and tracked. Rush orders cost nothing extra: if you have a wedding, event or opening date, tell us in your first message.",
   },
   {
     q: "How much does a custom neon sign or business sign cost?",

@@ -29,7 +29,7 @@ const inclusions: ReadonlyArray<{
   {
     icon: "Cube",
     title: "Made to Order in Our Workshop",
-    body: "Every piece is custom cut, hand-assembled, and electrically tested with a 24-hour burn-in inspection before packing. Handcrafted in ~10–15 business days.",
+    body: "Every piece is custom cut, hand-assembled, and electrically tested with a 24-hour burn-in inspection before packing. LED neon is made in 3–5 business days after you approve the mockup.",
   },
   {
     icon: "Sparkle",

@@ -52,12 +52,10 @@ export const DELIVERY = {
 
 // ── Lead time (CLM-002) ─────────────────────────────────────────────────────
 //
-// FLAGGED, NOT RESOLVED. "10–15 days" currently means approval-to-arrival on
-// /shipping, production-then-delivery in /terms, and production only in
-// llms.txt. Splitting production from transit needs an owner-approved transit
-// figure per region, which has not been supplied, so this release leaves the
-// existing wording alone rather than inventing a number or silently redefining
-// a delivery promise customers have already relied on.
+// Resolved 2026-09-28 by the owner (OWNER-QUESTIONS.md): business days, same
+// for every country; production is counted from mockup approval; rush orders
+// cost nothing extra; the mockup comes back within 24 hours, weekends included.
+// The retired "10–15 days" figure was replaced sitewide on 2026-09-29.
 export const LEAD_TIME = {
   status: "approved" as ClaimStatus,
   neonProductionDays: "3-5 business days",

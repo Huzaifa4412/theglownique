@@ -45,21 +45,21 @@ export const SIGN_TYPES: SignTypeDetail[] = [
     id: '3D Metal Neon Sign',
     label: '3D Metal Channel Letters',
     description: 'Stainless-steel channel letters — frontlit, halo backlit or dual-lit',
-    image: '/3d-metallic-neon-sign/corporte/056b3189-6a8c-482a-8334-53ded7aff3e1.webp',
+    image: '/3d-metallic-neon-sign/corporte/custom-3d-metal-channel-letter-sign-office.webp',
     imageAlt: 'Illuminated 3D metal channel-letter sign mounted on a corporate wall',
   },
   {
     id: 'Ultra Thin Lightbox',
     label: 'Ultra Thin Lightbox',
     description: 'Slim edge-lit aluminium lightbox with even, shadow-free light',
-    image: '/ultra-thin-slim-lightbox/main-hero.webp',
+    image: '/ultra-thin-slim-lightbox/custom-slim-led-lightbox-sign.webp',
     imageAlt: 'Ultra-thin edge-lit LED lightbox sign with even, shadow-free light',
   },
   {
     id: 'Acrylic UV Print Neon Sign',
     label: 'Acrylic UV Print Neon Sign',
     description: 'Full-colour UV-printed acrylic traced with glowing LED neon contours',
-    image: '/3d-arcylic/3235dc09-6dac-4056-88b6-55fc26e28571.webp',
+    image: '/3d-arcylic/custom-acrylic-logo-sign-uv-printed.webp',
     imageAlt: 'Full-colour UV-printed acrylic sign traced with glowing LED neon contours',
   },
 ]
@@ -162,7 +162,7 @@ export const products: Product[] = [
     color: '#ff4a9a',
     background: 'linear-gradient(145deg, #4a1632, #d23372)',
     badge: 'Bestseller',
-    image: '/neon-sign/girls room/iap_600x600.5331151538_61m43otq.webp',
+    image: '/neon-sign/girls room/custom-neon-sign-home-bedroom.webp',
   },
   {
     id: 2,
@@ -206,7 +206,7 @@ export const products: Product[] = [
     color: '#ffd7c5',
     background: 'linear-gradient(145deg, #8b4a43, #e6a086)',
     badge: 'Most loved',
-    image: '/neon-sign/Marriage/iap_600x600.6280886797_59j146av.webp',
+    image: '/neon-sign/Marriage/custom-wedding-neon-sign-better-together.webp',
   },
   {
     id: 6,
@@ -283,7 +283,7 @@ export const products: Product[] = [
     color: '#ff4bd3',
     background: 'linear-gradient(145deg, #5d153c, #c41a77)',
     badge: 'Party pick',
-    image: '/neon-sign/Bar/iap_600x600.5588358323_i7bgtidf.webp',
+    image: '/neon-sign/Bar/custom-bar-neon-sign-cocktails.webp',
   },
   {
     id: 13,
@@ -294,7 +294,7 @@ export const products: Product[] = [
     color: '#4c8dff',
     background: 'linear-gradient(145deg, #071831, #193f84)',
     badge: 'Gaming',
-    image: '/neon-sign/Game Room/iap_600x600.6072503848_qdloxd4q.webp',
+    image: '/neon-sign/Game Room/custom-gaming-neon-sign.webp',
   },
   {
     id: 14,
@@ -316,7 +316,7 @@ export const products: Product[] = [
     color: '#ff2020',
     background: 'linear-gradient(145deg, #421010, #962525)',
     badge: 'Frontlit Metal',
-    image: '/neon-sign/Gym/iap_600x600.7178660214_6320z3ec.webp',
+    image: '/neon-sign/Gym/custom-gym-neon-sign-motivational.webp',
   },
   {
     id: 16,
