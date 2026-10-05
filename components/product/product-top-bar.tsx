@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { WhatsappIcon } from "@/components/ui/whatsapp-icon";
 
+import { BACKLIT_PATH } from "@/lib/backlit-signs";
 import { PRODUCT_PAGES } from "@/lib/product-catalog";
 import { whatsappQuoteUrl } from "@/lib/site";
 import { useNavTone } from "@/lib/use-nav-tone";
@@ -29,12 +30,13 @@ export function ProductTopBar({ productName }: { productName: string }) {
           THE GLOWNIQUE
         </Link>
 
+        {/* Five sign-type links fit on one line from about 1150px; below that
+            they may wrap to two. Guides and Contact join once there is room
+            for seven. The journal link lives in the footer. */}
         <nav
-          className="hidden items-center gap-5 text-xs font-bold uppercase tracking-wide text-(--glass-muted) lg:flex"
+          className="hidden items-center gap-3 text-xs font-bold uppercase tracking-wide text-(--glass-muted) lg:flex min-[1150px]:[&_a]:whitespace-nowrap min-[1340px]:gap-5"
           aria-label="Primary navigation"
         >
-          {/* The logo already links home; the slot goes to the buying guides,
-              which inner pages had no header route to. */}
           {PRODUCT_PAGES.map((p) => (
             <Link
               key={p.slug}
@@ -44,13 +46,15 @@ export function ProductTopBar({ productName }: { productName: string }) {
               {p.category}
             </Link>
           ))}
-          <Link href="/guides" className="transition-colors hover:text-(--glass-accent)">
+          {/* Not a catalog sign type, so the loop above doesn't produce it; it
+              is the landing page for the backlit ads and needs a header route. */}
+          <Link href={BACKLIT_PATH} className="transition-colors hover:text-(--glass-accent)">
+            Backlit Signs
+          </Link>
+          <Link href="/guides" className="transition-colors hover:text-(--glass-accent) max-[1339px]:hidden">
             Guides
           </Link>
-          <Link href="/blog" className="transition-colors hover:text-(--glass-accent)">
-            Journal
-          </Link>
-          <Link href="/contact" className="transition-colors hover:text-(--glass-accent)">
+          <Link href="/contact" className="transition-colors hover:text-(--glass-accent) max-[1339px]:hidden">
             Contact
           </Link>
         </nav>
