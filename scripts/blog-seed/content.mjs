@@ -136,13 +136,13 @@ export const AUTHOR_PLACEHOLDER = {
 
 export const imageFiles = {
   "neon-custom-name": "public/neon-sign/Custom name/iap_600x600.6574462695_efoprbvt.webp",
-  "neon-bar": "public/neon-sign/Bar/iap_600x600.5588358323_i7bgtidf.webp",
-  "neon-bedroom": "public/neon-sign/girls room/iap_600x600.5331151538_61m43otq.webp",
+  "neon-bar": "public/neon-sign/Bar/custom-bar-neon-sign-cocktails.webp",
+  "neon-bedroom": "public/neon-sign/girls room/custom-neon-sign-home-bedroom.webp",
   "neon-shapes": "public/neon-sign/allshape.png",
-  "neon-game-room": "public/neon-sign/Game Room/iap_600x600.6072503848_qdloxd4q.webp",
-  "neon-wedding": "public/neon-sign/Marriage/iap_600x600.6280886797_59j146av.webp",
+  "neon-game-room": "public/neon-sign/Game Room/custom-gaming-neon-sign.webp",
+  "neon-wedding": "public/neon-sign/Marriage/custom-wedding-neon-sign-better-together.webp",
   "neon-wedding-2": "public/neon-sign/Marriage/iap_600x600.7378705048_ipwhq76b.webp",
-  "neon-gym": "public/neon-sign/Gym/iap_600x600.7178660214_6320z3ec.webp",
+  "neon-gym": "public/neon-sign/Gym/custom-gym-neon-sign-motivational.webp",
   "channel-corporate": "public/3d-metallic-neon-sign/corporte/056b3189-6a8c-482a-8334-53ded7aff3e1.png",
   "channel-duallit": "public/3d-metallic-neon-sign/duallit/1.png",
   "channel-frontlit": "public/3d-metallic-neon-sign/frontlit/2.png",

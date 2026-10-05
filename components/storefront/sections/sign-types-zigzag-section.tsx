@@ -99,7 +99,7 @@ const ROWS: readonly Row[] = [
       { src: "/ultra-thin-slim-lightbox/IMG-20260803-WA0008.webp", alt: "Shaped LED lightbox sign of the Flying Fish beer logo, lit in blue and yellow against a brick wall" },
       { src: "/ultra-thin-slim-lightbox/IMG-20260803-WA0010.webp", alt: "Backlit LED lightbox sign of a blue Charlotte Hornets Dell Curry number 30 jersey" },
       { src: "/ultra-thin-slim-lightbox/IMG-20260803-WA0004.jpg", alt: "Shaped LED lightbox sign reading Sinners Tattoo in white letters with a red cross, lit against a white wall" },
-      { src: "/ultra-thin-slim-lightbox/Retail displays.jpg", alt: "Three slim LED lightbox posters for coffee, a burger and a fashion sale on a shop wall" },
+      { src: "/ultra-thin-slim-lightbox/retail-displays.jpg", alt: "Three slim LED lightbox posters for coffee, a burger and a fashion sale on a shop wall" },
       { src: "/ultra-thin-slim-lightbox/menu-boards.jpg", alt: "Two illuminated slim lightbox menu boards on a restaurant wall" },
     ],
     caption: "Under an inch deep, lit edge to edge",
@@ -118,7 +118,7 @@ const ROWS: readonly Row[] = [
     specLabels: ["Print", "Base", "Depth"],
     images: [
       { src: "/3d-arcylic/fff64032-bdaa-459c-8caf-a4ac67b89f19.webp", alt: "Layered 3D acrylic UV-print logo sign reading Ciseaux Salon & Spa, lit on a dark reception wall" },
-      { src: "/3d-arcylic/3235dc09-6dac-4056-88b6-55fc26e28571.webp", alt: "3D acrylic UV-print sign reading Sabroso with a glowing contour outline on a restaurant wall" },
+      { src: "/3d-arcylic/custom-acrylic-logo-sign-uv-printed.webp", alt: "3D acrylic UV-print sign reading Sabroso with a glowing contour outline on a restaurant wall" },
     ],
     caption: "Printed detail, traced in neon",
   },

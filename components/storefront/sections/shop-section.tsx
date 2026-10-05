@@ -1,6 +1,8 @@
 "use client";
 
 import { MagnifyingGlass } from "@phosphor-icons/react";
+import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useMemo } from "react";
 
 import { IconBox } from "@/components/icon-box";
@@ -13,6 +15,12 @@ import {
   products,
   type CategoryId,
 } from "@/lib/store-data";
+import { BACKLIT_PATH } from "@/lib/backlit-signs";
+
+// The backlit page is the landing page for the backlit ads, so the shop grid
+// opens on a double-size tile that links straight to it. It is not an entry in
+// `products`: those open the quote dialog, and this one is a page link.
+const BACKLIT_FEATURE_TERMS = "backlit signs halo lit reverse lit salon lobby office reception logo";
 
 export function ShopSection() {
   const {
@@ -39,10 +47,15 @@ export function ShopSection() {
     });
   }, [activeCategory, search]);
 
+  const query = search.trim().toLowerCase();
+  const showBacklitFeature =
+    (activeCategory === "all" || activeCategory === "business") &&
+    (!query || BACKLIT_FEATURE_TERMS.includes(query));
+
   useEffect(() => {
     const refresh = window.requestAnimationFrame(() => ScrollTrigger.refresh());
     return () => window.cancelAnimationFrame(refresh);
-  }, [filteredProducts.length]);
+  }, [filteredProducts.length, showBacklitFeature]);
 
   return (
     <section className="shop-section shell" id="shop">
@@ -97,6 +110,35 @@ export function ShopSection() {
       </p>
 
       <div className="product-grid">
+        {showBacklitFeature && (
+          <article className="product-card product-feature" aria-labelledby="shop-backlit-title">
+            <Link
+              href={BACKLIT_PATH}
+              className="product-feature__link"
+              data-meta-source="home-shop-backlit"
+            >
+              <Image
+                src="/backlit-signs/backlit-lobby-sign-reception-desk-wood-wall.webp"
+                alt="Design preview of a backlit lobby sign in rose gold, glowing on a dark wood wall behind a reception desk"
+                fill
+                sizes="(max-width: 800px) 100vw, 50vw"
+                className="product-feature__image"
+              />
+              <span className="product-feature__tag">Featured</span>
+              <span className="product-feature__note">Design preview</span>
+              <div className="product-feature__body">
+                <p className="product-feature__eyebrow">For salons, lobbies &amp; offices</p>
+                <h3 id="shop-backlit-title">Backlit signs</h3>
+                <p className="product-feature__copy">
+                  Your logo in stainless steel, lit from behind.
+                </p>
+                <span className="product-feature__cta">
+                  See backlit signs <span aria-hidden="true">→</span>
+                </span>
+              </div>
+            </Link>
+          </article>
+        )}
         {filteredProducts.map((product) => (
           <article
             className="product-card group"
@@ -133,7 +175,7 @@ export function ShopSection() {
         ))}
       </div>
 
-      {filteredProducts.length === 0 && (
+      {filteredProducts.length === 0 && !showBacklitFeature && (
         <div className="empty-products">
           <IconBox icon={MagnifyingGlass} />
           <h3>No signs found</h3>
