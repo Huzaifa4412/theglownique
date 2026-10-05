@@ -21,6 +21,12 @@
  *   CustomizeProduct  — a colour was picked in the neon colour studio
  *   Search            — the catalog search box was used
  *
+ * Two custom events exist only to build audiences on an ad landing page, and
+ * are not for optimising a campaign (see components/analytics/meta-engagement.tsx):
+ *
+ *   EngagedView       — the visitor scrolled past the halfway point
+ *   ViewSection       — a named section was read, e.g. "nail-salon"
+ *
  * Purchase is deliberately absent. We cannot observe it: orders complete inside
  * Etsy and Etsy exposes no webhook we consume, so any Purchase event fired from
  * this site would be invented. Leave it out until there is a real order source.
@@ -31,6 +37,11 @@
  * useful for retargeting audiences and for early learning while Lead volume is
  * thin, but a WhatsApp click is not a submitted enquiry and should not be
  * treated as one.
+ *
+ * The exception is a campaign landing on a detail page such as
+ * /business-signs/backlit-signs. Those pages have no quote form: the buttons go
+ * straight to WhatsApp or Etsy, so `Lead` never fires there. Optimise those
+ * campaigns on `Contact`.
  */
 
 /** Standard Meta events. Anything not on this list must go through trackCustom. */
@@ -46,7 +57,12 @@ type StandardEvent =
   | "CompleteRegistration";
 
 /** Custom events. Meta has no standard event that fits these honestly. */
-type CustomEventName = "ViewCategory" | "ViewGuide" | "NewsletterSignup";
+type CustomEventName =
+  | "ViewCategory"
+  | "ViewGuide"
+  | "NewsletterSignup"
+  | "EngagedView"
+  | "ViewSection";
 
 type EventParams = Record<
   string,
@@ -79,9 +95,9 @@ export const HAS_META_PIXEL = META_PIXEL_ID.length > 0;
 
 // ── Delivery ────────────────────────────────────────────────────────────────
 //
-// The base snippet loads with `afterInteractive`, which means there is a real
-// window — first paint until the snippet runs — where `window.fbq` does not
-// exist yet. A visitor who clicks "Get a free quote" inside that window would
+// The base snippet runs once the page is interactive, which means there is a
+// real window — first paint until the snippet runs — where `window.fbq` does
+// not exist yet. A visitor who clicks "Get a free quote" inside that window would
 // otherwise have their event silently dropped, and that click is the single
 // most valuable signal on the site. So events are buffered and flushed once
 // fbq appears.
@@ -226,6 +242,19 @@ export function trackViewContent({ id, name, category }: ViewContentInput) {
     // the slug as its item id and the retargeting lines up for free.
     content_type: "product",
   });
+}
+
+/** The visitor scrolled past the halfway point of a landing page. */
+export function trackEngagedView(id: string, name: string) {
+  trackCustom("EngagedView", { content_ids: [id], content_name: name });
+}
+
+/**
+ * A named section of a landing page was read. `section` is the section's
+ * anchor id, so the audience rule in Events Manager matches the ad-set URL.
+ */
+export function trackSectionView(id: string, section: string) {
+  trackCustom("ViewSection", { content_ids: [id], section });
 }
 
 /** A long-form guide was read. Custom: Meta has no standard event for articles. */

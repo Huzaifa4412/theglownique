@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Check, ChevronDown } from "lucide-react";
 
+import { MetaEngagement } from "@/components/analytics/meta-engagement";
 import { MetaViewContent } from "@/components/analytics/meta-view-trackers";
 import { DetailCtaPair } from "@/components/detail/detail-cta-pair";
 import { DetailGallery } from "@/components/detail/detail-gallery";
@@ -218,6 +219,13 @@ export default function BacklitSignsPage() {
       {/* The id is this route's slug, so a Meta catalog feed added later can
           use it as the item id and inherit the audiences built here. */}
       <MetaViewContent contentId="backlit-signs" contentName="Custom Backlit Signs" contentCategory="Backlit signs" />
+      {/* Audience signals for the backlit ads: who read past halfway, and which
+          space (hair salon, nail salon, …) they stopped on. */}
+      <MetaEngagement
+        contentId="backlit-signs"
+        contentName="Custom Backlit Signs"
+        sectionSelector="article.detail-anchor[id]"
+      />
       <AnnouncementBar />
       <ProductTopBar productName="custom backlit sign" />
 
