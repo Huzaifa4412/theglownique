@@ -496,6 +496,32 @@ h2 {
   box-shadow: inset 0 1px 0 var(--glass-hover);
 }
 
+/* The backlit link is the one the ads depend on, so it carries a ring in the
+   accent colour. An inset ring adds no width: a seventh item's worth of padding
+   would overflow the bar at 1181px. */
+.desktop-nav a.nav-link--featured,
+.desktop-nav a.nav-link--featured:hover {
+  color: var(--glass-accent);
+  box-shadow: inset 0 0 0 1.5px var(--glass-accent);
+}
+
+.mobile-nav a.nav-link--featured {
+  color: var(--glass-accent);
+}
+
+.mobile-nav a.nav-link--featured::after {
+  content: 'Featured';
+  margin-left: 10px;
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: var(--pink-dark);
+  color: #fff;
+  font-size: 0.64rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
 .glass-nav .brand {
   color: var(--glass-accent);
   transition: color 300ms ease;
@@ -2398,6 +2424,138 @@ button:active {
   content: "·";
   margin-right: 10px;
   color: #c7bec2;
+}
+
+/* The backlit tile: two columns by two rows at the head of the shop grid, the
+   whole tile one link to the backlit page. The copy sits on a scrim over the
+   photo, so its colours are fixed rather than themed. */
+.product-feature {
+  grid-column: span 2;
+  grid-row: span 2;
+  min-height: 340px;
+}
+
+.product-feature__link {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  border-radius: var(--radius);
+  color: #fff;
+  box-shadow: 0 18px 44px rgba(20, 8, 14, 0.22);
+  transition: transform 300ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.product-feature__link:focus-visible {
+  outline: 3px solid var(--pink);
+  outline-offset: 3px;
+}
+
+.product-feature__image {
+  object-fit: cover;
+  transition: transform 600ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.product-feature__link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(12, 6, 9, 0.9) 0%, rgba(12, 6, 9, 0.55) 34%, transparent 62%);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .product-feature__link:hover {
+    transform: translateY(-6px);
+  }
+
+  .product-feature__link:hover .product-feature__image {
+    transform: scale(1.04);
+  }
+
+  .product-feature__link:hover .product-feature__cta {
+    background: var(--pink);
+  }
+}
+
+.product-feature__tag,
+.product-feature__note {
+  position: absolute;
+  z-index: 2;
+  top: 14px;
+  padding: 6px 11px;
+  border-radius: 999px;
+  font-size: 0.68rem;
+  font-weight: 800;
+}
+
+.product-feature__tag {
+  left: 14px;
+  background: var(--pink-dark);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.product-feature__note {
+  right: 14px;
+  background: rgba(12, 6, 9, 0.6);
+  font-weight: 600;
+}
+
+.product-feature__body {
+  position: relative;
+  z-index: 2;
+  padding: clamp(18px, 2.4vw, 30px);
+}
+
+.product-feature__eyebrow {
+  margin-bottom: 6px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.product-feature h3 {
+  margin-bottom: 6px;
+  font-size: clamp(1.6rem, 2.8vw, 2.4rem);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+
+.product-feature__copy {
+  margin-bottom: 16px;
+  font-size: 0.95rem;
+}
+
+.product-feature__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  padding: 0 20px;
+  border-radius: 999px;
+  background: var(--pink-dark);
+  font-size: 0.84rem;
+  font-weight: 800;
+  transition: background-color 180ms ease;
+}
+
+/* Two-column grid: the tile takes the full row, so it needs its own height.
+   Taller than square, or the copy lands on the sign's lettering. */
+@media (max-width: 800px) {
+  .product-feature {
+    grid-row: auto;
+    min-height: 0;
+    aspect-ratio: 4 / 5;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .product-feature__link,
+  .product-feature__image {
+    transition: none;
+  }
 }
 
 .review-stars,

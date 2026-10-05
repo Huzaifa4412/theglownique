@@ -90,7 +90,11 @@ export function SiteHeader({ overlay = false }: { overlay?: boolean }) {
         <nav className="desktop-nav" aria-label="Primary navigation">
           {desktopLinks.map(([label, href]) =>
             href.startsWith("/") ? (
-              <Link href={href} key={href}>
+              <Link
+                href={href}
+                key={href}
+                className={href === BACKLIT_PATH ? "nav-link--featured" : undefined}
+              >
                 {label}
               </Link>
             ) : (
@@ -127,7 +131,12 @@ export function SiteHeader({ overlay = false }: { overlay?: boolean }) {
         <div className="flex flex-col space-y-2.5 text-sm font-bold pb-3">
           {mobileLinks.map(([label, href]) =>
             href.startsWith("/") ? (
-              <Link key={href} href={href} onClick={() => setMenuOpen(false)}>
+              <Link
+                key={href}
+                href={href}
+                className={href === BACKLIT_PATH ? "nav-link--featured" : undefined}
+                onClick={() => setMenuOpen(false)}
+              >
                 {label}
               </Link>
             ) : (
