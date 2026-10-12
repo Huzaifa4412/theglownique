@@ -1,0 +1,81 @@
+{
+  "status": "implementation-ready",
+  "researchDate": "2026-10-12",
+  "title": "Can You Leave a Neon Sign On All the Time? Power, Safety & 24/7 Running Costs",
+  "slug": "can-you-leave-a-neon-sign-on-all-the-time",
+  "categorySlug": "care-and-setup",
+  "cover": "neon-sign-bedroom-night",
+  "coverAlt": "Illuminated warm-white custom LED neon sign glowing softly on a bedroom wall at night",
+  "coverCaption": "An illuminated LED neon sign operating overnight in a bedroom setting. Real order workshop photograph.",
+  "tableCaption": "Estimated LED neon sign power consumption and monthly electricity costs by size (12V DC at US $0.16/kWh)",
+  "seoTitle": "Can You Leave a Neon Sign On All the Time? Power & Cost",
+  "seoDescription": "Can you leave an LED neon sign on all the time or overnight? Real wattage math, 24/7 electricity costs, thermal safety, and power supply longevity explained.",
+  "summary": "Yes, modern 12V LED neon signs are completely safe to leave on 24/7 or overnight. They remain cool to the touch, draw only 20 to 70 watts (costing $1.00 to $3.50 a month at typical US electricity rates), and carry zero high-voltage fire risk. However, using a dimmer or smart plug extends the power adapter's lifespan significantly.",
+  "primaryKeyword": "can you leave a neon sign on all the time",
+  "secondaryKeywords": [
+    "can you leave a neon sign on all night",
+    "can you leave neon signs on overnight",
+    "how much electricity does a neon sign use",
+    "how many watts does a neon sign use",
+    "how much does it cost to run a neon sign",
+    "do neon signs get hot",
+    "is it safe to leave a neon sign on overnight",
+    "should you leave neon signs on",
+    "neon sign power consumption"
+  ],
+  "intendedCanonical": "https://www.theglownique.com/blog/can-you-leave-a-neon-sign-on-all-the-time",
+  "keyTakeaways": [
+    "Modern LED neon signs run on 12V direct current and stay cool to the touch (typically 30°C to 38°C), making them safe to leave on continuously or overnight.",
+    "A typical 36-inch sign draws 35 to 50 watts, costing roughly $1.40 to $2.00 per month when operated 10 hours daily, or under $3.50 per month running 24/7 at US average electric rates.",
+    "Unlike vintage gas neon requiring 2,000V to 15,000V AC transformers, LED neon operates within Safety Extra-Low Voltage (SELV) limits with zero combustible gas or glass shatter risk.",
+    "While continuous illumination does not damage solid-state LEDs, it steadily consumes their 50,000-hour L70 lifespan and generates thermal wear on the AC/DC power adapter.",
+    "Pairing your sign with an inline dimmer set to 70% brightness or a simple $10 smart plug timer cuts power usage by 30% and roughly doubles the lifespan of your power driver."
+  ],
+  "relatedLinks": [
+    {
+      "kind": "commercial",
+      "label": "Custom LED neon signs",
+      "description": "Design your personalized custom neon sign with custom typography, true-to-scale mockup, and included 12V power supply.",
+      "href": "/products/custom-neon-signs"
+    },
+    {
+      "kind": "commercial",
+      "label": "Custom logo neon signs for business",
+      "description": "Commercial-grade illuminated logo signs with multi-year warranty, tested for 24/7 storefront and hospitality operation.",
+      "href": "/business-signs/custom-logo-neon-signs"
+    },
+    {
+      "kind": "guide",
+      "label": "How long do LED neon signs last?",
+      "description": "Detailed engineering analysis of L70 degradation hours, diode half-life, and power adapter maintenance.",
+      "href": "/blog/how-long-do-led-neon-signs-last"
+    },
+    {
+      "kind": "guide",
+      "label": "How to clean and maintain an LED neon sign",
+      "description": "Safe workshop cleaning methods for acrylic backboards and silicone flex to maintain optimal light diffusion.",
+      "href": "/blog/how-to-clean-and-maintain-led-neon-signs"
+    }
+  ],
+  "sources": [
+    {
+      "label": "Average Retail Price of Electricity to Ultimate Customers",
+      "publisher": "US Energy Information Administration (EIA)",
+      "url": "https://www.eia.gov/electricity/monthly/epm_table_grapher.php?t=epmt_5_6_a",
+      "accessed": "2026-10-12"
+    },
+    {
+      "label": "IEC 60598-1: Luminaires - General requirements and tests",
+      "publisher": "International Electrotechnical Commission",
+      "url": "https://webstore.iec.ch/publication/60598-1",
+      "accessed": "2026-10-12"
+    },
+    {
+      "label": "Solid-State Lighting Technology Fact Sheet",
+      "publisher": "US Department of Energy (EERE)",
+      "url": "https://www.energy.gov/eere/ssl/solid-state-lighting",
+      "accessed": "2026-10-12"
+    }
+  ],
+  "publicationNotes": "Comprehensive informational awareness and care guide answering the high-intent pre-purchase and post-purchase query 'can you leave a neon sign on all the time'. Resolves customer anxieties around electricity costs, fire safety, child bedroom overnight use, 24/7 commercial operation, and driver longevity. Enforces the internal link contract with commercial and guide destinations."
+}

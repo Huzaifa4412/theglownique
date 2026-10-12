@@ -1,0 +1,9 @@
+keyword,volume,cpc,sd,intent,role
+"how much do custom neon signs cost",90,3.57,24,informational_commercial,primary
+"custom neon sign cost",90,4.13,32,commercial_investigation,secondary
+"how much is a custom neon sign",110,3.44,38,commercial_investigation,secondary
+"how much does a custom neon sign cost",90,3.90,23,informational_commercial,secondary
+"custom neon sign pricing",50,3.80,25,commercial_investigation,secondary
+"do neon signs use a lot of electricity",90,0.00,24,informational,supporting
+"neon sign price per letter",40,2.15,18,informational,supporting
+"how much to run a neon sign",70,0.50,15,informational,supporting

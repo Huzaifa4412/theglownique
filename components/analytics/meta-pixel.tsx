@@ -5,7 +5,7 @@ import { HAS_META_PIXEL, META_PIXEL_ID } from "@/lib/meta-pixel";
 /**
  * Meta Pixel base snippet. Render once, in the root layout.
  *
- * Two deliberate differences from the snippet Meta's Events Manager hands you:
+ * Three deliberate differences from the snippet Meta's Events Manager hands you:
  *
  * 1. It calls `fbq('init')` but NOT `fbq('track', 'PageView')`. This is an App
  *    Router app, so client-side navigations never re-run this inline script — a
@@ -18,9 +18,15 @@ import { HAS_META_PIXEL, META_PIXEL_ID } from "@/lib/meta-pixel";
  *    environment via NEXT_PUBLIC_META_PIXEL_ID and a staging deploy can point
  *    somewhere harmless.
  *
- * `afterInteractive` is correct for a tag manager or analytics pixel — the
- * events layer buffers anything fired before the script lands, so nothing is
- * lost by not blocking hydration on it.
+ * 3. The `fbq` queue and the library are split. The queue is a few hundred
+ *    bytes with no network cost, so it is defined as soon as the page is
+ *    interactive and every event has somewhere to wait. The library
+ *    (fbevents.js, the expensive part) is fetched at whichever comes first: the
+ *    window load event, the visitor's first tap, key or scroll, or three
+ *    seconds. Waiting for load alone, as this did until 2026-10-05, meant an ad
+ *    visitor on a slow phone was not counted for the first ten seconds or more
+ *    (measured on the backlit landing page), and one who left before then was
+ *    never counted at all.
  *
  * The <noscript> beacon still carries `ev=PageView`: that request is the only
  * way a JS-off visitor is ever counted, and it can't double up with the client
@@ -31,16 +37,19 @@ export function MetaPixel() {
 
   return (
     <>
-      <Script id="meta-pixel" strategy="lazyOnload">
+      <Script id="meta-pixel" strategy="afterInteractive">
         {`
-          !function(f,b,e,v,n,t,s)
-          {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+          !function(f,b){if(f.fbq)return;var n=f.fbq=function(){n.callMethod?
           n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-          if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-          n.queue=[];t=b.createElement(e);t.async=!0;
-          t.src=v;s=b.getElementsByTagName(e)[0];
-          s.parentNode.insertBefore(t,s)}(window, document,'script',
-          'https://connect.facebook.net/en_US/fbevents.js');
+          if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];
+          var done=!1,load=function(){if(done)return;done=!0;
+          var t=b.createElement('script');t.async=!0;
+          t.src='https://connect.facebook.net/en_US/fbevents.js';
+          var s=b.getElementsByTagName('script')[0];s.parentNode.insertBefore(t,s)};
+          if(b.readyState==='complete')load();else f.addEventListener('load',load);
+          ['pointerdown','touchstart','keydown','scroll'].forEach(function(e){
+          f.addEventListener(e,load,{once:!0,passive:!0})});
+          setTimeout(load,3000)}(window,document);
           fbq('init', '${META_PIXEL_ID}');
         `}
       </Script>
