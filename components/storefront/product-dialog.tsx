@@ -3,7 +3,6 @@
 import {
   UploadSimple,
   X,
-  WhatsappLogo,
   House,
   Buildings,
   Check,
@@ -24,6 +23,7 @@ import { SignTypePreview } from "@/components/storefront/sign-type-preview";
 import { capturePostHog } from "@/lib/posthog-client";
 import { archiveLead } from "@/lib/leads";
 import { trackQuoteSubmitted } from "@/lib/meta-pixel";
+import { trackGoogleAnalyticsEvent } from "@/lib/google-analytics";
 import { products, type Product, type SignType } from "@/lib/store-data";
 import { HAS_WHATSAPP, WHATSAPP_NUMBER } from "@/lib/site";
 import { buildWhatsappUrl } from "@/lib/whatsapp";
@@ -176,6 +176,10 @@ export function ProductDialog({
     // listener in MetaPixelEvents, since this is a completed form and not a bare
     // click on a chat link. The listener never sees it: window.open isn't a
     // click on an anchor.
+    trackGoogleAnalyticsEvent("quote_form_submit", {
+      sign_type: activeSignType,
+      page_path: window.location.pathname,
+    });
     trackQuoteSubmitted({
       productName: product.name,
       signType: activeSignType,

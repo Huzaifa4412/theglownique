@@ -279,14 +279,14 @@ const INDUSTRY_CONTENT: readonly LandingContent[] = [
     slug: "restaurant-signs",
     name: "Restaurant Signs",
     kicker: "Restaurant & Café Signage",
-    h1: "Custom Restaurant Signs & Café Signage",
-    metaTitle: "Custom Restaurant Signs & Cafe Signage",
+    h1: "Restaurant Neon Signs & Custom Café Signage",
+    metaTitle: "Restaurant Neon Signs & Cafe Signage",
     metaDescription:
-      "Custom restaurant signs, illuminated café branding & backlit menu displays for dining venues. Dimmable builds with free design mockup & 5-year warranty.",
+      "Custom restaurant neon signs, cafe logos and illuminated menu displays. Compare LED neon, metal letters and acrylic, then request a free design mockup.",
     answer:
       "A restaurant usually needs two kinds of sign. Outside, 3D metal channel letters carry the name on the façade, front-lit, halo-lit or dual-lit and built for outdoor mounting. Inside, slim lightboxes suit menu boards that change with the season, LED neon makes a feature wall guests photograph, and UV-printed acrylic carries full-colour menus and logos. All are made to order after a free mockup.",
     intro:
-      "Storefront identity, interior branding and menu display for venues where the same wall has to look right in daylight service and at candlelit covers.",
+      "Restaurant neon signs for feature walls, café logo signs for the entrance, and menu displays for the counter. Choose the build for the placement, then check its size and lighting in your free mockup.",
     heroImage: "/3d-metallic-neon-sign/Resturants/custom-halo-lit-restaurant-sign.webp",
     heroAlt: "Illuminated 3D metal restaurant sign on an interior wall",
     quoteProductName: "custom restaurant sign",
@@ -449,19 +449,24 @@ const INDUSTRY_CONTENT: readonly LandingContent[] = [
     slug: "salon-spa-signs",
     name: "Salon & Spa Signs",
     kicker: "Salon, Spa & Studio Signage",
-    h1: "Custom Salon & Spa Neon Signs",
-    metaTitle: "Custom Salon & Spa Neon Signs",
+    h1: "Custom Salon Signs for Hair, Nails & Spas",
+    metaTitle: "Salon Signs for Hair, Nails & Spas",
     metaDescription:
-      "Custom salon neon signs, spa logo signage and beauty studio branding. Camera-ready lighting in your brand colours, with free mockup & 5-year warranty.",
+      "Custom hair and nail salon signs, spa logos and reception signage. Compare LED neon, metal backlit and acrylic signs with a free design mockup.",
     answer:
       "LED neon suits most salons and spas: warm, saturated colour that sits well behind a mirror wall and shows up clearly in clients' photos. For a full-colour logo at reception or a price board, UV-printed layered acrylic carries the artwork, and 3D metal channel letters carry the studio name on the street frontage. Every sign is made to order after a free design mockup.",
     intro:
-      "Reception marks, mirror walls and treatment-room branding for spaces where the sign ends up in every client's photo whether you planned for it or not.",
+      "Hair and nail salon signs for reception desks, mirror walls and treatment rooms. Choose metal backlit logos for a solid face with a halo, LED neon for illuminated wording, or acrylic for a full-colour logo.",
     heroImage: "/3d-metallic-neon-sign/Salon/custom-salon-logo-sign-halo-lit.webp",
     heroAlt: "Illuminated salon logo sign on a treatment-room wall",
-    quoteProductName: "custom salon neon sign",
+    quoteProductName: "custom salon sign",
     quoteLabel: "Get a Salon Sign Quote",
     materials: [
+      {
+        name: "Metal Backlit Signs",
+        href: "/business-signs/backlit-signs",
+        why: "Solid metal reception logos with LED light reflected onto the wall behind them. Check the wall finish and space for the halo before choosing this build.",
+      },
       {
         name: "LED Neon Signs",
         href: NEON,
@@ -520,8 +525,8 @@ const INDUSTRY_CONTENT: readonly LandingContent[] = [
         a: "Yes, but it is a different build. An exterior studio sign needs an outdoor construction rather than the interior sign mounted outdoors. Quote both together if you want them to match, since they will then be fabricated in the same batch.",
       },
       {
-        q: "Can you match our salon's brand colours exactly?",
-        a: "Yes, from Pantone, HEX or CMYK references. Send the brand guide with your enquiry so the sign matches your booking site and printed materials rather than approximating them. Every sign carries a 5-year warranty.",
+        q: "Can you use our salon's brand colours?",
+        a: "Send your Pantone, HEX or CMYK references with your enquiry. We will confirm the available material and LED colour options in the mockup; a glowing LED colour can look different from a printed brand colour. Every sign carries a 5-year warranty.",
       },
     ],
   },

@@ -126,7 +126,7 @@ export default function HowToMakeNeonSignsGuidePage() {
                 The Evolution of Neon Sign Manufacturing
               </h2>
               <p className="mt-4 text-base leading-relaxed text-[#5e5862]">
-                Since its invention in the early 20th century, the neon sign has been an iconic staple of commercial advertising and interior design. However, the exact answer to "How to Make Neon Signs" depends entirely on which generation of technology you are talking about.
+                Since its invention in the early 20th century, the neon sign has been an iconic staple of commercial advertising and interior design. However, the exact answer to &ldquo;How to Make Neon Signs&rdquo; depends entirely on which generation of technology you are talking about.
               </p>
               <p className="mt-4 text-base leading-relaxed text-[#5e5862]">
                 Today, the industry is split between two entirely different manufacturing disciplines: the century-old art of glass blowing, and the modern precision-engineering of LED silicone flex.

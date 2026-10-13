@@ -22,7 +22,9 @@ const args = process.argv.slice(2);
 const baseIndex = args.indexOf("--base");
 const BASE = (baseIndex !== -1 ? args[baseIndex + 1] : "http://localhost:3000").replace(/\/$/, "");
 
-const PRODUCTION_ORIGIN = "https://www.theglownique.com";
+const siteSource = await readFile(new URL("../lib/site.ts", import.meta.url), "utf8");
+const PRODUCTION_ORIGIN = siteSource.match(/export const SITE_URL = "([^"]+)"/)?.[1];
+if (!PRODUCTION_ORIGIN) throw new Error("Cannot read SITE_URL from lib/site.ts");
 
 const failures = [];
 const warnings = [];
@@ -45,7 +47,7 @@ function internalTarget(href) {
   try {
     const url = new URL(href, `${BASE}/`);
     const origin = new URL(BASE).origin;
-    if (url.origin !== origin && url.origin !== PRODUCTION_ORIGIN) return null;
+    if (url.origin !== origin && !["theglownique.com", "www.theglownique.com"].includes(url.hostname)) return null;
     return (url.pathname.replace(/\/$/, "") || "/") + url.search;
   } catch {
     return null;
@@ -424,6 +426,9 @@ async function checkInternalLinks(crawled) {
 }
 
 async function main() {
+  // A canonical host must serve content directly, rather than redirect elsewhere.
+  const canonicalHost = await fetch(PRODUCTION_ORIGIN, { redirect: "manual" });
+  if (canonicalHost.status !== 200) fail("canonical host", `${PRODUCTION_ORIGIN} returned ${canonicalHost.status}; align canonical, sitemap and redirect hosts`);
   const manifest = await readRouteManifest();
 
   // lib/routes.ts cannot list the blog: posts and category archives are created

@@ -348,7 +348,7 @@ export function HeroSection() {
                   aria-hidden="true"
                   fill
                   sizes="160px"
-                  loading={index === 0 ? "eager" : "lazy"}
+                  loading="lazy"
                   className="hero-slide__backdrop"
                 />
                 <div className="hero-slide__frame">
@@ -357,8 +357,7 @@ export function HeroSection() {
                     alt={slide.alt}
                     fill
                     sizes="(max-width: 1024px) 88vw, 560px"
-                    loading={index === 0 ? "eager" : "lazy"}
-                    fetchPriority={index === 0 ? "high" : "auto"}
+                    loading="lazy"
                   />
                   <Link href={slide.href} className="hero-slide__tag">
                     <span className="hero-slide__tag-dot" aria-hidden="true" />

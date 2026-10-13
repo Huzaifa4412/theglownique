@@ -30,6 +30,7 @@ import {
   BACKLIT_STEPS,
   BACKLIT_UPDATED_LABEL,
   BACKLIT_UPDATED_ON,
+  BACKLIT_VIDEO_PUBLISHED_ON,
   BACKLIT_WALL_ROWS,
 } from "@/lib/backlit-signs";
 import { DELIVERY, WARRANTY } from "@/lib/claims";
@@ -56,9 +57,9 @@ import "./backlit.css";
  * count appears here or in the schema (scripts/seo-audit.mjs enforces it).
  */
 
-const TITLE = "Custom Backlit Signs for Salons & Offices";
+const TITLE = "Custom Metal Backlit Signs & LED Halo Logos";
 const DESCRIPTION =
-  "Custom backlit signs: your logo in stainless steel with a halo glow, for hair, nail and beauty salons, lobbies and offices. Free mockup in 24 hours.";
+  "Custom metal backlit signs with LED halo lighting for salons, offices and lobbies. Your logo in stainless steel, with a free design mockup within 24 hours.";
 const OG_IMAGE = BACKLIT_HERO_IMAGES[0];
 
 export const metadata: Metadata = {
@@ -196,7 +197,7 @@ function buildJsonLd() {
         description: video.label,
         thumbnailUrl: absolute(video.poster),
         contentUrl: absolute(video.src),
-        uploadDate: BACKLIT_UPDATED_ON,
+        uploadDate: BACKLIT_VIDEO_PUBLISHED_ON,
       })),
       {
         "@type": "FAQPage",
@@ -250,7 +251,7 @@ export default function BacklitSignsPage() {
 
               <p className="detail-eyebrow detail-eyebrow--light">Halo-lit metal logo signs</p>
               <h1 className="mt-2 text-[2.25rem] font-extrabold leading-[1.04] tracking-tight sm:mt-3 sm:text-5xl lg:text-6xl">
-                Custom <span className="backlit-word">Backlit</span> Signs{" "}
+                Custom Metal <span className="backlit-word">Backlit</span> Signs{" "}
                 <span className="detail-accent text-white/85">for salons, lobbies and offices</span>
               </h1>
               <p className="mt-3 max-w-xl text-base leading-relaxed text-white/85 sm:mt-5 sm:text-lg">

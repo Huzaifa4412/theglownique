@@ -82,7 +82,7 @@ const GROWTH_AUDIT_RELEASE = "2026-09-24";
  * The /business-signs hub is rebuilt: direct answer, sign-for-job matrix,
  * lighting styles, outdoor/indoor split, quote process, reading list and FAQs.
  */
-const HUB_REDESIGN_RELEASE = "2026-09-26";
+const HUB_REDESIGN_RELEASE = "2026-10-13";
 
 /** Homepage hero rebuilt around custom LED neon signs: new H1, direct answer, neon-only slides. */
 const NEON_HERO_RELEASE = "2026-09-26";
@@ -109,7 +109,7 @@ export const ROUTES: readonly RouteEntry[] = [
 
   // B2B hub and destinations.
   { path: "/business-signs", lastModified: HUB_REDESIGN_RELEASE, changeFrequency: "weekly", priority: 0.95, indexable: true },
-  { path: "/business-signs/custom-logo-neon-signs", lastModified: DETAIL_PAGES_RELEASE, changeFrequency: "monthly", priority: 0.9, indexable: true },
+  { path: "/business-signs/custom-logo-neon-signs", lastModified: "2026-10-13", changeFrequency: "monthly", priority: 0.9, indexable: true },
   { path: "/business-signs/channel-letter-signs", lastModified: DETAIL_PAGES_RELEASE, changeFrequency: "monthly", priority: 0.9, indexable: true },
   { path: "/business-signs/backlit-signs", lastModified: BACKLIT_DETAIL_RELEASE, changeFrequency: "monthly", priority: 0.9, indexable: true },
   { path: "/business-signs/backlit-lobby-signs", lastModified: DETAIL_PAGES_RELEASE, changeFrequency: "monthly", priority: 0.9, indexable: true },
@@ -122,7 +122,7 @@ export const ROUTES: readonly RouteEntry[] = [
   // industry to the right one.
   ...INDUSTRY_PAGES.map((industry) => ({
     path: `/business-signs/${industry.slug}`,
-    lastModified: INDUSTRY_RELEASE,
+    lastModified: ["salon-spa-signs", "restaurant-signs"].includes(industry.slug) ? "2026-10-13" : INDUSTRY_RELEASE,
     changeFrequency: "monthly" as const,
     priority: 0.85,
     indexable: true,

@@ -45,7 +45,7 @@ const TITLE = "Custom Business Signs & Storefront Signage";
 const DESCRIPTION =
   "Custom business signs made to order: LED logo neon, 3D metal channel letters, slim lightboxes & acrylic logo signs for storefronts & offices. Free mockup.";
 /** Date of the last change a reader would notice. Rendered, so keep it honest. */
-const UPDATED_ON = "2026-09-26";
+const UPDATED_ON = "2026-10-13";
 
 const HERO_IMAGE = {
   src: "/3d-metallic-neon-sign/corporte/14d4b621-c697-428a-b727-1c91b78e9e08.webp",
@@ -333,6 +333,10 @@ const sizingGuide = requireGuideSummary("sign-size-viewing-distance");
 // business buyers ask before they will send a logo.
 
 const FAQS = [
+  {
+    q: "Which custom logo sign should I choose for a business wall?",
+    a: "Choose a metal backlit logo for a solid face with a halo on the wall, LED neon for illuminated outlines or wording, and UV-printed acrylic for full-colour artwork. Wall finish, available width, viewing distance and access to power affect the choice. Send your logo and a wall photo for a free mockup before deciding.",
+  },
   {
     q: "Which illuminated sign is best for a storefront?",
     a: "For the name on a façade, 3D metal channel letters are the standard choice: front-lit for the loudest daytime read, halo-lit for a softer, more architectural look, or dual-lit for both at once. Use a slim lightbox for a window or fascia panel whose message changes, and LED neon for a window piece that draws people in after dark.",

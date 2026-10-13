@@ -14,7 +14,9 @@ export const WHATSAPP_NUMBER = normalizeWhatsappNumber(
   process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "",
 );
 
-export const SITE_URL = "https://www.theglownique.com";
+// Production redirects www to this host; Google also selects it for the home
+// page. Canonicals, sitemap entries, social URLs and entity IDs must agree.
+export const SITE_URL = "https://theglownique.com";
 
 /**
  * True as of 2026-08-05: `testimonials` in lib/store-data.ts now holds real

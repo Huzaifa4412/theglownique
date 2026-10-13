@@ -9,8 +9,9 @@ import "./globals.css";
 import { MetaPixel } from "@/components/analytics/meta-pixel";
 import { MetaPixelEvents } from "@/components/analytics/meta-pixel-events";
 import { PostHogProvider } from "@/components/analytics/posthog-provider";
+import { GoogleAnalytics } from "@/components/analytics/google-analytics";
 import { cn, serializeJsonLd } from "@/lib/utils";
-import { sameAsUrls } from "@/lib/site";
+import { SITE_URL, sameAsUrls } from "@/lib/site";
 
 const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
@@ -34,9 +35,7 @@ const cormorant = Cormorant_Garamond({
   display: "swap",
 });
 
-// NOTE: Update this to your live production domain so canonical, Open Graph
-// and structured-data URLs resolve correctly.
-const siteUrl = "https://www.theglownique.com";
+const siteUrl = SITE_URL;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -184,19 +183,7 @@ export default function RootLayout({
           {children}
         </PostHogProvider>
         <Analytics />
-        <Script
-          id="google-analytics-loader"
-          src="https://www.googletagmanager.com/gtag/js?id=G-6PWLMLHEMK"
-          strategy="lazyOnload"
-        />
-        <Script id="google-analytics" strategy="lazyOnload">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-6PWLMLHEMK');
-          `}
-        </Script>
+        <GoogleAnalytics />
         {/* Base pixel + the event layer that fires PageView per route and picks
             up WhatsApp/Etsy outbound clicks. See lib/meta-pixel.ts for the full
             event map and for what is deliberately not tracked. */}

@@ -46,6 +46,7 @@ export type GuideImage = {
 };
 
 export type GuideBlock =
+  | { type: "sign-size-calculator" }
   | { type: "p"; text: string }
   | { type: "list"; items: string[]; ordered?: boolean }
   | {

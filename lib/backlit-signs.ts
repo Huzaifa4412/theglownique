@@ -30,8 +30,10 @@ import { DELIVERY, LEAD_TIME, WARRANTY } from "@/lib/claims";
 export const BACKLIT_PATH = "/business-signs/backlit-signs";
 
 /** ISO date of the last material change. Mirrors lib/routes.ts. */
-export const BACKLIT_UPDATED_ON = "2026-10-01";
-export const BACKLIT_UPDATED_LABEL = "October 1, 2026";
+export const BACKLIT_UPDATED_ON = "2026-10-13";
+export const BACKLIT_UPDATED_LABEL = "October 13, 2026";
+/** Preserve the videos' original publication date when page copy changes. */
+export const BACKLIT_VIDEO_PUBLISHED_ON = "2026-10-01";
 
 const IMG = "/backlit-signs";
 const etsyListing = (id: string, slug: string) => `https://www.etsy.com/listing/${id}/${slug}`;
@@ -45,7 +47,7 @@ export type BacklitImage = DetailImage;
 
 /** The quotable definition: under the H1, in Product.description and llms.txt. */
 export const BACKLIT_ANSWER =
-  "A backlit sign is a set of solid metal letters or a logo with LEDs hidden inside, mounted a short distance off the wall. The light leaves the back of each letter and reflects off the wall, so the logo appears to float in a soft halo. It is also called a halo-lit or reverse-lit sign.";
+  "Metal backlit signs are solid letters or logos with LEDs inside, mounted slightly away from the wall. The LEDs shine backward onto the wall to create a halo around each letter. Also called LED backlit, halo-lit or reverse-lit signs, they keep a solid metal face rather than a glowing front.";
 
 /** Under the H1. The second sentence is dropped on phones to keep the buttons in view. */
 export const BACKLIT_LEDE = {

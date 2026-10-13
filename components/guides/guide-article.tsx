@@ -3,6 +3,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 
 import { MetaGuideView } from "@/components/analytics/meta-view-trackers";
+import { SignSizeCalculator } from "@/components/guides/sign-size-calculator";
 import { ProductTopBar } from "@/components/product/product-top-bar";
 import { CustomQuoteButton } from "@/components/storefront/custom-quote-button";
 import { AnnouncementBar } from "@/components/storefront/sections/announcement-bar";
@@ -61,6 +62,8 @@ function inline(text: string, guide: Guide): ReactNode[] {
 
 function Block({ block, guide }: { block: GuideBlock; guide: Guide }) {
   switch (block.type) {
+    case "sign-size-calculator":
+      return <SignSizeCalculator />;
     case "p":
       return <p className="mt-4 leading-relaxed text-[#5e5862]">{inline(block.text, guide)}</p>;
     case "list": {
@@ -190,7 +193,7 @@ export function GuideArticle({ guide }: { guide: Guide }) {
       />
       <MetaGuideView guideName={guide.h1} />
       <AnnouncementBar />
-      <ProductTopBar productName={guide.primaryKeyword} />
+      <ProductTopBar productName={guide.cta.productName} />
       <main id="main-content" className="bg-white">
         <section className="border-b border-[#eadfe4] bg-gradient-to-b from-[#fff0f5] to-white py-14 sm:py-20">
           <div className={`mx-auto max-w-4xl px-4 sm:px-6 ${guide.showHeroImage ? "md:grid md:grid-cols-[1fr_260px] md:gap-8 md:items-center" : ""}`}>

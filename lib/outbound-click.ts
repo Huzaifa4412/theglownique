@@ -1,3 +1,5 @@
+import { trackGoogleAnalyticsEvent } from "@/lib/google-analytics";
+
 /**
  * Browser side of outbound conversion-click tracking.
  *
@@ -83,6 +85,11 @@ export function recordOutboundClick(
   const key = `${channel}|${source}|${pagePath}`;
   if (reportedThisPage.has(key)) return;
   reportedThisPage.add(key);
+
+  trackGoogleAnalyticsEvent(channel === "whatsapp" ? "whatsapp_click" : "etsy_click", {
+    cta_source: source,
+    page_path: pagePath,
+  });
 
   const payload: OutboundClickPayload = {
     channel,

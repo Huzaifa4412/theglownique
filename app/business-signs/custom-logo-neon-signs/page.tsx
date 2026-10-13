@@ -34,14 +34,14 @@ import "@/components/detail/detail.css";
  */
 
 const PATH = "/business-signs/custom-logo-neon-signs";
-const UPDATED_ON = "2026-10-01";
+const UPDATED_ON = "2026-10-13";
 const SOURCE = "logo-neon";
 const SUBJECT = "custom logo neon sign";
 
 const neon = requireProductPage("custom-neon-signs");
 const ETSY_URL = neon.etsyUrl ?? ETSY_SHOP_URL;
 
-const TITLE = "Custom Business Logo LED Neon Signs";
+const TITLE = "Custom Logo Neon Signs for Business Walls";
 const DESCRIPTION =
   "Custom logo neon signs for business: your logo redrawn in LED neon, in 13 colors or RGB, on a cut acrylic backboard. Free mockup within 24 hours.";
 

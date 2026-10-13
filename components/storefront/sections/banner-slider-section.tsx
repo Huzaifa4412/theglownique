@@ -3,7 +3,7 @@
 import { getImageProps } from "next/image";
 import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Autoplay } from "swiper/modules";
+import { Pagination } from "swiper/modules";
 
 // Import Swiper styles
 import "swiper/css";
@@ -129,9 +129,10 @@ export function BannerSliderSection() {
   return (
     <section className="w-full" aria-label="Featured sign collections">
       <Swiper
-        modules={[Pagination, Autoplay]}
+        modules={[Pagination]}
         pagination={{ clickable: true }}
-        autoplay={{ delay: 5000, disableOnInteraction: false }}
+        // Keep the first image stable until the visitor swipes or chooses a
+        // slide, avoiding automatic changes to the image during initial loading.
         loop={true}
         className="w-full"
       >

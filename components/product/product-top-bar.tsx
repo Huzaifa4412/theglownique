@@ -16,7 +16,7 @@ export function ProductTopBar({ productName }: { productName: string }) {
 
   return (
     <header ref={headerRef} className="glass-nav z-50" data-tone={tone}>
-      <div className="flex items-center justify-between gap-4 px-4 py-3 sm:px-6">
+      <div className="flex items-center justify-between gap-2 px-3 py-3 sm:gap-4 sm:px-6">
         <Link href="/" className="brand" aria-label="The Glownique home">
           <Image
             className="brand__logo"
@@ -64,9 +64,11 @@ export function ProductTopBar({ productName }: { productName: string }) {
           target="_blank"
           rel="noopener noreferrer"
           data-meta-source="product-top-bar"
-          className="button button--whatsapp rounded-full px-4 py-2.5 text-sm font-bold flex items-center gap-2"
+          aria-label="Get a free quote"
+          className="button button--whatsapp product-quote-link rounded-full px-4 py-2.5 text-sm font-bold flex items-center gap-2"
         >
-          <span>Get a free quote</span>
+          <span className="max-[359px]:hidden">Get a free quote</span>
+          <span className="hidden max-[359px]:inline">Free quote</span>
           <WhatsappIcon className="h-4.5 w-4.5 shrink-0" />
         </a>
       </div>

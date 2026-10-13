@@ -9,7 +9,7 @@ import {
   type ReactNode,
 } from "react";
 
-import { ProductDialog } from "@/components/storefront/product-dialog";
+import dynamic from "next/dynamic";
 import { StorefrontMotionLoader } from "@/components/storefront/storefront-motion-loader";
 import {
   StorefrontContext,
@@ -31,6 +31,11 @@ import { categoryLabels, type CategoryId, type Product } from "@/lib/store-data"
  * nobody searched for.
  */
 const SEARCH_TRACK_DELAY_MS = 900;
+
+const ProductDialog = dynamic(
+  () => import("@/components/storefront/product-dialog").then((module) => module.ProductDialog),
+  { ssr: false },
+);
 
 /** Below this, a query is a typo or a single letter rather than an intent. */
 const MIN_TRACKED_QUERY_LENGTH = 3;
@@ -167,11 +172,11 @@ export function StorefrontShell({ children }: { children: ReactNode }) {
           <span className="scroll-progress__bar" />
         </div>
         {children}
-        <ProductDialog
+        {selectedProduct && <ProductDialog
           product={selectedProduct}
           onClose={closeProduct}
           showToast={showToast}
-        />
+        />}
         <div
           className={`toast${toast ? " is-visible" : ""}`}
           role="status"

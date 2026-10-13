@@ -20,17 +20,19 @@ import type { Guide } from "@/lib/guides/types";
  */
 export const guide: Guide = {
   slug: "sign-size-viewing-distance",
-  metaTitle: "What Size Sign Do I Need? Letter Size Chart",
+  metaTitle: "Sign Size Calculator & Letter Height Chart",
   metaDescription:
-    "How tall should sign letters be? A letter height chart by viewing distance, the storefront fascia rule, and a tape-on-the-wall method for indoor signs.",
-  h1: "What Size Sign Do I Need? Letter Height by Viewing Distance",
+    "Use our sign size calculator and letter height chart to estimate readable letters by viewing distance. Learn how to measure your wall before ordering a sign.",
+  h1: "Sign Size Calculator & Letter Height by Viewing Distance",
   kicker: "Sign sizing guide",
   answer:
     "What size sign you need depends on the viewing distance. For a sign facing the viewer, the US Sign Council's average is 1 inch of capital-letter height per 30 feet: 10-inch letters read at about 300 feet. All-capitals text needs letters about 15% taller; a fascia sign parallel to the road, about three times the height. Indoors, tape the outline on the wall first.",
   publishedOn: "2026-09-24",
-  updatedOn: "2026-09-24",
-  primaryKeyword: "what size sign do I need",
+  updatedOn: "2026-10-13",
+  primaryKeyword: "sign size calculator",
   secondaryKeywords: [
+    "how to measure a sign",
+    "what size sign do I need",
     "sign letter height chart",
     "how big should a neon sign be",
     "business sign size",
@@ -45,6 +47,14 @@ export const guide: Guide = {
   },
   showHeroImage: true,
   sections: [
+    {
+      id: "sign-size-calculator",
+      heading: "Sign size calculator: what letter height do I need?",
+      blocks: [
+        { type: "p", text: "Enter the distance from the reader to the sign. This calculator uses the US Sign Council's average Legibility Index of 30, with its approximate adjustments for all-capitals wording and signs parallel to the road.[^ussc-rules][^ussc-standards] The result is our arithmetic from those rules, not an installation specification." },
+        { type: "sign-size-calculator" },
+      ],
+    },
     {
       id: "letter-height-distance",
       heading: "How far away can sign letters be read?",
@@ -197,7 +207,7 @@ export const guide: Guide = {
     },
     {
       id: "indoor-signs",
-      heading: "What size sign do I need indoors?",
+      heading: "How to measure a sign for an indoor wall",
       blocks: [
         {
           type: "p",
