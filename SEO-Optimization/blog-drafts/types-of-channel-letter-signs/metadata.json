@@ -1,0 +1,89 @@
+{
+  "status": "implementation-ready",
+  "researchDate": "2026-10-26",
+  "title": "Channel Letter Signs: Types, Lighting & Mounting Guide",
+  "slug": "types-of-channel-letter-signs",
+  "categorySlug": "sign-basics",
+  "cover": "channel-letter-signs-storefront",
+  "coverAlt": "Illuminated custom halo-lit 3D metal channel letter sign on a commercial restaurant storefront",
+  "coverCaption": "Halo-lit 3D channel letters fabricated with brushed aluminum returns and warm 3000K LED backlighting on a commercial building facade.",
+  "tableCaption": "Comprehensive engineering comparison of the four primary channel letter signage types",
+  "seoTitle": "Channel Letter Signs: Types, Lighting & Mounting Guide",
+  "seoDescription": "Compare front-lit, halo-lit, reverse, and dual-lit channel letter signs. Sizing, raceway vs flush mounting, LED power draw, and storefront permits explained.",
+  "summary": "Channel letter signs are custom 3D exterior signs fabricated from sheet metal and acrylic, powered by low-voltage LEDs. The four main styles are front-lit for daylight contrast and nighttime punch, halo-lit (reverse) for an upscale architectural back-glow, dual-lit for combined illumination, and open-face. Your choice hinges on facade type, viewing distance, and raceway vs. flush mounting.",
+  "primaryKeyword": "channel letter signs",
+  "secondaryKeywords": [
+    "types of channel letter signs",
+    "reverse channel letters",
+    "halo lit channel letters",
+    "led channel letter signs",
+    "front lit channel letter signs",
+    "channel letter signs cost",
+    "what are channel letter signs",
+    "front lit vs halo lit channel letters",
+    "dual lit channel letters",
+    "channel letters raceway mount vs flush mount",
+    "storefront channel letters"
+  ],
+  "intendedCanonical": "https://www.theglownique.com/blog/types-of-channel-letter-signs",
+  "keyTakeaways": [
+    "Front-lit channel letters maximize long-distance readability using translucent acrylic faces and internal LEDs, making them the standard choice for busy retail corridors.",
+    "Halo-lit (reverse) channel letters project light backward onto the mounting surface via stainless steel standoffs, creating an upscale architectural aura ideal for boutiques and restaurants.",
+    "Dual-lit channel letters combine illuminated acrylic faces with halo backlighting, providing maximum visual contrast and high-end brand impact at night.",
+    "Raceway mounting groups all letters and power supplies into a single pre-wired metal housing, minimizing exterior building penetrations and satisfying strict commercial landlord criteria.",
+    "Flush (direct) mounting anchors each letter individually through the facade for a seamless look, but requires rear wall access to route Class 2 low-voltage wiring."
+  ],
+  "relatedLinks": [
+    {
+      "kind": "commercial",
+      "label": "Custom channel letter signs for business",
+      "description": "Commercial exterior 3D metal letters with front-lit, halo-lit, and dual-lit illumination engineered with a 5-year warranty.",
+      "href": "/business-signs/channel-letter-signs"
+    },
+    {
+      "kind": "commercial",
+      "label": "3D metallic illuminated logo signs",
+      "description": "Architectural grade stainless steel and aluminum channel letters with precision LED modules and free architectural mockups.",
+      "href": "/products/3d-metal-neon-signs"
+    },
+    {
+      "kind": "guide",
+      "label": "Front-lit vs. halo-lit vs. dual-lit channel letters",
+      "description": "Side-by-side visual and engineering comparison of illumination optics, wall reflectance, and return depths.",
+      "href": "/guides/front-lit-vs-halo-lit-vs-dual-lit"
+    },
+    {
+      "kind": "guide",
+      "label": "Storefront retail signage ideas for small businesses",
+      "description": "Comparing channel letters, lightboxes, neon, and acrylic signs for exterior foot traffic and visibility.",
+      "href": "/blog/storefront-signage-ideas-small-businesses"
+    }
+  ],
+  "sources": [
+    {
+      "label": "UL 48: Standard for Electric Signs",
+      "publisher": "Underwriters Laboratories",
+      "url": "https://standardscatalog.ul.com/ProductDetail.aspx?productId=UL48",
+      "accessed": "2026-10-26"
+    },
+    {
+      "label": "NFPA 70: National Electrical Code (NEC) Article 600 - Electric Signs and Outline Lighting",
+      "publisher": "National Fire Protection Association",
+      "url": "https://www.nfpa.org/codes-and-standards/nfpa-70-standard-development/70",
+      "accessed": "2026-10-26"
+    },
+    {
+      "label": "ASTM B209: Standard Specification for Aluminum and Aluminum-Alloy Sheet and Plate",
+      "publisher": "American Society for Testing and Materials",
+      "url": "https://www.astm.org/b0209_b0209m-21a.html",
+      "accessed": "2026-10-26"
+    },
+    {
+      "label": "United States Sign Council (USSC): On-Premise Sign Sizing & Legibility Guidelines",
+      "publisher": "United States Sign Council",
+      "url": "https://www.ussc.org",
+      "accessed": "2026-10-26"
+    }
+  ],
+  "publicationNotes": "Definitive technical and practical buyer's guide for commercial storefront channel letter signs. Analyzes front-lit, halo-lit (reverse), dual-lit, and open-face engineering; decodes raceway vs flush mounting methods; details low-voltage Class 2 LED electrical requirements and landlord sign criteria packages."
+}

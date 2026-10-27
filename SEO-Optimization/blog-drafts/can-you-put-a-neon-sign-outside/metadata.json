@@ -1,0 +1,83 @@
+{
+  "status": "implementation-ready",
+  "researchDate": "2026-10-24",
+  "title": "Can You Put a Neon Sign Outside? IP Ratings, Weatherproofing & Setup Guide",
+  "slug": "can-you-put-a-neon-sign-outside",
+  "categorySlug": "care-and-setup",
+  "cover": "outdoor-led-neon-sign-patio",
+  "coverAlt": "Weatherproof custom outdoor LED neon sign glowing on a brick patio wall in evening rain",
+  "coverCaption": "An illuminated custom outdoor LED neon sign engineered with IP67 waterproof silicone flex installed on an exterior patio wall. Real workshop photograph.",
+  "tableCaption": "Ingress Protection (IP) ratings and weather suitability for custom LED neon signs",
+  "seoTitle": "Can You Put a Neon Sign Outside? IP Ratings & Weatherproof Guide",
+  "seoDescription": "Can you put an LED neon sign outside or in the rain? IP65 vs IP67 waterproofing, outdoor power supplies, UV protection, and mounting safety explained.",
+  "summary": "Yes, you can put an LED neon sign outside, but only if it is explicitly engineered with an IP65 or IP67 weatherproof build. Standard indoor neon signs will quickly corrode and fail if exposed to rain, humidity, or sunlight. A true outdoor build features sealed silicone flex, waterproof solder connections, a weatherproof IP67 power driver, and a GFCI-protected exterior circuit.",
+  "primaryKeyword": "outdoor neon signs",
+  "secondaryKeywords": [
+    "can you put a neon sign outside",
+    "can neon signs be used outside",
+    "can led neon signs go outside",
+    "are neon signs waterproof",
+    "outdoor waterproof neon sign",
+    "custom outdoor neon sign",
+    "waterproof neon sign",
+    "can neon signs get wet",
+    "ip65 vs ip67 neon sign",
+    "outdoor neon signs for business",
+    "outdoor patio neon signs"
+  ],
+  "intendedCanonical": "https://www.theglownique.com/blog/can-you-put-a-neon-sign-outside",
+  "keyTakeaways": [
+    "Standard indoor LED neon signs lack moisture barriers and will rapidly short-circuit, corrode copper solder joints, and yellow under UV sunlight if installed outdoors.",
+    "For covered outdoor environments like porches, awnings, and sheltered garden patios, an IP65 rating provides reliable protection against airborne humidity, splashback, and light moisture.",
+    "For direct exposure to driving rain, snow, or high-humidity coastal air, a full IP67 build with waterproof dielectric silicone injection potting is strictly necessary.",
+    "The primary failure point of outdoor illuminated signs is the power supply: never place an indoor transformer outdoors, and always use an IP67 aluminum driver with a cable drip loop.",
+    "Exterior mounting requires UV-stabilized cast acrylic backing with stainless steel standoff spacers to prevent moisture entrapment between the sign and the masonry wall."
+  ],
+  "relatedLinks": [
+    {
+      "kind": "commercial",
+      "label": "Custom outdoor LED neon signs",
+      "description": "Handcrafted personalized LED neon signs with optional IP67 outdoor weatherproofing, UV-resistant backboards, and included exterior power supplies.",
+      "href": "/products/custom-neon-signs"
+    },
+    {
+      "kind": "commercial",
+      "label": "Custom storefront and retail business signs",
+      "description": "Commercial exterior signage engineered for storefronts, restaurants, and outdoor hospitality facades with multi-year warranty.",
+      "href": "/business-signs/retail-storefronts"
+    },
+    {
+      "kind": "guide",
+      "label": "Can you leave a neon sign on all the time?",
+      "description": "Power consumption, thermal safety, and 24/7 running costs for continuous residential and commercial illumination.",
+      "href": "/blog/can-you-leave-a-neon-sign-on-all-the-time"
+    },
+    {
+      "kind": "guide",
+      "label": "How to hang a neon sign on any wall",
+      "description": "Step-by-step mounting guide for brick, stone, drywall, and outdoor surfaces using stainless steel standoffs.",
+      "href": "/blog/how-to-hang-a-neon-sign"
+    }
+  ],
+  "sources": [
+    {
+      "label": "IEC 60529: Degrees of protection provided by enclosures (IP Code)",
+      "publisher": "International Electrotechnical Commission",
+      "url": "https://webstore.iec.ch/publication/2452",
+      "accessed": "2026-10-24"
+    },
+    {
+      "label": "UL 8750: Standard for Light Emitting Diode (LED) Equipment for Use in Lighting Products",
+      "publisher": "Underwriters Laboratories",
+      "url": "https://standardscatalog.ul.com/ProductDetail.aspx?productId=UL8750",
+      "accessed": "2026-10-24"
+    },
+    {
+      "label": "NFPA 70: National Electrical Code (NEC) Article 600 - Electric Signs and Outline Lighting",
+      "publisher": "National Fire Protection Association",
+      "url": "https://www.nfpa.org/codes-and-standards/nfpa-70-standard-development/70",
+      "accessed": "2026-10-24"
+    }
+  ],
+  "publicationNotes": "Definitive technical and practical guide for residential and commercial buyers asking 'can you put a neon sign outside'. Explains ingress protection ratings (IP65 vs IP67), silicone material degradation under UV solar radiation, waterproof electrical driver engineering, drip loops, and exterior masonry standoff mounting. Fully enforces the internal-link contract and schema validation rules."
+}

@@ -1,0 +1,12 @@
+keyword,role,market,language,average_monthly_searches,seo_difficulty,cpc_usd,retrieved_date,status,notes
+backlit signage,editorial_primary,United States,en,1900,12,7.82,2026-10-27,VERIFIED_UBERSUGGEST_MCP,"High commercial intent head term. CPC $7.82 indicates premium buyer value. SD 12 is highly accessible."
+light box sign,secondary_target,United States,en,1300,20,4.88,2026-10-27,VERIFIED_UBERSUGGEST_MCP,"Two-word query out-searches 'lightbox signs' (720 at SD 49). High transactional intent."
+custom backlit signage,secondary_target,United States,en,590,44,6.87,2026-10-27,VERIFIED_UBERSUGGEST_MCP,"Targeted in commercial reception, lobby, and bespoke metal fabrication sections."
+led backlit signage,secondary_target,United States,en,480,34,9.75,2026-10-27,VERIFIED_UBERSUGGEST_MCP,"Highest CPC in cluster at $9.75. Focuses on low-voltage Class 2 LED efficiency and optical diffusion."
+backlit signage letters,secondary_target,United States,en,320,12,6.57,2026-10-27,VERIFIED_UBERSUGGEST_MCP,"Very low SD 12; focuses on individual dimensional halo-lit metal letters on standoffs."
+outdoor light box sign,secondary_target,United States,en,260,36,5.45,2026-10-27,VERIFIED_UBERSUGGEST_MCP,"Addressed in weatherproofing, IP ratings, and storefront window placement."
+exterior backlit signage,secondary_target,United States,en,260,25,8.85,2026-10-27,VERIFIED_UBERSUGGEST_MCP,"Low-medium SD 25; addresses facade compatibility, backer panels, and rain protection."
+halo lit letters,secondary_target,United States,en,210,31,2.80,2026-10-27,VERIFIED_UBERSUGGEST_MCP,"Technical terminology synonym for reverse channel letters."
+edge lit signs,secondary_target,United States,en,210,23,3.10,2026-10-27,VERIFIED_UBERSUGGEST_MCP,"Low SD 23; describes light guide plate (LGP) physics and total internal reflection."
+reverse channel letter signs,secondary_target,United States,en,140,11,4.50,2026-10-27,VERIFIED_UBERSUGGEST_MCP,"Very low SD 11; architectural B2B query."
+backlit signage vs light box signs,comparison_intent,United States,en,50,4,0.00,2026-10-27,ESTIMATED_CLUSTER,"Zero-competition comparison target capturing high-intent B2B fit-out decision makers."

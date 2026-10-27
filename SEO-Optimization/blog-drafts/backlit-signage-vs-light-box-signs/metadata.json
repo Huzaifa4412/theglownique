@@ -1,0 +1,94 @@
+{
+  "status": "implementation-ready",
+  "researchDate": "2026-10-27",
+  "title": "Backlit Signage vs Light Box Signs: Which Illuminated Sign Belongs on Which Wall",
+  "slug": "backlit-signage-vs-light-box-signs",
+  "categorySlug": "sign-basics",
+  "cover": "backlit-signage-salon-reception",
+  "coverAlt": "Custom halo backlit signage in brushed metal mounted with standoffs on a luxury salon reception wall",
+  "coverCaption": "Backlit signage never shines light directly at the viewer. The solid metal face stays dark while the wall behind it reflects the halo.",
+  "tableCaption": "Engineering and architectural comparison: halo backlit letters vs ultra-thin LED light boxes",
+  "seoTitle": "Backlit Signage vs Light Box Signs: Which to Choose",
+  "seoDescription": "Backlit signage or an LED light box sign? Compare halo lit letters and ultra-thin edge-lit light boxes, wall surface physics, and commercial fit-out rules.",
+  "summary": "Backlit signage borrows the wall to cast an architectural halo, making it permanent, sculptural, and reliant on the surface behind it. An ultra-thin LED light box sign carries its own light guide plate and changeable graphics. Compare illumination optics, standoff distances, wall finish compatibility, ADA protrusion limits, and the hybrid framework where both formats excel together.",
+  "primaryKeyword": "backlit signage vs light box signs",
+  "secondaryKeywords": [
+    "backlit signage",
+    "light box sign",
+    "led backlit signage",
+    "custom backlit signage",
+    "backlit signage letters",
+    "outdoor light box sign",
+    "exterior backlit signage",
+    "halo lit letters",
+    "edge lit signs",
+    "reverse channel letter signs"
+  ],
+  "intendedCanonical": "https://www.theglownique.com/blog/backlit-signage-vs-light-box-signs",
+  "keyTakeaways": [
+    "Backlit signage uses indirect illumination: solid metal faces direct LED light backward so the wall reflects a soft halo, making the wall finish a functional optical component.",
+    "Ultra-thin LED light box signs use edge-lit light guide plates (LGP) to turn side-firing LEDs into uniform front-facing light inside a slim 25mm frame, completely independent of the wall.",
+    "Halo backlit letters are permanent architectural fixtures ideal for reception brand marks and photo backdrops without lens glare.",
+    "Light box signs excel at frequently changing messages—such as café menus, pricing tiers, and seasonal promotions—with tool-free snap-frame graphics updates.",
+    "High-end commercial venues rarely choose just one: the standard architectural standard pairs a halo-lit brand wall with ultra-thin light boxes for operational information."
+  ],
+  "relatedLinks": [
+    {
+      "kind": "commercial",
+      "label": "Custom backlit lobby and reception signs",
+      "description": "Architectural 3D metal letters and halo-lit corporate logos engineered with precision standoffs and a 5-year warranty.",
+      "href": "/business-signs/backlit-lobby-signs"
+    },
+    {
+      "kind": "commercial",
+      "label": "Ultra-thin LED light box signs",
+      "description": "Edge-lit slim aluminum lightboxes with snap-frame and magnetic faces for retail displays, menu boards, and window storefronts.",
+      "href": "/business-signs/lightbox-signs"
+    },
+    {
+      "kind": "guide",
+      "label": "Front-lit vs halo-lit vs dual-lit channel letters",
+      "description": "Compare storefront illumination optics, daylight readability, return depths, and facade mounting techniques.",
+      "href": "/guides/front-lit-vs-halo-lit-vs-dual-lit"
+    },
+    {
+      "kind": "guide",
+      "label": "Custom acrylic signs for office walls",
+      "description": "Technical guide to architectural standoff barrels, wall anchors, and laser-cut dimensional acrylic layering.",
+      "href": "/blog/custom-acrylic-signs-office-wall-guide"
+    }
+  ],
+  "sources": [
+    {
+      "label": "Halo-lit standoff distance, wall reflectance, backer panels, and electrical splice rules",
+      "publisher": "Graphics Pro, 'Hello, Halo: A Deeper Look at Halo-Lit Channel Letters'",
+      "url": "https://graphics-pro.com/feature/hello-halo-a-deeper-look-at-halo-lit-channel-letters/",
+      "accessed": "2026-10-27"
+    },
+    {
+      "label": "Front-lit vs halo-lit return depths, LED module spacing, and optical halo spread",
+      "publisher": "ChannelLetter.com, 'Front Lit vs Halo Lit Channel Letters'",
+      "url": "https://www.channelletter.com/news/front-lit-vs-halo-lit-channel-letters/",
+      "accessed": "2026-10-27"
+    },
+    {
+      "label": "Edge-lit light guide plate (LGP) dot-pattern design and total internal reflection",
+      "publisher": "Optical Engineering Research, 'Dot-pattern design of a light guide in an edge-lit backlight'",
+      "url": "https://www.researchgate.net/publication/241715350_Dot-pattern_design_of_a_light_guide_in_an_edge-lit_backlight_using_a_regional_partition_approach",
+      "accessed": "2026-10-27"
+    },
+    {
+      "label": "ADA Standards for Accessible Design §307.2: 4-inch maximum protrusion for wall-mounted objects in circulation paths",
+      "publisher": "U.S. Access Board",
+      "url": "https://www.access-board.gov/ada/guides/chapter-3-protruding-objects/",
+      "accessed": "2026-10-27"
+    },
+    {
+      "label": "IEC 60529: Ingress Protection (IP Code) testing and ratings for electrical enclosures",
+      "publisher": "International Electrotechnical Commission",
+      "url": "https://www.iec.ch",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "publicationNotes": "Definitive architectural and engineering comparison between halo backlit signage and ultra-thin LED light box signs. Written for commercial interior designers, retailers, and hospitality directors deciding between sculptural permanent branding and changeable display systems."
+}
