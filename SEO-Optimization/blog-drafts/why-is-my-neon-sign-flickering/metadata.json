@@ -1,0 +1,93 @@
+{
+  "status": "implementation-ready",
+  "researchDate": "2026-10-28",
+  "title": "Why Is My Neon Sign Flickering? How to Diagnose Drivers, Dimmers & Wiring",
+  "slug": "why-is-my-neon-sign-flickering",
+  "categorySlug": "care-and-setup",
+  "cover": "flickering-neon-sign-troubleshooting-cover",
+  "coverAlt": "Close-up of an illuminated LED neon sign mounted on an interior wall during electrical diagnosis",
+  "coverCaption": "A flickering sign is almost always an external power adapter or dimmer failure rather than damaged LED flex.",
+  "tableCaption": "Component failure matrix: symptoms, electrical root causes, and workshop fixes for flickering neon signs",
+  "seoTitle": "Why Is My Neon Sign Flickering? Diagnostic & Fix Guide",
+  "seoDescription": "Why is your neon sign flickering? Learn how to diagnose failing 12V power adapters, loose DC barrel plugs, PWM dimmer faults, and camera shutter conflicts.",
+  "summary": "A flickering LED neon sign is caused by a failing 12V power supply in roughly 70% of cases, followed by a loose DC barrel connector, a failing inline PWM dimmer, or an overloaded circuit. For traditional glass neon, flickering stems from a dying high-voltage transformer, arcing GTO wiring, or depleted neon gas. Isolating the fault takes five minutes using a direct power bypass test.",
+  "primaryKeyword": "neon sign flickering",
+  "secondaryKeywords": [
+    "why is my neon sign flickering",
+    "led neon sign flickering",
+    "neon sign flickering fix",
+    "how to fix flickering neon sign",
+    "neon sign power supply replacement",
+    "neon sign dimmer problems",
+    "neon sign buzzing",
+    "loose connection neon sign",
+    "neon sign flickering on camera"
+  ],
+  "intendedCanonical": "https://www.theglownique.com/blog/why-is-my-neon-sign-flickering",
+  "keyTakeaways": [
+    "Test the power adapter first by unplugging inline dimmers and remote receivers to connect the power supply directly to the sign's DC input jack.",
+    "If the sign strobes or shuts down after 2 to 5 minutes of operation, the power adapter is overheating or undersized and tripping its internal thermal cut-off.",
+    "Flickering that only appears on smartphone video or camera screens is caused by low-frequency PWM dimming conflicting with camera shutter speeds, not a hardware fault.",
+    "Traditional glass neon signs operate at 2,000 to 15,000 volts; loud buzzing or visible sparks indicate high-voltage transformer arcing that requires certified electrical service.",
+    "When replacing a power supply, always match the exact output voltage (12V or 24V DC) and provide at least 20% wattage headroom above the sign's total draw."
+  ],
+  "relatedLinks": [
+    {
+      "kind": "commercial",
+      "label": "Custom LED neon signs for home and business",
+      "description": "Commercial-grade 12V silicone neon flex engineered with premium UL-certified power supplies and wireless RF dimmers.",
+      "href": "/products/custom-neon-signs"
+    },
+    {
+      "kind": "commercial",
+      "label": "Custom logo neon signs for storefronts and offices",
+      "description": "Heavy-duty commercial logo signs built with high-density LEDs and backed by a comprehensive 5-year workshop warranty.",
+      "href": "/business-signs/custom-logo-neon-signs"
+    },
+    {
+      "kind": "guide",
+      "label": "Can you leave a neon sign on all the time?",
+      "description": "Electrical safety, thermal operating ranges, and 24/7 continuous running costs for 12V LED neon.",
+      "href": "/blog/can-you-leave-a-neon-sign-on-all-the-time"
+    },
+    {
+      "kind": "guide",
+      "label": "Can you put a neon sign outside?",
+      "description": "IP65 vs IP67 weatherproofing, silicone injection potting, and exterior power driver safety guidelines.",
+      "href": "/blog/can-you-put-a-neon-sign-outside"
+    }
+  ],
+  "sources": [
+    {
+      "label": "UL 8750 Standard for Light Emitting Diode (LED) Equipment in Lighting Products",
+      "publisher": "Underwriters Laboratories",
+      "url": "https://standardscatalog.ul.com/ProductDetail.aspx?productId=UL8750",
+      "accessed": "2026-10-28"
+    },
+    {
+      "label": "NEC Article 600: Electric Signs and Outline Lighting Class 2 Power Limitations",
+      "publisher": "National Fire Protection Association (NFPA)",
+      "url": "https://www.nfpa.org/codes-and-standards/all-codes-and-standards/list-of-codes-and-standards/detail?code=70",
+      "accessed": "2026-10-28"
+    },
+    {
+      "label": "IEEE 1789-2015: Recommended Practices for Modulating Current in High-Brightness LEDs for Mitigating Health Risks and Video Flicker",
+      "publisher": "IEEE Standards Association",
+      "url": "https://standards.ieee.org/ieee/1789/4611/",
+      "accessed": "2026-10-28"
+    },
+    {
+      "label": "UL 1310 Standard for Class 2 Power Units and Thermal Overload Protection",
+      "publisher": "Underwriters Laboratories",
+      "url": "https://standardscatalog.ul.com/ProductDetail.aspx?productId=UL1310",
+      "accessed": "2026-10-28"
+    },
+    {
+      "label": "LED Power Supply Thermal Management and Derating Guidelines",
+      "publisher": "Sign Research Foundation",
+      "url": "https://signresearch.org",
+      "accessed": "2026-10-28"
+    }
+  ],
+  "publicationNotes": "Comprehensive electrical diagnostic and troubleshooting guide for flickering neon signs. Covers the 5-point test flowchart, isolating 12V power supplies, repairing DC barrel connections, resolving camera PWM rolling bands, and diagnosing high-voltage glass neon transformers safely."
+}
