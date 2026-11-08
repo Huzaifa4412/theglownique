@@ -4,6 +4,7 @@ import { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { WhatsappIcon } from "@/components/ui/whatsapp-icon";
+import { CartLink } from "@/components/cart/cart-link";
 
 import { BACKLIT_PATH } from "@/lib/backlit-signs";
 import { PRODUCT_PAGES } from "@/lib/product-catalog";
@@ -34,7 +35,7 @@ export function ProductTopBar({ productName }: { productName: string }) {
             they may wrap to two. Guides and Contact join once there is room
             for seven. The journal link lives in the footer. */}
         <nav
-          className="hidden items-center gap-3 text-xs font-bold uppercase tracking-wide text-(--glass-muted) lg:flex min-[1150px]:[&_a]:whitespace-nowrap min-[1340px]:gap-5"
+          className="product-primary-nav hidden items-center gap-3 text-xs font-bold uppercase tracking-wide text-(--glass-muted) lg:flex min-[1150px]:[&_a]:whitespace-nowrap min-[1340px]:gap-5"
           aria-label="Primary navigation"
         >
           {PRODUCT_PAGES.map((p) => (
@@ -59,6 +60,8 @@ export function ProductTopBar({ productName }: { productName: string }) {
           </Link>
         </nav>
 
+        <div className="flex items-center gap-2">
+        <CartLink />
         <a
           href={whatsappQuoteUrl(productName)}
           target="_blank"
@@ -71,6 +74,7 @@ export function ProductTopBar({ productName }: { productName: string }) {
           <span className="hidden max-[359px]:inline">Free quote</span>
           <WhatsappIcon className="h-4.5 w-4.5 shrink-0" />
         </a>
+        </div>
       </div>
     </header>
   );

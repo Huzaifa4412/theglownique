@@ -159,7 +159,7 @@ export function ShopSection() {
                 onClick={() => openProduct(product)}
                 aria-label={`Customize ${product.name}`}
               >
-                <span>Customize</span>
+                <span>Customize &amp; add</span>
                 <span aria-hidden="true">→</span>
               </button>
             </div>

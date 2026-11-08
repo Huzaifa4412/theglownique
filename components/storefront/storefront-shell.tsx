@@ -9,7 +9,7 @@ import {
   type ReactNode,
 } from "react";
 
-import dynamic from "next/dynamic";
+import { useCart } from "@/components/cart/cart-provider";
 import { StorefrontMotionLoader } from "@/components/storefront/storefront-motion-loader";
 import {
   StorefrontContext,
@@ -32,15 +32,11 @@ import { categoryLabels, type CategoryId, type Product } from "@/lib/store-data"
  */
 const SEARCH_TRACK_DELAY_MS = 900;
 
-const ProductDialog = dynamic(
-  () => import("@/components/storefront/product-dialog").then((module) => module.ProductDialog),
-  { ssr: false },
-);
-
 /** Below this, a query is a typo or a single letter rather than an intent. */
 const MIN_TRACKED_QUERY_LENGTH = 3;
 
 export function StorefrontShell({ children }: { children: ReactNode }) {
+  const { openProduct: configureProduct } = useCart();
   const rootRef = useRef<HTMLDivElement>(null);
   const toastTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const searchTrackTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -49,7 +45,6 @@ export function StorefrontShell({ children }: { children: ReactNode }) {
   >("all");
   const [search, setSearch] = useState("");
   const [reducedMotion, setReducedMotion] = useState(false);
-  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [toast, setToast] = useState("");
 
   const showToast = useCallback((message: string) => {
@@ -106,20 +101,13 @@ export function StorefrontShell({ children }: { children: ReactNode }) {
   }, []);
 
   const openProduct = useCallback((product: Product) => {
-    setSelectedProduct(product);
-    // Every route into the quote configurator lands here — the shop grid's
-    // Customize buttons and every CustomQuoteButton on the page — so this is the
-    // one place the AddToCart-equivalent needs to fire.
+    configureProduct(product);
     trackConfiguratorOpen(product.name, categoryLabels[product.category]);
     capturePostHog("configurator_opened", {
       product_name: product.name,
       category: categoryLabels[product.category],
     });
-  }, []);
-
-  const closeProduct = useCallback(() => {
-    setSelectedProduct(null);
-  }, []);
+  }, [configureProduct]);
 
   useEffect(() => {
     const media = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -172,11 +160,6 @@ export function StorefrontShell({ children }: { children: ReactNode }) {
           <span className="scroll-progress__bar" />
         </div>
         {children}
-        {selectedProduct && <ProductDialog
-          product={selectedProduct}
-          onClose={closeProduct}
-          showToast={showToast}
-        />}
         <div
           className={`toast${toast ? " is-visible" : ""}`}
           role="status"

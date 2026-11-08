@@ -54,6 +54,10 @@ export function PostHogProvider({ children }: { children: React.ReactNode }) {
       capture_performance: true,
       person_profiles: "identified_only",
       session_recording: {
+        // Checkout contains contact details and private design briefs. Keep
+        // request/response bodies out even if network recording is enabled.
+        maskCapturedNetworkRequestFn: (request) =>
+          request.name?.includes("/api/checkout") ? null : request,
         maskAllInputs: false,
         maskInputOptions: {
           password: true,

@@ -6,10 +6,12 @@ import {
   DM_Sans,
   Manrope, Geist } from "next/font/google";
 import "./globals.css";
+import "@/components/cart/commerce.css";
 import { MetaPixel } from "@/components/analytics/meta-pixel";
 import { MetaPixelEvents } from "@/components/analytics/meta-pixel-events";
 import { PostHogProvider } from "@/components/analytics/posthog-provider";
 import { GoogleAnalytics } from "@/components/analytics/google-analytics";
+import { CartProvider } from "@/components/cart/cart-provider";
 import { cn, serializeJsonLd } from "@/lib/utils";
 import { SITE_URL, sameAsUrls } from "@/lib/site";
 
@@ -180,7 +182,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: serializeJsonLd(structuredData) }}
         />
         <PostHogProvider>
-          {children}
+          <CartProvider>{children}</CartProvider>
         </PostHogProvider>
         <Analytics />
         <GoogleAnalytics />

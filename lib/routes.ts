@@ -175,13 +175,29 @@ export const ROUTES: readonly RouteEntry[] = [
 
   // Policy and trust routes.
   { path: "/shipping", lastModified: CLAIMS_RELEASE, changeFrequency: "yearly", priority: 0.4, indexable: true },
-  { path: "/privacy", lastModified: CLAIMS_RELEASE, changeFrequency: "yearly", priority: 0.4, indexable: true },
+  { path: "/privacy", lastModified: "2026-11-09", changeFrequency: "yearly", priority: 0.4, indexable: true },
   { path: "/returns", lastModified: BASELINE, changeFrequency: "yearly", priority: 0.4, indexable: true },
   { path: "/terms", lastModified: SEO_ISSUES_RELEASE, changeFrequency: "yearly", priority: 0.4, indexable: true },
   { path: "/accessibility", lastModified: BASELINE, changeFrequency: "yearly", priority: 0.4, indexable: true },
 
   // Not public content. Served with X-Robots-Tag: noindex from next.config.ts,
   // and deliberately still crawlable so that header is actually seen.
+  {
+    path: "/cart",
+    lastModified: "2026-11-09",
+    changeFrequency: "never",
+    priority: 0.0,
+    indexable: false,
+    note: "Customer cart, noindex via route metadata.",
+  },
+  {
+    path: "/checkout",
+    lastModified: "2026-11-09",
+    changeFrequency: "never",
+    priority: 0.0,
+    indexable: false,
+    note: "Quote checkout, noindex via route metadata.",
+  },
   {
     path: "/studio",
     lastModified: BASELINE,

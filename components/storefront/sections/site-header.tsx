@@ -7,6 +7,7 @@ import { List, X } from "@phosphor-icons/react";
 import { IconBox } from "@/components/icon-box";
 import { CustomQuoteButton } from "@/components/storefront/custom-quote-button";
 import { EtsyButton } from "@/components/storefront/etsy-button";
+import { CartLink } from "@/components/cart/cart-link";
 import { BACKLIT_PATH } from "@/lib/backlit-signs";
 import { useNavTone } from "@/lib/use-nav-tone";
 
@@ -110,10 +111,11 @@ export function SiteHeader({ overlay = false }: { overlay?: boolean }) {
             "coming soon" toast — a control that does nothing costs more trust
             than it buys. */}
         <div className="header-actions">
+          <CartLink />
           {/* Sits left of the pink CTA: buying an existing design on Etsy is
               the secondary path, a custom quote is still the primary one.
               Same utility classes as the CTA so the pair matches exactly. */}
-          <EtsyButton className="text-xs px-4 py-2 rounded-full" />
+          <EtsyButton className="text-xs px-4 py-2 rounded-full hidden md:inline-flex" />
 
           <CustomQuoteButton
             className="button button--whatsapp text-xs px-4 py-2 rounded-full hidden sm:inline-flex"

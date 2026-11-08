@@ -1,6 +1,7 @@
 import { type SchemaTypeDefinition } from 'sanity'
 
 import { lead } from './lead'
+import { checkoutRequest } from './checkout-request'
 import { outboundClick } from './outbound-click'
 import { author } from './blog/author'
 import { blogSettings } from './blog/blogSettings'
@@ -19,6 +20,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
     // Enquiries and contact signals.
     lead,
+    checkoutRequest,
     outboundClick,
     // Blog documents.
     post,

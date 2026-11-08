@@ -5,6 +5,7 @@ import type { CSSProperties } from "react";
 import { ArrowRight, Check, ChevronDown } from "lucide-react";
 
 import { DetailCtaPair } from "@/components/detail/detail-cta-pair";
+import { ConfigureSignButton } from "@/components/cart/configure-sign-button";
 import { DetailGallery, type DetailImage } from "@/components/detail/detail-gallery";
 import { DetailStickyCta } from "@/components/detail/detail-sticky-cta";
 import { DetailVideo } from "@/components/detail/detail-video";
@@ -103,6 +104,7 @@ export function ProductDetail({ product, reading = [] }: { product: ProductPage;
               preload
             >
               <div>
+                <ConfigureSignButton contentId={product.slug} />
                 <DetailCtaPair subject={product.singular} etsyUrl={etsyUrl} source={`${source}-hero`} />
                 <p className="mt-2.5 text-center text-xs leading-relaxed text-white/70">
                   Free mockup first. You pay nothing until you approve the design.

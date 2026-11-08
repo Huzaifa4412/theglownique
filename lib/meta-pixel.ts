@@ -1,48 +1,8 @@
-/**
- * Meta Pixel event layer.
- *
- * Every fbq() call in this codebase goes through here. Components never touch
- * `window.fbq` directly — they import a named helper, which keeps the event
- * names, the standard-vs-custom distinction and the parameter shapes in one
- * auditable place instead of scattered across twenty CTAs.
- *
- * ── Why the events are mapped the way they are ───────────────────────────────
- *
- * This is a quote-based business with no on-site checkout: payment happens on
- * Etsy and there is no price on any product. So the classic ecommerce funnel
- * (ViewContent → AddToCart → InitiateCheckout → Purchase) has to be mapped onto
- * a lead funnel, and the mapping below is the honest one:
- *
- *   ViewContent       — a sign-type product page was viewed
- *   AddToCart         — the quote configurator was opened for a specific design
- *   Lead              — the quote form was completed and handed to WhatsApp
- *   Contact           — a WhatsApp link was clicked (intent, not a sent message)
- *   InitiateCheckout  — an Etsy link was clicked; Etsy holds the real checkout
- *   CustomizeProduct  — a colour was picked in the neon colour studio
- *   Search            — the catalog search box was used
- *
- * Two custom events exist only to build audiences on an ad landing page, and
- * are not for optimising a campaign (see components/analytics/meta-engagement.tsx):
- *
- *   EngagedView       — the visitor scrolled past the halfway point
- *   ViewSection       — a named section was read, e.g. "nail-salon"
- *
- * Purchase is deliberately absent. We cannot observe it: orders complete inside
- * Etsy and Etsy exposes no webhook we consume, so any Purchase event fired from
- * this site would be invented. Leave it out until there is a real order source.
- * The same goes for the Conversions API — see the notes at the bottom of this
- * file for what wiring it up would take.
- *
- * Optimise campaigns on `Lead`. `Contact` is a softer, higher-volume signal —
- * useful for retargeting audiences and for early learning while Lead volume is
- * thin, but a WhatsApp click is not a submitted enquiry and should not be
- * treated as one.
- *
- * The exception is a campaign landing on a detail page such as
- * /business-signs/backlit-signs. Those pages have no quote form: the buttons go
- * straight to WhatsApp or Etsy, so `Lead` never fires there. Optimise those
- * campaigns on `Contact`.
+/** Meta Pixel event layer. Cart events represent saved designs; checkout sends
+ * a quote request. Payment remains on Etsy, so this site never fires Purchase.
+ * No customer names, emails, phone numbers, or custom sign text enter events.
  */
+import { cartContentId, type CartItem } from "@/lib/cart";
 
 /** Standard Meta events. Anything not on this list must go through trackCustom. */
 type StandardEvent =
@@ -62,11 +22,18 @@ type CustomEventName =
   | "ViewGuide"
   | "NewsletterSignup"
   | "EngagedView"
-  | "ViewSection";
+  | "ViewSection"
+  | "ConfiguratorOpen"
+  | "CheckoutSubmitted";
 
 type EventParams = Record<
   string,
-  string | number | boolean | string[] | undefined
+  | string
+  | number
+  | boolean
+  | string[]
+  | { id: string; quantity: number }[]
+  | undefined
 >;
 
 type Fbq = (
@@ -181,6 +148,7 @@ function enqueue(
   command: "track" | "trackCustom",
   eventName: string,
   params?: EventParams,
+  eventId?: string,
 ) {
   if (typeof window === "undefined" || !HAS_META_PIXEL) return;
 
@@ -189,7 +157,7 @@ function enqueue(
     command,
     eventName,
     params: clean(params),
-    eventId: newEventId(),
+    eventId: eventId ?? newEventId(),
   });
 
   if (!flushTimer) flush();
@@ -272,19 +240,47 @@ export function trackSearch(query: string) {
   track("Search", { search_string: query });
 }
 
-/**
- * The quote configurator opened for a specific design.
- *
- * Mapped to AddToCart because this is the mid-funnel intent step a shop's
- * add-to-cart occupies: the visitor has picked a design and started
- * configuring it. It is the audience you retarget three days later.
- */
+/** Opening options is intent; AddToCart is reserved for saving a design. */
 export function trackConfiguratorOpen(productName: string, category?: string) {
-  track("AddToCart", {
+  trackCustom("ConfiguratorOpen", {
     content_name: productName,
     content_category: category,
-    content_type: "product",
   });
+}
+
+function cartParameters(items: CartItem[]) {
+  const quantities = new Map<string, number>();
+  for (const item of items) {
+    const id = cartContentId(item);
+    quantities.set(id, (quantities.get(id) ?? 0) + item.quantity);
+  }
+  return {
+    content_ids: [...quantities.keys()],
+    content_type: "product",
+    contents: [...quantities].map(([id, quantity]) => ({ id, quantity })),
+    num_items: items.reduce((sum, item) => sum + item.quantity, 0),
+    checkout_channel: "website_quote",
+  };
+}
+
+export function trackCartAdded(item: CartItem) {
+  track("AddToCart", cartParameters([item]));
+}
+export function trackCheckoutStarted(items: CartItem[]) {
+  track("InitiateCheckout", cartParameters(items));
+}
+/** Called only after the server has stored the request and Resend accepted both emails. */
+export function trackCheckoutSubmitted(
+  items: CartItem[],
+  submissionId: string,
+) {
+  enqueue("track", "Lead", cartParameters(items), `checkout-${submissionId}`);
+  enqueue(
+    "trackCustom",
+    "CheckoutSubmitted",
+    cartParameters(items),
+    `checkout-submitted-${submissionId}`,
+  );
 }
 
 /**
@@ -415,19 +411,5 @@ export function trackNewsletterSignup() {
   trackCustom("NewsletterSignup");
 }
 
-// ── Not implemented, on purpose ─────────────────────────────────────────────
-//
-// Conversions API (server-side): would restore the 30–60% of signal browsers
-// drop post-iOS 14, and is the biggest remaining measurement win here. It needs
-// a lead/order source we control — a form POST to a route handler, or an Etsy
-// order feed — plus META_CAPI_ACCESS_TOKEN, the _fbp and _fbc cookies forwarded
-// from the request, and the same eventID this file already generates so Meta can
-// deduplicate. Today every lead leaves via a WhatsApp deep link with no server
-// round-trip, so there is nothing to send from.
-//
-// Product catalog feed (for Dynamic Product Ads): needs per-product prices,
-// which this shop does not publish — everything is individually quoted.
-//
-// Consent gating: there is no cookie banner on this site, so the pixel loads for
-// every visitor. If EU/UK traffic matters, gate the base snippet behind a consent
-// tool and hold `fbq('consent', 'revoke')` until consent is granted.
+// Server-side CAPI and Etsy purchase ingestion are not configured. A quote
+// submission is a Lead; an Etsy click is intent, never proof of a paid order.

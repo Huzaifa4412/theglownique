@@ -1,344 +1,165 @@
 "use client";
-
+import Link from "next/link";
 import {
-  UploadSimple,
-  X,
-  House,
-  Buildings,
-  Check,
-  Trash,
-} from "@phosphor-icons/react";
-import {
-  useCallback,
   useEffect,
   useRef,
   useState,
   type CSSProperties,
   type FormEvent,
-  type ChangeEvent,
 } from "react";
-
-import { IconBox } from "@/components/icon-box";
+import { ShoppingBag, X } from "lucide-react";
+import { useCart } from "@/components/cart/cart-provider";
 import { SignTypePreview } from "@/components/storefront/sign-type-preview";
-import { capturePostHog } from "@/lib/posthog-client";
-import { archiveLead } from "@/lib/leads";
-import { trackQuoteSubmitted } from "@/lib/meta-pixel";
-import { trackGoogleAnalyticsEvent } from "@/lib/google-analytics";
-import { products, type Product, type SignType } from "@/lib/store-data";
-import { HAS_WHATSAPP, WHATSAPP_NUMBER } from "@/lib/site";
-import { buildWhatsappUrl } from "@/lib/whatsapp";
-import { WhatsappIcon } from "@/components/ui/whatsapp-icon";
+import { SIGN_TYPES, type Product, type SignType } from "@/lib/store-data";
+import { parseCartItems, type CartItem } from "@/lib/cart";
 
-type ProductDialogProps = {
-  product: Product | null;
-  onClose: () => void;
-  showToast: (message: string) => void;
-};
+const COLORS = [
+  ["Warm White", "#FFF4D6"],
+  ["Cold White", "#EBF8FF"],
+  ["Yellow", "#FFDD00"],
+  ["Orange", "#FF8000"],
+  ["Dark Blue", "#0036FF"],
+  ["Ice Blue", "#62DAFF"],
+  ["Green", "#00DC5A"],
+  ["Light Pink", "#FFAAD2"],
+  ["Hot Pink", "#FF1EAA"],
+  ["Red", "#FF2020"],
+  ["Purple", "#9B3CFF"],
+  ["Teal", "#00D2BE"],
+  ["RGBA Party", "linear-gradient(135deg,#ff1eaa,#62daff,#ffdd00)"],
+];
 
 export function ProductDialog({
   product,
+  item,
   onClose,
-  showToast,
-}: ProductDialogProps) {
-  const dialogRef = useRef<HTMLDialogElement>(null);
-  const dialogProduct = product ?? products[products.length - 1];
-
-  const [file, setFile] = useState<File | null>(null);
-  const [fileError, setFileError] = useState<string>("");
-  const [sizeMode, setSizeMode] = useState<"custom" | "preset">("custom");
-  const [presetSize, setPresetSize] = useState<string>("Medium · up to 32 in");
-  const [customWidth, setCustomWidth] = useState<string>("");
-  const [customHeight, setCustomHeight] = useState<string>("");
-  const [usageLocation, setUsageLocation] = useState<"Indoor" | "Outdoor">(
-    "Indoor",
+}: {
+  product: Product;
+  item?: CartItem;
+  onClose: () => void;
+}) {
+  const dialog = useRef<HTMLDialogElement>(null);
+  const { saveItem } = useCart();
+  const [signType, setSignType] = useState<SignType>(
+    item?.signType ?? product.signType ?? "Neon Sign",
   );
-  const [agreeTerms, setAgreeTerms] = useState<boolean>(false);
-
-  // Storing which product the choice was made for lets the preview fall back to
-  // the newly opened product's own sign type when the dialog is reused, without
-  // an effect that resets state.
-  const [signTypeChoice, setSignTypeChoice] = useState<{
-    productId: number;
-    signType: SignType;
-  } | null>(null);
-
-  const activeSignType: SignType =
-    signTypeChoice?.productId === dialogProduct.id
-      ? signTypeChoice.signType
-      : (dialogProduct.signType ?? "Neon Sign");
-
-  const closeDialog = useCallback(() => {
-    dialogRef.current?.close();
-    document.body.classList.remove("dialog-open");
-    onClose();
-  }, [onClose]);
-
+  const [error, setError] = useState("");
+  const [saved, setSaved] = useState(false);
   useEffect(() => {
-    const dialog = dialogRef.current;
-    if (!dialog || !product) return;
-
-    if (!dialog.open) dialog.showModal();
+    dialog.current?.showModal();
     document.body.classList.add("dialog-open");
-
-    return () => document.body.classList.remove("dialog-open");
-  }, [product]);
-
-  const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const selectedFile = e.target.files?.[0];
-    if (!selectedFile) return;
-
-    const MAX_SIZE = 8 * 1024 * 1024; // 8MB
-    if (selectedFile.size > MAX_SIZE) {
-      setFileError("File size exceeds 8 MB limit.");
-      setFile(null);
-      return;
-    }
-
-    setFileError("");
-    setFile(selectedFile);
-  };
-
-  const handleRemoveFile = () => {
-    setFile(null);
-    setFileError("");
-  };
-
-  const handleQuoteSubmit = (event: FormEvent<HTMLFormElement>) => {
+    return () => {
+      document.body.classList.remove("dialog-open");
+    };
+  }, []);
+  function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    if (!product) return;
-
     const form = new FormData(event.currentTarget);
-    const signText = String(form.get("signText") || "").trim();
-    const color = String(form.get("color") || "Hot pink");
-
-    const calculatedSize =
-      sizeMode === "custom"
-        ? customWidth || customHeight
-          ? `Custom (${customWidth || "?"} in W × ${customHeight || "?"} in H)`
-          : "Custom Size"
-        : presetSize;
-
-    const deliveryCountry = String(
-      form.get("deliveryCountry") || "United States",
-    );
-    const budget = String(form.get("budget") || "Not specified");
-    const timeline = String(form.get("timeline") || "Not specified");
-    const additionalDetails = String(
-      form.get("additionalDetails") || "",
-    ).trim();
-
-    const fullName = String(form.get("fullName") || "").trim();
-    const email = String(form.get("email") || "").trim();
-    const phone = String(form.get("phone") || "").trim();
-
-    const message = [
-      "Hello The Glownique! I would like a custom quote:",
-      "",
-      `📋 Design Reference: ${product.name}`,
-      `✨ Sign Type: ${activeSignType}`,
-      `🎨 Neon Colour: ${color}`,
-      `💡 Sign Text / Idea: ${signText || "Same as displayed"}`,
-      file
-        ? `📁 Uploaded Reference: ${file.name} (${(file.size / 1024 / 1024).toFixed(2)} MB)`
-        : "📁 Uploaded Reference: No file chosen",
-      `📏 Size: ${calculatedSize}`,
-      `📍 Location: ${usageLocation} (${
-        usageLocation === "Indoor"
-          ? "Interior walls, receptions and rooms"
-          : "Storefronts, façades and exterior walls"
-      })`,
-      "",
-      "🎯 Quote Shaping Details:",
-      `🌍 Delivery Country: ${deliveryCountry}`,
-      `💰 Working Budget (USD): ${budget}`,
-      `⏱ Order Timeline: ${timeline}`,
-      additionalDetails ? `📝 Additional Details: ${additionalDetails}` : "",
-      "",
-      "👤 Customer Details:",
-      `Full Name: ${fullName}`,
-      `Email: ${email}`,
-      `Phone Number: ${phone}`,
-      "",
-      "Please share a custom quote and next steps. Thank you!",
-    ]
-      .filter((line) => line !== "")
-      .join("\n");
-
-    if (!HAS_WHATSAPP) {
-      // Fail loudly rather than opening a dead wa.me link.
-      showToast("Quote requests are unavailable right now — please try again later");
-      return;
+    try {
+      const [entry] = parseCartItems([
+        {
+          id: item?.id ?? crypto.randomUUID(),
+          productId: product.id,
+          signType,
+          color: String(form.get("color") ?? "Warm White"),
+          size: String(form.get("size") ?? ""),
+          signText: String(form.get("signText") ?? ""),
+          usageLocation: String(form.get("usageLocation")),
+          details: String(form.get("details") ?? ""),
+          quantity: Number(form.get("quantity")),
+        },
+      ]);
+      saveItem(entry);
+      setSaved(true);
+    } catch (cause) {
+      setError(
+        cause instanceof Error
+          ? cause.message
+          : "Please check your design details.",
+      );
     }
-
-    // The conversion. Fired before the handoff, because window.open on a mobile
-    // browser can navigate this tab away and kill any pending pixel request —
-    // and fired here rather than caught by the document-level outbound-link
-    // listener in MetaPixelEvents, since this is a completed form and not a bare
-    // click on a chat link. The listener never sees it: window.open isn't a
-    // click on an anchor.
-    trackGoogleAnalyticsEvent("quote_form_submit", {
-      sign_type: activeSignType,
-      page_path: window.location.pathname,
-    });
-    trackQuoteSubmitted({
-      productName: product.name,
-      signType: activeSignType,
-      colour: color,
-      size: calculatedSize,
-      usageLocation,
-      deliveryCountry,
-      budget,
-      timeline,
-      hasReferenceFile: Boolean(file),
-    });
-    capturePostHog("configurator_quote_submitted", {
-      product_name: product.name,
-      sign_type: activeSignType,
-      color,
-      size: calculatedSize,
-      usage_location: usageLocation,
-      delivery_country: deliveryCountry,
-      budget,
-      timeline,
-      has_reference_file: Boolean(file),
-    });
-
-    // Archive it too, and archive it BEFORE the handoff for the same reason the
-    // pixel call is here: window.open can navigate this tab away and kill a
-    // pending request. archiveLead uses `keepalive` so it survives that.
-    //
-    // Until this existed, the most complete enquiry on the site — a finished
-    // configurator carrying a name, an email, a phone number, a size and a
-    // budget — was reported to Meta and then handed to WhatsApp, and kept
-    // nowhere we control. If the visitor got as far as WhatsApp and then did
-    // not press send, the whole thing was gone. The contact form has archived
-    // since it shipped; this was simply missed.
-    //
-    // `message` deliberately carries the same text the visitor is about to
-    // send, so the Studio record and the chat cannot disagree about what was
-    // asked for. The uploaded reference file is named but not uploaded: it
-    // travels in WhatsApp, and copying a customer's artwork into the CMS is a
-    // bigger decision than this handoff should be making on its own.
-    archiveLead({
-      source: "quote-dialog",
-      name: fullName,
-      email,
-      phone,
-      country: deliveryCountry,
-      topic: `Quote request — ${product.name}`,
-      message,
-      signType: activeSignType,
-      size: calculatedSize,
-      usageLocation,
-      budget,
-      timeline,
-      pagePath: window.location.pathname,
-      // The form cannot be submitted without ticking the terms box.
-      consent: agreeTerms,
-    });
-
-    closeDialog();
-    window.open(
-      buildWhatsappUrl(message, WHATSAPP_NUMBER),
-      "_blank",
-      "noopener,noreferrer",
-    );
-    showToast("Your quote request is ready in WhatsApp");
-  };
-
+  }
   return (
     <dialog
-      ref={dialogRef}
-      className="product-dialog"
+      ref={dialog}
+      className="product-dialog ph-no-capture"
+      aria-labelledby="cart-design-title"
       onClose={onClose}
       onClick={(event) => {
-        if (event.target === event.currentTarget) closeDialog();
+        if (event.target === event.currentTarget) onClose();
       }}
     >
       <button
         className="icon-button dialog-close"
         type="button"
-        aria-label="Close product options"
-        onClick={closeDialog}
+        aria-label="Close design options"
+        onClick={onClose}
       >
-        <IconBox icon={X} />
+        <X size={22} />
       </button>
-
       <div className="dialog-product-visual">
-        <SignTypePreview signType={activeSignType} />
+        <SignTypePreview signType={signType} />
       </div>
-
-      <form
-        className="product-form"
-        key={product?.id ?? "empty"}
-        onSubmit={handleQuoteSubmit}
-      >
-        <div className="product-form-header">
-          <p className="eyebrow">Custom Neon Quote</p>
-          <h2 className="dialog-product-name">{dialogProduct.name}</h2>
-          <p className="dialog-product-note">
-            Configure your custom sign below. Every sign is individually quoted
-            after reviewing your details.
+      {saved ? (
+        <div className="product-form">
+          <p className="eyebrow">Saved to your cart</p>
+          <h2 id="cart-design-title" className="dialog-product-name">
+            Your design is in.
+          </h2>
+          <p>
+            Review your designs at checkout. We’ll email your custom quote after
+            reviewing the details.
           </p>
+          <Link
+            href="/cart"
+            onClick={onClose}
+            className="button button--primary"
+          >
+            View cart &amp; checkout
+          </Link>
+          <button
+            type="button"
+            onClick={onClose}
+            className="button button--secondary"
+          >
+            Continue browsing
+          </button>
         </div>
-
-        {/* Sign Type & Color */}
-        <div className="form-section">
+      ) : (
+        <form className="product-form" onSubmit={submit}>
+          <div className="product-form-header">
+            <p className="eyebrow">Make it yours</p>
+            <h2 id="cart-design-title" className="dialog-product-name">
+              {product.name}
+            </h2>
+            <p className="dialog-product-note">
+              Save your design, then send everything together at checkout. Each
+              sign is individually quoted before payment.
+            </p>
+          </div>
           <label className="form-label">
-            Sign Type
+            Sign type
             <select
-              name="signType"
-              value={activeSignType}
-              onChange={(event) =>
-                setSignTypeChoice({
-                  productId: dialogProduct.id,
-                  signType: event.target.value as SignType,
-                })
-              }
+              value={signType}
+              onChange={(event) => setSignType(event.target.value as SignType)}
             >
-              <option value="Neon Sign">
-                1. Neon Sign (LED Flexible Silicone)
-              </option>
-              <option value="3D Metal Neon Sign">
-                2. 3D Metal Channel Letters (Front-lit / Halo-lit / Dual-lit)
-              </option>
-              <option value="Ultra Thin Lightbox">
-                3. Ultra Thin Lightbox Signs
-              </option>
-              <option value="Acrylic UV Print Neon Sign">
-                4. Acrylic UV Print Neon Sign
-              </option>
+              {SIGN_TYPES.map((type) => (
+                <option key={type.id} value={type.id}>
+                  {type.label}
+                </option>
+              ))}
             </select>
           </label>
-
           <fieldset className="form-fieldset">
-            <legend className="form-legend">Neon colour</legend>
+            <legend className="form-legend">Colour</legend>
             <div className="color-options">
-              {[
-                ["Warm White", "#FFF4D6"],
-                ["Cold White", "#EBF8FF"],
-                ["Light Yellow", "#FFF480"],
-                ["Yellow", "#FFDD00"],
-                ["Orange", "#FF8000"],
-                ["Dark Blue", "#0036FF"],
-                ["Ice Blue", "#62DAFF"],
-                ["Green", "#00DC5A"],
-                ["Light Pink", "#FFAAD2"],
-                ["Hot Pink", "#FF1EAA"],
-                ["Red", "#FF2020"],
-                ["Purple", "#9B3CFF"],
-                ["Teal", "#00D2BE"],
-                [
-                  "RGBA Party",
-                  "linear-gradient(135deg, #ff1eaa, #62daff, #ffdd00, #00dc5a, #9b3cff)",
-                ],
-              ].map(([label, swatch], index) => (
+              {COLORS.map(([label, swatch]) => (
                 <label key={label} className="color-radio-card">
                   <input
                     type="radio"
                     name="color"
                     value={label}
-                    defaultChecked={index === 0}
+                    defaultChecked={label === (item?.color ?? "Warm White")}
                   />
                   <span
                     style={
@@ -353,323 +174,78 @@ export function ProductDialog({
               ))}
             </div>
           </fieldset>
-        </div>
-
-        {/* Sign Text / Idea & File Upload */}
-        <div className="form-section">
           <label className="form-label">
             Sign text, logo, or idea
             <textarea
               name="signText"
               rows={3}
-              placeholder="Example: our logo above the reception desk..."
-              className="form-textarea"
+              maxLength={1000}
+              defaultValue={item?.signText}
+              placeholder="Your wording, logo description, or design idea"
             />
           </label>
-
-          <div className="file-upload-box">
-            <div className="file-upload-header">
-              <span className="form-label-text">
-                Upload your design or reference
-              </span>
-              <span className="file-upload-subtext">
-                PNG, JPG, or WebP up to 8 MB
-              </span>
-            </div>
-            <label className="file-upload-dropzone">
-              <input
-                type="file"
-                accept=".png,.jpg,.jpeg,.webp"
-                onChange={handleFileChange}
-                className="file-input-hidden"
-              />
-              <div className="file-upload-content">
-                <UploadSimple className="file-upload-icon" size={24} />
-                {file ? (
-                  <div className="file-info">
-                    <span className="file-name">{file.name}</span>
-                    <span className="file-size">
-                      ({(file.size / 1024 / 1024).toFixed(2)} MB)
-                    </span>
-                  </div>
-                ) : (
-                  <span className="file-placeholder-text">No file chosen</span>
-                )}
-                <span className="file-upload-btn">
-                  {file ? "Change file" : "Browse file"}
-                </span>
-              </div>
-            </label>
-            {file && (
-              <button
-                type="button"
-                className="file-remove-btn"
-                onClick={handleRemoveFile}
-              >
-                <Trash size={14} /> Remove chosen file
-              </button>
-            )}
-            {fileError && <p className="form-error-text">{fileError}</p>}
-          </div>
-        </div>
-
-        {/* Size & Estimate */}
-        <div className="form-section">
-          <div className="form-section-header">
-            <h3 className="form-section-title">Size & estimate</h3>
-            <p className="form-section-desc">
-              Select a size, or enter your own.
-            </p>
-            <div className="size-badge-note">
-              For accurate sizing, use custom size
-            </div>
-          </div>
-
-          <div className="size-selector-tabs">
-            <button
-              type="button"
-              className={`size-tab ${sizeMode === "custom" ? "is-active" : ""}`}
-              onClick={() => setSizeMode("custom")}
-            >
-              Custom Size
-            </button>
-            <button
-              type="button"
-              className={`size-tab ${sizeMode === "preset" ? "is-active" : ""}`}
-              onClick={() => setSizeMode("preset")}
-            >
-              Preset Size
-            </button>
-          </div>
-
-          {sizeMode === "custom" ? (
-            <div className="custom-size-grid">
-              <label className="form-label">
-                Width (in)
-                <input
-                  type="text"
-                  name="customWidth"
-                  placeholder="e.g. 36"
-                  value={customWidth}
-                  onChange={(e) => setCustomWidth(e.target.value)}
-                />
-              </label>
-              <label className="form-label">
-                Height (in)
-                <input
-                  type="text"
-                  name="customHeight"
-                  placeholder="e.g. 24"
-                  value={customHeight}
-                  onChange={(e) => setCustomHeight(e.target.value)}
-                />
-              </label>
-            </div>
-          ) : (
-            <label className="form-label">
-              Choose preset size
-              <select
-                name="presetSize"
-                value={presetSize}
-                onChange={(e) => setPresetSize(e.target.value)}
-              >
-                <option value="Small · up to 24 in">Small · up to 24 in</option>
-                <option value="Medium · up to 32 in">
-                  Medium · up to 32 in
-                </option>
-                <option value="Large · up to 42 in">Large · up to 42 in</option>
-                <option value="Extra Large · 50+ in">
-                  Extra Large · 50+ in
-                </option>
-              </select>
-            </label>
-          )}
-        </div>
-
-        {/* Where will it be used? */}
-        <div className="form-section">
-          <label className="form-label">Where will it be used?</label>
-          <div className="usage-cards-grid">
-            <button
-              type="button"
-              className={`usage-card ${
-                usageLocation === "Indoor" ? "is-selected" : ""
-              }`}
-              onClick={() => setUsageLocation("Indoor")}
-            >
-              <div className="usage-card-icon">
-                <House size={20} />
-              </div>
-              <div className="usage-card-text">
-                <strong className="usage-card-title">Indoor</strong>
-                <span className="usage-card-desc">
-                  Interior walls, receptions and rooms
-                </span>
-              </div>
-              {usageLocation === "Indoor" && (
-                <Check className="usage-check" size={18} />
-              )}
-            </button>
-
-            <button
-              type="button"
-              className={`usage-card ${
-                usageLocation === "Outdoor" ? "is-selected" : ""
-              }`}
-              onClick={() => setUsageLocation("Outdoor")}
-            >
-              <div className="usage-card-icon">
-                <Buildings size={20} />
-              </div>
-              <div className="usage-card-text">
-                <strong className="usage-card-title">Outdoor</strong>
-                <span className="usage-card-desc">
-                  Storefronts, façades and exterior walls
-                </span>
-              </div>
-              {usageLocation === "Outdoor" && (
-                <Check className="usage-check" size={18} />
-              )}
-            </button>
-          </div>
-        </div>
-
-        {/* Help us shape a more accurate quote. */}
-        <div className="form-section">
-          <h3 className="form-section-title">
-            Help us shape a more accurate quote.
-          </h3>
           <div className="quote-shaping-grid">
-            <label className="form-label form-col-full">
-              Delivery country
-              <select name="deliveryCountry" defaultValue="United States">
-                <option value="United States">United States</option>
-                <option value="Canada">Canada</option>
-                <option value="United Kingdom">United Kingdom</option>
-                <option value="Australia">Australia</option>
-                <option value="Germany">Germany</option>
-                <option value="France">France</option>
-                <option value="United Arab Emirates">
-                  United Arab Emirates
-                </option>
-                <option value="Other">Other Country</option>
-              </select>
-            </label>
-
             <label className="form-label">
-              Working budget (USD)
-              <select name="budget" defaultValue="">
-                <option value="" disabled>
-                  Choose a range
-                </option>
-                <option value="Under $250">Under $250</option>
-                <option value="$250 - $500">$250 - $500</option>
-                <option value="$500 - $1,000">$500 - $1,000</option>
-                <option value="$1,000 - $2,500">$1,000 - $2,500</option>
-                <option value="$2,500+">$2,500+</option>
-              </select>
-            </label>
-
-            <label className="form-label">
-              When do you plan to order?
-              <select name="timeline" defaultValue="">
-                <option value="" disabled>
-                  Choose a timeline
-                </option>
-                <option value="ASAP (Within 1 week)">
-                  ASAP (Within 1 week)
-                </option>
-                <option value="1 - 2 weeks">1 - 2 weeks</option>
-                <option value="2 - 4 weeks">2 - 4 weeks</option>
-                <option value="1+ month / Just researching">
-                  1+ month / Just researching
-                </option>
-              </select>
-            </label>
-          </div>
-
-          <label className="form-label">
-            Additional details (optional)
-            <textarea
-              name="additionalDetails"
-              rows={3}
-              placeholder="Wall finish, deadline, mounting, power access, or anything else we should know..."
-              className="form-textarea"
-            />
-          </label>
-        </div>
-
-        {/* Your details */}
-        <div className="form-section">
-          <div className="form-section-header">
-            <h3 className="form-section-title">Your details</h3>
-            <p className="form-section-desc">
-              Where should we continue the conversation?
-            </p>
-          </div>
-
-          <div className="user-details-grid">
-            <label className="form-label">
-              Full name
+              Size
               <input
                 type="text"
-                name="fullName"
-                placeholder="Your name"
+                name="size"
                 required
+                maxLength={160}
+                defaultValue={item?.size ?? product.size}
+                placeholder="e.g. 36 in wide × 24 in high"
               />
             </label>
-
             <label className="form-label">
-              Email
+              Quantity
               <input
-                type="email"
-                name="email"
-                placeholder="you@example.com"
+                name="quantity"
+                type="number"
                 required
+                min={1}
+                max={99}
+                step={1}
+                defaultValue={item?.quantity ?? 1}
               />
             </label>
-
             <label className="form-label">
-              Phone number
-              <input
-                type="tel"
-                name="phone"
-                placeholder="+1 555 000 0000"
-                required
-              />
+              Where will it be used?
+              <select
+                name="usageLocation"
+                defaultValue={item?.usageLocation ?? "Indoor"}
+              >
+                <option>Indoor</option>
+                <option>Outdoor</option>
+              </select>
             </label>
           </div>
-        </div>
-
-        {/* Terms agreement checkbox */}
-        <label className="terms-checkbox-label">
-          <input
-            type="checkbox"
-            name="agreeTerms"
-            checked={agreeTerms}
-            onChange={(e) => setAgreeTerms(e.target.checked)}
-            required
-          />
-          <span>
-            I agree that these details can be used to prepare and follow up on
-            my quote request. See our{" "}
-            <a href="/privacy" target="_blank" rel="noopener">
-              privacy policy
-            </a>
-            .
-          </span>
-        </label>
-
-        <button
-          className="button button--whatsapp submit-quote-btn text-base font-bold py-3.5 flex items-center justify-center gap-2"
-          type="submit"
-          disabled={!agreeTerms}
-        >
-          <span>Request a custom quote</span>
-          <WhatsappIcon className="w-5 h-5 shrink-0" />
-        </button>
-      </form>
+          <label className="form-label">
+            Design details (optional)
+            <textarea
+              name="details"
+              rows={3}
+              maxLength={1500}
+              defaultValue={item?.details}
+              placeholder="Mounting, wall finish, lighting style, or a link to your artwork"
+            />
+          </label>
+          <p className="dialog-product-note">
+            You can share artwork by replying to your confirmation email.
+          </p>
+          {error && (
+            <p className="form-error-text" role="alert">
+              {error}
+            </p>
+          )}
+          <button
+            className="button button--primary submit-quote-btn"
+            type="submit"
+          >
+            <ShoppingBag size={20} />
+            {item ? "Update cart" : "Add to cart"}
+          </button>
+        </form>
+      )}
     </dialog>
   );
 }
-

@@ -38,6 +38,7 @@ export default function PrivacyPage() {
     <LegalPage
       eyebrow="Your data"
       title="Privacy Policy"
+      lastUpdated="2026-11-09"
       intro="A short, honest policy. It names every third-party tool running on this site and what each one stores — including the advertising cookies our Meta Pixel sets — and explains exactly what we keep when you send us an enquiry."
     >
       <h2>Who we are</h2>
@@ -54,8 +55,8 @@ export default function PrivacyPage() {
 
       <h2>Third-party tools on this site</h2>
       <p>
-        This is the complete list. It is generated from the same record the site code uses, so a
-        tool cannot be added to the site without appearing here.
+        These tools provide advertising, site measurement and live chat. Our checkout storage
+        and transactional email providers are described under Quote requests below.
       </p>
       <ul>
         {TRACKING_TOOLS.map((tool) => (
@@ -172,11 +173,27 @@ export default function PrivacyPage() {
 
       <h2>Quote requests</h2>
       <p>
-        When you request a quote, the form asks for your name, email address, phone number, your
-        design details (text, size, indoor or outdoor use) and optionally a reference file.
+        Our cart saves your chosen sign designs and quantities in your browser&apos;s local storage
+        so they remain available when you return. Checkout contact details are not saved there.
+        At checkout we collect your name, email, delivery country and city, optional phone and
+        postal code, and any budget, timeline or notes you provide.
       </p>
       <p>
-        Two things happen when you submit it. The details are assembled into a message{" "}
+        When you submit checkout, we store the request privately in Sanity and use Resend to
+        email you a design summary and notify our team. Resend processes the recipient addresses
+        and message contents to deliver these transactional emails. See the{" "}
+        <a href="https://resend.com/legal/privacy-policy" rel="nofollow noopener" target="_blank">Resend Privacy Policy</a>.
+        We then direct you to our Etsy shop to continue the conversation and arrange payment
+        after approval. We keep these details only as needed to respond to your enquiry,
+        complete your order and provide support; you can ask us to delete them.
+      </p>
+      <p>
+        When you request a quote, the form asks for your name, email address, phone number, your
+        design details (text, size, indoor or outdoor use). You can share artwork by replying
+        to your checkout email or through WhatsApp.
+      </p>
+      <p>
+        When you use a separate WhatsApp enquiry form, the details are assembled into a message{" "}
         <strong>inside your own browser</strong> and handed to WhatsApp for you to send — and a copy
         of the same details is saved to our own enquiry records, so we can reply even if you close
         WhatsApp without sending, or the message goes astray.
@@ -188,7 +205,7 @@ export default function PrivacyPage() {
           Sanity Privacy Policy
         </a>
         . We use it to prepare your quote and follow up on that enquiry, and for nothing else — no
-        newsletter, no advertising audiences, no sharing with third parties. Ask us and we will
+        newsletter or advertising audiences. Our service providers process it as described above. Ask us and we will
         delete it.
       </p>
       <p>
